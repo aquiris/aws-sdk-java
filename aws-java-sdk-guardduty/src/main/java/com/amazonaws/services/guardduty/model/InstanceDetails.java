@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -18,7 +18,9 @@ import com.amazonaws.protocol.StructuredPojo;
 import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
- * The information about the EC2 instance associated with the activity that prompted GuardDuty to generate a finding.
+ * <p>
+ * Contains information about the details of an instance.
+ * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/InstanceDetails" target="_top">AWS API
  *      Documentation</a>
@@ -26,33 +28,83 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class InstanceDetails implements Serializable, Cloneable, StructuredPojo {
 
-    /** The availability zone of the EC2 instance. */
+    /**
+     * <p>
+     * The availability zone of the EC2 instance.
+     * </p>
+     */
     private String availabilityZone;
-
+    /**
+     * <p>
+     * The profile information of the EC2 instance.
+     * </p>
+     */
     private IamInstanceProfile iamInstanceProfile;
-    /** The image description of the EC2 instance. */
+    /**
+     * <p>
+     * The image description of the EC2 instance.
+     * </p>
+     */
     private String imageDescription;
-    /** The image ID of the EC2 instance. */
+    /**
+     * <p>
+     * The image ID of the EC2 instance.
+     * </p>
+     */
     private String imageId;
-    /** The ID of the EC2 instance. */
+    /**
+     * <p>
+     * The ID of the EC2 instance.
+     * </p>
+     */
     private String instanceId;
-    /** The state of the EC2 instance. */
+    /**
+     * <p>
+     * The state of the EC2 instance.
+     * </p>
+     */
     private String instanceState;
-    /** The type of the EC2 instance. */
+    /**
+     * <p>
+     * The type of the EC2 instance.
+     * </p>
+     */
     private String instanceType;
-    /** The launch time of the EC2 instance. */
+    /**
+     * <p>
+     * The launch time of the EC2 instance.
+     * </p>
+     */
     private String launchTime;
-    /** The network interface information of the EC2 instance. */
+    /**
+     * <p>
+     * The network interface information of the EC2 instance.
+     * </p>
+     */
     private java.util.List<NetworkInterface> networkInterfaces;
-    /** The platform of the EC2 instance. */
+    /**
+     * <p>
+     * The platform of the EC2 instance.
+     * </p>
+     */
     private String platform;
-    /** The product code of the EC2 instance. */
+    /**
+     * <p>
+     * The product code of the EC2 instance.
+     * </p>
+     */
     private java.util.List<ProductCode> productCodes;
-    /** The tags of the EC2 instance. */
+    /**
+     * <p>
+     * The tags of the EC2 instance.
+     * </p>
+     */
     private java.util.List<Tag> tags;
 
     /**
+     * <p>
      * The availability zone of the EC2 instance.
+     * </p>
      * 
      * @param availabilityZone
      *        The availability zone of the EC2 instance.
@@ -63,7 +115,9 @@ public class InstanceDetails implements Serializable, Cloneable, StructuredPojo 
     }
 
     /**
+     * <p>
      * The availability zone of the EC2 instance.
+     * </p>
      * 
      * @return The availability zone of the EC2 instance.
      */
@@ -73,7 +127,9 @@ public class InstanceDetails implements Serializable, Cloneable, StructuredPojo 
     }
 
     /**
+     * <p>
      * The availability zone of the EC2 instance.
+     * </p>
      * 
      * @param availabilityZone
      *        The availability zone of the EC2 instance.
@@ -86,7 +142,12 @@ public class InstanceDetails implements Serializable, Cloneable, StructuredPojo 
     }
 
     /**
+     * <p>
+     * The profile information of the EC2 instance.
+     * </p>
+     * 
      * @param iamInstanceProfile
+     *        The profile information of the EC2 instance.
      */
 
     public void setIamInstanceProfile(IamInstanceProfile iamInstanceProfile) {
@@ -94,7 +155,11 @@ public class InstanceDetails implements Serializable, Cloneable, StructuredPojo 
     }
 
     /**
-     * @return
+     * <p>
+     * The profile information of the EC2 instance.
+     * </p>
+     * 
+     * @return The profile information of the EC2 instance.
      */
 
     public IamInstanceProfile getIamInstanceProfile() {
@@ -102,7 +167,12 @@ public class InstanceDetails implements Serializable, Cloneable, StructuredPojo 
     }
 
     /**
+     * <p>
+     * The profile information of the EC2 instance.
+     * </p>
+     * 
      * @param iamInstanceProfile
+     *        The profile information of the EC2 instance.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -112,7 +182,9 @@ public class InstanceDetails implements Serializable, Cloneable, StructuredPojo 
     }
 
     /**
+     * <p>
      * The image description of the EC2 instance.
+     * </p>
      * 
      * @param imageDescription
      *        The image description of the EC2 instance.
@@ -123,7 +195,9 @@ public class InstanceDetails implements Serializable, Cloneable, StructuredPojo 
     }
 
     /**
+     * <p>
      * The image description of the EC2 instance.
+     * </p>
      * 
      * @return The image description of the EC2 instance.
      */
@@ -133,7 +207,9 @@ public class InstanceDetails implements Serializable, Cloneable, StructuredPojo 
     }
 
     /**
+     * <p>
      * The image description of the EC2 instance.
+     * </p>
      * 
      * @param imageDescription
      *        The image description of the EC2 instance.
@@ -146,7 +222,9 @@ public class InstanceDetails implements Serializable, Cloneable, StructuredPojo 
     }
 
     /**
+     * <p>
      * The image ID of the EC2 instance.
+     * </p>
      * 
      * @param imageId
      *        The image ID of the EC2 instance.
@@ -157,7 +235,9 @@ public class InstanceDetails implements Serializable, Cloneable, StructuredPojo 
     }
 
     /**
+     * <p>
      * The image ID of the EC2 instance.
+     * </p>
      * 
      * @return The image ID of the EC2 instance.
      */
@@ -167,7 +247,9 @@ public class InstanceDetails implements Serializable, Cloneable, StructuredPojo 
     }
 
     /**
+     * <p>
      * The image ID of the EC2 instance.
+     * </p>
      * 
      * @param imageId
      *        The image ID of the EC2 instance.
@@ -180,7 +262,9 @@ public class InstanceDetails implements Serializable, Cloneable, StructuredPojo 
     }
 
     /**
+     * <p>
      * The ID of the EC2 instance.
+     * </p>
      * 
      * @param instanceId
      *        The ID of the EC2 instance.
@@ -191,7 +275,9 @@ public class InstanceDetails implements Serializable, Cloneable, StructuredPojo 
     }
 
     /**
+     * <p>
      * The ID of the EC2 instance.
+     * </p>
      * 
      * @return The ID of the EC2 instance.
      */
@@ -201,7 +287,9 @@ public class InstanceDetails implements Serializable, Cloneable, StructuredPojo 
     }
 
     /**
+     * <p>
      * The ID of the EC2 instance.
+     * </p>
      * 
      * @param instanceId
      *        The ID of the EC2 instance.
@@ -214,7 +302,9 @@ public class InstanceDetails implements Serializable, Cloneable, StructuredPojo 
     }
 
     /**
+     * <p>
      * The state of the EC2 instance.
+     * </p>
      * 
      * @param instanceState
      *        The state of the EC2 instance.
@@ -225,7 +315,9 @@ public class InstanceDetails implements Serializable, Cloneable, StructuredPojo 
     }
 
     /**
+     * <p>
      * The state of the EC2 instance.
+     * </p>
      * 
      * @return The state of the EC2 instance.
      */
@@ -235,7 +327,9 @@ public class InstanceDetails implements Serializable, Cloneable, StructuredPojo 
     }
 
     /**
+     * <p>
      * The state of the EC2 instance.
+     * </p>
      * 
      * @param instanceState
      *        The state of the EC2 instance.
@@ -248,7 +342,9 @@ public class InstanceDetails implements Serializable, Cloneable, StructuredPojo 
     }
 
     /**
+     * <p>
      * The type of the EC2 instance.
+     * </p>
      * 
      * @param instanceType
      *        The type of the EC2 instance.
@@ -259,7 +355,9 @@ public class InstanceDetails implements Serializable, Cloneable, StructuredPojo 
     }
 
     /**
+     * <p>
      * The type of the EC2 instance.
+     * </p>
      * 
      * @return The type of the EC2 instance.
      */
@@ -269,7 +367,9 @@ public class InstanceDetails implements Serializable, Cloneable, StructuredPojo 
     }
 
     /**
+     * <p>
      * The type of the EC2 instance.
+     * </p>
      * 
      * @param instanceType
      *        The type of the EC2 instance.
@@ -282,7 +382,9 @@ public class InstanceDetails implements Serializable, Cloneable, StructuredPojo 
     }
 
     /**
+     * <p>
      * The launch time of the EC2 instance.
+     * </p>
      * 
      * @param launchTime
      *        The launch time of the EC2 instance.
@@ -293,7 +395,9 @@ public class InstanceDetails implements Serializable, Cloneable, StructuredPojo 
     }
 
     /**
+     * <p>
      * The launch time of the EC2 instance.
+     * </p>
      * 
      * @return The launch time of the EC2 instance.
      */
@@ -303,7 +407,9 @@ public class InstanceDetails implements Serializable, Cloneable, StructuredPojo 
     }
 
     /**
+     * <p>
      * The launch time of the EC2 instance.
+     * </p>
      * 
      * @param launchTime
      *        The launch time of the EC2 instance.
@@ -316,7 +422,9 @@ public class InstanceDetails implements Serializable, Cloneable, StructuredPojo 
     }
 
     /**
+     * <p>
      * The network interface information of the EC2 instance.
+     * </p>
      * 
      * @return The network interface information of the EC2 instance.
      */
@@ -326,7 +434,9 @@ public class InstanceDetails implements Serializable, Cloneable, StructuredPojo 
     }
 
     /**
+     * <p>
      * The network interface information of the EC2 instance.
+     * </p>
      * 
      * @param networkInterfaces
      *        The network interface information of the EC2 instance.
@@ -342,7 +452,9 @@ public class InstanceDetails implements Serializable, Cloneable, StructuredPojo 
     }
 
     /**
+     * <p>
      * The network interface information of the EC2 instance.
+     * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
      * {@link #setNetworkInterfaces(java.util.Collection)} or {@link #withNetworkInterfaces(java.util.Collection)} if
@@ -365,7 +477,9 @@ public class InstanceDetails implements Serializable, Cloneable, StructuredPojo 
     }
 
     /**
+     * <p>
      * The network interface information of the EC2 instance.
+     * </p>
      * 
      * @param networkInterfaces
      *        The network interface information of the EC2 instance.
@@ -378,7 +492,9 @@ public class InstanceDetails implements Serializable, Cloneable, StructuredPojo 
     }
 
     /**
+     * <p>
      * The platform of the EC2 instance.
+     * </p>
      * 
      * @param platform
      *        The platform of the EC2 instance.
@@ -389,7 +505,9 @@ public class InstanceDetails implements Serializable, Cloneable, StructuredPojo 
     }
 
     /**
+     * <p>
      * The platform of the EC2 instance.
+     * </p>
      * 
      * @return The platform of the EC2 instance.
      */
@@ -399,7 +517,9 @@ public class InstanceDetails implements Serializable, Cloneable, StructuredPojo 
     }
 
     /**
+     * <p>
      * The platform of the EC2 instance.
+     * </p>
      * 
      * @param platform
      *        The platform of the EC2 instance.
@@ -412,7 +532,9 @@ public class InstanceDetails implements Serializable, Cloneable, StructuredPojo 
     }
 
     /**
+     * <p>
      * The product code of the EC2 instance.
+     * </p>
      * 
      * @return The product code of the EC2 instance.
      */
@@ -422,7 +544,9 @@ public class InstanceDetails implements Serializable, Cloneable, StructuredPojo 
     }
 
     /**
+     * <p>
      * The product code of the EC2 instance.
+     * </p>
      * 
      * @param productCodes
      *        The product code of the EC2 instance.
@@ -438,7 +562,9 @@ public class InstanceDetails implements Serializable, Cloneable, StructuredPojo 
     }
 
     /**
+     * <p>
      * The product code of the EC2 instance.
+     * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
      * {@link #setProductCodes(java.util.Collection)} or {@link #withProductCodes(java.util.Collection)} if you want to
@@ -461,7 +587,9 @@ public class InstanceDetails implements Serializable, Cloneable, StructuredPojo 
     }
 
     /**
+     * <p>
      * The product code of the EC2 instance.
+     * </p>
      * 
      * @param productCodes
      *        The product code of the EC2 instance.
@@ -474,7 +602,9 @@ public class InstanceDetails implements Serializable, Cloneable, StructuredPojo 
     }
 
     /**
+     * <p>
      * The tags of the EC2 instance.
+     * </p>
      * 
      * @return The tags of the EC2 instance.
      */
@@ -484,7 +614,9 @@ public class InstanceDetails implements Serializable, Cloneable, StructuredPojo 
     }
 
     /**
+     * <p>
      * The tags of the EC2 instance.
+     * </p>
      * 
      * @param tags
      *        The tags of the EC2 instance.
@@ -500,7 +632,9 @@ public class InstanceDetails implements Serializable, Cloneable, StructuredPojo 
     }
 
     /**
+     * <p>
      * The tags of the EC2 instance.
+     * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
      * {@link #setTags(java.util.Collection)} or {@link #withTags(java.util.Collection)} if you want to override the
@@ -523,7 +657,9 @@ public class InstanceDetails implements Serializable, Cloneable, StructuredPojo 
     }
 
     /**
+     * <p>
      * The tags of the EC2 instance.
+     * </p>
      * 
      * @param tags
      *        The tags of the EC2 instance.
@@ -536,7 +672,8 @@ public class InstanceDetails implements Serializable, Cloneable, StructuredPojo 
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

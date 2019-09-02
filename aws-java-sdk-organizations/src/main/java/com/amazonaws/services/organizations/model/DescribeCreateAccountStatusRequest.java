@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -31,7 +31,7 @@ public class DescribeCreateAccountStatusRequest extends com.amazonaws.AmazonWebS
      * to an earlier <a>CreateAccount</a> request, or from the <a>ListCreateAccountStatus</a> operation.
      * </p>
      * <p>
-     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for an create account request ID string requires
+     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a create account request ID string requires
      * "car-" followed by from 8 to 32 lower-case letters or digits.
      * </p>
      */
@@ -43,7 +43,7 @@ public class DescribeCreateAccountStatusRequest extends com.amazonaws.AmazonWebS
      * to an earlier <a>CreateAccount</a> request, or from the <a>ListCreateAccountStatus</a> operation.
      * </p>
      * <p>
-     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for an create account request ID string requires
+     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a create account request ID string requires
      * "car-" followed by from 8 to 32 lower-case letters or digits.
      * </p>
      * 
@@ -52,7 +52,7 @@ public class DescribeCreateAccountStatusRequest extends com.amazonaws.AmazonWebS
      *        response to an earlier <a>CreateAccount</a> request, or from the <a>ListCreateAccountStatus</a>
      *        operation.</p>
      *        <p>
-     *        The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for an create account request ID string
+     *        The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a create account request ID string
      *        requires "car-" followed by from 8 to 32 lower-case letters or digits.
      */
 
@@ -66,7 +66,7 @@ public class DescribeCreateAccountStatusRequest extends com.amazonaws.AmazonWebS
      * to an earlier <a>CreateAccount</a> request, or from the <a>ListCreateAccountStatus</a> operation.
      * </p>
      * <p>
-     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for an create account request ID string requires
+     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a create account request ID string requires
      * "car-" followed by from 8 to 32 lower-case letters or digits.
      * </p>
      * 
@@ -74,7 +74,7 @@ public class DescribeCreateAccountStatusRequest extends com.amazonaws.AmazonWebS
      *         response to an earlier <a>CreateAccount</a> request, or from the <a>ListCreateAccountStatus</a>
      *         operation.</p>
      *         <p>
-     *         The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for an create account request ID string
+     *         The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a create account request ID string
      *         requires "car-" followed by from 8 to 32 lower-case letters or digits.
      */
 
@@ -88,7 +88,7 @@ public class DescribeCreateAccountStatusRequest extends com.amazonaws.AmazonWebS
      * to an earlier <a>CreateAccount</a> request, or from the <a>ListCreateAccountStatus</a> operation.
      * </p>
      * <p>
-     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for an create account request ID string requires
+     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a create account request ID string requires
      * "car-" followed by from 8 to 32 lower-case letters or digits.
      * </p>
      * 
@@ -97,7 +97,7 @@ public class DescribeCreateAccountStatusRequest extends com.amazonaws.AmazonWebS
      *        response to an earlier <a>CreateAccount</a> request, or from the <a>ListCreateAccountStatus</a>
      *        operation.</p>
      *        <p>
-     *        The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for an create account request ID string
+     *        The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a create account request ID string
      *        requires "car-" followed by from 8 to 32 lower-case letters or digits.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -108,7 +108,8 @@ public class DescribeCreateAccountStatusRequest extends com.amazonaws.AmazonWebS
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

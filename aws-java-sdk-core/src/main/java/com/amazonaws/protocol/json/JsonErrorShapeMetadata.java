@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2011-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -14,8 +14,10 @@
  */
 package com.amazonaws.protocol.json;
 
+import com.amazonaws.AmazonServiceException;
 import com.amazonaws.annotation.NotThreadSafe;
 import com.amazonaws.annotation.SdkProtectedApi;
+import com.amazonaws.transform.JsonErrorUnmarshaller;
 
 /**
  * Wrapper object to provide additional metadata about a client's error shapes to {@link
@@ -30,6 +32,8 @@ public class JsonErrorShapeMetadata {
     private Integer httpStatusCode;
 
     private Class<? extends RuntimeException> modeledClass;
+
+    private JsonErrorUnmarshaller<? extends AmazonServiceException> exceptionUnmarshaller;
 
 
     public String getErrorCode() {
@@ -57,5 +61,14 @@ public class JsonErrorShapeMetadata {
     public JsonErrorShapeMetadata withModeledClass(Class<? extends RuntimeException> modeledClass) {
         this.modeledClass = modeledClass;
         return this;
+    }
+
+    public JsonErrorShapeMetadata withExceptionUnmarshaller(JsonErrorUnmarshaller<? extends AmazonServiceException> exceptionUnmarshaller) {
+        this.exceptionUnmarshaller = exceptionUnmarshaller;
+        return this;
+    }
+
+    public JsonErrorUnmarshaller<? extends AmazonServiceException> getExceptionUnmarshaller() {
+        return exceptionUnmarshaller;
     }
 }

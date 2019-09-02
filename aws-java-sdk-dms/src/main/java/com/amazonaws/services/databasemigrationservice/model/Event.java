@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,11 +27,7 @@ public class Event implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The identifier of the event source. An identifier must begin with a letter and must contain only ASCII letters,
-     * digits, and hyphens; it cannot end with a hyphen or contain two consecutive hyphens.
-     * </p>
-     * <p>
-     * Constraints:replication instance, endpoint, migration task
+     * The identifier of an event source.
      * </p>
      */
     private String sourceIdentifier;
@@ -40,7 +36,7 @@ public class Event implements Serializable, Cloneable, StructuredPojo {
      * The type of AWS DMS resource that generates events.
      * </p>
      * <p>
-     * Valid values: replication-instance | endpoint | migration-task
+     * Valid values: replication-instance | endpoint | replication-task
      * </p>
      */
     private String sourceType;
@@ -65,18 +61,11 @@ public class Event implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The identifier of the event source. An identifier must begin with a letter and must contain only ASCII letters,
-     * digits, and hyphens; it cannot end with a hyphen or contain two consecutive hyphens.
-     * </p>
-     * <p>
-     * Constraints:replication instance, endpoint, migration task
+     * The identifier of an event source.
      * </p>
      * 
      * @param sourceIdentifier
-     *        The identifier of the event source. An identifier must begin with a letter and must contain only ASCII
-     *        letters, digits, and hyphens; it cannot end with a hyphen or contain two consecutive hyphens. </p>
-     *        <p>
-     *        Constraints:replication instance, endpoint, migration task
+     *        The identifier of an event source.
      */
 
     public void setSourceIdentifier(String sourceIdentifier) {
@@ -85,17 +74,10 @@ public class Event implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The identifier of the event source. An identifier must begin with a letter and must contain only ASCII letters,
-     * digits, and hyphens; it cannot end with a hyphen or contain two consecutive hyphens.
-     * </p>
-     * <p>
-     * Constraints:replication instance, endpoint, migration task
+     * The identifier of an event source.
      * </p>
      * 
-     * @return The identifier of the event source. An identifier must begin with a letter and must contain only ASCII
-     *         letters, digits, and hyphens; it cannot end with a hyphen or contain two consecutive hyphens. </p>
-     *         <p>
-     *         Constraints:replication instance, endpoint, migration task
+     * @return The identifier of an event source.
      */
 
     public String getSourceIdentifier() {
@@ -104,18 +86,11 @@ public class Event implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The identifier of the event source. An identifier must begin with a letter and must contain only ASCII letters,
-     * digits, and hyphens; it cannot end with a hyphen or contain two consecutive hyphens.
-     * </p>
-     * <p>
-     * Constraints:replication instance, endpoint, migration task
+     * The identifier of an event source.
      * </p>
      * 
      * @param sourceIdentifier
-     *        The identifier of the event source. An identifier must begin with a letter and must contain only ASCII
-     *        letters, digits, and hyphens; it cannot end with a hyphen or contain two consecutive hyphens. </p>
-     *        <p>
-     *        Constraints:replication instance, endpoint, migration task
+     *        The identifier of an event source.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -129,13 +104,13 @@ public class Event implements Serializable, Cloneable, StructuredPojo {
      * The type of AWS DMS resource that generates events.
      * </p>
      * <p>
-     * Valid values: replication-instance | endpoint | migration-task
+     * Valid values: replication-instance | endpoint | replication-task
      * </p>
      * 
      * @param sourceType
      *        The type of AWS DMS resource that generates events. </p>
      *        <p>
-     *        Valid values: replication-instance | endpoint | migration-task
+     *        Valid values: replication-instance | endpoint | replication-task
      * @see SourceType
      */
 
@@ -148,12 +123,12 @@ public class Event implements Serializable, Cloneable, StructuredPojo {
      * The type of AWS DMS resource that generates events.
      * </p>
      * <p>
-     * Valid values: replication-instance | endpoint | migration-task
+     * Valid values: replication-instance | endpoint | replication-task
      * </p>
      * 
      * @return The type of AWS DMS resource that generates events. </p>
      *         <p>
-     *         Valid values: replication-instance | endpoint | migration-task
+     *         Valid values: replication-instance | endpoint | replication-task
      * @see SourceType
      */
 
@@ -166,13 +141,13 @@ public class Event implements Serializable, Cloneable, StructuredPojo {
      * The type of AWS DMS resource that generates events.
      * </p>
      * <p>
-     * Valid values: replication-instance | endpoint | migration-task
+     * Valid values: replication-instance | endpoint | replication-task
      * </p>
      * 
      * @param sourceType
      *        The type of AWS DMS resource that generates events. </p>
      *        <p>
-     *        Valid values: replication-instance | endpoint | migration-task
+     *        Valid values: replication-instance | endpoint | replication-task
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see SourceType
      */
@@ -187,13 +162,13 @@ public class Event implements Serializable, Cloneable, StructuredPojo {
      * The type of AWS DMS resource that generates events.
      * </p>
      * <p>
-     * Valid values: replication-instance | endpoint | migration-task
+     * Valid values: replication-instance | endpoint | replication-task
      * </p>
      * 
      * @param sourceType
      *        The type of AWS DMS resource that generates events. </p>
      *        <p>
-     *        Valid values: replication-instance | endpoint | migration-task
+     *        Valid values: replication-instance | endpoint | replication-task
      * @see SourceType
      */
 
@@ -206,13 +181,13 @@ public class Event implements Serializable, Cloneable, StructuredPojo {
      * The type of AWS DMS resource that generates events.
      * </p>
      * <p>
-     * Valid values: replication-instance | endpoint | migration-task
+     * Valid values: replication-instance | endpoint | replication-task
      * </p>
      * 
      * @param sourceType
      *        The type of AWS DMS resource that generates events. </p>
      *        <p>
-     *        Valid values: replication-instance | endpoint | migration-task
+     *        Valid values: replication-instance | endpoint | replication-task
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see SourceType
      */
@@ -373,7 +348,8 @@ public class Event implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

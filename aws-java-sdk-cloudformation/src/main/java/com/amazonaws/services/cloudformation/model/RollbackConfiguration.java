@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -79,9 +79,8 @@ public class RollbackConfiguration implements Serializable, Cloneable {
      * If you specify a monitoring period but do not specify any rollback triggers, CloudFormation still waits the
      * specified period of time before cleaning up old resources after update operations. You can use this monitoring
      * period to perform any manual stack validation desired, and manually cancel the stack creation or update (using <a
-     * href
-     * ="http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CancelUpdateStack.html">CancelUpdateStack
-     * </a>, for example) as necessary.
+     * href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CancelUpdateStack.html">
+     * CancelUpdateStack</a>, for example) as necessary.
      * </p>
      * <p>
      * If you specify 0 for this parameter, CloudFormation still monitors the specified rollback triggers during stack
@@ -396,9 +395,8 @@ public class RollbackConfiguration implements Serializable, Cloneable {
      * If you specify a monitoring period but do not specify any rollback triggers, CloudFormation still waits the
      * specified period of time before cleaning up old resources after update operations. You can use this monitoring
      * period to perform any manual stack validation desired, and manually cancel the stack creation or update (using <a
-     * href
-     * ="http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CancelUpdateStack.html">CancelUpdateStack
-     * </a>, for example) as necessary.
+     * href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CancelUpdateStack.html">
+     * CancelUpdateStack</a>, for example) as necessary.
      * </p>
      * <p>
      * If you specify 0 for this parameter, CloudFormation still monitors the specified rollback triggers during stack
@@ -417,7 +415,7 @@ public class RollbackConfiguration implements Serializable, Cloneable {
      *        the specified period of time before cleaning up old resources after update operations. You can use this
      *        monitoring period to perform any manual stack validation desired, and manually cancel the stack creation
      *        or update (using <a
-     *        href="http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CancelUpdateStack.html"
+     *        href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CancelUpdateStack.html"
      *        >CancelUpdateStack</a>, for example) as necessary.
      *        </p>
      *        <p>
@@ -442,9 +440,8 @@ public class RollbackConfiguration implements Serializable, Cloneable {
      * If you specify a monitoring period but do not specify any rollback triggers, CloudFormation still waits the
      * specified period of time before cleaning up old resources after update operations. You can use this monitoring
      * period to perform any manual stack validation desired, and manually cancel the stack creation or update (using <a
-     * href
-     * ="http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CancelUpdateStack.html">CancelUpdateStack
-     * </a>, for example) as necessary.
+     * href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CancelUpdateStack.html">
+     * CancelUpdateStack</a>, for example) as necessary.
      * </p>
      * <p>
      * If you specify 0 for this parameter, CloudFormation still monitors the specified rollback triggers during stack
@@ -462,7 +459,7 @@ public class RollbackConfiguration implements Serializable, Cloneable {
      *         the specified period of time before cleaning up old resources after update operations. You can use this
      *         monitoring period to perform any manual stack validation desired, and manually cancel the stack creation
      *         or update (using <a
-     *         href="http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CancelUpdateStack.html"
+     *         href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CancelUpdateStack.html"
      *         >CancelUpdateStack</a>, for example) as necessary.
      *         </p>
      *         <p>
@@ -487,9 +484,8 @@ public class RollbackConfiguration implements Serializable, Cloneable {
      * If you specify a monitoring period but do not specify any rollback triggers, CloudFormation still waits the
      * specified period of time before cleaning up old resources after update operations. You can use this monitoring
      * period to perform any manual stack validation desired, and manually cancel the stack creation or update (using <a
-     * href
-     * ="http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CancelUpdateStack.html">CancelUpdateStack
-     * </a>, for example) as necessary.
+     * href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CancelUpdateStack.html">
+     * CancelUpdateStack</a>, for example) as necessary.
      * </p>
      * <p>
      * If you specify 0 for this parameter, CloudFormation still monitors the specified rollback triggers during stack
@@ -508,7 +504,7 @@ public class RollbackConfiguration implements Serializable, Cloneable {
      *        the specified period of time before cleaning up old resources after update operations. You can use this
      *        monitoring period to perform any manual stack validation desired, and manually cancel the stack creation
      *        or update (using <a
-     *        href="http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CancelUpdateStack.html"
+     *        href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CancelUpdateStack.html"
      *        >CancelUpdateStack</a>, for example) as necessary.
      *        </p>
      *        <p>
@@ -524,7 +520,8 @@ public class RollbackConfiguration implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

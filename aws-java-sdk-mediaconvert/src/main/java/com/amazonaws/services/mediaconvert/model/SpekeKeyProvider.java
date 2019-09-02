@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -18,7 +18,8 @@ import com.amazonaws.protocol.StructuredPojo;
 import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
- * Settings for use with a SPEKE key provider
+ * Use these settings when doing DRM encryption with a SPEKE-compliant key provider, if your output group type is HLS,
+ * MS Smooth, or DASH. If your output group type is CMAF, use the SpekeKeyProviderCmaf settings instead.
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/mediaconvert-2017-08-29/SpekeKeyProvider" target="_top">AWS API
  *      Documentation</a>
@@ -26,21 +27,72 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class SpekeKeyProvider implements Serializable, Cloneable, StructuredPojo {
 
-    /** The SPEKE-compliant server uses Resource ID (ResourceId) to identify content. */
+    /**
+     * If you want your key provider to encrypt the content keys that it provides to MediaConvert, set up a certificate
+     * with a master key using AWS Certificate Manager. Specify the certificate's Amazon Resource Name (ARN) here.
+     */
+    private String certificateArn;
+    /** Specify the resource ID that your SPEKE-compliant key provider uses to identify this content. */
     private String resourceId;
     /**
      * Relates to SPEKE implementation. DRM system identifiers. DASH output groups support a max of two system ids.
-     * Other group types support one system id.
+     * Other group types support one system id. See https://dashif.org/identifiers/content_protection/ for more details.
      */
     private java.util.List<String> systemIds;
-    /** Use URL (Url) to specify the SPEKE-compliant server that will provide keys for content. */
+    /**
+     * Specify the URL to the key server that your SPEKE-compliant DRM key provider uses to provide keys for encrypting
+     * your content.
+     */
     private String url;
 
     /**
-     * The SPEKE-compliant server uses Resource ID (ResourceId) to identify content.
+     * If you want your key provider to encrypt the content keys that it provides to MediaConvert, set up a certificate
+     * with a master key using AWS Certificate Manager. Specify the certificate's Amazon Resource Name (ARN) here.
+     * 
+     * @param certificateArn
+     *        If you want your key provider to encrypt the content keys that it provides to MediaConvert, set up a
+     *        certificate with a master key using AWS Certificate Manager. Specify the certificate's Amazon Resource
+     *        Name (ARN) here.
+     */
+
+    public void setCertificateArn(String certificateArn) {
+        this.certificateArn = certificateArn;
+    }
+
+    /**
+     * If you want your key provider to encrypt the content keys that it provides to MediaConvert, set up a certificate
+     * with a master key using AWS Certificate Manager. Specify the certificate's Amazon Resource Name (ARN) here.
+     * 
+     * @return If you want your key provider to encrypt the content keys that it provides to MediaConvert, set up a
+     *         certificate with a master key using AWS Certificate Manager. Specify the certificate's Amazon Resource
+     *         Name (ARN) here.
+     */
+
+    public String getCertificateArn() {
+        return this.certificateArn;
+    }
+
+    /**
+     * If you want your key provider to encrypt the content keys that it provides to MediaConvert, set up a certificate
+     * with a master key using AWS Certificate Manager. Specify the certificate's Amazon Resource Name (ARN) here.
+     * 
+     * @param certificateArn
+     *        If you want your key provider to encrypt the content keys that it provides to MediaConvert, set up a
+     *        certificate with a master key using AWS Certificate Manager. Specify the certificate's Amazon Resource
+     *        Name (ARN) here.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public SpekeKeyProvider withCertificateArn(String certificateArn) {
+        setCertificateArn(certificateArn);
+        return this;
+    }
+
+    /**
+     * Specify the resource ID that your SPEKE-compliant key provider uses to identify this content.
      * 
      * @param resourceId
-     *        The SPEKE-compliant server uses Resource ID (ResourceId) to identify content.
+     *        Specify the resource ID that your SPEKE-compliant key provider uses to identify this content.
      */
 
     public void setResourceId(String resourceId) {
@@ -48,9 +100,9 @@ public class SpekeKeyProvider implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * The SPEKE-compliant server uses Resource ID (ResourceId) to identify content.
+     * Specify the resource ID that your SPEKE-compliant key provider uses to identify this content.
      * 
-     * @return The SPEKE-compliant server uses Resource ID (ResourceId) to identify content.
+     * @return Specify the resource ID that your SPEKE-compliant key provider uses to identify this content.
      */
 
     public String getResourceId() {
@@ -58,10 +110,10 @@ public class SpekeKeyProvider implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * The SPEKE-compliant server uses Resource ID (ResourceId) to identify content.
+     * Specify the resource ID that your SPEKE-compliant key provider uses to identify this content.
      * 
      * @param resourceId
-     *        The SPEKE-compliant server uses Resource ID (ResourceId) to identify content.
+     *        Specify the resource ID that your SPEKE-compliant key provider uses to identify this content.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -72,10 +124,11 @@ public class SpekeKeyProvider implements Serializable, Cloneable, StructuredPojo
 
     /**
      * Relates to SPEKE implementation. DRM system identifiers. DASH output groups support a max of two system ids.
-     * Other group types support one system id.
+     * Other group types support one system id. See https://dashif.org/identifiers/content_protection/ for more details.
      * 
      * @return Relates to SPEKE implementation. DRM system identifiers. DASH output groups support a max of two system
-     *         ids. Other group types support one system id.
+     *         ids. Other group types support one system id. See https://dashif.org/identifiers/content_protection/ for
+     *         more details.
      */
 
     public java.util.List<String> getSystemIds() {
@@ -84,11 +137,12 @@ public class SpekeKeyProvider implements Serializable, Cloneable, StructuredPojo
 
     /**
      * Relates to SPEKE implementation. DRM system identifiers. DASH output groups support a max of two system ids.
-     * Other group types support one system id.
+     * Other group types support one system id. See https://dashif.org/identifiers/content_protection/ for more details.
      * 
      * @param systemIds
      *        Relates to SPEKE implementation. DRM system identifiers. DASH output groups support a max of two system
-     *        ids. Other group types support one system id.
+     *        ids. Other group types support one system id. See https://dashif.org/identifiers/content_protection/ for
+     *        more details.
      */
 
     public void setSystemIds(java.util.Collection<String> systemIds) {
@@ -102,7 +156,7 @@ public class SpekeKeyProvider implements Serializable, Cloneable, StructuredPojo
 
     /**
      * Relates to SPEKE implementation. DRM system identifiers. DASH output groups support a max of two system ids.
-     * Other group types support one system id.
+     * Other group types support one system id. See https://dashif.org/identifiers/content_protection/ for more details.
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
      * {@link #setSystemIds(java.util.Collection)} or {@link #withSystemIds(java.util.Collection)} if you want to
@@ -111,7 +165,8 @@ public class SpekeKeyProvider implements Serializable, Cloneable, StructuredPojo
      * 
      * @param systemIds
      *        Relates to SPEKE implementation. DRM system identifiers. DASH output groups support a max of two system
-     *        ids. Other group types support one system id.
+     *        ids. Other group types support one system id. See https://dashif.org/identifiers/content_protection/ for
+     *        more details.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -127,11 +182,12 @@ public class SpekeKeyProvider implements Serializable, Cloneable, StructuredPojo
 
     /**
      * Relates to SPEKE implementation. DRM system identifiers. DASH output groups support a max of two system ids.
-     * Other group types support one system id.
+     * Other group types support one system id. See https://dashif.org/identifiers/content_protection/ for more details.
      * 
      * @param systemIds
      *        Relates to SPEKE implementation. DRM system identifiers. DASH output groups support a max of two system
-     *        ids. Other group types support one system id.
+     *        ids. Other group types support one system id. See https://dashif.org/identifiers/content_protection/ for
+     *        more details.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -141,10 +197,12 @@ public class SpekeKeyProvider implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * Use URL (Url) to specify the SPEKE-compliant server that will provide keys for content.
+     * Specify the URL to the key server that your SPEKE-compliant DRM key provider uses to provide keys for encrypting
+     * your content.
      * 
      * @param url
-     *        Use URL (Url) to specify the SPEKE-compliant server that will provide keys for content.
+     *        Specify the URL to the key server that your SPEKE-compliant DRM key provider uses to provide keys for
+     *        encrypting your content.
      */
 
     public void setUrl(String url) {
@@ -152,9 +210,11 @@ public class SpekeKeyProvider implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * Use URL (Url) to specify the SPEKE-compliant server that will provide keys for content.
+     * Specify the URL to the key server that your SPEKE-compliant DRM key provider uses to provide keys for encrypting
+     * your content.
      * 
-     * @return Use URL (Url) to specify the SPEKE-compliant server that will provide keys for content.
+     * @return Specify the URL to the key server that your SPEKE-compliant DRM key provider uses to provide keys for
+     *         encrypting your content.
      */
 
     public String getUrl() {
@@ -162,10 +222,12 @@ public class SpekeKeyProvider implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * Use URL (Url) to specify the SPEKE-compliant server that will provide keys for content.
+     * Specify the URL to the key server that your SPEKE-compliant DRM key provider uses to provide keys for encrypting
+     * your content.
      * 
      * @param url
-     *        Use URL (Url) to specify the SPEKE-compliant server that will provide keys for content.
+     *        Specify the URL to the key server that your SPEKE-compliant DRM key provider uses to provide keys for
+     *        encrypting your content.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -175,7 +237,8 @@ public class SpekeKeyProvider implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -185,6 +248,8 @@ public class SpekeKeyProvider implements Serializable, Cloneable, StructuredPojo
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
+        if (getCertificateArn() != null)
+            sb.append("CertificateArn: ").append(getCertificateArn()).append(",");
         if (getResourceId() != null)
             sb.append("ResourceId: ").append(getResourceId()).append(",");
         if (getSystemIds() != null)
@@ -205,6 +270,10 @@ public class SpekeKeyProvider implements Serializable, Cloneable, StructuredPojo
         if (obj instanceof SpekeKeyProvider == false)
             return false;
         SpekeKeyProvider other = (SpekeKeyProvider) obj;
+        if (other.getCertificateArn() == null ^ this.getCertificateArn() == null)
+            return false;
+        if (other.getCertificateArn() != null && other.getCertificateArn().equals(this.getCertificateArn()) == false)
+            return false;
         if (other.getResourceId() == null ^ this.getResourceId() == null)
             return false;
         if (other.getResourceId() != null && other.getResourceId().equals(this.getResourceId()) == false)
@@ -225,6 +294,7 @@ public class SpekeKeyProvider implements Serializable, Cloneable, StructuredPojo
         final int prime = 31;
         int hashCode = 1;
 
+        hashCode = prime * hashCode + ((getCertificateArn() == null) ? 0 : getCertificateArn().hashCode());
         hashCode = prime * hashCode + ((getResourceId() == null) ? 0 : getResourceId().hashCode());
         hashCode = prime * hashCode + ((getSystemIds() == null) ? 0 : getSystemIds().hashCode());
         hashCode = prime * hashCode + ((getUrl() == null) ? 0 : getUrl().hashCode());

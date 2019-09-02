@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -58,9 +58,13 @@ public enum Base64 {
                              inconsistentJaxbImpls.get(className));
                 }
             } catch (Exception ignored) {
+                // ignore
+            } catch (NoClassDefFoundError error){
+                // ignore
             }
         } else {
-            LOG.warn("JAXB is unavailable. Will fallback to SDK implementation which may be less performant");
+            LOG.warn("JAXB is unavailable. Will fallback to SDK implementation which may be less performant." +
+                     "If you are using Java 9+, you will need to include javax.xml.bind:jaxb-api as a dependency.");
         }
     }
 

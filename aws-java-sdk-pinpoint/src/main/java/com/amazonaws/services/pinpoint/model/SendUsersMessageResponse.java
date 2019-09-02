@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -18,7 +18,9 @@ import com.amazonaws.protocol.StructuredPojo;
 import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
- * User send message response.
+ * <p>
+ * Provides information about which users and endpoints a message was sent to.
+ * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/SendUsersMessageResponse" target="_top">AWS
  *      API Documentation</a>
@@ -26,18 +28,34 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class SendUsersMessageResponse implements Serializable, Cloneable, StructuredPojo {
 
-    /** Application id of the message. */
+    /**
+     * <p>
+     * The unique identifier for the application that was used to send the message.
+     * </p>
+     */
     private String applicationId;
-    /** Original request Id for which this message was delivered. */
+    /**
+     * <p>
+     * The unique identifier that was assigned to the message request.
+     * </p>
+     */
     private String requestId;
-    /** A map containing of UserId to Map of EndpointId to Endpoint Message Result. */
+    /**
+     * <p>
+     * An object that indicates which endpoints the message was sent to, for each user. The object lists user IDs and,
+     * for each user ID, provides the endpoint IDs that the message was sent to. For each endpoint ID, it provides an
+     * EndpointMessageResult object.
+     * </p>
+     */
     private java.util.Map<String, java.util.Map<String, EndpointMessageResult>> result;
 
     /**
-     * Application id of the message.
+     * <p>
+     * The unique identifier for the application that was used to send the message.
+     * </p>
      * 
      * @param applicationId
-     *        Application id of the message.
+     *        The unique identifier for the application that was used to send the message.
      */
 
     public void setApplicationId(String applicationId) {
@@ -45,9 +63,11 @@ public class SendUsersMessageResponse implements Serializable, Cloneable, Struct
     }
 
     /**
-     * Application id of the message.
+     * <p>
+     * The unique identifier for the application that was used to send the message.
+     * </p>
      * 
-     * @return Application id of the message.
+     * @return The unique identifier for the application that was used to send the message.
      */
 
     public String getApplicationId() {
@@ -55,10 +75,12 @@ public class SendUsersMessageResponse implements Serializable, Cloneable, Struct
     }
 
     /**
-     * Application id of the message.
+     * <p>
+     * The unique identifier for the application that was used to send the message.
+     * </p>
      * 
      * @param applicationId
-     *        Application id of the message.
+     *        The unique identifier for the application that was used to send the message.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -68,10 +90,12 @@ public class SendUsersMessageResponse implements Serializable, Cloneable, Struct
     }
 
     /**
-     * Original request Id for which this message was delivered.
+     * <p>
+     * The unique identifier that was assigned to the message request.
+     * </p>
      * 
      * @param requestId
-     *        Original request Id for which this message was delivered.
+     *        The unique identifier that was assigned to the message request.
      */
 
     public void setRequestId(String requestId) {
@@ -79,9 +103,11 @@ public class SendUsersMessageResponse implements Serializable, Cloneable, Struct
     }
 
     /**
-     * Original request Id for which this message was delivered.
+     * <p>
+     * The unique identifier that was assigned to the message request.
+     * </p>
      * 
-     * @return Original request Id for which this message was delivered.
+     * @return The unique identifier that was assigned to the message request.
      */
 
     public String getRequestId() {
@@ -89,10 +115,12 @@ public class SendUsersMessageResponse implements Serializable, Cloneable, Struct
     }
 
     /**
-     * Original request Id for which this message was delivered.
+     * <p>
+     * The unique identifier that was assigned to the message request.
+     * </p>
      * 
      * @param requestId
-     *        Original request Id for which this message was delivered.
+     *        The unique identifier that was assigned to the message request.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -102,9 +130,15 @@ public class SendUsersMessageResponse implements Serializable, Cloneable, Struct
     }
 
     /**
-     * A map containing of UserId to Map of EndpointId to Endpoint Message Result.
+     * <p>
+     * An object that indicates which endpoints the message was sent to, for each user. The object lists user IDs and,
+     * for each user ID, provides the endpoint IDs that the message was sent to. For each endpoint ID, it provides an
+     * EndpointMessageResult object.
+     * </p>
      * 
-     * @return A map containing of UserId to Map of EndpointId to Endpoint Message Result.
+     * @return An object that indicates which endpoints the message was sent to, for each user. The object lists user
+     *         IDs and, for each user ID, provides the endpoint IDs that the message was sent to. For each endpoint ID,
+     *         it provides an EndpointMessageResult object.
      */
 
     public java.util.Map<String, java.util.Map<String, EndpointMessageResult>> getResult() {
@@ -112,10 +146,16 @@ public class SendUsersMessageResponse implements Serializable, Cloneable, Struct
     }
 
     /**
-     * A map containing of UserId to Map of EndpointId to Endpoint Message Result.
+     * <p>
+     * An object that indicates which endpoints the message was sent to, for each user. The object lists user IDs and,
+     * for each user ID, provides the endpoint IDs that the message was sent to. For each endpoint ID, it provides an
+     * EndpointMessageResult object.
+     * </p>
      * 
      * @param result
-     *        A map containing of UserId to Map of EndpointId to Endpoint Message Result.
+     *        An object that indicates which endpoints the message was sent to, for each user. The object lists user IDs
+     *        and, for each user ID, provides the endpoint IDs that the message was sent to. For each endpoint ID, it
+     *        provides an EndpointMessageResult object.
      */
 
     public void setResult(java.util.Map<String, java.util.Map<String, EndpointMessageResult>> result) {
@@ -123,10 +163,16 @@ public class SendUsersMessageResponse implements Serializable, Cloneable, Struct
     }
 
     /**
-     * A map containing of UserId to Map of EndpointId to Endpoint Message Result.
+     * <p>
+     * An object that indicates which endpoints the message was sent to, for each user. The object lists user IDs and,
+     * for each user ID, provides the endpoint IDs that the message was sent to. For each endpoint ID, it provides an
+     * EndpointMessageResult object.
+     * </p>
      * 
      * @param result
-     *        A map containing of UserId to Map of EndpointId to Endpoint Message Result.
+     *        An object that indicates which endpoints the message was sent to, for each user. The object lists user IDs
+     *        and, for each user ID, provides the endpoint IDs that the message was sent to. For each endpoint ID, it
+     *        provides an EndpointMessageResult object.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -157,7 +203,8 @@ public class SendUsersMessageResponse implements Serializable, Cloneable, Struct
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

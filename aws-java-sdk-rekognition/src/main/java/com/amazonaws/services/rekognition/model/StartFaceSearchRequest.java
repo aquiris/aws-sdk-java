@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -37,7 +37,7 @@ public class StartFaceSearchRequest extends com.amazonaws.AmazonWebServiceReques
     /**
      * <p>
      * The minimum confidence in the person match to return. For example, don't return any matches where confidence in
-     * matches is less than 70%.
+     * matches is less than 70%. The default value is 80%.
      * </p>
      */
     private Float faceMatchThreshold;
@@ -49,15 +49,16 @@ public class StartFaceSearchRequest extends com.amazonaws.AmazonWebServiceReques
     private String collectionId;
     /**
      * <p>
-     * The ARN of the Amazon SNS topic to which you want Rekognition Video to publish the completion status of the
-     * search.
+     * The ARN of the Amazon SNS topic to which you want Amazon Rekognition Video to publish the completion status of
+     * the search.
      * </p>
      */
     private NotificationChannel notificationChannel;
     /**
      * <p>
-     * Unique identifier you specify to identify the job in the completion status published to the Amazon Simple
-     * Notification Service topic.
+     * An identifier you specify that's returned in the completion notification that's published to your Amazon Simple
+     * Notification Service topic. For example, you can use <code>JobTag</code> to group related jobs and identify them
+     * in the completion notification.
      * </p>
      */
     private String jobTag;
@@ -157,12 +158,12 @@ public class StartFaceSearchRequest extends com.amazonaws.AmazonWebServiceReques
     /**
      * <p>
      * The minimum confidence in the person match to return. For example, don't return any matches where confidence in
-     * matches is less than 70%.
+     * matches is less than 70%. The default value is 80%.
      * </p>
      * 
      * @param faceMatchThreshold
      *        The minimum confidence in the person match to return. For example, don't return any matches where
-     *        confidence in matches is less than 70%.
+     *        confidence in matches is less than 70%. The default value is 80%.
      */
 
     public void setFaceMatchThreshold(Float faceMatchThreshold) {
@@ -172,11 +173,11 @@ public class StartFaceSearchRequest extends com.amazonaws.AmazonWebServiceReques
     /**
      * <p>
      * The minimum confidence in the person match to return. For example, don't return any matches where confidence in
-     * matches is less than 70%.
+     * matches is less than 70%. The default value is 80%.
      * </p>
      * 
      * @return The minimum confidence in the person match to return. For example, don't return any matches where
-     *         confidence in matches is less than 70%.
+     *         confidence in matches is less than 70%. The default value is 80%.
      */
 
     public Float getFaceMatchThreshold() {
@@ -186,12 +187,12 @@ public class StartFaceSearchRequest extends com.amazonaws.AmazonWebServiceReques
     /**
      * <p>
      * The minimum confidence in the person match to return. For example, don't return any matches where confidence in
-     * matches is less than 70%.
+     * matches is less than 70%. The default value is 80%.
      * </p>
      * 
      * @param faceMatchThreshold
      *        The minimum confidence in the person match to return. For example, don't return any matches where
-     *        confidence in matches is less than 70%.
+     *        confidence in matches is less than 70%. The default value is 80%.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -242,13 +243,13 @@ public class StartFaceSearchRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * The ARN of the Amazon SNS topic to which you want Rekognition Video to publish the completion status of the
-     * search.
+     * The ARN of the Amazon SNS topic to which you want Amazon Rekognition Video to publish the completion status of
+     * the search.
      * </p>
      * 
      * @param notificationChannel
-     *        The ARN of the Amazon SNS topic to which you want Rekognition Video to publish the completion status of
-     *        the search.
+     *        The ARN of the Amazon SNS topic to which you want Amazon Rekognition Video to publish the completion
+     *        status of the search.
      */
 
     public void setNotificationChannel(NotificationChannel notificationChannel) {
@@ -257,12 +258,12 @@ public class StartFaceSearchRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * The ARN of the Amazon SNS topic to which you want Rekognition Video to publish the completion status of the
-     * search.
+     * The ARN of the Amazon SNS topic to which you want Amazon Rekognition Video to publish the completion status of
+     * the search.
      * </p>
      * 
-     * @return The ARN of the Amazon SNS topic to which you want Rekognition Video to publish the completion status of
-     *         the search.
+     * @return The ARN of the Amazon SNS topic to which you want Amazon Rekognition Video to publish the completion
+     *         status of the search.
      */
 
     public NotificationChannel getNotificationChannel() {
@@ -271,13 +272,13 @@ public class StartFaceSearchRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * The ARN of the Amazon SNS topic to which you want Rekognition Video to publish the completion status of the
-     * search.
+     * The ARN of the Amazon SNS topic to which you want Amazon Rekognition Video to publish the completion status of
+     * the search.
      * </p>
      * 
      * @param notificationChannel
-     *        The ARN of the Amazon SNS topic to which you want Rekognition Video to publish the completion status of
-     *        the search.
+     *        The ARN of the Amazon SNS topic to which you want Amazon Rekognition Video to publish the completion
+     *        status of the search.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -288,13 +289,15 @@ public class StartFaceSearchRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * Unique identifier you specify to identify the job in the completion status published to the Amazon Simple
-     * Notification Service topic.
+     * An identifier you specify that's returned in the completion notification that's published to your Amazon Simple
+     * Notification Service topic. For example, you can use <code>JobTag</code> to group related jobs and identify them
+     * in the completion notification.
      * </p>
      * 
      * @param jobTag
-     *        Unique identifier you specify to identify the job in the completion status published to the Amazon Simple
-     *        Notification Service topic.
+     *        An identifier you specify that's returned in the completion notification that's published to your Amazon
+     *        Simple Notification Service topic. For example, you can use <code>JobTag</code> to group related jobs and
+     *        identify them in the completion notification.
      */
 
     public void setJobTag(String jobTag) {
@@ -303,12 +306,14 @@ public class StartFaceSearchRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * Unique identifier you specify to identify the job in the completion status published to the Amazon Simple
-     * Notification Service topic.
+     * An identifier you specify that's returned in the completion notification that's published to your Amazon Simple
+     * Notification Service topic. For example, you can use <code>JobTag</code> to group related jobs and identify them
+     * in the completion notification.
      * </p>
      * 
-     * @return Unique identifier you specify to identify the job in the completion status published to the Amazon Simple
-     *         Notification Service topic.
+     * @return An identifier you specify that's returned in the completion notification that's published to your Amazon
+     *         Simple Notification Service topic. For example, you can use <code>JobTag</code> to group related jobs and
+     *         identify them in the completion notification.
      */
 
     public String getJobTag() {
@@ -317,13 +322,15 @@ public class StartFaceSearchRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * Unique identifier you specify to identify the job in the completion status published to the Amazon Simple
-     * Notification Service topic.
+     * An identifier you specify that's returned in the completion notification that's published to your Amazon Simple
+     * Notification Service topic. For example, you can use <code>JobTag</code> to group related jobs and identify them
+     * in the completion notification.
      * </p>
      * 
      * @param jobTag
-     *        Unique identifier you specify to identify the job in the completion status published to the Amazon Simple
-     *        Notification Service topic.
+     *        An identifier you specify that's returned in the completion notification that's published to your Amazon
+     *        Simple Notification Service topic. For example, you can use <code>JobTag</code> to group related jobs and
+     *        identify them in the completion notification.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -333,7 +340,8 @@ public class StartFaceSearchRequest extends com.amazonaws.AmazonWebServiceReques
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -18,7 +18,9 @@ import com.amazonaws.protocol.StructuredPojo;
 import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
- * Country information of the remote IP address.
+ * <p>
+ * Contains information about the country.
+ * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/Country" target="_top">AWS API
  *      Documentation</a>
@@ -26,13 +28,23 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class Country implements Serializable, Cloneable, StructuredPojo {
 
-    /** Country code of the remote IP address. */
+    /**
+     * <p>
+     * Country code of the remote IP address.
+     * </p>
+     */
     private String countryCode;
-    /** Country name of the remote IP address. */
+    /**
+     * <p>
+     * Country name of the remote IP address.
+     * </p>
+     */
     private String countryName;
 
     /**
+     * <p>
      * Country code of the remote IP address.
+     * </p>
      * 
      * @param countryCode
      *        Country code of the remote IP address.
@@ -43,7 +55,9 @@ public class Country implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
      * Country code of the remote IP address.
+     * </p>
      * 
      * @return Country code of the remote IP address.
      */
@@ -53,7 +67,9 @@ public class Country implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
      * Country code of the remote IP address.
+     * </p>
      * 
      * @param countryCode
      *        Country code of the remote IP address.
@@ -66,7 +82,9 @@ public class Country implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
      * Country name of the remote IP address.
+     * </p>
      * 
      * @param countryName
      *        Country name of the remote IP address.
@@ -77,7 +95,9 @@ public class Country implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
      * Country name of the remote IP address.
+     * </p>
      * 
      * @return Country name of the remote IP address.
      */
@@ -87,7 +107,9 @@ public class Country implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
      * Country name of the remote IP address.
+     * </p>
      * 
      * @param countryName
      *        Country name of the remote IP address.
@@ -100,7 +122,8 @@ public class Country implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

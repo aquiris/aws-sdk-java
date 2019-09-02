@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -37,6 +37,8 @@ import com.amazonaws.protocol.json.*;
 import com.amazonaws.util.AWSRequestMetrics.Field;
 import com.amazonaws.annotation.ThreadSafe;
 import com.amazonaws.client.AwsSyncClientParams;
+import com.amazonaws.client.builder.AdvancedConfig;
+
 import com.amazonaws.services.route53.AmazonRoute53ClientBuilder;
 import com.amazonaws.services.route53.waiters.AmazonRoute53Waiters;
 
@@ -49,11 +51,14 @@ import com.amazonaws.services.route53.model.transform.*;
  * Client for accessing Route 53. All service calls made using this client are blocking, and will not return until the
  * service call completes.
  * <p>
- * 
+ * <p>
+ * Amazon Route 53 is a highly available and scalable Domain Name System (DNS) web service.
+ * </p>
  */
 @ThreadSafe
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AmazonRoute53Client extends AmazonWebServiceClient implements AmazonRoute53 {
+
     /** Provider for AWS credentials. */
     private final AWSCredentialsProvider awsCredentialsProvider;
 
@@ -66,6 +71,8 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
 
     /** Client configuration factory providing ClientConfigurations tailored to this client */
     protected static final ClientConfigurationFactory configFactory = new ClientConfigurationFactory();
+
+    private final AdvancedConfig advancedConfig;
 
     /**
      * List of exception unmarshallers for all modeled exceptions
@@ -155,6 +162,7 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
     public AmazonRoute53Client(AWSCredentials awsCredentials, ClientConfiguration clientConfiguration) {
         super(clientConfiguration);
         this.awsCredentialsProvider = new StaticCredentialsProvider(awsCredentials);
+        this.advancedConfig = AdvancedConfig.EMPTY;
         init();
     }
 
@@ -220,6 +228,7 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
             RequestMetricCollector requestMetricCollector) {
         super(clientConfiguration, requestMetricCollector);
         this.awsCredentialsProvider = awsCredentialsProvider;
+        this.advancedConfig = AdvancedConfig.EMPTY;
         init();
     }
 
@@ -238,8 +247,23 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      *        Object providing client parameters.
      */
     AmazonRoute53Client(AwsSyncClientParams clientParams) {
+        this(clientParams, false);
+    }
+
+    /**
+     * Constructs a new client to invoke service methods on Route 53 using the specified parameters.
+     *
+     * <p>
+     * All service calls made using this new client object are blocking, and will not return until the service call
+     * completes.
+     *
+     * @param clientParams
+     *        Object providing client parameters.
+     */
+    AmazonRoute53Client(AwsSyncClientParams clientParams, boolean endpointDiscoveryEnabled) {
         super(clientParams);
         this.awsCredentialsProvider = clientParams.getCredentialsProvider();
+        this.advancedConfig = clientParams.getAdvancedConfig();
         init();
     }
 
@@ -349,7 +373,9 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      *         relationship (example.com and test.example.com) can't have any common name servers. You tried to create a
      *         hosted zone that has the same name as an existing hosted zone or that's the parent or child of an
      *         existing hosted zone, and you specified a delegation set that shares one or more name servers with the
-     *         existing hosted zone. For more information, see <a>CreateReusableDelegationSet</a>.
+     *         existing hosted zone. For more information, see <a
+     *         href="https://docs.aws.amazon.com/Route53/latest/APIReference/API_CreateReusableDelegationSet.html"
+     *         >CreateReusableDelegationSet</a>.
      *         </p>
      *         </li>
      *         <li>
@@ -364,9 +390,13 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      *         This operation can't be completed either because the current account has reached the limit on reusable
      *         delegation sets that it can create or because you've reached the limit on the number of Amazon VPCs that
      *         you can associate with a private hosted zone. To get the current limit on the number of reusable
-     *         delegation sets, see <a>GetAccountLimit</a>. To get the current limit on the number of Amazon VPCs that
-     *         you can associate with a private hosted zone, see <a>GetHostedZoneLimit</a>. To request a higher limit,
-     *         <a href="http://aws.amazon.com/route53-request">create a case</a> with the AWS Support Center.
+     *         delegation sets, see <a
+     *         href="https://docs.aws.amazon.com/Route53/latest/APIReference/API_GetAccountLimit.html"
+     *         >GetAccountLimit</a>. To get the current limit on the number of Amazon VPCs that you can associate with a
+     *         private hosted zone, see <a
+     *         href="https://docs.aws.amazon.com/Route53/latest/APIReference/API_GetHostedZoneLimit.html"
+     *         >GetHostedZoneLimit</a>. To request a higher limit, <a
+     *         href="http://aws.amazon.com/route53-request">create a case</a> with the AWS Support Center.
      * @sample AmazonRoute53.AssociateVPCWithHostedZone
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/AssociateVPCWithHostedZone"
      *      target="_top">AWS API Documentation</a>
@@ -393,6 +423,10 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Route 53");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "AssociateVPCWithHostedZone");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -422,21 +456,21 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * <p>
      * The request body must include a document with a <code>ChangeResourceRecordSetsRequest</code> element. The request
      * body contains a list of change items, known as a change batch. Change batches are considered transactional
-     * changes. When using the Amazon Route 53 API to change resource record sets, Amazon Route 53 either makes all or
-     * none of the changes in a change batch request. This ensures that Amazon Route 53 never partially implements the
-     * intended changes to the resource record sets in a hosted zone.
+     * changes. When using the Amazon Route 53 API to change resource record sets, Route 53 either makes all or none of
+     * the changes in a change batch request. This ensures that Route 53 never partially implements the intended changes
+     * to the resource record sets in a hosted zone.
      * </p>
      * <p>
      * For example, a change batch request that deletes the <code>CNAME</code> record for www.example.com and creates an
-     * alias resource record set for www.example.com. Amazon Route 53 deletes the first resource record set and creates
-     * the second resource record set in a single operation. If either the <code>DELETE</code> or the
-     * <code>CREATE</code> action fails, then both changes (plus any other changes in the batch) fail, and the original
-     * <code>CNAME</code> record continues to exist.
+     * alias resource record set for www.example.com. Route 53 deletes the first resource record set and creates the
+     * second resource record set in a single operation. If either the <code>DELETE</code> or the <code>CREATE</code>
+     * action fails, then both changes (plus any other changes in the batch) fail, and the original <code>CNAME</code>
+     * record continues to exist.
      * </p>
      * <important>
      * <p>
      * Due to the nature of transactional changes, you can't delete the same resource record set more than once in a
-     * single change batch. If you attempt to delete the same change batch more than once, Amazon Route 53 returns an
+     * single change batch. If you attempt to delete the same change batch more than once, Route 53 returns an
      * <code>InvalidChangeBatch</code> error.
      * </p>
      * </important>
@@ -445,10 +479,10 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * </p>
      * <p>
      * To create resource record sets for complex routing configurations, use either the traffic flow visual editor in
-     * the Amazon Route 53 console or the API actions for traffic policies and traffic policy instances. Save the
-     * configuration as a traffic policy, then associate the traffic policy with one or more domain names (such as
-     * example.com) or subdomain names (such as www.example.com), in the same hosted zone or in multiple hosted zones.
-     * You can roll back the updates if the new configuration isn't performing as expected. For more information, see <a
+     * the Route 53 console or the API actions for traffic policies and traffic policy instances. Save the configuration
+     * as a traffic policy, then associate the traffic policy with one or more domain names (such as example.com) or
+     * subdomain names (such as www.example.com), in the same hosted zone or in multiple hosted zones. You can roll back
+     * the updates if the new configuration isn't performing as expected. For more information, see <a
      * href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/traffic-flow.html">Using Traffic Flow to Route DNS
      * Traffic</a> in the <i>Amazon Route 53 Developer Guide</i>.
      * </p>
@@ -472,7 +506,7 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * <li>
      * <p>
      * <code>UPSERT</code>: If a resource record set does not already exist, AWS creates it. If a resource set does
-     * exist, Amazon Route 53 updates it with the values in the request.
+     * exist, Route 53 updates it with the values in the request.
      * </p>
      * </li>
      * </ul>
@@ -492,21 +526,22 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * resource record set that you can create, delete, or update by using <code>ChangeResourceRecordSets</code>.
      * </p>
      * <p>
-     * <b>Change Propagation to Amazon Route 53 DNS Servers</b>
+     * <b>Change Propagation to Route 53 DNS Servers</b>
      * </p>
      * <p>
-     * When you submit a <code>ChangeResourceRecordSets</code> request, Amazon Route 53 propagates your changes to all
-     * of the Amazon Route 53 authoritative DNS servers. While your changes are propagating, <code>GetChange</code>
-     * returns a status of <code>PENDING</code>. When propagation is complete, <code>GetChange</code> returns a status
-     * of <code>INSYNC</code>. Changes generally propagate to all Amazon Route 53 name servers within 60 seconds. For
-     * more information, see <a>GetChange</a>.
+     * When you submit a <code>ChangeResourceRecordSets</code> request, Route 53 propagates your changes to all of the
+     * Route 53 authoritative DNS servers. While your changes are propagating, <code>GetChange</code> returns a status
+     * of <code>PENDING</code>. When propagation is complete, <code>GetChange</code> returns a status of
+     * <code>INSYNC</code>. Changes generally propagate to all Route 53 name servers within 60 seconds. For more
+     * information, see <a
+     * href="https://docs.aws.amazon.com/Route53/latest/APIReference/API_GetChange.html">GetChange</a>.
      * </p>
      * <p>
      * <b>Limits on ChangeResourceRecordSets Requests</b>
      * </p>
      * <p>
      * For information about the limits on a <code>ChangeResourceRecordSets</code> request, see <a
-     * href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html">Limits</a> in the <i>Amazon
+     * href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html">Limits</a> in the <i>Amazon
      * Route 53 Developer Guide</i>.
      * </p>
      * 
@@ -516,7 +551,7 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * @throws NoSuchHostedZoneException
      *         No hosted zone exists with the ID that you specified.
      * @throws NoSuchHealthCheckException
-     *         No health check exists with the ID that you specified in the <code>DeleteHealthCheck</code> request.
+     *         No health check exists with the specified ID.
      * @throws InvalidChangeBatchException
      *         This exception contains a list of messages that might contain one or more error messages. Each error
      *         message indicates one error in the change batch.
@@ -525,8 +560,8 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * @throws PriorRequestNotCompleteException
      *         If Amazon Route 53 can't process a request before the next request arrives, it will reject subsequent
      *         requests for the same hosted zone and return an <code>HTTP 400 error</code> (<code>Bad request</code>).
-     *         If Amazon Route 53 returns this error repeatedly for the same request, we recommend that you wait, in
-     *         intervals of increasing duration, before you try the request again.
+     *         If Route 53 returns this error repeatedly for the same request, we recommend that you wait, in intervals
+     *         of increasing duration, before you try the request again.
      * @sample AmazonRoute53.ChangeResourceRecordSets
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/ChangeResourceRecordSets"
      *      target="_top">AWS API Documentation</a>
@@ -553,6 +588,10 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Route 53");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ChangeResourceRecordSets");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -575,7 +614,7 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * </p>
      * <p>
      * For information about using tags for cost allocation, see <a
-     * href="http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html">Using Cost Allocation
+     * href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html">Using Cost Allocation
      * Tags</a> in the <i>AWS Billing and Cost Management User Guide</i>.
      * </p>
      * 
@@ -585,14 +624,14 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * @throws InvalidInputException
      *         The input is not valid.
      * @throws NoSuchHealthCheckException
-     *         No health check exists with the ID that you specified in the <code>DeleteHealthCheck</code> request.
+     *         No health check exists with the specified ID.
      * @throws NoSuchHostedZoneException
      *         No hosted zone exists with the ID that you specified.
      * @throws PriorRequestNotCompleteException
      *         If Amazon Route 53 can't process a request before the next request arrives, it will reject subsequent
      *         requests for the same hosted zone and return an <code>HTTP 400 error</code> (<code>Bad request</code>).
-     *         If Amazon Route 53 returns this error repeatedly for the same request, we recommend that you wait, in
-     *         intervals of increasing duration, before you try the request again.
+     *         If Route 53 returns this error repeatedly for the same request, we recommend that you wait, in intervals
+     *         of increasing duration, before you try the request again.
      * @throws ThrottlingException
      *         The limit on the number of requests per second was exceeded.
      * @sample AmazonRoute53.ChangeTagsForResource
@@ -621,6 +660,10 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Route 53");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ChangeTagsForResource");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -642,8 +685,11 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * Creates a new health check.
      * </p>
      * <p>
-     * For information about adding health checks to resource record sets, see <a>ResourceRecordSet$HealthCheckId</a> in
-     * <a>ChangeResourceRecordSets</a>.
+     * For information about adding health checks to resource record sets, see <a href=
+     * "https://docs.aws.amazon.com/Route53/latest/APIReference/API_ResourceRecordSet.html#Route53-Type-ResourceRecordSet-HealthCheckId"
+     * >HealthCheckId</a> in <a
+     * href="https://docs.aws.amazon.com/Route53/latest/APIReference/API_ChangeResourceRecordSets.html"
+     * >ChangeResourceRecordSets</a>.
      * </p>
      * <p>
      * <b>ELB Load Balancers</b>
@@ -651,7 +697,7 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * <p>
      * If you're registering EC2 instances with an Elastic Load Balancing (ELB) load balancer, do not create Amazon
      * Route 53 health checks for the EC2 instances. When you register an EC2 instance with a load balancer, you
-     * configure settings for an ELB health check, which performs a similar function to an Amazon Route 53 health check.
+     * configure settings for an ELB health check, which performs a similar function to a Route 53 health check.
      * </p>
      * <p>
      * <b>Private Hosted Zones</b>
@@ -662,8 +708,8 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * <ul>
      * <li>
      * <p>
-     * Amazon Route 53 health checkers are outside the VPC. To check the health of an endpoint within a VPC by IP
-     * address, you must assign a public IP address to the instance in the VPC.
+     * Route 53 health checkers are outside the VPC. To check the health of an endpoint within a VPC by IP address, you
+     * must assign a public IP address to the instance in the VPC.
      * </p>
      * </li>
      * <li>
@@ -693,13 +739,14 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      *         active health checks.</p>
      *         <p>
      *         For information about default limits, see <a
-     *         href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html">Limits</a> in the
+     *         href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html">Limits</a> in the
      *         <i>Amazon Route 53 Developer Guide</i>.
      *         </p>
      *         <p>
-     *         For information about how to get the current limit for an account, see <a>GetAccountLimit</a>. To request
-     *         a higher limit, <a href="http://aws.amazon.com/route53-request">create a case</a> with the AWS Support
-     *         Center.
+     *         For information about how to get the current limit for an account, see <a
+     *         href="https://docs.aws.amazon.com/Route53/latest/APIReference/API_GetAccountLimit.html"
+     *         >GetAccountLimit</a>. To request a higher limit, <a href="http://aws.amazon.com/route53-request">create a
+     *         case</a> with the AWS Support Center.
      *         </p>
      *         <p>
      *         You have reached the maximum number of active health checks for an AWS account. To request a higher
@@ -749,6 +796,10 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Route 53");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateHealthCheck");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -767,12 +818,14 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
 
     /**
      * <p>
-     * Creates a new public hosted zone, which you use to specify how the Domain Name System (DNS) routes traffic on the
-     * Internet for a domain, such as example.com, and its subdomains.
+     * Creates a new public or private hosted zone. You create records in a public hosted zone to define how you want to
+     * route traffic on the internet for a domain, such as example.com, and its subdomains (apex.example.com,
+     * acme.example.com). You create records in a private hosted zone to define how you want to route traffic for a
+     * domain and its subdomains within one or more Amazon Virtual Private Clouds (Amazon VPCs).
      * </p>
      * <important>
      * <p>
-     * You can't convert a public hosted zones to a private hosted zone or vice versa. Instead, you must create a new
+     * You can't convert a public hosted zone to a private hosted zone or vice versa. Instead, you must create a new
      * hosted zone with the same name and create new resource record sets.
      * </p>
      * </important>
@@ -786,38 +839,39 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * <ul>
      * <li>
      * <p>
-     * You can't create a hosted zone for a top-level domain (TLD).
+     * You can't create a hosted zone for a top-level domain (TLD) such as .com.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Amazon Route 53 automatically creates a default SOA record and four NS records for the zone. For more information
-     * about SOA and NS records, see <a
-     * href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/SOA-NSrecords.html">NS and SOA Records that Amazon
-     * Route 53 Creates for a Hosted Zone</a> in the <i>Amazon Route 53 Developer Guide</i>.
+     * For public hosted zones, Amazon Route 53 automatically creates a default SOA record and four NS records for the
+     * zone. For more information about SOA and NS records, see <a
+     * href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/SOA-NSrecords.html">NS and SOA Records that Route
+     * 53 Creates for a Hosted Zone</a> in the <i>Amazon Route 53 Developer Guide</i>.
      * </p>
      * <p>
-     * If you want to use the same name servers for multiple hosted zones, you can optionally associate a reusable
-     * delegation set with the hosted zone. See the <code>DelegationSetId</code> element.
+     * If you want to use the same name servers for multiple public hosted zones, you can optionally associate a
+     * reusable delegation set with the hosted zone. See the <code>DelegationSetId</code> element.
      * </p>
      * </li>
      * <li>
      * <p>
-     * If your domain is registered with a registrar other than Amazon Route 53, you must update the name servers with
-     * your registrar to make Amazon Route 53 your DNS service. For more information, see <a
-     * href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/creating-migrating.html">Configuring Amazon Route
-     * 53 as your DNS Service</a> in the <i>Amazon Route 53 Developer Guide</i>.
+     * If your domain is registered with a registrar other than Route 53, you must update the name servers with your
+     * registrar to make Route 53 the DNS service for the domain. For more information, see <a
+     * href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/MigratingDNS.html">Migrating DNS Service for an
+     * Existing Domain to Amazon Route 53</a> in the <i>Amazon Route 53 Developer Guide</i>.
      * </p>
      * </li>
      * </ul>
      * <p>
      * When you submit a <code>CreateHostedZone</code> request, the initial status of the hosted zone is
-     * <code>PENDING</code>. This means that the NS and SOA records are not yet available on all Amazon Route 53 DNS
-     * servers. When the NS and SOA records are available, the status of the zone changes to <code>INSYNC</code>.
+     * <code>PENDING</code>. For public hosted zones, this means that the NS and SOA records are not yet available on
+     * all Route 53 DNS servers. When the NS and SOA records are available, the status of the zone changes to
+     * <code>INSYNC</code>.
      * </p>
      * 
      * @param createHostedZoneRequest
-     *        A complex type that contains information about the request to create a hosted zone.
+     *        A complex type that contains information about the request to create a public or private hosted zone.
      * @return Result of the CreateHostedZone operation returned by the service.
      * @throws InvalidDomainNameException
      *         The specified domain name is not valid.
@@ -830,15 +884,18 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      *         with a reusable delegation set.</p>
      *         <p>
      *         For information about default limits, see <a
-     *         href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html">Limits</a> in the
+     *         href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html">Limits</a> in the
      *         <i>Amazon Route 53 Developer Guide</i>.
      *         </p>
      *         <p>
-     *         To get the current limit on hosted zones that can be created by an account, see <a>GetAccountLimit</a>.
+     *         To get the current limit on hosted zones that can be created by an account, see <a
+     *         href="https://docs.aws.amazon.com/Route53/latest/APIReference/API_GetAccountLimit.html"
+     *         >GetAccountLimit</a>.
      *         </p>
      *         <p>
-     *         To get the current limit on hosted zones that can be associated with a reusable delegation set, see
-     *         <a>GetReusableDelegationSetLimit</a>.
+     *         To get the current limit on hosted zones that can be associated with a reusable delegation set, see <a
+     *         href="https://docs.aws.amazon.com/Route53/latest/APIReference/API_GetReusableDelegationSetLimit.html">
+     *         GetReusableDelegationSetLimit</a>.
      *         </p>
      *         <p>
      *         To request a higher limit, <a href="http://aws.amazon.com/route53-request">create a case</a> with the AWS
@@ -851,8 +908,8 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * @throws DelegationSetNotAvailableException
      *         You can create a hosted zone that has the same name as an existing hosted zone (example.com is common),
      *         but there is a limit to the number of hosted zones that have the same name. If you get this error, Amazon
-     *         Route 53 has reached that limit. If you own the domain name and Amazon Route 53 generates this error,
-     *         contact Customer Support.
+     *         Route 53 has reached that limit. If you own the domain name and Route 53 generates this error, contact
+     *         Customer Support.
      * @throws ConflictingDomainExistsException
      *         The cause of this error depends on whether you're trying to create a public or a private hosted zone:
      *         </p>
@@ -863,7 +920,9 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      *         relationship (example.com and test.example.com) can't have any common name servers. You tried to create a
      *         hosted zone that has the same name as an existing hosted zone or that's the parent or child of an
      *         existing hosted zone, and you specified a delegation set that shares one or more name servers with the
-     *         existing hosted zone. For more information, see <a>CreateReusableDelegationSet</a>.
+     *         existing hosted zone. For more information, see <a
+     *         href="https://docs.aws.amazon.com/Route53/latest/APIReference/API_CreateReusableDelegationSet.html"
+     *         >CreateReusableDelegationSet</a>.
      *         </p>
      *         </li>
      *         <li>
@@ -904,6 +963,10 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Route 53");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateHostedZone");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -926,13 +989,13 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * begins to publish log data to an Amazon CloudWatch Logs log group.
      * </p>
      * <p>
-     * DNS query logs contain information about the queries that Amazon Route 53 receives for a specified public hosted
-     * zone, such as the following:
+     * DNS query logs contain information about the queries that Route 53 receives for a specified public hosted zone,
+     * such as the following:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * Amazon Route 53 edge location that responded to the DNS query
+     * Route 53 edge location that responded to the DNS query
      * </p>
      * </li>
      * <li>
@@ -959,8 +1022,8 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * </p>
      * <note>
      * <p>
-     * If you create a query logging configuration using the Amazon Route 53 console, Amazon Route 53 performs these
-     * operations automatically.
+     * If you create a query logging configuration using the Route 53 console, Route 53 performs these operations
+     * automatically.
      * </p>
      * </note>
      * <ol>
@@ -990,20 +1053,19 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * </p>
      * <p>
      * In the next step, you'll create a resource policy, which controls access to one or more log groups and the
-     * associated AWS resources, such as Amazon Route 53 hosted zones. There's a limit on the number of resource
-     * policies that you can create, so we recommend that you use a consistent prefix so you can use the same resource
-     * policy for all the log groups that you create for query logging.
+     * associated AWS resources, such as Route 53 hosted zones. There's a limit on the number of resource policies that
+     * you can create, so we recommend that you use a consistent prefix so you can use the same resource policy for all
+     * the log groups that you create for query logging.
      * </p>
      * </li>
      * </ul>
      * </li>
      * <li>
      * <p>
-     * Create a CloudWatch Logs resource policy, and give it the permissions that Amazon Route 53 needs to create log
-     * streams and to send query logs to log streams. For the value of <code>Resource</code>, specify the ARN for the
-     * log group that you created in the previous step. To use the same resource policy for all the CloudWatch Logs log
-     * groups that you created for query logging configurations, replace the hosted zone name with <code>*</code>, for
-     * example:
+     * Create a CloudWatch Logs resource policy, and give it the permissions that Route 53 needs to create log streams
+     * and to send query logs to log streams. For the value of <code>Resource</code>, specify the ARN for the log group
+     * that you created in the previous step. To use the same resource policy for all the CloudWatch Logs log groups
+     * that you created for query logging configurations, replace the hosted zone name with <code>*</code>, for example:
      * </p>
      * <p>
      * <code>arn:aws:logs:us-east-1:123412341234:log-group:/aws/route53/*</code>
@@ -1019,13 +1081,13 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * <dt>Log Streams and Edge Locations</dt>
      * <dd>
      * <p>
-     * When Amazon Route 53 finishes creating the configuration for DNS query logging, it does the following:
+     * When Route 53 finishes creating the configuration for DNS query logging, it does the following:
      * </p>
      * <ul>
      * <li>
      * <p>
      * Creates a log stream for an edge location the first time that the edge location responds to DNS queries for the
-     * specified hosted zone. That log stream is used to log all queries that Amazon Route 53 responds to for that edge
+     * specified hosted zone. That log stream is used to log all queries that Route 53 responds to for that edge
      * location.
      * </p>
      * </li>
@@ -1045,20 +1107,20 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * The edge location code is a three-letter code and an arbitrarily assigned number, for example, DFW3. The
      * three-letter code typically corresponds with the International Air Transport Association airport code for an
      * airport near the edge location. (These abbreviations might change in the future.) For a list of edge locations,
-     * see "The Amazon Route 53 Global Network" on the <a href="http://aws.amazon.com/route53/details/">Amazon Route 53
-     * Product Details</a> page.
+     * see "The Route 53 Global Network" on the <a href="http://aws.amazon.com/route53/details/">Route 53 Product
+     * Details</a> page.
      * </p>
      * </dd>
      * <dt>Queries That Are Logged</dt>
      * <dd>
      * <p>
-     * Query logs contain only the queries that DNS resolvers forward to Amazon Route 53. If a DNS resolver has already
-     * cached the response to a query (such as the IP address for a load balancer for example.com), the resolver will
-     * continue to return the cached response. It doesn't forward another query to Amazon Route 53 until the TTL for the
-     * corresponding resource record set expires. Depending on how many DNS queries are submitted for a resource record
-     * set, and depending on the TTL for that resource record set, query logs might contain information about only one
-     * query out of every several thousand queries that are submitted to DNS. For more information about how DNS works,
-     * see <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/welcome-dns-service.html">Routing Internet
+     * Query logs contain only the queries that DNS resolvers forward to Route 53. If a DNS resolver has already cached
+     * the response to a query (such as the IP address for a load balancer for example.com), the resolver will continue
+     * to return the cached response. It doesn't forward another query to Route 53 until the TTL for the corresponding
+     * resource record set expires. Depending on how many DNS queries are submitted for a resource record set, and
+     * depending on the TTL for that resource record set, query logs might contain information about only one query out
+     * of every several thousand queries that are submitted to DNS. For more information about how DNS works, see <a
+     * href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/welcome-dns-service.html">Routing Internet
      * Traffic to Your Website or Web Application</a> in the <i>Amazon Route 53 Developer Guide</i>.
      * </p>
      * </dd>
@@ -1066,7 +1128,7 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * <dd>
      * <p>
      * For a list of the values in each query log and the format of each value, see <a
-     * href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html">Logging DNS Queries</a> in the
+     * href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html">Logging DNS Queries</a> in the
      * <i>Amazon Route 53 Developer Guide</i>.
      * </p>
      * </dd>
@@ -1080,8 +1142,10 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * <dt>How to Stop Logging</dt>
      * <dd>
      * <p>
-     * If you want Amazon Route 53 to stop sending query logs to CloudWatch Logs, delete the query logging
-     * configuration. For more information, see <a>DeleteQueryLoggingConfig</a>.
+     * If you want Route 53 to stop sending query logs to CloudWatch Logs, delete the query logging configuration. For
+     * more information, see <a
+     * href="https://docs.aws.amazon.com/Route53/latest/APIReference/API_DeleteQueryLoggingConfig.html"
+     * >DeleteQueryLoggingConfig</a>.
      * </p>
      * </dd>
      * </dl>
@@ -1146,6 +1210,10 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Route 53");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateQueryLoggingConfig");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1249,9 +1317,13 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      *         This operation can't be completed either because the current account has reached the limit on reusable
      *         delegation sets that it can create or because you've reached the limit on the number of Amazon VPCs that
      *         you can associate with a private hosted zone. To get the current limit on the number of reusable
-     *         delegation sets, see <a>GetAccountLimit</a>. To get the current limit on the number of Amazon VPCs that
-     *         you can associate with a private hosted zone, see <a>GetHostedZoneLimit</a>. To request a higher limit,
-     *         <a href="http://aws.amazon.com/route53-request">create a case</a> with the AWS Support Center.
+     *         delegation sets, see <a
+     *         href="https://docs.aws.amazon.com/Route53/latest/APIReference/API_GetAccountLimit.html"
+     *         >GetAccountLimit</a>. To get the current limit on the number of Amazon VPCs that you can associate with a
+     *         private hosted zone, see <a
+     *         href="https://docs.aws.amazon.com/Route53/latest/APIReference/API_GetHostedZoneLimit.html"
+     *         >GetHostedZoneLimit</a>. To request a higher limit, <a
+     *         href="http://aws.amazon.com/route53-request">create a case</a> with the AWS Support Center.
      * @throws HostedZoneNotFoundException
      *         The specified HostedZone can't be found.
      * @throws InvalidArgumentException
@@ -1261,8 +1333,8 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * @throws DelegationSetNotAvailableException
      *         You can create a hosted zone that has the same name as an existing hosted zone (example.com is common),
      *         but there is a limit to the number of hosted zones that have the same name. If you get this error, Amazon
-     *         Route 53 has reached that limit. If you own the domain name and Amazon Route 53 generates this error,
-     *         contact Customer Support.
+     *         Route 53 has reached that limit. If you own the domain name and Route 53 generates this error, contact
+     *         Customer Support.
      * @throws DelegationSetAlreadyReusableException
      *         The specified delegation set has already been marked as reusable.
      * @sample AmazonRoute53.CreateReusableDelegationSet
@@ -1291,6 +1363,10 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Route 53");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateReusableDelegationSet");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1323,11 +1399,13 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      *         traffic policies.</p>
      *         <p>
      *         For information about default limits, see <a
-     *         href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html">Limits</a> in the
+     *         href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html">Limits</a> in the
      *         <i>Amazon Route 53 Developer Guide</i>.
      *         </p>
      *         <p>
-     *         To get the current limit for an account, see <a>GetAccountLimit</a>.
+     *         To get the current limit for an account, see <a
+     *         href="https://docs.aws.amazon.com/Route53/latest/APIReference/API_GetAccountLimit.html"
+     *         >GetAccountLimit</a>.
      *         </p>
      *         <p>
      *         To request a higher limit, <a href="http://aws.amazon.com/route53-request">create a case</a> with the AWS
@@ -1363,6 +1441,10 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Route 53");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateTrafficPolicy");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1401,11 +1483,13 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      *         number of traffic policy instances.</p>
      *         <p>
      *         For information about default limits, see <a
-     *         href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html">Limits</a> in the
+     *         href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html">Limits</a> in the
      *         <i>Amazon Route 53 Developer Guide</i>.
      *         </p>
      *         <p>
-     *         For information about how to get the current limit for an account, see <a>GetAccountLimit</a>.
+     *         For information about how to get the current limit for an account, see <a
+     *         href="https://docs.aws.amazon.com/Route53/latest/APIReference/API_GetAccountLimit.html"
+     *         >GetAccountLimit</a>.
      *         </p>
      *         <p>
      *         To request a higher limit, <a href="http://aws.amazon.com/route53-request">create a case</a> with the AWS
@@ -1440,6 +1524,10 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Route 53");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateTrafficPolicyInstance");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1478,9 +1566,11 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      *         This traffic policy version can't be created because you've reached the limit of 1000 on the number of
      *         versions that you can create for the current traffic policy.</p>
      *         <p>
-     *         To create more traffic policy versions, you can use <a>GetTrafficPolicy</a> to get the traffic policy
-     *         document for a specified traffic policy version, and then use <a>CreateTrafficPolicy</a> to create a new
-     *         traffic policy using the traffic policy document.
+     *         To create more traffic policy versions, you can use <a
+     *         href="https://docs.aws.amazon.com/Route53/latest/APIReference/API_GetTrafficPolicy.html"
+     *         >GetTrafficPolicy</a> to get the traffic policy document for a specified traffic policy version, and then
+     *         use <a href="https://docs.aws.amazon.com/Route53/latest/APIReference/API_CreateTrafficPolicy.html">
+     *         CreateTrafficPolicy</a> to create a new traffic policy using the traffic policy document.
      * @throws ConcurrentModificationException
      *         Another user submitted a request to create, update, or delete the object at the same time that you did.
      *         Retry the request.
@@ -1513,6 +1603,10 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Route 53");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateTrafficPolicyVersion");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1591,6 +1685,10 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Route 53");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateVPCAssociationAuthorization");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1626,7 +1724,7 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      *        This action deletes a health check.
      * @return Result of the DeleteHealthCheck operation returned by the service.
      * @throws NoSuchHealthCheckException
-     *         No health check exists with the ID that you specified in the <code>DeleteHealthCheck</code> request.
+     *         No health check exists with the specified ID.
      * @throws HealthCheckInUseException
      *         This error code is not in use.
      * @throws InvalidInputException
@@ -1657,6 +1755,10 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Route 53");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteHealthCheck");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1677,27 +1779,44 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * <p>
      * Deletes a hosted zone.
      * </p>
-     * <important>
      * <p>
-     * If the name servers for the hosted zone are associated with a domain and if you want to make the domain
-     * unavailable on the Internet, we recommend that you delete the name servers from the domain to prevent future DNS
-     * queries from possibly being misrouted. If the domain is registered with Amazon Route 53, see
-     * <code>UpdateDomainNameservers</code>. If the domain is registered with another registrar, use the method provided
-     * by the registrar to delete name servers for the domain.
+     * If the hosted zone was created by another service, such as AWS Cloud Map, see <a href=
+     * "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DeleteHostedZone.html#delete-public-hosted-zone-created-by-another-service"
+     * >Deleting Public Hosted Zones That Were Created by Another Service</a> in the <i>Amazon Route 53 Developer
+     * Guide</i> for information about how to delete it. (The process is the same for public and private hosted zones
+     * that were created by another service.)
      * </p>
      * <p>
-     * Some domain registries don't allow you to remove all of the name servers for a domain. If the registry for your
-     * domain requires one or more name servers, we recommend that you delete the hosted zone only if you transfer DNS
-     * service to another service provider, and you replace the name servers for the domain with name servers from the
-     * new provider.
+     * If you want to keep your domain registration but you want to stop routing internet traffic to your website or web
+     * application, we recommend that you delete resource record sets in the hosted zone instead of deleting the hosted
+     * zone.
+     * </p>
+     * <important>
+     * <p>
+     * If you delete a hosted zone, you can't undelete it. You must create a new hosted zone and update the name servers
+     * for your domain registration, which can require up to 48 hours to take effect. (If you delegated responsibility
+     * for a subdomain to a hosted zone and you delete the child hosted zone, you must update the name servers in the
+     * parent hosted zone.) In addition, if you delete a hosted zone, someone could hijack the domain and route traffic
+     * to their own resources using your domain name.
      * </p>
      * </important>
      * <p>
+     * If you want to avoid the monthly charge for the hosted zone, you can transfer DNS service for the domain to a
+     * free DNS service. When you transfer DNS service, you have to update the name servers for the domain registration.
+     * If the domain is registered with Route 53, see <a
+     * href="https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_UpdateDomainNameservers.html"
+     * >UpdateDomainNameservers</a> for information about how to replace Route 53 name servers with name servers for the
+     * new DNS service. If the domain is registered with another registrar, use the method provided by the registrar to
+     * update name servers for the domain registration. For more information, perform an internet search on
+     * "free DNS service."
+     * </p>
+     * <p>
      * You can delete a hosted zone only if it contains only the default SOA record and NS resource record sets. If the
      * hosted zone contains other resource record sets, you must delete them before you can delete the hosted zone. If
-     * you try to delete a hosted zone that contains other resource record sets, the request fails, and Amazon Route 53
-     * returns a <code>HostedZoneNotEmpty</code> error. For information about deleting records from your hosted zone,
-     * see <a>ChangeResourceRecordSets</a>.
+     * you try to delete a hosted zone that contains other resource record sets, the request fails, and Route 53 returns
+     * a <code>HostedZoneNotEmpty</code> error. For information about deleting records from your hosted zone, see <a
+     * href="https://docs.aws.amazon.com/Route53/latest/APIReference/API_ChangeResourceRecordSets.html">
+     * ChangeResourceRecordSets</a>.
      * </p>
      * <p>
      * To verify that the hosted zone has been deleted, do one of the following:
@@ -1726,8 +1845,8 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * @throws PriorRequestNotCompleteException
      *         If Amazon Route 53 can't process a request before the next request arrives, it will reject subsequent
      *         requests for the same hosted zone and return an <code>HTTP 400 error</code> (<code>Bad request</code>).
-     *         If Amazon Route 53 returns this error repeatedly for the same request, we recommend that you wait, in
-     *         intervals of increasing duration, before you try the request again.
+     *         If Route 53 returns this error repeatedly for the same request, we recommend that you wait, in intervals
+     *         of increasing duration, before you try the request again.
      * @throws InvalidInputException
      *         The input is not valid.
      * @throws InvalidDomainNameException
@@ -1758,6 +1877,10 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Route 53");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteHostedZone");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1777,10 +1900,12 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
     /**
      * <p>
      * Deletes a configuration for DNS query logging. If you delete a configuration, Amazon Route 53 stops sending query
-     * logs to CloudWatch Logs. Amazon Route 53 doesn't delete any logs that are already in CloudWatch Logs.
+     * logs to CloudWatch Logs. Route 53 doesn't delete any logs that are already in CloudWatch Logs.
      * </p>
      * <p>
-     * For more information about DNS query logs, see <a>CreateQueryLoggingConfig</a>.
+     * For more information about DNS query logs, see <a
+     * href="https://docs.aws.amazon.com/Route53/latest/APIReference/API_CreateQueryLoggingConfig.html"
+     * >CreateQueryLoggingConfig</a>.
      * </p>
      * 
      * @param deleteQueryLoggingConfigRequest
@@ -1818,6 +1943,10 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Route 53");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteQueryLoggingConfig");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1844,9 +1973,9 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * </p>
      * </important>
      * <p>
-     * To verify that the reusable delegation set is not associated with any hosted zones, submit a
-     * <a>GetReusableDelegationSet</a> request and specify the ID of the reusable delegation set that you want to
-     * delete.
+     * To verify that the reusable delegation set is not associated with any hosted zones, submit a <a
+     * href="https://docs.aws.amazon.com/Route53/latest/APIReference/API_GetReusableDelegationSet.html"
+     * >GetReusableDelegationSet</a> request and specify the ID of the reusable delegation set that you want to delete.
      * </p>
      * 
      * @param deleteReusableDelegationSetRequest
@@ -1887,6 +2016,10 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Route 53");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteReusableDelegationSet");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1946,6 +2079,10 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Route 53");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteTrafficPolicy");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1969,7 +2106,7 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * </p>
      * <note>
      * <p>
-     * In the Amazon Route 53 console, traffic policy instances are known as policy records.
+     * In the Route 53 console, traffic policy instances are known as policy records.
      * </p>
      * </note>
      * 
@@ -1983,8 +2120,8 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * @throws PriorRequestNotCompleteException
      *         If Amazon Route 53 can't process a request before the next request arrives, it will reject subsequent
      *         requests for the same hosted zone and return an <code>HTTP 400 error</code> (<code>Bad request</code>).
-     *         If Amazon Route 53 returns this error repeatedly for the same request, we recommend that you wait, in
-     *         intervals of increasing duration, before you try the request again.
+     *         If Route 53 returns this error repeatedly for the same request, we recommend that you wait, in intervals
+     *         of increasing duration, before you try the request again.
      * @sample AmazonRoute53.DeleteTrafficPolicyInstance
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/DeleteTrafficPolicyInstance"
      *      target="_top">AWS API Documentation</a>
@@ -2011,6 +2148,10 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Route 53");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteTrafficPolicyInstance");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2085,6 +2226,10 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Route 53");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteVPCAssociationAuthorization");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2103,18 +2248,26 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
 
     /**
      * <p>
-     * Disassociates a VPC from a Amazon Route 53 private hosted zone.
+     * Disassociates a VPC from a Amazon Route 53 private hosted zone. Note the following:
      * </p>
-     * <note>
+     * <ul>
+     * <li>
      * <p>
      * You can't disassociate the last VPC from a private hosted zone.
      * </p>
-     * </note> <important>
+     * </li>
+     * <li>
      * <p>
-     * You can't disassociate a VPC from a private hosted zone when only one VPC is associated with the hosted zone. You
-     * also can't convert a private hosted zone into a public hosted zone.
+     * You can't convert a private hosted zone into a public hosted zone.
      * </p>
-     * </important>
+     * </li>
+     * <li>
+     * <p>
+     * You can submit a <code>DisassociateVPCFromHostedZone</code> request using either the account that created the
+     * hosted zone or the account that created the VPC.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param disassociateVPCFromHostedZoneRequest
      *        A complex type that contains information about the VPC that you want to disassociate from a specified
@@ -2159,6 +2312,10 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Route 53");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DisassociateVPCFromHostedZone");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2182,11 +2339,19 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * </p>
      * <p>
      * For the default limit, see <a
-     * href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html">Limits</a> in the <i>Amazon
+     * href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html">Limits</a> in the <i>Amazon
      * Route 53 Developer Guide</i>. To request a higher limit, <a href=
      * "https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&amp;limitType=service-code-route53"
      * >open a case</a>.
      * </p>
+     * <note>
+     * <p>
+     * You can also view account limits in AWS Trusted Advisor. Sign in to the AWS Management Console and open the
+     * Trusted Advisor console at <a
+     * href="https://console.aws.amazon.com/trustedadvisor">https://console.aws.amazon.com/trustedadvisor/</a>. Then
+     * choose <b>Service limits</b> in the navigation pane.
+     * </p>
+     * </note>
      * 
      * @param getAccountLimitRequest
      *        A complex type that contains information about the request to create a hosted zone.
@@ -2219,6 +2384,10 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Route 53");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetAccountLimit");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2248,7 +2417,7 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * </li>
      * <li>
      * <p>
-     * <code>INSYNC</code> indicates that the changes have propagated to all Amazon Route 53 DNS servers.
+     * <code>INSYNC</code> indicates that the changes have propagated to all Route 53 DNS servers.
      * </p>
      * </li>
      * </ul>
@@ -2286,6 +2455,10 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Route 53");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetChange");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2302,14 +2475,17 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
     }
 
     /**
+     * <important>
      * <p>
      * <code>GetCheckerIpRanges</code> still works, but we recommend that you download ip-ranges.json, which includes IP
      * address ranges for all AWS services. For more information, see <a
      * href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/route-53-ip-addresses.html">IP Address Ranges of
      * Amazon Route 53 Servers</a> in the <i>Amazon Route 53 Developer Guide</i>.
      * </p>
+     * </important>
      * 
      * @param getCheckerIpRangesRequest
+     *        Empty request.
      * @return Result of the GetCheckerIpRanges operation returned by the service.
      * @sample AmazonRoute53.GetCheckerIpRanges
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/GetCheckerIpRanges" target="_top">AWS API
@@ -2337,6 +2513,10 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Route 53");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetCheckerIpRanges");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2367,19 +2547,19 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * Use the following syntax to determine whether a continent is supported for geolocation:
      * </p>
      * <p>
-     * <code>GET /2013-04-01/geolocation?ContinentCode=<i>two-letter abbreviation for a continent</i> </code>
+     * <code>GET /2013-04-01/geolocation?continentcode=<i>two-letter abbreviation for a continent</i> </code>
      * </p>
      * <p>
      * Use the following syntax to determine whether a country is supported for geolocation:
      * </p>
      * <p>
-     * <code>GET /2013-04-01/geolocation?CountryCode=<i>two-character country code</i> </code>
+     * <code>GET /2013-04-01/geolocation?countrycode=<i>two-character country code</i> </code>
      * </p>
      * <p>
      * Use the following syntax to determine whether a subdivision of a country is supported for geolocation:
      * </p>
      * <p>
-     * <code>GET /2013-04-01/geolocation?CountryCode=<i>two-character country code</i>&amp;SubdivisionCode=<i>subdivision code</i> </code>
+     * <code>GET /2013-04-01/geolocation?countrycode=<i>two-character country code</i>&amp;subdivisioncode=<i>subdivision code</i> </code>
      * </p>
      * 
      * @param getGeoLocationRequest
@@ -2387,7 +2567,7 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      *        geolocation resource record sets.
      * @return Result of the GetGeoLocation operation returned by the service.
      * @throws NoSuchGeoLocationException
-     *         Amazon Route 53 doesn't support the specified geolocation.
+     *         Amazon Route 53 doesn't support the specified geographic location.
      * @throws InvalidInputException
      *         The input is not valid.
      * @sample AmazonRoute53.GetGeoLocation
@@ -2416,6 +2596,10 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Route 53");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetGeoLocation");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2446,7 +2630,7 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      *        A request to get information about a specified health check.
      * @return Result of the GetHealthCheck operation returned by the service.
      * @throws NoSuchHealthCheckException
-     *         No health check exists with the ID that you specified in the <code>DeleteHealthCheck</code> request.
+     *         No health check exists with the specified ID.
      * @throws InvalidInputException
      *         The input is not valid.
      * @throws IncompatibleVersionException
@@ -2477,6 +2661,10 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Route 53");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetHealthCheck");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2527,6 +2715,10 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Route 53");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetHealthCheckCount");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2557,7 +2749,7 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      *        A request for the reason that a health check failed most recently.
      * @return Result of the GetHealthCheckLastFailureReason operation returned by the service.
      * @throws NoSuchHealthCheckException
-     *         No health check exists with the ID that you specified in the <code>DeleteHealthCheck</code> request.
+     *         No health check exists with the specified ID.
      * @throws InvalidInputException
      *         The input is not valid.
      * @sample AmazonRoute53.GetHealthCheckLastFailureReason
@@ -2587,6 +2779,10 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Route 53");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetHealthCheckLastFailureReason");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2612,7 +2808,7 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      *        A request to get the status for a health check.
      * @return Result of the GetHealthCheckStatus operation returned by the service.
      * @throws NoSuchHealthCheckException
-     *         No health check exists with the ID that you specified in the <code>DeleteHealthCheck</code> request.
+     *         No health check exists with the specified ID.
      * @throws InvalidInputException
      *         The input is not valid.
      * @sample AmazonRoute53.GetHealthCheckStatus
@@ -2641,6 +2837,10 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Route 53");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetHealthCheckStatus");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2695,6 +2895,10 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Route 53");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetHostedZone");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2746,6 +2950,10 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Route 53");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetHostedZoneCount");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2774,7 +2982,7 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * </p>
      * <p>
      * For the default limit, see <a
-     * href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html">Limits</a> in the <i>Amazon
+     * href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html">Limits</a> in the <i>Amazon
      * Route 53 Developer Guide</i>. To request a higher limit, <a href=
      * "https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&amp;limitType=service-code-route53"
      * >open a case</a>.
@@ -2815,6 +3023,10 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Route 53");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetHostedZoneLimit");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2836,8 +3048,10 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * Gets information about a specified configuration for DNS query logging.
      * </p>
      * <p>
-     * For more information about DNS query logs, see <a>CreateQueryLoggingConfig</a> and <a
-     * href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html">Logging DNS Queries</a>.
+     * For more information about DNS query logs, see <a
+     * href="https://docs.aws.amazon.com/Route53/latest/APIReference/API_CreateQueryLoggingConfig.html"
+     * >CreateQueryLoggingConfig</a> and <a
+     * href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html">Logging DNS Queries</a>.
      * </p>
      * 
      * @param getQueryLoggingConfigRequest
@@ -2872,6 +3086,10 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Route 53");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetQueryLoggingConfig");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2929,6 +3147,10 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Route 53");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetReusableDelegationSet");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2951,7 +3173,7 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * </p>
      * <p>
      * For the default limit, see <a
-     * href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html">Limits</a> in the <i>Amazon
+     * href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html">Limits</a> in the <i>Amazon
      * Route 53 Developer Guide</i>. To request a higher limit, <a href=
      * "https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&amp;limitType=service-code-route53"
      * >open a case</a>.
@@ -2990,6 +3212,10 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Route 53");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetReusableDelegationSetLimit");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3044,6 +3270,10 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Route 53");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetTrafficPolicy");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3072,7 +3302,7 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * </p>
      * </note> <note>
      * <p>
-     * In the Amazon Route 53 console, traffic policy instances are known as policy records.
+     * In the Route 53 console, traffic policy instances are known as policy records.
      * </p>
      * </note>
      * 
@@ -3109,6 +3339,10 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Route 53");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetTrafficPolicyInstance");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3159,6 +3393,10 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Route 53");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetTrafficPolicyInstanceCount");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3182,7 +3420,7 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
 
     /**
      * <p>
-     * Retrieves a list of supported geo locations.
+     * Retrieves a list of supported geographic locations.
      * </p>
      * <p>
      * Countries are listed first, and continents are listed last. If Amazon Route 53 supports subdivisions for a
@@ -3222,6 +3460,10 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Route 53");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListGeoLocations");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3281,6 +3523,10 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Route 53");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListHealthChecks");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3348,6 +3594,10 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Route 53");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListHostedZones");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3399,7 +3649,7 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * in the <i>Amazon Route 53 Developer Guide</i>.
      * </p>
      * <p>
-     * Amazon Route 53 returns up to 100 items in each response. If you have a lot of hosted zones, use the
+     * Route 53 returns up to 100 items in each response. If you have a lot of hosted zones, use the
      * <code>MaxItems</code> parameter to list them in groups of up to 100. The response includes values that help
      * navigate from one group of <code>MaxItems</code> hosted zones to the next:
      * </p>
@@ -3473,6 +3723,10 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Route 53");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListHostedZonesByName");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3500,9 +3754,10 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * configuration that is associated with a specified hosted zone.
      * </p>
      * <p>
-     * For more information about DNS query logs, see <a>CreateQueryLoggingConfig</a>. Additional information, including
-     * the format of DNS query logs, appears in <a
-     * href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html">Logging DNS Queries</a> in the
+     * For more information about DNS query logs, see <a
+     * href="https://docs.aws.amazon.com/Route53/latest/APIReference/API_CreateQueryLoggingConfig.html"
+     * >CreateQueryLoggingConfig</a>. Additional information, including the format of DNS query logs, appears in <a
+     * href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html">Logging DNS Queries</a> in the
      * <i>Amazon Route 53 Developer Guide</i>.
      * </p>
      * 
@@ -3540,6 +3795,10 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Route 53");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListQueryLoggingConfigs");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3562,21 +3821,31 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * </p>
      * <p>
      * <code>ListResourceRecordSets</code> returns up to 100 resource record sets at a time in ASCII order, beginning at
-     * a position specified by the <code>name</code> and <code>type</code> elements. The action sorts results first by
-     * DNS name with the labels reversed, for example:
+     * a position specified by the <code>name</code> and <code>type</code> elements.
+     * </p>
+     * <p>
+     * <b>Sort order</b>
+     * </p>
+     * <p>
+     * <code>ListResourceRecordSets</code> sorts results first by DNS name with the labels reversed, for example:
      * </p>
      * <p>
      * <code>com.example.www.</code>
      * </p>
      * <p>
-     * Note the trailing dot, which can change the sort order in some circumstances.
+     * Note the trailing dot, which can change the sort order when the record name contains characters that appear
+     * before <code>.</code> (decimal 46) in the ASCII table. These characters include the following:
+     * <code>! " # $ % &amp; ' ( ) * + , -</code>
      * </p>
      * <p>
-     * When multiple records have the same DNS name, the action sorts results by the record type.
+     * When multiple records have the same DNS name, <code>ListResourceRecordSets</code> sorts results by the record
+     * type.
      * </p>
      * <p>
-     * You can use the name and type elements to adjust the beginning position of the list of resource record sets
-     * returned:
+     * <b>Specifying where to start listing records</b>
+     * </p>
+     * <p>
+     * You can use the name and type elements to specify the resource record set that the list begins with:
      * </p>
      * <dl>
      * <dt>If you do not specify Name or Type</dt>
@@ -3607,14 +3876,30 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * </dd>
      * </dl>
      * <p>
+     * <b>Resource record sets that are PENDING</b>
+     * </p>
+     * <p>
      * This action returns the most current version of the records. This includes records that are <code>PENDING</code>,
-     * and that are not yet available on all Amazon Route 53 DNS servers.
+     * and that are not yet available on all Route 53 DNS servers.
+     * </p>
+     * <p>
+     * <b>Changing resource record sets</b>
      * </p>
      * <p>
      * To ensure that you get an accurate listing of the resource record sets for a hosted zone at a point in time, do
      * not submit a <code>ChangeResourceRecordSets</code> request while you're paging through the results of a
      * <code>ListResourceRecordSets</code> request. If you do, some pages may display results without the latest changes
      * while other pages display results with the latest changes.
+     * </p>
+     * <p>
+     * <b>Displaying the next page of results</b>
+     * </p>
+     * <p>
+     * If a <code>ListResourceRecordSets</code> command returns more than one page of results, the value of
+     * <code>IsTruncated</code> is <code>true</code>. To display the next page of results, get the values of
+     * <code>NextRecordName</code>, <code>NextRecordType</code>, and <code>NextRecordIdentifier</code> (if any) from the
+     * response. Then submit another <code>ListResourceRecordSets</code> request, and specify those values for
+     * <code>StartRecordName</code>, <code>StartRecordType</code>, and <code>StartRecordIdentifier</code>.
      * </p>
      * 
      * @param listResourceRecordSetsRequest
@@ -3650,6 +3935,10 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Route 53");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListResourceRecordSets");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3702,6 +3991,10 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Route 53");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListReusableDelegationSets");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3729,7 +4022,7 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * </p>
      * <p>
      * For information about using tags for cost allocation, see <a
-     * href="http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html">Using Cost Allocation
+     * href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html">Using Cost Allocation
      * Tags</a> in the <i>AWS Billing and Cost Management User Guide</i>.
      * </p>
      * 
@@ -3740,14 +4033,14 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * @throws InvalidInputException
      *         The input is not valid.
      * @throws NoSuchHealthCheckException
-     *         No health check exists with the ID that you specified in the <code>DeleteHealthCheck</code> request.
+     *         No health check exists with the specified ID.
      * @throws NoSuchHostedZoneException
      *         No hosted zone exists with the ID that you specified.
      * @throws PriorRequestNotCompleteException
      *         If Amazon Route 53 can't process a request before the next request arrives, it will reject subsequent
      *         requests for the same hosted zone and return an <code>HTTP 400 error</code> (<code>Bad request</code>).
-     *         If Amazon Route 53 returns this error repeatedly for the same request, we recommend that you wait, in
-     *         intervals of increasing duration, before you try the request again.
+     *         If Route 53 returns this error repeatedly for the same request, we recommend that you wait, in intervals
+     *         of increasing duration, before you try the request again.
      * @throws ThrottlingException
      *         The limit on the number of requests per second was exceeded.
      * @sample AmazonRoute53.ListTagsForResource
@@ -3776,6 +4069,10 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Route 53");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListTagsForResource");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3798,7 +4095,7 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * </p>
      * <p>
      * For information about using tags for cost allocation, see <a
-     * href="http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html">Using Cost Allocation
+     * href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html">Using Cost Allocation
      * Tags</a> in the <i>AWS Billing and Cost Management User Guide</i>.
      * </p>
      * 
@@ -3809,14 +4106,14 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * @throws InvalidInputException
      *         The input is not valid.
      * @throws NoSuchHealthCheckException
-     *         No health check exists with the ID that you specified in the <code>DeleteHealthCheck</code> request.
+     *         No health check exists with the specified ID.
      * @throws NoSuchHostedZoneException
      *         No hosted zone exists with the ID that you specified.
      * @throws PriorRequestNotCompleteException
      *         If Amazon Route 53 can't process a request before the next request arrives, it will reject subsequent
      *         requests for the same hosted zone and return an <code>HTTP 400 error</code> (<code>Bad request</code>).
-     *         If Amazon Route 53 returns this error repeatedly for the same request, we recommend that you wait, in
-     *         intervals of increasing duration, before you try the request again.
+     *         If Route 53 returns this error repeatedly for the same request, we recommend that you wait, in intervals
+     *         of increasing duration, before you try the request again.
      * @throws ThrottlingException
      *         The limit on the number of requests per second was exceeded.
      * @sample AmazonRoute53.ListTagsForResources
@@ -3845,6 +4142,10 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Route 53");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListTagsForResources");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3864,7 +4165,7 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
     /**
      * <p>
      * Gets information about the latest version for every traffic policy that is associated with the current AWS
-     * account. Policies are listed in the order in which they were created.
+     * account. Policies are listed in the order that they were created in.
      * </p>
      * 
      * @param listTrafficPoliciesRequest
@@ -3899,6 +4200,10 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Route 53");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListTrafficPolicies");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3932,8 +4237,8 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * </p>
      * </note>
      * <p>
-     * Amazon Route 53 returns a maximum of 100 items in each response. If you have a lot of traffic policy instances,
-     * you can use the <code>MaxItems</code> parameter to list them in groups of up to 100.
+     * Route 53 returns a maximum of 100 items in each response. If you have a lot of traffic policy instances, you can
+     * use the <code>MaxItems</code> parameter to list them in groups of up to 100.
      * </p>
      * 
      * @param listTrafficPolicyInstancesRequest
@@ -3970,6 +4275,10 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Route 53");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListTrafficPolicyInstances");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4003,8 +4312,8 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * </p>
      * </note>
      * <p>
-     * Amazon Route 53 returns a maximum of 100 items in each response. If you have a lot of traffic policy instances,
-     * you can use the <code>MaxItems</code> parameter to list them in groups of up to 100.
+     * Route 53 returns a maximum of 100 items in each response. If you have a lot of traffic policy instances, you can
+     * use the <code>MaxItems</code> parameter to list them in groups of up to 100.
      * </p>
      * 
      * @param listTrafficPolicyInstancesByHostedZoneRequest
@@ -4044,6 +4353,10 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Route 53");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListTrafficPolicyInstancesByHostedZone");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4072,8 +4385,8 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * </p>
      * </note>
      * <p>
-     * Amazon Route 53 returns a maximum of 100 items in each response. If you have a lot of traffic policy instances,
-     * you can use the <code>MaxItems</code> parameter to list them in groups of up to 100.
+     * Route 53 returns a maximum of 100 items in each response. If you have a lot of traffic policy instances, you can
+     * use the <code>MaxItems</code> parameter to list them in groups of up to 100.
      * </p>
      * 
      * @param listTrafficPolicyInstancesByPolicyRequest
@@ -4113,6 +4426,10 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Route 53");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListTrafficPolicyInstancesByPolicy");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4170,6 +4487,10 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Route 53");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListTrafficPolicyVersions");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4232,6 +4553,10 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Route 53");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListVPCAssociationAuthorizations");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4290,6 +4615,10 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Route 53");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "TestDNSAnswer");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4319,7 +4648,7 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      *        A complex type that contains information about a request to update a health check.
      * @return Result of the UpdateHealthCheck operation returned by the service.
      * @throws NoSuchHealthCheckException
-     *         No health check exists with the ID that you specified in the <code>DeleteHealthCheck</code> request.
+     *         No health check exists with the specified ID.
      * @throws InvalidInputException
      *         The input is not valid.
      * @throws HealthCheckVersionMismatchException
@@ -4351,6 +4680,10 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Route 53");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateHealthCheck");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4405,6 +4738,10 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Route 53");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateHostedZoneComment");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4462,6 +4799,10 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Route 53");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateTrafficPolicyComment");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4486,26 +4827,26 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * <p>
      * When you update a traffic policy instance, Amazon Route 53 continues to respond to DNS queries for the root
      * resource record set name (such as example.com) while it replaces one group of resource record sets with another.
-     * Amazon Route 53 performs the following operations:
+     * Route 53 performs the following operations:
      * </p>
      * <ol>
      * <li>
      * <p>
-     * Amazon Route 53 creates a new group of resource record sets based on the specified traffic policy. This is true
+     * Route 53 creates a new group of resource record sets based on the specified traffic policy. This is true
      * regardless of how significant the differences are between the existing resource record sets and the new resource
      * record sets.
      * </p>
      * </li>
      * <li>
      * <p>
-     * When all of the new resource record sets have been created, Amazon Route 53 starts to respond to DNS queries for
-     * the root resource record set name (such as example.com) by using the new resource record sets.
+     * When all of the new resource record sets have been created, Route 53 starts to respond to DNS queries for the
+     * root resource record set name (such as example.com) by using the new resource record sets.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Amazon Route 53 deletes the old group of resource record sets that are associated with the root resource record
-     * set name.
+     * Route 53 deletes the old group of resource record sets that are associated with the root resource record set
+     * name.
      * </p>
      * </li>
      * </ol>
@@ -4523,8 +4864,8 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * @throws PriorRequestNotCompleteException
      *         If Amazon Route 53 can't process a request before the next request arrives, it will reject subsequent
      *         requests for the same hosted zone and return an <code>HTTP 400 error</code> (<code>Bad request</code>).
-     *         If Amazon Route 53 returns this error repeatedly for the same request, we recommend that you wait, in
-     *         intervals of increasing duration, before you try the request again.
+     *         If Route 53 returns this error repeatedly for the same request, we recommend that you wait, in intervals
+     *         of increasing duration, before you try the request again.
      * @throws ConflictingTypesException
      *         You tried to update a traffic policy instance by using a traffic policy version that has a different DNS
      *         type than the current type for the instance. You specified the type in the JSON document in the
@@ -4555,6 +4896,10 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Route 53");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateTrafficPolicyInstance");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4595,9 +4940,18 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
     private <X, Y extends AmazonWebServiceRequest> Response<X> invoke(Request<Y> request, HttpResponseHandler<AmazonWebServiceResponse<X>> responseHandler,
             ExecutionContext executionContext) {
 
+        return invoke(request, responseHandler, executionContext, null, null);
+    }
+
+    /**
+     * Normal invoke with authentication. Credentials are required and may be overriden at the request level.
+     **/
+    private <X, Y extends AmazonWebServiceRequest> Response<X> invoke(Request<Y> request, HttpResponseHandler<AmazonWebServiceResponse<X>> responseHandler,
+            ExecutionContext executionContext, URI cachedEndpoint, URI uriFromEndpointTrait) {
+
         executionContext.setCredentialsProvider(CredentialUtils.getCredentialsProvider(request.getOriginalRequest(), awsCredentialsProvider));
 
-        return doInvoke(request, responseHandler, executionContext);
+        return doInvoke(request, responseHandler, executionContext, cachedEndpoint, uriFromEndpointTrait);
     }
 
     /**
@@ -4607,7 +4961,7 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
     private <X, Y extends AmazonWebServiceRequest> Response<X> anonymousInvoke(Request<Y> request,
             HttpResponseHandler<AmazonWebServiceResponse<X>> responseHandler, ExecutionContext executionContext) {
 
-        return doInvoke(request, responseHandler, executionContext);
+        return doInvoke(request, responseHandler, executionContext, null, null);
     }
 
     /**
@@ -4615,8 +4969,17 @@ public class AmazonRoute53Client extends AmazonWebServiceClient implements Amazo
      * ExecutionContext beforehand.
      **/
     private <X, Y extends AmazonWebServiceRequest> Response<X> doInvoke(Request<Y> request, HttpResponseHandler<AmazonWebServiceResponse<X>> responseHandler,
-            ExecutionContext executionContext) {
-        request.setEndpoint(endpoint);
+            ExecutionContext executionContext, URI discoveredEndpoint, URI uriFromEndpointTrait) {
+
+        if (discoveredEndpoint != null) {
+            request.setEndpoint(discoveredEndpoint);
+            request.getOriginalRequest().getRequestClientOptions().appendUserAgent("endpoint-discovery");
+        } else if (uriFromEndpointTrait != null) {
+            request.setEndpoint(uriFromEndpointTrait);
+        } else {
+            request.setEndpoint(endpoint);
+        }
+
         request.setTimeOffset(timeOffset);
 
         DefaultErrorResponseHandler errorResponseHandler = new DefaultErrorResponseHandler(exceptionUnmarshallers);

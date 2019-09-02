@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -18,7 +18,9 @@ import com.amazonaws.protocol.StructuredPojo;
 import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
- * Amazon Device Messaging channel definition.
+ * <p>
+ * Specifies the status and settings of the ADM (Amazon Device Messaging) channel for an application.
+ * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/ADMChannelRequest" target="_top">AWS API
  *      Documentation</a>
@@ -26,18 +28,32 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ADMChannelRequest implements Serializable, Cloneable, StructuredPojo {
 
-    /** Client ID as gotten from Amazon */
+    /**
+     * <p>
+     * The Client ID that you received from Amazon to send messages by using ADM.
+     * </p>
+     */
     private String clientId;
-    /** Client secret as gotten from Amazon */
+    /**
+     * <p>
+     * The Client Secret that you received from Amazon to send messages by using ADM.
+     * </p>
+     */
     private String clientSecret;
-    /** If the channel is enabled for sending messages. */
+    /**
+     * <p>
+     * Specifies whether to enable the ADM channel for the application.
+     * </p>
+     */
     private Boolean enabled;
 
     /**
-     * Client ID as gotten from Amazon
+     * <p>
+     * The Client ID that you received from Amazon to send messages by using ADM.
+     * </p>
      * 
      * @param clientId
-     *        Client ID as gotten from Amazon
+     *        The Client ID that you received from Amazon to send messages by using ADM.
      */
 
     public void setClientId(String clientId) {
@@ -45,9 +61,11 @@ public class ADMChannelRequest implements Serializable, Cloneable, StructuredPoj
     }
 
     /**
-     * Client ID as gotten from Amazon
+     * <p>
+     * The Client ID that you received from Amazon to send messages by using ADM.
+     * </p>
      * 
-     * @return Client ID as gotten from Amazon
+     * @return The Client ID that you received from Amazon to send messages by using ADM.
      */
 
     public String getClientId() {
@@ -55,10 +73,12 @@ public class ADMChannelRequest implements Serializable, Cloneable, StructuredPoj
     }
 
     /**
-     * Client ID as gotten from Amazon
+     * <p>
+     * The Client ID that you received from Amazon to send messages by using ADM.
+     * </p>
      * 
      * @param clientId
-     *        Client ID as gotten from Amazon
+     *        The Client ID that you received from Amazon to send messages by using ADM.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -68,10 +88,12 @@ public class ADMChannelRequest implements Serializable, Cloneable, StructuredPoj
     }
 
     /**
-     * Client secret as gotten from Amazon
+     * <p>
+     * The Client Secret that you received from Amazon to send messages by using ADM.
+     * </p>
      * 
      * @param clientSecret
-     *        Client secret as gotten from Amazon
+     *        The Client Secret that you received from Amazon to send messages by using ADM.
      */
 
     public void setClientSecret(String clientSecret) {
@@ -79,9 +101,11 @@ public class ADMChannelRequest implements Serializable, Cloneable, StructuredPoj
     }
 
     /**
-     * Client secret as gotten from Amazon
+     * <p>
+     * The Client Secret that you received from Amazon to send messages by using ADM.
+     * </p>
      * 
-     * @return Client secret as gotten from Amazon
+     * @return The Client Secret that you received from Amazon to send messages by using ADM.
      */
 
     public String getClientSecret() {
@@ -89,10 +113,12 @@ public class ADMChannelRequest implements Serializable, Cloneable, StructuredPoj
     }
 
     /**
-     * Client secret as gotten from Amazon
+     * <p>
+     * The Client Secret that you received from Amazon to send messages by using ADM.
+     * </p>
      * 
      * @param clientSecret
-     *        Client secret as gotten from Amazon
+     *        The Client Secret that you received from Amazon to send messages by using ADM.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -102,10 +128,12 @@ public class ADMChannelRequest implements Serializable, Cloneable, StructuredPoj
     }
 
     /**
-     * If the channel is enabled for sending messages.
+     * <p>
+     * Specifies whether to enable the ADM channel for the application.
+     * </p>
      * 
      * @param enabled
-     *        If the channel is enabled for sending messages.
+     *        Specifies whether to enable the ADM channel for the application.
      */
 
     public void setEnabled(Boolean enabled) {
@@ -113,9 +141,11 @@ public class ADMChannelRequest implements Serializable, Cloneable, StructuredPoj
     }
 
     /**
-     * If the channel is enabled for sending messages.
+     * <p>
+     * Specifies whether to enable the ADM channel for the application.
+     * </p>
      * 
-     * @return If the channel is enabled for sending messages.
+     * @return Specifies whether to enable the ADM channel for the application.
      */
 
     public Boolean getEnabled() {
@@ -123,10 +153,12 @@ public class ADMChannelRequest implements Serializable, Cloneable, StructuredPoj
     }
 
     /**
-     * If the channel is enabled for sending messages.
+     * <p>
+     * Specifies whether to enable the ADM channel for the application.
+     * </p>
      * 
      * @param enabled
-     *        If the channel is enabled for sending messages.
+     *        Specifies whether to enable the ADM channel for the application.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -136,9 +168,11 @@ public class ADMChannelRequest implements Serializable, Cloneable, StructuredPoj
     }
 
     /**
-     * If the channel is enabled for sending messages.
+     * <p>
+     * Specifies whether to enable the ADM channel for the application.
+     * </p>
      * 
-     * @return If the channel is enabled for sending messages.
+     * @return Specifies whether to enable the ADM channel for the application.
      */
 
     public Boolean isEnabled() {
@@ -146,7 +180,8 @@ public class ADMChannelRequest implements Serializable, Cloneable, StructuredPoj
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

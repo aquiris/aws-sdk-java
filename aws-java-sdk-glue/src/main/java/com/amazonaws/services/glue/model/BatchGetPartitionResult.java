@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -31,7 +31,7 @@ public class BatchGetPartitionResult extends com.amazonaws.AmazonWebServiceResul
     private java.util.List<Partition> partitions;
     /**
      * <p>
-     * A list of the partition values in the request for which partions were not returned.
+     * A list of the partition values in the request for which partitions were not returned.
      * </p>
      */
     private java.util.List<PartitionValueList> unprocessedKeys;
@@ -108,10 +108,10 @@ public class BatchGetPartitionResult extends com.amazonaws.AmazonWebServiceResul
 
     /**
      * <p>
-     * A list of the partition values in the request for which partions were not returned.
+     * A list of the partition values in the request for which partitions were not returned.
      * </p>
      * 
-     * @return A list of the partition values in the request for which partions were not returned.
+     * @return A list of the partition values in the request for which partitions were not returned.
      */
 
     public java.util.List<PartitionValueList> getUnprocessedKeys() {
@@ -120,11 +120,11 @@ public class BatchGetPartitionResult extends com.amazonaws.AmazonWebServiceResul
 
     /**
      * <p>
-     * A list of the partition values in the request for which partions were not returned.
+     * A list of the partition values in the request for which partitions were not returned.
      * </p>
      * 
      * @param unprocessedKeys
-     *        A list of the partition values in the request for which partions were not returned.
+     *        A list of the partition values in the request for which partitions were not returned.
      */
 
     public void setUnprocessedKeys(java.util.Collection<PartitionValueList> unprocessedKeys) {
@@ -138,7 +138,7 @@ public class BatchGetPartitionResult extends com.amazonaws.AmazonWebServiceResul
 
     /**
      * <p>
-     * A list of the partition values in the request for which partions were not returned.
+     * A list of the partition values in the request for which partitions were not returned.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -147,7 +147,7 @@ public class BatchGetPartitionResult extends com.amazonaws.AmazonWebServiceResul
      * </p>
      * 
      * @param unprocessedKeys
-     *        A list of the partition values in the request for which partions were not returned.
+     *        A list of the partition values in the request for which partitions were not returned.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -163,11 +163,11 @@ public class BatchGetPartitionResult extends com.amazonaws.AmazonWebServiceResul
 
     /**
      * <p>
-     * A list of the partition values in the request for which partions were not returned.
+     * A list of the partition values in the request for which partitions were not returned.
      * </p>
      * 
      * @param unprocessedKeys
-     *        A list of the partition values in the request for which partions were not returned.
+     *        A list of the partition values in the request for which partitions were not returned.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -177,7 +177,8 @@ public class BatchGetPartitionResult extends com.amazonaws.AmazonWebServiceResul
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -39,7 +39,7 @@ public class CreateStreamingURLRequest extends com.amazonaws.AmazonWebServiceReq
     private String fleetName;
     /**
      * <p>
-     * The ID of the user.
+     * The identifier of the user.
      * </p>
      */
     private String userId;
@@ -60,8 +60,8 @@ public class CreateStreamingURLRequest extends com.amazonaws.AmazonWebServiceReq
     /**
      * <p>
      * The session context. For more information, see <a href=
-     * "http://docs.aws.amazon.com/appstream2/latest/developerguide/managing-stacks-fleets.html#managing-stacks-fleets-parameters"
-     * >Session Context</a> in the <i>Amazon AppStream 2.0 Developer Guide</i>.
+     * "https://docs.aws.amazon.com/appstream2/latest/developerguide/managing-stacks-fleets.html#managing-stacks-fleets-parameters"
+     * >Session Context</a> in the <i>Amazon AppStream 2.0 Administration Guide</i>.
      * </p>
      */
     private String sessionContext;
@@ -148,11 +148,11 @@ public class CreateStreamingURLRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * The ID of the user.
+     * The identifier of the user.
      * </p>
      * 
      * @param userId
-     *        The ID of the user.
+     *        The identifier of the user.
      */
 
     public void setUserId(String userId) {
@@ -161,10 +161,10 @@ public class CreateStreamingURLRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * The ID of the user.
+     * The identifier of the user.
      * </p>
      * 
-     * @return The ID of the user.
+     * @return The identifier of the user.
      */
 
     public String getUserId() {
@@ -173,11 +173,11 @@ public class CreateStreamingURLRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * The ID of the user.
+     * The identifier of the user.
      * </p>
      * 
      * @param userId
-     *        The ID of the user.
+     *        The identifier of the user.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -281,14 +281,14 @@ public class CreateStreamingURLRequest extends com.amazonaws.AmazonWebServiceReq
     /**
      * <p>
      * The session context. For more information, see <a href=
-     * "http://docs.aws.amazon.com/appstream2/latest/developerguide/managing-stacks-fleets.html#managing-stacks-fleets-parameters"
-     * >Session Context</a> in the <i>Amazon AppStream 2.0 Developer Guide</i>.
+     * "https://docs.aws.amazon.com/appstream2/latest/developerguide/managing-stacks-fleets.html#managing-stacks-fleets-parameters"
+     * >Session Context</a> in the <i>Amazon AppStream 2.0 Administration Guide</i>.
      * </p>
      * 
      * @param sessionContext
      *        The session context. For more information, see <a href=
-     *        "http://docs.aws.amazon.com/appstream2/latest/developerguide/managing-stacks-fleets.html#managing-stacks-fleets-parameters"
-     *        >Session Context</a> in the <i>Amazon AppStream 2.0 Developer Guide</i>.
+     *        "https://docs.aws.amazon.com/appstream2/latest/developerguide/managing-stacks-fleets.html#managing-stacks-fleets-parameters"
+     *        >Session Context</a> in the <i>Amazon AppStream 2.0 Administration Guide</i>.
      */
 
     public void setSessionContext(String sessionContext) {
@@ -298,13 +298,13 @@ public class CreateStreamingURLRequest extends com.amazonaws.AmazonWebServiceReq
     /**
      * <p>
      * The session context. For more information, see <a href=
-     * "http://docs.aws.amazon.com/appstream2/latest/developerguide/managing-stacks-fleets.html#managing-stacks-fleets-parameters"
-     * >Session Context</a> in the <i>Amazon AppStream 2.0 Developer Guide</i>.
+     * "https://docs.aws.amazon.com/appstream2/latest/developerguide/managing-stacks-fleets.html#managing-stacks-fleets-parameters"
+     * >Session Context</a> in the <i>Amazon AppStream 2.0 Administration Guide</i>.
      * </p>
      * 
      * @return The session context. For more information, see <a href=
-     *         "http://docs.aws.amazon.com/appstream2/latest/developerguide/managing-stacks-fleets.html#managing-stacks-fleets-parameters"
-     *         >Session Context</a> in the <i>Amazon AppStream 2.0 Developer Guide</i>.
+     *         "https://docs.aws.amazon.com/appstream2/latest/developerguide/managing-stacks-fleets.html#managing-stacks-fleets-parameters"
+     *         >Session Context</a> in the <i>Amazon AppStream 2.0 Administration Guide</i>.
      */
 
     public String getSessionContext() {
@@ -314,14 +314,14 @@ public class CreateStreamingURLRequest extends com.amazonaws.AmazonWebServiceReq
     /**
      * <p>
      * The session context. For more information, see <a href=
-     * "http://docs.aws.amazon.com/appstream2/latest/developerguide/managing-stacks-fleets.html#managing-stacks-fleets-parameters"
-     * >Session Context</a> in the <i>Amazon AppStream 2.0 Developer Guide</i>.
+     * "https://docs.aws.amazon.com/appstream2/latest/developerguide/managing-stacks-fleets.html#managing-stacks-fleets-parameters"
+     * >Session Context</a> in the <i>Amazon AppStream 2.0 Administration Guide</i>.
      * </p>
      * 
      * @param sessionContext
      *        The session context. For more information, see <a href=
-     *        "http://docs.aws.amazon.com/appstream2/latest/developerguide/managing-stacks-fleets.html#managing-stacks-fleets-parameters"
-     *        >Session Context</a> in the <i>Amazon AppStream 2.0 Developer Guide</i>.
+     *        "https://docs.aws.amazon.com/appstream2/latest/developerguide/managing-stacks-fleets.html#managing-stacks-fleets-parameters"
+     *        >Session Context</a> in the <i>Amazon AppStream 2.0 Administration Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -331,7 +331,8 @@ public class CreateStreamingURLRequest extends com.amazonaws.AmazonWebServiceReq
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

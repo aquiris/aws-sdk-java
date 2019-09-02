@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -44,6 +44,8 @@ public class NewPublicVirtualInterfaceMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("addressFamily").build();
     private static final MarshallingInfo<List> ROUTEFILTERPREFIXES_BINDING = MarshallingInfo.builder(MarshallingType.LIST)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("routeFilterPrefixes").build();
+    private static final MarshallingInfo<List> TAGS_BINDING = MarshallingInfo.builder(MarshallingType.LIST).marshallLocation(MarshallLocation.PAYLOAD)
+            .marshallLocationName("tags").build();
 
     private static final NewPublicVirtualInterfaceMarshaller instance = new NewPublicVirtualInterfaceMarshaller();
 
@@ -69,6 +71,7 @@ public class NewPublicVirtualInterfaceMarshaller {
             protocolMarshaller.marshall(newPublicVirtualInterface.getCustomerAddress(), CUSTOMERADDRESS_BINDING);
             protocolMarshaller.marshall(newPublicVirtualInterface.getAddressFamily(), ADDRESSFAMILY_BINDING);
             protocolMarshaller.marshall(newPublicVirtualInterface.getRouteFilterPrefixes(), ROUTEFILTERPREFIXES_BINDING);
+            protocolMarshaller.marshall(newPublicVirtualInterface.getTags(), TAGS_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

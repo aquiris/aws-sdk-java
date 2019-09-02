@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -44,15 +44,16 @@ public class SearchDevicesRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * The filters to use to list a specified set of devices. Supported filter keys are DeviceName, DeviceStatus,
-     * DeviceStatusDetailCode, RoomName, DeviceType, DeviceSerialNumber, UnassociatedOnly, and ConnectionStatus (ONLINE
-     * and OFFLINE).
+     * DeviceStatusDetailCode, RoomName, DeviceType, DeviceSerialNumber, UnassociatedOnly, ConnectionStatus (ONLINE and
+     * OFFLINE), NetworkProfileName, NetworkProfileArn, Feature, and FailureCode.
      * </p>
      */
     private java.util.List<Filter> filters;
     /**
      * <p>
      * The sort order to use in listing the specified set of devices. Supported sort keys are DeviceName, DeviceStatus,
-     * RoomName, DeviceType, DeviceSerialNumber, and ConnectionStatus.
+     * RoomName, DeviceType, DeviceSerialNumber, ConnectionStatus, NetworkProfileName, NetworkProfileArn, Feature, and
+     * FailureCode.
      * </p>
      */
     private java.util.List<Sort> sortCriteria;
@@ -164,13 +165,13 @@ public class SearchDevicesRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * The filters to use to list a specified set of devices. Supported filter keys are DeviceName, DeviceStatus,
-     * DeviceStatusDetailCode, RoomName, DeviceType, DeviceSerialNumber, UnassociatedOnly, and ConnectionStatus (ONLINE
-     * and OFFLINE).
+     * DeviceStatusDetailCode, RoomName, DeviceType, DeviceSerialNumber, UnassociatedOnly, ConnectionStatus (ONLINE and
+     * OFFLINE), NetworkProfileName, NetworkProfileArn, Feature, and FailureCode.
      * </p>
      * 
      * @return The filters to use to list a specified set of devices. Supported filter keys are DeviceName,
-     *         DeviceStatus, DeviceStatusDetailCode, RoomName, DeviceType, DeviceSerialNumber, UnassociatedOnly, and
-     *         ConnectionStatus (ONLINE and OFFLINE).
+     *         DeviceStatus, DeviceStatusDetailCode, RoomName, DeviceType, DeviceSerialNumber, UnassociatedOnly,
+     *         ConnectionStatus (ONLINE and OFFLINE), NetworkProfileName, NetworkProfileArn, Feature, and FailureCode.
      */
 
     public java.util.List<Filter> getFilters() {
@@ -180,14 +181,14 @@ public class SearchDevicesRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * The filters to use to list a specified set of devices. Supported filter keys are DeviceName, DeviceStatus,
-     * DeviceStatusDetailCode, RoomName, DeviceType, DeviceSerialNumber, UnassociatedOnly, and ConnectionStatus (ONLINE
-     * and OFFLINE).
+     * DeviceStatusDetailCode, RoomName, DeviceType, DeviceSerialNumber, UnassociatedOnly, ConnectionStatus (ONLINE and
+     * OFFLINE), NetworkProfileName, NetworkProfileArn, Feature, and FailureCode.
      * </p>
      * 
      * @param filters
      *        The filters to use to list a specified set of devices. Supported filter keys are DeviceName, DeviceStatus,
-     *        DeviceStatusDetailCode, RoomName, DeviceType, DeviceSerialNumber, UnassociatedOnly, and ConnectionStatus
-     *        (ONLINE and OFFLINE).
+     *        DeviceStatusDetailCode, RoomName, DeviceType, DeviceSerialNumber, UnassociatedOnly, ConnectionStatus
+     *        (ONLINE and OFFLINE), NetworkProfileName, NetworkProfileArn, Feature, and FailureCode.
      */
 
     public void setFilters(java.util.Collection<Filter> filters) {
@@ -202,8 +203,8 @@ public class SearchDevicesRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * The filters to use to list a specified set of devices. Supported filter keys are DeviceName, DeviceStatus,
-     * DeviceStatusDetailCode, RoomName, DeviceType, DeviceSerialNumber, UnassociatedOnly, and ConnectionStatus (ONLINE
-     * and OFFLINE).
+     * DeviceStatusDetailCode, RoomName, DeviceType, DeviceSerialNumber, UnassociatedOnly, ConnectionStatus (ONLINE and
+     * OFFLINE), NetworkProfileName, NetworkProfileArn, Feature, and FailureCode.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -213,8 +214,8 @@ public class SearchDevicesRequest extends com.amazonaws.AmazonWebServiceRequest 
      * 
      * @param filters
      *        The filters to use to list a specified set of devices. Supported filter keys are DeviceName, DeviceStatus,
-     *        DeviceStatusDetailCode, RoomName, DeviceType, DeviceSerialNumber, UnassociatedOnly, and ConnectionStatus
-     *        (ONLINE and OFFLINE).
+     *        DeviceStatusDetailCode, RoomName, DeviceType, DeviceSerialNumber, UnassociatedOnly, ConnectionStatus
+     *        (ONLINE and OFFLINE), NetworkProfileName, NetworkProfileArn, Feature, and FailureCode.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -231,14 +232,14 @@ public class SearchDevicesRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * The filters to use to list a specified set of devices. Supported filter keys are DeviceName, DeviceStatus,
-     * DeviceStatusDetailCode, RoomName, DeviceType, DeviceSerialNumber, UnassociatedOnly, and ConnectionStatus (ONLINE
-     * and OFFLINE).
+     * DeviceStatusDetailCode, RoomName, DeviceType, DeviceSerialNumber, UnassociatedOnly, ConnectionStatus (ONLINE and
+     * OFFLINE), NetworkProfileName, NetworkProfileArn, Feature, and FailureCode.
      * </p>
      * 
      * @param filters
      *        The filters to use to list a specified set of devices. Supported filter keys are DeviceName, DeviceStatus,
-     *        DeviceStatusDetailCode, RoomName, DeviceType, DeviceSerialNumber, UnassociatedOnly, and ConnectionStatus
-     *        (ONLINE and OFFLINE).
+     *        DeviceStatusDetailCode, RoomName, DeviceType, DeviceSerialNumber, UnassociatedOnly, ConnectionStatus
+     *        (ONLINE and OFFLINE), NetworkProfileName, NetworkProfileArn, Feature, and FailureCode.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -250,11 +251,13 @@ public class SearchDevicesRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * The sort order to use in listing the specified set of devices. Supported sort keys are DeviceName, DeviceStatus,
-     * RoomName, DeviceType, DeviceSerialNumber, and ConnectionStatus.
+     * RoomName, DeviceType, DeviceSerialNumber, ConnectionStatus, NetworkProfileName, NetworkProfileArn, Feature, and
+     * FailureCode.
      * </p>
      * 
      * @return The sort order to use in listing the specified set of devices. Supported sort keys are DeviceName,
-     *         DeviceStatus, RoomName, DeviceType, DeviceSerialNumber, and ConnectionStatus.
+     *         DeviceStatus, RoomName, DeviceType, DeviceSerialNumber, ConnectionStatus, NetworkProfileName,
+     *         NetworkProfileArn, Feature, and FailureCode.
      */
 
     public java.util.List<Sort> getSortCriteria() {
@@ -264,12 +267,14 @@ public class SearchDevicesRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * The sort order to use in listing the specified set of devices. Supported sort keys are DeviceName, DeviceStatus,
-     * RoomName, DeviceType, DeviceSerialNumber, and ConnectionStatus.
+     * RoomName, DeviceType, DeviceSerialNumber, ConnectionStatus, NetworkProfileName, NetworkProfileArn, Feature, and
+     * FailureCode.
      * </p>
      * 
      * @param sortCriteria
      *        The sort order to use in listing the specified set of devices. Supported sort keys are DeviceName,
-     *        DeviceStatus, RoomName, DeviceType, DeviceSerialNumber, and ConnectionStatus.
+     *        DeviceStatus, RoomName, DeviceType, DeviceSerialNumber, ConnectionStatus, NetworkProfileName,
+     *        NetworkProfileArn, Feature, and FailureCode.
      */
 
     public void setSortCriteria(java.util.Collection<Sort> sortCriteria) {
@@ -284,7 +289,8 @@ public class SearchDevicesRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * The sort order to use in listing the specified set of devices. Supported sort keys are DeviceName, DeviceStatus,
-     * RoomName, DeviceType, DeviceSerialNumber, and ConnectionStatus.
+     * RoomName, DeviceType, DeviceSerialNumber, ConnectionStatus, NetworkProfileName, NetworkProfileArn, Feature, and
+     * FailureCode.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -294,7 +300,8 @@ public class SearchDevicesRequest extends com.amazonaws.AmazonWebServiceRequest 
      * 
      * @param sortCriteria
      *        The sort order to use in listing the specified set of devices. Supported sort keys are DeviceName,
-     *        DeviceStatus, RoomName, DeviceType, DeviceSerialNumber, and ConnectionStatus.
+     *        DeviceStatus, RoomName, DeviceType, DeviceSerialNumber, ConnectionStatus, NetworkProfileName,
+     *        NetworkProfileArn, Feature, and FailureCode.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -311,12 +318,14 @@ public class SearchDevicesRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * The sort order to use in listing the specified set of devices. Supported sort keys are DeviceName, DeviceStatus,
-     * RoomName, DeviceType, DeviceSerialNumber, and ConnectionStatus.
+     * RoomName, DeviceType, DeviceSerialNumber, ConnectionStatus, NetworkProfileName, NetworkProfileArn, Feature, and
+     * FailureCode.
      * </p>
      * 
      * @param sortCriteria
      *        The sort order to use in listing the specified set of devices. Supported sort keys are DeviceName,
-     *        DeviceStatus, RoomName, DeviceType, DeviceSerialNumber, and ConnectionStatus.
+     *        DeviceStatus, RoomName, DeviceType, DeviceSerialNumber, ConnectionStatus, NetworkProfileName,
+     *        NetworkProfileArn, Feature, and FailureCode.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -326,7 +335,8 @@ public class SearchDevicesRequest extends com.amazonaws.AmazonWebServiceRequest 
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

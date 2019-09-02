@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -15,13 +15,19 @@ package com.amazonaws.services.guardduty.model;
 import javax.annotation.Generated;
 
 /**
- * Error response object.
+ * <p>
+ * Bad request exception object.
+ * </p>
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class BadRequestException extends com.amazonaws.services.guardduty.model.AmazonGuardDutyException {
     private static final long serialVersionUID = 1L;
 
-    /** The error type. */
+    /**
+     * <p>
+     * The error type.
+     * </p>
+     */
     private String type;
 
     /**
@@ -35,7 +41,9 @@ public class BadRequestException extends com.amazonaws.services.guardduty.model.
     }
 
     /**
+     * <p>
      * The error type.
+     * </p>
      * 
      * @param type
      *        The error type.
@@ -47,7 +55,9 @@ public class BadRequestException extends com.amazonaws.services.guardduty.model.
     }
 
     /**
+     * <p>
      * The error type.
+     * </p>
      * 
      * @return The error type.
      */
@@ -58,7 +68,9 @@ public class BadRequestException extends com.amazonaws.services.guardduty.model.
     }
 
     /**
+     * <p>
      * The error type.
+     * </p>
      * 
      * @param type
      *        The error type.

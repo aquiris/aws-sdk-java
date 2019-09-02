@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -19,10 +19,10 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * Properties describing a game build.
+ * Properties describing a custom game build.
  * </p>
  * <p>
- * Build-related operations include:
+ * <b>Related operations</b>
  * </p>
  * <ul>
  * <li>
@@ -73,8 +73,8 @@ public class Build implements Serializable, Cloneable, StructuredPojo {
     private String name;
     /**
      * <p>
-     * Version that is associated with this build. Version strings do not need to be unique. This value can be set using
-     * <a>CreateBuild</a> or <a>UpdateBuild</a>.
+     * Version that is associated with a build or script. Version strings do not need to be unique. This value can be
+     * set using <a>CreateBuild</a> or <a>UpdateBuild</a>.
      * </p>
      */
     private String version;
@@ -215,13 +215,13 @@ public class Build implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Version that is associated with this build. Version strings do not need to be unique. This value can be set using
-     * <a>CreateBuild</a> or <a>UpdateBuild</a>.
+     * Version that is associated with a build or script. Version strings do not need to be unique. This value can be
+     * set using <a>CreateBuild</a> or <a>UpdateBuild</a>.
      * </p>
      * 
      * @param version
-     *        Version that is associated with this build. Version strings do not need to be unique. This value can be
-     *        set using <a>CreateBuild</a> or <a>UpdateBuild</a>.
+     *        Version that is associated with a build or script. Version strings do not need to be unique. This value
+     *        can be set using <a>CreateBuild</a> or <a>UpdateBuild</a>.
      */
 
     public void setVersion(String version) {
@@ -230,12 +230,12 @@ public class Build implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Version that is associated with this build. Version strings do not need to be unique. This value can be set using
-     * <a>CreateBuild</a> or <a>UpdateBuild</a>.
+     * Version that is associated with a build or script. Version strings do not need to be unique. This value can be
+     * set using <a>CreateBuild</a> or <a>UpdateBuild</a>.
      * </p>
      * 
-     * @return Version that is associated with this build. Version strings do not need to be unique. This value can be
-     *         set using <a>CreateBuild</a> or <a>UpdateBuild</a>.
+     * @return Version that is associated with a build or script. Version strings do not need to be unique. This value
+     *         can be set using <a>CreateBuild</a> or <a>UpdateBuild</a>.
      */
 
     public String getVersion() {
@@ -244,13 +244,13 @@ public class Build implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Version that is associated with this build. Version strings do not need to be unique. This value can be set using
-     * <a>CreateBuild</a> or <a>UpdateBuild</a>.
+     * Version that is associated with a build or script. Version strings do not need to be unique. This value can be
+     * set using <a>CreateBuild</a> or <a>UpdateBuild</a>.
      * </p>
      * 
      * @param version
-     *        Version that is associated with this build. Version strings do not need to be unique. This value can be
-     *        set using <a>CreateBuild</a> or <a>UpdateBuild</a>.
+     *        Version that is associated with a build or script. Version strings do not need to be unique. This value
+     *        can be set using <a>CreateBuild</a> or <a>UpdateBuild</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -723,7 +723,8 @@ public class Build implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

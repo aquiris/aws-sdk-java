@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -38,7 +38,7 @@ public class DetachPolicyRequest extends com.amazonaws.AmazonWebServiceRequest i
     private String policyId;
     /**
      * <p>
-     * The unique identifier (ID) of the root, OU, or account from which you want to detach the policy. You can get the
+     * The unique identifier (ID) of the root, OU, or account that you want to detach the policy from. You can get the
      * ID from the <a>ListRoots</a>, <a>ListOrganizationalUnitsForParent</a>, or <a>ListAccounts</a> operations.
      * </p>
      * <p>
@@ -48,19 +48,19 @@ public class DetachPolicyRequest extends com.amazonaws.AmazonWebServiceRequest i
      * <ul>
      * <li>
      * <p>
-     * Root: a string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
+     * <b>Root</b> - A string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Account: a string that consists of exactly 12 digits.
+     * <b>Account</b> - A string that consists of exactly 12 digits.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or digits
-     * (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional lower-case
-     * letters or digits.
+     * <b>Organizational unit (OU)</b> - A string that begins with "ou-" followed by from 4 to 32 lower-case letters or
+     * digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional
+     * lower-case letters or digits.
      * </p>
      * </li>
      * </ul>
@@ -136,7 +136,7 @@ public class DetachPolicyRequest extends com.amazonaws.AmazonWebServiceRequest i
 
     /**
      * <p>
-     * The unique identifier (ID) of the root, OU, or account from which you want to detach the policy. You can get the
+     * The unique identifier (ID) of the root, OU, or account that you want to detach the policy from. You can get the
      * ID from the <a>ListRoots</a>, <a>ListOrganizationalUnitsForParent</a>, or <a>ListAccounts</a> operations.
      * </p>
      * <p>
@@ -146,25 +146,25 @@ public class DetachPolicyRequest extends com.amazonaws.AmazonWebServiceRequest i
      * <ul>
      * <li>
      * <p>
-     * Root: a string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
+     * <b>Root</b> - A string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Account: a string that consists of exactly 12 digits.
+     * <b>Account</b> - A string that consists of exactly 12 digits.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or digits
-     * (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional lower-case
-     * letters or digits.
+     * <b>Organizational unit (OU)</b> - A string that begins with "ou-" followed by from 4 to 32 lower-case letters or
+     * digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional
+     * lower-case letters or digits.
      * </p>
      * </li>
      * </ul>
      * 
      * @param targetId
-     *        The unique identifier (ID) of the root, OU, or account from which you want to detach the policy. You can
+     *        The unique identifier (ID) of the root, OU, or account that you want to detach the policy from. You can
      *        get the ID from the <a>ListRoots</a>, <a>ListOrganizationalUnitsForParent</a>, or <a>ListAccounts</a>
      *        operations.</p>
      *        <p>
@@ -174,19 +174,19 @@ public class DetachPolicyRequest extends com.amazonaws.AmazonWebServiceRequest i
      *        <ul>
      *        <li>
      *        <p>
-     *        Root: a string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
+     *        <b>Root</b> - A string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Account: a string that consists of exactly 12 digits.
+     *        <b>Account</b> - A string that consists of exactly 12 digits.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or
-     *        digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional
-     *        lower-case letters or digits.
+     *        <b>Organizational unit (OU)</b> - A string that begins with "ou-" followed by from 4 to 32 lower-case
+     *        letters or digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32
+     *        additional lower-case letters or digits.
      *        </p>
      *        </li>
      */
@@ -197,7 +197,7 @@ public class DetachPolicyRequest extends com.amazonaws.AmazonWebServiceRequest i
 
     /**
      * <p>
-     * The unique identifier (ID) of the root, OU, or account from which you want to detach the policy. You can get the
+     * The unique identifier (ID) of the root, OU, or account that you want to detach the policy from. You can get the
      * ID from the <a>ListRoots</a>, <a>ListOrganizationalUnitsForParent</a>, or <a>ListAccounts</a> operations.
      * </p>
      * <p>
@@ -207,24 +207,24 @@ public class DetachPolicyRequest extends com.amazonaws.AmazonWebServiceRequest i
      * <ul>
      * <li>
      * <p>
-     * Root: a string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
+     * <b>Root</b> - A string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Account: a string that consists of exactly 12 digits.
+     * <b>Account</b> - A string that consists of exactly 12 digits.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or digits
-     * (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional lower-case
-     * letters or digits.
+     * <b>Organizational unit (OU)</b> - A string that begins with "ou-" followed by from 4 to 32 lower-case letters or
+     * digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional
+     * lower-case letters or digits.
      * </p>
      * </li>
      * </ul>
      * 
-     * @return The unique identifier (ID) of the root, OU, or account from which you want to detach the policy. You can
+     * @return The unique identifier (ID) of the root, OU, or account that you want to detach the policy from. You can
      *         get the ID from the <a>ListRoots</a>, <a>ListOrganizationalUnitsForParent</a>, or <a>ListAccounts</a>
      *         operations.</p>
      *         <p>
@@ -234,19 +234,19 @@ public class DetachPolicyRequest extends com.amazonaws.AmazonWebServiceRequest i
      *         <ul>
      *         <li>
      *         <p>
-     *         Root: a string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
+     *         <b>Root</b> - A string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         Account: a string that consists of exactly 12 digits.
+     *         <b>Account</b> - A string that consists of exactly 12 digits.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or
-     *         digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional
-     *         lower-case letters or digits.
+     *         <b>Organizational unit (OU)</b> - A string that begins with "ou-" followed by from 4 to 32 lower-case
+     *         letters or digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32
+     *         additional lower-case letters or digits.
      *         </p>
      *         </li>
      */
@@ -257,7 +257,7 @@ public class DetachPolicyRequest extends com.amazonaws.AmazonWebServiceRequest i
 
     /**
      * <p>
-     * The unique identifier (ID) of the root, OU, or account from which you want to detach the policy. You can get the
+     * The unique identifier (ID) of the root, OU, or account that you want to detach the policy from. You can get the
      * ID from the <a>ListRoots</a>, <a>ListOrganizationalUnitsForParent</a>, or <a>ListAccounts</a> operations.
      * </p>
      * <p>
@@ -267,25 +267,25 @@ public class DetachPolicyRequest extends com.amazonaws.AmazonWebServiceRequest i
      * <ul>
      * <li>
      * <p>
-     * Root: a string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
+     * <b>Root</b> - A string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Account: a string that consists of exactly 12 digits.
+     * <b>Account</b> - A string that consists of exactly 12 digits.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or digits
-     * (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional lower-case
-     * letters or digits.
+     * <b>Organizational unit (OU)</b> - A string that begins with "ou-" followed by from 4 to 32 lower-case letters or
+     * digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional
+     * lower-case letters or digits.
      * </p>
      * </li>
      * </ul>
      * 
      * @param targetId
-     *        The unique identifier (ID) of the root, OU, or account from which you want to detach the policy. You can
+     *        The unique identifier (ID) of the root, OU, or account that you want to detach the policy from. You can
      *        get the ID from the <a>ListRoots</a>, <a>ListOrganizationalUnitsForParent</a>, or <a>ListAccounts</a>
      *        operations.</p>
      *        <p>
@@ -295,19 +295,19 @@ public class DetachPolicyRequest extends com.amazonaws.AmazonWebServiceRequest i
      *        <ul>
      *        <li>
      *        <p>
-     *        Root: a string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
+     *        <b>Root</b> - A string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Account: a string that consists of exactly 12 digits.
+     *        <b>Account</b> - A string that consists of exactly 12 digits.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or
-     *        digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional
-     *        lower-case letters or digits.
+     *        <b>Organizational unit (OU)</b> - A string that begins with "ou-" followed by from 4 to 32 lower-case
+     *        letters or digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32
+     *        additional lower-case letters or digits.
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -319,7 +319,8 @@ public class DetachPolicyRequest extends com.amazonaws.AmazonWebServiceRequest i
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -50,14 +50,19 @@ public class ListResourceRecordSetsRequest extends com.amazonaws.AmazonWebServic
      * | <code>SPF</code> | <code>SRV</code> | <code>TXT</code>
      * </p>
      * <p>
-     * Values for weighted, latency, geo, and failover resource record sets: <code>A</code> | <code>AAAA</code> |
-     * <code>CAA</code> | <code>CNAME</code> | <code>MX</code> | <code>NAPTR</code> | <code>PTR</code> |
+     * Values for weighted, latency, geolocation, and failover resource record sets: <code>A</code> | <code>AAAA</code>
+     * | <code>CAA</code> | <code>CNAME</code> | <code>MX</code> | <code>NAPTR</code> | <code>PTR</code> |
      * <code>SPF</code> | <code>SRV</code> | <code>TXT</code>
      * </p>
      * <p>
      * Values for alias resource record sets:
      * </p>
      * <ul>
+     * <li>
+     * <p>
+     * <b>API Gateway custom regional API or edge-optimized API</b>: A
+     * </p>
+     * </li>
      * <li>
      * <p>
      * <b>CloudFront distribution</b>: A or AAAA
@@ -70,12 +75,17 @@ public class ListResourceRecordSetsRequest extends com.amazonaws.AmazonWebServic
      * </li>
      * <li>
      * <p>
-     * <b>ELB load balancer</b>: A | AAAA
+     * <b>Elastic Load Balancing load balancer</b>: A | AAAA
      * </p>
      * </li>
      * <li>
      * <p>
      * <b>Amazon S3 bucket</b>: A
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>Amazon VPC interface VPC endpoint</b>: A
      * </p>
      * </li>
      * <li>
@@ -93,9 +103,9 @@ public class ListResourceRecordSetsRequest extends com.amazonaws.AmazonWebServic
     private String startRecordType;
     /**
      * <p>
-     * <i>Weighted resource record sets only:</i> If results were truncated for a given DNS name and type, specify the
-     * value of <code>NextRecordIdentifier</code> from the previous response to get the next resource record set that
-     * has the current DNS name and type.
+     * <i>Resource record sets that have a routing policy other than simple:</i> If results were truncated for a given
+     * DNS name and type, specify the value of <code>NextRecordIdentifier</code> from the previous response to get the
+     * next resource record set that has the current DNS name and type.
      * </p>
      */
     private String startRecordIdentifier;
@@ -218,14 +228,19 @@ public class ListResourceRecordSetsRequest extends com.amazonaws.AmazonWebServic
      * | <code>SPF</code> | <code>SRV</code> | <code>TXT</code>
      * </p>
      * <p>
-     * Values for weighted, latency, geo, and failover resource record sets: <code>A</code> | <code>AAAA</code> |
-     * <code>CAA</code> | <code>CNAME</code> | <code>MX</code> | <code>NAPTR</code> | <code>PTR</code> |
+     * Values for weighted, latency, geolocation, and failover resource record sets: <code>A</code> | <code>AAAA</code>
+     * | <code>CAA</code> | <code>CNAME</code> | <code>MX</code> | <code>NAPTR</code> | <code>PTR</code> |
      * <code>SPF</code> | <code>SRV</code> | <code>TXT</code>
      * </p>
      * <p>
      * Values for alias resource record sets:
      * </p>
      * <ul>
+     * <li>
+     * <p>
+     * <b>API Gateway custom regional API or edge-optimized API</b>: A
+     * </p>
+     * </li>
      * <li>
      * <p>
      * <b>CloudFront distribution</b>: A or AAAA
@@ -238,12 +253,17 @@ public class ListResourceRecordSetsRequest extends com.amazonaws.AmazonWebServic
      * </li>
      * <li>
      * <p>
-     * <b>ELB load balancer</b>: A | AAAA
+     * <b>Elastic Load Balancing load balancer</b>: A | AAAA
      * </p>
      * </li>
      * <li>
      * <p>
      * <b>Amazon S3 bucket</b>: A
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>Amazon VPC interface VPC endpoint</b>: A
      * </p>
      * </li>
      * <li>
@@ -266,14 +286,19 @@ public class ListResourceRecordSetsRequest extends com.amazonaws.AmazonWebServic
      *        <code>SOA</code> | <code>SPF</code> | <code>SRV</code> | <code>TXT</code>
      *        </p>
      *        <p>
-     *        Values for weighted, latency, geo, and failover resource record sets: <code>A</code> | <code>AAAA</code> |
-     *        <code>CAA</code> | <code>CNAME</code> | <code>MX</code> | <code>NAPTR</code> | <code>PTR</code> |
-     *        <code>SPF</code> | <code>SRV</code> | <code>TXT</code>
+     *        Values for weighted, latency, geolocation, and failover resource record sets: <code>A</code> |
+     *        <code>AAAA</code> | <code>CAA</code> | <code>CNAME</code> | <code>MX</code> | <code>NAPTR</code> |
+     *        <code>PTR</code> | <code>SPF</code> | <code>SRV</code> | <code>TXT</code>
      *        </p>
      *        <p>
      *        Values for alias resource record sets:
      *        </p>
      *        <ul>
+     *        <li>
+     *        <p>
+     *        <b>API Gateway custom regional API or edge-optimized API</b>: A
+     *        </p>
+     *        </li>
      *        <li>
      *        <p>
      *        <b>CloudFront distribution</b>: A or AAAA
@@ -286,12 +311,17 @@ public class ListResourceRecordSetsRequest extends com.amazonaws.AmazonWebServic
      *        </li>
      *        <li>
      *        <p>
-     *        <b>ELB load balancer</b>: A | AAAA
+     *        <b>Elastic Load Balancing load balancer</b>: A | AAAA
      *        </p>
      *        </li>
      *        <li>
      *        <p>
      *        <b>Amazon S3 bucket</b>: A
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <b>Amazon VPC interface VPC endpoint</b>: A
      *        </p>
      *        </li>
      *        <li>
@@ -321,14 +351,19 @@ public class ListResourceRecordSetsRequest extends com.amazonaws.AmazonWebServic
      * | <code>SPF</code> | <code>SRV</code> | <code>TXT</code>
      * </p>
      * <p>
-     * Values for weighted, latency, geo, and failover resource record sets: <code>A</code> | <code>AAAA</code> |
-     * <code>CAA</code> | <code>CNAME</code> | <code>MX</code> | <code>NAPTR</code> | <code>PTR</code> |
+     * Values for weighted, latency, geolocation, and failover resource record sets: <code>A</code> | <code>AAAA</code>
+     * | <code>CAA</code> | <code>CNAME</code> | <code>MX</code> | <code>NAPTR</code> | <code>PTR</code> |
      * <code>SPF</code> | <code>SRV</code> | <code>TXT</code>
      * </p>
      * <p>
      * Values for alias resource record sets:
      * </p>
      * <ul>
+     * <li>
+     * <p>
+     * <b>API Gateway custom regional API or edge-optimized API</b>: A
+     * </p>
+     * </li>
      * <li>
      * <p>
      * <b>CloudFront distribution</b>: A or AAAA
@@ -341,12 +376,17 @@ public class ListResourceRecordSetsRequest extends com.amazonaws.AmazonWebServic
      * </li>
      * <li>
      * <p>
-     * <b>ELB load balancer</b>: A | AAAA
+     * <b>Elastic Load Balancing load balancer</b>: A | AAAA
      * </p>
      * </li>
      * <li>
      * <p>
      * <b>Amazon S3 bucket</b>: A
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>Amazon VPC interface VPC endpoint</b>: A
      * </p>
      * </li>
      * <li>
@@ -368,14 +408,19 @@ public class ListResourceRecordSetsRequest extends com.amazonaws.AmazonWebServic
      *         <code>SOA</code> | <code>SPF</code> | <code>SRV</code> | <code>TXT</code>
      *         </p>
      *         <p>
-     *         Values for weighted, latency, geo, and failover resource record sets: <code>A</code> | <code>AAAA</code>
-     *         | <code>CAA</code> | <code>CNAME</code> | <code>MX</code> | <code>NAPTR</code> | <code>PTR</code> |
-     *         <code>SPF</code> | <code>SRV</code> | <code>TXT</code>
+     *         Values for weighted, latency, geolocation, and failover resource record sets: <code>A</code> |
+     *         <code>AAAA</code> | <code>CAA</code> | <code>CNAME</code> | <code>MX</code> | <code>NAPTR</code> |
+     *         <code>PTR</code> | <code>SPF</code> | <code>SRV</code> | <code>TXT</code>
      *         </p>
      *         <p>
      *         Values for alias resource record sets:
      *         </p>
      *         <ul>
+     *         <li>
+     *         <p>
+     *         <b>API Gateway custom regional API or edge-optimized API</b>: A
+     *         </p>
+     *         </li>
      *         <li>
      *         <p>
      *         <b>CloudFront distribution</b>: A or AAAA
@@ -388,12 +433,17 @@ public class ListResourceRecordSetsRequest extends com.amazonaws.AmazonWebServic
      *         </li>
      *         <li>
      *         <p>
-     *         <b>ELB load balancer</b>: A | AAAA
+     *         <b>Elastic Load Balancing load balancer</b>: A | AAAA
      *         </p>
      *         </li>
      *         <li>
      *         <p>
      *         <b>Amazon S3 bucket</b>: A
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <b>Amazon VPC interface VPC endpoint</b>: A
      *         </p>
      *         </li>
      *         <li>
@@ -423,14 +473,19 @@ public class ListResourceRecordSetsRequest extends com.amazonaws.AmazonWebServic
      * | <code>SPF</code> | <code>SRV</code> | <code>TXT</code>
      * </p>
      * <p>
-     * Values for weighted, latency, geo, and failover resource record sets: <code>A</code> | <code>AAAA</code> |
-     * <code>CAA</code> | <code>CNAME</code> | <code>MX</code> | <code>NAPTR</code> | <code>PTR</code> |
+     * Values for weighted, latency, geolocation, and failover resource record sets: <code>A</code> | <code>AAAA</code>
+     * | <code>CAA</code> | <code>CNAME</code> | <code>MX</code> | <code>NAPTR</code> | <code>PTR</code> |
      * <code>SPF</code> | <code>SRV</code> | <code>TXT</code>
      * </p>
      * <p>
      * Values for alias resource record sets:
      * </p>
      * <ul>
+     * <li>
+     * <p>
+     * <b>API Gateway custom regional API or edge-optimized API</b>: A
+     * </p>
+     * </li>
      * <li>
      * <p>
      * <b>CloudFront distribution</b>: A or AAAA
@@ -443,12 +498,17 @@ public class ListResourceRecordSetsRequest extends com.amazonaws.AmazonWebServic
      * </li>
      * <li>
      * <p>
-     * <b>ELB load balancer</b>: A | AAAA
+     * <b>Elastic Load Balancing load balancer</b>: A | AAAA
      * </p>
      * </li>
      * <li>
      * <p>
      * <b>Amazon S3 bucket</b>: A
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>Amazon VPC interface VPC endpoint</b>: A
      * </p>
      * </li>
      * <li>
@@ -471,14 +531,19 @@ public class ListResourceRecordSetsRequest extends com.amazonaws.AmazonWebServic
      *        <code>SOA</code> | <code>SPF</code> | <code>SRV</code> | <code>TXT</code>
      *        </p>
      *        <p>
-     *        Values for weighted, latency, geo, and failover resource record sets: <code>A</code> | <code>AAAA</code> |
-     *        <code>CAA</code> | <code>CNAME</code> | <code>MX</code> | <code>NAPTR</code> | <code>PTR</code> |
-     *        <code>SPF</code> | <code>SRV</code> | <code>TXT</code>
+     *        Values for weighted, latency, geolocation, and failover resource record sets: <code>A</code> |
+     *        <code>AAAA</code> | <code>CAA</code> | <code>CNAME</code> | <code>MX</code> | <code>NAPTR</code> |
+     *        <code>PTR</code> | <code>SPF</code> | <code>SRV</code> | <code>TXT</code>
      *        </p>
      *        <p>
      *        Values for alias resource record sets:
      *        </p>
      *        <ul>
+     *        <li>
+     *        <p>
+     *        <b>API Gateway custom regional API or edge-optimized API</b>: A
+     *        </p>
+     *        </li>
      *        <li>
      *        <p>
      *        <b>CloudFront distribution</b>: A or AAAA
@@ -491,12 +556,17 @@ public class ListResourceRecordSetsRequest extends com.amazonaws.AmazonWebServic
      *        </li>
      *        <li>
      *        <p>
-     *        <b>ELB load balancer</b>: A | AAAA
+     *        <b>Elastic Load Balancing load balancer</b>: A | AAAA
      *        </p>
      *        </li>
      *        <li>
      *        <p>
      *        <b>Amazon S3 bucket</b>: A
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <b>Amazon VPC interface VPC endpoint</b>: A
      *        </p>
      *        </li>
      *        <li>
@@ -528,14 +598,19 @@ public class ListResourceRecordSetsRequest extends com.amazonaws.AmazonWebServic
      * | <code>SPF</code> | <code>SRV</code> | <code>TXT</code>
      * </p>
      * <p>
-     * Values for weighted, latency, geo, and failover resource record sets: <code>A</code> | <code>AAAA</code> |
-     * <code>CAA</code> | <code>CNAME</code> | <code>MX</code> | <code>NAPTR</code> | <code>PTR</code> |
+     * Values for weighted, latency, geolocation, and failover resource record sets: <code>A</code> | <code>AAAA</code>
+     * | <code>CAA</code> | <code>CNAME</code> | <code>MX</code> | <code>NAPTR</code> | <code>PTR</code> |
      * <code>SPF</code> | <code>SRV</code> | <code>TXT</code>
      * </p>
      * <p>
      * Values for alias resource record sets:
      * </p>
      * <ul>
+     * <li>
+     * <p>
+     * <b>API Gateway custom regional API or edge-optimized API</b>: A
+     * </p>
+     * </li>
      * <li>
      * <p>
      * <b>CloudFront distribution</b>: A or AAAA
@@ -548,12 +623,17 @@ public class ListResourceRecordSetsRequest extends com.amazonaws.AmazonWebServic
      * </li>
      * <li>
      * <p>
-     * <b>ELB load balancer</b>: A | AAAA
+     * <b>Elastic Load Balancing load balancer</b>: A | AAAA
      * </p>
      * </li>
      * <li>
      * <p>
      * <b>Amazon S3 bucket</b>: A
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>Amazon VPC interface VPC endpoint</b>: A
      * </p>
      * </li>
      * <li>
@@ -576,14 +656,19 @@ public class ListResourceRecordSetsRequest extends com.amazonaws.AmazonWebServic
      *        <code>SOA</code> | <code>SPF</code> | <code>SRV</code> | <code>TXT</code>
      *        </p>
      *        <p>
-     *        Values for weighted, latency, geo, and failover resource record sets: <code>A</code> | <code>AAAA</code> |
-     *        <code>CAA</code> | <code>CNAME</code> | <code>MX</code> | <code>NAPTR</code> | <code>PTR</code> |
-     *        <code>SPF</code> | <code>SRV</code> | <code>TXT</code>
+     *        Values for weighted, latency, geolocation, and failover resource record sets: <code>A</code> |
+     *        <code>AAAA</code> | <code>CAA</code> | <code>CNAME</code> | <code>MX</code> | <code>NAPTR</code> |
+     *        <code>PTR</code> | <code>SPF</code> | <code>SRV</code> | <code>TXT</code>
      *        </p>
      *        <p>
      *        Values for alias resource record sets:
      *        </p>
      *        <ul>
+     *        <li>
+     *        <p>
+     *        <b>API Gateway custom regional API or edge-optimized API</b>: A
+     *        </p>
+     *        </li>
      *        <li>
      *        <p>
      *        <b>CloudFront distribution</b>: A or AAAA
@@ -596,12 +681,17 @@ public class ListResourceRecordSetsRequest extends com.amazonaws.AmazonWebServic
      *        </li>
      *        <li>
      *        <p>
-     *        <b>ELB load balancer</b>: A | AAAA
+     *        <b>Elastic Load Balancing load balancer</b>: A | AAAA
      *        </p>
      *        </li>
      *        <li>
      *        <p>
      *        <b>Amazon S3 bucket</b>: A
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <b>Amazon VPC interface VPC endpoint</b>: A
      *        </p>
      *        </li>
      *        <li>
@@ -631,14 +721,19 @@ public class ListResourceRecordSetsRequest extends com.amazonaws.AmazonWebServic
      * | <code>SPF</code> | <code>SRV</code> | <code>TXT</code>
      * </p>
      * <p>
-     * Values for weighted, latency, geo, and failover resource record sets: <code>A</code> | <code>AAAA</code> |
-     * <code>CAA</code> | <code>CNAME</code> | <code>MX</code> | <code>NAPTR</code> | <code>PTR</code> |
+     * Values for weighted, latency, geolocation, and failover resource record sets: <code>A</code> | <code>AAAA</code>
+     * | <code>CAA</code> | <code>CNAME</code> | <code>MX</code> | <code>NAPTR</code> | <code>PTR</code> |
      * <code>SPF</code> | <code>SRV</code> | <code>TXT</code>
      * </p>
      * <p>
      * Values for alias resource record sets:
      * </p>
      * <ul>
+     * <li>
+     * <p>
+     * <b>API Gateway custom regional API or edge-optimized API</b>: A
+     * </p>
+     * </li>
      * <li>
      * <p>
      * <b>CloudFront distribution</b>: A or AAAA
@@ -651,12 +746,17 @@ public class ListResourceRecordSetsRequest extends com.amazonaws.AmazonWebServic
      * </li>
      * <li>
      * <p>
-     * <b>ELB load balancer</b>: A | AAAA
+     * <b>Elastic Load Balancing load balancer</b>: A | AAAA
      * </p>
      * </li>
      * <li>
      * <p>
      * <b>Amazon S3 bucket</b>: A
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <b>Amazon VPC interface VPC endpoint</b>: A
      * </p>
      * </li>
      * <li>
@@ -679,14 +779,19 @@ public class ListResourceRecordSetsRequest extends com.amazonaws.AmazonWebServic
      *        <code>SOA</code> | <code>SPF</code> | <code>SRV</code> | <code>TXT</code>
      *        </p>
      *        <p>
-     *        Values for weighted, latency, geo, and failover resource record sets: <code>A</code> | <code>AAAA</code> |
-     *        <code>CAA</code> | <code>CNAME</code> | <code>MX</code> | <code>NAPTR</code> | <code>PTR</code> |
-     *        <code>SPF</code> | <code>SRV</code> | <code>TXT</code>
+     *        Values for weighted, latency, geolocation, and failover resource record sets: <code>A</code> |
+     *        <code>AAAA</code> | <code>CAA</code> | <code>CNAME</code> | <code>MX</code> | <code>NAPTR</code> |
+     *        <code>PTR</code> | <code>SPF</code> | <code>SRV</code> | <code>TXT</code>
      *        </p>
      *        <p>
      *        Values for alias resource record sets:
      *        </p>
      *        <ul>
+     *        <li>
+     *        <p>
+     *        <b>API Gateway custom regional API or edge-optimized API</b>: A
+     *        </p>
+     *        </li>
      *        <li>
      *        <p>
      *        <b>CloudFront distribution</b>: A or AAAA
@@ -699,12 +804,17 @@ public class ListResourceRecordSetsRequest extends com.amazonaws.AmazonWebServic
      *        </li>
      *        <li>
      *        <p>
-     *        <b>ELB load balancer</b>: A | AAAA
+     *        <b>Elastic Load Balancing load balancer</b>: A | AAAA
      *        </p>
      *        </li>
      *        <li>
      *        <p>
      *        <b>Amazon S3 bucket</b>: A
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <b>Amazon VPC interface VPC endpoint</b>: A
      *        </p>
      *        </li>
      *        <li>
@@ -728,15 +838,15 @@ public class ListResourceRecordSetsRequest extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * <i>Weighted resource record sets only:</i> If results were truncated for a given DNS name and type, specify the
-     * value of <code>NextRecordIdentifier</code> from the previous response to get the next resource record set that
-     * has the current DNS name and type.
+     * <i>Resource record sets that have a routing policy other than simple:</i> If results were truncated for a given
+     * DNS name and type, specify the value of <code>NextRecordIdentifier</code> from the previous response to get the
+     * next resource record set that has the current DNS name and type.
      * </p>
      * 
      * @param startRecordIdentifier
-     *        <i>Weighted resource record sets only:</i> If results were truncated for a given DNS name and type,
-     *        specify the value of <code>NextRecordIdentifier</code> from the previous response to get the next resource
-     *        record set that has the current DNS name and type.
+     *        <i>Resource record sets that have a routing policy other than simple:</i> If results were truncated for a
+     *        given DNS name and type, specify the value of <code>NextRecordIdentifier</code> from the previous response
+     *        to get the next resource record set that has the current DNS name and type.
      */
 
     public void setStartRecordIdentifier(String startRecordIdentifier) {
@@ -745,14 +855,14 @@ public class ListResourceRecordSetsRequest extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * <i>Weighted resource record sets only:</i> If results were truncated for a given DNS name and type, specify the
-     * value of <code>NextRecordIdentifier</code> from the previous response to get the next resource record set that
-     * has the current DNS name and type.
+     * <i>Resource record sets that have a routing policy other than simple:</i> If results were truncated for a given
+     * DNS name and type, specify the value of <code>NextRecordIdentifier</code> from the previous response to get the
+     * next resource record set that has the current DNS name and type.
      * </p>
      * 
-     * @return <i>Weighted resource record sets only:</i> If results were truncated for a given DNS name and type,
-     *         specify the value of <code>NextRecordIdentifier</code> from the previous response to get the next
-     *         resource record set that has the current DNS name and type.
+     * @return <i>Resource record sets that have a routing policy other than simple:</i> If results were truncated for a
+     *         given DNS name and type, specify the value of <code>NextRecordIdentifier</code> from the previous
+     *         response to get the next resource record set that has the current DNS name and type.
      */
 
     public String getStartRecordIdentifier() {
@@ -761,15 +871,15 @@ public class ListResourceRecordSetsRequest extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * <i>Weighted resource record sets only:</i> If results were truncated for a given DNS name and type, specify the
-     * value of <code>NextRecordIdentifier</code> from the previous response to get the next resource record set that
-     * has the current DNS name and type.
+     * <i>Resource record sets that have a routing policy other than simple:</i> If results were truncated for a given
+     * DNS name and type, specify the value of <code>NextRecordIdentifier</code> from the previous response to get the
+     * next resource record set that has the current DNS name and type.
      * </p>
      * 
      * @param startRecordIdentifier
-     *        <i>Weighted resource record sets only:</i> If results were truncated for a given DNS name and type,
-     *        specify the value of <code>NextRecordIdentifier</code> from the previous response to get the next resource
-     *        record set that has the current DNS name and type.
+     *        <i>Resource record sets that have a routing policy other than simple:</i> If results were truncated for a
+     *        given DNS name and type, specify the value of <code>NextRecordIdentifier</code> from the previous response
+     *        to get the next resource record set that has the current DNS name and type.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -843,7 +953,8 @@ public class ListResourceRecordSetsRequest extends com.amazonaws.AmazonWebServic
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

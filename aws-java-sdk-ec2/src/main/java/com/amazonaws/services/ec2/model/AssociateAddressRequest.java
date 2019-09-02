@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -20,9 +20,7 @@ import com.amazonaws.Request;
 import com.amazonaws.services.ec2.model.transform.AssociateAddressRequestMarshaller;
 
 /**
- * <p>
- * Contains the parameters for AssociateAddress.
- * </p>
+ * 
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AssociateAddressRequest extends AmazonWebServiceRequest implements Serializable, Cloneable, DryRunSupportedRequest<AssociateAddressRequest> {
@@ -43,7 +41,7 @@ public class AssociateAddressRequest extends AmazonWebServiceRequest implements 
     private String instanceId;
     /**
      * <p>
-     * The Elastic IP address. This is required for EC2-Classic.
+     * The Elastic IP address to associate with the instance. This is required for EC2-Classic.
      * </p>
      */
     private String publicIp;
@@ -61,6 +59,9 @@ public class AssociateAddressRequest extends AmazonWebServiceRequest implements 
      * <p>
      * [EC2-VPC] The ID of the network interface. If the instance has more than one network interface, you must specify
      * a network interface ID.
+     * </p>
+     * <p>
+     * For EC2-VPC, you can specify either the instance ID or the network interface ID, but not both.
      * </p>
      */
     private String networkInterfaceId;
@@ -88,7 +89,7 @@ public class AssociateAddressRequest extends AmazonWebServiceRequest implements 
      *        ID or the network interface ID, but not both. The operation fails if you specify an instance ID unless
      *        exactly one network interface is attached.
      * @param publicIp
-     *        The Elastic IP address. This is required for EC2-Classic.
+     *        The Elastic IP address to associate with the instance. This is required for EC2-Classic.
      */
     public AssociateAddressRequest(String instanceId, String publicIp) {
         setInstanceId(instanceId);
@@ -189,11 +190,11 @@ public class AssociateAddressRequest extends AmazonWebServiceRequest implements 
 
     /**
      * <p>
-     * The Elastic IP address. This is required for EC2-Classic.
+     * The Elastic IP address to associate with the instance. This is required for EC2-Classic.
      * </p>
      * 
      * @param publicIp
-     *        The Elastic IP address. This is required for EC2-Classic.
+     *        The Elastic IP address to associate with the instance. This is required for EC2-Classic.
      */
 
     public void setPublicIp(String publicIp) {
@@ -202,10 +203,10 @@ public class AssociateAddressRequest extends AmazonWebServiceRequest implements 
 
     /**
      * <p>
-     * The Elastic IP address. This is required for EC2-Classic.
+     * The Elastic IP address to associate with the instance. This is required for EC2-Classic.
      * </p>
      * 
-     * @return The Elastic IP address. This is required for EC2-Classic.
+     * @return The Elastic IP address to associate with the instance. This is required for EC2-Classic.
      */
 
     public String getPublicIp() {
@@ -214,11 +215,11 @@ public class AssociateAddressRequest extends AmazonWebServiceRequest implements 
 
     /**
      * <p>
-     * The Elastic IP address. This is required for EC2-Classic.
+     * The Elastic IP address to associate with the instance. This is required for EC2-Classic.
      * </p>
      * 
      * @param publicIp
-     *        The Elastic IP address. This is required for EC2-Classic.
+     *        The Elastic IP address to associate with the instance. This is required for EC2-Classic.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -316,10 +317,15 @@ public class AssociateAddressRequest extends AmazonWebServiceRequest implements 
      * [EC2-VPC] The ID of the network interface. If the instance has more than one network interface, you must specify
      * a network interface ID.
      * </p>
+     * <p>
+     * For EC2-VPC, you can specify either the instance ID or the network interface ID, but not both.
+     * </p>
      * 
      * @param networkInterfaceId
      *        [EC2-VPC] The ID of the network interface. If the instance has more than one network interface, you must
-     *        specify a network interface ID.
+     *        specify a network interface ID.</p>
+     *        <p>
+     *        For EC2-VPC, you can specify either the instance ID or the network interface ID, but not both.
      */
 
     public void setNetworkInterfaceId(String networkInterfaceId) {
@@ -331,9 +337,14 @@ public class AssociateAddressRequest extends AmazonWebServiceRequest implements 
      * [EC2-VPC] The ID of the network interface. If the instance has more than one network interface, you must specify
      * a network interface ID.
      * </p>
+     * <p>
+     * For EC2-VPC, you can specify either the instance ID or the network interface ID, but not both.
+     * </p>
      * 
      * @return [EC2-VPC] The ID of the network interface. If the instance has more than one network interface, you must
-     *         specify a network interface ID.
+     *         specify a network interface ID.</p>
+     *         <p>
+     *         For EC2-VPC, you can specify either the instance ID or the network interface ID, but not both.
      */
 
     public String getNetworkInterfaceId() {
@@ -345,10 +356,15 @@ public class AssociateAddressRequest extends AmazonWebServiceRequest implements 
      * [EC2-VPC] The ID of the network interface. If the instance has more than one network interface, you must specify
      * a network interface ID.
      * </p>
+     * <p>
+     * For EC2-VPC, you can specify either the instance ID or the network interface ID, but not both.
+     * </p>
      * 
      * @param networkInterfaceId
      *        [EC2-VPC] The ID of the network interface. If the instance has more than one network interface, you must
-     *        specify a network interface ID.
+     *        specify a network interface ID.</p>
+     *        <p>
+     *        For EC2-VPC, you can specify either the instance ID or the network interface ID, but not both.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -416,7 +432,8 @@ public class AssociateAddressRequest extends AmazonWebServiceRequest implements 
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

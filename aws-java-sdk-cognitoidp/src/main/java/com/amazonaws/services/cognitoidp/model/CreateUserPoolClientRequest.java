@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -60,7 +60,15 @@ public class CreateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
     private java.util.List<String> readAttributes;
     /**
      * <p>
-     * The write attributes.
+     * The user pool attributes that the app client can write to.
+     * </p>
+     * <p>
+     * If your app client allows users to sign in through an identity provider, this array must include all attributes
+     * that are mapped to identity provider attributes. Amazon Cognito updates mapped attributes when users sign in to
+     * your application through an identity provider. If your app client lacks write access to a mapped attribute,
+     * Amazon Cognito throws an error when it attempts to update the attribute. For more information, see <a href=
+     * "https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-specifying-attribute-mapping.html"
+     * >Specifying Identity Provider Attribute Mappings for Your User Pool</a>.
      * </p>
      */
     private java.util.List<String> writeAttributes;
@@ -72,13 +80,43 @@ public class CreateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
     private java.util.List<String> explicitAuthFlows;
     /**
      * <p>
-     * A list of provider names for the identity providers that are supported on this client.
+     * A list of provider names for the identity providers that are supported on this client. The following are
+     * supported: <code>COGNITO</code>, <code>Facebook</code>, <code>Google</code> and <code>LoginWithAmazon</code>.
      * </p>
      */
     private java.util.List<String> supportedIdentityProviders;
     /**
      * <p>
-     * A list of allowed callback URLs for the identity providers.
+     * A list of allowed redirect (callback) URLs for the identity providers.
+     * </p>
+     * <p>
+     * A redirect URI must:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Be an absolute URI.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Be registered with the authorization server.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Not include a fragment component.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * See <a href="https://tools.ietf.org/html/rfc6749#section-3.1.2">OAuth 2.0 - Redirection Endpoint</a>.
+     * </p>
+     * <p>
+     * Amazon Cognito requires HTTPS over HTTP except for http://localhost for testing purposes only.
+     * </p>
+     * <p>
+     * App callback URLs such as myapp://example are also supported.
      * </p>
      */
     private java.util.List<String> callbackURLs;
@@ -91,6 +129,35 @@ public class CreateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
     /**
      * <p>
      * The default redirect URI. Must be in the <code>CallbackURLs</code> list.
+     * </p>
+     * <p>
+     * A redirect URI must:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Be an absolute URI.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Be registered with the authorization server.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Not include a fragment component.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * See <a href="https://tools.ietf.org/html/rfc6749#section-3.1.2">OAuth 2.0 - Redirection Endpoint</a>.
+     * </p>
+     * <p>
+     * Amazon Cognito requires HTTPS over HTTP except for http://localhost for testing purposes only.
+     * </p>
+     * <p>
+     * App callback URLs such as myapp://example are also supported.
      * </p>
      */
     private String defaultRedirectURI;
@@ -370,10 +437,26 @@ public class CreateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * The write attributes.
+     * The user pool attributes that the app client can write to.
+     * </p>
+     * <p>
+     * If your app client allows users to sign in through an identity provider, this array must include all attributes
+     * that are mapped to identity provider attributes. Amazon Cognito updates mapped attributes when users sign in to
+     * your application through an identity provider. If your app client lacks write access to a mapped attribute,
+     * Amazon Cognito throws an error when it attempts to update the attribute. For more information, see <a href=
+     * "https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-specifying-attribute-mapping.html"
+     * >Specifying Identity Provider Attribute Mappings for Your User Pool</a>.
      * </p>
      * 
-     * @return The write attributes.
+     * @return The user pool attributes that the app client can write to.</p>
+     *         <p>
+     *         If your app client allows users to sign in through an identity provider, this array must include all
+     *         attributes that are mapped to identity provider attributes. Amazon Cognito updates mapped attributes when
+     *         users sign in to your application through an identity provider. If your app client lacks write access to
+     *         a mapped attribute, Amazon Cognito throws an error when it attempts to update the attribute. For more
+     *         information, see <a href=
+     *         "https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-specifying-attribute-mapping.html"
+     *         >Specifying Identity Provider Attribute Mappings for Your User Pool</a>.
      */
 
     public java.util.List<String> getWriteAttributes() {
@@ -382,11 +465,27 @@ public class CreateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * The write attributes.
+     * The user pool attributes that the app client can write to.
+     * </p>
+     * <p>
+     * If your app client allows users to sign in through an identity provider, this array must include all attributes
+     * that are mapped to identity provider attributes. Amazon Cognito updates mapped attributes when users sign in to
+     * your application through an identity provider. If your app client lacks write access to a mapped attribute,
+     * Amazon Cognito throws an error when it attempts to update the attribute. For more information, see <a href=
+     * "https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-specifying-attribute-mapping.html"
+     * >Specifying Identity Provider Attribute Mappings for Your User Pool</a>.
      * </p>
      * 
      * @param writeAttributes
-     *        The write attributes.
+     *        The user pool attributes that the app client can write to.</p>
+     *        <p>
+     *        If your app client allows users to sign in through an identity provider, this array must include all
+     *        attributes that are mapped to identity provider attributes. Amazon Cognito updates mapped attributes when
+     *        users sign in to your application through an identity provider. If your app client lacks write access to a
+     *        mapped attribute, Amazon Cognito throws an error when it attempts to update the attribute. For more
+     *        information, see <a href=
+     *        "https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-specifying-attribute-mapping.html"
+     *        >Specifying Identity Provider Attribute Mappings for Your User Pool</a>.
      */
 
     public void setWriteAttributes(java.util.Collection<String> writeAttributes) {
@@ -400,7 +499,15 @@ public class CreateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * The write attributes.
+     * The user pool attributes that the app client can write to.
+     * </p>
+     * <p>
+     * If your app client allows users to sign in through an identity provider, this array must include all attributes
+     * that are mapped to identity provider attributes. Amazon Cognito updates mapped attributes when users sign in to
+     * your application through an identity provider. If your app client lacks write access to a mapped attribute,
+     * Amazon Cognito throws an error when it attempts to update the attribute. For more information, see <a href=
+     * "https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-specifying-attribute-mapping.html"
+     * >Specifying Identity Provider Attribute Mappings for Your User Pool</a>.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -409,7 +516,15 @@ public class CreateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
      * </p>
      * 
      * @param writeAttributes
-     *        The write attributes.
+     *        The user pool attributes that the app client can write to.</p>
+     *        <p>
+     *        If your app client allows users to sign in through an identity provider, this array must include all
+     *        attributes that are mapped to identity provider attributes. Amazon Cognito updates mapped attributes when
+     *        users sign in to your application through an identity provider. If your app client lacks write access to a
+     *        mapped attribute, Amazon Cognito throws an error when it attempts to update the attribute. For more
+     *        information, see <a href=
+     *        "https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-specifying-attribute-mapping.html"
+     *        >Specifying Identity Provider Attribute Mappings for Your User Pool</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -425,11 +540,27 @@ public class CreateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * The write attributes.
+     * The user pool attributes that the app client can write to.
+     * </p>
+     * <p>
+     * If your app client allows users to sign in through an identity provider, this array must include all attributes
+     * that are mapped to identity provider attributes. Amazon Cognito updates mapped attributes when users sign in to
+     * your application through an identity provider. If your app client lacks write access to a mapped attribute,
+     * Amazon Cognito throws an error when it attempts to update the attribute. For more information, see <a href=
+     * "https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-specifying-attribute-mapping.html"
+     * >Specifying Identity Provider Attribute Mappings for Your User Pool</a>.
      * </p>
      * 
      * @param writeAttributes
-     *        The write attributes.
+     *        The user pool attributes that the app client can write to.</p>
+     *        <p>
+     *        If your app client allows users to sign in through an identity provider, this array must include all
+     *        attributes that are mapped to identity provider attributes. Amazon Cognito updates mapped attributes when
+     *        users sign in to your application through an identity provider. If your app client lacks write access to a
+     *        mapped attribute, Amazon Cognito throws an error when it attempts to update the attribute. For more
+     *        information, see <a href=
+     *        "https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-specifying-attribute-mapping.html"
+     *        >Specifying Identity Provider Attribute Mappings for Your User Pool</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -538,10 +669,13 @@ public class CreateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * A list of provider names for the identity providers that are supported on this client.
+     * A list of provider names for the identity providers that are supported on this client. The following are
+     * supported: <code>COGNITO</code>, <code>Facebook</code>, <code>Google</code> and <code>LoginWithAmazon</code>.
      * </p>
      * 
-     * @return A list of provider names for the identity providers that are supported on this client.
+     * @return A list of provider names for the identity providers that are supported on this client. The following are
+     *         supported: <code>COGNITO</code>, <code>Facebook</code>, <code>Google</code> and
+     *         <code>LoginWithAmazon</code>.
      */
 
     public java.util.List<String> getSupportedIdentityProviders() {
@@ -550,11 +684,14 @@ public class CreateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * A list of provider names for the identity providers that are supported on this client.
+     * A list of provider names for the identity providers that are supported on this client. The following are
+     * supported: <code>COGNITO</code>, <code>Facebook</code>, <code>Google</code> and <code>LoginWithAmazon</code>.
      * </p>
      * 
      * @param supportedIdentityProviders
-     *        A list of provider names for the identity providers that are supported on this client.
+     *        A list of provider names for the identity providers that are supported on this client. The following are
+     *        supported: <code>COGNITO</code>, <code>Facebook</code>, <code>Google</code> and
+     *        <code>LoginWithAmazon</code>.
      */
 
     public void setSupportedIdentityProviders(java.util.Collection<String> supportedIdentityProviders) {
@@ -568,7 +705,8 @@ public class CreateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * A list of provider names for the identity providers that are supported on this client.
+     * A list of provider names for the identity providers that are supported on this client. The following are
+     * supported: <code>COGNITO</code>, <code>Facebook</code>, <code>Google</code> and <code>LoginWithAmazon</code>.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -577,7 +715,9 @@ public class CreateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
      * </p>
      * 
      * @param supportedIdentityProviders
-     *        A list of provider names for the identity providers that are supported on this client.
+     *        A list of provider names for the identity providers that are supported on this client. The following are
+     *        supported: <code>COGNITO</code>, <code>Facebook</code>, <code>Google</code> and
+     *        <code>LoginWithAmazon</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -593,11 +733,14 @@ public class CreateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * A list of provider names for the identity providers that are supported on this client.
+     * A list of provider names for the identity providers that are supported on this client. The following are
+     * supported: <code>COGNITO</code>, <code>Facebook</code>, <code>Google</code> and <code>LoginWithAmazon</code>.
      * </p>
      * 
      * @param supportedIdentityProviders
-     *        A list of provider names for the identity providers that are supported on this client.
+     *        A list of provider names for the identity providers that are supported on this client. The following are
+     *        supported: <code>COGNITO</code>, <code>Facebook</code>, <code>Google</code> and
+     *        <code>LoginWithAmazon</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -608,10 +751,67 @@ public class CreateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * A list of allowed callback URLs for the identity providers.
+     * A list of allowed redirect (callback) URLs for the identity providers.
+     * </p>
+     * <p>
+     * A redirect URI must:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Be an absolute URI.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Be registered with the authorization server.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Not include a fragment component.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * See <a href="https://tools.ietf.org/html/rfc6749#section-3.1.2">OAuth 2.0 - Redirection Endpoint</a>.
+     * </p>
+     * <p>
+     * Amazon Cognito requires HTTPS over HTTP except for http://localhost for testing purposes only.
+     * </p>
+     * <p>
+     * App callback URLs such as myapp://example are also supported.
      * </p>
      * 
-     * @return A list of allowed callback URLs for the identity providers.
+     * @return A list of allowed redirect (callback) URLs for the identity providers.</p>
+     *         <p>
+     *         A redirect URI must:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         Be an absolute URI.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Be registered with the authorization server.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Not include a fragment component.
+     *         </p>
+     *         </li>
+     *         </ul>
+     *         <p>
+     *         See <a href="https://tools.ietf.org/html/rfc6749#section-3.1.2">OAuth 2.0 - Redirection Endpoint</a>.
+     *         </p>
+     *         <p>
+     *         Amazon Cognito requires HTTPS over HTTP except for http://localhost for testing purposes only.
+     *         </p>
+     *         <p>
+     *         App callback URLs such as myapp://example are also supported.
      */
 
     public java.util.List<String> getCallbackURLs() {
@@ -620,11 +820,68 @@ public class CreateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * A list of allowed callback URLs for the identity providers.
+     * A list of allowed redirect (callback) URLs for the identity providers.
+     * </p>
+     * <p>
+     * A redirect URI must:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Be an absolute URI.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Be registered with the authorization server.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Not include a fragment component.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * See <a href="https://tools.ietf.org/html/rfc6749#section-3.1.2">OAuth 2.0 - Redirection Endpoint</a>.
+     * </p>
+     * <p>
+     * Amazon Cognito requires HTTPS over HTTP except for http://localhost for testing purposes only.
+     * </p>
+     * <p>
+     * App callback URLs such as myapp://example are also supported.
      * </p>
      * 
      * @param callbackURLs
-     *        A list of allowed callback URLs for the identity providers.
+     *        A list of allowed redirect (callback) URLs for the identity providers.</p>
+     *        <p>
+     *        A redirect URI must:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        Be an absolute URI.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Be registered with the authorization server.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Not include a fragment component.
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        See <a href="https://tools.ietf.org/html/rfc6749#section-3.1.2">OAuth 2.0 - Redirection Endpoint</a>.
+     *        </p>
+     *        <p>
+     *        Amazon Cognito requires HTTPS over HTTP except for http://localhost for testing purposes only.
+     *        </p>
+     *        <p>
+     *        App callback URLs such as myapp://example are also supported.
      */
 
     public void setCallbackURLs(java.util.Collection<String> callbackURLs) {
@@ -638,7 +895,36 @@ public class CreateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * A list of allowed callback URLs for the identity providers.
+     * A list of allowed redirect (callback) URLs for the identity providers.
+     * </p>
+     * <p>
+     * A redirect URI must:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Be an absolute URI.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Be registered with the authorization server.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Not include a fragment component.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * See <a href="https://tools.ietf.org/html/rfc6749#section-3.1.2">OAuth 2.0 - Redirection Endpoint</a>.
+     * </p>
+     * <p>
+     * Amazon Cognito requires HTTPS over HTTP except for http://localhost for testing purposes only.
+     * </p>
+     * <p>
+     * App callback URLs such as myapp://example are also supported.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -647,7 +933,35 @@ public class CreateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
      * </p>
      * 
      * @param callbackURLs
-     *        A list of allowed callback URLs for the identity providers.
+     *        A list of allowed redirect (callback) URLs for the identity providers.</p>
+     *        <p>
+     *        A redirect URI must:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        Be an absolute URI.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Be registered with the authorization server.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Not include a fragment component.
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        See <a href="https://tools.ietf.org/html/rfc6749#section-3.1.2">OAuth 2.0 - Redirection Endpoint</a>.
+     *        </p>
+     *        <p>
+     *        Amazon Cognito requires HTTPS over HTTP except for http://localhost for testing purposes only.
+     *        </p>
+     *        <p>
+     *        App callback URLs such as myapp://example are also supported.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -663,11 +977,68 @@ public class CreateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * A list of allowed callback URLs for the identity providers.
+     * A list of allowed redirect (callback) URLs for the identity providers.
+     * </p>
+     * <p>
+     * A redirect URI must:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Be an absolute URI.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Be registered with the authorization server.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Not include a fragment component.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * See <a href="https://tools.ietf.org/html/rfc6749#section-3.1.2">OAuth 2.0 - Redirection Endpoint</a>.
+     * </p>
+     * <p>
+     * Amazon Cognito requires HTTPS over HTTP except for http://localhost for testing purposes only.
+     * </p>
+     * <p>
+     * App callback URLs such as myapp://example are also supported.
      * </p>
      * 
      * @param callbackURLs
-     *        A list of allowed callback URLs for the identity providers.
+     *        A list of allowed redirect (callback) URLs for the identity providers.</p>
+     *        <p>
+     *        A redirect URI must:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        Be an absolute URI.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Be registered with the authorization server.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Not include a fragment component.
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        See <a href="https://tools.ietf.org/html/rfc6749#section-3.1.2">OAuth 2.0 - Redirection Endpoint</a>.
+     *        </p>
+     *        <p>
+     *        Amazon Cognito requires HTTPS over HTTP except for http://localhost for testing purposes only.
+     *        </p>
+     *        <p>
+     *        App callback URLs such as myapp://example are also supported.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -750,9 +1121,66 @@ public class CreateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
      * <p>
      * The default redirect URI. Must be in the <code>CallbackURLs</code> list.
      * </p>
+     * <p>
+     * A redirect URI must:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Be an absolute URI.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Be registered with the authorization server.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Not include a fragment component.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * See <a href="https://tools.ietf.org/html/rfc6749#section-3.1.2">OAuth 2.0 - Redirection Endpoint</a>.
+     * </p>
+     * <p>
+     * Amazon Cognito requires HTTPS over HTTP except for http://localhost for testing purposes only.
+     * </p>
+     * <p>
+     * App callback URLs such as myapp://example are also supported.
+     * </p>
      * 
      * @param defaultRedirectURI
-     *        The default redirect URI. Must be in the <code>CallbackURLs</code> list.
+     *        The default redirect URI. Must be in the <code>CallbackURLs</code> list.</p>
+     *        <p>
+     *        A redirect URI must:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        Be an absolute URI.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Be registered with the authorization server.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Not include a fragment component.
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        See <a href="https://tools.ietf.org/html/rfc6749#section-3.1.2">OAuth 2.0 - Redirection Endpoint</a>.
+     *        </p>
+     *        <p>
+     *        Amazon Cognito requires HTTPS over HTTP except for http://localhost for testing purposes only.
+     *        </p>
+     *        <p>
+     *        App callback URLs such as myapp://example are also supported.
      */
 
     public void setDefaultRedirectURI(String defaultRedirectURI) {
@@ -763,8 +1191,65 @@ public class CreateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
      * <p>
      * The default redirect URI. Must be in the <code>CallbackURLs</code> list.
      * </p>
+     * <p>
+     * A redirect URI must:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Be an absolute URI.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Be registered with the authorization server.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Not include a fragment component.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * See <a href="https://tools.ietf.org/html/rfc6749#section-3.1.2">OAuth 2.0 - Redirection Endpoint</a>.
+     * </p>
+     * <p>
+     * Amazon Cognito requires HTTPS over HTTP except for http://localhost for testing purposes only.
+     * </p>
+     * <p>
+     * App callback URLs such as myapp://example are also supported.
+     * </p>
      * 
-     * @return The default redirect URI. Must be in the <code>CallbackURLs</code> list.
+     * @return The default redirect URI. Must be in the <code>CallbackURLs</code> list.</p>
+     *         <p>
+     *         A redirect URI must:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         Be an absolute URI.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Be registered with the authorization server.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Not include a fragment component.
+     *         </p>
+     *         </li>
+     *         </ul>
+     *         <p>
+     *         See <a href="https://tools.ietf.org/html/rfc6749#section-3.1.2">OAuth 2.0 - Redirection Endpoint</a>.
+     *         </p>
+     *         <p>
+     *         Amazon Cognito requires HTTPS over HTTP except for http://localhost for testing purposes only.
+     *         </p>
+     *         <p>
+     *         App callback URLs such as myapp://example are also supported.
      */
 
     public String getDefaultRedirectURI() {
@@ -775,9 +1260,66 @@ public class CreateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
      * <p>
      * The default redirect URI. Must be in the <code>CallbackURLs</code> list.
      * </p>
+     * <p>
+     * A redirect URI must:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Be an absolute URI.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Be registered with the authorization server.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Not include a fragment component.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * See <a href="https://tools.ietf.org/html/rfc6749#section-3.1.2">OAuth 2.0 - Redirection Endpoint</a>.
+     * </p>
+     * <p>
+     * Amazon Cognito requires HTTPS over HTTP except for http://localhost for testing purposes only.
+     * </p>
+     * <p>
+     * App callback URLs such as myapp://example are also supported.
+     * </p>
      * 
      * @param defaultRedirectURI
-     *        The default redirect URI. Must be in the <code>CallbackURLs</code> list.
+     *        The default redirect URI. Must be in the <code>CallbackURLs</code> list.</p>
+     *        <p>
+     *        A redirect URI must:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        Be an absolute URI.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Be registered with the authorization server.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Not include a fragment component.
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        See <a href="https://tools.ietf.org/html/rfc6749#section-3.1.2">OAuth 2.0 - Redirection Endpoint</a>.
+     *        </p>
+     *        <p>
+     *        Amazon Cognito requires HTTPS over HTTP except for http://localhost for testing purposes only.
+     *        </p>
+     *        <p>
+     *        App callback URLs such as myapp://example are also supported.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1108,7 +1650,8 @@ public class CreateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

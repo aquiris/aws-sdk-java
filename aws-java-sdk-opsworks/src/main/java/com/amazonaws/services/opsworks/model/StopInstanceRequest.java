@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -31,7 +31,15 @@ public class StopInstanceRequest extends com.amazonaws.AmazonWebServiceRequest i
      * </p>
      */
     private String instanceId;
-
+    /**
+     * <p>
+     * Specifies whether to force an instance to stop. If the instance's root device type is <code>ebs</code>, or
+     * EBS-backed, adding the <code>Force</code> parameter to the <code>StopInstances</code> API call disassociates the
+     * AWS OpsWorks Stacks instance from EC2, and forces deletion of <i>only</i> the OpsWorks Stacks instance. You must
+     * also delete the formerly-associated instance in EC2 after troubleshooting and replacing the AWS OpsWorks Stacks
+     * instance with a new one.
+     * </p>
+     */
     private Boolean force;
 
     /**
@@ -75,7 +83,20 @@ public class StopInstanceRequest extends com.amazonaws.AmazonWebServiceRequest i
     }
 
     /**
+     * <p>
+     * Specifies whether to force an instance to stop. If the instance's root device type is <code>ebs</code>, or
+     * EBS-backed, adding the <code>Force</code> parameter to the <code>StopInstances</code> API call disassociates the
+     * AWS OpsWorks Stacks instance from EC2, and forces deletion of <i>only</i> the OpsWorks Stacks instance. You must
+     * also delete the formerly-associated instance in EC2 after troubleshooting and replacing the AWS OpsWorks Stacks
+     * instance with a new one.
+     * </p>
+     * 
      * @param force
+     *        Specifies whether to force an instance to stop. If the instance's root device type is <code>ebs</code>, or
+     *        EBS-backed, adding the <code>Force</code> parameter to the <code>StopInstances</code> API call
+     *        disassociates the AWS OpsWorks Stacks instance from EC2, and forces deletion of <i>only</i> the OpsWorks
+     *        Stacks instance. You must also delete the formerly-associated instance in EC2 after troubleshooting and
+     *        replacing the AWS OpsWorks Stacks instance with a new one.
      */
 
     public void setForce(Boolean force) {
@@ -83,7 +104,19 @@ public class StopInstanceRequest extends com.amazonaws.AmazonWebServiceRequest i
     }
 
     /**
-     * @return
+     * <p>
+     * Specifies whether to force an instance to stop. If the instance's root device type is <code>ebs</code>, or
+     * EBS-backed, adding the <code>Force</code> parameter to the <code>StopInstances</code> API call disassociates the
+     * AWS OpsWorks Stacks instance from EC2, and forces deletion of <i>only</i> the OpsWorks Stacks instance. You must
+     * also delete the formerly-associated instance in EC2 after troubleshooting and replacing the AWS OpsWorks Stacks
+     * instance with a new one.
+     * </p>
+     * 
+     * @return Specifies whether to force an instance to stop. If the instance's root device type is <code>ebs</code>,
+     *         or EBS-backed, adding the <code>Force</code> parameter to the <code>StopInstances</code> API call
+     *         disassociates the AWS OpsWorks Stacks instance from EC2, and forces deletion of <i>only</i> the OpsWorks
+     *         Stacks instance. You must also delete the formerly-associated instance in EC2 after troubleshooting and
+     *         replacing the AWS OpsWorks Stacks instance with a new one.
      */
 
     public Boolean getForce() {
@@ -91,7 +124,20 @@ public class StopInstanceRequest extends com.amazonaws.AmazonWebServiceRequest i
     }
 
     /**
+     * <p>
+     * Specifies whether to force an instance to stop. If the instance's root device type is <code>ebs</code>, or
+     * EBS-backed, adding the <code>Force</code> parameter to the <code>StopInstances</code> API call disassociates the
+     * AWS OpsWorks Stacks instance from EC2, and forces deletion of <i>only</i> the OpsWorks Stacks instance. You must
+     * also delete the formerly-associated instance in EC2 after troubleshooting and replacing the AWS OpsWorks Stacks
+     * instance with a new one.
+     * </p>
+     * 
      * @param force
+     *        Specifies whether to force an instance to stop. If the instance's root device type is <code>ebs</code>, or
+     *        EBS-backed, adding the <code>Force</code> parameter to the <code>StopInstances</code> API call
+     *        disassociates the AWS OpsWorks Stacks instance from EC2, and forces deletion of <i>only</i> the OpsWorks
+     *        Stacks instance. You must also delete the formerly-associated instance in EC2 after troubleshooting and
+     *        replacing the AWS OpsWorks Stacks instance with a new one.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -101,7 +147,19 @@ public class StopInstanceRequest extends com.amazonaws.AmazonWebServiceRequest i
     }
 
     /**
-     * @return
+     * <p>
+     * Specifies whether to force an instance to stop. If the instance's root device type is <code>ebs</code>, or
+     * EBS-backed, adding the <code>Force</code> parameter to the <code>StopInstances</code> API call disassociates the
+     * AWS OpsWorks Stacks instance from EC2, and forces deletion of <i>only</i> the OpsWorks Stacks instance. You must
+     * also delete the formerly-associated instance in EC2 after troubleshooting and replacing the AWS OpsWorks Stacks
+     * instance with a new one.
+     * </p>
+     * 
+     * @return Specifies whether to force an instance to stop. If the instance's root device type is <code>ebs</code>,
+     *         or EBS-backed, adding the <code>Force</code> parameter to the <code>StopInstances</code> API call
+     *         disassociates the AWS OpsWorks Stacks instance from EC2, and forces deletion of <i>only</i> the OpsWorks
+     *         Stacks instance. You must also delete the formerly-associated instance in EC2 after troubleshooting and
+     *         replacing the AWS OpsWorks Stacks instance with a new one.
      */
 
     public Boolean isForce() {
@@ -109,7 +167,8 @@ public class StopInstanceRequest extends com.amazonaws.AmazonWebServiceRequest i
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

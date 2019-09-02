@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -19,8 +19,9 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * Provides information about a single type of moderated content found in an image or video. Each type of moderated
- * content has a label within a hierarchical taxonomy. For more information, see <a>moderation</a>.
+ * Provides information about a single type of unsafe content found in an image or video. Each type of moderated content
+ * has a label within a hierarchical taxonomy. For more information, see Detecting Unsafe Content in the Amazon
+ * Rekognition Developer Guide.
  * </p>
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
@@ -38,13 +39,13 @@ public class ModerationLabel implements Serializable, Cloneable, StructuredPojo 
     private Float confidence;
     /**
      * <p>
-     * The label name for the type of content detected in the image.
+     * The label name for the type of unsafe content detected in the image.
      * </p>
      */
     private String name;
     /**
      * <p>
-     * The name for the parent label. Labels at the top-level of the hierarchy have the parent label <code>""</code>.
+     * The name for the parent label. Labels at the top level of the hierarchy have the parent label <code>""</code>.
      * </p>
      */
     private String parentName;
@@ -115,11 +116,11 @@ public class ModerationLabel implements Serializable, Cloneable, StructuredPojo 
 
     /**
      * <p>
-     * The label name for the type of content detected in the image.
+     * The label name for the type of unsafe content detected in the image.
      * </p>
      * 
      * @param name
-     *        The label name for the type of content detected in the image.
+     *        The label name for the type of unsafe content detected in the image.
      */
 
     public void setName(String name) {
@@ -128,10 +129,10 @@ public class ModerationLabel implements Serializable, Cloneable, StructuredPojo 
 
     /**
      * <p>
-     * The label name for the type of content detected in the image.
+     * The label name for the type of unsafe content detected in the image.
      * </p>
      * 
-     * @return The label name for the type of content detected in the image.
+     * @return The label name for the type of unsafe content detected in the image.
      */
 
     public String getName() {
@@ -140,11 +141,11 @@ public class ModerationLabel implements Serializable, Cloneable, StructuredPojo 
 
     /**
      * <p>
-     * The label name for the type of content detected in the image.
+     * The label name for the type of unsafe content detected in the image.
      * </p>
      * 
      * @param name
-     *        The label name for the type of content detected in the image.
+     *        The label name for the type of unsafe content detected in the image.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -155,11 +156,11 @@ public class ModerationLabel implements Serializable, Cloneable, StructuredPojo 
 
     /**
      * <p>
-     * The name for the parent label. Labels at the top-level of the hierarchy have the parent label <code>""</code>.
+     * The name for the parent label. Labels at the top level of the hierarchy have the parent label <code>""</code>.
      * </p>
      * 
      * @param parentName
-     *        The name for the parent label. Labels at the top-level of the hierarchy have the parent label
+     *        The name for the parent label. Labels at the top level of the hierarchy have the parent label
      *        <code>""</code>.
      */
 
@@ -169,10 +170,10 @@ public class ModerationLabel implements Serializable, Cloneable, StructuredPojo 
 
     /**
      * <p>
-     * The name for the parent label. Labels at the top-level of the hierarchy have the parent label <code>""</code>.
+     * The name for the parent label. Labels at the top level of the hierarchy have the parent label <code>""</code>.
      * </p>
      * 
-     * @return The name for the parent label. Labels at the top-level of the hierarchy have the parent label
+     * @return The name for the parent label. Labels at the top level of the hierarchy have the parent label
      *         <code>""</code>.
      */
 
@@ -182,11 +183,11 @@ public class ModerationLabel implements Serializable, Cloneable, StructuredPojo 
 
     /**
      * <p>
-     * The name for the parent label. Labels at the top-level of the hierarchy have the parent label <code>""</code>.
+     * The name for the parent label. Labels at the top level of the hierarchy have the parent label <code>""</code>.
      * </p>
      * 
      * @param parentName
-     *        The name for the parent label. Labels at the top-level of the hierarchy have the parent label
+     *        The name for the parent label. Labels at the top level of the hierarchy have the parent label
      *        <code>""</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -197,7 +198,8 @@ public class ModerationLabel implements Serializable, Cloneable, StructuredPojo 
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

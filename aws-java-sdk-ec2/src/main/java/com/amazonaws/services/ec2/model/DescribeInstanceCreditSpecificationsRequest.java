@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -28,7 +28,7 @@ public class DescribeInstanceCreditSpecificationsRequest extends AmazonWebServic
 
     /**
      * <p>
-     * One or more filters.
+     * The filters.
      * </p>
      * <ul>
      * <li>
@@ -41,7 +41,7 @@ public class DescribeInstanceCreditSpecificationsRequest extends AmazonWebServic
     private com.amazonaws.internal.SdkInternalList<Filter> filters;
     /**
      * <p>
-     * One or more instance IDs.
+     * The instance IDs.
      * </p>
      * <p>
      * Default: Describes all your instances.
@@ -68,7 +68,7 @@ public class DescribeInstanceCreditSpecificationsRequest extends AmazonWebServic
 
     /**
      * <p>
-     * One or more filters.
+     * The filters.
      * </p>
      * <ul>
      * <li>
@@ -78,7 +78,7 @@ public class DescribeInstanceCreditSpecificationsRequest extends AmazonWebServic
      * </li>
      * </ul>
      * 
-     * @return One or more filters.</p>
+     * @return The filters.</p>
      *         <ul>
      *         <li>
      *         <p>
@@ -96,7 +96,7 @@ public class DescribeInstanceCreditSpecificationsRequest extends AmazonWebServic
 
     /**
      * <p>
-     * One or more filters.
+     * The filters.
      * </p>
      * <ul>
      * <li>
@@ -107,7 +107,7 @@ public class DescribeInstanceCreditSpecificationsRequest extends AmazonWebServic
      * </ul>
      * 
      * @param filters
-     *        One or more filters.</p>
+     *        The filters.</p>
      *        <ul>
      *        <li>
      *        <p>
@@ -127,7 +127,7 @@ public class DescribeInstanceCreditSpecificationsRequest extends AmazonWebServic
 
     /**
      * <p>
-     * One or more filters.
+     * The filters.
      * </p>
      * <ul>
      * <li>
@@ -143,7 +143,7 @@ public class DescribeInstanceCreditSpecificationsRequest extends AmazonWebServic
      * </p>
      * 
      * @param filters
-     *        One or more filters.</p>
+     *        The filters.</p>
      *        <ul>
      *        <li>
      *        <p>
@@ -165,7 +165,7 @@ public class DescribeInstanceCreditSpecificationsRequest extends AmazonWebServic
 
     /**
      * <p>
-     * One or more filters.
+     * The filters.
      * </p>
      * <ul>
      * <li>
@@ -176,7 +176,7 @@ public class DescribeInstanceCreditSpecificationsRequest extends AmazonWebServic
      * </ul>
      * 
      * @param filters
-     *        One or more filters.</p>
+     *        The filters.</p>
      *        <ul>
      *        <li>
      *        <p>
@@ -193,7 +193,7 @@ public class DescribeInstanceCreditSpecificationsRequest extends AmazonWebServic
 
     /**
      * <p>
-     * One or more instance IDs.
+     * The instance IDs.
      * </p>
      * <p>
      * Default: Describes all your instances.
@@ -202,7 +202,7 @@ public class DescribeInstanceCreditSpecificationsRequest extends AmazonWebServic
      * Constraints: Maximum 1000 explicitly specified instance IDs.
      * </p>
      * 
-     * @return One or more instance IDs.</p>
+     * @return The instance IDs.</p>
      *         <p>
      *         Default: Describes all your instances.
      *         </p>
@@ -219,7 +219,7 @@ public class DescribeInstanceCreditSpecificationsRequest extends AmazonWebServic
 
     /**
      * <p>
-     * One or more instance IDs.
+     * The instance IDs.
      * </p>
      * <p>
      * Default: Describes all your instances.
@@ -229,7 +229,7 @@ public class DescribeInstanceCreditSpecificationsRequest extends AmazonWebServic
      * </p>
      * 
      * @param instanceIds
-     *        One or more instance IDs.</p>
+     *        The instance IDs.</p>
      *        <p>
      *        Default: Describes all your instances.
      *        </p>
@@ -248,7 +248,7 @@ public class DescribeInstanceCreditSpecificationsRequest extends AmazonWebServic
 
     /**
      * <p>
-     * One or more instance IDs.
+     * The instance IDs.
      * </p>
      * <p>
      * Default: Describes all your instances.
@@ -263,7 +263,7 @@ public class DescribeInstanceCreditSpecificationsRequest extends AmazonWebServic
      * </p>
      * 
      * @param instanceIds
-     *        One or more instance IDs.</p>
+     *        The instance IDs.</p>
      *        <p>
      *        Default: Describes all your instances.
      *        </p>
@@ -284,7 +284,7 @@ public class DescribeInstanceCreditSpecificationsRequest extends AmazonWebServic
 
     /**
      * <p>
-     * One or more instance IDs.
+     * The instance IDs.
      * </p>
      * <p>
      * Default: Describes all your instances.
@@ -294,7 +294,7 @@ public class DescribeInstanceCreditSpecificationsRequest extends AmazonWebServic
      * </p>
      * 
      * @param instanceIds
-     *        One or more instance IDs.</p>
+     *        The instance IDs.</p>
      *        <p>
      *        Default: Describes all your instances.
      *        </p>
@@ -412,7 +412,8 @@ public class DescribeInstanceCreditSpecificationsRequest extends AmazonWebServic
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

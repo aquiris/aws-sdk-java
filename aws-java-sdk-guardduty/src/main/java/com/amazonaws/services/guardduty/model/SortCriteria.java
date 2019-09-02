@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -18,7 +18,9 @@ import com.amazonaws.protocol.StructuredPojo;
 import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
- * Represents the criteria used for sorting findings.
+ * <p>
+ * Contains information about the criteria for sorting.
+ * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/SortCriteria" target="_top">AWS API
  *      Documentation</a>
@@ -26,13 +28,23 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class SortCriteria implements Serializable, Cloneable, StructuredPojo {
 
-    /** Represents the finding attribute (for example, accountId) by which to sort findings. */
+    /**
+     * <p>
+     * Represents the finding attribute (for example, accountId) by which to sort findings.
+     * </p>
+     */
     private String attributeName;
-    /** Order by which the sorted findings are to be displayed. */
+    /**
+     * <p>
+     * Order by which the sorted findings are to be displayed.
+     * </p>
+     */
     private String orderBy;
 
     /**
+     * <p>
      * Represents the finding attribute (for example, accountId) by which to sort findings.
+     * </p>
      * 
      * @param attributeName
      *        Represents the finding attribute (for example, accountId) by which to sort findings.
@@ -43,7 +55,9 @@ public class SortCriteria implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
      * Represents the finding attribute (for example, accountId) by which to sort findings.
+     * </p>
      * 
      * @return Represents the finding attribute (for example, accountId) by which to sort findings.
      */
@@ -53,7 +67,9 @@ public class SortCriteria implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
      * Represents the finding attribute (for example, accountId) by which to sort findings.
+     * </p>
      * 
      * @param attributeName
      *        Represents the finding attribute (for example, accountId) by which to sort findings.
@@ -66,7 +82,9 @@ public class SortCriteria implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
      * Order by which the sorted findings are to be displayed.
+     * </p>
      * 
      * @param orderBy
      *        Order by which the sorted findings are to be displayed.
@@ -78,7 +96,9 @@ public class SortCriteria implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
      * Order by which the sorted findings are to be displayed.
+     * </p>
      * 
      * @return Order by which the sorted findings are to be displayed.
      * @see OrderBy
@@ -89,7 +109,9 @@ public class SortCriteria implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
      * Order by which the sorted findings are to be displayed.
+     * </p>
      * 
      * @param orderBy
      *        Order by which the sorted findings are to be displayed.
@@ -103,7 +125,9 @@ public class SortCriteria implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
      * Order by which the sorted findings are to be displayed.
+     * </p>
      * 
      * @param orderBy
      *        Order by which the sorted findings are to be displayed.
@@ -117,7 +141,8 @@ public class SortCriteria implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

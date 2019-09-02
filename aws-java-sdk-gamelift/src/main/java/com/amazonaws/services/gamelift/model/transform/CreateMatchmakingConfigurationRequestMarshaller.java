@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -52,6 +52,8 @@ public class CreateMatchmakingConfigurationRequestMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("GameProperties").build();
     private static final MarshallingInfo<String> GAMESESSIONDATA_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("GameSessionData").build();
+    private static final MarshallingInfo<String> BACKFILLMODE_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("BackfillMode").build();
 
     private static final CreateMatchmakingConfigurationRequestMarshaller instance = new CreateMatchmakingConfigurationRequestMarshaller();
 
@@ -81,6 +83,7 @@ public class CreateMatchmakingConfigurationRequestMarshaller {
             protocolMarshaller.marshall(createMatchmakingConfigurationRequest.getCustomEventData(), CUSTOMEVENTDATA_BINDING);
             protocolMarshaller.marshall(createMatchmakingConfigurationRequest.getGameProperties(), GAMEPROPERTIES_BINDING);
             protocolMarshaller.marshall(createMatchmakingConfigurationRequest.getGameSessionData(), GAMESESSIONDATA_BINDING);
+            protocolMarshaller.marshall(createMatchmakingConfigurationRequest.getBackfillMode(), BACKFILLMODE_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

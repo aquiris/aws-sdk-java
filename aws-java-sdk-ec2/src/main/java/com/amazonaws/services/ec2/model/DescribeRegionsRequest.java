@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -20,26 +20,30 @@ import com.amazonaws.Request;
 import com.amazonaws.services.ec2.model.transform.DescribeRegionsRequestMarshaller;
 
 /**
- * <p>
- * Contains the parameters for DescribeRegions.
- * </p>
+ * 
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DescribeRegionsRequest extends AmazonWebServiceRequest implements Serializable, Cloneable, DryRunSupportedRequest<DescribeRegionsRequest> {
 
     /**
      * <p>
-     * One or more filters.
+     * The filters.
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <code>endpoint</code> - The endpoint of the region (for example, <code>ec2.us-east-1.amazonaws.com</code>).
+     * <code>endpoint</code> - The endpoint of the Region (for example, <code>ec2.us-east-1.amazonaws.com</code>).
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>region-name</code> - The name of the region (for example, <code>us-east-1</code>).
+     * <code>opt-in-status</code> - The opt-in status of the Region (<code>opt-in-not-required</code> |
+     * <code>opted-in</code> | <code>not-opted-in</code>).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>region-name</code> - The name of the Region (for example, <code>us-east-1</code>).
      * </p>
      * </li>
      * </ul>
@@ -47,39 +51,57 @@ public class DescribeRegionsRequest extends AmazonWebServiceRequest implements S
     private com.amazonaws.internal.SdkInternalList<Filter> filters;
     /**
      * <p>
-     * The names of one or more regions.
+     * The names of the Regions. You can specify any Regions, whether they are enabled and disabled for your account.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<String> regionNames;
+    /**
+     * <p>
+     * Indicates whether to display all Regions, including Regions that are disabled for your account.
+     * </p>
+     */
+    private Boolean allRegions;
 
     /**
      * <p>
-     * One or more filters.
+     * The filters.
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <code>endpoint</code> - The endpoint of the region (for example, <code>ec2.us-east-1.amazonaws.com</code>).
+     * <code>endpoint</code> - The endpoint of the Region (for example, <code>ec2.us-east-1.amazonaws.com</code>).
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>region-name</code> - The name of the region (for example, <code>us-east-1</code>).
+     * <code>opt-in-status</code> - The opt-in status of the Region (<code>opt-in-not-required</code> |
+     * <code>opted-in</code> | <code>not-opted-in</code>).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>region-name</code> - The name of the Region (for example, <code>us-east-1</code>).
      * </p>
      * </li>
      * </ul>
      * 
-     * @return One or more filters.</p>
+     * @return The filters.</p>
      *         <ul>
      *         <li>
      *         <p>
-     *         <code>endpoint</code> - The endpoint of the region (for example, <code>ec2.us-east-1.amazonaws.com</code>
+     *         <code>endpoint</code> - The endpoint of the Region (for example, <code>ec2.us-east-1.amazonaws.com</code>
      *         ).
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <code>region-name</code> - The name of the region (for example, <code>us-east-1</code>).
+     *         <code>opt-in-status</code> - The opt-in status of the Region (<code>opt-in-not-required</code> |
+     *         <code>opted-in</code> | <code>not-opted-in</code>).
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>region-name</code> - The name of the Region (for example, <code>us-east-1</code>).
      *         </p>
      *         </li>
      */
@@ -93,33 +115,45 @@ public class DescribeRegionsRequest extends AmazonWebServiceRequest implements S
 
     /**
      * <p>
-     * One or more filters.
+     * The filters.
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <code>endpoint</code> - The endpoint of the region (for example, <code>ec2.us-east-1.amazonaws.com</code>).
+     * <code>endpoint</code> - The endpoint of the Region (for example, <code>ec2.us-east-1.amazonaws.com</code>).
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>region-name</code> - The name of the region (for example, <code>us-east-1</code>).
+     * <code>opt-in-status</code> - The opt-in status of the Region (<code>opt-in-not-required</code> |
+     * <code>opted-in</code> | <code>not-opted-in</code>).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>region-name</code> - The name of the Region (for example, <code>us-east-1</code>).
      * </p>
      * </li>
      * </ul>
      * 
      * @param filters
-     *        One or more filters.</p>
+     *        The filters.</p>
      *        <ul>
      *        <li>
      *        <p>
-     *        <code>endpoint</code> - The endpoint of the region (for example, <code>ec2.us-east-1.amazonaws.com</code>
+     *        <code>endpoint</code> - The endpoint of the Region (for example, <code>ec2.us-east-1.amazonaws.com</code>
      *        ).
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>region-name</code> - The name of the region (for example, <code>us-east-1</code>).
+     *        <code>opt-in-status</code> - The opt-in status of the Region (<code>opt-in-not-required</code> |
+     *        <code>opted-in</code> | <code>not-opted-in</code>).
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>region-name</code> - The name of the Region (for example, <code>us-east-1</code>).
      *        </p>
      *        </li>
      */
@@ -135,17 +169,23 @@ public class DescribeRegionsRequest extends AmazonWebServiceRequest implements S
 
     /**
      * <p>
-     * One or more filters.
+     * The filters.
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <code>endpoint</code> - The endpoint of the region (for example, <code>ec2.us-east-1.amazonaws.com</code>).
+     * <code>endpoint</code> - The endpoint of the Region (for example, <code>ec2.us-east-1.amazonaws.com</code>).
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>region-name</code> - The name of the region (for example, <code>us-east-1</code>).
+     * <code>opt-in-status</code> - The opt-in status of the Region (<code>opt-in-not-required</code> |
+     * <code>opted-in</code> | <code>not-opted-in</code>).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>region-name</code> - The name of the Region (for example, <code>us-east-1</code>).
      * </p>
      * </li>
      * </ul>
@@ -156,17 +196,23 @@ public class DescribeRegionsRequest extends AmazonWebServiceRequest implements S
      * </p>
      * 
      * @param filters
-     *        One or more filters.</p>
+     *        The filters.</p>
      *        <ul>
      *        <li>
      *        <p>
-     *        <code>endpoint</code> - The endpoint of the region (for example, <code>ec2.us-east-1.amazonaws.com</code>
+     *        <code>endpoint</code> - The endpoint of the Region (for example, <code>ec2.us-east-1.amazonaws.com</code>
      *        ).
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>region-name</code> - The name of the region (for example, <code>us-east-1</code>).
+     *        <code>opt-in-status</code> - The opt-in status of the Region (<code>opt-in-not-required</code> |
+     *        <code>opted-in</code> | <code>not-opted-in</code>).
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>region-name</code> - The name of the Region (for example, <code>us-east-1</code>).
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -184,33 +230,45 @@ public class DescribeRegionsRequest extends AmazonWebServiceRequest implements S
 
     /**
      * <p>
-     * One or more filters.
+     * The filters.
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <code>endpoint</code> - The endpoint of the region (for example, <code>ec2.us-east-1.amazonaws.com</code>).
+     * <code>endpoint</code> - The endpoint of the Region (for example, <code>ec2.us-east-1.amazonaws.com</code>).
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>region-name</code> - The name of the region (for example, <code>us-east-1</code>).
+     * <code>opt-in-status</code> - The opt-in status of the Region (<code>opt-in-not-required</code> |
+     * <code>opted-in</code> | <code>not-opted-in</code>).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>region-name</code> - The name of the Region (for example, <code>us-east-1</code>).
      * </p>
      * </li>
      * </ul>
      * 
      * @param filters
-     *        One or more filters.</p>
+     *        The filters.</p>
      *        <ul>
      *        <li>
      *        <p>
-     *        <code>endpoint</code> - The endpoint of the region (for example, <code>ec2.us-east-1.amazonaws.com</code>
+     *        <code>endpoint</code> - The endpoint of the Region (for example, <code>ec2.us-east-1.amazonaws.com</code>
      *        ).
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>region-name</code> - The name of the region (for example, <code>us-east-1</code>).
+     *        <code>opt-in-status</code> - The opt-in status of the Region (<code>opt-in-not-required</code> |
+     *        <code>opted-in</code> | <code>not-opted-in</code>).
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>region-name</code> - The name of the Region (for example, <code>us-east-1</code>).
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -223,10 +281,11 @@ public class DescribeRegionsRequest extends AmazonWebServiceRequest implements S
 
     /**
      * <p>
-     * The names of one or more regions.
+     * The names of the Regions. You can specify any Regions, whether they are enabled and disabled for your account.
      * </p>
      * 
-     * @return The names of one or more regions.
+     * @return The names of the Regions. You can specify any Regions, whether they are enabled and disabled for your
+     *         account.
      */
 
     public java.util.List<String> getRegionNames() {
@@ -238,11 +297,12 @@ public class DescribeRegionsRequest extends AmazonWebServiceRequest implements S
 
     /**
      * <p>
-     * The names of one or more regions.
+     * The names of the Regions. You can specify any Regions, whether they are enabled and disabled for your account.
      * </p>
      * 
      * @param regionNames
-     *        The names of one or more regions.
+     *        The names of the Regions. You can specify any Regions, whether they are enabled and disabled for your
+     *        account.
      */
 
     public void setRegionNames(java.util.Collection<String> regionNames) {
@@ -256,7 +316,7 @@ public class DescribeRegionsRequest extends AmazonWebServiceRequest implements S
 
     /**
      * <p>
-     * The names of one or more regions.
+     * The names of the Regions. You can specify any Regions, whether they are enabled and disabled for your account.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -265,7 +325,8 @@ public class DescribeRegionsRequest extends AmazonWebServiceRequest implements S
      * </p>
      * 
      * @param regionNames
-     *        The names of one or more regions.
+     *        The names of the Regions. You can specify any Regions, whether they are enabled and disabled for your
+     *        account.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -281,17 +342,70 @@ public class DescribeRegionsRequest extends AmazonWebServiceRequest implements S
 
     /**
      * <p>
-     * The names of one or more regions.
+     * The names of the Regions. You can specify any Regions, whether they are enabled and disabled for your account.
      * </p>
      * 
      * @param regionNames
-     *        The names of one or more regions.
+     *        The names of the Regions. You can specify any Regions, whether they are enabled and disabled for your
+     *        account.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DescribeRegionsRequest withRegionNames(java.util.Collection<String> regionNames) {
         setRegionNames(regionNames);
         return this;
+    }
+
+    /**
+     * <p>
+     * Indicates whether to display all Regions, including Regions that are disabled for your account.
+     * </p>
+     * 
+     * @param allRegions
+     *        Indicates whether to display all Regions, including Regions that are disabled for your account.
+     */
+
+    public void setAllRegions(Boolean allRegions) {
+        this.allRegions = allRegions;
+    }
+
+    /**
+     * <p>
+     * Indicates whether to display all Regions, including Regions that are disabled for your account.
+     * </p>
+     * 
+     * @return Indicates whether to display all Regions, including Regions that are disabled for your account.
+     */
+
+    public Boolean getAllRegions() {
+        return this.allRegions;
+    }
+
+    /**
+     * <p>
+     * Indicates whether to display all Regions, including Regions that are disabled for your account.
+     * </p>
+     * 
+     * @param allRegions
+     *        Indicates whether to display all Regions, including Regions that are disabled for your account.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DescribeRegionsRequest withAllRegions(Boolean allRegions) {
+        setAllRegions(allRegions);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Indicates whether to display all Regions, including Regions that are disabled for your account.
+     * </p>
+     * 
+     * @return Indicates whether to display all Regions, including Regions that are disabled for your account.
+     */
+
+    public Boolean isAllRegions() {
+        return this.allRegions;
     }
 
     /**
@@ -306,7 +420,8 @@ public class DescribeRegionsRequest extends AmazonWebServiceRequest implements S
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -319,7 +434,9 @@ public class DescribeRegionsRequest extends AmazonWebServiceRequest implements S
         if (getFilters() != null)
             sb.append("Filters: ").append(getFilters()).append(",");
         if (getRegionNames() != null)
-            sb.append("RegionNames: ").append(getRegionNames());
+            sb.append("RegionNames: ").append(getRegionNames()).append(",");
+        if (getAllRegions() != null)
+            sb.append("AllRegions: ").append(getAllRegions());
         sb.append("}");
         return sb.toString();
     }
@@ -342,6 +459,10 @@ public class DescribeRegionsRequest extends AmazonWebServiceRequest implements S
             return false;
         if (other.getRegionNames() != null && other.getRegionNames().equals(this.getRegionNames()) == false)
             return false;
+        if (other.getAllRegions() == null ^ this.getAllRegions() == null)
+            return false;
+        if (other.getAllRegions() != null && other.getAllRegions().equals(this.getAllRegions()) == false)
+            return false;
         return true;
     }
 
@@ -352,6 +473,7 @@ public class DescribeRegionsRequest extends AmazonWebServiceRequest implements S
 
         hashCode = prime * hashCode + ((getFilters() == null) ? 0 : getFilters().hashCode());
         hashCode = prime * hashCode + ((getRegionNames() == null) ? 0 : getRegionNames().hashCode());
+        hashCode = prime * hashCode + ((getAllRegions() == null) ? 0 : getAllRegions().hashCode());
         return hashCode;
     }
 

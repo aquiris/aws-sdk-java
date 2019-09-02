@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -30,7 +30,7 @@ public class DescribeScheduledInstancesRequest extends AmazonWebServiceRequest i
 
     /**
      * <p>
-     * One or more filters.
+     * The filters.
      * </p>
      * <ul>
      * <li>
@@ -71,7 +71,7 @@ public class DescribeScheduledInstancesRequest extends AmazonWebServiceRequest i
     private String nextToken;
     /**
      * <p>
-     * One or more Scheduled Instance IDs.
+     * The Scheduled Instance IDs.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<String> scheduledInstanceIds;
@@ -84,7 +84,7 @@ public class DescribeScheduledInstancesRequest extends AmazonWebServiceRequest i
 
     /**
      * <p>
-     * One or more filters.
+     * The filters.
      * </p>
      * <ul>
      * <li>
@@ -109,7 +109,7 @@ public class DescribeScheduledInstancesRequest extends AmazonWebServiceRequest i
      * </li>
      * </ul>
      * 
-     * @return One or more filters.</p>
+     * @return The filters.</p>
      *         <ul>
      *         <li>
      *         <p>
@@ -142,7 +142,7 @@ public class DescribeScheduledInstancesRequest extends AmazonWebServiceRequest i
 
     /**
      * <p>
-     * One or more filters.
+     * The filters.
      * </p>
      * <ul>
      * <li>
@@ -168,7 +168,7 @@ public class DescribeScheduledInstancesRequest extends AmazonWebServiceRequest i
      * </ul>
      * 
      * @param filters
-     *        One or more filters.</p>
+     *        The filters.</p>
      *        <ul>
      *        <li>
      *        <p>
@@ -203,7 +203,7 @@ public class DescribeScheduledInstancesRequest extends AmazonWebServiceRequest i
 
     /**
      * <p>
-     * One or more filters.
+     * The filters.
      * </p>
      * <ul>
      * <li>
@@ -234,7 +234,7 @@ public class DescribeScheduledInstancesRequest extends AmazonWebServiceRequest i
      * </p>
      * 
      * @param filters
-     *        One or more filters.</p>
+     *        The filters.</p>
      *        <ul>
      *        <li>
      *        <p>
@@ -271,7 +271,7 @@ public class DescribeScheduledInstancesRequest extends AmazonWebServiceRequest i
 
     /**
      * <p>
-     * One or more filters.
+     * The filters.
      * </p>
      * <ul>
      * <li>
@@ -297,7 +297,7 @@ public class DescribeScheduledInstancesRequest extends AmazonWebServiceRequest i
      * </ul>
      * 
      * @param filters
-     *        One or more filters.</p>
+     *        The filters.</p>
      *        <ul>
      *        <li>
      *        <p>
@@ -418,10 +418,10 @@ public class DescribeScheduledInstancesRequest extends AmazonWebServiceRequest i
 
     /**
      * <p>
-     * One or more Scheduled Instance IDs.
+     * The Scheduled Instance IDs.
      * </p>
      * 
-     * @return One or more Scheduled Instance IDs.
+     * @return The Scheduled Instance IDs.
      */
 
     public java.util.List<String> getScheduledInstanceIds() {
@@ -433,11 +433,11 @@ public class DescribeScheduledInstancesRequest extends AmazonWebServiceRequest i
 
     /**
      * <p>
-     * One or more Scheduled Instance IDs.
+     * The Scheduled Instance IDs.
      * </p>
      * 
      * @param scheduledInstanceIds
-     *        One or more Scheduled Instance IDs.
+     *        The Scheduled Instance IDs.
      */
 
     public void setScheduledInstanceIds(java.util.Collection<String> scheduledInstanceIds) {
@@ -451,7 +451,7 @@ public class DescribeScheduledInstancesRequest extends AmazonWebServiceRequest i
 
     /**
      * <p>
-     * One or more Scheduled Instance IDs.
+     * The Scheduled Instance IDs.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -460,7 +460,7 @@ public class DescribeScheduledInstancesRequest extends AmazonWebServiceRequest i
      * </p>
      * 
      * @param scheduledInstanceIds
-     *        One or more Scheduled Instance IDs.
+     *        The Scheduled Instance IDs.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -476,11 +476,11 @@ public class DescribeScheduledInstancesRequest extends AmazonWebServiceRequest i
 
     /**
      * <p>
-     * One or more Scheduled Instance IDs.
+     * The Scheduled Instance IDs.
      * </p>
      * 
      * @param scheduledInstanceIds
-     *        One or more Scheduled Instance IDs.
+     *        The Scheduled Instance IDs.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -541,7 +541,8 @@ public class DescribeScheduledInstancesRequest extends AmazonWebServiceRequest i
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -42,13 +42,13 @@ public class Stack implements Serializable, Cloneable, StructuredPojo {
     private String name;
     /**
      * <p>
-     * The description for display.
+     * The description to display.
      * </p>
      */
     private String description;
     /**
      * <p>
-     * The stack name for display.
+     * The stack name to display.
      * </p>
      */
     private String displayName;
@@ -83,6 +83,26 @@ public class Stack implements Serializable, Cloneable, StructuredPojo {
      * </p>
      */
     private java.util.List<StackError> stackErrors;
+    /**
+     * <p>
+     * The actions that are enabled or disabled for users during their streaming sessions. By default these actions are
+     * enabled.
+     * </p>
+     */
+    private java.util.List<UserSetting> userSettings;
+    /**
+     * <p>
+     * The persistent application settings for users of the stack.
+     * </p>
+     */
+    private ApplicationSettingsResponse applicationSettings;
+    /**
+     * <p>
+     * The list of virtual private cloud (VPC) interface endpoint objects. Users of the stack can connect to AppStream
+     * 2.0 only through the specified endpoints.
+     * </p>
+     */
+    private java.util.List<AccessEndpoint> accessEndpoints;
 
     /**
      * <p>
@@ -166,11 +186,11 @@ public class Stack implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The description for display.
+     * The description to display.
      * </p>
      * 
      * @param description
-     *        The description for display.
+     *        The description to display.
      */
 
     public void setDescription(String description) {
@@ -179,10 +199,10 @@ public class Stack implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The description for display.
+     * The description to display.
      * </p>
      * 
-     * @return The description for display.
+     * @return The description to display.
      */
 
     public String getDescription() {
@@ -191,11 +211,11 @@ public class Stack implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The description for display.
+     * The description to display.
      * </p>
      * 
      * @param description
-     *        The description for display.
+     *        The description to display.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -206,11 +226,11 @@ public class Stack implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The stack name for display.
+     * The stack name to display.
      * </p>
      * 
      * @param displayName
-     *        The stack name for display.
+     *        The stack name to display.
      */
 
     public void setDisplayName(String displayName) {
@@ -219,10 +239,10 @@ public class Stack implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The stack name for display.
+     * The stack name to display.
      * </p>
      * 
-     * @return The stack name for display.
+     * @return The stack name to display.
      */
 
     public String getDisplayName() {
@@ -231,11 +251,11 @@ public class Stack implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The stack name for display.
+     * The stack name to display.
      * </p>
      * 
      * @param displayName
-     *        The stack name for display.
+     *        The stack name to display.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -511,7 +531,204 @@ public class Stack implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * <p>
+     * The actions that are enabled or disabled for users during their streaming sessions. By default these actions are
+     * enabled.
+     * </p>
+     * 
+     * @return The actions that are enabled or disabled for users during their streaming sessions. By default these
+     *         actions are enabled.
+     */
+
+    public java.util.List<UserSetting> getUserSettings() {
+        return userSettings;
+    }
+
+    /**
+     * <p>
+     * The actions that are enabled or disabled for users during their streaming sessions. By default these actions are
+     * enabled.
+     * </p>
+     * 
+     * @param userSettings
+     *        The actions that are enabled or disabled for users during their streaming sessions. By default these
+     *        actions are enabled.
+     */
+
+    public void setUserSettings(java.util.Collection<UserSetting> userSettings) {
+        if (userSettings == null) {
+            this.userSettings = null;
+            return;
+        }
+
+        this.userSettings = new java.util.ArrayList<UserSetting>(userSettings);
+    }
+
+    /**
+     * <p>
+     * The actions that are enabled or disabled for users during their streaming sessions. By default these actions are
+     * enabled.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setUserSettings(java.util.Collection)} or {@link #withUserSettings(java.util.Collection)} if you want to
+     * override the existing values.
+     * </p>
+     * 
+     * @param userSettings
+     *        The actions that are enabled or disabled for users during their streaming sessions. By default these
+     *        actions are enabled.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Stack withUserSettings(UserSetting... userSettings) {
+        if (this.userSettings == null) {
+            setUserSettings(new java.util.ArrayList<UserSetting>(userSettings.length));
+        }
+        for (UserSetting ele : userSettings) {
+            this.userSettings.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * The actions that are enabled or disabled for users during their streaming sessions. By default these actions are
+     * enabled.
+     * </p>
+     * 
+     * @param userSettings
+     *        The actions that are enabled or disabled for users during their streaming sessions. By default these
+     *        actions are enabled.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Stack withUserSettings(java.util.Collection<UserSetting> userSettings) {
+        setUserSettings(userSettings);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The persistent application settings for users of the stack.
+     * </p>
+     * 
+     * @param applicationSettings
+     *        The persistent application settings for users of the stack.
+     */
+
+    public void setApplicationSettings(ApplicationSettingsResponse applicationSettings) {
+        this.applicationSettings = applicationSettings;
+    }
+
+    /**
+     * <p>
+     * The persistent application settings for users of the stack.
+     * </p>
+     * 
+     * @return The persistent application settings for users of the stack.
+     */
+
+    public ApplicationSettingsResponse getApplicationSettings() {
+        return this.applicationSettings;
+    }
+
+    /**
+     * <p>
+     * The persistent application settings for users of the stack.
+     * </p>
+     * 
+     * @param applicationSettings
+     *        The persistent application settings for users of the stack.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Stack withApplicationSettings(ApplicationSettingsResponse applicationSettings) {
+        setApplicationSettings(applicationSettings);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The list of virtual private cloud (VPC) interface endpoint objects. Users of the stack can connect to AppStream
+     * 2.0 only through the specified endpoints.
+     * </p>
+     * 
+     * @return The list of virtual private cloud (VPC) interface endpoint objects. Users of the stack can connect to
+     *         AppStream 2.0 only through the specified endpoints.
+     */
+
+    public java.util.List<AccessEndpoint> getAccessEndpoints() {
+        return accessEndpoints;
+    }
+
+    /**
+     * <p>
+     * The list of virtual private cloud (VPC) interface endpoint objects. Users of the stack can connect to AppStream
+     * 2.0 only through the specified endpoints.
+     * </p>
+     * 
+     * @param accessEndpoints
+     *        The list of virtual private cloud (VPC) interface endpoint objects. Users of the stack can connect to
+     *        AppStream 2.0 only through the specified endpoints.
+     */
+
+    public void setAccessEndpoints(java.util.Collection<AccessEndpoint> accessEndpoints) {
+        if (accessEndpoints == null) {
+            this.accessEndpoints = null;
+            return;
+        }
+
+        this.accessEndpoints = new java.util.ArrayList<AccessEndpoint>(accessEndpoints);
+    }
+
+    /**
+     * <p>
+     * The list of virtual private cloud (VPC) interface endpoint objects. Users of the stack can connect to AppStream
+     * 2.0 only through the specified endpoints.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setAccessEndpoints(java.util.Collection)} or {@link #withAccessEndpoints(java.util.Collection)} if you
+     * want to override the existing values.
+     * </p>
+     * 
+     * @param accessEndpoints
+     *        The list of virtual private cloud (VPC) interface endpoint objects. Users of the stack can connect to
+     *        AppStream 2.0 only through the specified endpoints.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Stack withAccessEndpoints(AccessEndpoint... accessEndpoints) {
+        if (this.accessEndpoints == null) {
+            setAccessEndpoints(new java.util.ArrayList<AccessEndpoint>(accessEndpoints.length));
+        }
+        for (AccessEndpoint ele : accessEndpoints) {
+            this.accessEndpoints.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * The list of virtual private cloud (VPC) interface endpoint objects. Users of the stack can connect to AppStream
+     * 2.0 only through the specified endpoints.
+     * </p>
+     * 
+     * @param accessEndpoints
+     *        The list of virtual private cloud (VPC) interface endpoint objects. Users of the stack can connect to
+     *        AppStream 2.0 only through the specified endpoints.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Stack withAccessEndpoints(java.util.Collection<AccessEndpoint> accessEndpoints) {
+        setAccessEndpoints(accessEndpoints);
+        return this;
+    }
+
+    /**
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -538,7 +755,13 @@ public class Stack implements Serializable, Cloneable, StructuredPojo {
         if (getFeedbackURL() != null)
             sb.append("FeedbackURL: ").append(getFeedbackURL()).append(",");
         if (getStackErrors() != null)
-            sb.append("StackErrors: ").append(getStackErrors());
+            sb.append("StackErrors: ").append(getStackErrors()).append(",");
+        if (getUserSettings() != null)
+            sb.append("UserSettings: ").append(getUserSettings()).append(",");
+        if (getApplicationSettings() != null)
+            sb.append("ApplicationSettings: ").append(getApplicationSettings()).append(",");
+        if (getAccessEndpoints() != null)
+            sb.append("AccessEndpoints: ").append(getAccessEndpoints());
         sb.append("}");
         return sb.toString();
     }
@@ -589,6 +812,18 @@ public class Stack implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getStackErrors() != null && other.getStackErrors().equals(this.getStackErrors()) == false)
             return false;
+        if (other.getUserSettings() == null ^ this.getUserSettings() == null)
+            return false;
+        if (other.getUserSettings() != null && other.getUserSettings().equals(this.getUserSettings()) == false)
+            return false;
+        if (other.getApplicationSettings() == null ^ this.getApplicationSettings() == null)
+            return false;
+        if (other.getApplicationSettings() != null && other.getApplicationSettings().equals(this.getApplicationSettings()) == false)
+            return false;
+        if (other.getAccessEndpoints() == null ^ this.getAccessEndpoints() == null)
+            return false;
+        if (other.getAccessEndpoints() != null && other.getAccessEndpoints().equals(this.getAccessEndpoints()) == false)
+            return false;
         return true;
     }
 
@@ -606,6 +841,9 @@ public class Stack implements Serializable, Cloneable, StructuredPojo {
         hashCode = prime * hashCode + ((getRedirectURL() == null) ? 0 : getRedirectURL().hashCode());
         hashCode = prime * hashCode + ((getFeedbackURL() == null) ? 0 : getFeedbackURL().hashCode());
         hashCode = prime * hashCode + ((getStackErrors() == null) ? 0 : getStackErrors().hashCode());
+        hashCode = prime * hashCode + ((getUserSettings() == null) ? 0 : getUserSettings().hashCode());
+        hashCode = prime * hashCode + ((getApplicationSettings() == null) ? 0 : getApplicationSettings().hashCode());
+        hashCode = prime * hashCode + ((getAccessEndpoints() == null) ? 0 : getAccessEndpoints().hashCode());
         return hashCode;
     }
 

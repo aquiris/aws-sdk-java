@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -33,6 +33,10 @@ public class PipelineContextMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("stage").build();
     private static final MarshallingInfo<StructuredPojo> ACTION_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("action").build();
+    private static final MarshallingInfo<String> PIPELINEARN_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("pipelineArn").build();
+    private static final MarshallingInfo<String> PIPELINEEXECUTIONID_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("pipelineExecutionId").build();
 
     private static final PipelineContextMarshaller instance = new PipelineContextMarshaller();
 
@@ -53,6 +57,8 @@ public class PipelineContextMarshaller {
             protocolMarshaller.marshall(pipelineContext.getPipelineName(), PIPELINENAME_BINDING);
             protocolMarshaller.marshall(pipelineContext.getStage(), STAGE_BINDING);
             protocolMarshaller.marshall(pipelineContext.getAction(), ACTION_BINDING);
+            protocolMarshaller.marshall(pipelineContext.getPipelineArn(), PIPELINEARN_BINDING);
+            protocolMarshaller.marshall(pipelineContext.getPipelineExecutionId(), PIPELINEEXECUTIONID_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

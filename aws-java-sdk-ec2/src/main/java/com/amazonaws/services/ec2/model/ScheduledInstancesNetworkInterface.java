@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -55,7 +55,7 @@ public class ScheduledInstancesNetworkInterface implements Serializable, Cloneab
     private Integer deviceIndex;
     /**
      * <p>
-     * The IDs of one or more security groups.
+     * The IDs of the security groups.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<String> groups;
@@ -68,7 +68,7 @@ public class ScheduledInstancesNetworkInterface implements Serializable, Cloneab
     private Integer ipv6AddressCount;
     /**
      * <p>
-     * One or more specific IPv6 addresses from the subnet range.
+     * The specific IPv6 addresses from the subnet range.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<ScheduledInstancesIpv6Address> ipv6Addresses;
@@ -313,10 +313,10 @@ public class ScheduledInstancesNetworkInterface implements Serializable, Cloneab
 
     /**
      * <p>
-     * The IDs of one or more security groups.
+     * The IDs of the security groups.
      * </p>
      * 
-     * @return The IDs of one or more security groups.
+     * @return The IDs of the security groups.
      */
 
     public java.util.List<String> getGroups() {
@@ -328,11 +328,11 @@ public class ScheduledInstancesNetworkInterface implements Serializable, Cloneab
 
     /**
      * <p>
-     * The IDs of one or more security groups.
+     * The IDs of the security groups.
      * </p>
      * 
      * @param groups
-     *        The IDs of one or more security groups.
+     *        The IDs of the security groups.
      */
 
     public void setGroups(java.util.Collection<String> groups) {
@@ -346,7 +346,7 @@ public class ScheduledInstancesNetworkInterface implements Serializable, Cloneab
 
     /**
      * <p>
-     * The IDs of one or more security groups.
+     * The IDs of the security groups.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -355,7 +355,7 @@ public class ScheduledInstancesNetworkInterface implements Serializable, Cloneab
      * </p>
      * 
      * @param groups
-     *        The IDs of one or more security groups.
+     *        The IDs of the security groups.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -371,11 +371,11 @@ public class ScheduledInstancesNetworkInterface implements Serializable, Cloneab
 
     /**
      * <p>
-     * The IDs of one or more security groups.
+     * The IDs of the security groups.
      * </p>
      * 
      * @param groups
-     *        The IDs of one or more security groups.
+     *        The IDs of the security groups.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -432,10 +432,10 @@ public class ScheduledInstancesNetworkInterface implements Serializable, Cloneab
 
     /**
      * <p>
-     * One or more specific IPv6 addresses from the subnet range.
+     * The specific IPv6 addresses from the subnet range.
      * </p>
      * 
-     * @return One or more specific IPv6 addresses from the subnet range.
+     * @return The specific IPv6 addresses from the subnet range.
      */
 
     public java.util.List<ScheduledInstancesIpv6Address> getIpv6Addresses() {
@@ -447,11 +447,11 @@ public class ScheduledInstancesNetworkInterface implements Serializable, Cloneab
 
     /**
      * <p>
-     * One or more specific IPv6 addresses from the subnet range.
+     * The specific IPv6 addresses from the subnet range.
      * </p>
      * 
      * @param ipv6Addresses
-     *        One or more specific IPv6 addresses from the subnet range.
+     *        The specific IPv6 addresses from the subnet range.
      */
 
     public void setIpv6Addresses(java.util.Collection<ScheduledInstancesIpv6Address> ipv6Addresses) {
@@ -465,7 +465,7 @@ public class ScheduledInstancesNetworkInterface implements Serializable, Cloneab
 
     /**
      * <p>
-     * One or more specific IPv6 addresses from the subnet range.
+     * The specific IPv6 addresses from the subnet range.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -474,7 +474,7 @@ public class ScheduledInstancesNetworkInterface implements Serializable, Cloneab
      * </p>
      * 
      * @param ipv6Addresses
-     *        One or more specific IPv6 addresses from the subnet range.
+     *        The specific IPv6 addresses from the subnet range.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -490,11 +490,11 @@ public class ScheduledInstancesNetworkInterface implements Serializable, Cloneab
 
     /**
      * <p>
-     * One or more specific IPv6 addresses from the subnet range.
+     * The specific IPv6 addresses from the subnet range.
      * </p>
      * 
      * @param ipv6Addresses
-     *        One or more specific IPv6 addresses from the subnet range.
+     *        The specific IPv6 addresses from the subnet range.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -737,7 +737,8 @@ public class ScheduledInstancesNetworkInterface implements Serializable, Cloneab
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

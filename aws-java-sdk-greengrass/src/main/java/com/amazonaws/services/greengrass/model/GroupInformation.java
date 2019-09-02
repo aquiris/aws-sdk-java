@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -34,9 +34,9 @@ public class GroupInformation implements Serializable, Cloneable, StructuredPojo
     private String id;
     /** The time, in milliseconds since the epoch, when the group was last updated. */
     private String lastUpdatedTimestamp;
-    /** The latest version of the group. */
+    /** The ID of the latest version associated with the group. */
     private String latestVersion;
-    /** The ARN of the latest version of the group. */
+    /** The ARN of the latest version associated with the group. */
     private String latestVersionArn;
     /** The name of the group. */
     private String name;
@@ -178,10 +178,10 @@ public class GroupInformation implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * The latest version of the group.
+     * The ID of the latest version associated with the group.
      * 
      * @param latestVersion
-     *        The latest version of the group.
+     *        The ID of the latest version associated with the group.
      */
 
     public void setLatestVersion(String latestVersion) {
@@ -189,9 +189,9 @@ public class GroupInformation implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * The latest version of the group.
+     * The ID of the latest version associated with the group.
      * 
-     * @return The latest version of the group.
+     * @return The ID of the latest version associated with the group.
      */
 
     public String getLatestVersion() {
@@ -199,10 +199,10 @@ public class GroupInformation implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * The latest version of the group.
+     * The ID of the latest version associated with the group.
      * 
      * @param latestVersion
-     *        The latest version of the group.
+     *        The ID of the latest version associated with the group.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -212,10 +212,10 @@ public class GroupInformation implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * The ARN of the latest version of the group.
+     * The ARN of the latest version associated with the group.
      * 
      * @param latestVersionArn
-     *        The ARN of the latest version of the group.
+     *        The ARN of the latest version associated with the group.
      */
 
     public void setLatestVersionArn(String latestVersionArn) {
@@ -223,9 +223,9 @@ public class GroupInformation implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * The ARN of the latest version of the group.
+     * The ARN of the latest version associated with the group.
      * 
-     * @return The ARN of the latest version of the group.
+     * @return The ARN of the latest version associated with the group.
      */
 
     public String getLatestVersionArn() {
@@ -233,10 +233,10 @@ public class GroupInformation implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * The ARN of the latest version of the group.
+     * The ARN of the latest version associated with the group.
      * 
      * @param latestVersionArn
-     *        The ARN of the latest version of the group.
+     *        The ARN of the latest version associated with the group.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -280,7 +280,8 @@ public class GroupInformation implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

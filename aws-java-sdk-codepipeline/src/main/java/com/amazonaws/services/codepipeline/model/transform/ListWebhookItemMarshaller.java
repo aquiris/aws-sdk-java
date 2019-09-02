@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,7 @@
  */
 package com.amazonaws.services.codepipeline.model.transform;
 
+import java.util.List;
 import javax.annotation.Generated;
 
 import com.amazonaws.SdkClientException;
@@ -36,9 +37,11 @@ public class ListWebhookItemMarshaller {
     private static final MarshallingInfo<String> ERRORCODE_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("errorCode").build();
     private static final MarshallingInfo<java.util.Date> LASTTRIGGERED_BINDING = MarshallingInfo.builder(MarshallingType.DATE)
-            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("lastTriggered").build();
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("lastTriggered").timestampFormat("unixTimestamp").build();
     private static final MarshallingInfo<String> ARN_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("arn").build();
+    private static final MarshallingInfo<List> TAGS_BINDING = MarshallingInfo.builder(MarshallingType.LIST).marshallLocation(MarshallLocation.PAYLOAD)
+            .marshallLocationName("tags").build();
 
     private static final ListWebhookItemMarshaller instance = new ListWebhookItemMarshaller();
 
@@ -62,6 +65,7 @@ public class ListWebhookItemMarshaller {
             protocolMarshaller.marshall(listWebhookItem.getErrorCode(), ERRORCODE_BINDING);
             protocolMarshaller.marshall(listWebhookItem.getLastTriggered(), LASTTRIGGERED_BINDING);
             protocolMarshaller.marshall(listWebhookItem.getArn(), ARN_BINDING);
+            protocolMarshaller.marshall(listWebhookItem.getTags(), TAGS_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

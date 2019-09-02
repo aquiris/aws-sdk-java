@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -38,12 +38,27 @@ public class AbstractAWSCodeCommit implements AWSCodeCommit {
     }
 
     @Override
+    public BatchDescribeMergeConflictsResult batchDescribeMergeConflicts(BatchDescribeMergeConflictsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public BatchGetCommitsResult batchGetCommits(BatchGetCommitsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public BatchGetRepositoriesResult batchGetRepositories(BatchGetRepositoriesRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
     @Override
     public CreateBranchResult createBranch(CreateBranchRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public CreateCommitResult createCommit(CreateCommitRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -58,6 +73,11 @@ public class AbstractAWSCodeCommit implements AWSCodeCommit {
     }
 
     @Override
+    public CreateUnreferencedMergeCommitResult createUnreferencedMergeCommit(CreateUnreferencedMergeCommitRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public DeleteBranchResult deleteBranch(DeleteBranchRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -68,7 +88,17 @@ public class AbstractAWSCodeCommit implements AWSCodeCommit {
     }
 
     @Override
+    public DeleteFileResult deleteFile(DeleteFileRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public DeleteRepositoryResult deleteRepository(DeleteRepositoryRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DescribeMergeConflictsResult describeMergeConflicts(DescribeMergeConflictsRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -113,7 +143,27 @@ public class AbstractAWSCodeCommit implements AWSCodeCommit {
     }
 
     @Override
+    public GetFileResult getFile(GetFileRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public GetFolderResult getFolder(GetFolderRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public GetMergeCommitResult getMergeCommit(GetMergeCommitRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public GetMergeConflictsResult getMergeConflicts(GetMergeConflictsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public GetMergeOptionsResult getMergeOptions(GetMergeOptionsRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -148,7 +198,37 @@ public class AbstractAWSCodeCommit implements AWSCodeCommit {
     }
 
     @Override
+    public ListTagsForResourceResult listTagsForResource(ListTagsForResourceRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public MergeBranchesByFastForwardResult mergeBranchesByFastForward(MergeBranchesByFastForwardRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public MergeBranchesBySquashResult mergeBranchesBySquash(MergeBranchesBySquashRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public MergeBranchesByThreeWayResult mergeBranchesByThreeWay(MergeBranchesByThreeWayRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public MergePullRequestByFastForwardResult mergePullRequestByFastForward(MergePullRequestByFastForwardRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public MergePullRequestBySquashResult mergePullRequestBySquash(MergePullRequestBySquashRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public MergePullRequestByThreeWayResult mergePullRequestByThreeWay(MergePullRequestByThreeWayRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -178,7 +258,17 @@ public class AbstractAWSCodeCommit implements AWSCodeCommit {
     }
 
     @Override
+    public TagResourceResult tagResource(TagResourceRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public TestRepositoryTriggersResult testRepositoryTriggers(TestRepositoryTriggersRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public UntagResourceResult untagResource(UntagResourceRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 

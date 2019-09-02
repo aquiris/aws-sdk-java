@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -20,8 +20,9 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 /**
  * <p>
  * Describes the number of in-application streams to create for a given streaming source. For information about
- * parallelism, see <a href="http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html">Configuring
- * Application Input</a>.
+ * parallelism, see <a
+ * href="https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html">Configuring Application
+ * Input</a>.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kinesisanalytics-2015-08-14/InputParallelism" target="_top">AWS
@@ -33,7 +34,7 @@ public class InputParallelism implements Serializable, Cloneable, StructuredPojo
     /**
      * <p>
      * Number of in-application streams to create. For more information, see <a
-     * href="http://docs.aws.amazon.com/kinesisanalytics/latest/dev/limits.html">Limits</a>.
+     * href="https://docs.aws.amazon.com/kinesisanalytics/latest/dev/limits.html">Limits</a>.
      * </p>
      */
     private Integer count;
@@ -41,12 +42,12 @@ public class InputParallelism implements Serializable, Cloneable, StructuredPojo
     /**
      * <p>
      * Number of in-application streams to create. For more information, see <a
-     * href="http://docs.aws.amazon.com/kinesisanalytics/latest/dev/limits.html">Limits</a>.
+     * href="https://docs.aws.amazon.com/kinesisanalytics/latest/dev/limits.html">Limits</a>.
      * </p>
      * 
      * @param count
      *        Number of in-application streams to create. For more information, see <a
-     *        href="http://docs.aws.amazon.com/kinesisanalytics/latest/dev/limits.html">Limits</a>.
+     *        href="https://docs.aws.amazon.com/kinesisanalytics/latest/dev/limits.html">Limits</a>.
      */
 
     public void setCount(Integer count) {
@@ -56,11 +57,11 @@ public class InputParallelism implements Serializable, Cloneable, StructuredPojo
     /**
      * <p>
      * Number of in-application streams to create. For more information, see <a
-     * href="http://docs.aws.amazon.com/kinesisanalytics/latest/dev/limits.html">Limits</a>.
+     * href="https://docs.aws.amazon.com/kinesisanalytics/latest/dev/limits.html">Limits</a>.
      * </p>
      * 
      * @return Number of in-application streams to create. For more information, see <a
-     *         href="http://docs.aws.amazon.com/kinesisanalytics/latest/dev/limits.html">Limits</a>.
+     *         href="https://docs.aws.amazon.com/kinesisanalytics/latest/dev/limits.html">Limits</a>.
      */
 
     public Integer getCount() {
@@ -70,12 +71,12 @@ public class InputParallelism implements Serializable, Cloneable, StructuredPojo
     /**
      * <p>
      * Number of in-application streams to create. For more information, see <a
-     * href="http://docs.aws.amazon.com/kinesisanalytics/latest/dev/limits.html">Limits</a>.
+     * href="https://docs.aws.amazon.com/kinesisanalytics/latest/dev/limits.html">Limits</a>.
      * </p>
      * 
      * @param count
      *        Number of in-application streams to create. For more information, see <a
-     *        href="http://docs.aws.amazon.com/kinesisanalytics/latest/dev/limits.html">Limits</a>.
+     *        href="https://docs.aws.amazon.com/kinesisanalytics/latest/dev/limits.html">Limits</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -85,7 +86,8 @@ public class InputParallelism implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

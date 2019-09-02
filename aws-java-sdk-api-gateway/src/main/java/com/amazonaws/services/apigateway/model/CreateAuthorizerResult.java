@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -21,8 +21,10 @@ import javax.annotation.Generated;
  * a client calls the method.
  * </p>
  * <div class="seeAlso"> <a
- * href="http://docs.aws.amazon.com/apigateway/latest/developerguide/use-custom-authorizer.html">Enable custom
- * authorization</a> </div>
+ * href="https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-use-lambda-authorizer.html">Use Lambda
+ * Function as Authorizer</a> <a
+ * href="https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-integrate-with-cognito.html">Use
+ * Cognito User Pool as Authorizer</a> </div>
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CreateAuthorizerResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
@@ -57,7 +59,7 @@ public class CreateAuthorizerResult extends com.amazonaws.AmazonWebServiceResult
     private java.util.List<String> providerARNs;
     /**
      * <p>
-     * Optional customer-defined field, used in Swagger imports and exports without functional impact.
+     * Optional customer-defined field, used in OpenAPI imports and exports without functional impact.
      * </p>
      */
     private String authType;
@@ -106,10 +108,10 @@ public class CreateAuthorizerResult extends com.amazonaws.AmazonWebServiceResult
     /**
      * <p>
      * A validation expression for the incoming identity token. For <code>TOKEN</code> authorizers, this value is a
-     * regular expression. API Gateway will match the <code>aud</code> field of the incoming token from the client
-     * against the specified regular expression. It will invoke the authorizer's Lambda function when there is a match.
-     * Otherwise, it will return a 401 Unauthorized response without calling the Lambda function. The validation
-     * expression does not apply to the <code>REQUEST</code> authorizer.
+     * regular expression. For <code>COGNITO_USER_POOLS</code> authorizers, API Gateway will match the <code>aud</code>
+     * field of the incoming token from the client against the specified regular expression. It will invoke the
+     * authorizer's Lambda function when there is a match. Otherwise, it will return a 401 Unauthorized response without
+     * calling the Lambda function. The validation expression does not apply to the <code>REQUEST</code> authorizer.
      * </p>
      */
     private String identityValidationExpression;
@@ -383,11 +385,11 @@ public class CreateAuthorizerResult extends com.amazonaws.AmazonWebServiceResult
 
     /**
      * <p>
-     * Optional customer-defined field, used in Swagger imports and exports without functional impact.
+     * Optional customer-defined field, used in OpenAPI imports and exports without functional impact.
      * </p>
      * 
      * @param authType
-     *        Optional customer-defined field, used in Swagger imports and exports without functional impact.
+     *        Optional customer-defined field, used in OpenAPI imports and exports without functional impact.
      */
 
     public void setAuthType(String authType) {
@@ -396,10 +398,10 @@ public class CreateAuthorizerResult extends com.amazonaws.AmazonWebServiceResult
 
     /**
      * <p>
-     * Optional customer-defined field, used in Swagger imports and exports without functional impact.
+     * Optional customer-defined field, used in OpenAPI imports and exports without functional impact.
      * </p>
      * 
-     * @return Optional customer-defined field, used in Swagger imports and exports without functional impact.
+     * @return Optional customer-defined field, used in OpenAPI imports and exports without functional impact.
      */
 
     public String getAuthType() {
@@ -408,11 +410,11 @@ public class CreateAuthorizerResult extends com.amazonaws.AmazonWebServiceResult
 
     /**
      * <p>
-     * Optional customer-defined field, used in Swagger imports and exports without functional impact.
+     * Optional customer-defined field, used in OpenAPI imports and exports without functional impact.
      * </p>
      * 
      * @param authType
-     *        Optional customer-defined field, used in Swagger imports and exports without functional impact.
+     *        Optional customer-defined field, used in OpenAPI imports and exports without functional impact.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -691,18 +693,19 @@ public class CreateAuthorizerResult extends com.amazonaws.AmazonWebServiceResult
     /**
      * <p>
      * A validation expression for the incoming identity token. For <code>TOKEN</code> authorizers, this value is a
-     * regular expression. API Gateway will match the <code>aud</code> field of the incoming token from the client
-     * against the specified regular expression. It will invoke the authorizer's Lambda function when there is a match.
-     * Otherwise, it will return a 401 Unauthorized response without calling the Lambda function. The validation
-     * expression does not apply to the <code>REQUEST</code> authorizer.
+     * regular expression. For <code>COGNITO_USER_POOLS</code> authorizers, API Gateway will match the <code>aud</code>
+     * field of the incoming token from the client against the specified regular expression. It will invoke the
+     * authorizer's Lambda function when there is a match. Otherwise, it will return a 401 Unauthorized response without
+     * calling the Lambda function. The validation expression does not apply to the <code>REQUEST</code> authorizer.
      * </p>
      * 
      * @param identityValidationExpression
      *        A validation expression for the incoming identity token. For <code>TOKEN</code> authorizers, this value is
-     *        a regular expression. API Gateway will match the <code>aud</code> field of the incoming token from the
-     *        client against the specified regular expression. It will invoke the authorizer's Lambda function when
-     *        there is a match. Otherwise, it will return a 401 Unauthorized response without calling the Lambda
-     *        function. The validation expression does not apply to the <code>REQUEST</code> authorizer.
+     *        a regular expression. For <code>COGNITO_USER_POOLS</code> authorizers, API Gateway will match the
+     *        <code>aud</code> field of the incoming token from the client against the specified regular expression. It
+     *        will invoke the authorizer's Lambda function when there is a match. Otherwise, it will return a 401
+     *        Unauthorized response without calling the Lambda function. The validation expression does not apply to the
+     *        <code>REQUEST</code> authorizer.
      */
 
     public void setIdentityValidationExpression(String identityValidationExpression) {
@@ -712,17 +715,18 @@ public class CreateAuthorizerResult extends com.amazonaws.AmazonWebServiceResult
     /**
      * <p>
      * A validation expression for the incoming identity token. For <code>TOKEN</code> authorizers, this value is a
-     * regular expression. API Gateway will match the <code>aud</code> field of the incoming token from the client
-     * against the specified regular expression. It will invoke the authorizer's Lambda function when there is a match.
-     * Otherwise, it will return a 401 Unauthorized response without calling the Lambda function. The validation
-     * expression does not apply to the <code>REQUEST</code> authorizer.
+     * regular expression. For <code>COGNITO_USER_POOLS</code> authorizers, API Gateway will match the <code>aud</code>
+     * field of the incoming token from the client against the specified regular expression. It will invoke the
+     * authorizer's Lambda function when there is a match. Otherwise, it will return a 401 Unauthorized response without
+     * calling the Lambda function. The validation expression does not apply to the <code>REQUEST</code> authorizer.
      * </p>
      * 
      * @return A validation expression for the incoming identity token. For <code>TOKEN</code> authorizers, this value
-     *         is a regular expression. API Gateway will match the <code>aud</code> field of the incoming token from the
-     *         client against the specified regular expression. It will invoke the authorizer's Lambda function when
-     *         there is a match. Otherwise, it will return a 401 Unauthorized response without calling the Lambda
-     *         function. The validation expression does not apply to the <code>REQUEST</code> authorizer.
+     *         is a regular expression. For <code>COGNITO_USER_POOLS</code> authorizers, API Gateway will match the
+     *         <code>aud</code> field of the incoming token from the client against the specified regular expression. It
+     *         will invoke the authorizer's Lambda function when there is a match. Otherwise, it will return a 401
+     *         Unauthorized response without calling the Lambda function. The validation expression does not apply to
+     *         the <code>REQUEST</code> authorizer.
      */
 
     public String getIdentityValidationExpression() {
@@ -732,18 +736,19 @@ public class CreateAuthorizerResult extends com.amazonaws.AmazonWebServiceResult
     /**
      * <p>
      * A validation expression for the incoming identity token. For <code>TOKEN</code> authorizers, this value is a
-     * regular expression. API Gateway will match the <code>aud</code> field of the incoming token from the client
-     * against the specified regular expression. It will invoke the authorizer's Lambda function when there is a match.
-     * Otherwise, it will return a 401 Unauthorized response without calling the Lambda function. The validation
-     * expression does not apply to the <code>REQUEST</code> authorizer.
+     * regular expression. For <code>COGNITO_USER_POOLS</code> authorizers, API Gateway will match the <code>aud</code>
+     * field of the incoming token from the client against the specified regular expression. It will invoke the
+     * authorizer's Lambda function when there is a match. Otherwise, it will return a 401 Unauthorized response without
+     * calling the Lambda function. The validation expression does not apply to the <code>REQUEST</code> authorizer.
      * </p>
      * 
      * @param identityValidationExpression
      *        A validation expression for the incoming identity token. For <code>TOKEN</code> authorizers, this value is
-     *        a regular expression. API Gateway will match the <code>aud</code> field of the incoming token from the
-     *        client against the specified regular expression. It will invoke the authorizer's Lambda function when
-     *        there is a match. Otherwise, it will return a 401 Unauthorized response without calling the Lambda
-     *        function. The validation expression does not apply to the <code>REQUEST</code> authorizer.
+     *        a regular expression. For <code>COGNITO_USER_POOLS</code> authorizers, API Gateway will match the
+     *        <code>aud</code> field of the incoming token from the client against the specified regular expression. It
+     *        will invoke the authorizer's Lambda function when there is a match. Otherwise, it will return a 401
+     *        Unauthorized response without calling the Lambda function. The validation expression does not apply to the
+     *        <code>REQUEST</code> authorizer.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -805,7 +810,8 @@ public class CreateAuthorizerResult extends com.amazonaws.AmazonWebServiceResult
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

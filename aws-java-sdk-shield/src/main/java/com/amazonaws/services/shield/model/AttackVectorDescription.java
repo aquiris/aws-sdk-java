@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -108,6 +108,21 @@ public class AttackVectorDescription implements Serializable, Cloneable, Structu
      * REQUEST_FLOOD
      * </p>
      * </li>
+     * <li>
+     * <p>
+     * HTTP_REFLECTION
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * UDS_REFLECTION
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * MEMCACHED_REFLECTION
+     * </p>
+     * </li>
      * </ul>
      */
     private String vectorType;
@@ -192,6 +207,21 @@ public class AttackVectorDescription implements Serializable, Cloneable, Structu
      * REQUEST_FLOOD
      * </p>
      * </li>
+     * <li>
+     * <p>
+     * HTTP_REFLECTION
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * UDS_REFLECTION
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * MEMCACHED_REFLECTION
+     * </p>
+     * </li>
      * </ul>
      * 
      * @param vectorType
@@ -270,6 +300,21 @@ public class AttackVectorDescription implements Serializable, Cloneable, Structu
      *        <li>
      *        <p>
      *        REQUEST_FLOOD
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        HTTP_REFLECTION
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        UDS_REFLECTION
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        MEMCACHED_REFLECTION
      *        </p>
      *        </li>
      */
@@ -358,6 +403,21 @@ public class AttackVectorDescription implements Serializable, Cloneable, Structu
      * REQUEST_FLOOD
      * </p>
      * </li>
+     * <li>
+     * <p>
+     * HTTP_REFLECTION
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * UDS_REFLECTION
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * MEMCACHED_REFLECTION
+     * </p>
+     * </li>
      * </ul>
      * 
      * @return The attack type. Valid values:</p>
@@ -435,6 +495,21 @@ public class AttackVectorDescription implements Serializable, Cloneable, Structu
      *         <li>
      *         <p>
      *         REQUEST_FLOOD
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         HTTP_REFLECTION
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         UDS_REFLECTION
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MEMCACHED_REFLECTION
      *         </p>
      *         </li>
      */
@@ -523,6 +598,21 @@ public class AttackVectorDescription implements Serializable, Cloneable, Structu
      * REQUEST_FLOOD
      * </p>
      * </li>
+     * <li>
+     * <p>
+     * HTTP_REFLECTION
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * UDS_REFLECTION
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * MEMCACHED_REFLECTION
+     * </p>
+     * </li>
      * </ul>
      * 
      * @param vectorType
@@ -603,6 +693,21 @@ public class AttackVectorDescription implements Serializable, Cloneable, Structu
      *        REQUEST_FLOOD
      *        </p>
      *        </li>
+     *        <li>
+     *        <p>
+     *        HTTP_REFLECTION
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        UDS_REFLECTION
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        MEMCACHED_REFLECTION
+     *        </p>
+     *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -612,7 +717,8 @@ public class AttackVectorDescription implements Serializable, Cloneable, Structu
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

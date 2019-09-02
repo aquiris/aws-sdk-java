@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -34,6 +34,12 @@ public class ContainerStateChange implements Serializable, Cloneable, Structured
      * </p>
      */
     private String containerName;
+    /**
+     * <p>
+     * The ID of the Docker container.
+     * </p>
+     */
+    private String runtimeId;
     /**
      * <p>
      * The exit code for the container, if the state change is a result of the container exiting.
@@ -96,6 +102,46 @@ public class ContainerStateChange implements Serializable, Cloneable, Structured
 
     public ContainerStateChange withContainerName(String containerName) {
         setContainerName(containerName);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The ID of the Docker container.
+     * </p>
+     * 
+     * @param runtimeId
+     *        The ID of the Docker container.
+     */
+
+    public void setRuntimeId(String runtimeId) {
+        this.runtimeId = runtimeId;
+    }
+
+    /**
+     * <p>
+     * The ID of the Docker container.
+     * </p>
+     * 
+     * @return The ID of the Docker container.
+     */
+
+    public String getRuntimeId() {
+        return this.runtimeId;
+    }
+
+    /**
+     * <p>
+     * The ID of the Docker container.
+     * </p>
+     * 
+     * @param runtimeId
+     *        The ID of the Docker container.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ContainerStateChange withRuntimeId(String runtimeId) {
+        setRuntimeId(runtimeId);
         return this;
     }
 
@@ -293,7 +339,8 @@ public class ContainerStateChange implements Serializable, Cloneable, Structured
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -305,6 +352,8 @@ public class ContainerStateChange implements Serializable, Cloneable, Structured
         sb.append("{");
         if (getContainerName() != null)
             sb.append("ContainerName: ").append(getContainerName()).append(",");
+        if (getRuntimeId() != null)
+            sb.append("RuntimeId: ").append(getRuntimeId()).append(",");
         if (getExitCode() != null)
             sb.append("ExitCode: ").append(getExitCode()).append(",");
         if (getNetworkBindings() != null)
@@ -331,6 +380,10 @@ public class ContainerStateChange implements Serializable, Cloneable, Structured
             return false;
         if (other.getContainerName() != null && other.getContainerName().equals(this.getContainerName()) == false)
             return false;
+        if (other.getRuntimeId() == null ^ this.getRuntimeId() == null)
+            return false;
+        if (other.getRuntimeId() != null && other.getRuntimeId().equals(this.getRuntimeId()) == false)
+            return false;
         if (other.getExitCode() == null ^ this.getExitCode() == null)
             return false;
         if (other.getExitCode() != null && other.getExitCode().equals(this.getExitCode()) == false)
@@ -356,6 +409,7 @@ public class ContainerStateChange implements Serializable, Cloneable, Structured
         int hashCode = 1;
 
         hashCode = prime * hashCode + ((getContainerName() == null) ? 0 : getContainerName().hashCode());
+        hashCode = prime * hashCode + ((getRuntimeId() == null) ? 0 : getRuntimeId().hashCode());
         hashCode = prime * hashCode + ((getExitCode() == null) ? 0 : getExitCode().hashCode());
         hashCode = prime * hashCode + ((getNetworkBindings() == null) ? 0 : getNetworkBindings().hashCode());
         hashCode = prime * hashCode + ((getReason() == null) ? 0 : getReason().hashCode());

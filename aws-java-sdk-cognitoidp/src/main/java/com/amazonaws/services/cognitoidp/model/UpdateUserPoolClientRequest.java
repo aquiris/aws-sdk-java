@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -78,7 +78,36 @@ public class UpdateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
     private java.util.List<String> supportedIdentityProviders;
     /**
      * <p>
-     * A list of allowed callback URLs for the identity providers.
+     * A list of allowed redirect (callback) URLs for the identity providers.
+     * </p>
+     * <p>
+     * A redirect URI must:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Be an absolute URI.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Be registered with the authorization server.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Not include a fragment component.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * See <a href="https://tools.ietf.org/html/rfc6749#section-3.1.2">OAuth 2.0 - Redirection Endpoint</a>.
+     * </p>
+     * <p>
+     * Amazon Cognito requires HTTPS over HTTP except for http://localhost for testing purposes only.
+     * </p>
+     * <p>
+     * App callback URLs such as myapp://example are also supported.
      * </p>
      */
     private java.util.List<String> callbackURLs;
@@ -92,16 +121,41 @@ public class UpdateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
      * <p>
      * The default redirect URI. Must be in the <code>CallbackURLs</code> list.
      * </p>
+     * <p>
+     * A redirect URI must:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Be an absolute URI.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Be registered with the authorization server.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Not include a fragment component.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * See <a href="https://tools.ietf.org/html/rfc6749#section-3.1.2">OAuth 2.0 - Redirection Endpoint</a>.
+     * </p>
+     * <p>
+     * Amazon Cognito requires HTTPS over HTTP except for http://localhost for testing purposes only.
+     * </p>
+     * <p>
+     * App callback URLs such as myapp://example are also supported.
+     * </p>
      */
     private String defaultRedirectURI;
     /**
      * <p>
      * Set to <code>code</code> to initiate a code grant flow, which provides an authorization code as the response.
      * This code can be exchanged for access tokens with the token endpoint.
-     * </p>
-     * <p>
-     * Set to <code>token</code> to specify that the client should get the access token (and, optionally, ID token,
-     * based on scopes) directly.
      * </p>
      */
     private java.util.List<String> allowedOAuthFlows;
@@ -595,10 +649,67 @@ public class UpdateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * A list of allowed callback URLs for the identity providers.
+     * A list of allowed redirect (callback) URLs for the identity providers.
+     * </p>
+     * <p>
+     * A redirect URI must:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Be an absolute URI.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Be registered with the authorization server.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Not include a fragment component.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * See <a href="https://tools.ietf.org/html/rfc6749#section-3.1.2">OAuth 2.0 - Redirection Endpoint</a>.
+     * </p>
+     * <p>
+     * Amazon Cognito requires HTTPS over HTTP except for http://localhost for testing purposes only.
+     * </p>
+     * <p>
+     * App callback URLs such as myapp://example are also supported.
      * </p>
      * 
-     * @return A list of allowed callback URLs for the identity providers.
+     * @return A list of allowed redirect (callback) URLs for the identity providers.</p>
+     *         <p>
+     *         A redirect URI must:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         Be an absolute URI.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Be registered with the authorization server.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Not include a fragment component.
+     *         </p>
+     *         </li>
+     *         </ul>
+     *         <p>
+     *         See <a href="https://tools.ietf.org/html/rfc6749#section-3.1.2">OAuth 2.0 - Redirection Endpoint</a>.
+     *         </p>
+     *         <p>
+     *         Amazon Cognito requires HTTPS over HTTP except for http://localhost for testing purposes only.
+     *         </p>
+     *         <p>
+     *         App callback URLs such as myapp://example are also supported.
      */
 
     public java.util.List<String> getCallbackURLs() {
@@ -607,11 +718,68 @@ public class UpdateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * A list of allowed callback URLs for the identity providers.
+     * A list of allowed redirect (callback) URLs for the identity providers.
+     * </p>
+     * <p>
+     * A redirect URI must:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Be an absolute URI.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Be registered with the authorization server.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Not include a fragment component.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * See <a href="https://tools.ietf.org/html/rfc6749#section-3.1.2">OAuth 2.0 - Redirection Endpoint</a>.
+     * </p>
+     * <p>
+     * Amazon Cognito requires HTTPS over HTTP except for http://localhost for testing purposes only.
+     * </p>
+     * <p>
+     * App callback URLs such as myapp://example are also supported.
      * </p>
      * 
      * @param callbackURLs
-     *        A list of allowed callback URLs for the identity providers.
+     *        A list of allowed redirect (callback) URLs for the identity providers.</p>
+     *        <p>
+     *        A redirect URI must:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        Be an absolute URI.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Be registered with the authorization server.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Not include a fragment component.
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        See <a href="https://tools.ietf.org/html/rfc6749#section-3.1.2">OAuth 2.0 - Redirection Endpoint</a>.
+     *        </p>
+     *        <p>
+     *        Amazon Cognito requires HTTPS over HTTP except for http://localhost for testing purposes only.
+     *        </p>
+     *        <p>
+     *        App callback URLs such as myapp://example are also supported.
      */
 
     public void setCallbackURLs(java.util.Collection<String> callbackURLs) {
@@ -625,7 +793,36 @@ public class UpdateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * A list of allowed callback URLs for the identity providers.
+     * A list of allowed redirect (callback) URLs for the identity providers.
+     * </p>
+     * <p>
+     * A redirect URI must:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Be an absolute URI.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Be registered with the authorization server.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Not include a fragment component.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * See <a href="https://tools.ietf.org/html/rfc6749#section-3.1.2">OAuth 2.0 - Redirection Endpoint</a>.
+     * </p>
+     * <p>
+     * Amazon Cognito requires HTTPS over HTTP except for http://localhost for testing purposes only.
+     * </p>
+     * <p>
+     * App callback URLs such as myapp://example are also supported.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -634,7 +831,35 @@ public class UpdateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
      * </p>
      * 
      * @param callbackURLs
-     *        A list of allowed callback URLs for the identity providers.
+     *        A list of allowed redirect (callback) URLs for the identity providers.</p>
+     *        <p>
+     *        A redirect URI must:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        Be an absolute URI.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Be registered with the authorization server.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Not include a fragment component.
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        See <a href="https://tools.ietf.org/html/rfc6749#section-3.1.2">OAuth 2.0 - Redirection Endpoint</a>.
+     *        </p>
+     *        <p>
+     *        Amazon Cognito requires HTTPS over HTTP except for http://localhost for testing purposes only.
+     *        </p>
+     *        <p>
+     *        App callback URLs such as myapp://example are also supported.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -650,11 +875,68 @@ public class UpdateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * A list of allowed callback URLs for the identity providers.
+     * A list of allowed redirect (callback) URLs for the identity providers.
+     * </p>
+     * <p>
+     * A redirect URI must:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Be an absolute URI.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Be registered with the authorization server.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Not include a fragment component.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * See <a href="https://tools.ietf.org/html/rfc6749#section-3.1.2">OAuth 2.0 - Redirection Endpoint</a>.
+     * </p>
+     * <p>
+     * Amazon Cognito requires HTTPS over HTTP except for http://localhost for testing purposes only.
+     * </p>
+     * <p>
+     * App callback URLs such as myapp://example are also supported.
      * </p>
      * 
      * @param callbackURLs
-     *        A list of allowed callback URLs for the identity providers.
+     *        A list of allowed redirect (callback) URLs for the identity providers.</p>
+     *        <p>
+     *        A redirect URI must:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        Be an absolute URI.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Be registered with the authorization server.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Not include a fragment component.
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        See <a href="https://tools.ietf.org/html/rfc6749#section-3.1.2">OAuth 2.0 - Redirection Endpoint</a>.
+     *        </p>
+     *        <p>
+     *        Amazon Cognito requires HTTPS over HTTP except for http://localhost for testing purposes only.
+     *        </p>
+     *        <p>
+     *        App callback URLs such as myapp://example are also supported.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -737,9 +1019,66 @@ public class UpdateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
      * <p>
      * The default redirect URI. Must be in the <code>CallbackURLs</code> list.
      * </p>
+     * <p>
+     * A redirect URI must:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Be an absolute URI.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Be registered with the authorization server.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Not include a fragment component.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * See <a href="https://tools.ietf.org/html/rfc6749#section-3.1.2">OAuth 2.0 - Redirection Endpoint</a>.
+     * </p>
+     * <p>
+     * Amazon Cognito requires HTTPS over HTTP except for http://localhost for testing purposes only.
+     * </p>
+     * <p>
+     * App callback URLs such as myapp://example are also supported.
+     * </p>
      * 
      * @param defaultRedirectURI
-     *        The default redirect URI. Must be in the <code>CallbackURLs</code> list.
+     *        The default redirect URI. Must be in the <code>CallbackURLs</code> list.</p>
+     *        <p>
+     *        A redirect URI must:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        Be an absolute URI.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Be registered with the authorization server.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Not include a fragment component.
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        See <a href="https://tools.ietf.org/html/rfc6749#section-3.1.2">OAuth 2.0 - Redirection Endpoint</a>.
+     *        </p>
+     *        <p>
+     *        Amazon Cognito requires HTTPS over HTTP except for http://localhost for testing purposes only.
+     *        </p>
+     *        <p>
+     *        App callback URLs such as myapp://example are also supported.
      */
 
     public void setDefaultRedirectURI(String defaultRedirectURI) {
@@ -750,8 +1089,65 @@ public class UpdateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
      * <p>
      * The default redirect URI. Must be in the <code>CallbackURLs</code> list.
      * </p>
+     * <p>
+     * A redirect URI must:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Be an absolute URI.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Be registered with the authorization server.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Not include a fragment component.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * See <a href="https://tools.ietf.org/html/rfc6749#section-3.1.2">OAuth 2.0 - Redirection Endpoint</a>.
+     * </p>
+     * <p>
+     * Amazon Cognito requires HTTPS over HTTP except for http://localhost for testing purposes only.
+     * </p>
+     * <p>
+     * App callback URLs such as myapp://example are also supported.
+     * </p>
      * 
-     * @return The default redirect URI. Must be in the <code>CallbackURLs</code> list.
+     * @return The default redirect URI. Must be in the <code>CallbackURLs</code> list.</p>
+     *         <p>
+     *         A redirect URI must:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         Be an absolute URI.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Be registered with the authorization server.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Not include a fragment component.
+     *         </p>
+     *         </li>
+     *         </ul>
+     *         <p>
+     *         See <a href="https://tools.ietf.org/html/rfc6749#section-3.1.2">OAuth 2.0 - Redirection Endpoint</a>.
+     *         </p>
+     *         <p>
+     *         Amazon Cognito requires HTTPS over HTTP except for http://localhost for testing purposes only.
+     *         </p>
+     *         <p>
+     *         App callback URLs such as myapp://example are also supported.
      */
 
     public String getDefaultRedirectURI() {
@@ -762,9 +1158,66 @@ public class UpdateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
      * <p>
      * The default redirect URI. Must be in the <code>CallbackURLs</code> list.
      * </p>
+     * <p>
+     * A redirect URI must:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Be an absolute URI.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Be registered with the authorization server.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Not include a fragment component.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * See <a href="https://tools.ietf.org/html/rfc6749#section-3.1.2">OAuth 2.0 - Redirection Endpoint</a>.
+     * </p>
+     * <p>
+     * Amazon Cognito requires HTTPS over HTTP except for http://localhost for testing purposes only.
+     * </p>
+     * <p>
+     * App callback URLs such as myapp://example are also supported.
+     * </p>
      * 
      * @param defaultRedirectURI
-     *        The default redirect URI. Must be in the <code>CallbackURLs</code> list.
+     *        The default redirect URI. Must be in the <code>CallbackURLs</code> list.</p>
+     *        <p>
+     *        A redirect URI must:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        Be an absolute URI.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Be registered with the authorization server.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Not include a fragment component.
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        See <a href="https://tools.ietf.org/html/rfc6749#section-3.1.2">OAuth 2.0 - Redirection Endpoint</a>.
+     *        </p>
+     *        <p>
+     *        Amazon Cognito requires HTTPS over HTTP except for http://localhost for testing purposes only.
+     *        </p>
+     *        <p>
+     *        App callback URLs such as myapp://example are also supported.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -778,16 +1231,9 @@ public class UpdateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
      * Set to <code>code</code> to initiate a code grant flow, which provides an authorization code as the response.
      * This code can be exchanged for access tokens with the token endpoint.
      * </p>
-     * <p>
-     * Set to <code>token</code> to specify that the client should get the access token (and, optionally, ID token,
-     * based on scopes) directly.
-     * </p>
      * 
      * @return Set to <code>code</code> to initiate a code grant flow, which provides an authorization code as the
-     *         response. This code can be exchanged for access tokens with the token endpoint.</p>
-     *         <p>
-     *         Set to <code>token</code> to specify that the client should get the access token (and, optionally, ID
-     *         token, based on scopes) directly.
+     *         response. This code can be exchanged for access tokens with the token endpoint.
      * @see OAuthFlowType
      */
 
@@ -800,17 +1246,10 @@ public class UpdateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
      * Set to <code>code</code> to initiate a code grant flow, which provides an authorization code as the response.
      * This code can be exchanged for access tokens with the token endpoint.
      * </p>
-     * <p>
-     * Set to <code>token</code> to specify that the client should get the access token (and, optionally, ID token,
-     * based on scopes) directly.
-     * </p>
      * 
      * @param allowedOAuthFlows
      *        Set to <code>code</code> to initiate a code grant flow, which provides an authorization code as the
-     *        response. This code can be exchanged for access tokens with the token endpoint.</p>
-     *        <p>
-     *        Set to <code>token</code> to specify that the client should get the access token (and, optionally, ID
-     *        token, based on scopes) directly.
+     *        response. This code can be exchanged for access tokens with the token endpoint.
      * @see OAuthFlowType
      */
 
@@ -829,10 +1268,6 @@ public class UpdateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
      * This code can be exchanged for access tokens with the token endpoint.
      * </p>
      * <p>
-     * Set to <code>token</code> to specify that the client should get the access token (and, optionally, ID token,
-     * based on scopes) directly.
-     * </p>
-     * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
      * {@link #setAllowedOAuthFlows(java.util.Collection)} or {@link #withAllowedOAuthFlows(java.util.Collection)} if
      * you want to override the existing values.
@@ -840,10 +1275,7 @@ public class UpdateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
      * 
      * @param allowedOAuthFlows
      *        Set to <code>code</code> to initiate a code grant flow, which provides an authorization code as the
-     *        response. This code can be exchanged for access tokens with the token endpoint.</p>
-     *        <p>
-     *        Set to <code>token</code> to specify that the client should get the access token (and, optionally, ID
-     *        token, based on scopes) directly.
+     *        response. This code can be exchanged for access tokens with the token endpoint.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see OAuthFlowType
      */
@@ -863,17 +1295,10 @@ public class UpdateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
      * Set to <code>code</code> to initiate a code grant flow, which provides an authorization code as the response.
      * This code can be exchanged for access tokens with the token endpoint.
      * </p>
-     * <p>
-     * Set to <code>token</code> to specify that the client should get the access token (and, optionally, ID token,
-     * based on scopes) directly.
-     * </p>
      * 
      * @param allowedOAuthFlows
      *        Set to <code>code</code> to initiate a code grant flow, which provides an authorization code as the
-     *        response. This code can be exchanged for access tokens with the token endpoint.</p>
-     *        <p>
-     *        Set to <code>token</code> to specify that the client should get the access token (and, optionally, ID
-     *        token, based on scopes) directly.
+     *        response. This code can be exchanged for access tokens with the token endpoint.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see OAuthFlowType
      */
@@ -888,17 +1313,10 @@ public class UpdateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
      * Set to <code>code</code> to initiate a code grant flow, which provides an authorization code as the response.
      * This code can be exchanged for access tokens with the token endpoint.
      * </p>
-     * <p>
-     * Set to <code>token</code> to specify that the client should get the access token (and, optionally, ID token,
-     * based on scopes) directly.
-     * </p>
      * 
      * @param allowedOAuthFlows
      *        Set to <code>code</code> to initiate a code grant flow, which provides an authorization code as the
-     *        response. This code can be exchanged for access tokens with the token endpoint.</p>
-     *        <p>
-     *        Set to <code>token</code> to specify that the client should get the access token (and, optionally, ID
-     *        token, based on scopes) directly.
+     *        response. This code can be exchanged for access tokens with the token endpoint.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see OAuthFlowType
      */
@@ -1091,7 +1509,8 @@ public class UpdateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -1104,7 +1523,7 @@ public class UpdateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
         if (getUserPoolId() != null)
             sb.append("UserPoolId: ").append(getUserPoolId()).append(",");
         if (getClientId() != null)
-            sb.append("ClientId: ").append(getClientId()).append(",");
+            sb.append("ClientId: ").append("***Sensitive Data Redacted***").append(",");
         if (getClientName() != null)
             sb.append("ClientName: ").append(getClientName()).append(",");
         if (getRefreshTokenValidity() != null)

@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -18,9 +18,6 @@ import javax.annotation.Generated;
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
- * <p>
- * Container for the parameters to the CreateLag operation.
- * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/CreateLag" target="_top">AWS API
  *      Documentation</a>
@@ -32,32 +29,18 @@ public class CreateLagRequest extends com.amazonaws.AmazonWebServiceRequest impl
      * <p>
      * The number of physical connections initially provisioned and bundled by the LAG.
      * </p>
-     * <p>
-     * Default: None
-     * </p>
      */
     private Integer numberOfConnections;
     /**
      * <p>
-     * The AWS Direct Connect location in which the LAG should be allocated.
-     * </p>
-     * <p>
-     * Example: EqSV5
-     * </p>
-     * <p>
-     * Default: None
+     * The location for the LAG.
      * </p>
      */
     private String location;
     /**
      * <p>
-     * The bandwidth of the individual physical connections bundled by the LAG.
-     * </p>
-     * <p>
-     * Default: None
-     * </p>
-     * <p>
-     * Available values: 1Gbps, 10Gbps
+     * The bandwidth of the individual physical connections bundled by the LAG. The possible values are 50Mbps, 100Mbps,
+     * 200Mbps, 300Mbps, 400Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, and 10Gbps.
      * </p>
      */
     private String connectionsBandwidth;
@@ -65,36 +48,36 @@ public class CreateLagRequest extends com.amazonaws.AmazonWebServiceRequest impl
      * <p>
      * The name of the LAG.
      * </p>
-     * <p>
-     * Example: "<code>3x10G LAG to AWS</code>"
-     * </p>
-     * <p>
-     * Default: None
-     * </p>
      */
     private String lagName;
     /**
      * <p>
      * The ID of an existing connection to migrate to the LAG.
      * </p>
-     * <p>
-     * Default: None
-     * </p>
      */
     private String connectionId;
+    /**
+     * <p>
+     * The tags to assign to the link aggregation group (LAG).
+     * </p>
+     */
+    private com.amazonaws.internal.SdkInternalList<Tag> tags;
+    /**
+     * <p>
+     * The tags to assign to the child connections of the LAG. Only newly created child connections as the result of
+     * creating a LAG connection are assigned the provided tags. The tags are not assigned to an existing connection
+     * that is provided via the “connectionId” parameter that will be migrated to the LAG.
+     * </p>
+     */
+    private com.amazonaws.internal.SdkInternalList<Tag> childConnectionTags;
 
     /**
      * <p>
      * The number of physical connections initially provisioned and bundled by the LAG.
      * </p>
-     * <p>
-     * Default: None
-     * </p>
      * 
      * @param numberOfConnections
-     *        The number of physical connections initially provisioned and bundled by the LAG.</p>
-     *        <p>
-     *        Default: None
+     *        The number of physical connections initially provisioned and bundled by the LAG.
      */
 
     public void setNumberOfConnections(Integer numberOfConnections) {
@@ -105,13 +88,8 @@ public class CreateLagRequest extends com.amazonaws.AmazonWebServiceRequest impl
      * <p>
      * The number of physical connections initially provisioned and bundled by the LAG.
      * </p>
-     * <p>
-     * Default: None
-     * </p>
      * 
-     * @return The number of physical connections initially provisioned and bundled by the LAG.</p>
-     *         <p>
-     *         Default: None
+     * @return The number of physical connections initially provisioned and bundled by the LAG.
      */
 
     public Integer getNumberOfConnections() {
@@ -122,14 +100,9 @@ public class CreateLagRequest extends com.amazonaws.AmazonWebServiceRequest impl
      * <p>
      * The number of physical connections initially provisioned and bundled by the LAG.
      * </p>
-     * <p>
-     * Default: None
-     * </p>
      * 
      * @param numberOfConnections
-     *        The number of physical connections initially provisioned and bundled by the LAG.</p>
-     *        <p>
-     *        Default: None
+     *        The number of physical connections initially provisioned and bundled by the LAG.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -140,22 +113,11 @@ public class CreateLagRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * The AWS Direct Connect location in which the LAG should be allocated.
-     * </p>
-     * <p>
-     * Example: EqSV5
-     * </p>
-     * <p>
-     * Default: None
+     * The location for the LAG.
      * </p>
      * 
      * @param location
-     *        The AWS Direct Connect location in which the LAG should be allocated.</p>
-     *        <p>
-     *        Example: EqSV5
-     *        </p>
-     *        <p>
-     *        Default: None
+     *        The location for the LAG.
      */
 
     public void setLocation(String location) {
@@ -164,21 +126,10 @@ public class CreateLagRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * The AWS Direct Connect location in which the LAG should be allocated.
-     * </p>
-     * <p>
-     * Example: EqSV5
-     * </p>
-     * <p>
-     * Default: None
+     * The location for the LAG.
      * </p>
      * 
-     * @return The AWS Direct Connect location in which the LAG should be allocated.</p>
-     *         <p>
-     *         Example: EqSV5
-     *         </p>
-     *         <p>
-     *         Default: None
+     * @return The location for the LAG.
      */
 
     public String getLocation() {
@@ -187,22 +138,11 @@ public class CreateLagRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * The AWS Direct Connect location in which the LAG should be allocated.
-     * </p>
-     * <p>
-     * Example: EqSV5
-     * </p>
-     * <p>
-     * Default: None
+     * The location for the LAG.
      * </p>
      * 
      * @param location
-     *        The AWS Direct Connect location in which the LAG should be allocated.</p>
-     *        <p>
-     *        Example: EqSV5
-     *        </p>
-     *        <p>
-     *        Default: None
+     *        The location for the LAG.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -213,22 +153,13 @@ public class CreateLagRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * The bandwidth of the individual physical connections bundled by the LAG.
-     * </p>
-     * <p>
-     * Default: None
-     * </p>
-     * <p>
-     * Available values: 1Gbps, 10Gbps
+     * The bandwidth of the individual physical connections bundled by the LAG. The possible values are 50Mbps, 100Mbps,
+     * 200Mbps, 300Mbps, 400Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, and 10Gbps.
      * </p>
      * 
      * @param connectionsBandwidth
-     *        The bandwidth of the individual physical connections bundled by the LAG.</p>
-     *        <p>
-     *        Default: None
-     *        </p>
-     *        <p>
-     *        Available values: 1Gbps, 10Gbps
+     *        The bandwidth of the individual physical connections bundled by the LAG. The possible values are 50Mbps,
+     *        100Mbps, 200Mbps, 300Mbps, 400Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, and 10Gbps.
      */
 
     public void setConnectionsBandwidth(String connectionsBandwidth) {
@@ -237,21 +168,12 @@ public class CreateLagRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * The bandwidth of the individual physical connections bundled by the LAG.
-     * </p>
-     * <p>
-     * Default: None
-     * </p>
-     * <p>
-     * Available values: 1Gbps, 10Gbps
+     * The bandwidth of the individual physical connections bundled by the LAG. The possible values are 50Mbps, 100Mbps,
+     * 200Mbps, 300Mbps, 400Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, and 10Gbps.
      * </p>
      * 
-     * @return The bandwidth of the individual physical connections bundled by the LAG.</p>
-     *         <p>
-     *         Default: None
-     *         </p>
-     *         <p>
-     *         Available values: 1Gbps, 10Gbps
+     * @return The bandwidth of the individual physical connections bundled by the LAG. The possible values are 50Mbps,
+     *         100Mbps, 200Mbps, 300Mbps, 400Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, and 10Gbps.
      */
 
     public String getConnectionsBandwidth() {
@@ -260,22 +182,13 @@ public class CreateLagRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * The bandwidth of the individual physical connections bundled by the LAG.
-     * </p>
-     * <p>
-     * Default: None
-     * </p>
-     * <p>
-     * Available values: 1Gbps, 10Gbps
+     * The bandwidth of the individual physical connections bundled by the LAG. The possible values are 50Mbps, 100Mbps,
+     * 200Mbps, 300Mbps, 400Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, and 10Gbps.
      * </p>
      * 
      * @param connectionsBandwidth
-     *        The bandwidth of the individual physical connections bundled by the LAG.</p>
-     *        <p>
-     *        Default: None
-     *        </p>
-     *        <p>
-     *        Available values: 1Gbps, 10Gbps
+     *        The bandwidth of the individual physical connections bundled by the LAG. The possible values are 50Mbps,
+     *        100Mbps, 200Mbps, 300Mbps, 400Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, and 10Gbps.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -288,20 +201,9 @@ public class CreateLagRequest extends com.amazonaws.AmazonWebServiceRequest impl
      * <p>
      * The name of the LAG.
      * </p>
-     * <p>
-     * Example: "<code>3x10G LAG to AWS</code>"
-     * </p>
-     * <p>
-     * Default: None
-     * </p>
      * 
      * @param lagName
-     *        The name of the LAG.</p>
-     *        <p>
-     *        Example: "<code>3x10G LAG to AWS</code>"
-     *        </p>
-     *        <p>
-     *        Default: None
+     *        The name of the LAG.
      */
 
     public void setLagName(String lagName) {
@@ -312,19 +214,8 @@ public class CreateLagRequest extends com.amazonaws.AmazonWebServiceRequest impl
      * <p>
      * The name of the LAG.
      * </p>
-     * <p>
-     * Example: "<code>3x10G LAG to AWS</code>"
-     * </p>
-     * <p>
-     * Default: None
-     * </p>
      * 
-     * @return The name of the LAG.</p>
-     *         <p>
-     *         Example: "<code>3x10G LAG to AWS</code>"
-     *         </p>
-     *         <p>
-     *         Default: None
+     * @return The name of the LAG.
      */
 
     public String getLagName() {
@@ -335,20 +226,9 @@ public class CreateLagRequest extends com.amazonaws.AmazonWebServiceRequest impl
      * <p>
      * The name of the LAG.
      * </p>
-     * <p>
-     * Example: "<code>3x10G LAG to AWS</code>"
-     * </p>
-     * <p>
-     * Default: None
-     * </p>
      * 
      * @param lagName
-     *        The name of the LAG.</p>
-     *        <p>
-     *        Example: "<code>3x10G LAG to AWS</code>"
-     *        </p>
-     *        <p>
-     *        Default: None
+     *        The name of the LAG.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -361,14 +241,9 @@ public class CreateLagRequest extends com.amazonaws.AmazonWebServiceRequest impl
      * <p>
      * The ID of an existing connection to migrate to the LAG.
      * </p>
-     * <p>
-     * Default: None
-     * </p>
      * 
      * @param connectionId
-     *        The ID of an existing connection to migrate to the LAG.</p>
-     *        <p>
-     *        Default: None
+     *        The ID of an existing connection to migrate to the LAG.
      */
 
     public void setConnectionId(String connectionId) {
@@ -379,13 +254,8 @@ public class CreateLagRequest extends com.amazonaws.AmazonWebServiceRequest impl
      * <p>
      * The ID of an existing connection to migrate to the LAG.
      * </p>
-     * <p>
-     * Default: None
-     * </p>
      * 
-     * @return The ID of an existing connection to migrate to the LAG.</p>
-     *         <p>
-     *         Default: None
+     * @return The ID of an existing connection to migrate to the LAG.
      */
 
     public String getConnectionId() {
@@ -396,14 +266,9 @@ public class CreateLagRequest extends com.amazonaws.AmazonWebServiceRequest impl
      * <p>
      * The ID of an existing connection to migrate to the LAG.
      * </p>
-     * <p>
-     * Default: None
-     * </p>
      * 
      * @param connectionId
-     *        The ID of an existing connection to migrate to the LAG.</p>
-     *        <p>
-     *        Default: None
+     *        The ID of an existing connection to migrate to the LAG.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -413,7 +278,170 @@ public class CreateLagRequest extends com.amazonaws.AmazonWebServiceRequest impl
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * <p>
+     * The tags to assign to the link aggregation group (LAG).
+     * </p>
+     * 
+     * @return The tags to assign to the link aggregation group (LAG).
+     */
+
+    public java.util.List<Tag> getTags() {
+        if (tags == null) {
+            tags = new com.amazonaws.internal.SdkInternalList<Tag>();
+        }
+        return tags;
+    }
+
+    /**
+     * <p>
+     * The tags to assign to the link aggregation group (LAG).
+     * </p>
+     * 
+     * @param tags
+     *        The tags to assign to the link aggregation group (LAG).
+     */
+
+    public void setTags(java.util.Collection<Tag> tags) {
+        if (tags == null) {
+            this.tags = null;
+            return;
+        }
+
+        this.tags = new com.amazonaws.internal.SdkInternalList<Tag>(tags);
+    }
+
+    /**
+     * <p>
+     * The tags to assign to the link aggregation group (LAG).
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setTags(java.util.Collection)} or {@link #withTags(java.util.Collection)} if you want to override the
+     * existing values.
+     * </p>
+     * 
+     * @param tags
+     *        The tags to assign to the link aggregation group (LAG).
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateLagRequest withTags(Tag... tags) {
+        if (this.tags == null) {
+            setTags(new com.amazonaws.internal.SdkInternalList<Tag>(tags.length));
+        }
+        for (Tag ele : tags) {
+            this.tags.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * The tags to assign to the link aggregation group (LAG).
+     * </p>
+     * 
+     * @param tags
+     *        The tags to assign to the link aggregation group (LAG).
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateLagRequest withTags(java.util.Collection<Tag> tags) {
+        setTags(tags);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The tags to assign to the child connections of the LAG. Only newly created child connections as the result of
+     * creating a LAG connection are assigned the provided tags. The tags are not assigned to an existing connection
+     * that is provided via the “connectionId” parameter that will be migrated to the LAG.
+     * </p>
+     * 
+     * @return The tags to assign to the child connections of the LAG. Only newly created child connections as the
+     *         result of creating a LAG connection are assigned the provided tags. The tags are not assigned to an
+     *         existing connection that is provided via the “connectionId” parameter that will be migrated to the LAG.
+     */
+
+    public java.util.List<Tag> getChildConnectionTags() {
+        if (childConnectionTags == null) {
+            childConnectionTags = new com.amazonaws.internal.SdkInternalList<Tag>();
+        }
+        return childConnectionTags;
+    }
+
+    /**
+     * <p>
+     * The tags to assign to the child connections of the LAG. Only newly created child connections as the result of
+     * creating a LAG connection are assigned the provided tags. The tags are not assigned to an existing connection
+     * that is provided via the “connectionId” parameter that will be migrated to the LAG.
+     * </p>
+     * 
+     * @param childConnectionTags
+     *        The tags to assign to the child connections of the LAG. Only newly created child connections as the result
+     *        of creating a LAG connection are assigned the provided tags. The tags are not assigned to an existing
+     *        connection that is provided via the “connectionId” parameter that will be migrated to the LAG.
+     */
+
+    public void setChildConnectionTags(java.util.Collection<Tag> childConnectionTags) {
+        if (childConnectionTags == null) {
+            this.childConnectionTags = null;
+            return;
+        }
+
+        this.childConnectionTags = new com.amazonaws.internal.SdkInternalList<Tag>(childConnectionTags);
+    }
+
+    /**
+     * <p>
+     * The tags to assign to the child connections of the LAG. Only newly created child connections as the result of
+     * creating a LAG connection are assigned the provided tags. The tags are not assigned to an existing connection
+     * that is provided via the “connectionId” parameter that will be migrated to the LAG.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setChildConnectionTags(java.util.Collection)} or {@link #withChildConnectionTags(java.util.Collection)}
+     * if you want to override the existing values.
+     * </p>
+     * 
+     * @param childConnectionTags
+     *        The tags to assign to the child connections of the LAG. Only newly created child connections as the result
+     *        of creating a LAG connection are assigned the provided tags. The tags are not assigned to an existing
+     *        connection that is provided via the “connectionId” parameter that will be migrated to the LAG.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateLagRequest withChildConnectionTags(Tag... childConnectionTags) {
+        if (this.childConnectionTags == null) {
+            setChildConnectionTags(new com.amazonaws.internal.SdkInternalList<Tag>(childConnectionTags.length));
+        }
+        for (Tag ele : childConnectionTags) {
+            this.childConnectionTags.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * The tags to assign to the child connections of the LAG. Only newly created child connections as the result of
+     * creating a LAG connection are assigned the provided tags. The tags are not assigned to an existing connection
+     * that is provided via the “connectionId” parameter that will be migrated to the LAG.
+     * </p>
+     * 
+     * @param childConnectionTags
+     *        The tags to assign to the child connections of the LAG. Only newly created child connections as the result
+     *        of creating a LAG connection are assigned the provided tags. The tags are not assigned to an existing
+     *        connection that is provided via the “connectionId” parameter that will be migrated to the LAG.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateLagRequest withChildConnectionTags(java.util.Collection<Tag> childConnectionTags) {
+        setChildConnectionTags(childConnectionTags);
+        return this;
+    }
+
+    /**
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -432,7 +460,11 @@ public class CreateLagRequest extends com.amazonaws.AmazonWebServiceRequest impl
         if (getLagName() != null)
             sb.append("LagName: ").append(getLagName()).append(",");
         if (getConnectionId() != null)
-            sb.append("ConnectionId: ").append(getConnectionId());
+            sb.append("ConnectionId: ").append(getConnectionId()).append(",");
+        if (getTags() != null)
+            sb.append("Tags: ").append(getTags()).append(",");
+        if (getChildConnectionTags() != null)
+            sb.append("ChildConnectionTags: ").append(getChildConnectionTags());
         sb.append("}");
         return sb.toString();
     }
@@ -467,6 +499,14 @@ public class CreateLagRequest extends com.amazonaws.AmazonWebServiceRequest impl
             return false;
         if (other.getConnectionId() != null && other.getConnectionId().equals(this.getConnectionId()) == false)
             return false;
+        if (other.getTags() == null ^ this.getTags() == null)
+            return false;
+        if (other.getTags() != null && other.getTags().equals(this.getTags()) == false)
+            return false;
+        if (other.getChildConnectionTags() == null ^ this.getChildConnectionTags() == null)
+            return false;
+        if (other.getChildConnectionTags() != null && other.getChildConnectionTags().equals(this.getChildConnectionTags()) == false)
+            return false;
         return true;
     }
 
@@ -480,6 +520,8 @@ public class CreateLagRequest extends com.amazonaws.AmazonWebServiceRequest impl
         hashCode = prime * hashCode + ((getConnectionsBandwidth() == null) ? 0 : getConnectionsBandwidth().hashCode());
         hashCode = prime * hashCode + ((getLagName() == null) ? 0 : getLagName().hashCode());
         hashCode = prime * hashCode + ((getConnectionId() == null) ? 0 : getConnectionId().hashCode());
+        hashCode = prime * hashCode + ((getTags() == null) ? 0 : getTags().hashCode());
+        hashCode = prime * hashCode + ((getChildConnectionTags() == null) ? 0 : getChildConnectionTags().hashCode());
         return hashCode;
     }
 

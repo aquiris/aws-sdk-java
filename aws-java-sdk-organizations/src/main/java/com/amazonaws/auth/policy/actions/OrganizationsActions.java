@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -33,6 +33,8 @@ public enum OrganizationsActions implements Action {
     CancelHandshake("organizations:CancelHandshake"),
     /** Action for the CreateAccount operation. */
     CreateAccount("organizations:CreateAccount"),
+    /** Action for the CreateGovCloudAccount operation. */
+    CreateGovCloudAccount("organizations:CreateGovCloudAccount"),
     /** Action for the CreateOrganization operation. */
     CreateOrganization("organizations:CreateOrganization"),
     /** Action for the CreateOrganizationalUnit operation. */
@@ -99,12 +101,18 @@ public enum OrganizationsActions implements Action {
     ListPoliciesForTarget("organizations:ListPoliciesForTarget"),
     /** Action for the ListRoots operation. */
     ListRoots("organizations:ListRoots"),
+    /** Action for the ListTagsForResource operation. */
+    ListTagsForResource("organizations:ListTagsForResource"),
     /** Action for the ListTargetsForPolicy operation. */
     ListTargetsForPolicy("organizations:ListTargetsForPolicy"),
     /** Action for the MoveAccount operation. */
     MoveAccount("organizations:MoveAccount"),
     /** Action for the RemoveAccountFromOrganization operation. */
     RemoveAccountFromOrganization("organizations:RemoveAccountFromOrganization"),
+    /** Action for the TagResource operation. */
+    TagResource("organizations:TagResource"),
+    /** Action for the UntagResource operation. */
+    UntagResource("organizations:UntagResource"),
     /** Action for the UpdateOrganizationalUnit operation. */
     UpdateOrganizationalUnit("organizations:UpdateOrganizationalUnit"),
     /** Action for the UpdatePolicy operation. */

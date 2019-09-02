@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -18,7 +18,10 @@ import com.amazonaws.protocol.StructuredPojo;
 import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
- * Segment import definition.
+ * <p>
+ * Provides information about the import job that created a segment. An import job is a job that creates a user segment
+ * by importing endpoint definitions.
+ * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/SegmentImportResource" target="_top">AWS API
  *      Documentation</a>
@@ -26,29 +29,54 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class SegmentImportResource implements Serializable, Cloneable, StructuredPojo {
 
-    /** Channel type counts */
+    /**
+     * <p>
+     * The number of channel types in the endpoint definitions that were imported to create the segment.
+     * </p>
+     */
     private java.util.Map<String, Integer> channelCounts;
     /**
-     * DEPRECATED. Your AWS account ID, which you assigned to the ExternalID key in an IAM trust policy. Used by Amazon
-     * Pinpoint to assume an IAM role. This requirement is removed, and external IDs are not recommended for IAM roles
-     * assumed by Amazon Pinpoint.
+     * <p>
+     * (Deprecated) Your AWS account ID, which you assigned to an external ID key in an IAM trust policy. Amazon
+     * Pinpoint previously used this value to assume an IAM role when importing endpoint definitions, but we removed
+     * this requirement. We don't recommend use of external IDs for IAM roles that are assumed by Amazon Pinpoint.
+     * </p>
      */
     private String externalId;
     /**
-     * The format of the endpoint files that were imported to create this segment. Valid values: CSV, JSON
+     * <p>
+     * The format of the files that were imported to create the segment. Valid values are: CSV, for comma-separated
+     * values format; and, JSON, for newline-delimited JSON format.
+     * </p>
      */
     private String format;
-    /** The Amazon Resource Name (ARN) of an IAM role that grants Amazon Pinpoint access to the endpoints in Amazon S3. */
+    /**
+     * <p>
+     * The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that authorized Amazon
+     * Pinpoint to access the Amazon S3 location to import endpoint definitions from.
+     * </p>
+     */
     private String roleArn;
-    /** A URL that points to the Amazon S3 location from which the endpoints for this segment were imported. */
+    /**
+     * <p>
+     * The URL of the Amazon Simple Storage Service (Amazon S3) bucket that the endpoint definitions were imported from
+     * to create the segment.
+     * </p>
+     */
     private String s3Url;
-    /** The number of endpoints that were successfully imported to create this segment. */
+    /**
+     * <p>
+     * The number of endpoint definitions that were imported successfully to create the segment.
+     * </p>
+     */
     private Integer size;
 
     /**
-     * Channel type counts
+     * <p>
+     * The number of channel types in the endpoint definitions that were imported to create the segment.
+     * </p>
      * 
-     * @return Channel type counts
+     * @return The number of channel types in the endpoint definitions that were imported to create the segment.
      */
 
     public java.util.Map<String, Integer> getChannelCounts() {
@@ -56,10 +84,12 @@ public class SegmentImportResource implements Serializable, Cloneable, Structure
     }
 
     /**
-     * Channel type counts
+     * <p>
+     * The number of channel types in the endpoint definitions that were imported to create the segment.
+     * </p>
      * 
      * @param channelCounts
-     *        Channel type counts
+     *        The number of channel types in the endpoint definitions that were imported to create the segment.
      */
 
     public void setChannelCounts(java.util.Map<String, Integer> channelCounts) {
@@ -67,10 +97,12 @@ public class SegmentImportResource implements Serializable, Cloneable, Structure
     }
 
     /**
-     * Channel type counts
+     * <p>
+     * The number of channel types in the endpoint definitions that were imported to create the segment.
+     * </p>
      * 
      * @param channelCounts
-     *        Channel type counts
+     *        The number of channel types in the endpoint definitions that were imported to create the segment.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -101,14 +133,17 @@ public class SegmentImportResource implements Serializable, Cloneable, Structure
     }
 
     /**
-     * DEPRECATED. Your AWS account ID, which you assigned to the ExternalID key in an IAM trust policy. Used by Amazon
-     * Pinpoint to assume an IAM role. This requirement is removed, and external IDs are not recommended for IAM roles
-     * assumed by Amazon Pinpoint.
+     * <p>
+     * (Deprecated) Your AWS account ID, which you assigned to an external ID key in an IAM trust policy. Amazon
+     * Pinpoint previously used this value to assume an IAM role when importing endpoint definitions, but we removed
+     * this requirement. We don't recommend use of external IDs for IAM roles that are assumed by Amazon Pinpoint.
+     * </p>
      * 
      * @param externalId
-     *        DEPRECATED. Your AWS account ID, which you assigned to the ExternalID key in an IAM trust policy. Used by
-     *        Amazon Pinpoint to assume an IAM role. This requirement is removed, and external IDs are not recommended
-     *        for IAM roles assumed by Amazon Pinpoint.
+     *        (Deprecated) Your AWS account ID, which you assigned to an external ID key in an IAM trust policy. Amazon
+     *        Pinpoint previously used this value to assume an IAM role when importing endpoint definitions, but we
+     *        removed this requirement. We don't recommend use of external IDs for IAM roles that are assumed by Amazon
+     *        Pinpoint.
      */
 
     public void setExternalId(String externalId) {
@@ -116,13 +151,16 @@ public class SegmentImportResource implements Serializable, Cloneable, Structure
     }
 
     /**
-     * DEPRECATED. Your AWS account ID, which you assigned to the ExternalID key in an IAM trust policy. Used by Amazon
-     * Pinpoint to assume an IAM role. This requirement is removed, and external IDs are not recommended for IAM roles
-     * assumed by Amazon Pinpoint.
+     * <p>
+     * (Deprecated) Your AWS account ID, which you assigned to an external ID key in an IAM trust policy. Amazon
+     * Pinpoint previously used this value to assume an IAM role when importing endpoint definitions, but we removed
+     * this requirement. We don't recommend use of external IDs for IAM roles that are assumed by Amazon Pinpoint.
+     * </p>
      * 
-     * @return DEPRECATED. Your AWS account ID, which you assigned to the ExternalID key in an IAM trust policy. Used by
-     *         Amazon Pinpoint to assume an IAM role. This requirement is removed, and external IDs are not recommended
-     *         for IAM roles assumed by Amazon Pinpoint.
+     * @return (Deprecated) Your AWS account ID, which you assigned to an external ID key in an IAM trust policy. Amazon
+     *         Pinpoint previously used this value to assume an IAM role when importing endpoint definitions, but we
+     *         removed this requirement. We don't recommend use of external IDs for IAM roles that are assumed by Amazon
+     *         Pinpoint.
      */
 
     public String getExternalId() {
@@ -130,14 +168,17 @@ public class SegmentImportResource implements Serializable, Cloneable, Structure
     }
 
     /**
-     * DEPRECATED. Your AWS account ID, which you assigned to the ExternalID key in an IAM trust policy. Used by Amazon
-     * Pinpoint to assume an IAM role. This requirement is removed, and external IDs are not recommended for IAM roles
-     * assumed by Amazon Pinpoint.
+     * <p>
+     * (Deprecated) Your AWS account ID, which you assigned to an external ID key in an IAM trust policy. Amazon
+     * Pinpoint previously used this value to assume an IAM role when importing endpoint definitions, but we removed
+     * this requirement. We don't recommend use of external IDs for IAM roles that are assumed by Amazon Pinpoint.
+     * </p>
      * 
      * @param externalId
-     *        DEPRECATED. Your AWS account ID, which you assigned to the ExternalID key in an IAM trust policy. Used by
-     *        Amazon Pinpoint to assume an IAM role. This requirement is removed, and external IDs are not recommended
-     *        for IAM roles assumed by Amazon Pinpoint.
+     *        (Deprecated) Your AWS account ID, which you assigned to an external ID key in an IAM trust policy. Amazon
+     *        Pinpoint previously used this value to assume an IAM role when importing endpoint definitions, but we
+     *        removed this requirement. We don't recommend use of external IDs for IAM roles that are assumed by Amazon
+     *        Pinpoint.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -147,10 +188,14 @@ public class SegmentImportResource implements Serializable, Cloneable, Structure
     }
 
     /**
-     * The format of the endpoint files that were imported to create this segment. Valid values: CSV, JSON
+     * <p>
+     * The format of the files that were imported to create the segment. Valid values are: CSV, for comma-separated
+     * values format; and, JSON, for newline-delimited JSON format.
+     * </p>
      * 
      * @param format
-     *        The format of the endpoint files that were imported to create this segment. Valid values: CSV, JSON
+     *        The format of the files that were imported to create the segment. Valid values are: CSV, for
+     *        comma-separated values format; and, JSON, for newline-delimited JSON format.
      * @see Format
      */
 
@@ -159,9 +204,13 @@ public class SegmentImportResource implements Serializable, Cloneable, Structure
     }
 
     /**
-     * The format of the endpoint files that were imported to create this segment. Valid values: CSV, JSON
+     * <p>
+     * The format of the files that were imported to create the segment. Valid values are: CSV, for comma-separated
+     * values format; and, JSON, for newline-delimited JSON format.
+     * </p>
      * 
-     * @return The format of the endpoint files that were imported to create this segment. Valid values: CSV, JSON
+     * @return The format of the files that were imported to create the segment. Valid values are: CSV, for
+     *         comma-separated values format; and, JSON, for newline-delimited JSON format.
      * @see Format
      */
 
@@ -170,10 +219,14 @@ public class SegmentImportResource implements Serializable, Cloneable, Structure
     }
 
     /**
-     * The format of the endpoint files that were imported to create this segment. Valid values: CSV, JSON
+     * <p>
+     * The format of the files that were imported to create the segment. Valid values are: CSV, for comma-separated
+     * values format; and, JSON, for newline-delimited JSON format.
+     * </p>
      * 
      * @param format
-     *        The format of the endpoint files that were imported to create this segment. Valid values: CSV, JSON
+     *        The format of the files that were imported to create the segment. Valid values are: CSV, for
+     *        comma-separated values format; and, JSON, for newline-delimited JSON format.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Format
      */
@@ -184,10 +237,14 @@ public class SegmentImportResource implements Serializable, Cloneable, Structure
     }
 
     /**
-     * The format of the endpoint files that were imported to create this segment. Valid values: CSV, JSON
+     * <p>
+     * The format of the files that were imported to create the segment. Valid values are: CSV, for comma-separated
+     * values format; and, JSON, for newline-delimited JSON format.
+     * </p>
      * 
      * @param format
-     *        The format of the endpoint files that were imported to create this segment. Valid values: CSV, JSON
+     *        The format of the files that were imported to create the segment. Valid values are: CSV, for
+     *        comma-separated values format; and, JSON, for newline-delimited JSON format.
      * @see Format
      */
 
@@ -196,10 +253,14 @@ public class SegmentImportResource implements Serializable, Cloneable, Structure
     }
 
     /**
-     * The format of the endpoint files that were imported to create this segment. Valid values: CSV, JSON
+     * <p>
+     * The format of the files that were imported to create the segment. Valid values are: CSV, for comma-separated
+     * values format; and, JSON, for newline-delimited JSON format.
+     * </p>
      * 
      * @param format
-     *        The format of the endpoint files that were imported to create this segment. Valid values: CSV, JSON
+     *        The format of the files that were imported to create the segment. Valid values are: CSV, for
+     *        comma-separated values format; and, JSON, for newline-delimited JSON format.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Format
      */
@@ -210,11 +271,14 @@ public class SegmentImportResource implements Serializable, Cloneable, Structure
     }
 
     /**
-     * The Amazon Resource Name (ARN) of an IAM role that grants Amazon Pinpoint access to the endpoints in Amazon S3.
+     * <p>
+     * The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that authorized Amazon
+     * Pinpoint to access the Amazon S3 location to import endpoint definitions from.
+     * </p>
      * 
      * @param roleArn
-     *        The Amazon Resource Name (ARN) of an IAM role that grants Amazon Pinpoint access to the endpoints in
-     *        Amazon S3.
+     *        The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that authorized Amazon
+     *        Pinpoint to access the Amazon S3 location to import endpoint definitions from.
      */
 
     public void setRoleArn(String roleArn) {
@@ -222,10 +286,13 @@ public class SegmentImportResource implements Serializable, Cloneable, Structure
     }
 
     /**
-     * The Amazon Resource Name (ARN) of an IAM role that grants Amazon Pinpoint access to the endpoints in Amazon S3.
+     * <p>
+     * The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that authorized Amazon
+     * Pinpoint to access the Amazon S3 location to import endpoint definitions from.
+     * </p>
      * 
-     * @return The Amazon Resource Name (ARN) of an IAM role that grants Amazon Pinpoint access to the endpoints in
-     *         Amazon S3.
+     * @return The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that authorized
+     *         Amazon Pinpoint to access the Amazon S3 location to import endpoint definitions from.
      */
 
     public String getRoleArn() {
@@ -233,11 +300,14 @@ public class SegmentImportResource implements Serializable, Cloneable, Structure
     }
 
     /**
-     * The Amazon Resource Name (ARN) of an IAM role that grants Amazon Pinpoint access to the endpoints in Amazon S3.
+     * <p>
+     * The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that authorized Amazon
+     * Pinpoint to access the Amazon S3 location to import endpoint definitions from.
+     * </p>
      * 
      * @param roleArn
-     *        The Amazon Resource Name (ARN) of an IAM role that grants Amazon Pinpoint access to the endpoints in
-     *        Amazon S3.
+     *        The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that authorized Amazon
+     *        Pinpoint to access the Amazon S3 location to import endpoint definitions from.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -247,10 +317,14 @@ public class SegmentImportResource implements Serializable, Cloneable, Structure
     }
 
     /**
-     * A URL that points to the Amazon S3 location from which the endpoints for this segment were imported.
+     * <p>
+     * The URL of the Amazon Simple Storage Service (Amazon S3) bucket that the endpoint definitions were imported from
+     * to create the segment.
+     * </p>
      * 
      * @param s3Url
-     *        A URL that points to the Amazon S3 location from which the endpoints for this segment were imported.
+     *        The URL of the Amazon Simple Storage Service (Amazon S3) bucket that the endpoint definitions were
+     *        imported from to create the segment.
      */
 
     public void setS3Url(String s3Url) {
@@ -258,9 +332,13 @@ public class SegmentImportResource implements Serializable, Cloneable, Structure
     }
 
     /**
-     * A URL that points to the Amazon S3 location from which the endpoints for this segment were imported.
+     * <p>
+     * The URL of the Amazon Simple Storage Service (Amazon S3) bucket that the endpoint definitions were imported from
+     * to create the segment.
+     * </p>
      * 
-     * @return A URL that points to the Amazon S3 location from which the endpoints for this segment were imported.
+     * @return The URL of the Amazon Simple Storage Service (Amazon S3) bucket that the endpoint definitions were
+     *         imported from to create the segment.
      */
 
     public String getS3Url() {
@@ -268,10 +346,14 @@ public class SegmentImportResource implements Serializable, Cloneable, Structure
     }
 
     /**
-     * A URL that points to the Amazon S3 location from which the endpoints for this segment were imported.
+     * <p>
+     * The URL of the Amazon Simple Storage Service (Amazon S3) bucket that the endpoint definitions were imported from
+     * to create the segment.
+     * </p>
      * 
      * @param s3Url
-     *        A URL that points to the Amazon S3 location from which the endpoints for this segment were imported.
+     *        The URL of the Amazon Simple Storage Service (Amazon S3) bucket that the endpoint definitions were
+     *        imported from to create the segment.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -281,10 +363,12 @@ public class SegmentImportResource implements Serializable, Cloneable, Structure
     }
 
     /**
-     * The number of endpoints that were successfully imported to create this segment.
+     * <p>
+     * The number of endpoint definitions that were imported successfully to create the segment.
+     * </p>
      * 
      * @param size
-     *        The number of endpoints that were successfully imported to create this segment.
+     *        The number of endpoint definitions that were imported successfully to create the segment.
      */
 
     public void setSize(Integer size) {
@@ -292,9 +376,11 @@ public class SegmentImportResource implements Serializable, Cloneable, Structure
     }
 
     /**
-     * The number of endpoints that were successfully imported to create this segment.
+     * <p>
+     * The number of endpoint definitions that were imported successfully to create the segment.
+     * </p>
      * 
-     * @return The number of endpoints that were successfully imported to create this segment.
+     * @return The number of endpoint definitions that were imported successfully to create the segment.
      */
 
     public Integer getSize() {
@@ -302,10 +388,12 @@ public class SegmentImportResource implements Serializable, Cloneable, Structure
     }
 
     /**
-     * The number of endpoints that were successfully imported to create this segment.
+     * <p>
+     * The number of endpoint definitions that were imported successfully to create the segment.
+     * </p>
      * 
      * @param size
-     *        The number of endpoints that were successfully imported to create this segment.
+     *        The number of endpoint definitions that were imported successfully to create the segment.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -315,7 +403,8 @@ public class SegmentImportResource implements Serializable, Cloneable, Structure
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

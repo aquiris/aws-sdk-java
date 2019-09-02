@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -19,8 +19,7 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * Describes a streaming instance used for editing an image. New images are created from a snapshot through an image
- * builder.
+ * Describes a virtual machine that is used to create an image.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/appstream-2016-12-01/ImageBuilder" target="_top">AWS API
@@ -49,13 +48,13 @@ public class ImageBuilder implements Serializable, Cloneable, StructuredPojo {
     private String imageArn;
     /**
      * <p>
-     * The description for display.
+     * The description to display.
      * </p>
      */
     private String description;
     /**
      * <p>
-     * The image builder name for display.
+     * The image builder name to display.
      * </p>
      */
     private String displayName;
@@ -103,10 +102,13 @@ public class ImageBuilder implements Serializable, Cloneable, StructuredPojo {
     private Boolean enableDefaultInternetAccess;
     /**
      * <p>
-     * The information needed to join a Microsoft Active Directory domain.
+     * The name of the directory and organizational unit (OU) to use to join the image builder to a Microsoft Active
+     * Directory domain.
      * </p>
      */
     private DomainJoinInfo domainJoinInfo;
+
+    private NetworkAccessConfiguration networkAccessConfiguration;
     /**
      * <p>
      * The image builder errors.
@@ -115,10 +117,17 @@ public class ImageBuilder implements Serializable, Cloneable, StructuredPojo {
     private java.util.List<ResourceError> imageBuilderErrors;
     /**
      * <p>
-     * The version of the AppStream 2.0 agent that is currently being used by this image builder.
+     * The version of the AppStream 2.0 agent that is currently being used by the image builder.
      * </p>
      */
     private String appstreamAgentVersion;
+    /**
+     * <p>
+     * The list of virtual private cloud (VPC) interface endpoint objects. Administrators can connect to the image
+     * builder only through the specified endpoints.
+     * </p>
+     */
+    private java.util.List<AccessEndpoint> accessEndpoints;
 
     /**
      * <p>
@@ -242,11 +251,11 @@ public class ImageBuilder implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The description for display.
+     * The description to display.
      * </p>
      * 
      * @param description
-     *        The description for display.
+     *        The description to display.
      */
 
     public void setDescription(String description) {
@@ -255,10 +264,10 @@ public class ImageBuilder implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The description for display.
+     * The description to display.
      * </p>
      * 
-     * @return The description for display.
+     * @return The description to display.
      */
 
     public String getDescription() {
@@ -267,11 +276,11 @@ public class ImageBuilder implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The description for display.
+     * The description to display.
      * </p>
      * 
      * @param description
-     *        The description for display.
+     *        The description to display.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -282,11 +291,11 @@ public class ImageBuilder implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The image builder name for display.
+     * The image builder name to display.
      * </p>
      * 
      * @param displayName
-     *        The image builder name for display.
+     *        The image builder name to display.
      */
 
     public void setDisplayName(String displayName) {
@@ -295,10 +304,10 @@ public class ImageBuilder implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The image builder name for display.
+     * The image builder name to display.
      * </p>
      * 
-     * @return The image builder name for display.
+     * @return The image builder name to display.
      */
 
     public String getDisplayName() {
@@ -307,11 +316,11 @@ public class ImageBuilder implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The image builder name for display.
+     * The image builder name to display.
      * </p>
      * 
      * @param displayName
-     *        The image builder name for display.
+     *        The image builder name to display.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -652,11 +661,13 @@ public class ImageBuilder implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The information needed to join a Microsoft Active Directory domain.
+     * The name of the directory and organizational unit (OU) to use to join the image builder to a Microsoft Active
+     * Directory domain.
      * </p>
      * 
      * @param domainJoinInfo
-     *        The information needed to join a Microsoft Active Directory domain.
+     *        The name of the directory and organizational unit (OU) to use to join the image builder to a Microsoft
+     *        Active Directory domain.
      */
 
     public void setDomainJoinInfo(DomainJoinInfo domainJoinInfo) {
@@ -665,10 +676,12 @@ public class ImageBuilder implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The information needed to join a Microsoft Active Directory domain.
+     * The name of the directory and organizational unit (OU) to use to join the image builder to a Microsoft Active
+     * Directory domain.
      * </p>
      * 
-     * @return The information needed to join a Microsoft Active Directory domain.
+     * @return The name of the directory and organizational unit (OU) to use to join the image builder to a Microsoft
+     *         Active Directory domain.
      */
 
     public DomainJoinInfo getDomainJoinInfo() {
@@ -677,16 +690,44 @@ public class ImageBuilder implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The information needed to join a Microsoft Active Directory domain.
+     * The name of the directory and organizational unit (OU) to use to join the image builder to a Microsoft Active
+     * Directory domain.
      * </p>
      * 
      * @param domainJoinInfo
-     *        The information needed to join a Microsoft Active Directory domain.
+     *        The name of the directory and organizational unit (OU) to use to join the image builder to a Microsoft
+     *        Active Directory domain.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ImageBuilder withDomainJoinInfo(DomainJoinInfo domainJoinInfo) {
         setDomainJoinInfo(domainJoinInfo);
+        return this;
+    }
+
+    /**
+     * @param networkAccessConfiguration
+     */
+
+    public void setNetworkAccessConfiguration(NetworkAccessConfiguration networkAccessConfiguration) {
+        this.networkAccessConfiguration = networkAccessConfiguration;
+    }
+
+    /**
+     * @return
+     */
+
+    public NetworkAccessConfiguration getNetworkAccessConfiguration() {
+        return this.networkAccessConfiguration;
+    }
+
+    /**
+     * @param networkAccessConfiguration
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ImageBuilder withNetworkAccessConfiguration(NetworkAccessConfiguration networkAccessConfiguration) {
+        setNetworkAccessConfiguration(networkAccessConfiguration);
         return this;
     }
 
@@ -762,11 +803,11 @@ public class ImageBuilder implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The version of the AppStream 2.0 agent that is currently being used by this image builder.
+     * The version of the AppStream 2.0 agent that is currently being used by the image builder.
      * </p>
      * 
      * @param appstreamAgentVersion
-     *        The version of the AppStream 2.0 agent that is currently being used by this image builder.
+     *        The version of the AppStream 2.0 agent that is currently being used by the image builder.
      */
 
     public void setAppstreamAgentVersion(String appstreamAgentVersion) {
@@ -775,10 +816,10 @@ public class ImageBuilder implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The version of the AppStream 2.0 agent that is currently being used by this image builder.
+     * The version of the AppStream 2.0 agent that is currently being used by the image builder.
      * </p>
      * 
-     * @return The version of the AppStream 2.0 agent that is currently being used by this image builder.
+     * @return The version of the AppStream 2.0 agent that is currently being used by the image builder.
      */
 
     public String getAppstreamAgentVersion() {
@@ -787,11 +828,11 @@ public class ImageBuilder implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The version of the AppStream 2.0 agent that is currently being used by this image builder.
+     * The version of the AppStream 2.0 agent that is currently being used by the image builder.
      * </p>
      * 
      * @param appstreamAgentVersion
-     *        The version of the AppStream 2.0 agent that is currently being used by this image builder.
+     *        The version of the AppStream 2.0 agent that is currently being used by the image builder.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -801,7 +842,86 @@ public class ImageBuilder implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * <p>
+     * The list of virtual private cloud (VPC) interface endpoint objects. Administrators can connect to the image
+     * builder only through the specified endpoints.
+     * </p>
+     * 
+     * @return The list of virtual private cloud (VPC) interface endpoint objects. Administrators can connect to the
+     *         image builder only through the specified endpoints.
+     */
+
+    public java.util.List<AccessEndpoint> getAccessEndpoints() {
+        return accessEndpoints;
+    }
+
+    /**
+     * <p>
+     * The list of virtual private cloud (VPC) interface endpoint objects. Administrators can connect to the image
+     * builder only through the specified endpoints.
+     * </p>
+     * 
+     * @param accessEndpoints
+     *        The list of virtual private cloud (VPC) interface endpoint objects. Administrators can connect to the
+     *        image builder only through the specified endpoints.
+     */
+
+    public void setAccessEndpoints(java.util.Collection<AccessEndpoint> accessEndpoints) {
+        if (accessEndpoints == null) {
+            this.accessEndpoints = null;
+            return;
+        }
+
+        this.accessEndpoints = new java.util.ArrayList<AccessEndpoint>(accessEndpoints);
+    }
+
+    /**
+     * <p>
+     * The list of virtual private cloud (VPC) interface endpoint objects. Administrators can connect to the image
+     * builder only through the specified endpoints.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setAccessEndpoints(java.util.Collection)} or {@link #withAccessEndpoints(java.util.Collection)} if you
+     * want to override the existing values.
+     * </p>
+     * 
+     * @param accessEndpoints
+     *        The list of virtual private cloud (VPC) interface endpoint objects. Administrators can connect to the
+     *        image builder only through the specified endpoints.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ImageBuilder withAccessEndpoints(AccessEndpoint... accessEndpoints) {
+        if (this.accessEndpoints == null) {
+            setAccessEndpoints(new java.util.ArrayList<AccessEndpoint>(accessEndpoints.length));
+        }
+        for (AccessEndpoint ele : accessEndpoints) {
+            this.accessEndpoints.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * The list of virtual private cloud (VPC) interface endpoint objects. Administrators can connect to the image
+     * builder only through the specified endpoints.
+     * </p>
+     * 
+     * @param accessEndpoints
+     *        The list of virtual private cloud (VPC) interface endpoint objects. Administrators can connect to the
+     *        image builder only through the specified endpoints.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ImageBuilder withAccessEndpoints(java.util.Collection<AccessEndpoint> accessEndpoints) {
+        setAccessEndpoints(accessEndpoints);
+        return this;
+    }
+
+    /**
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -837,10 +957,14 @@ public class ImageBuilder implements Serializable, Cloneable, StructuredPojo {
             sb.append("EnableDefaultInternetAccess: ").append(getEnableDefaultInternetAccess()).append(",");
         if (getDomainJoinInfo() != null)
             sb.append("DomainJoinInfo: ").append(getDomainJoinInfo()).append(",");
+        if (getNetworkAccessConfiguration() != null)
+            sb.append("NetworkAccessConfiguration: ").append(getNetworkAccessConfiguration()).append(",");
         if (getImageBuilderErrors() != null)
             sb.append("ImageBuilderErrors: ").append(getImageBuilderErrors()).append(",");
         if (getAppstreamAgentVersion() != null)
-            sb.append("AppstreamAgentVersion: ").append(getAppstreamAgentVersion());
+            sb.append("AppstreamAgentVersion: ").append(getAppstreamAgentVersion()).append(",");
+        if (getAccessEndpoints() != null)
+            sb.append("AccessEndpoints: ").append(getAccessEndpoints());
         sb.append("}");
         return sb.toString();
     }
@@ -907,6 +1031,10 @@ public class ImageBuilder implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getDomainJoinInfo() != null && other.getDomainJoinInfo().equals(this.getDomainJoinInfo()) == false)
             return false;
+        if (other.getNetworkAccessConfiguration() == null ^ this.getNetworkAccessConfiguration() == null)
+            return false;
+        if (other.getNetworkAccessConfiguration() != null && other.getNetworkAccessConfiguration().equals(this.getNetworkAccessConfiguration()) == false)
+            return false;
         if (other.getImageBuilderErrors() == null ^ this.getImageBuilderErrors() == null)
             return false;
         if (other.getImageBuilderErrors() != null && other.getImageBuilderErrors().equals(this.getImageBuilderErrors()) == false)
@@ -914,6 +1042,10 @@ public class ImageBuilder implements Serializable, Cloneable, StructuredPojo {
         if (other.getAppstreamAgentVersion() == null ^ this.getAppstreamAgentVersion() == null)
             return false;
         if (other.getAppstreamAgentVersion() != null && other.getAppstreamAgentVersion().equals(this.getAppstreamAgentVersion()) == false)
+            return false;
+        if (other.getAccessEndpoints() == null ^ this.getAccessEndpoints() == null)
+            return false;
+        if (other.getAccessEndpoints() != null && other.getAccessEndpoints().equals(this.getAccessEndpoints()) == false)
             return false;
         return true;
     }
@@ -936,8 +1068,10 @@ public class ImageBuilder implements Serializable, Cloneable, StructuredPojo {
         hashCode = prime * hashCode + ((getCreatedTime() == null) ? 0 : getCreatedTime().hashCode());
         hashCode = prime * hashCode + ((getEnableDefaultInternetAccess() == null) ? 0 : getEnableDefaultInternetAccess().hashCode());
         hashCode = prime * hashCode + ((getDomainJoinInfo() == null) ? 0 : getDomainJoinInfo().hashCode());
+        hashCode = prime * hashCode + ((getNetworkAccessConfiguration() == null) ? 0 : getNetworkAccessConfiguration().hashCode());
         hashCode = prime * hashCode + ((getImageBuilderErrors() == null) ? 0 : getImageBuilderErrors().hashCode());
         hashCode = prime * hashCode + ((getAppstreamAgentVersion() == null) ? 0 : getAppstreamAgentVersion().hashCode());
+        hashCode = prime * hashCode + ((getAccessEndpoints() == null) ? 0 : getAccessEndpoints().hashCode());
         return hashCode;
     }
 

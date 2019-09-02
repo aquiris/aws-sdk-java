@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -19,7 +19,7 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * Contains the parameters for a fleet.
+ * Describes a fleet.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/appstream-2016-12-01/Fleet" target="_top">AWS API
@@ -42,13 +42,13 @@ public class Fleet implements Serializable, Cloneable, StructuredPojo {
     private String name;
     /**
      * <p>
-     * The fleet name for display.
+     * The fleet name to display.
      * </p>
      */
     private String displayName;
     /**
      * <p>
-     * The description for display.
+     * The description to display.
      * </p>
      */
     private String description;
@@ -58,6 +58,12 @@ public class Fleet implements Serializable, Cloneable, StructuredPojo {
      * </p>
      */
     private String imageName;
+    /**
+     * <p>
+     * The ARN for the public, private, or shared image.
+     * </p>
+     */
+    private String imageArn;
     /**
      * <p>
      * The instance type to use when launching fleet instances.
@@ -94,15 +100,23 @@ public class Fleet implements Serializable, Cloneable, StructuredPojo {
     private ComputeCapacityStatus computeCapacityStatus;
     /**
      * <p>
-     * The maximum time that a streaming session can run, in seconds. Specify a value between 600 and 57600.
+     * The maximum amount of time that a streaming session can remain active, in seconds. If users are still connected
+     * to a streaming instance five minutes before this limit is reached, they are prompted to save any open documents
+     * before being disconnected. After this time elapses, the instance is terminated and replaced by a new instance.
+     * </p>
+     * <p>
+     * Specify a value between 600 and 360000.
      * </p>
      */
     private Integer maxUserDurationInSeconds;
     /**
      * <p>
-     * The time after disconnection when a session is considered to have ended, in seconds. If a user who was
-     * disconnected reconnects within this time interval, the user is connected to their previous session. Specify a
-     * value between 60 and 57600.
+     * The amount of time that a streaming session remains active after users disconnect. If they try to reconnect to
+     * the streaming session after a disconnection or network interruption within this time interval, they are connected
+     * to their previous session. Otherwise, they are connected to a new session with a new streaming instance.
+     * </p>
+     * <p>
+     * Specify a value between 60 and 360000.
      * </p>
      */
     private Integer disconnectTimeoutInSeconds;
@@ -138,10 +152,36 @@ public class Fleet implements Serializable, Cloneable, StructuredPojo {
     private Boolean enableDefaultInternetAccess;
     /**
      * <p>
-     * The information needed to join a Microsoft Active Directory domain.
+     * The name of the directory and organizational unit (OU) to use to join the fleet to a Microsoft Active Directory
+     * domain.
      * </p>
      */
     private DomainJoinInfo domainJoinInfo;
+    /**
+     * <p>
+     * The amount of time that users can be idle (inactive) before they are disconnected from their streaming session
+     * and the <code>DisconnectTimeoutInSeconds</code> time interval begins. Users are notified before they are
+     * disconnected due to inactivity. If users try to reconnect to the streaming session before the time interval
+     * specified in <code>DisconnectTimeoutInSeconds</code> elapses, they are connected to their previous session. Users
+     * are considered idle when they stop providing keyboard or mouse input during their streaming session. File uploads
+     * and downloads, audio in, audio out, and pixels changing do not qualify as user activity. If users continue to be
+     * idle after the time interval in <code>IdleDisconnectTimeoutInSeconds</code> elapses, they are disconnected.
+     * </p>
+     * <p>
+     * To prevent users from being disconnected due to inactivity, specify a value of 0. Otherwise, specify a value
+     * between 60 and 3600. The default value is 0.
+     * </p>
+     * <note>
+     * <p>
+     * If you enable this feature, we recommend that you specify a value that corresponds exactly to a whole number of
+     * minutes (for example, 60, 120, and 180). If you don't do this, the value is rounded to the nearest minute. For
+     * example, if you specify a value of 70, users are disconnected after 1 minute of inactivity. If you specify a
+     * value that is at the midpoint between two different minutes, the value is rounded up. For example, if you specify
+     * a value of 90, users are disconnected after 2 minutes of inactivity.
+     * </p>
+     * </note>
+     */
+    private Integer idleDisconnectTimeoutInSeconds;
 
     /**
      * <p>
@@ -225,11 +265,11 @@ public class Fleet implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The fleet name for display.
+     * The fleet name to display.
      * </p>
      * 
      * @param displayName
-     *        The fleet name for display.
+     *        The fleet name to display.
      */
 
     public void setDisplayName(String displayName) {
@@ -238,10 +278,10 @@ public class Fleet implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The fleet name for display.
+     * The fleet name to display.
      * </p>
      * 
-     * @return The fleet name for display.
+     * @return The fleet name to display.
      */
 
     public String getDisplayName() {
@@ -250,11 +290,11 @@ public class Fleet implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The fleet name for display.
+     * The fleet name to display.
      * </p>
      * 
      * @param displayName
-     *        The fleet name for display.
+     *        The fleet name to display.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -265,11 +305,11 @@ public class Fleet implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The description for display.
+     * The description to display.
      * </p>
      * 
      * @param description
-     *        The description for display.
+     *        The description to display.
      */
 
     public void setDescription(String description) {
@@ -278,10 +318,10 @@ public class Fleet implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The description for display.
+     * The description to display.
      * </p>
      * 
-     * @return The description for display.
+     * @return The description to display.
      */
 
     public String getDescription() {
@@ -290,11 +330,11 @@ public class Fleet implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The description for display.
+     * The description to display.
      * </p>
      * 
      * @param description
-     *        The description for display.
+     *        The description to display.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -340,6 +380,46 @@ public class Fleet implements Serializable, Cloneable, StructuredPojo {
 
     public Fleet withImageName(String imageName) {
         setImageName(imageName);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The ARN for the public, private, or shared image.
+     * </p>
+     * 
+     * @param imageArn
+     *        The ARN for the public, private, or shared image.
+     */
+
+    public void setImageArn(String imageArn) {
+        this.imageArn = imageArn;
+    }
+
+    /**
+     * <p>
+     * The ARN for the public, private, or shared image.
+     * </p>
+     * 
+     * @return The ARN for the public, private, or shared image.
+     */
+
+    public String getImageArn() {
+        return this.imageArn;
+    }
+
+    /**
+     * <p>
+     * The ARN for the public, private, or shared image.
+     * </p>
+     * 
+     * @param imageArn
+     *        The ARN for the public, private, or shared image.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Fleet withImageArn(String imageArn) {
+        setImageArn(imageArn);
         return this;
     }
 
@@ -658,11 +738,21 @@ public class Fleet implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The maximum time that a streaming session can run, in seconds. Specify a value between 600 and 57600.
+     * The maximum amount of time that a streaming session can remain active, in seconds. If users are still connected
+     * to a streaming instance five minutes before this limit is reached, they are prompted to save any open documents
+     * before being disconnected. After this time elapses, the instance is terminated and replaced by a new instance.
+     * </p>
+     * <p>
+     * Specify a value between 600 and 360000.
      * </p>
      * 
      * @param maxUserDurationInSeconds
-     *        The maximum time that a streaming session can run, in seconds. Specify a value between 600 and 57600.
+     *        The maximum amount of time that a streaming session can remain active, in seconds. If users are still
+     *        connected to a streaming instance five minutes before this limit is reached, they are prompted to save any
+     *        open documents before being disconnected. After this time elapses, the instance is terminated and replaced
+     *        by a new instance. </p>
+     *        <p>
+     *        Specify a value between 600 and 360000.
      */
 
     public void setMaxUserDurationInSeconds(Integer maxUserDurationInSeconds) {
@@ -671,10 +761,20 @@ public class Fleet implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The maximum time that a streaming session can run, in seconds. Specify a value between 600 and 57600.
+     * The maximum amount of time that a streaming session can remain active, in seconds. If users are still connected
+     * to a streaming instance five minutes before this limit is reached, they are prompted to save any open documents
+     * before being disconnected. After this time elapses, the instance is terminated and replaced by a new instance.
+     * </p>
+     * <p>
+     * Specify a value between 600 and 360000.
      * </p>
      * 
-     * @return The maximum time that a streaming session can run, in seconds. Specify a value between 600 and 57600.
+     * @return The maximum amount of time that a streaming session can remain active, in seconds. If users are still
+     *         connected to a streaming instance five minutes before this limit is reached, they are prompted to save
+     *         any open documents before being disconnected. After this time elapses, the instance is terminated and
+     *         replaced by a new instance. </p>
+     *         <p>
+     *         Specify a value between 600 and 360000.
      */
 
     public Integer getMaxUserDurationInSeconds() {
@@ -683,11 +783,21 @@ public class Fleet implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The maximum time that a streaming session can run, in seconds. Specify a value between 600 and 57600.
+     * The maximum amount of time that a streaming session can remain active, in seconds. If users are still connected
+     * to a streaming instance five minutes before this limit is reached, they are prompted to save any open documents
+     * before being disconnected. After this time elapses, the instance is terminated and replaced by a new instance.
+     * </p>
+     * <p>
+     * Specify a value between 600 and 360000.
      * </p>
      * 
      * @param maxUserDurationInSeconds
-     *        The maximum time that a streaming session can run, in seconds. Specify a value between 600 and 57600.
+     *        The maximum amount of time that a streaming session can remain active, in seconds. If users are still
+     *        connected to a streaming instance five minutes before this limit is reached, they are prompted to save any
+     *        open documents before being disconnected. After this time elapses, the instance is terminated and replaced
+     *        by a new instance. </p>
+     *        <p>
+     *        Specify a value between 600 and 360000.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -698,15 +808,21 @@ public class Fleet implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The time after disconnection when a session is considered to have ended, in seconds. If a user who was
-     * disconnected reconnects within this time interval, the user is connected to their previous session. Specify a
-     * value between 60 and 57600.
+     * The amount of time that a streaming session remains active after users disconnect. If they try to reconnect to
+     * the streaming session after a disconnection or network interruption within this time interval, they are connected
+     * to their previous session. Otherwise, they are connected to a new session with a new streaming instance.
+     * </p>
+     * <p>
+     * Specify a value between 60 and 360000.
      * </p>
      * 
      * @param disconnectTimeoutInSeconds
-     *        The time after disconnection when a session is considered to have ended, in seconds. If a user who was
-     *        disconnected reconnects within this time interval, the user is connected to their previous session.
-     *        Specify a value between 60 and 57600.
+     *        The amount of time that a streaming session remains active after users disconnect. If they try to
+     *        reconnect to the streaming session after a disconnection or network interruption within this time
+     *        interval, they are connected to their previous session. Otherwise, they are connected to a new session
+     *        with a new streaming instance.</p>
+     *        <p>
+     *        Specify a value between 60 and 360000.
      */
 
     public void setDisconnectTimeoutInSeconds(Integer disconnectTimeoutInSeconds) {
@@ -715,14 +831,20 @@ public class Fleet implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The time after disconnection when a session is considered to have ended, in seconds. If a user who was
-     * disconnected reconnects within this time interval, the user is connected to their previous session. Specify a
-     * value between 60 and 57600.
+     * The amount of time that a streaming session remains active after users disconnect. If they try to reconnect to
+     * the streaming session after a disconnection or network interruption within this time interval, they are connected
+     * to their previous session. Otherwise, they are connected to a new session with a new streaming instance.
+     * </p>
+     * <p>
+     * Specify a value between 60 and 360000.
      * </p>
      * 
-     * @return The time after disconnection when a session is considered to have ended, in seconds. If a user who was
-     *         disconnected reconnects within this time interval, the user is connected to their previous session.
-     *         Specify a value between 60 and 57600.
+     * @return The amount of time that a streaming session remains active after users disconnect. If they try to
+     *         reconnect to the streaming session after a disconnection or network interruption within this time
+     *         interval, they are connected to their previous session. Otherwise, they are connected to a new session
+     *         with a new streaming instance.</p>
+     *         <p>
+     *         Specify a value between 60 and 360000.
      */
 
     public Integer getDisconnectTimeoutInSeconds() {
@@ -731,15 +853,21 @@ public class Fleet implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The time after disconnection when a session is considered to have ended, in seconds. If a user who was
-     * disconnected reconnects within this time interval, the user is connected to their previous session. Specify a
-     * value between 60 and 57600.
+     * The amount of time that a streaming session remains active after users disconnect. If they try to reconnect to
+     * the streaming session after a disconnection or network interruption within this time interval, they are connected
+     * to their previous session. Otherwise, they are connected to a new session with a new streaming instance.
+     * </p>
+     * <p>
+     * Specify a value between 60 and 360000.
      * </p>
      * 
      * @param disconnectTimeoutInSeconds
-     *        The time after disconnection when a session is considered to have ended, in seconds. If a user who was
-     *        disconnected reconnects within this time interval, the user is connected to their previous session.
-     *        Specify a value between 60 and 57600.
+     *        The amount of time that a streaming session remains active after users disconnect. If they try to
+     *        reconnect to the streaming session after a disconnection or network interruption within this time
+     *        interval, they are connected to their previous session. Otherwise, they are connected to a new session
+     *        with a new streaming instance.</p>
+     *        <p>
+     *        Specify a value between 60 and 360000.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1025,11 +1153,13 @@ public class Fleet implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The information needed to join a Microsoft Active Directory domain.
+     * The name of the directory and organizational unit (OU) to use to join the fleet to a Microsoft Active Directory
+     * domain.
      * </p>
      * 
      * @param domainJoinInfo
-     *        The information needed to join a Microsoft Active Directory domain.
+     *        The name of the directory and organizational unit (OU) to use to join the fleet to a Microsoft Active
+     *        Directory domain.
      */
 
     public void setDomainJoinInfo(DomainJoinInfo domainJoinInfo) {
@@ -1038,10 +1168,12 @@ public class Fleet implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The information needed to join a Microsoft Active Directory domain.
+     * The name of the directory and organizational unit (OU) to use to join the fleet to a Microsoft Active Directory
+     * domain.
      * </p>
      * 
-     * @return The information needed to join a Microsoft Active Directory domain.
+     * @return The name of the directory and organizational unit (OU) to use to join the fleet to a Microsoft Active
+     *         Directory domain.
      */
 
     public DomainJoinInfo getDomainJoinInfo() {
@@ -1050,11 +1182,13 @@ public class Fleet implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The information needed to join a Microsoft Active Directory domain.
+     * The name of the directory and organizational unit (OU) to use to join the fleet to a Microsoft Active Directory
+     * domain.
      * </p>
      * 
      * @param domainJoinInfo
-     *        The information needed to join a Microsoft Active Directory domain.
+     *        The name of the directory and organizational unit (OU) to use to join the fleet to a Microsoft Active
+     *        Directory domain.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1064,7 +1198,165 @@ public class Fleet implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * <p>
+     * The amount of time that users can be idle (inactive) before they are disconnected from their streaming session
+     * and the <code>DisconnectTimeoutInSeconds</code> time interval begins. Users are notified before they are
+     * disconnected due to inactivity. If users try to reconnect to the streaming session before the time interval
+     * specified in <code>DisconnectTimeoutInSeconds</code> elapses, they are connected to their previous session. Users
+     * are considered idle when they stop providing keyboard or mouse input during their streaming session. File uploads
+     * and downloads, audio in, audio out, and pixels changing do not qualify as user activity. If users continue to be
+     * idle after the time interval in <code>IdleDisconnectTimeoutInSeconds</code> elapses, they are disconnected.
+     * </p>
+     * <p>
+     * To prevent users from being disconnected due to inactivity, specify a value of 0. Otherwise, specify a value
+     * between 60 and 3600. The default value is 0.
+     * </p>
+     * <note>
+     * <p>
+     * If you enable this feature, we recommend that you specify a value that corresponds exactly to a whole number of
+     * minutes (for example, 60, 120, and 180). If you don't do this, the value is rounded to the nearest minute. For
+     * example, if you specify a value of 70, users are disconnected after 1 minute of inactivity. If you specify a
+     * value that is at the midpoint between two different minutes, the value is rounded up. For example, if you specify
+     * a value of 90, users are disconnected after 2 minutes of inactivity.
+     * </p>
+     * </note>
+     * 
+     * @param idleDisconnectTimeoutInSeconds
+     *        The amount of time that users can be idle (inactive) before they are disconnected from their streaming
+     *        session and the <code>DisconnectTimeoutInSeconds</code> time interval begins. Users are notified before
+     *        they are disconnected due to inactivity. If users try to reconnect to the streaming session before the
+     *        time interval specified in <code>DisconnectTimeoutInSeconds</code> elapses, they are connected to their
+     *        previous session. Users are considered idle when they stop providing keyboard or mouse input during their
+     *        streaming session. File uploads and downloads, audio in, audio out, and pixels changing do not qualify as
+     *        user activity. If users continue to be idle after the time interval in
+     *        <code>IdleDisconnectTimeoutInSeconds</code> elapses, they are disconnected.</p>
+     *        <p>
+     *        To prevent users from being disconnected due to inactivity, specify a value of 0. Otherwise, specify a
+     *        value between 60 and 3600. The default value is 0.
+     *        </p>
+     *        <note>
+     *        <p>
+     *        If you enable this feature, we recommend that you specify a value that corresponds exactly to a whole
+     *        number of minutes (for example, 60, 120, and 180). If you don't do this, the value is rounded to the
+     *        nearest minute. For example, if you specify a value of 70, users are disconnected after 1 minute of
+     *        inactivity. If you specify a value that is at the midpoint between two different minutes, the value is
+     *        rounded up. For example, if you specify a value of 90, users are disconnected after 2 minutes of
+     *        inactivity.
+     *        </p>
+     */
+
+    public void setIdleDisconnectTimeoutInSeconds(Integer idleDisconnectTimeoutInSeconds) {
+        this.idleDisconnectTimeoutInSeconds = idleDisconnectTimeoutInSeconds;
+    }
+
+    /**
+     * <p>
+     * The amount of time that users can be idle (inactive) before they are disconnected from their streaming session
+     * and the <code>DisconnectTimeoutInSeconds</code> time interval begins. Users are notified before they are
+     * disconnected due to inactivity. If users try to reconnect to the streaming session before the time interval
+     * specified in <code>DisconnectTimeoutInSeconds</code> elapses, they are connected to their previous session. Users
+     * are considered idle when they stop providing keyboard or mouse input during their streaming session. File uploads
+     * and downloads, audio in, audio out, and pixels changing do not qualify as user activity. If users continue to be
+     * idle after the time interval in <code>IdleDisconnectTimeoutInSeconds</code> elapses, they are disconnected.
+     * </p>
+     * <p>
+     * To prevent users from being disconnected due to inactivity, specify a value of 0. Otherwise, specify a value
+     * between 60 and 3600. The default value is 0.
+     * </p>
+     * <note>
+     * <p>
+     * If you enable this feature, we recommend that you specify a value that corresponds exactly to a whole number of
+     * minutes (for example, 60, 120, and 180). If you don't do this, the value is rounded to the nearest minute. For
+     * example, if you specify a value of 70, users are disconnected after 1 minute of inactivity. If you specify a
+     * value that is at the midpoint between two different minutes, the value is rounded up. For example, if you specify
+     * a value of 90, users are disconnected after 2 minutes of inactivity.
+     * </p>
+     * </note>
+     * 
+     * @return The amount of time that users can be idle (inactive) before they are disconnected from their streaming
+     *         session and the <code>DisconnectTimeoutInSeconds</code> time interval begins. Users are notified before
+     *         they are disconnected due to inactivity. If users try to reconnect to the streaming session before the
+     *         time interval specified in <code>DisconnectTimeoutInSeconds</code> elapses, they are connected to their
+     *         previous session. Users are considered idle when they stop providing keyboard or mouse input during their
+     *         streaming session. File uploads and downloads, audio in, audio out, and pixels changing do not qualify as
+     *         user activity. If users continue to be idle after the time interval in
+     *         <code>IdleDisconnectTimeoutInSeconds</code> elapses, they are disconnected.</p>
+     *         <p>
+     *         To prevent users from being disconnected due to inactivity, specify a value of 0. Otherwise, specify a
+     *         value between 60 and 3600. The default value is 0.
+     *         </p>
+     *         <note>
+     *         <p>
+     *         If you enable this feature, we recommend that you specify a value that corresponds exactly to a whole
+     *         number of minutes (for example, 60, 120, and 180). If you don't do this, the value is rounded to the
+     *         nearest minute. For example, if you specify a value of 70, users are disconnected after 1 minute of
+     *         inactivity. If you specify a value that is at the midpoint between two different minutes, the value is
+     *         rounded up. For example, if you specify a value of 90, users are disconnected after 2 minutes of
+     *         inactivity.
+     *         </p>
+     */
+
+    public Integer getIdleDisconnectTimeoutInSeconds() {
+        return this.idleDisconnectTimeoutInSeconds;
+    }
+
+    /**
+     * <p>
+     * The amount of time that users can be idle (inactive) before they are disconnected from their streaming session
+     * and the <code>DisconnectTimeoutInSeconds</code> time interval begins. Users are notified before they are
+     * disconnected due to inactivity. If users try to reconnect to the streaming session before the time interval
+     * specified in <code>DisconnectTimeoutInSeconds</code> elapses, they are connected to their previous session. Users
+     * are considered idle when they stop providing keyboard or mouse input during their streaming session. File uploads
+     * and downloads, audio in, audio out, and pixels changing do not qualify as user activity. If users continue to be
+     * idle after the time interval in <code>IdleDisconnectTimeoutInSeconds</code> elapses, they are disconnected.
+     * </p>
+     * <p>
+     * To prevent users from being disconnected due to inactivity, specify a value of 0. Otherwise, specify a value
+     * between 60 and 3600. The default value is 0.
+     * </p>
+     * <note>
+     * <p>
+     * If you enable this feature, we recommend that you specify a value that corresponds exactly to a whole number of
+     * minutes (for example, 60, 120, and 180). If you don't do this, the value is rounded to the nearest minute. For
+     * example, if you specify a value of 70, users are disconnected after 1 minute of inactivity. If you specify a
+     * value that is at the midpoint between two different minutes, the value is rounded up. For example, if you specify
+     * a value of 90, users are disconnected after 2 minutes of inactivity.
+     * </p>
+     * </note>
+     * 
+     * @param idleDisconnectTimeoutInSeconds
+     *        The amount of time that users can be idle (inactive) before they are disconnected from their streaming
+     *        session and the <code>DisconnectTimeoutInSeconds</code> time interval begins. Users are notified before
+     *        they are disconnected due to inactivity. If users try to reconnect to the streaming session before the
+     *        time interval specified in <code>DisconnectTimeoutInSeconds</code> elapses, they are connected to their
+     *        previous session. Users are considered idle when they stop providing keyboard or mouse input during their
+     *        streaming session. File uploads and downloads, audio in, audio out, and pixels changing do not qualify as
+     *        user activity. If users continue to be idle after the time interval in
+     *        <code>IdleDisconnectTimeoutInSeconds</code> elapses, they are disconnected.</p>
+     *        <p>
+     *        To prevent users from being disconnected due to inactivity, specify a value of 0. Otherwise, specify a
+     *        value between 60 and 3600. The default value is 0.
+     *        </p>
+     *        <note>
+     *        <p>
+     *        If you enable this feature, we recommend that you specify a value that corresponds exactly to a whole
+     *        number of minutes (for example, 60, 120, and 180). If you don't do this, the value is rounded to the
+     *        nearest minute. For example, if you specify a value of 70, users are disconnected after 1 minute of
+     *        inactivity. If you specify a value that is at the midpoint between two different minutes, the value is
+     *        rounded up. For example, if you specify a value of 90, users are disconnected after 2 minutes of
+     *        inactivity.
+     *        </p>
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Fleet withIdleDisconnectTimeoutInSeconds(Integer idleDisconnectTimeoutInSeconds) {
+        setIdleDisconnectTimeoutInSeconds(idleDisconnectTimeoutInSeconds);
+        return this;
+    }
+
+    /**
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -1084,6 +1376,8 @@ public class Fleet implements Serializable, Cloneable, StructuredPojo {
             sb.append("Description: ").append(getDescription()).append(",");
         if (getImageName() != null)
             sb.append("ImageName: ").append(getImageName()).append(",");
+        if (getImageArn() != null)
+            sb.append("ImageArn: ").append(getImageArn()).append(",");
         if (getInstanceType() != null)
             sb.append("InstanceType: ").append(getInstanceType()).append(",");
         if (getFleetType() != null)
@@ -1105,7 +1399,9 @@ public class Fleet implements Serializable, Cloneable, StructuredPojo {
         if (getEnableDefaultInternetAccess() != null)
             sb.append("EnableDefaultInternetAccess: ").append(getEnableDefaultInternetAccess()).append(",");
         if (getDomainJoinInfo() != null)
-            sb.append("DomainJoinInfo: ").append(getDomainJoinInfo());
+            sb.append("DomainJoinInfo: ").append(getDomainJoinInfo()).append(",");
+        if (getIdleDisconnectTimeoutInSeconds() != null)
+            sb.append("IdleDisconnectTimeoutInSeconds: ").append(getIdleDisconnectTimeoutInSeconds());
         sb.append("}");
         return sb.toString();
     }
@@ -1139,6 +1435,10 @@ public class Fleet implements Serializable, Cloneable, StructuredPojo {
         if (other.getImageName() == null ^ this.getImageName() == null)
             return false;
         if (other.getImageName() != null && other.getImageName().equals(this.getImageName()) == false)
+            return false;
+        if (other.getImageArn() == null ^ this.getImageArn() == null)
+            return false;
+        if (other.getImageArn() != null && other.getImageArn().equals(this.getImageArn()) == false)
             return false;
         if (other.getInstanceType() == null ^ this.getInstanceType() == null)
             return false;
@@ -1184,6 +1484,11 @@ public class Fleet implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getDomainJoinInfo() != null && other.getDomainJoinInfo().equals(this.getDomainJoinInfo()) == false)
             return false;
+        if (other.getIdleDisconnectTimeoutInSeconds() == null ^ this.getIdleDisconnectTimeoutInSeconds() == null)
+            return false;
+        if (other.getIdleDisconnectTimeoutInSeconds() != null
+                && other.getIdleDisconnectTimeoutInSeconds().equals(this.getIdleDisconnectTimeoutInSeconds()) == false)
+            return false;
         return true;
     }
 
@@ -1197,6 +1502,7 @@ public class Fleet implements Serializable, Cloneable, StructuredPojo {
         hashCode = prime * hashCode + ((getDisplayName() == null) ? 0 : getDisplayName().hashCode());
         hashCode = prime * hashCode + ((getDescription() == null) ? 0 : getDescription().hashCode());
         hashCode = prime * hashCode + ((getImageName() == null) ? 0 : getImageName().hashCode());
+        hashCode = prime * hashCode + ((getImageArn() == null) ? 0 : getImageArn().hashCode());
         hashCode = prime * hashCode + ((getInstanceType() == null) ? 0 : getInstanceType().hashCode());
         hashCode = prime * hashCode + ((getFleetType() == null) ? 0 : getFleetType().hashCode());
         hashCode = prime * hashCode + ((getComputeCapacityStatus() == null) ? 0 : getComputeCapacityStatus().hashCode());
@@ -1208,6 +1514,7 @@ public class Fleet implements Serializable, Cloneable, StructuredPojo {
         hashCode = prime * hashCode + ((getFleetErrors() == null) ? 0 : getFleetErrors().hashCode());
         hashCode = prime * hashCode + ((getEnableDefaultInternetAccess() == null) ? 0 : getEnableDefaultInternetAccess().hashCode());
         hashCode = prime * hashCode + ((getDomainJoinInfo() == null) ? 0 : getDomainJoinInfo().hashCode());
+        hashCode = prime * hashCode + ((getIdleDisconnectTimeoutInSeconds() == null) ? 0 : getIdleDisconnectTimeoutInSeconds().hashCode());
         return hashCode;
     }
 

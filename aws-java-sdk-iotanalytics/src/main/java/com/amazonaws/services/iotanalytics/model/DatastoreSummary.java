@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -34,6 +34,12 @@ public class DatastoreSummary implements Serializable, Cloneable, StructuredPojo
      * </p>
      */
     private String datastoreName;
+    /**
+     * <p>
+     * Where data store data is stored.
+     * </p>
+     */
+    private DatastoreStorageSummary datastoreStorage;
     /**
      * <p>
      * The status of the data store.
@@ -90,6 +96,46 @@ public class DatastoreSummary implements Serializable, Cloneable, StructuredPojo
 
     public DatastoreSummary withDatastoreName(String datastoreName) {
         setDatastoreName(datastoreName);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Where data store data is stored.
+     * </p>
+     * 
+     * @param datastoreStorage
+     *        Where data store data is stored.
+     */
+
+    public void setDatastoreStorage(DatastoreStorageSummary datastoreStorage) {
+        this.datastoreStorage = datastoreStorage;
+    }
+
+    /**
+     * <p>
+     * Where data store data is stored.
+     * </p>
+     * 
+     * @return Where data store data is stored.
+     */
+
+    public DatastoreStorageSummary getDatastoreStorage() {
+        return this.datastoreStorage;
+    }
+
+    /**
+     * <p>
+     * Where data store data is stored.
+     * </p>
+     * 
+     * @param datastoreStorage
+     *        Where data store data is stored.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DatastoreSummary withDatastoreStorage(DatastoreStorageSummary datastoreStorage) {
+        setDatastoreStorage(datastoreStorage);
         return this;
     }
 
@@ -233,7 +279,8 @@ public class DatastoreSummary implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -245,6 +292,8 @@ public class DatastoreSummary implements Serializable, Cloneable, StructuredPojo
         sb.append("{");
         if (getDatastoreName() != null)
             sb.append("DatastoreName: ").append(getDatastoreName()).append(",");
+        if (getDatastoreStorage() != null)
+            sb.append("DatastoreStorage: ").append(getDatastoreStorage()).append(",");
         if (getStatus() != null)
             sb.append("Status: ").append(getStatus()).append(",");
         if (getCreationTime() != null)
@@ -269,6 +318,10 @@ public class DatastoreSummary implements Serializable, Cloneable, StructuredPojo
             return false;
         if (other.getDatastoreName() != null && other.getDatastoreName().equals(this.getDatastoreName()) == false)
             return false;
+        if (other.getDatastoreStorage() == null ^ this.getDatastoreStorage() == null)
+            return false;
+        if (other.getDatastoreStorage() != null && other.getDatastoreStorage().equals(this.getDatastoreStorage()) == false)
+            return false;
         if (other.getStatus() == null ^ this.getStatus() == null)
             return false;
         if (other.getStatus() != null && other.getStatus().equals(this.getStatus()) == false)
@@ -290,6 +343,7 @@ public class DatastoreSummary implements Serializable, Cloneable, StructuredPojo
         int hashCode = 1;
 
         hashCode = prime * hashCode + ((getDatastoreName() == null) ? 0 : getDatastoreName().hashCode());
+        hashCode = prime * hashCode + ((getDatastoreStorage() == null) ? 0 : getDatastoreStorage().hashCode());
         hashCode = prime * hashCode + ((getStatus() == null) ? 0 : getStatus().hashCode());
         hashCode = prime * hashCode + ((getCreationTime() == null) ? 0 : getCreationTime().hashCode());
         hashCode = prime * hashCode + ((getLastUpdateTime() == null) ? 0 : getLastUpdateTime().hashCode());

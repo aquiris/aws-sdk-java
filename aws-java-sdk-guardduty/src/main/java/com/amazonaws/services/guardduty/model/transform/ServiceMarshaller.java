@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -29,6 +29,8 @@ public class ServiceMarshaller {
 
     private static final MarshallingInfo<StructuredPojo> ACTION_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("action").build();
+    private static final MarshallingInfo<StructuredPojo> EVIDENCE_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("evidence").build();
     private static final MarshallingInfo<Boolean> ARCHIVED_BINDING = MarshallingInfo.builder(MarshallingType.BOOLEAN)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("archived").build();
     private static final MarshallingInfo<Integer> COUNT_BINDING = MarshallingInfo.builder(MarshallingType.INTEGER).marshallLocation(MarshallLocation.PAYLOAD)
@@ -63,6 +65,7 @@ public class ServiceMarshaller {
 
         try {
             protocolMarshaller.marshall(service.getAction(), ACTION_BINDING);
+            protocolMarshaller.marshall(service.getEvidence(), EVIDENCE_BINDING);
             protocolMarshaller.marshall(service.getArchived(), ARCHIVED_BINDING);
             protocolMarshaller.marshall(service.getCount(), COUNT_BINDING);
             protocolMarshaller.marshall(service.getDetectorId(), DETECTORID_BINDING);

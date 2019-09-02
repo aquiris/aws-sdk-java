@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -44,11 +44,8 @@ public class ResetDBParameterGroupRequest extends com.amazonaws.AmazonWebService
     private String dBParameterGroupName;
     /**
      * <p>
-     * Specifies whether (<code>true</code>) or not (<code>false</code>) to reset all parameters in the DB parameter
-     * group to default values.
-     * </p>
-     * <p>
-     * Default: <code>true</code>
+     * A value that indicates whether to reset all parameters in the DB parameter group to default values. By default,
+     * all parameters in the DB parameter group are reset to default values.
      * </p>
      */
     private Boolean resetAllParameters;
@@ -214,18 +211,13 @@ public class ResetDBParameterGroupRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * Specifies whether (<code>true</code>) or not (<code>false</code>) to reset all parameters in the DB parameter
-     * group to default values.
-     * </p>
-     * <p>
-     * Default: <code>true</code>
+     * A value that indicates whether to reset all parameters in the DB parameter group to default values. By default,
+     * all parameters in the DB parameter group are reset to default values.
      * </p>
      * 
      * @param resetAllParameters
-     *        Specifies whether (<code>true</code>) or not (<code>false</code>) to reset all parameters in the DB
-     *        parameter group to default values. </p>
-     *        <p>
-     *        Default: <code>true</code>
+     *        A value that indicates whether to reset all parameters in the DB parameter group to default values. By
+     *        default, all parameters in the DB parameter group are reset to default values.
      */
 
     public void setResetAllParameters(Boolean resetAllParameters) {
@@ -234,17 +226,12 @@ public class ResetDBParameterGroupRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * Specifies whether (<code>true</code>) or not (<code>false</code>) to reset all parameters in the DB parameter
-     * group to default values.
-     * </p>
-     * <p>
-     * Default: <code>true</code>
+     * A value that indicates whether to reset all parameters in the DB parameter group to default values. By default,
+     * all parameters in the DB parameter group are reset to default values.
      * </p>
      * 
-     * @return Specifies whether (<code>true</code>) or not (<code>false</code>) to reset all parameters in the DB
-     *         parameter group to default values. </p>
-     *         <p>
-     *         Default: <code>true</code>
+     * @return A value that indicates whether to reset all parameters in the DB parameter group to default values. By
+     *         default, all parameters in the DB parameter group are reset to default values.
      */
 
     public Boolean getResetAllParameters() {
@@ -253,18 +240,13 @@ public class ResetDBParameterGroupRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * Specifies whether (<code>true</code>) or not (<code>false</code>) to reset all parameters in the DB parameter
-     * group to default values.
-     * </p>
-     * <p>
-     * Default: <code>true</code>
+     * A value that indicates whether to reset all parameters in the DB parameter group to default values. By default,
+     * all parameters in the DB parameter group are reset to default values.
      * </p>
      * 
      * @param resetAllParameters
-     *        Specifies whether (<code>true</code>) or not (<code>false</code>) to reset all parameters in the DB
-     *        parameter group to default values. </p>
-     *        <p>
-     *        Default: <code>true</code>
+     *        A value that indicates whether to reset all parameters in the DB parameter group to default values. By
+     *        default, all parameters in the DB parameter group are reset to default values.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -275,17 +257,12 @@ public class ResetDBParameterGroupRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * Specifies whether (<code>true</code>) or not (<code>false</code>) to reset all parameters in the DB parameter
-     * group to default values.
-     * </p>
-     * <p>
-     * Default: <code>true</code>
+     * A value that indicates whether to reset all parameters in the DB parameter group to default values. By default,
+     * all parameters in the DB parameter group are reset to default values.
      * </p>
      * 
-     * @return Specifies whether (<code>true</code>) or not (<code>false</code>) to reset all parameters in the DB
-     *         parameter group to default values. </p>
-     *         <p>
-     *         Default: <code>true</code>
+     * @return A value that indicates whether to reset all parameters in the DB parameter group to default values. By
+     *         default, all parameters in the DB parameter group are reset to default values.
      */
 
     public Boolean isResetAllParameters() {
@@ -594,7 +571,8 @@ public class ResetDBParameterGroupRequest extends com.amazonaws.AmazonWebService
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

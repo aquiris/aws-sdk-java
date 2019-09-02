@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -23,12 +23,25 @@ import javax.annotation.Generated;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ListFiltersResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
+    /**
+     * <p>
+     * A list of filter names
+     * </p>
+     */
     private java.util.List<String> filterNames;
-
+    /**
+     * <p>
+     * Pagination parameter to be used on the next list operation to retrieve more items.
+     * </p>
+     */
     private String nextToken;
 
     /**
-     * @return
+     * <p>
+     * A list of filter names
+     * </p>
+     * 
+     * @return A list of filter names
      */
 
     public java.util.List<String> getFilterNames() {
@@ -36,7 +49,12 @@ public class ListFiltersResult extends com.amazonaws.AmazonWebServiceResult<com.
     }
 
     /**
+     * <p>
+     * A list of filter names
+     * </p>
+     * 
      * @param filterNames
+     *        A list of filter names
      */
 
     public void setFilterNames(java.util.Collection<String> filterNames) {
@@ -50,12 +68,16 @@ public class ListFiltersResult extends com.amazonaws.AmazonWebServiceResult<com.
 
     /**
      * <p>
+     * A list of filter names
+     * </p>
+     * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
      * {@link #setFilterNames(java.util.Collection)} or {@link #withFilterNames(java.util.Collection)} if you want to
      * override the existing values.
      * </p>
      * 
      * @param filterNames
+     *        A list of filter names
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -70,7 +92,12 @@ public class ListFiltersResult extends com.amazonaws.AmazonWebServiceResult<com.
     }
 
     /**
+     * <p>
+     * A list of filter names
+     * </p>
+     * 
      * @param filterNames
+     *        A list of filter names
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -80,7 +107,12 @@ public class ListFiltersResult extends com.amazonaws.AmazonWebServiceResult<com.
     }
 
     /**
+     * <p>
+     * Pagination parameter to be used on the next list operation to retrieve more items.
+     * </p>
+     * 
      * @param nextToken
+     *        Pagination parameter to be used on the next list operation to retrieve more items.
      */
 
     public void setNextToken(String nextToken) {
@@ -88,7 +120,11 @@ public class ListFiltersResult extends com.amazonaws.AmazonWebServiceResult<com.
     }
 
     /**
-     * @return
+     * <p>
+     * Pagination parameter to be used on the next list operation to retrieve more items.
+     * </p>
+     * 
+     * @return Pagination parameter to be used on the next list operation to retrieve more items.
      */
 
     public String getNextToken() {
@@ -96,7 +132,12 @@ public class ListFiltersResult extends com.amazonaws.AmazonWebServiceResult<com.
     }
 
     /**
+     * <p>
+     * Pagination parameter to be used on the next list operation to retrieve more items.
+     * </p>
+     * 
      * @param nextToken
+     *        Pagination parameter to be used on the next list operation to retrieve more items.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -106,7 +147,8 @@ public class ListFiltersResult extends com.amazonaws.AmazonWebServiceResult<com.
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

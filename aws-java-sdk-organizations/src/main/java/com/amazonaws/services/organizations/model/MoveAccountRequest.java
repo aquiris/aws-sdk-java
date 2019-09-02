@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -46,14 +46,14 @@ public class MoveAccountRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <ul>
      * <li>
      * <p>
-     * Root: a string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
+     * <b>Root</b> - A string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or digits
-     * (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional lower-case
-     * letters or digits.
+     * <b>Organizational unit (OU)</b> - A string that begins with "ou-" followed by from 4 to 32 lower-case letters or
+     * digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional
+     * lower-case letters or digits.
      * </p>
      * </li>
      * </ul>
@@ -70,14 +70,14 @@ public class MoveAccountRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <ul>
      * <li>
      * <p>
-     * Root: a string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
+     * <b>Root</b> - A string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or digits
-     * (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional lower-case
-     * letters or digits.
+     * <b>Organizational unit (OU)</b> - A string that begins with "ou-" followed by from 4 to 32 lower-case letters or
+     * digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional
+     * lower-case letters or digits.
      * </p>
      * </li>
      * </ul>
@@ -156,14 +156,14 @@ public class MoveAccountRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <ul>
      * <li>
      * <p>
-     * Root: a string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
+     * <b>Root</b> - A string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or digits
-     * (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional lower-case
-     * letters or digits.
+     * <b>Organizational unit (OU)</b> - A string that begins with "ou-" followed by from 4 to 32 lower-case letters or
+     * digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional
+     * lower-case letters or digits.
      * </p>
      * </li>
      * </ul>
@@ -177,14 +177,14 @@ public class MoveAccountRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        <ul>
      *        <li>
      *        <p>
-     *        Root: a string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
+     *        <b>Root</b> - A string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or
-     *        digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional
-     *        lower-case letters or digits.
+     *        <b>Organizational unit (OU)</b> - A string that begins with "ou-" followed by from 4 to 32 lower-case
+     *        letters or digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32
+     *        additional lower-case letters or digits.
      *        </p>
      *        </li>
      */
@@ -204,14 +204,14 @@ public class MoveAccountRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <ul>
      * <li>
      * <p>
-     * Root: a string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
+     * <b>Root</b> - A string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or digits
-     * (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional lower-case
-     * letters or digits.
+     * <b>Organizational unit (OU)</b> - A string that begins with "ou-" followed by from 4 to 32 lower-case letters or
+     * digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional
+     * lower-case letters or digits.
      * </p>
      * </li>
      * </ul>
@@ -224,14 +224,14 @@ public class MoveAccountRequest extends com.amazonaws.AmazonWebServiceRequest im
      *         <ul>
      *         <li>
      *         <p>
-     *         Root: a string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
+     *         <b>Root</b> - A string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or
-     *         digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional
-     *         lower-case letters or digits.
+     *         <b>Organizational unit (OU)</b> - A string that begins with "ou-" followed by from 4 to 32 lower-case
+     *         letters or digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32
+     *         additional lower-case letters or digits.
      *         </p>
      *         </li>
      */
@@ -251,14 +251,14 @@ public class MoveAccountRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <ul>
      * <li>
      * <p>
-     * Root: a string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
+     * <b>Root</b> - A string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or digits
-     * (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional lower-case
-     * letters or digits.
+     * <b>Organizational unit (OU)</b> - A string that begins with "ou-" followed by from 4 to 32 lower-case letters or
+     * digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional
+     * lower-case letters or digits.
      * </p>
      * </li>
      * </ul>
@@ -272,14 +272,14 @@ public class MoveAccountRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        <ul>
      *        <li>
      *        <p>
-     *        Root: a string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
+     *        <b>Root</b> - A string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or
-     *        digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional
-     *        lower-case letters or digits.
+     *        <b>Organizational unit (OU)</b> - A string that begins with "ou-" followed by from 4 to 32 lower-case
+     *        letters or digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32
+     *        additional lower-case letters or digits.
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -301,14 +301,14 @@ public class MoveAccountRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <ul>
      * <li>
      * <p>
-     * Root: a string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
+     * <b>Root</b> - A string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or digits
-     * (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional lower-case
-     * letters or digits.
+     * <b>Organizational unit (OU)</b> - A string that begins with "ou-" followed by from 4 to 32 lower-case letters or
+     * digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional
+     * lower-case letters or digits.
      * </p>
      * </li>
      * </ul>
@@ -322,14 +322,14 @@ public class MoveAccountRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        <ul>
      *        <li>
      *        <p>
-     *        Root: a string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
+     *        <b>Root</b> - A string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or
-     *        digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional
-     *        lower-case letters or digits.
+     *        <b>Organizational unit (OU)</b> - A string that begins with "ou-" followed by from 4 to 32 lower-case
+     *        letters or digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32
+     *        additional lower-case letters or digits.
      *        </p>
      *        </li>
      */
@@ -349,14 +349,14 @@ public class MoveAccountRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <ul>
      * <li>
      * <p>
-     * Root: a string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
+     * <b>Root</b> - A string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or digits
-     * (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional lower-case
-     * letters or digits.
+     * <b>Organizational unit (OU)</b> - A string that begins with "ou-" followed by from 4 to 32 lower-case letters or
+     * digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional
+     * lower-case letters or digits.
      * </p>
      * </li>
      * </ul>
@@ -369,14 +369,14 @@ public class MoveAccountRequest extends com.amazonaws.AmazonWebServiceRequest im
      *         <ul>
      *         <li>
      *         <p>
-     *         Root: a string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
+     *         <b>Root</b> - A string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or
-     *         digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional
-     *         lower-case letters or digits.
+     *         <b>Organizational unit (OU)</b> - A string that begins with "ou-" followed by from 4 to 32 lower-case
+     *         letters or digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32
+     *         additional lower-case letters or digits.
      *         </p>
      *         </li>
      */
@@ -396,14 +396,14 @@ public class MoveAccountRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <ul>
      * <li>
      * <p>
-     * Root: a string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
+     * <b>Root</b> - A string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or digits
-     * (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional lower-case
-     * letters or digits.
+     * <b>Organizational unit (OU)</b> - A string that begins with "ou-" followed by from 4 to 32 lower-case letters or
+     * digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional
+     * lower-case letters or digits.
      * </p>
      * </li>
      * </ul>
@@ -417,14 +417,14 @@ public class MoveAccountRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        <ul>
      *        <li>
      *        <p>
-     *        Root: a string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
+     *        <b>Root</b> - A string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or
-     *        digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional
-     *        lower-case letters or digits.
+     *        <b>Organizational unit (OU)</b> - A string that begins with "ou-" followed by from 4 to 32 lower-case
+     *        letters or digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32
+     *        additional lower-case letters or digits.
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -436,7 +436,8 @@ public class MoveAccountRequest extends com.amazonaws.AmazonWebServiceRequest im
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

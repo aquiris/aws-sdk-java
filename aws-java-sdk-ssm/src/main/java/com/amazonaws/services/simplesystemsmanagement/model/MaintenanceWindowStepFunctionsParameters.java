@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -19,7 +19,7 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * The parameters for a STEP_FUNCTION task.
+ * The parameters for a STEP_FUNCTIONS task.
  * </p>
  * <p>
  * For information about specifying and updating task parameters, see <a>RegisterTaskWithMaintenanceWindow</a> and
@@ -30,12 +30,12 @@ import com.amazonaws.protocol.ProtocolMarshaller;
  * <code>LoggingInfo</code> has been deprecated. To specify an S3 bucket to contain logs, instead use the
  * <code>OutputS3BucketName</code> and <code>OutputS3KeyPrefix</code> options in the
  * <code>TaskInvocationParameters</code> structure. For information about how Systems Manager handles these options for
- * the supported Maintenance Window task types, see <a>MaintenanceWindowTaskInvocationParameters</a>.
+ * the supported maintenance window task types, see <a>MaintenanceWindowTaskInvocationParameters</a>.
  * </p>
  * <p>
  * <code>TaskParameters</code> has been deprecated. To specify parameters to pass to a task when it runs, instead use
  * the <code>Parameters</code> option in the <code>TaskInvocationParameters</code> structure. For information about how
- * Systems Manager handles these options for the supported Maintenance Window task types, see
+ * Systems Manager handles these options for the supported maintenance window task types, see
  * <a>MaintenanceWindowTaskInvocationParameters</a>.
  * </p>
  * <p>
@@ -52,24 +52,24 @@ public class MaintenanceWindowStepFunctionsParameters implements Serializable, C
 
     /**
      * <p>
-     * The inputs for the STEP_FUNCTION task.
+     * The inputs for the STEP_FUNCTIONS task.
      * </p>
      */
     private String input;
     /**
      * <p>
-     * The name of the STEP_FUNCTION task.
+     * The name of the STEP_FUNCTIONS task.
      * </p>
      */
     private String name;
 
     /**
      * <p>
-     * The inputs for the STEP_FUNCTION task.
+     * The inputs for the STEP_FUNCTIONS task.
      * </p>
      * 
      * @param input
-     *        The inputs for the STEP_FUNCTION task.
+     *        The inputs for the STEP_FUNCTIONS task.
      */
 
     public void setInput(String input) {
@@ -78,10 +78,10 @@ public class MaintenanceWindowStepFunctionsParameters implements Serializable, C
 
     /**
      * <p>
-     * The inputs for the STEP_FUNCTION task.
+     * The inputs for the STEP_FUNCTIONS task.
      * </p>
      * 
-     * @return The inputs for the STEP_FUNCTION task.
+     * @return The inputs for the STEP_FUNCTIONS task.
      */
 
     public String getInput() {
@@ -90,11 +90,11 @@ public class MaintenanceWindowStepFunctionsParameters implements Serializable, C
 
     /**
      * <p>
-     * The inputs for the STEP_FUNCTION task.
+     * The inputs for the STEP_FUNCTIONS task.
      * </p>
      * 
      * @param input
-     *        The inputs for the STEP_FUNCTION task.
+     *        The inputs for the STEP_FUNCTIONS task.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -105,11 +105,11 @@ public class MaintenanceWindowStepFunctionsParameters implements Serializable, C
 
     /**
      * <p>
-     * The name of the STEP_FUNCTION task.
+     * The name of the STEP_FUNCTIONS task.
      * </p>
      * 
      * @param name
-     *        The name of the STEP_FUNCTION task.
+     *        The name of the STEP_FUNCTIONS task.
      */
 
     public void setName(String name) {
@@ -118,10 +118,10 @@ public class MaintenanceWindowStepFunctionsParameters implements Serializable, C
 
     /**
      * <p>
-     * The name of the STEP_FUNCTION task.
+     * The name of the STEP_FUNCTIONS task.
      * </p>
      * 
-     * @return The name of the STEP_FUNCTION task.
+     * @return The name of the STEP_FUNCTIONS task.
      */
 
     public String getName() {
@@ -130,11 +130,11 @@ public class MaintenanceWindowStepFunctionsParameters implements Serializable, C
 
     /**
      * <p>
-     * The name of the STEP_FUNCTION task.
+     * The name of the STEP_FUNCTIONS task.
      * </p>
      * 
      * @param name
-     *        The name of the STEP_FUNCTION task.
+     *        The name of the STEP_FUNCTIONS task.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -144,7 +144,8 @@ public class MaintenanceWindowStepFunctionsParameters implements Serializable, C
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -155,7 +156,7 @@ public class MaintenanceWindowStepFunctionsParameters implements Serializable, C
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getInput() != null)
-            sb.append("Input: ").append(getInput()).append(",");
+            sb.append("Input: ").append("***Sensitive Data Redacted***").append(",");
         if (getName() != null)
             sb.append("Name: ").append(getName());
         sb.append("}");

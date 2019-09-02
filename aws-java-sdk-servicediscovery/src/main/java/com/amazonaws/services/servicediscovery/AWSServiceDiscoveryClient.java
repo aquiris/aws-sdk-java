@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -37,6 +37,8 @@ import com.amazonaws.protocol.json.*;
 import com.amazonaws.util.AWSRequestMetrics.Field;
 import com.amazonaws.annotation.ThreadSafe;
 import com.amazonaws.client.AwsSyncClientParams;
+import com.amazonaws.client.builder.AdvancedConfig;
+
 import com.amazonaws.services.servicediscovery.AWSServiceDiscoveryClientBuilder;
 
 import com.amazonaws.AmazonServiceException;
@@ -49,15 +51,17 @@ import com.amazonaws.services.servicediscovery.model.transform.*;
  * until the service call completes.
  * <p>
  * <p>
- * Amazon Route 53 auto naming lets you configure public or private namespaces that your microservice applications run
- * in. When instances of the service become available, you can call the auto naming API to register the instance, and
- * Route 53 automatically creates up to five DNS records and an optional health check. Clients that submit DNS queries
- * for the service receive an answer that contains up to eight healthy records.
+ * AWS Cloud Map lets you configure public DNS, private DNS, or HTTP namespaces that your microservice applications run
+ * in. When an instance of the service becomes available, you can call the AWS Cloud Map API to register the instance
+ * with AWS Cloud Map. For public or private DNS namespaces, AWS Cloud Map automatically creates DNS records and an
+ * optional health check. Clients that submit public or private DNS queries, or HTTP requests, for the service receive
+ * an answer that contains up to eight healthy records.
  * </p>
  */
 @ThreadSafe
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements AWSServiceDiscovery {
+
     /** Provider for AWS credentials. */
     private final AWSCredentialsProvider awsCredentialsProvider;
 
@@ -69,45 +73,50 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
     /** Client configuration factory providing ClientConfigurations tailored to this client */
     protected static final ClientConfigurationFactory configFactory = new ClientConfigurationFactory();
 
+    private final AdvancedConfig advancedConfig;
+
     private static final com.amazonaws.protocol.json.SdkJsonProtocolFactory protocolFactory = new com.amazonaws.protocol.json.SdkJsonProtocolFactory(
             new JsonClientMetadata()
                     .withProtocolVersion("1.1")
                     .withSupportsCbor(false)
                     .withSupportsIon(false)
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("OperationNotFound").withModeledClass(
-                                    com.amazonaws.services.servicediscovery.model.OperationNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("OperationNotFound").withExceptionUnmarshaller(
+                                    com.amazonaws.services.servicediscovery.model.transform.OperationNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceInUse").withModeledClass(
-                                    com.amazonaws.services.servicediscovery.model.ResourceInUseException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceInUse").withExceptionUnmarshaller(
+                                    com.amazonaws.services.servicediscovery.model.transform.ResourceInUseExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("DuplicateRequest").withModeledClass(
-                                    com.amazonaws.services.servicediscovery.model.DuplicateRequestException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("DuplicateRequest").withExceptionUnmarshaller(
+                                    com.amazonaws.services.servicediscovery.model.transform.DuplicateRequestExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidInput").withModeledClass(
-                                    com.amazonaws.services.servicediscovery.model.InvalidInputException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidInput").withExceptionUnmarshaller(
+                                    com.amazonaws.services.servicediscovery.model.transform.InvalidInputExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ServiceAlreadyExists").withModeledClass(
-                                    com.amazonaws.services.servicediscovery.model.ServiceAlreadyExistsException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ServiceAlreadyExists").withExceptionUnmarshaller(
+                                    com.amazonaws.services.servicediscovery.model.transform.ServiceAlreadyExistsExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ServiceNotFound").withModeledClass(
-                                    com.amazonaws.services.servicediscovery.model.ServiceNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ServiceNotFound").withExceptionUnmarshaller(
+                                    com.amazonaws.services.servicediscovery.model.transform.ServiceNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("NamespaceAlreadyExists").withModeledClass(
-                                    com.amazonaws.services.servicediscovery.model.NamespaceAlreadyExistsException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("NamespaceAlreadyExists").withExceptionUnmarshaller(
+                                    com.amazonaws.services.servicediscovery.model.transform.NamespaceAlreadyExistsExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InstanceNotFound").withModeledClass(
-                                    com.amazonaws.services.servicediscovery.model.InstanceNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InstanceNotFound").withExceptionUnmarshaller(
+                                    com.amazonaws.services.servicediscovery.model.transform.InstanceNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("NamespaceNotFound").withModeledClass(
-                                    com.amazonaws.services.servicediscovery.model.NamespaceNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("NamespaceNotFound").withExceptionUnmarshaller(
+                                    com.amazonaws.services.servicediscovery.model.transform.NamespaceNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("CustomHealthNotFound").withModeledClass(
-                                    com.amazonaws.services.servicediscovery.model.CustomHealthNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("CustomHealthNotFound").withExceptionUnmarshaller(
+                                    com.amazonaws.services.servicediscovery.model.transform.CustomHealthNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceLimitExceeded").withModeledClass(
-                                    com.amazonaws.services.servicediscovery.model.ResourceLimitExceededException.class))
-                    .withBaseServiceExceptionClass(com.amazonaws.services.servicediscovery.model.AWSServiceDiscoveryException.class));
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceLimitExceeded").withExceptionUnmarshaller(
+                                    com.amazonaws.services.servicediscovery.model.transform.ResourceLimitExceededExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode(null).withExceptionUnmarshaller(
+                                    new JsonBaseExceptionUnmarshaller<com.amazonaws.services.servicediscovery.model.AWSServiceDiscoveryException>(
+                                            com.amazonaws.services.servicediscovery.model.AWSServiceDiscoveryException.class))));
 
     public static AWSServiceDiscoveryClientBuilder builder() {
         return AWSServiceDiscoveryClientBuilder.standard();
@@ -124,8 +133,23 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
      *        Object providing client parameters.
      */
     AWSServiceDiscoveryClient(AwsSyncClientParams clientParams) {
+        this(clientParams, false);
+    }
+
+    /**
+     * Constructs a new client to invoke service methods on ServiceDiscovery using the specified parameters.
+     *
+     * <p>
+     * All service calls made using this new client object are blocking, and will not return until the service call
+     * completes.
+     *
+     * @param clientParams
+     *        Object providing client parameters.
+     */
+    AWSServiceDiscoveryClient(AwsSyncClientParams clientParams, boolean endpointDiscoveryEnabled) {
         super(clientParams);
         this.awsCredentialsProvider = clientParams.getCredentialsProvider();
+        this.advancedConfig = clientParams.getAdvancedConfig();
         init();
     }
 
@@ -142,20 +166,87 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
 
     /**
      * <p>
+     * Creates an HTTP namespace. Service instances that you register using an HTTP namespace can be discovered using a
+     * <code>DiscoverInstances</code> request but can't be discovered using DNS.
+     * </p>
+     * <p>
+     * For the current limit on the number of namespaces that you can create using the same AWS account, see <a
+     * href="http://docs.aws.amazon.com/cloud-map/latest/dg/cloud-map-limits.html">AWS Cloud Map Limits</a> in the
+     * <i>AWS Cloud Map Developer Guide</i>.
+     * </p>
+     * 
+     * @param createHttpNamespaceRequest
+     * @return Result of the CreateHttpNamespace operation returned by the service.
+     * @throws InvalidInputException
+     *         One or more specified values aren't valid. For example, a required value might be missing, a numeric
+     *         value might be outside the allowed range, or a string value might exceed length constraints.
+     * @throws NamespaceAlreadyExistsException
+     *         The namespace that you're trying to create already exists.
+     * @throws ResourceLimitExceededException
+     *         The resource can't be created because you've reached the limit on the number of resources.
+     * @throws DuplicateRequestException
+     *         The operation is already in progress.
+     * @sample AWSServiceDiscovery.CreateHttpNamespace
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/servicediscovery-2017-03-14/CreateHttpNamespace"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public CreateHttpNamespaceResult createHttpNamespace(CreateHttpNamespaceRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateHttpNamespace(request);
+    }
+
+    @SdkInternalApi
+    final CreateHttpNamespaceResult executeCreateHttpNamespace(CreateHttpNamespaceRequest createHttpNamespaceRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(createHttpNamespaceRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<CreateHttpNamespaceRequest> request = null;
+        Response<CreateHttpNamespaceResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new CreateHttpNamespaceRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createHttpNamespaceRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ServiceDiscovery");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateHttpNamespace");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<CreateHttpNamespaceResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new CreateHttpNamespaceResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
      * Creates a private namespace based on DNS, which will be visible only inside a specified Amazon VPC. The namespace
      * defines your service naming scheme. For example, if you name your namespace <code>example.com</code> and name
      * your service <code>backend</code>, the resulting DNS name for the service will be
      * <code>backend.example.com</code>. For the current limit on the number of namespaces that you can create using the
-     * same AWS account, see <a href=
-     * "http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html#limits-api-entities-autonaming"
-     * >Limits on Auto Naming</a> in the <i>Route 53 Developer Guide</i>.
+     * same AWS account, see <a href="http://docs.aws.amazon.com/cloud-map/latest/dg/cloud-map-limits.html">AWS Cloud
+     * Map Limits</a> in the <i>AWS Cloud Map Developer Guide</i>.
      * </p>
      * 
      * @param createPrivateDnsNamespaceRequest
      * @return Result of the CreatePrivateDnsNamespace operation returned by the service.
      * @throws InvalidInputException
-     *         One or more specified values aren't valid. For example, when you're creating a namespace, the value of
-     *         <code>Name</code> might not be a valid DNS name.
+     *         One or more specified values aren't valid. For example, a required value might be missing, a numeric
+     *         value might be outside the allowed range, or a string value might exceed length constraints.
      * @throws NamespaceAlreadyExistsException
      *         The namespace that you're trying to create already exists.
      * @throws ResourceLimitExceededException
@@ -189,6 +280,10 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ServiceDiscovery");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreatePrivateDnsNamespace");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -211,16 +306,16 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
      * Creates a public namespace based on DNS, which will be visible on the internet. The namespace defines your
      * service naming scheme. For example, if you name your namespace <code>example.com</code> and name your service
      * <code>backend</code>, the resulting DNS name for the service will be <code>backend.example.com</code>. For the
-     * current limit on the number of namespaces that you can create using the same AWS account, see <a href=
-     * "http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html#limits-api-entities-autonaming"
-     * >Limits on Auto Naming</a> in the <i>Route 53 Developer Guide</i>.
+     * current limit on the number of namespaces that you can create using the same AWS account, see <a
+     * href="http://docs.aws.amazon.com/cloud-map/latest/dg/cloud-map-limits.html">AWS Cloud Map Limits</a> in the
+     * <i>AWS Cloud Map Developer Guide</i>.
      * </p>
      * 
      * @param createPublicDnsNamespaceRequest
      * @return Result of the CreatePublicDnsNamespace operation returned by the service.
      * @throws InvalidInputException
-     *         One or more specified values aren't valid. For example, when you're creating a namespace, the value of
-     *         <code>Name</code> might not be a valid DNS name.
+     *         One or more specified values aren't valid. For example, a required value might be missing, a numeric
+     *         value might be outside the allowed range, or a string value might exceed length constraints.
      * @throws NamespaceAlreadyExistsException
      *         The namespace that you're trying to create already exists.
      * @throws ResourceLimitExceededException
@@ -254,6 +349,10 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ServiceDiscovery");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreatePublicDnsNamespace");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -278,8 +377,35 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
      * <ul>
      * <li>
      * <p>
-     * Up to three records (A, AAAA, and SRV) or one CNAME record
+     * For public and private DNS namespaces, one of the following combinations of DNS records in Amazon Route 53:
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * A
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * AAAA
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * A and AAAA
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * SRV
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * CNAME
+     * </p>
+     * </li>
+     * </ul>
      * </li>
      * <li>
      * <p>
@@ -288,21 +414,20 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
      * </li>
      * </ul>
      * <p>
-     * After you create the service, you can submit a <a>RegisterInstance</a> request, and Amazon Route 53 uses the
-     * values in the configuration to create the specified entities.
+     * After you create the service, you can submit a <a>RegisterInstance</a> request, and AWS Cloud Map uses the values
+     * in the configuration to create the specified entities.
      * </p>
      * <p>
      * For the current limit on the number of instances that you can register using the same namespace and using the
-     * same service, see <a href=
-     * "http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html#limits-api-entities-autonaming"
-     * >Limits on Auto Naming</a> in the <i>Route 53 Developer Guide</i>.
+     * same service, see <a href="http://docs.aws.amazon.com/cloud-map/latest/dg/cloud-map-limits.html">AWS Cloud Map
+     * Limits</a> in the <i>AWS Cloud Map Developer Guide</i>.
      * </p>
      * 
      * @param createServiceRequest
      * @return Result of the CreateService operation returned by the service.
      * @throws InvalidInputException
-     *         One or more specified values aren't valid. For example, when you're creating a namespace, the value of
-     *         <code>Name</code> might not be a valid DNS name.
+     *         One or more specified values aren't valid. For example, a required value might be missing, a numeric
+     *         value might be outside the allowed range, or a string value might exceed length constraints.
      * @throws ResourceLimitExceededException
      *         The resource can't be created because you've reached the limit on the number of resources.
      * @throws NamespaceNotFoundException
@@ -335,6 +460,10 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ServiceDiscovery");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateService");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -360,8 +489,8 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
      * @param deleteNamespaceRequest
      * @return Result of the DeleteNamespace operation returned by the service.
      * @throws InvalidInputException
-     *         One or more specified values aren't valid. For example, when you're creating a namespace, the value of
-     *         <code>Name</code> might not be a valid DNS name.
+     *         One or more specified values aren't valid. For example, a required value might be missing, a numeric
+     *         value might be outside the allowed range, or a string value might exceed length constraints.
      * @throws NamespaceNotFoundException
      *         No namespace exists with the specified ID.
      * @throws ResourceInUseException
@@ -395,6 +524,10 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ServiceDiscovery");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteNamespace");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -419,8 +552,8 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
      * @param deleteServiceRequest
      * @return Result of the DeleteService operation returned by the service.
      * @throws InvalidInputException
-     *         One or more specified values aren't valid. For example, when you're creating a namespace, the value of
-     *         <code>Name</code> might not be a valid DNS name.
+     *         One or more specified values aren't valid. For example, a required value might be missing, a numeric
+     *         value might be outside the allowed range, or a string value might exceed length constraints.
      * @throws ServiceNotFoundException
      *         No service exists with the specified ID.
      * @throws ResourceInUseException
@@ -452,6 +585,10 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ServiceDiscovery");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteService");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -470,7 +607,8 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
 
     /**
      * <p>
-     * Deletes the records and the health check, if any, that Amazon Route 53 created for the specified instance.
+     * Deletes the Amazon Route 53 DNS records and health check, if any, that AWS Cloud Map created for the specified
+     * instance.
      * </p>
      * 
      * @param deregisterInstanceRequest
@@ -478,8 +616,8 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
      * @throws DuplicateRequestException
      *         The operation is already in progress.
      * @throws InvalidInputException
-     *         One or more specified values aren't valid. For example, when you're creating a namespace, the value of
-     *         <code>Name</code> might not be a valid DNS name.
+     *         One or more specified values aren't valid. For example, a required value might be missing, a numeric
+     *         value might be outside the allowed range, or a string value might exceed length constraints.
      * @throws InstanceNotFoundException
      *         No instance exists with the specified ID, or the instance was recently registered, and information about
      *         the instance hasn't propagated yet.
@@ -514,6 +652,10 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ServiceDiscovery");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeregisterInstance");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -521,6 +663,75 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
             HttpResponseHandler<AmazonWebServiceResponse<DeregisterInstanceResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new DeregisterInstanceResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Discovers registered instances for a specified namespace and service.
+     * </p>
+     * 
+     * @param discoverInstancesRequest
+     * @return Result of the DiscoverInstances operation returned by the service.
+     * @throws ServiceNotFoundException
+     *         No service exists with the specified ID.
+     * @throws NamespaceNotFoundException
+     *         No namespace exists with the specified ID.
+     * @throws InvalidInputException
+     *         One or more specified values aren't valid. For example, a required value might be missing, a numeric
+     *         value might be outside the allowed range, or a string value might exceed length constraints.
+     * @sample AWSServiceDiscovery.DiscoverInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/servicediscovery-2017-03-14/DiscoverInstances"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public DiscoverInstancesResult discoverInstances(DiscoverInstancesRequest request) {
+        request = beforeClientExecution(request);
+        return executeDiscoverInstances(request);
+    }
+
+    @SdkInternalApi
+    final DiscoverInstancesResult executeDiscoverInstances(DiscoverInstancesRequest discoverInstancesRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(discoverInstancesRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DiscoverInstancesRequest> request = null;
+        Response<DiscoverInstancesResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DiscoverInstancesRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(discoverInstancesRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ServiceDiscovery");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DiscoverInstances");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            URI endpointTraitHost = null;
+            if (!clientConfiguration.isDisableHostPrefixInjection()) {
+
+                String hostPrefix = "data-";
+                String resolvedHostPrefix = String.format("data-");
+
+                endpointTraitHost = UriResourcePathUtils.updateUriHost(endpoint, resolvedHostPrefix);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<DiscoverInstancesResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new DiscoverInstancesResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext, null, endpointTraitHost);
 
             return response.getAwsResponse();
 
@@ -541,8 +752,8 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
      *         No instance exists with the specified ID, or the instance was recently registered, and information about
      *         the instance hasn't propagated yet.
      * @throws InvalidInputException
-     *         One or more specified values aren't valid. For example, when you're creating a namespace, the value of
-     *         <code>Name</code> might not be a valid DNS name.
+     *         One or more specified values aren't valid. For example, a required value might be missing, a numeric
+     *         value might be outside the allowed range, or a string value might exceed length constraints.
      * @throws ServiceNotFoundException
      *         No service exists with the specified ID.
      * @sample AWSServiceDiscovery.GetInstance
@@ -571,6 +782,10 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ServiceDiscovery");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetInstance");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -605,8 +820,8 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
      *         No instance exists with the specified ID, or the instance was recently registered, and information about
      *         the instance hasn't propagated yet.
      * @throws InvalidInputException
-     *         One or more specified values aren't valid. For example, when you're creating a namespace, the value of
-     *         <code>Name</code> might not be a valid DNS name.
+     *         One or more specified values aren't valid. For example, a required value might be missing, a numeric
+     *         value might be outside the allowed range, or a string value might exceed length constraints.
      * @throws ServiceNotFoundException
      *         No service exists with the specified ID.
      * @sample AWSServiceDiscovery.GetInstancesHealthStatus
@@ -636,6 +851,10 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ServiceDiscovery");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetInstancesHealthStatus");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -661,8 +880,8 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
      * @param getNamespaceRequest
      * @return Result of the GetNamespace operation returned by the service.
      * @throws InvalidInputException
-     *         One or more specified values aren't valid. For example, when you're creating a namespace, the value of
-     *         <code>Name</code> might not be a valid DNS name.
+     *         One or more specified values aren't valid. For example, a required value might be missing, a numeric
+     *         value might be outside the allowed range, or a string value might exceed length constraints.
      * @throws NamespaceNotFoundException
      *         No namespace exists with the specified ID.
      * @sample AWSServiceDiscovery.GetNamespace
@@ -691,6 +910,10 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ServiceDiscovery");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetNamespace");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -720,6 +943,9 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
      * 
      * @param getOperationRequest
      * @return Result of the GetOperation operation returned by the service.
+     * @throws InvalidInputException
+     *         One or more specified values aren't valid. For example, a required value might be missing, a numeric
+     *         value might be outside the allowed range, or a string value might exceed length constraints.
      * @throws OperationNotFoundException
      *         No operation exists with the specified ID.
      * @sample AWSServiceDiscovery.GetOperation
@@ -748,6 +974,10 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ServiceDiscovery");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetOperation");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -772,8 +1002,8 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
      * @param getServiceRequest
      * @return Result of the GetService operation returned by the service.
      * @throws InvalidInputException
-     *         One or more specified values aren't valid. For example, when you're creating a namespace, the value of
-     *         <code>Name</code> might not be a valid DNS name.
+     *         One or more specified values aren't valid. For example, a required value might be missing, a numeric
+     *         value might be outside the allowed range, or a string value might exceed length constraints.
      * @throws ServiceNotFoundException
      *         No service exists with the specified ID.
      * @sample AWSServiceDiscovery.GetService
@@ -802,6 +1032,10 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ServiceDiscovery");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetService");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -828,8 +1062,8 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
      * @throws ServiceNotFoundException
      *         No service exists with the specified ID.
      * @throws InvalidInputException
-     *         One or more specified values aren't valid. For example, when you're creating a namespace, the value of
-     *         <code>Name</code> might not be a valid DNS name.
+     *         One or more specified values aren't valid. For example, a required value might be missing, a numeric
+     *         value might be outside the allowed range, or a string value might exceed length constraints.
      * @sample AWSServiceDiscovery.ListInstances
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/servicediscovery-2017-03-14/ListInstances" target="_top">AWS
      *      API Documentation</a>
@@ -856,6 +1090,10 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ServiceDiscovery");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListInstances");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -880,8 +1118,8 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
      * @param listNamespacesRequest
      * @return Result of the ListNamespaces operation returned by the service.
      * @throws InvalidInputException
-     *         One or more specified values aren't valid. For example, when you're creating a namespace, the value of
-     *         <code>Name</code> might not be a valid DNS name.
+     *         One or more specified values aren't valid. For example, a required value might be missing, a numeric
+     *         value might be outside the allowed range, or a string value might exceed length constraints.
      * @sample AWSServiceDiscovery.ListNamespaces
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/servicediscovery-2017-03-14/ListNamespaces"
      *      target="_top">AWS API Documentation</a>
@@ -908,6 +1146,10 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ServiceDiscovery");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListNamespaces");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -932,8 +1174,8 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
      * @param listOperationsRequest
      * @return Result of the ListOperations operation returned by the service.
      * @throws InvalidInputException
-     *         One or more specified values aren't valid. For example, when you're creating a namespace, the value of
-     *         <code>Name</code> might not be a valid DNS name.
+     *         One or more specified values aren't valid. For example, a required value might be missing, a numeric
+     *         value might be outside the allowed range, or a string value might exceed length constraints.
      * @sample AWSServiceDiscovery.ListOperations
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/servicediscovery-2017-03-14/ListOperations"
      *      target="_top">AWS API Documentation</a>
@@ -960,6 +1202,10 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ServiceDiscovery");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListOperations");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -984,8 +1230,8 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
      * @param listServicesRequest
      * @return Result of the ListServices operation returned by the service.
      * @throws InvalidInputException
-     *         One or more specified values aren't valid. For example, when you're creating a namespace, the value of
-     *         <code>Name</code> might not be a valid DNS name.
+     *         One or more specified values aren't valid. For example, a required value might be missing, a numeric
+     *         value might be outside the allowed range, or a string value might exceed length constraints.
      * @sample AWSServiceDiscovery.ListServices
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/servicediscovery-2017-03-14/ListServices" target="_top">AWS
      *      API Documentation</a>
@@ -1012,6 +1258,10 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ServiceDiscovery");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListServices");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1030,25 +1280,25 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
 
     /**
      * <p>
-     * Creates or updates one or more records and optionally a health check based on the settings in a specified
-     * service. When you submit a <code>RegisterInstance</code> request, Amazon Route 53 does the following:
+     * Creates or updates one or more records and, optionally, creates a health check based on the settings in a
+     * specified service. When you submit a <code>RegisterInstance</code> request, the following occurs:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * For each DNS record that you define in the service specified by <code>ServiceId</code>, creates or updates a
-     * record in the hosted zone that is associated with the corresponding namespace
+     * For each DNS record that you define in the service that is specified by <code>ServiceId</code>, a record is
+     * created or updated in the hosted zone that is associated with the corresponding namespace.
      * </p>
      * </li>
      * <li>
      * <p>
-     * If the service includes <code>HealthCheckConfig</code>, creates or updates a health check based on the settings
-     * in the health check configuration
+     * If the service includes <code>HealthCheckConfig</code>, a health check is created based on the settings in the
+     * health check configuration.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Associates the health check, if any, with each of the records
+     * The health check, if any, is associated with each of the new or updated records.
      * </p>
      * </li>
      * </ul>
@@ -1062,7 +1312,7 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
      * For more information, see <a>CreateService</a>.
      * </p>
      * <p>
-     * When Route 53 receives a DNS query for the specified DNS name, it returns the applicable value:
+     * When AWS Cloud Map receives a DNS query for the specified DNS name, it returns the applicable value:
      * </p>
      * <ul>
      * <li>
@@ -1083,9 +1333,8 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
      * </ul>
      * <p>
      * For the current limit on the number of instances that you can register using the same namespace and using the
-     * same service, see <a href=
-     * "http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html#limits-api-entities-autonaming"
-     * >Limits on Auto Naming</a> in the <i>Route 53 Developer Guide</i>.
+     * same service, see <a href="http://docs.aws.amazon.com/cloud-map/latest/dg/cloud-map-limits.html">AWS Cloud Map
+     * Limits</a> in the <i>AWS Cloud Map Developer Guide</i>.
      * </p>
      * 
      * @param registerInstanceRequest
@@ -1093,8 +1342,8 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
      * @throws DuplicateRequestException
      *         The operation is already in progress.
      * @throws InvalidInputException
-     *         One or more specified values aren't valid. For example, when you're creating a namespace, the value of
-     *         <code>Name</code> might not be a valid DNS name.
+     *         One or more specified values aren't valid. For example, a required value might be missing, a numeric
+     *         value might be outside the allowed range, or a string value might exceed length constraints.
      * @throws ResourceInUseException
      *         The specified resource can't be deleted because it contains other resources. For example, you can't
      *         delete a service that contains any instances.
@@ -1128,6 +1377,10 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ServiceDiscovery");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "RegisterInstance");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1145,6 +1398,18 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
     }
 
     /**
+     * <p>
+     * Submits a request to change the health status of a custom health check to healthy or unhealthy.
+     * </p>
+     * <p>
+     * You can use <code>UpdateInstanceCustomHealthStatus</code> to change the status only for custom health checks,
+     * which you define using <code>HealthCheckCustomConfig</code> when you create a service. You can't use it to change
+     * the status for Route 53 health checks, which you define using <code>HealthCheckConfig</code>.
+     * </p>
+     * <p>
+     * For more information, see <a>HealthCheckCustomConfig</a>.
+     * </p>
+     * 
      * @param updateInstanceCustomHealthStatusRequest
      * @return Result of the UpdateInstanceCustomHealthStatus operation returned by the service.
      * @throws InstanceNotFoundException
@@ -1153,9 +1418,11 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
      * @throws ServiceNotFoundException
      *         No service exists with the specified ID.
      * @throws CustomHealthNotFoundException
+     *         The health check for the instance that is specified by <code>ServiceId</code> and <code>InstanceId</code>
+     *         is not a custom health check.
      * @throws InvalidInputException
-     *         One or more specified values aren't valid. For example, when you're creating a namespace, the value of
-     *         <code>Name</code> might not be a valid DNS name.
+     *         One or more specified values aren't valid. For example, a required value might be missing, a numeric
+     *         value might be outside the allowed range, or a string value might exceed length constraints.
      * @sample AWSServiceDiscovery.UpdateInstanceCustomHealthStatus
      * @see <a
      *      href="http://docs.aws.amazon.com/goto/WebAPI/servicediscovery-2017-03-14/UpdateInstanceCustomHealthStatus"
@@ -1185,6 +1452,10 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ServiceDiscovery");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateInstanceCustomHealthStatus");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1224,12 +1495,12 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
      * </li>
      * </ul>
      * <p>
-     * You must specify all <code>DnsRecords</code> configurations (and, optionally, <code>HealthCheckConfig</code>)
-     * that you want to appear in the updated service. Any current configurations that don't appear in an
-     * <code>UpdateService</code> request are deleted.
+     * For public and private DNS namespaces, you must specify all <code>DnsRecords</code> configurations (and,
+     * optionally, <code>HealthCheckConfig</code>) that you want to appear in the updated service. Any current
+     * configurations that don't appear in an <code>UpdateService</code> request are deleted.
      * </p>
      * <p>
-     * When you update the TTL setting for a service, Amazon Route 53 also updates the corresponding settings in all the
+     * When you update the TTL setting for a service, AWS Cloud Map also updates the corresponding settings in all the
      * records and health checks that were created by using the specified service.
      * </p>
      * 
@@ -1238,8 +1509,8 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
      * @throws DuplicateRequestException
      *         The operation is already in progress.
      * @throws InvalidInputException
-     *         One or more specified values aren't valid. For example, when you're creating a namespace, the value of
-     *         <code>Name</code> might not be a valid DNS name.
+     *         One or more specified values aren't valid. For example, a required value might be missing, a numeric
+     *         value might be outside the allowed range, or a string value might exceed length constraints.
      * @throws ServiceNotFoundException
      *         No service exists with the specified ID.
      * @sample AWSServiceDiscovery.UpdateService
@@ -1268,6 +1539,10 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ServiceDiscovery");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateService");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1308,9 +1583,18 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
     private <X, Y extends AmazonWebServiceRequest> Response<X> invoke(Request<Y> request, HttpResponseHandler<AmazonWebServiceResponse<X>> responseHandler,
             ExecutionContext executionContext) {
 
+        return invoke(request, responseHandler, executionContext, null, null);
+    }
+
+    /**
+     * Normal invoke with authentication. Credentials are required and may be overriden at the request level.
+     **/
+    private <X, Y extends AmazonWebServiceRequest> Response<X> invoke(Request<Y> request, HttpResponseHandler<AmazonWebServiceResponse<X>> responseHandler,
+            ExecutionContext executionContext, URI cachedEndpoint, URI uriFromEndpointTrait) {
+
         executionContext.setCredentialsProvider(CredentialUtils.getCredentialsProvider(request.getOriginalRequest(), awsCredentialsProvider));
 
-        return doInvoke(request, responseHandler, executionContext);
+        return doInvoke(request, responseHandler, executionContext, cachedEndpoint, uriFromEndpointTrait);
     }
 
     /**
@@ -1320,7 +1604,7 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
     private <X, Y extends AmazonWebServiceRequest> Response<X> anonymousInvoke(Request<Y> request,
             HttpResponseHandler<AmazonWebServiceResponse<X>> responseHandler, ExecutionContext executionContext) {
 
-        return doInvoke(request, responseHandler, executionContext);
+        return doInvoke(request, responseHandler, executionContext, null, null);
     }
 
     /**
@@ -1328,8 +1612,17 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
      * ExecutionContext beforehand.
      **/
     private <X, Y extends AmazonWebServiceRequest> Response<X> doInvoke(Request<Y> request, HttpResponseHandler<AmazonWebServiceResponse<X>> responseHandler,
-            ExecutionContext executionContext) {
-        request.setEndpoint(endpoint);
+            ExecutionContext executionContext, URI discoveredEndpoint, URI uriFromEndpointTrait) {
+
+        if (discoveredEndpoint != null) {
+            request.setEndpoint(discoveredEndpoint);
+            request.getOriginalRequest().getRequestClientOptions().appendUserAgent("endpoint-discovery");
+        } else if (uriFromEndpointTrait != null) {
+            request.setEndpoint(uriFromEndpointTrait);
+        } else {
+            request.setEndpoint(endpoint);
+        }
+
         request.setTimeOffset(timeOffset);
 
         HttpResponseHandler<AmazonServiceException> errorResponseHandler = protocolFactory.createErrorResponseHandler(new JsonErrorResponseMetadata());

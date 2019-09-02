@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -63,6 +63,10 @@ public class InputTemplateJsonUnmarshaller implements Unmarshaller<InputTemplate
                     inputTemplate.setCaptionSelectors(new MapUnmarshaller<String, CaptionSelector>(context.getUnmarshaller(String.class),
                             CaptionSelectorJsonUnmarshaller.getInstance()).unmarshall(context));
                 }
+                if (context.testExpression("crop", targetDepth)) {
+                    context.nextToken();
+                    inputTemplate.setCrop(RectangleJsonUnmarshaller.getInstance().unmarshall(context));
+                }
                 if (context.testExpression("deblockFilter", targetDepth)) {
                     context.nextToken();
                     inputTemplate.setDeblockFilter(context.getUnmarshaller(String.class).unmarshall(context));
@@ -79,9 +83,17 @@ public class InputTemplateJsonUnmarshaller implements Unmarshaller<InputTemplate
                     context.nextToken();
                     inputTemplate.setFilterStrength(context.getUnmarshaller(Integer.class).unmarshall(context));
                 }
+                if (context.testExpression("imageInserter", targetDepth)) {
+                    context.nextToken();
+                    inputTemplate.setImageInserter(ImageInserterJsonUnmarshaller.getInstance().unmarshall(context));
+                }
                 if (context.testExpression("inputClippings", targetDepth)) {
                     context.nextToken();
                     inputTemplate.setInputClippings(new ListUnmarshaller<InputClipping>(InputClippingJsonUnmarshaller.getInstance()).unmarshall(context));
+                }
+                if (context.testExpression("position", targetDepth)) {
+                    context.nextToken();
+                    inputTemplate.setPosition(RectangleJsonUnmarshaller.getInstance().unmarshall(context));
                 }
                 if (context.testExpression("programNumber", targetDepth)) {
                     context.nextToken();

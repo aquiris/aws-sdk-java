@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -40,7 +40,7 @@ public class FleetLaunchTemplateSpecificationRequest implements Serializable, Cl
     private String launchTemplateName;
     /**
      * <p>
-     * The version number of the launch template.
+     * The version number of the launch template. Note: This is a required parameter and will be updated soon.
      * </p>
      */
     private String version;
@@ -127,11 +127,11 @@ public class FleetLaunchTemplateSpecificationRequest implements Serializable, Cl
 
     /**
      * <p>
-     * The version number of the launch template.
+     * The version number of the launch template. Note: This is a required parameter and will be updated soon.
      * </p>
      * 
      * @param version
-     *        The version number of the launch template.
+     *        The version number of the launch template. Note: This is a required parameter and will be updated soon.
      */
 
     public void setVersion(String version) {
@@ -140,10 +140,10 @@ public class FleetLaunchTemplateSpecificationRequest implements Serializable, Cl
 
     /**
      * <p>
-     * The version number of the launch template.
+     * The version number of the launch template. Note: This is a required parameter and will be updated soon.
      * </p>
      * 
-     * @return The version number of the launch template.
+     * @return The version number of the launch template. Note: This is a required parameter and will be updated soon.
      */
 
     public String getVersion() {
@@ -152,11 +152,11 @@ public class FleetLaunchTemplateSpecificationRequest implements Serializable, Cl
 
     /**
      * <p>
-     * The version number of the launch template.
+     * The version number of the launch template. Note: This is a required parameter and will be updated soon.
      * </p>
      * 
      * @param version
-     *        The version number of the launch template.
+     *        The version number of the launch template. Note: This is a required parameter and will be updated soon.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -166,7 +166,8 @@ public class FleetLaunchTemplateSpecificationRequest implements Serializable, Cl
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

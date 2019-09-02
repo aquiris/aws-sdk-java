@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,7 @@
  */
 package com.amazonaws.services.alexaforbusiness.model.transform;
 
+import java.util.List;
 import javax.annotation.Generated;
 
 import com.amazonaws.SdkClientException;
@@ -37,6 +38,10 @@ public class UpdateContactRequestMarshaller {
             .marshallLocationName("LastName").build();
     private static final MarshallingInfo<String> PHONENUMBER_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("PhoneNumber").build();
+    private static final MarshallingInfo<List> PHONENUMBERS_BINDING = MarshallingInfo.builder(MarshallingType.LIST).marshallLocation(MarshallLocation.PAYLOAD)
+            .marshallLocationName("PhoneNumbers").build();
+    private static final MarshallingInfo<List> SIPADDRESSES_BINDING = MarshallingInfo.builder(MarshallingType.LIST).marshallLocation(MarshallLocation.PAYLOAD)
+            .marshallLocationName("SipAddresses").build();
 
     private static final UpdateContactRequestMarshaller instance = new UpdateContactRequestMarshaller();
 
@@ -59,6 +64,8 @@ public class UpdateContactRequestMarshaller {
             protocolMarshaller.marshall(updateContactRequest.getFirstName(), FIRSTNAME_BINDING);
             protocolMarshaller.marshall(updateContactRequest.getLastName(), LASTNAME_BINDING);
             protocolMarshaller.marshall(updateContactRequest.getPhoneNumber(), PHONENUMBER_BINDING);
+            protocolMarshaller.marshall(updateContactRequest.getPhoneNumbers(), PHONENUMBERS_BINDING);
+            protocolMarshaller.marshall(updateContactRequest.getSipAddresses(), SIPADDRESSES_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

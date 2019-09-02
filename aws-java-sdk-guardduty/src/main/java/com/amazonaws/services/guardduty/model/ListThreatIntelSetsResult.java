@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -23,38 +23,25 @@ import javax.annotation.Generated;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ListThreatIntelSetsResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
+    /**
+     * <p>
+     * The IDs of the ThreatIntelSet resources.
+     * </p>
+     */
+    private java.util.List<String> threatIntelSetIds;
+    /**
+     * <p>
+     * Pagination parameter to be used on the next list operation to retrieve more items.
+     * </p>
+     */
     private String nextToken;
 
-    private java.util.List<String> threatIntelSetIds;
-
     /**
-     * @param nextToken
-     */
-
-    public void setNextToken(String nextToken) {
-        this.nextToken = nextToken;
-    }
-
-    /**
-     * @return
-     */
-
-    public String getNextToken() {
-        return this.nextToken;
-    }
-
-    /**
-     * @param nextToken
-     * @return Returns a reference to this object so that method calls can be chained together.
-     */
-
-    public ListThreatIntelSetsResult withNextToken(String nextToken) {
-        setNextToken(nextToken);
-        return this;
-    }
-
-    /**
-     * @return
+     * <p>
+     * The IDs of the ThreatIntelSet resources.
+     * </p>
+     * 
+     * @return The IDs of the ThreatIntelSet resources.
      */
 
     public java.util.List<String> getThreatIntelSetIds() {
@@ -62,7 +49,12 @@ public class ListThreatIntelSetsResult extends com.amazonaws.AmazonWebServiceRes
     }
 
     /**
+     * <p>
+     * The IDs of the ThreatIntelSet resources.
+     * </p>
+     * 
      * @param threatIntelSetIds
+     *        The IDs of the ThreatIntelSet resources.
      */
 
     public void setThreatIntelSetIds(java.util.Collection<String> threatIntelSetIds) {
@@ -76,12 +68,16 @@ public class ListThreatIntelSetsResult extends com.amazonaws.AmazonWebServiceRes
 
     /**
      * <p>
+     * The IDs of the ThreatIntelSet resources.
+     * </p>
+     * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
      * {@link #setThreatIntelSetIds(java.util.Collection)} or {@link #withThreatIntelSetIds(java.util.Collection)} if
      * you want to override the existing values.
      * </p>
      * 
      * @param threatIntelSetIds
+     *        The IDs of the ThreatIntelSet resources.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -96,7 +92,12 @@ public class ListThreatIntelSetsResult extends com.amazonaws.AmazonWebServiceRes
     }
 
     /**
+     * <p>
+     * The IDs of the ThreatIntelSet resources.
+     * </p>
+     * 
      * @param threatIntelSetIds
+     *        The IDs of the ThreatIntelSet resources.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -106,7 +107,48 @@ public class ListThreatIntelSetsResult extends com.amazonaws.AmazonWebServiceRes
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * <p>
+     * Pagination parameter to be used on the next list operation to retrieve more items.
+     * </p>
+     * 
+     * @param nextToken
+     *        Pagination parameter to be used on the next list operation to retrieve more items.
+     */
+
+    public void setNextToken(String nextToken) {
+        this.nextToken = nextToken;
+    }
+
+    /**
+     * <p>
+     * Pagination parameter to be used on the next list operation to retrieve more items.
+     * </p>
+     * 
+     * @return Pagination parameter to be used on the next list operation to retrieve more items.
+     */
+
+    public String getNextToken() {
+        return this.nextToken;
+    }
+
+    /**
+     * <p>
+     * Pagination parameter to be used on the next list operation to retrieve more items.
+     * </p>
+     * 
+     * @param nextToken
+     *        Pagination parameter to be used on the next list operation to retrieve more items.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ListThreatIntelSetsResult withNextToken(String nextToken) {
+        setNextToken(nextToken);
+        return this;
+    }
+
+    /**
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -116,10 +158,10 @@ public class ListThreatIntelSetsResult extends com.amazonaws.AmazonWebServiceRes
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
-        if (getNextToken() != null)
-            sb.append("NextToken: ").append(getNextToken()).append(",");
         if (getThreatIntelSetIds() != null)
-            sb.append("ThreatIntelSetIds: ").append(getThreatIntelSetIds());
+            sb.append("ThreatIntelSetIds: ").append(getThreatIntelSetIds()).append(",");
+        if (getNextToken() != null)
+            sb.append("NextToken: ").append(getNextToken());
         sb.append("}");
         return sb.toString();
     }
@@ -134,13 +176,13 @@ public class ListThreatIntelSetsResult extends com.amazonaws.AmazonWebServiceRes
         if (obj instanceof ListThreatIntelSetsResult == false)
             return false;
         ListThreatIntelSetsResult other = (ListThreatIntelSetsResult) obj;
-        if (other.getNextToken() == null ^ this.getNextToken() == null)
-            return false;
-        if (other.getNextToken() != null && other.getNextToken().equals(this.getNextToken()) == false)
-            return false;
         if (other.getThreatIntelSetIds() == null ^ this.getThreatIntelSetIds() == null)
             return false;
         if (other.getThreatIntelSetIds() != null && other.getThreatIntelSetIds().equals(this.getThreatIntelSetIds()) == false)
+            return false;
+        if (other.getNextToken() == null ^ this.getNextToken() == null)
+            return false;
+        if (other.getNextToken() != null && other.getNextToken().equals(this.getNextToken()) == false)
             return false;
         return true;
     }
@@ -150,8 +192,8 @@ public class ListThreatIntelSetsResult extends com.amazonaws.AmazonWebServiceRes
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode + ((getNextToken() == null) ? 0 : getNextToken().hashCode());
         hashCode = prime * hashCode + ((getThreatIntelSetIds() == null) ? 0 : getThreatIntelSetIds().hashCode());
+        hashCode = prime * hashCode + ((getNextToken() == null) ? 0 : getNextToken().hashCode());
         return hashCode;
     }
 

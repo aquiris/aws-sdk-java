@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -40,8 +40,8 @@ public class ReferenceDataSource implements Serializable, Cloneable, StructuredP
      * <p>
      * Identifies the S3 bucket and object that contains the reference data. Also identifies the IAM role Amazon Kinesis
      * Analytics can assume to read this object on your behalf. An Amazon Kinesis Analytics application loads reference
-     * data only once. If the data changes, you call the <a>UpdateApplication</a> operation to trigger reloading of data
-     * into your application.
+     * data only once. If the data changes, you call the <code>UpdateApplication</code> operation to trigger reloading
+     * of data into your application.
      * </p>
      */
     private S3ReferenceDataSource s3ReferenceDataSource;
@@ -97,15 +97,15 @@ public class ReferenceDataSource implements Serializable, Cloneable, StructuredP
      * <p>
      * Identifies the S3 bucket and object that contains the reference data. Also identifies the IAM role Amazon Kinesis
      * Analytics can assume to read this object on your behalf. An Amazon Kinesis Analytics application loads reference
-     * data only once. If the data changes, you call the <a>UpdateApplication</a> operation to trigger reloading of data
-     * into your application.
+     * data only once. If the data changes, you call the <code>UpdateApplication</code> operation to trigger reloading
+     * of data into your application.
      * </p>
      * 
      * @param s3ReferenceDataSource
      *        Identifies the S3 bucket and object that contains the reference data. Also identifies the IAM role Amazon
      *        Kinesis Analytics can assume to read this object on your behalf. An Amazon Kinesis Analytics application
-     *        loads reference data only once. If the data changes, you call the <a>UpdateApplication</a> operation to
-     *        trigger reloading of data into your application.
+     *        loads reference data only once. If the data changes, you call the <code>UpdateApplication</code> operation
+     *        to trigger reloading of data into your application.
      */
 
     public void setS3ReferenceDataSource(S3ReferenceDataSource s3ReferenceDataSource) {
@@ -116,14 +116,14 @@ public class ReferenceDataSource implements Serializable, Cloneable, StructuredP
      * <p>
      * Identifies the S3 bucket and object that contains the reference data. Also identifies the IAM role Amazon Kinesis
      * Analytics can assume to read this object on your behalf. An Amazon Kinesis Analytics application loads reference
-     * data only once. If the data changes, you call the <a>UpdateApplication</a> operation to trigger reloading of data
-     * into your application.
+     * data only once. If the data changes, you call the <code>UpdateApplication</code> operation to trigger reloading
+     * of data into your application.
      * </p>
      * 
      * @return Identifies the S3 bucket and object that contains the reference data. Also identifies the IAM role Amazon
      *         Kinesis Analytics can assume to read this object on your behalf. An Amazon Kinesis Analytics application
-     *         loads reference data only once. If the data changes, you call the <a>UpdateApplication</a> operation to
-     *         trigger reloading of data into your application.
+     *         loads reference data only once. If the data changes, you call the <code>UpdateApplication</code>
+     *         operation to trigger reloading of data into your application.
      */
 
     public S3ReferenceDataSource getS3ReferenceDataSource() {
@@ -134,15 +134,15 @@ public class ReferenceDataSource implements Serializable, Cloneable, StructuredP
      * <p>
      * Identifies the S3 bucket and object that contains the reference data. Also identifies the IAM role Amazon Kinesis
      * Analytics can assume to read this object on your behalf. An Amazon Kinesis Analytics application loads reference
-     * data only once. If the data changes, you call the <a>UpdateApplication</a> operation to trigger reloading of data
-     * into your application.
+     * data only once. If the data changes, you call the <code>UpdateApplication</code> operation to trigger reloading
+     * of data into your application.
      * </p>
      * 
      * @param s3ReferenceDataSource
      *        Identifies the S3 bucket and object that contains the reference data. Also identifies the IAM role Amazon
      *        Kinesis Analytics can assume to read this object on your behalf. An Amazon Kinesis Analytics application
-     *        loads reference data only once. If the data changes, you call the <a>UpdateApplication</a> operation to
-     *        trigger reloading of data into your application.
+     *        loads reference data only once. If the data changes, you call the <code>UpdateApplication</code> operation
+     *        to trigger reloading of data into your application.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -198,7 +198,8 @@ public class ReferenceDataSource implements Serializable, Cloneable, StructuredP
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

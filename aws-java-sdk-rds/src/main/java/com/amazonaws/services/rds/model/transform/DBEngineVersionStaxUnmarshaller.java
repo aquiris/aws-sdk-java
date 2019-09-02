@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -122,6 +122,31 @@ public class DBEngineVersionStaxUnmarshaller implements Unmarshaller<DBEngineVer
 
                 if (context.testExpression("SupportsReadReplica", targetDepth)) {
                     dBEngineVersion.setSupportsReadReplica(BooleanStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("SupportedEngineModes", targetDepth)) {
+                    dBEngineVersion.withSupportedEngineModes(new ArrayList<String>());
+                    continue;
+                }
+
+                if (context.testExpression("SupportedEngineModes/member", targetDepth)) {
+                    dBEngineVersion.withSupportedEngineModes(StringStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("SupportedFeatureNames", targetDepth)) {
+                    dBEngineVersion.withSupportedFeatureNames(new ArrayList<String>());
+                    continue;
+                }
+
+                if (context.testExpression("SupportedFeatureNames/member", targetDepth)) {
+                    dBEngineVersion.withSupportedFeatureNames(StringStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("Status", targetDepth)) {
+                    dBEngineVersion.setStatus(StringStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
                 }
             } else if (xmlEvent.isEndElement()) {

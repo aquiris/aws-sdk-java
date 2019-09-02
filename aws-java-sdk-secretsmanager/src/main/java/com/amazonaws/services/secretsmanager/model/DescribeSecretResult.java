@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -45,8 +45,8 @@ public class DescribeSecretResult extends com.amazonaws.AmazonWebServiceResult<c
      * <p>
      * The ARN or alias of the AWS KMS customer master key (CMK) that's used to encrypt the <code>SecretString</code> or
      * <code>SecretBinary</code> fields in each version of the secret. If you don't provide a key, then Secrets Manager
-     * defaults to encrypting the secret fields with the default KMS CMK (the one named <code>awssecretsmanager</code>)
-     * for this account.
+     * defaults to encrypting the secret fields with the default AWS KMS CMK (the one named
+     * <code>awssecretsmanager</code>) for this account.
      * </p>
      */
     private String kmsKeyId;
@@ -75,7 +75,8 @@ public class DescribeSecretResult extends com.amazonaws.AmazonWebServiceResult<c
     private RotationRulesType rotationRules;
     /**
      * <p>
-     * The last date and time that the Secrets Manager rotation process for this secret was invoked.
+     * The most recent date and time that the Secrets Manager rotation process was successfully completed. This value is
+     * null if the secret has never rotated.
      * </p>
      */
     private java.util.Date lastRotatedDate;
@@ -112,9 +113,9 @@ public class DescribeSecretResult extends com.amazonaws.AmazonWebServiceResult<c
     private java.util.List<Tag> tags;
     /**
      * <p>
-     * A list of all of the currently assigned <code>VersionStage</code> staging labels and the
-     * <code>SecretVersionId</code> that each is attached to. Staging labels are used to keep track of the different
-     * versions during the rotation process.
+     * A list of all of the currently assigned <code>VersionStage</code> staging labels and the <code>VersionId</code>
+     * that each is attached to. Staging labels are used to keep track of the different versions during the rotation
+     * process.
      * </p>
      * <note>
      * <p>
@@ -124,6 +125,8 @@ public class DescribeSecretResult extends com.amazonaws.AmazonWebServiceResult<c
      * </note>
      */
     private java.util.Map<String, java.util.List<String>> versionIdsToStages;
+
+    private String owningService;
 
     /**
      * <p>
@@ -249,15 +252,15 @@ public class DescribeSecretResult extends com.amazonaws.AmazonWebServiceResult<c
      * <p>
      * The ARN or alias of the AWS KMS customer master key (CMK) that's used to encrypt the <code>SecretString</code> or
      * <code>SecretBinary</code> fields in each version of the secret. If you don't provide a key, then Secrets Manager
-     * defaults to encrypting the secret fields with the default KMS CMK (the one named <code>awssecretsmanager</code>)
-     * for this account.
+     * defaults to encrypting the secret fields with the default AWS KMS CMK (the one named
+     * <code>awssecretsmanager</code>) for this account.
      * </p>
      * 
      * @param kmsKeyId
      *        The ARN or alias of the AWS KMS customer master key (CMK) that's used to encrypt the
      *        <code>SecretString</code> or <code>SecretBinary</code> fields in each version of the secret. If you don't
-     *        provide a key, then Secrets Manager defaults to encrypting the secret fields with the default KMS CMK (the
-     *        one named <code>awssecretsmanager</code>) for this account.
+     *        provide a key, then Secrets Manager defaults to encrypting the secret fields with the default AWS KMS CMK
+     *        (the one named <code>awssecretsmanager</code>) for this account.
      */
 
     public void setKmsKeyId(String kmsKeyId) {
@@ -268,13 +271,13 @@ public class DescribeSecretResult extends com.amazonaws.AmazonWebServiceResult<c
      * <p>
      * The ARN or alias of the AWS KMS customer master key (CMK) that's used to encrypt the <code>SecretString</code> or
      * <code>SecretBinary</code> fields in each version of the secret. If you don't provide a key, then Secrets Manager
-     * defaults to encrypting the secret fields with the default KMS CMK (the one named <code>awssecretsmanager</code>)
-     * for this account.
+     * defaults to encrypting the secret fields with the default AWS KMS CMK (the one named
+     * <code>awssecretsmanager</code>) for this account.
      * </p>
      * 
      * @return The ARN or alias of the AWS KMS customer master key (CMK) that's used to encrypt the
      *         <code>SecretString</code> or <code>SecretBinary</code> fields in each version of the secret. If you don't
-     *         provide a key, then Secrets Manager defaults to encrypting the secret fields with the default KMS CMK
+     *         provide a key, then Secrets Manager defaults to encrypting the secret fields with the default AWS KMS CMK
      *         (the one named <code>awssecretsmanager</code>) for this account.
      */
 
@@ -286,15 +289,15 @@ public class DescribeSecretResult extends com.amazonaws.AmazonWebServiceResult<c
      * <p>
      * The ARN or alias of the AWS KMS customer master key (CMK) that's used to encrypt the <code>SecretString</code> or
      * <code>SecretBinary</code> fields in each version of the secret. If you don't provide a key, then Secrets Manager
-     * defaults to encrypting the secret fields with the default KMS CMK (the one named <code>awssecretsmanager</code>)
-     * for this account.
+     * defaults to encrypting the secret fields with the default AWS KMS CMK (the one named
+     * <code>awssecretsmanager</code>) for this account.
      * </p>
      * 
      * @param kmsKeyId
      *        The ARN or alias of the AWS KMS customer master key (CMK) that's used to encrypt the
      *        <code>SecretString</code> or <code>SecretBinary</code> fields in each version of the secret. If you don't
-     *        provide a key, then Secrets Manager defaults to encrypting the secret fields with the default KMS CMK (the
-     *        one named <code>awssecretsmanager</code>) for this account.
+     *        provide a key, then Secrets Manager defaults to encrypting the secret fields with the default AWS KMS CMK
+     *        (the one named <code>awssecretsmanager</code>) for this account.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -471,11 +474,13 @@ public class DescribeSecretResult extends com.amazonaws.AmazonWebServiceResult<c
 
     /**
      * <p>
-     * The last date and time that the Secrets Manager rotation process for this secret was invoked.
+     * The most recent date and time that the Secrets Manager rotation process was successfully completed. This value is
+     * null if the secret has never rotated.
      * </p>
      * 
      * @param lastRotatedDate
-     *        The last date and time that the Secrets Manager rotation process for this secret was invoked.
+     *        The most recent date and time that the Secrets Manager rotation process was successfully completed. This
+     *        value is null if the secret has never rotated.
      */
 
     public void setLastRotatedDate(java.util.Date lastRotatedDate) {
@@ -484,10 +489,12 @@ public class DescribeSecretResult extends com.amazonaws.AmazonWebServiceResult<c
 
     /**
      * <p>
-     * The last date and time that the Secrets Manager rotation process for this secret was invoked.
+     * The most recent date and time that the Secrets Manager rotation process was successfully completed. This value is
+     * null if the secret has never rotated.
      * </p>
      * 
-     * @return The last date and time that the Secrets Manager rotation process for this secret was invoked.
+     * @return The most recent date and time that the Secrets Manager rotation process was successfully completed. This
+     *         value is null if the secret has never rotated.
      */
 
     public java.util.Date getLastRotatedDate() {
@@ -496,11 +503,13 @@ public class DescribeSecretResult extends com.amazonaws.AmazonWebServiceResult<c
 
     /**
      * <p>
-     * The last date and time that the Secrets Manager rotation process for this secret was invoked.
+     * The most recent date and time that the Secrets Manager rotation process was successfully completed. This value is
+     * null if the secret has never rotated.
      * </p>
      * 
      * @param lastRotatedDate
-     *        The last date and time that the Secrets Manager rotation process for this secret was invoked.
+     *        The most recent date and time that the Secrets Manager rotation process was successfully completed. This
+     *        value is null if the secret has never rotated.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -742,9 +751,9 @@ public class DescribeSecretResult extends com.amazonaws.AmazonWebServiceResult<c
 
     /**
      * <p>
-     * A list of all of the currently assigned <code>VersionStage</code> staging labels and the
-     * <code>SecretVersionId</code> that each is attached to. Staging labels are used to keep track of the different
-     * versions during the rotation process.
+     * A list of all of the currently assigned <code>VersionStage</code> staging labels and the <code>VersionId</code>
+     * that each is attached to. Staging labels are used to keep track of the different versions during the rotation
+     * process.
      * </p>
      * <note>
      * <p>
@@ -754,8 +763,8 @@ public class DescribeSecretResult extends com.amazonaws.AmazonWebServiceResult<c
      * </note>
      * 
      * @return A list of all of the currently assigned <code>VersionStage</code> staging labels and the
-     *         <code>SecretVersionId</code> that each is attached to. Staging labels are used to keep track of the
-     *         different versions during the rotation process.</p> <note>
+     *         <code>VersionId</code> that each is attached to. Staging labels are used to keep track of the different
+     *         versions during the rotation process.</p> <note>
      *         <p>
      *         A version that does not have any staging labels attached is considered deprecated and subject to
      *         deletion. Such versions are not included in this list.
@@ -768,9 +777,9 @@ public class DescribeSecretResult extends com.amazonaws.AmazonWebServiceResult<c
 
     /**
      * <p>
-     * A list of all of the currently assigned <code>VersionStage</code> staging labels and the
-     * <code>SecretVersionId</code> that each is attached to. Staging labels are used to keep track of the different
-     * versions during the rotation process.
+     * A list of all of the currently assigned <code>VersionStage</code> staging labels and the <code>VersionId</code>
+     * that each is attached to. Staging labels are used to keep track of the different versions during the rotation
+     * process.
      * </p>
      * <note>
      * <p>
@@ -781,8 +790,8 @@ public class DescribeSecretResult extends com.amazonaws.AmazonWebServiceResult<c
      * 
      * @param versionIdsToStages
      *        A list of all of the currently assigned <code>VersionStage</code> staging labels and the
-     *        <code>SecretVersionId</code> that each is attached to. Staging labels are used to keep track of the
-     *        different versions during the rotation process.</p> <note>
+     *        <code>VersionId</code> that each is attached to. Staging labels are used to keep track of the different
+     *        versions during the rotation process.</p> <note>
      *        <p>
      *        A version that does not have any staging labels attached is considered deprecated and subject to deletion.
      *        Such versions are not included in this list.
@@ -795,9 +804,9 @@ public class DescribeSecretResult extends com.amazonaws.AmazonWebServiceResult<c
 
     /**
      * <p>
-     * A list of all of the currently assigned <code>VersionStage</code> staging labels and the
-     * <code>SecretVersionId</code> that each is attached to. Staging labels are used to keep track of the different
-     * versions during the rotation process.
+     * A list of all of the currently assigned <code>VersionStage</code> staging labels and the <code>VersionId</code>
+     * that each is attached to. Staging labels are used to keep track of the different versions during the rotation
+     * process.
      * </p>
      * <note>
      * <p>
@@ -808,8 +817,8 @@ public class DescribeSecretResult extends com.amazonaws.AmazonWebServiceResult<c
      * 
      * @param versionIdsToStages
      *        A list of all of the currently assigned <code>VersionStage</code> staging labels and the
-     *        <code>SecretVersionId</code> that each is attached to. Staging labels are used to keep track of the
-     *        different versions during the rotation process.</p> <note>
+     *        <code>VersionId</code> that each is attached to. Staging labels are used to keep track of the different
+     *        versions during the rotation process.</p> <note>
      *        <p>
      *        A version that does not have any staging labels attached is considered deprecated and subject to deletion.
      *        Such versions are not included in this list.
@@ -844,7 +853,34 @@ public class DescribeSecretResult extends com.amazonaws.AmazonWebServiceResult<c
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * @param owningService
+     */
+
+    public void setOwningService(String owningService) {
+        this.owningService = owningService;
+    }
+
+    /**
+     * @return
+     */
+
+    public String getOwningService() {
+        return this.owningService;
+    }
+
+    /**
+     * @param owningService
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DescribeSecretResult withOwningService(String owningService) {
+        setOwningService(owningService);
+        return this;
+    }
+
+    /**
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -879,7 +915,9 @@ public class DescribeSecretResult extends com.amazonaws.AmazonWebServiceResult<c
         if (getTags() != null)
             sb.append("Tags: ").append(getTags()).append(",");
         if (getVersionIdsToStages() != null)
-            sb.append("VersionIdsToStages: ").append(getVersionIdsToStages());
+            sb.append("VersionIdsToStages: ").append(getVersionIdsToStages()).append(",");
+        if (getOwningService() != null)
+            sb.append("OwningService: ").append(getOwningService());
         sb.append("}");
         return sb.toString();
     }
@@ -946,6 +984,10 @@ public class DescribeSecretResult extends com.amazonaws.AmazonWebServiceResult<c
             return false;
         if (other.getVersionIdsToStages() != null && other.getVersionIdsToStages().equals(this.getVersionIdsToStages()) == false)
             return false;
+        if (other.getOwningService() == null ^ this.getOwningService() == null)
+            return false;
+        if (other.getOwningService() != null && other.getOwningService().equals(this.getOwningService()) == false)
+            return false;
         return true;
     }
 
@@ -967,6 +1009,7 @@ public class DescribeSecretResult extends com.amazonaws.AmazonWebServiceResult<c
         hashCode = prime * hashCode + ((getDeletedDate() == null) ? 0 : getDeletedDate().hashCode());
         hashCode = prime * hashCode + ((getTags() == null) ? 0 : getTags().hashCode());
         hashCode = prime * hashCode + ((getVersionIdsToStages() == null) ? 0 : getVersionIdsToStages().hashCode());
+        hashCode = prime * hashCode + ((getOwningService() == null) ? 0 : getOwningService().hashCode());
         return hashCode;
     }
 

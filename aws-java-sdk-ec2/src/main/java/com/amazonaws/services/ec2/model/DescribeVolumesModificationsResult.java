@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -25,7 +25,7 @@ public class DescribeVolumesModificationsResult extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * A list of returned <a>VolumeModification</a> objects.
+     * Information about the volume modifications.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<VolumeModification> volumesModifications;
@@ -38,10 +38,10 @@ public class DescribeVolumesModificationsResult extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * A list of returned <a>VolumeModification</a> objects.
+     * Information about the volume modifications.
      * </p>
      * 
-     * @return A list of returned <a>VolumeModification</a> objects.
+     * @return Information about the volume modifications.
      */
 
     public java.util.List<VolumeModification> getVolumesModifications() {
@@ -53,11 +53,11 @@ public class DescribeVolumesModificationsResult extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * A list of returned <a>VolumeModification</a> objects.
+     * Information about the volume modifications.
      * </p>
      * 
      * @param volumesModifications
-     *        A list of returned <a>VolumeModification</a> objects.
+     *        Information about the volume modifications.
      */
 
     public void setVolumesModifications(java.util.Collection<VolumeModification> volumesModifications) {
@@ -71,7 +71,7 @@ public class DescribeVolumesModificationsResult extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * A list of returned <a>VolumeModification</a> objects.
+     * Information about the volume modifications.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -80,7 +80,7 @@ public class DescribeVolumesModificationsResult extends com.amazonaws.AmazonWebS
      * </p>
      * 
      * @param volumesModifications
-     *        A list of returned <a>VolumeModification</a> objects.
+     *        Information about the volume modifications.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -96,11 +96,11 @@ public class DescribeVolumesModificationsResult extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * A list of returned <a>VolumeModification</a> objects.
+     * Information about the volume modifications.
      * </p>
      * 
      * @param volumesModifications
-     *        A list of returned <a>VolumeModification</a> objects.
+     *        Information about the volume modifications.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -150,7 +150,8 @@ public class DescribeVolumesModificationsResult extends com.amazonaws.AmazonWebS
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

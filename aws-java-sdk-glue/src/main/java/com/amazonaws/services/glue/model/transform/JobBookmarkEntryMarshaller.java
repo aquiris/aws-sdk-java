@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -35,6 +35,10 @@ public class JobBookmarkEntryMarshaller {
             .marshallLocationName("Run").build();
     private static final MarshallingInfo<Integer> ATTEMPT_BINDING = MarshallingInfo.builder(MarshallingType.INTEGER).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("Attempt").build();
+    private static final MarshallingInfo<String> PREVIOUSRUNID_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("PreviousRunId").build();
+    private static final MarshallingInfo<String> RUNID_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
+            .marshallLocationName("RunId").build();
     private static final MarshallingInfo<String> JOBBOOKMARK_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("JobBookmark").build();
 
@@ -58,6 +62,8 @@ public class JobBookmarkEntryMarshaller {
             protocolMarshaller.marshall(jobBookmarkEntry.getVersion(), VERSION_BINDING);
             protocolMarshaller.marshall(jobBookmarkEntry.getRun(), RUN_BINDING);
             protocolMarshaller.marshall(jobBookmarkEntry.getAttempt(), ATTEMPT_BINDING);
+            protocolMarshaller.marshall(jobBookmarkEntry.getPreviousRunId(), PREVIOUSRUNID_BINDING);
+            protocolMarshaller.marshall(jobBookmarkEntry.getRunId(), RUNID_BINDING);
             protocolMarshaller.marshall(jobBookmarkEntry.getJobBookmark(), JOBBOOKMARK_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);

@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -33,7 +33,9 @@ public class UpdateApplicationRequest extends com.amazonaws.AmazonWebServiceRequ
     private String applicationName;
     /**
      * <p>
-     * The current application version ID. You can use the <a>DescribeApplication</a> operation to get this value.
+     * The current application version ID. You can use the <a
+     * href="https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html"
+     * >DescribeApplication</a> operation to get this value.
      * </p>
      */
     private Long currentApplicationVersionId;
@@ -86,12 +88,15 @@ public class UpdateApplicationRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * The current application version ID. You can use the <a>DescribeApplication</a> operation to get this value.
+     * The current application version ID. You can use the <a
+     * href="https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html"
+     * >DescribeApplication</a> operation to get this value.
      * </p>
      * 
      * @param currentApplicationVersionId
-     *        The current application version ID. You can use the <a>DescribeApplication</a> operation to get this
-     *        value.
+     *        The current application version ID. You can use the <a
+     *        href="https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html"
+     *        >DescribeApplication</a> operation to get this value.
      */
 
     public void setCurrentApplicationVersionId(Long currentApplicationVersionId) {
@@ -100,11 +105,14 @@ public class UpdateApplicationRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * The current application version ID. You can use the <a>DescribeApplication</a> operation to get this value.
+     * The current application version ID. You can use the <a
+     * href="https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html"
+     * >DescribeApplication</a> operation to get this value.
      * </p>
      * 
-     * @return The current application version ID. You can use the <a>DescribeApplication</a> operation to get this
-     *         value.
+     * @return The current application version ID. You can use the <a
+     *         href="https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html"
+     *         >DescribeApplication</a> operation to get this value.
      */
 
     public Long getCurrentApplicationVersionId() {
@@ -113,12 +121,15 @@ public class UpdateApplicationRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * The current application version ID. You can use the <a>DescribeApplication</a> operation to get this value.
+     * The current application version ID. You can use the <a
+     * href="https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html"
+     * >DescribeApplication</a> operation to get this value.
      * </p>
      * 
      * @param currentApplicationVersionId
-     *        The current application version ID. You can use the <a>DescribeApplication</a> operation to get this
-     *        value.
+     *        The current application version ID. You can use the <a
+     *        href="https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html"
+     *        >DescribeApplication</a> operation to get this value.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -168,7 +179,8 @@ public class UpdateApplicationRequest extends com.amazonaws.AmazonWebServiceRequ
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

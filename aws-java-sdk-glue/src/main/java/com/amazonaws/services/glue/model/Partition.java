@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -36,13 +36,13 @@ public class Partition implements Serializable, Cloneable, StructuredPojo {
     private java.util.List<String> values;
     /**
      * <p>
-     * The name of the catalog database where the table in question is located.
+     * The name of the catalog database in which to create the partition.
      * </p>
      */
     private String databaseName;
     /**
      * <p>
-     * The name of the table in question.
+     * The name of the database table in which to create the partition.
      * </p>
      */
     private String tableName;
@@ -66,7 +66,7 @@ public class Partition implements Serializable, Cloneable, StructuredPojo {
     private StorageDescriptor storageDescriptor;
     /**
      * <p>
-     * Partition parameters, in the form of a list of key-value pairs.
+     * These key-value pairs define partition parameters.
      * </p>
      */
     private java.util.Map<String, String> parameters;
@@ -149,11 +149,11 @@ public class Partition implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The name of the catalog database where the table in question is located.
+     * The name of the catalog database in which to create the partition.
      * </p>
      * 
      * @param databaseName
-     *        The name of the catalog database where the table in question is located.
+     *        The name of the catalog database in which to create the partition.
      */
 
     public void setDatabaseName(String databaseName) {
@@ -162,10 +162,10 @@ public class Partition implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The name of the catalog database where the table in question is located.
+     * The name of the catalog database in which to create the partition.
      * </p>
      * 
-     * @return The name of the catalog database where the table in question is located.
+     * @return The name of the catalog database in which to create the partition.
      */
 
     public String getDatabaseName() {
@@ -174,11 +174,11 @@ public class Partition implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The name of the catalog database where the table in question is located.
+     * The name of the catalog database in which to create the partition.
      * </p>
      * 
      * @param databaseName
-     *        The name of the catalog database where the table in question is located.
+     *        The name of the catalog database in which to create the partition.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -189,11 +189,11 @@ public class Partition implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The name of the table in question.
+     * The name of the database table in which to create the partition.
      * </p>
      * 
      * @param tableName
-     *        The name of the table in question.
+     *        The name of the database table in which to create the partition.
      */
 
     public void setTableName(String tableName) {
@@ -202,10 +202,10 @@ public class Partition implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The name of the table in question.
+     * The name of the database table in which to create the partition.
      * </p>
      * 
-     * @return The name of the table in question.
+     * @return The name of the database table in which to create the partition.
      */
 
     public String getTableName() {
@@ -214,11 +214,11 @@ public class Partition implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The name of the table in question.
+     * The name of the database table in which to create the partition.
      * </p>
      * 
      * @param tableName
-     *        The name of the table in question.
+     *        The name of the database table in which to create the partition.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -349,10 +349,10 @@ public class Partition implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Partition parameters, in the form of a list of key-value pairs.
+     * These key-value pairs define partition parameters.
      * </p>
      * 
-     * @return Partition parameters, in the form of a list of key-value pairs.
+     * @return These key-value pairs define partition parameters.
      */
 
     public java.util.Map<String, String> getParameters() {
@@ -361,11 +361,11 @@ public class Partition implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Partition parameters, in the form of a list of key-value pairs.
+     * These key-value pairs define partition parameters.
      * </p>
      * 
      * @param parameters
-     *        Partition parameters, in the form of a list of key-value pairs.
+     *        These key-value pairs define partition parameters.
      */
 
     public void setParameters(java.util.Map<String, String> parameters) {
@@ -374,11 +374,11 @@ public class Partition implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Partition parameters, in the form of a list of key-value pairs.
+     * These key-value pairs define partition parameters.
      * </p>
      * 
      * @param parameters
-     *        Partition parameters, in the form of a list of key-value pairs.
+     *        These key-value pairs define partition parameters.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -449,7 +449,8 @@ public class Partition implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

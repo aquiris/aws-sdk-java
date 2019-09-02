@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -18,7 +18,9 @@ import com.amazonaws.protocol.StructuredPojo;
 import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
- * Information about the NETWORK_CONNECTION action described in this finding.
+ * <p>
+ * Contains information about the network connection.
+ * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/NetworkConnectionAction" target="_top">AWS
  *      API Documentation</a>
@@ -26,21 +28,47 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class NetworkConnectionAction implements Serializable, Cloneable, StructuredPojo {
 
-    /** Network connection blocked information. */
+    /**
+     * <p>
+     * Network connection blocked information.
+     * </p>
+     */
     private Boolean blocked;
-    /** Network connection direction. */
+    /**
+     * <p>
+     * Network connection direction.
+     * </p>
+     */
     private String connectionDirection;
-    /** Local port information of the connection. */
+    /**
+     * <p>
+     * Local port information of the connection.
+     * </p>
+     */
     private LocalPortDetails localPortDetails;
-    /** Network connection protocol. */
+    /**
+     * <p>
+     * Network connection protocol.
+     * </p>
+     */
     private String protocol;
-    /** Remote IP information of the connection. */
+    /**
+     * <p>
+     * Remote IP information of the connection.
+     * </p>
+     */
     private RemoteIpDetails remoteIpDetails;
-    /** Remote port information of the connection. */
+    /**
+     * <p>
+     * Remote port information of the connection.
+     * </p>
+     */
     private RemotePortDetails remotePortDetails;
 
     /**
+     * <p>
      * Network connection blocked information.
+     * </p>
      * 
      * @param blocked
      *        Network connection blocked information.
@@ -51,7 +79,9 @@ public class NetworkConnectionAction implements Serializable, Cloneable, Structu
     }
 
     /**
+     * <p>
      * Network connection blocked information.
+     * </p>
      * 
      * @return Network connection blocked information.
      */
@@ -61,7 +91,9 @@ public class NetworkConnectionAction implements Serializable, Cloneable, Structu
     }
 
     /**
+     * <p>
      * Network connection blocked information.
+     * </p>
      * 
      * @param blocked
      *        Network connection blocked information.
@@ -74,7 +106,9 @@ public class NetworkConnectionAction implements Serializable, Cloneable, Structu
     }
 
     /**
+     * <p>
      * Network connection blocked information.
+     * </p>
      * 
      * @return Network connection blocked information.
      */
@@ -84,7 +118,9 @@ public class NetworkConnectionAction implements Serializable, Cloneable, Structu
     }
 
     /**
+     * <p>
      * Network connection direction.
+     * </p>
      * 
      * @param connectionDirection
      *        Network connection direction.
@@ -95,7 +131,9 @@ public class NetworkConnectionAction implements Serializable, Cloneable, Structu
     }
 
     /**
+     * <p>
      * Network connection direction.
+     * </p>
      * 
      * @return Network connection direction.
      */
@@ -105,7 +143,9 @@ public class NetworkConnectionAction implements Serializable, Cloneable, Structu
     }
 
     /**
+     * <p>
      * Network connection direction.
+     * </p>
      * 
      * @param connectionDirection
      *        Network connection direction.
@@ -118,7 +158,9 @@ public class NetworkConnectionAction implements Serializable, Cloneable, Structu
     }
 
     /**
+     * <p>
      * Local port information of the connection.
+     * </p>
      * 
      * @param localPortDetails
      *        Local port information of the connection.
@@ -129,7 +171,9 @@ public class NetworkConnectionAction implements Serializable, Cloneable, Structu
     }
 
     /**
+     * <p>
      * Local port information of the connection.
+     * </p>
      * 
      * @return Local port information of the connection.
      */
@@ -139,7 +183,9 @@ public class NetworkConnectionAction implements Serializable, Cloneable, Structu
     }
 
     /**
+     * <p>
      * Local port information of the connection.
+     * </p>
      * 
      * @param localPortDetails
      *        Local port information of the connection.
@@ -152,7 +198,9 @@ public class NetworkConnectionAction implements Serializable, Cloneable, Structu
     }
 
     /**
+     * <p>
      * Network connection protocol.
+     * </p>
      * 
      * @param protocol
      *        Network connection protocol.
@@ -163,7 +211,9 @@ public class NetworkConnectionAction implements Serializable, Cloneable, Structu
     }
 
     /**
+     * <p>
      * Network connection protocol.
+     * </p>
      * 
      * @return Network connection protocol.
      */
@@ -173,7 +223,9 @@ public class NetworkConnectionAction implements Serializable, Cloneable, Structu
     }
 
     /**
+     * <p>
      * Network connection protocol.
+     * </p>
      * 
      * @param protocol
      *        Network connection protocol.
@@ -186,7 +238,9 @@ public class NetworkConnectionAction implements Serializable, Cloneable, Structu
     }
 
     /**
+     * <p>
      * Remote IP information of the connection.
+     * </p>
      * 
      * @param remoteIpDetails
      *        Remote IP information of the connection.
@@ -197,7 +251,9 @@ public class NetworkConnectionAction implements Serializable, Cloneable, Structu
     }
 
     /**
+     * <p>
      * Remote IP information of the connection.
+     * </p>
      * 
      * @return Remote IP information of the connection.
      */
@@ -207,7 +263,9 @@ public class NetworkConnectionAction implements Serializable, Cloneable, Structu
     }
 
     /**
+     * <p>
      * Remote IP information of the connection.
+     * </p>
      * 
      * @param remoteIpDetails
      *        Remote IP information of the connection.
@@ -220,7 +278,9 @@ public class NetworkConnectionAction implements Serializable, Cloneable, Structu
     }
 
     /**
+     * <p>
      * Remote port information of the connection.
+     * </p>
      * 
      * @param remotePortDetails
      *        Remote port information of the connection.
@@ -231,7 +291,9 @@ public class NetworkConnectionAction implements Serializable, Cloneable, Structu
     }
 
     /**
+     * <p>
      * Remote port information of the connection.
+     * </p>
      * 
      * @return Remote port information of the connection.
      */
@@ -241,7 +303,9 @@ public class NetworkConnectionAction implements Serializable, Cloneable, Structu
     }
 
     /**
+     * <p>
      * Remote port information of the connection.
+     * </p>
      * 
      * @param remotePortDetails
      *        Remote port information of the connection.
@@ -254,7 +318,8 @@ public class NetworkConnectionAction implements Serializable, Cloneable, Structu
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

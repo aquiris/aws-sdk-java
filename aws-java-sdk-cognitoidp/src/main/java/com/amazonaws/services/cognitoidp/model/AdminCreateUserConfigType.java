@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -41,6 +41,12 @@ public class AdminCreateUserConfigType implements Serializable, Cloneable, Struc
      * after that time limit, you must call <code>AdminCreateUser</code> again, specifying <code>"RESEND"</code> for the
      * <code>MessageAction</code> parameter. The default value for this parameter is 7.
      * </p>
+     * <note>
+     * <p>
+     * If you set a value for <code>TemporaryPasswordValidityDays</code> in <code>PasswordPolicy</code>, that value will
+     * be used and <code>UnusedAccountValidityDays</code> will be deprecated for that user pool.
+     * </p>
+     * </note>
      */
     private Integer unusedAccountValidityDays;
     /**
@@ -121,12 +127,22 @@ public class AdminCreateUserConfigType implements Serializable, Cloneable, Struc
      * after that time limit, you must call <code>AdminCreateUser</code> again, specifying <code>"RESEND"</code> for the
      * <code>MessageAction</code> parameter. The default value for this parameter is 7.
      * </p>
+     * <note>
+     * <p>
+     * If you set a value for <code>TemporaryPasswordValidityDays</code> in <code>PasswordPolicy</code>, that value will
+     * be used and <code>UnusedAccountValidityDays</code> will be deprecated for that user pool.
+     * </p>
+     * </note>
      * 
      * @param unusedAccountValidityDays
      *        The user account expiration limit, in days, after which the account is no longer usable. To reset the
      *        account after that time limit, you must call <code>AdminCreateUser</code> again, specifying
      *        <code>"RESEND"</code> for the <code>MessageAction</code> parameter. The default value for this parameter
-     *        is 7.
+     *        is 7. </p> <note>
+     *        <p>
+     *        If you set a value for <code>TemporaryPasswordValidityDays</code> in <code>PasswordPolicy</code>, that
+     *        value will be used and <code>UnusedAccountValidityDays</code> will be deprecated for that user pool.
+     *        </p>
      */
 
     public void setUnusedAccountValidityDays(Integer unusedAccountValidityDays) {
@@ -139,11 +155,21 @@ public class AdminCreateUserConfigType implements Serializable, Cloneable, Struc
      * after that time limit, you must call <code>AdminCreateUser</code> again, specifying <code>"RESEND"</code> for the
      * <code>MessageAction</code> parameter. The default value for this parameter is 7.
      * </p>
+     * <note>
+     * <p>
+     * If you set a value for <code>TemporaryPasswordValidityDays</code> in <code>PasswordPolicy</code>, that value will
+     * be used and <code>UnusedAccountValidityDays</code> will be deprecated for that user pool.
+     * </p>
+     * </note>
      * 
      * @return The user account expiration limit, in days, after which the account is no longer usable. To reset the
      *         account after that time limit, you must call <code>AdminCreateUser</code> again, specifying
      *         <code>"RESEND"</code> for the <code>MessageAction</code> parameter. The default value for this parameter
-     *         is 7.
+     *         is 7. </p> <note>
+     *         <p>
+     *         If you set a value for <code>TemporaryPasswordValidityDays</code> in <code>PasswordPolicy</code>, that
+     *         value will be used and <code>UnusedAccountValidityDays</code> will be deprecated for that user pool.
+     *         </p>
      */
 
     public Integer getUnusedAccountValidityDays() {
@@ -156,12 +182,22 @@ public class AdminCreateUserConfigType implements Serializable, Cloneable, Struc
      * after that time limit, you must call <code>AdminCreateUser</code> again, specifying <code>"RESEND"</code> for the
      * <code>MessageAction</code> parameter. The default value for this parameter is 7.
      * </p>
+     * <note>
+     * <p>
+     * If you set a value for <code>TemporaryPasswordValidityDays</code> in <code>PasswordPolicy</code>, that value will
+     * be used and <code>UnusedAccountValidityDays</code> will be deprecated for that user pool.
+     * </p>
+     * </note>
      * 
      * @param unusedAccountValidityDays
      *        The user account expiration limit, in days, after which the account is no longer usable. To reset the
      *        account after that time limit, you must call <code>AdminCreateUser</code> again, specifying
      *        <code>"RESEND"</code> for the <code>MessageAction</code> parameter. The default value for this parameter
-     *        is 7.
+     *        is 7. </p> <note>
+     *        <p>
+     *        If you set a value for <code>TemporaryPasswordValidityDays</code> in <code>PasswordPolicy</code>, that
+     *        value will be used and <code>UnusedAccountValidityDays</code> will be deprecated for that user pool.
+     *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -238,7 +274,8 @@ public class AdminCreateUserConfigType implements Serializable, Cloneable, Struc
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

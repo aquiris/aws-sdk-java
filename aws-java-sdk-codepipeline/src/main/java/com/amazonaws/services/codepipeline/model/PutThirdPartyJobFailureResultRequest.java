@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -19,7 +19,7 @@ import com.amazonaws.AmazonWebServiceRequest;
 
 /**
  * <p>
- * Represents the input of a PutThirdPartyJobFailureResult action.
+ * Represents the input of a <code>PutThirdPartyJobFailureResult</code> action.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/PutThirdPartyJobFailureResult"
@@ -30,7 +30,7 @@ public class PutThirdPartyJobFailureResultRequest extends com.amazonaws.AmazonWe
 
     /**
      * <p>
-     * The ID of the job that failed. This is the same ID returned from PollForThirdPartyJobs.
+     * The ID of the job that failed. This is the same ID returned from <code>PollForThirdPartyJobs</code>.
      * </p>
      */
     private String jobId;
@@ -50,11 +50,11 @@ public class PutThirdPartyJobFailureResultRequest extends com.amazonaws.AmazonWe
 
     /**
      * <p>
-     * The ID of the job that failed. This is the same ID returned from PollForThirdPartyJobs.
+     * The ID of the job that failed. This is the same ID returned from <code>PollForThirdPartyJobs</code>.
      * </p>
      * 
      * @param jobId
-     *        The ID of the job that failed. This is the same ID returned from PollForThirdPartyJobs.
+     *        The ID of the job that failed. This is the same ID returned from <code>PollForThirdPartyJobs</code>.
      */
 
     public void setJobId(String jobId) {
@@ -63,10 +63,10 @@ public class PutThirdPartyJobFailureResultRequest extends com.amazonaws.AmazonWe
 
     /**
      * <p>
-     * The ID of the job that failed. This is the same ID returned from PollForThirdPartyJobs.
+     * The ID of the job that failed. This is the same ID returned from <code>PollForThirdPartyJobs</code>.
      * </p>
      * 
-     * @return The ID of the job that failed. This is the same ID returned from PollForThirdPartyJobs.
+     * @return The ID of the job that failed. This is the same ID returned from <code>PollForThirdPartyJobs</code>.
      */
 
     public String getJobId() {
@@ -75,11 +75,11 @@ public class PutThirdPartyJobFailureResultRequest extends com.amazonaws.AmazonWe
 
     /**
      * <p>
-     * The ID of the job that failed. This is the same ID returned from PollForThirdPartyJobs.
+     * The ID of the job that failed. This is the same ID returned from <code>PollForThirdPartyJobs</code>.
      * </p>
      * 
      * @param jobId
-     *        The ID of the job that failed. This is the same ID returned from PollForThirdPartyJobs.
+     *        The ID of the job that failed. This is the same ID returned from <code>PollForThirdPartyJobs</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -175,7 +175,8 @@ public class PutThirdPartyJobFailureResultRequest extends com.amazonaws.AmazonWe
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -38,7 +38,7 @@ public class PostContentResult extends com.amazonaws.AmazonWebServiceResult<com.
     /**
      * <p>
      * Map of zero or more intent slots (name/value pairs) Amazon Lex detected from the user input during the
-     * conversation.
+     * conversation. The field is base-64 encoded.
      * </p>
      * <p>
      * Amazon Lex creates a resolution list containing likely values for a slot. The value that it returns is determined
@@ -63,9 +63,9 @@ public class PostContentResult extends com.amazonaws.AmazonWebServiceResult<com.
      * </p>
      * <p>
      * If the intent is not configured with a Lambda function, or if the Lambda function returned <code>Delegate</code>
-     * as the <code>dialogAction.type</code> its response, Amazon Lex decides on the next course of action and selects
-     * an appropriate message from the bot's configuration based on the current interaction context. For example, if
-     * Amazon Lex isn't able to understand user input, it uses a clarification prompt message.
+     * as the <code>dialogAction.type</code> in its response, Amazon Lex decides on the next course of action and
+     * selects an appropriate message from the bot's configuration based on the current interaction context. For
+     * example, if Amazon Lex isn't able to understand user input, it uses a clarification prompt message.
      * </p>
      * <p>
      * When you create an intent you can assign messages to groups. When messages are assigned to groups Amazon Lex
@@ -277,7 +277,7 @@ public class PostContentResult extends com.amazonaws.AmazonWebServiceResult<com.
     /**
      * <p>
      * Map of zero or more intent slots (name/value pairs) Amazon Lex detected from the user input during the
-     * conversation.
+     * conversation. The field is base-64 encoded.
      * </p>
      * <p>
      * Amazon Lex creates a resolution list containing likely values for a slot. The value that it returns is determined
@@ -299,7 +299,7 @@ public class PostContentResult extends com.amazonaws.AmazonWebServiceResult<com.
      * 
      * @param slots
      *        Map of zero or more intent slots (name/value pairs) Amazon Lex detected from the user input during the
-     *        conversation.</p>
+     *        conversation. The field is base-64 encoded.</p>
      *        <p>
      *        Amazon Lex creates a resolution list containing likely values for a slot. The value that it returns is
      *        determined by the <code>valueSelectionStrategy</code> selected when the slot type was created or updated.
@@ -317,7 +317,7 @@ public class PostContentResult extends com.amazonaws.AmazonWebServiceResult<com.
     /**
      * <p>
      * Map of zero or more intent slots (name/value pairs) Amazon Lex detected from the user input during the
-     * conversation.
+     * conversation. The field is base-64 encoded.
      * </p>
      * <p>
      * Amazon Lex creates a resolution list containing likely values for a slot. The value that it returns is determined
@@ -334,7 +334,7 @@ public class PostContentResult extends com.amazonaws.AmazonWebServiceResult<com.
      * </p>
      * 
      * @return Map of zero or more intent slots (name/value pairs) Amazon Lex detected from the user input during the
-     *         conversation.</p>
+     *         conversation. The field is base-64 encoded.</p>
      *         <p>
      *         Amazon Lex creates a resolution list containing likely values for a slot. The value that it returns is
      *         determined by the <code>valueSelectionStrategy</code> selected when the slot type was created or updated.
@@ -352,7 +352,7 @@ public class PostContentResult extends com.amazonaws.AmazonWebServiceResult<com.
     /**
      * <p>
      * Map of zero or more intent slots (name/value pairs) Amazon Lex detected from the user input during the
-     * conversation.
+     * conversation. The field is base-64 encoded.
      * </p>
      * <p>
      * Amazon Lex creates a resolution list containing likely values for a slot. The value that it returns is determined
@@ -374,7 +374,7 @@ public class PostContentResult extends com.amazonaws.AmazonWebServiceResult<com.
      * 
      * @param slots
      *        Map of zero or more intent slots (name/value pairs) Amazon Lex detected from the user input during the
-     *        conversation.</p>
+     *        conversation. The field is base-64 encoded.</p>
      *        <p>
      *        Amazon Lex creates a resolution list containing likely values for a slot. The value that it returns is
      *        determined by the <code>valueSelectionStrategy</code> selected when the slot type was created or updated.
@@ -457,9 +457,9 @@ public class PostContentResult extends com.amazonaws.AmazonWebServiceResult<com.
      * </p>
      * <p>
      * If the intent is not configured with a Lambda function, or if the Lambda function returned <code>Delegate</code>
-     * as the <code>dialogAction.type</code> its response, Amazon Lex decides on the next course of action and selects
-     * an appropriate message from the bot's configuration based on the current interaction context. For example, if
-     * Amazon Lex isn't able to understand user input, it uses a clarification prompt message.
+     * as the <code>dialogAction.type</code> in its response, Amazon Lex decides on the next course of action and
+     * selects an appropriate message from the bot's configuration based on the current interaction context. For
+     * example, if Amazon Lex isn't able to understand user input, it uses a clarification prompt message.
      * </p>
      * <p>
      * When you create an intent you can assign messages to groups. When messages are assigned to groups Amazon Lex
@@ -475,8 +475,8 @@ public class PostContentResult extends com.amazonaws.AmazonWebServiceResult<com.
      *        function.</p>
      *        <p>
      *        If the intent is not configured with a Lambda function, or if the Lambda function returned
-     *        <code>Delegate</code> as the <code>dialogAction.type</code> its response, Amazon Lex decides on the next
-     *        course of action and selects an appropriate message from the bot's configuration based on the current
+     *        <code>Delegate</code> as the <code>dialogAction.type</code> in its response, Amazon Lex decides on the
+     *        next course of action and selects an appropriate message from the bot's configuration based on the current
      *        interaction context. For example, if Amazon Lex isn't able to understand user input, it uses a
      *        clarification prompt message.
      *        </p>
@@ -500,9 +500,9 @@ public class PostContentResult extends com.amazonaws.AmazonWebServiceResult<com.
      * </p>
      * <p>
      * If the intent is not configured with a Lambda function, or if the Lambda function returned <code>Delegate</code>
-     * as the <code>dialogAction.type</code> its response, Amazon Lex decides on the next course of action and selects
-     * an appropriate message from the bot's configuration based on the current interaction context. For example, if
-     * Amazon Lex isn't able to understand user input, it uses a clarification prompt message.
+     * as the <code>dialogAction.type</code> in its response, Amazon Lex decides on the next course of action and
+     * selects an appropriate message from the bot's configuration based on the current interaction context. For
+     * example, if Amazon Lex isn't able to understand user input, it uses a clarification prompt message.
      * </p>
      * <p>
      * When you create an intent you can assign messages to groups. When messages are assigned to groups Amazon Lex
@@ -517,9 +517,9 @@ public class PostContentResult extends com.amazonaws.AmazonWebServiceResult<com.
      *         function.</p>
      *         <p>
      *         If the intent is not configured with a Lambda function, or if the Lambda function returned
-     *         <code>Delegate</code> as the <code>dialogAction.type</code> its response, Amazon Lex decides on the next
-     *         course of action and selects an appropriate message from the bot's configuration based on the current
-     *         interaction context. For example, if Amazon Lex isn't able to understand user input, it uses a
+     *         <code>Delegate</code> as the <code>dialogAction.type</code> in its response, Amazon Lex decides on the
+     *         next course of action and selects an appropriate message from the bot's configuration based on the
+     *         current interaction context. For example, if Amazon Lex isn't able to understand user input, it uses a
      *         clarification prompt message.
      *         </p>
      *         <p>
@@ -542,9 +542,9 @@ public class PostContentResult extends com.amazonaws.AmazonWebServiceResult<com.
      * </p>
      * <p>
      * If the intent is not configured with a Lambda function, or if the Lambda function returned <code>Delegate</code>
-     * as the <code>dialogAction.type</code> its response, Amazon Lex decides on the next course of action and selects
-     * an appropriate message from the bot's configuration based on the current interaction context. For example, if
-     * Amazon Lex isn't able to understand user input, it uses a clarification prompt message.
+     * as the <code>dialogAction.type</code> in its response, Amazon Lex decides on the next course of action and
+     * selects an appropriate message from the bot's configuration based on the current interaction context. For
+     * example, if Amazon Lex isn't able to understand user input, it uses a clarification prompt message.
      * </p>
      * <p>
      * When you create an intent you can assign messages to groups. When messages are assigned to groups Amazon Lex
@@ -560,8 +560,8 @@ public class PostContentResult extends com.amazonaws.AmazonWebServiceResult<com.
      *        function.</p>
      *        <p>
      *        If the intent is not configured with a Lambda function, or if the Lambda function returned
-     *        <code>Delegate</code> as the <code>dialogAction.type</code> its response, Amazon Lex decides on the next
-     *        course of action and selects an appropriate message from the bot's configuration based on the current
+     *        <code>Delegate</code> as the <code>dialogAction.type</code> in its response, Amazon Lex decides on the
+     *        next course of action and selects an appropriate message from the bot's configuration based on the current
      *        interaction context. For example, if Amazon Lex isn't able to understand user input, it uses a
      *        clarification prompt message.
      *        </p>
@@ -1674,7 +1674,8 @@ public class PostContentResult extends com.amazonaws.AmazonWebServiceResult<com.
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -1693,7 +1694,7 @@ public class PostContentResult extends com.amazonaws.AmazonWebServiceResult<com.
         if (getSessionAttributes() != null)
             sb.append("SessionAttributes: ").append(getSessionAttributes()).append(",");
         if (getMessage() != null)
-            sb.append("Message: ").append(getMessage()).append(",");
+            sb.append("Message: ").append("***Sensitive Data Redacted***").append(",");
         if (getMessageFormat() != null)
             sb.append("MessageFormat: ").append(getMessageFormat()).append(",");
         if (getDialogState() != null)

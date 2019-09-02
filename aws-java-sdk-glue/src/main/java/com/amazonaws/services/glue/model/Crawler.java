@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -30,13 +30,14 @@ public class Crawler implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The crawler name.
+     * The name of the crawler.
      * </p>
      */
     private String name;
     /**
      * <p>
-     * The IAM role (or ARN of an IAM role) used to access customer resources, such as data in Amazon S3.
+     * The Amazon Resource Name (ARN) of an IAM role that's used to access customer resources, such as Amazon Simple
+     * Storage Service (Amazon S3) data.
      * </p>
      */
     private String role;
@@ -48,7 +49,7 @@ public class Crawler implements Serializable, Cloneable, StructuredPojo {
     private CrawlerTargets targets;
     /**
      * <p>
-     * The database where metadata is written by this crawler.
+     * The name of the database in which the crawler's output is stored.
      * </p>
      */
     private String databaseName;
@@ -60,13 +61,13 @@ public class Crawler implements Serializable, Cloneable, StructuredPojo {
     private String description;
     /**
      * <p>
-     * A list of custom classifiers associated with the crawler.
+     * A list of UTF-8 strings that specify the custom classifiers that are associated with the crawler.
      * </p>
      */
     private java.util.List<String> classifiers;
     /**
      * <p>
-     * Sets the behavior when the crawler finds a changed or deleted object.
+     * The policy that specifies update and delete behaviors for the crawler.
      * </p>
      */
     private SchemaChangePolicy schemaChangePolicy;
@@ -96,13 +97,13 @@ public class Crawler implements Serializable, Cloneable, StructuredPojo {
     private Long crawlElapsedTime;
     /**
      * <p>
-     * The time when the crawler was created.
+     * The time that the crawler was created.
      * </p>
      */
     private java.util.Date creationTime;
     /**
      * <p>
-     * The time the crawler was last updated.
+     * The time that the crawler was last updated.
      * </p>
      */
     private java.util.Date lastUpdated;
@@ -120,28 +121,26 @@ public class Crawler implements Serializable, Cloneable, StructuredPojo {
     private Long version;
     /**
      * <p>
-     * Crawler configuration information. This versioned JSON string allows users to specify aspects of a Crawler's
-     * behavior.
-     * </p>
-     * <p>
-     * You can use this field to force partitions to inherit metadata such as classification, input format, output
-     * format, serde information, and schema from their parent table, rather than detect this information separately for
-     * each partition. Use the following JSON string to specify that behavior:
-     * </p>
-     * <p>
-     * Example:
-     * <code>'{ "Version": 1.0, "CrawlerOutput": { "Partitions": { "AddOrUpdateBehavior": "InheritFromTable" } } }'</code>
+     * Crawler configuration information. This versioned JSON string allows users to specify aspects of a crawler's
+     * behavior. For more information, see <a
+     * href="http://docs.aws.amazon.com/glue/latest/dg/crawler-configuration.html">Configuring a Crawler</a>.
      * </p>
      */
     private String configuration;
+    /**
+     * <p>
+     * The name of the <code>SecurityConfiguration</code> structure to be used by this crawler.
+     * </p>
+     */
+    private String crawlerSecurityConfiguration;
 
     /**
      * <p>
-     * The crawler name.
+     * The name of the crawler.
      * </p>
      * 
      * @param name
-     *        The crawler name.
+     *        The name of the crawler.
      */
 
     public void setName(String name) {
@@ -150,10 +149,10 @@ public class Crawler implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The crawler name.
+     * The name of the crawler.
      * </p>
      * 
-     * @return The crawler name.
+     * @return The name of the crawler.
      */
 
     public String getName() {
@@ -162,11 +161,11 @@ public class Crawler implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The crawler name.
+     * The name of the crawler.
      * </p>
      * 
      * @param name
-     *        The crawler name.
+     *        The name of the crawler.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -177,11 +176,13 @@ public class Crawler implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The IAM role (or ARN of an IAM role) used to access customer resources, such as data in Amazon S3.
+     * The Amazon Resource Name (ARN) of an IAM role that's used to access customer resources, such as Amazon Simple
+     * Storage Service (Amazon S3) data.
      * </p>
      * 
      * @param role
-     *        The IAM role (or ARN of an IAM role) used to access customer resources, such as data in Amazon S3.
+     *        The Amazon Resource Name (ARN) of an IAM role that's used to access customer resources, such as Amazon
+     *        Simple Storage Service (Amazon S3) data.
      */
 
     public void setRole(String role) {
@@ -190,10 +191,12 @@ public class Crawler implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The IAM role (or ARN of an IAM role) used to access customer resources, such as data in Amazon S3.
+     * The Amazon Resource Name (ARN) of an IAM role that's used to access customer resources, such as Amazon Simple
+     * Storage Service (Amazon S3) data.
      * </p>
      * 
-     * @return The IAM role (or ARN of an IAM role) used to access customer resources, such as data in Amazon S3.
+     * @return The Amazon Resource Name (ARN) of an IAM role that's used to access customer resources, such as Amazon
+     *         Simple Storage Service (Amazon S3) data.
      */
 
     public String getRole() {
@@ -202,11 +205,13 @@ public class Crawler implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The IAM role (or ARN of an IAM role) used to access customer resources, such as data in Amazon S3.
+     * The Amazon Resource Name (ARN) of an IAM role that's used to access customer resources, such as Amazon Simple
+     * Storage Service (Amazon S3) data.
      * </p>
      * 
      * @param role
-     *        The IAM role (or ARN of an IAM role) used to access customer resources, such as data in Amazon S3.
+     *        The Amazon Resource Name (ARN) of an IAM role that's used to access customer resources, such as Amazon
+     *        Simple Storage Service (Amazon S3) data.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -257,11 +262,11 @@ public class Crawler implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The database where metadata is written by this crawler.
+     * The name of the database in which the crawler's output is stored.
      * </p>
      * 
      * @param databaseName
-     *        The database where metadata is written by this crawler.
+     *        The name of the database in which the crawler's output is stored.
      */
 
     public void setDatabaseName(String databaseName) {
@@ -270,10 +275,10 @@ public class Crawler implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The database where metadata is written by this crawler.
+     * The name of the database in which the crawler's output is stored.
      * </p>
      * 
-     * @return The database where metadata is written by this crawler.
+     * @return The name of the database in which the crawler's output is stored.
      */
 
     public String getDatabaseName() {
@@ -282,11 +287,11 @@ public class Crawler implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The database where metadata is written by this crawler.
+     * The name of the database in which the crawler's output is stored.
      * </p>
      * 
      * @param databaseName
-     *        The database where metadata is written by this crawler.
+     *        The name of the database in which the crawler's output is stored.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -337,10 +342,10 @@ public class Crawler implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * A list of custom classifiers associated with the crawler.
+     * A list of UTF-8 strings that specify the custom classifiers that are associated with the crawler.
      * </p>
      * 
-     * @return A list of custom classifiers associated with the crawler.
+     * @return A list of UTF-8 strings that specify the custom classifiers that are associated with the crawler.
      */
 
     public java.util.List<String> getClassifiers() {
@@ -349,11 +354,11 @@ public class Crawler implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * A list of custom classifiers associated with the crawler.
+     * A list of UTF-8 strings that specify the custom classifiers that are associated with the crawler.
      * </p>
      * 
      * @param classifiers
-     *        A list of custom classifiers associated with the crawler.
+     *        A list of UTF-8 strings that specify the custom classifiers that are associated with the crawler.
      */
 
     public void setClassifiers(java.util.Collection<String> classifiers) {
@@ -367,7 +372,7 @@ public class Crawler implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * A list of custom classifiers associated with the crawler.
+     * A list of UTF-8 strings that specify the custom classifiers that are associated with the crawler.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -376,7 +381,7 @@ public class Crawler implements Serializable, Cloneable, StructuredPojo {
      * </p>
      * 
      * @param classifiers
-     *        A list of custom classifiers associated with the crawler.
+     *        A list of UTF-8 strings that specify the custom classifiers that are associated with the crawler.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -392,11 +397,11 @@ public class Crawler implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * A list of custom classifiers associated with the crawler.
+     * A list of UTF-8 strings that specify the custom classifiers that are associated with the crawler.
      * </p>
      * 
      * @param classifiers
-     *        A list of custom classifiers associated with the crawler.
+     *        A list of UTF-8 strings that specify the custom classifiers that are associated with the crawler.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -407,11 +412,11 @@ public class Crawler implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Sets the behavior when the crawler finds a changed or deleted object.
+     * The policy that specifies update and delete behaviors for the crawler.
      * </p>
      * 
      * @param schemaChangePolicy
-     *        Sets the behavior when the crawler finds a changed or deleted object.
+     *        The policy that specifies update and delete behaviors for the crawler.
      */
 
     public void setSchemaChangePolicy(SchemaChangePolicy schemaChangePolicy) {
@@ -420,10 +425,10 @@ public class Crawler implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Sets the behavior when the crawler finds a changed or deleted object.
+     * The policy that specifies update and delete behaviors for the crawler.
      * </p>
      * 
-     * @return Sets the behavior when the crawler finds a changed or deleted object.
+     * @return The policy that specifies update and delete behaviors for the crawler.
      */
 
     public SchemaChangePolicy getSchemaChangePolicy() {
@@ -432,11 +437,11 @@ public class Crawler implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Sets the behavior when the crawler finds a changed or deleted object.
+     * The policy that specifies update and delete behaviors for the crawler.
      * </p>
      * 
      * @param schemaChangePolicy
-     *        Sets the behavior when the crawler finds a changed or deleted object.
+     *        The policy that specifies update and delete behaviors for the crawler.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -626,11 +631,11 @@ public class Crawler implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The time when the crawler was created.
+     * The time that the crawler was created.
      * </p>
      * 
      * @param creationTime
-     *        The time when the crawler was created.
+     *        The time that the crawler was created.
      */
 
     public void setCreationTime(java.util.Date creationTime) {
@@ -639,10 +644,10 @@ public class Crawler implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The time when the crawler was created.
+     * The time that the crawler was created.
      * </p>
      * 
-     * @return The time when the crawler was created.
+     * @return The time that the crawler was created.
      */
 
     public java.util.Date getCreationTime() {
@@ -651,11 +656,11 @@ public class Crawler implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The time when the crawler was created.
+     * The time that the crawler was created.
      * </p>
      * 
      * @param creationTime
-     *        The time when the crawler was created.
+     *        The time that the crawler was created.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -666,11 +671,11 @@ public class Crawler implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The time the crawler was last updated.
+     * The time that the crawler was last updated.
      * </p>
      * 
      * @param lastUpdated
-     *        The time the crawler was last updated.
+     *        The time that the crawler was last updated.
      */
 
     public void setLastUpdated(java.util.Date lastUpdated) {
@@ -679,10 +684,10 @@ public class Crawler implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The time the crawler was last updated.
+     * The time that the crawler was last updated.
      * </p>
      * 
-     * @return The time the crawler was last updated.
+     * @return The time that the crawler was last updated.
      */
 
     public java.util.Date getLastUpdated() {
@@ -691,11 +696,11 @@ public class Crawler implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The time the crawler was last updated.
+     * The time that the crawler was last updated.
      * </p>
      * 
      * @param lastUpdated
-     *        The time the crawler was last updated.
+     *        The time that the crawler was last updated.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -786,30 +791,15 @@ public class Crawler implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Crawler configuration information. This versioned JSON string allows users to specify aspects of a Crawler's
-     * behavior.
-     * </p>
-     * <p>
-     * You can use this field to force partitions to inherit metadata such as classification, input format, output
-     * format, serde information, and schema from their parent table, rather than detect this information separately for
-     * each partition. Use the following JSON string to specify that behavior:
-     * </p>
-     * <p>
-     * Example:
-     * <code>'{ "Version": 1.0, "CrawlerOutput": { "Partitions": { "AddOrUpdateBehavior": "InheritFromTable" } } }'</code>
+     * Crawler configuration information. This versioned JSON string allows users to specify aspects of a crawler's
+     * behavior. For more information, see <a
+     * href="http://docs.aws.amazon.com/glue/latest/dg/crawler-configuration.html">Configuring a Crawler</a>.
      * </p>
      * 
      * @param configuration
      *        Crawler configuration information. This versioned JSON string allows users to specify aspects of a
-     *        Crawler's behavior.</p>
-     *        <p>
-     *        You can use this field to force partitions to inherit metadata such as classification, input format,
-     *        output format, serde information, and schema from their parent table, rather than detect this information
-     *        separately for each partition. Use the following JSON string to specify that behavior:
-     *        </p>
-     *        <p>
-     *        Example:
-     *        <code>'{ "Version": 1.0, "CrawlerOutput": { "Partitions": { "AddOrUpdateBehavior": "InheritFromTable" } } }'</code>
+     *        crawler's behavior. For more information, see <a
+     *        href="http://docs.aws.amazon.com/glue/latest/dg/crawler-configuration.html">Configuring a Crawler</a>.
      */
 
     public void setConfiguration(String configuration) {
@@ -818,29 +808,14 @@ public class Crawler implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Crawler configuration information. This versioned JSON string allows users to specify aspects of a Crawler's
-     * behavior.
-     * </p>
-     * <p>
-     * You can use this field to force partitions to inherit metadata such as classification, input format, output
-     * format, serde information, and schema from their parent table, rather than detect this information separately for
-     * each partition. Use the following JSON string to specify that behavior:
-     * </p>
-     * <p>
-     * Example:
-     * <code>'{ "Version": 1.0, "CrawlerOutput": { "Partitions": { "AddOrUpdateBehavior": "InheritFromTable" } } }'</code>
+     * Crawler configuration information. This versioned JSON string allows users to specify aspects of a crawler's
+     * behavior. For more information, see <a
+     * href="http://docs.aws.amazon.com/glue/latest/dg/crawler-configuration.html">Configuring a Crawler</a>.
      * </p>
      * 
      * @return Crawler configuration information. This versioned JSON string allows users to specify aspects of a
-     *         Crawler's behavior.</p>
-     *         <p>
-     *         You can use this field to force partitions to inherit metadata such as classification, input format,
-     *         output format, serde information, and schema from their parent table, rather than detect this information
-     *         separately for each partition. Use the following JSON string to specify that behavior:
-     *         </p>
-     *         <p>
-     *         Example:
-     *         <code>'{ "Version": 1.0, "CrawlerOutput": { "Partitions": { "AddOrUpdateBehavior": "InheritFromTable" } } }'</code>
+     *         crawler's behavior. For more information, see <a
+     *         href="http://docs.aws.amazon.com/glue/latest/dg/crawler-configuration.html">Configuring a Crawler</a>.
      */
 
     public String getConfiguration() {
@@ -849,30 +824,15 @@ public class Crawler implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Crawler configuration information. This versioned JSON string allows users to specify aspects of a Crawler's
-     * behavior.
-     * </p>
-     * <p>
-     * You can use this field to force partitions to inherit metadata such as classification, input format, output
-     * format, serde information, and schema from their parent table, rather than detect this information separately for
-     * each partition. Use the following JSON string to specify that behavior:
-     * </p>
-     * <p>
-     * Example:
-     * <code>'{ "Version": 1.0, "CrawlerOutput": { "Partitions": { "AddOrUpdateBehavior": "InheritFromTable" } } }'</code>
+     * Crawler configuration information. This versioned JSON string allows users to specify aspects of a crawler's
+     * behavior. For more information, see <a
+     * href="http://docs.aws.amazon.com/glue/latest/dg/crawler-configuration.html">Configuring a Crawler</a>.
      * </p>
      * 
      * @param configuration
      *        Crawler configuration information. This versioned JSON string allows users to specify aspects of a
-     *        Crawler's behavior.</p>
-     *        <p>
-     *        You can use this field to force partitions to inherit metadata such as classification, input format,
-     *        output format, serde information, and schema from their parent table, rather than detect this information
-     *        separately for each partition. Use the following JSON string to specify that behavior:
-     *        </p>
-     *        <p>
-     *        Example:
-     *        <code>'{ "Version": 1.0, "CrawlerOutput": { "Partitions": { "AddOrUpdateBehavior": "InheritFromTable" } } }'</code>
+     *        crawler's behavior. For more information, see <a
+     *        href="http://docs.aws.amazon.com/glue/latest/dg/crawler-configuration.html">Configuring a Crawler</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -882,7 +842,48 @@ public class Crawler implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * <p>
+     * The name of the <code>SecurityConfiguration</code> structure to be used by this crawler.
+     * </p>
+     * 
+     * @param crawlerSecurityConfiguration
+     *        The name of the <code>SecurityConfiguration</code> structure to be used by this crawler.
+     */
+
+    public void setCrawlerSecurityConfiguration(String crawlerSecurityConfiguration) {
+        this.crawlerSecurityConfiguration = crawlerSecurityConfiguration;
+    }
+
+    /**
+     * <p>
+     * The name of the <code>SecurityConfiguration</code> structure to be used by this crawler.
+     * </p>
+     * 
+     * @return The name of the <code>SecurityConfiguration</code> structure to be used by this crawler.
+     */
+
+    public String getCrawlerSecurityConfiguration() {
+        return this.crawlerSecurityConfiguration;
+    }
+
+    /**
+     * <p>
+     * The name of the <code>SecurityConfiguration</code> structure to be used by this crawler.
+     * </p>
+     * 
+     * @param crawlerSecurityConfiguration
+     *        The name of the <code>SecurityConfiguration</code> structure to be used by this crawler.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Crawler withCrawlerSecurityConfiguration(String crawlerSecurityConfiguration) {
+        setCrawlerSecurityConfiguration(crawlerSecurityConfiguration);
+        return this;
+    }
+
+    /**
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -923,7 +924,9 @@ public class Crawler implements Serializable, Cloneable, StructuredPojo {
         if (getVersion() != null)
             sb.append("Version: ").append(getVersion()).append(",");
         if (getConfiguration() != null)
-            sb.append("Configuration: ").append(getConfiguration());
+            sb.append("Configuration: ").append(getConfiguration()).append(",");
+        if (getCrawlerSecurityConfiguration() != null)
+            sb.append("CrawlerSecurityConfiguration: ").append(getCrawlerSecurityConfiguration());
         sb.append("}");
         return sb.toString();
     }
@@ -1002,6 +1005,10 @@ public class Crawler implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getConfiguration() != null && other.getConfiguration().equals(this.getConfiguration()) == false)
             return false;
+        if (other.getCrawlerSecurityConfiguration() == null ^ this.getCrawlerSecurityConfiguration() == null)
+            return false;
+        if (other.getCrawlerSecurityConfiguration() != null && other.getCrawlerSecurityConfiguration().equals(this.getCrawlerSecurityConfiguration()) == false)
+            return false;
         return true;
     }
 
@@ -1026,6 +1033,7 @@ public class Crawler implements Serializable, Cloneable, StructuredPojo {
         hashCode = prime * hashCode + ((getLastCrawl() == null) ? 0 : getLastCrawl().hashCode());
         hashCode = prime * hashCode + ((getVersion() == null) ? 0 : getVersion().hashCode());
         hashCode = prime * hashCode + ((getConfiguration() == null) ? 0 : getConfiguration().hashCode());
+        hashCode = prime * hashCode + ((getCrawlerSecurityConfiguration() == null) ? 0 : getCrawlerSecurityConfiguration().hashCode());
         return hashCode;
     }
 

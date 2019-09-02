@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -18,7 +18,9 @@ import com.amazonaws.protocol.StructuredPojo;
 import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
- * Baidu Cloud Push credentials
+ * <p>
+ * Specifies the status and settings of the Baidu (Baidu Cloud Push) channel for an application.
+ * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/BaiduChannelRequest" target="_top">AWS API
  *      Documentation</a>
@@ -26,18 +28,32 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class BaiduChannelRequest implements Serializable, Cloneable, StructuredPojo {
 
-    /** Platform credential API key from Baidu. */
+    /**
+     * <p>
+     * The API key that you received from the Baidu Cloud Push service to communicate with the service.
+     * </p>
+     */
     private String apiKey;
-    /** If the channel is enabled for sending messages. */
+    /**
+     * <p>
+     * Specifies whether to enable the Baidu channel for the application.
+     * </p>
+     */
     private Boolean enabled;
-    /** Platform credential Secret key from Baidu. */
+    /**
+     * <p>
+     * The secret key that you received from the Baidu Cloud Push service to communicate with the service.
+     * </p>
+     */
     private String secretKey;
 
     /**
-     * Platform credential API key from Baidu.
+     * <p>
+     * The API key that you received from the Baidu Cloud Push service to communicate with the service.
+     * </p>
      * 
      * @param apiKey
-     *        Platform credential API key from Baidu.
+     *        The API key that you received from the Baidu Cloud Push service to communicate with the service.
      */
 
     public void setApiKey(String apiKey) {
@@ -45,9 +61,11 @@ public class BaiduChannelRequest implements Serializable, Cloneable, StructuredP
     }
 
     /**
-     * Platform credential API key from Baidu.
+     * <p>
+     * The API key that you received from the Baidu Cloud Push service to communicate with the service.
+     * </p>
      * 
-     * @return Platform credential API key from Baidu.
+     * @return The API key that you received from the Baidu Cloud Push service to communicate with the service.
      */
 
     public String getApiKey() {
@@ -55,10 +73,12 @@ public class BaiduChannelRequest implements Serializable, Cloneable, StructuredP
     }
 
     /**
-     * Platform credential API key from Baidu.
+     * <p>
+     * The API key that you received from the Baidu Cloud Push service to communicate with the service.
+     * </p>
      * 
      * @param apiKey
-     *        Platform credential API key from Baidu.
+     *        The API key that you received from the Baidu Cloud Push service to communicate with the service.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -68,10 +88,12 @@ public class BaiduChannelRequest implements Serializable, Cloneable, StructuredP
     }
 
     /**
-     * If the channel is enabled for sending messages.
+     * <p>
+     * Specifies whether to enable the Baidu channel for the application.
+     * </p>
      * 
      * @param enabled
-     *        If the channel is enabled for sending messages.
+     *        Specifies whether to enable the Baidu channel for the application.
      */
 
     public void setEnabled(Boolean enabled) {
@@ -79,9 +101,11 @@ public class BaiduChannelRequest implements Serializable, Cloneable, StructuredP
     }
 
     /**
-     * If the channel is enabled for sending messages.
+     * <p>
+     * Specifies whether to enable the Baidu channel for the application.
+     * </p>
      * 
-     * @return If the channel is enabled for sending messages.
+     * @return Specifies whether to enable the Baidu channel for the application.
      */
 
     public Boolean getEnabled() {
@@ -89,10 +113,12 @@ public class BaiduChannelRequest implements Serializable, Cloneable, StructuredP
     }
 
     /**
-     * If the channel is enabled for sending messages.
+     * <p>
+     * Specifies whether to enable the Baidu channel for the application.
+     * </p>
      * 
      * @param enabled
-     *        If the channel is enabled for sending messages.
+     *        Specifies whether to enable the Baidu channel for the application.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -102,9 +128,11 @@ public class BaiduChannelRequest implements Serializable, Cloneable, StructuredP
     }
 
     /**
-     * If the channel is enabled for sending messages.
+     * <p>
+     * Specifies whether to enable the Baidu channel for the application.
+     * </p>
      * 
-     * @return If the channel is enabled for sending messages.
+     * @return Specifies whether to enable the Baidu channel for the application.
      */
 
     public Boolean isEnabled() {
@@ -112,10 +140,12 @@ public class BaiduChannelRequest implements Serializable, Cloneable, StructuredP
     }
 
     /**
-     * Platform credential Secret key from Baidu.
+     * <p>
+     * The secret key that you received from the Baidu Cloud Push service to communicate with the service.
+     * </p>
      * 
      * @param secretKey
-     *        Platform credential Secret key from Baidu.
+     *        The secret key that you received from the Baidu Cloud Push service to communicate with the service.
      */
 
     public void setSecretKey(String secretKey) {
@@ -123,9 +153,11 @@ public class BaiduChannelRequest implements Serializable, Cloneable, StructuredP
     }
 
     /**
-     * Platform credential Secret key from Baidu.
+     * <p>
+     * The secret key that you received from the Baidu Cloud Push service to communicate with the service.
+     * </p>
      * 
-     * @return Platform credential Secret key from Baidu.
+     * @return The secret key that you received from the Baidu Cloud Push service to communicate with the service.
      */
 
     public String getSecretKey() {
@@ -133,10 +165,12 @@ public class BaiduChannelRequest implements Serializable, Cloneable, StructuredP
     }
 
     /**
-     * Platform credential Secret key from Baidu.
+     * <p>
+     * The secret key that you received from the Baidu Cloud Push service to communicate with the service.
+     * </p>
      * 
      * @param secretKey
-     *        Platform credential Secret key from Baidu.
+     *        The secret key that you received from the Baidu Cloud Push service to communicate with the service.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -146,7 +180,8 @@ public class BaiduChannelRequest implements Serializable, Cloneable, StructuredP
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -11,6 +11,8 @@
  * and limitations under the License.
  */
 package com.amazonaws.services.apigateway.model.transform;
+
+import java.util.Map;
 
 import javax.annotation.Generated;
 
@@ -45,6 +47,10 @@ public class CreateDomainNameRequestMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("regionalCertificateArn").build();
     private static final MarshallingInfo<StructuredPojo> ENDPOINTCONFIGURATION_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("endpointConfiguration").build();
+    private static final MarshallingInfo<Map> TAGS_BINDING = MarshallingInfo.builder(MarshallingType.MAP).marshallLocation(MarshallLocation.PAYLOAD)
+            .marshallLocationName("tags").build();
+    private static final MarshallingInfo<String> SECURITYPOLICY_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("securityPolicy").build();
 
     private static final CreateDomainNameRequestMarshaller instance = new CreateDomainNameRequestMarshaller();
 
@@ -71,6 +77,8 @@ public class CreateDomainNameRequestMarshaller {
             protocolMarshaller.marshall(createDomainNameRequest.getRegionalCertificateName(), REGIONALCERTIFICATENAME_BINDING);
             protocolMarshaller.marshall(createDomainNameRequest.getRegionalCertificateArn(), REGIONALCERTIFICATEARN_BINDING);
             protocolMarshaller.marshall(createDomainNameRequest.getEndpointConfiguration(), ENDPOINTCONFIGURATION_BINDING);
+            protocolMarshaller.marshall(createDomainNameRequest.getTags(), TAGS_BINDING);
+            protocolMarshaller.marshall(createDomainNameRequest.getSecurityPolicy(), SECURITYPOLICY_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

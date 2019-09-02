@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -18,7 +18,9 @@ import com.amazonaws.protocol.StructuredPojo;
 import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
- * Remote port information of the connection.
+ * <p>
+ * Contains information about the remote port.
+ * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/RemotePortDetails" target="_top">AWS API
  *      Documentation</a>
@@ -26,13 +28,23 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class RemotePortDetails implements Serializable, Cloneable, StructuredPojo {
 
-    /** Port number of the remote connection. */
+    /**
+     * <p>
+     * Port number of the remote connection.
+     * </p>
+     */
     private Integer port;
-    /** Port name of the remote connection. */
+    /**
+     * <p>
+     * Port name of the remote connection.
+     * </p>
+     */
     private String portName;
 
     /**
+     * <p>
      * Port number of the remote connection.
+     * </p>
      * 
      * @param port
      *        Port number of the remote connection.
@@ -43,7 +55,9 @@ public class RemotePortDetails implements Serializable, Cloneable, StructuredPoj
     }
 
     /**
+     * <p>
      * Port number of the remote connection.
+     * </p>
      * 
      * @return Port number of the remote connection.
      */
@@ -53,7 +67,9 @@ public class RemotePortDetails implements Serializable, Cloneable, StructuredPoj
     }
 
     /**
+     * <p>
      * Port number of the remote connection.
+     * </p>
      * 
      * @param port
      *        Port number of the remote connection.
@@ -66,7 +82,9 @@ public class RemotePortDetails implements Serializable, Cloneable, StructuredPoj
     }
 
     /**
+     * <p>
      * Port name of the remote connection.
+     * </p>
      * 
      * @param portName
      *        Port name of the remote connection.
@@ -77,7 +95,9 @@ public class RemotePortDetails implements Serializable, Cloneable, StructuredPoj
     }
 
     /**
+     * <p>
      * Port name of the remote connection.
+     * </p>
      * 
      * @return Port name of the remote connection.
      */
@@ -87,7 +107,9 @@ public class RemotePortDetails implements Serializable, Cloneable, StructuredPoj
     }
 
     /**
+     * <p>
      * Port name of the remote connection.
+     * </p>
      * 
      * @param portName
      *        Port name of the remote connection.
@@ -100,7 +122,8 @@ public class RemotePortDetails implements Serializable, Cloneable, StructuredPoj
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -43,6 +43,11 @@ public class AbstractAWSServiceCatalog implements AWSServiceCatalog {
     }
 
     @Override
+    public AssociateBudgetWithResourceResult associateBudgetWithResource(AssociateBudgetWithResourceRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public AssociatePrincipalWithPortfolioResult associatePrincipalWithPortfolio(AssociatePrincipalWithPortfolioRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -53,7 +58,25 @@ public class AbstractAWSServiceCatalog implements AWSServiceCatalog {
     }
 
     @Override
+    public AssociateServiceActionWithProvisioningArtifactResult associateServiceActionWithProvisioningArtifact(
+            AssociateServiceActionWithProvisioningArtifactRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public AssociateTagOptionWithResourceResult associateTagOptionWithResource(AssociateTagOptionWithResourceRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public BatchAssociateServiceActionWithProvisioningArtifactResult batchAssociateServiceActionWithProvisioningArtifact(
+            BatchAssociateServiceActionWithProvisioningArtifactRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public BatchDisassociateServiceActionFromProvisioningArtifactResult batchDisassociateServiceActionFromProvisioningArtifact(
+            BatchDisassociateServiceActionFromProvisioningArtifactRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -93,6 +116,11 @@ public class AbstractAWSServiceCatalog implements AWSServiceCatalog {
     }
 
     @Override
+    public CreateServiceActionResult createServiceAction(CreateServiceActionRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public CreateTagOptionResult createTagOption(CreateTagOptionRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -128,6 +156,11 @@ public class AbstractAWSServiceCatalog implements AWSServiceCatalog {
     }
 
     @Override
+    public DeleteServiceActionResult deleteServiceAction(DeleteServiceActionRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public DeleteTagOptionResult deleteTagOption(DeleteTagOptionRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -144,6 +177,11 @@ public class AbstractAWSServiceCatalog implements AWSServiceCatalog {
 
     @Override
     public DescribePortfolioResult describePortfolio(DescribePortfolioRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DescribePortfolioShareStatusResult describePortfolioShareStatus(DescribePortfolioShareStatusRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -188,7 +226,27 @@ public class AbstractAWSServiceCatalog implements AWSServiceCatalog {
     }
 
     @Override
+    public DescribeServiceActionResult describeServiceAction(DescribeServiceActionRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DescribeServiceActionExecutionParametersResult describeServiceActionExecutionParameters(DescribeServiceActionExecutionParametersRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public DescribeTagOptionResult describeTagOption(DescribeTagOptionRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DisableAWSOrganizationsAccessResult disableAWSOrganizationsAccess(DisableAWSOrganizationsAccessRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DisassociateBudgetFromResourceResult disassociateBudgetFromResource(DisassociateBudgetFromResourceRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -203,7 +261,18 @@ public class AbstractAWSServiceCatalog implements AWSServiceCatalog {
     }
 
     @Override
+    public DisassociateServiceActionFromProvisioningArtifactResult disassociateServiceActionFromProvisioningArtifact(
+            DisassociateServiceActionFromProvisioningArtifactRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public DisassociateTagOptionFromResourceResult disassociateTagOptionFromResource(DisassociateTagOptionFromResourceRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public EnableAWSOrganizationsAccessResult enableAWSOrganizationsAccess(EnableAWSOrganizationsAccessRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -213,7 +282,22 @@ public class AbstractAWSServiceCatalog implements AWSServiceCatalog {
     }
 
     @Override
+    public ExecuteProvisionedProductServiceActionResult executeProvisionedProductServiceAction(ExecuteProvisionedProductServiceActionRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public GetAWSOrganizationsAccessStatusResult getAWSOrganizationsAccessStatus(GetAWSOrganizationsAccessStatusRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public ListAcceptedPortfolioSharesResult listAcceptedPortfolioShares(ListAcceptedPortfolioSharesRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public ListBudgetsForResourceResult listBudgetsForResource(ListBudgetsForResourceRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -224,6 +308,11 @@ public class AbstractAWSServiceCatalog implements AWSServiceCatalog {
 
     @Override
     public ListLaunchPathsResult listLaunchPaths(ListLaunchPathsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public ListOrganizationPortfolioAccessResult listOrganizationPortfolioAccess(ListOrganizationPortfolioAccessRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -258,12 +347,32 @@ public class AbstractAWSServiceCatalog implements AWSServiceCatalog {
     }
 
     @Override
+    public ListProvisioningArtifactsForServiceActionResult listProvisioningArtifactsForServiceAction(ListProvisioningArtifactsForServiceActionRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public ListRecordHistoryResult listRecordHistory(ListRecordHistoryRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
     @Override
     public ListResourcesForTagOptionResult listResourcesForTagOption(ListResourcesForTagOptionRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public ListServiceActionsResult listServiceActions(ListServiceActionsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public ListServiceActionsForProvisioningArtifactResult listServiceActionsForProvisioningArtifact(ListServiceActionsForProvisioningArtifactRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public ListStackInstancesForProvisionedProductResult listStackInstancesForProvisionedProduct(ListStackInstancesForProvisionedProductRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -328,7 +437,17 @@ public class AbstractAWSServiceCatalog implements AWSServiceCatalog {
     }
 
     @Override
+    public UpdateProvisionedProductPropertiesResult updateProvisionedProductProperties(UpdateProvisionedProductPropertiesRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public UpdateProvisioningArtifactResult updateProvisioningArtifact(UpdateProvisioningArtifactRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public UpdateServiceActionResult updateServiceAction(UpdateServiceActionRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 

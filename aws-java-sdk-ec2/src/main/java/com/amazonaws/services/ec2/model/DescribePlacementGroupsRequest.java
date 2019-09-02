@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -20,9 +20,7 @@ import com.amazonaws.Request;
 import com.amazonaws.services.ec2.model.transform.DescribePlacementGroupsRequestMarshaller;
 
 /**
- * <p>
- * Contains the parameters for DescribePlacementGroups.
- * </p>
+ * 
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DescribePlacementGroupsRequest extends AmazonWebServiceRequest implements Serializable, Cloneable,
@@ -30,7 +28,7 @@ public class DescribePlacementGroupsRequest extends AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * One or more filters.
+     * The filters.
      * </p>
      * <ul>
      * <li>
@@ -46,7 +44,8 @@ public class DescribePlacementGroupsRequest extends AmazonWebServiceRequest impl
      * </li>
      * <li>
      * <p>
-     * <code>strategy</code> - The strategy of the placement group (<code>cluster</code> | <code>spread</code>).
+     * <code>strategy</code> - The strategy of the placement group (<code>cluster</code> | <code>spread</code> |
+     * <code>partition</code>).
      * </p>
      * </li>
      * </ul>
@@ -54,7 +53,7 @@ public class DescribePlacementGroupsRequest extends AmazonWebServiceRequest impl
     private com.amazonaws.internal.SdkInternalList<Filter> filters;
     /**
      * <p>
-     * One or more placement group names.
+     * The names of the placement groups.
      * </p>
      * <p>
      * Default: Describes all your placement groups, or only those otherwise specified.
@@ -64,7 +63,7 @@ public class DescribePlacementGroupsRequest extends AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * One or more filters.
+     * The filters.
      * </p>
      * <ul>
      * <li>
@@ -80,12 +79,13 @@ public class DescribePlacementGroupsRequest extends AmazonWebServiceRequest impl
      * </li>
      * <li>
      * <p>
-     * <code>strategy</code> - The strategy of the placement group (<code>cluster</code> | <code>spread</code>).
+     * <code>strategy</code> - The strategy of the placement group (<code>cluster</code> | <code>spread</code> |
+     * <code>partition</code>).
      * </p>
      * </li>
      * </ul>
      * 
-     * @return One or more filters.</p>
+     * @return The filters.</p>
      *         <ul>
      *         <li>
      *         <p>
@@ -100,7 +100,8 @@ public class DescribePlacementGroupsRequest extends AmazonWebServiceRequest impl
      *         </li>
      *         <li>
      *         <p>
-     *         <code>strategy</code> - The strategy of the placement group (<code>cluster</code> | <code>spread</code>).
+     *         <code>strategy</code> - The strategy of the placement group (<code>cluster</code> | <code>spread</code> |
+     *         <code>partition</code>).
      *         </p>
      *         </li>
      */
@@ -114,7 +115,7 @@ public class DescribePlacementGroupsRequest extends AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * One or more filters.
+     * The filters.
      * </p>
      * <ul>
      * <li>
@@ -130,13 +131,14 @@ public class DescribePlacementGroupsRequest extends AmazonWebServiceRequest impl
      * </li>
      * <li>
      * <p>
-     * <code>strategy</code> - The strategy of the placement group (<code>cluster</code> | <code>spread</code>).
+     * <code>strategy</code> - The strategy of the placement group (<code>cluster</code> | <code>spread</code> |
+     * <code>partition</code>).
      * </p>
      * </li>
      * </ul>
      * 
      * @param filters
-     *        One or more filters.</p>
+     *        The filters.</p>
      *        <ul>
      *        <li>
      *        <p>
@@ -151,7 +153,8 @@ public class DescribePlacementGroupsRequest extends AmazonWebServiceRequest impl
      *        </li>
      *        <li>
      *        <p>
-     *        <code>strategy</code> - The strategy of the placement group (<code>cluster</code> | <code>spread</code>).
+     *        <code>strategy</code> - The strategy of the placement group (<code>cluster</code> | <code>spread</code> |
+     *        <code>partition</code>).
      *        </p>
      *        </li>
      */
@@ -167,7 +170,7 @@ public class DescribePlacementGroupsRequest extends AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * One or more filters.
+     * The filters.
      * </p>
      * <ul>
      * <li>
@@ -183,7 +186,8 @@ public class DescribePlacementGroupsRequest extends AmazonWebServiceRequest impl
      * </li>
      * <li>
      * <p>
-     * <code>strategy</code> - The strategy of the placement group (<code>cluster</code> | <code>spread</code>).
+     * <code>strategy</code> - The strategy of the placement group (<code>cluster</code> | <code>spread</code> |
+     * <code>partition</code>).
      * </p>
      * </li>
      * </ul>
@@ -194,7 +198,7 @@ public class DescribePlacementGroupsRequest extends AmazonWebServiceRequest impl
      * </p>
      * 
      * @param filters
-     *        One or more filters.</p>
+     *        The filters.</p>
      *        <ul>
      *        <li>
      *        <p>
@@ -209,7 +213,8 @@ public class DescribePlacementGroupsRequest extends AmazonWebServiceRequest impl
      *        </li>
      *        <li>
      *        <p>
-     *        <code>strategy</code> - The strategy of the placement group (<code>cluster</code> | <code>spread</code>).
+     *        <code>strategy</code> - The strategy of the placement group (<code>cluster</code> | <code>spread</code> |
+     *        <code>partition</code>).
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -227,7 +232,7 @@ public class DescribePlacementGroupsRequest extends AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * One or more filters.
+     * The filters.
      * </p>
      * <ul>
      * <li>
@@ -243,13 +248,14 @@ public class DescribePlacementGroupsRequest extends AmazonWebServiceRequest impl
      * </li>
      * <li>
      * <p>
-     * <code>strategy</code> - The strategy of the placement group (<code>cluster</code> | <code>spread</code>).
+     * <code>strategy</code> - The strategy of the placement group (<code>cluster</code> | <code>spread</code> |
+     * <code>partition</code>).
      * </p>
      * </li>
      * </ul>
      * 
      * @param filters
-     *        One or more filters.</p>
+     *        The filters.</p>
      *        <ul>
      *        <li>
      *        <p>
@@ -264,7 +270,8 @@ public class DescribePlacementGroupsRequest extends AmazonWebServiceRequest impl
      *        </li>
      *        <li>
      *        <p>
-     *        <code>strategy</code> - The strategy of the placement group (<code>cluster</code> | <code>spread</code>).
+     *        <code>strategy</code> - The strategy of the placement group (<code>cluster</code> | <code>spread</code> |
+     *        <code>partition</code>).
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -277,13 +284,13 @@ public class DescribePlacementGroupsRequest extends AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * One or more placement group names.
+     * The names of the placement groups.
      * </p>
      * <p>
      * Default: Describes all your placement groups, or only those otherwise specified.
      * </p>
      * 
-     * @return One or more placement group names.</p>
+     * @return The names of the placement groups.</p>
      *         <p>
      *         Default: Describes all your placement groups, or only those otherwise specified.
      */
@@ -297,14 +304,14 @@ public class DescribePlacementGroupsRequest extends AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * One or more placement group names.
+     * The names of the placement groups.
      * </p>
      * <p>
      * Default: Describes all your placement groups, or only those otherwise specified.
      * </p>
      * 
      * @param groupNames
-     *        One or more placement group names.</p>
+     *        The names of the placement groups.</p>
      *        <p>
      *        Default: Describes all your placement groups, or only those otherwise specified.
      */
@@ -320,7 +327,7 @@ public class DescribePlacementGroupsRequest extends AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * One or more placement group names.
+     * The names of the placement groups.
      * </p>
      * <p>
      * Default: Describes all your placement groups, or only those otherwise specified.
@@ -332,7 +339,7 @@ public class DescribePlacementGroupsRequest extends AmazonWebServiceRequest impl
      * </p>
      * 
      * @param groupNames
-     *        One or more placement group names.</p>
+     *        The names of the placement groups.</p>
      *        <p>
      *        Default: Describes all your placement groups, or only those otherwise specified.
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -350,14 +357,14 @@ public class DescribePlacementGroupsRequest extends AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * One or more placement group names.
+     * The names of the placement groups.
      * </p>
      * <p>
      * Default: Describes all your placement groups, or only those otherwise specified.
      * </p>
      * 
      * @param groupNames
-     *        One or more placement group names.</p>
+     *        The names of the placement groups.</p>
      *        <p>
      *        Default: Describes all your placement groups, or only those otherwise specified.
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -380,7 +387,8 @@ public class DescribePlacementGroupsRequest extends AmazonWebServiceRequest impl
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -18,7 +18,9 @@ import com.amazonaws.protocol.StructuredPojo;
 import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
- * Used to create a campaign.
+ * <p>
+ * Specifies the configuration and other settings for a campaign.
+ * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/WriteCampaignRequest" target="_top">AWS API
  *      Documentation</a>
@@ -26,40 +28,102 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class WriteCampaignRequest implements Serializable, Cloneable, StructuredPojo {
 
-    /** Treatments that are defined in addition to the default treatment. */
+    /**
+     * <p>
+     * An array of requests that defines additional treatments for the campaign, in addition to the default treatment
+     * for the campaign.
+     * </p>
+     */
     private java.util.List<WriteTreatmentResource> additionalTreatments;
-    /** A description of the campaign. */
+    /**
+     * <p>
+     * The custom description of the campaign.
+     * </p>
+     */
     private String description;
-    /** The allocated percentage of end users who will not receive messages from this campaign. */
+    /**
+     * <p>
+     * The allocated percentage of users (segment members) who shouldn't receive messages from the campaign.
+     * </p>
+     */
     private Integer holdoutPercent;
-    /** Campaign hook information. */
+    /**
+     * <p>
+     * The settings for the AWS Lambda function to use as a code hook for the campaign.
+     * </p>
+     */
     private CampaignHook hook;
     /**
-     * Indicates whether the campaign is paused. A paused campaign does not send messages unless you resume it by
-     * setting IsPaused to false.
+     * <p>
+     * Specifies whether to pause the campaign. A paused campaign doesn't run unless you resume it by setting this value
+     * to false.
+     * </p>
      */
     private Boolean isPaused;
-    /** The campaign limits settings. */
+    /**
+     * <p>
+     * The messaging limits for the campaign.
+     * </p>
+     */
     private CampaignLimits limits;
-    /** The message configuration settings. */
+    /**
+     * <p>
+     * The message configuration settings for the campaign.
+     * </p>
+     */
     private MessageConfiguration messageConfiguration;
-    /** The custom name of the campaign. */
+    /**
+     * <p>
+     * The custom name of the campaign.
+     * </p>
+     */
     private String name;
-    /** The campaign schedule. */
+    /**
+     * <p>
+     * The schedule settings for the campaign.
+     * </p>
+     */
     private Schedule schedule;
-    /** The ID of the segment to which the campaign sends messages. */
+    /**
+     * <p>
+     * The unique identifier for the segment to associate with the campaign.
+     * </p>
+     */
     private String segmentId;
-    /** The version of the segment to which the campaign sends messages. */
+    /**
+     * <p>
+     * The version of the segment to associate with the campaign.
+     * </p>
+     */
     private Integer segmentVersion;
-    /** A custom description for the treatment. */
+    /**
+     * <p>
+     * A string-to-string map of key-value pairs that defines the tags to associate with the campaign. Each tag consists
+     * of a required tag key and an associated tag value.
+     * </p>
+     */
+    private java.util.Map<String, String> tags;
+    /**
+     * <p>
+     * The custom description of a variation of the campaign to use for A/B testing.
+     * </p>
+     */
     private String treatmentDescription;
-    /** The custom name of a variation of the campaign used for A/B testing. */
+    /**
+     * <p>
+     * The custom name of a variation of the campaign to use for A/B testing.
+     * </p>
+     */
     private String treatmentName;
 
     /**
-     * Treatments that are defined in addition to the default treatment.
+     * <p>
+     * An array of requests that defines additional treatments for the campaign, in addition to the default treatment
+     * for the campaign.
+     * </p>
      * 
-     * @return Treatments that are defined in addition to the default treatment.
+     * @return An array of requests that defines additional treatments for the campaign, in addition to the default
+     *         treatment for the campaign.
      */
 
     public java.util.List<WriteTreatmentResource> getAdditionalTreatments() {
@@ -67,10 +131,14 @@ public class WriteCampaignRequest implements Serializable, Cloneable, Structured
     }
 
     /**
-     * Treatments that are defined in addition to the default treatment.
+     * <p>
+     * An array of requests that defines additional treatments for the campaign, in addition to the default treatment
+     * for the campaign.
+     * </p>
      * 
      * @param additionalTreatments
-     *        Treatments that are defined in addition to the default treatment.
+     *        An array of requests that defines additional treatments for the campaign, in addition to the default
+     *        treatment for the campaign.
      */
 
     public void setAdditionalTreatments(java.util.Collection<WriteTreatmentResource> additionalTreatments) {
@@ -83,7 +151,10 @@ public class WriteCampaignRequest implements Serializable, Cloneable, Structured
     }
 
     /**
-     * Treatments that are defined in addition to the default treatment.
+     * <p>
+     * An array of requests that defines additional treatments for the campaign, in addition to the default treatment
+     * for the campaign.
+     * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
      * {@link #setAdditionalTreatments(java.util.Collection)} or {@link #withAdditionalTreatments(java.util.Collection)}
@@ -91,7 +162,8 @@ public class WriteCampaignRequest implements Serializable, Cloneable, Structured
      * </p>
      * 
      * @param additionalTreatments
-     *        Treatments that are defined in addition to the default treatment.
+     *        An array of requests that defines additional treatments for the campaign, in addition to the default
+     *        treatment for the campaign.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -106,10 +178,14 @@ public class WriteCampaignRequest implements Serializable, Cloneable, Structured
     }
 
     /**
-     * Treatments that are defined in addition to the default treatment.
+     * <p>
+     * An array of requests that defines additional treatments for the campaign, in addition to the default treatment
+     * for the campaign.
+     * </p>
      * 
      * @param additionalTreatments
-     *        Treatments that are defined in addition to the default treatment.
+     *        An array of requests that defines additional treatments for the campaign, in addition to the default
+     *        treatment for the campaign.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -119,10 +195,12 @@ public class WriteCampaignRequest implements Serializable, Cloneable, Structured
     }
 
     /**
-     * A description of the campaign.
+     * <p>
+     * The custom description of the campaign.
+     * </p>
      * 
      * @param description
-     *        A description of the campaign.
+     *        The custom description of the campaign.
      */
 
     public void setDescription(String description) {
@@ -130,9 +208,11 @@ public class WriteCampaignRequest implements Serializable, Cloneable, Structured
     }
 
     /**
-     * A description of the campaign.
+     * <p>
+     * The custom description of the campaign.
+     * </p>
      * 
-     * @return A description of the campaign.
+     * @return The custom description of the campaign.
      */
 
     public String getDescription() {
@@ -140,10 +220,12 @@ public class WriteCampaignRequest implements Serializable, Cloneable, Structured
     }
 
     /**
-     * A description of the campaign.
+     * <p>
+     * The custom description of the campaign.
+     * </p>
      * 
      * @param description
-     *        A description of the campaign.
+     *        The custom description of the campaign.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -153,10 +235,12 @@ public class WriteCampaignRequest implements Serializable, Cloneable, Structured
     }
 
     /**
-     * The allocated percentage of end users who will not receive messages from this campaign.
+     * <p>
+     * The allocated percentage of users (segment members) who shouldn't receive messages from the campaign.
+     * </p>
      * 
      * @param holdoutPercent
-     *        The allocated percentage of end users who will not receive messages from this campaign.
+     *        The allocated percentage of users (segment members) who shouldn't receive messages from the campaign.
      */
 
     public void setHoldoutPercent(Integer holdoutPercent) {
@@ -164,9 +248,11 @@ public class WriteCampaignRequest implements Serializable, Cloneable, Structured
     }
 
     /**
-     * The allocated percentage of end users who will not receive messages from this campaign.
+     * <p>
+     * The allocated percentage of users (segment members) who shouldn't receive messages from the campaign.
+     * </p>
      * 
-     * @return The allocated percentage of end users who will not receive messages from this campaign.
+     * @return The allocated percentage of users (segment members) who shouldn't receive messages from the campaign.
      */
 
     public Integer getHoldoutPercent() {
@@ -174,10 +260,12 @@ public class WriteCampaignRequest implements Serializable, Cloneable, Structured
     }
 
     /**
-     * The allocated percentage of end users who will not receive messages from this campaign.
+     * <p>
+     * The allocated percentage of users (segment members) who shouldn't receive messages from the campaign.
+     * </p>
      * 
      * @param holdoutPercent
-     *        The allocated percentage of end users who will not receive messages from this campaign.
+     *        The allocated percentage of users (segment members) who shouldn't receive messages from the campaign.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -187,10 +275,12 @@ public class WriteCampaignRequest implements Serializable, Cloneable, Structured
     }
 
     /**
-     * Campaign hook information.
+     * <p>
+     * The settings for the AWS Lambda function to use as a code hook for the campaign.
+     * </p>
      * 
      * @param hook
-     *        Campaign hook information.
+     *        The settings for the AWS Lambda function to use as a code hook for the campaign.
      */
 
     public void setHook(CampaignHook hook) {
@@ -198,9 +288,11 @@ public class WriteCampaignRequest implements Serializable, Cloneable, Structured
     }
 
     /**
-     * Campaign hook information.
+     * <p>
+     * The settings for the AWS Lambda function to use as a code hook for the campaign.
+     * </p>
      * 
-     * @return Campaign hook information.
+     * @return The settings for the AWS Lambda function to use as a code hook for the campaign.
      */
 
     public CampaignHook getHook() {
@@ -208,10 +300,12 @@ public class WriteCampaignRequest implements Serializable, Cloneable, Structured
     }
 
     /**
-     * Campaign hook information.
+     * <p>
+     * The settings for the AWS Lambda function to use as a code hook for the campaign.
+     * </p>
      * 
      * @param hook
-     *        Campaign hook information.
+     *        The settings for the AWS Lambda function to use as a code hook for the campaign.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -221,12 +315,14 @@ public class WriteCampaignRequest implements Serializable, Cloneable, Structured
     }
 
     /**
-     * Indicates whether the campaign is paused. A paused campaign does not send messages unless you resume it by
-     * setting IsPaused to false.
+     * <p>
+     * Specifies whether to pause the campaign. A paused campaign doesn't run unless you resume it by setting this value
+     * to false.
+     * </p>
      * 
      * @param isPaused
-     *        Indicates whether the campaign is paused. A paused campaign does not send messages unless you resume it by
-     *        setting IsPaused to false.
+     *        Specifies whether to pause the campaign. A paused campaign doesn't run unless you resume it by setting
+     *        this value to false.
      */
 
     public void setIsPaused(Boolean isPaused) {
@@ -234,11 +330,13 @@ public class WriteCampaignRequest implements Serializable, Cloneable, Structured
     }
 
     /**
-     * Indicates whether the campaign is paused. A paused campaign does not send messages unless you resume it by
-     * setting IsPaused to false.
+     * <p>
+     * Specifies whether to pause the campaign. A paused campaign doesn't run unless you resume it by setting this value
+     * to false.
+     * </p>
      * 
-     * @return Indicates whether the campaign is paused. A paused campaign does not send messages unless you resume it
-     *         by setting IsPaused to false.
+     * @return Specifies whether to pause the campaign. A paused campaign doesn't run unless you resume it by setting
+     *         this value to false.
      */
 
     public Boolean getIsPaused() {
@@ -246,12 +344,14 @@ public class WriteCampaignRequest implements Serializable, Cloneable, Structured
     }
 
     /**
-     * Indicates whether the campaign is paused. A paused campaign does not send messages unless you resume it by
-     * setting IsPaused to false.
+     * <p>
+     * Specifies whether to pause the campaign. A paused campaign doesn't run unless you resume it by setting this value
+     * to false.
+     * </p>
      * 
      * @param isPaused
-     *        Indicates whether the campaign is paused. A paused campaign does not send messages unless you resume it by
-     *        setting IsPaused to false.
+     *        Specifies whether to pause the campaign. A paused campaign doesn't run unless you resume it by setting
+     *        this value to false.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -261,11 +361,13 @@ public class WriteCampaignRequest implements Serializable, Cloneable, Structured
     }
 
     /**
-     * Indicates whether the campaign is paused. A paused campaign does not send messages unless you resume it by
-     * setting IsPaused to false.
+     * <p>
+     * Specifies whether to pause the campaign. A paused campaign doesn't run unless you resume it by setting this value
+     * to false.
+     * </p>
      * 
-     * @return Indicates whether the campaign is paused. A paused campaign does not send messages unless you resume it
-     *         by setting IsPaused to false.
+     * @return Specifies whether to pause the campaign. A paused campaign doesn't run unless you resume it by setting
+     *         this value to false.
      */
 
     public Boolean isPaused() {
@@ -273,10 +375,12 @@ public class WriteCampaignRequest implements Serializable, Cloneable, Structured
     }
 
     /**
-     * The campaign limits settings.
+     * <p>
+     * The messaging limits for the campaign.
+     * </p>
      * 
      * @param limits
-     *        The campaign limits settings.
+     *        The messaging limits for the campaign.
      */
 
     public void setLimits(CampaignLimits limits) {
@@ -284,9 +388,11 @@ public class WriteCampaignRequest implements Serializable, Cloneable, Structured
     }
 
     /**
-     * The campaign limits settings.
+     * <p>
+     * The messaging limits for the campaign.
+     * </p>
      * 
-     * @return The campaign limits settings.
+     * @return The messaging limits for the campaign.
      */
 
     public CampaignLimits getLimits() {
@@ -294,10 +400,12 @@ public class WriteCampaignRequest implements Serializable, Cloneable, Structured
     }
 
     /**
-     * The campaign limits settings.
+     * <p>
+     * The messaging limits for the campaign.
+     * </p>
      * 
      * @param limits
-     *        The campaign limits settings.
+     *        The messaging limits for the campaign.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -307,10 +415,12 @@ public class WriteCampaignRequest implements Serializable, Cloneable, Structured
     }
 
     /**
-     * The message configuration settings.
+     * <p>
+     * The message configuration settings for the campaign.
+     * </p>
      * 
      * @param messageConfiguration
-     *        The message configuration settings.
+     *        The message configuration settings for the campaign.
      */
 
     public void setMessageConfiguration(MessageConfiguration messageConfiguration) {
@@ -318,9 +428,11 @@ public class WriteCampaignRequest implements Serializable, Cloneable, Structured
     }
 
     /**
-     * The message configuration settings.
+     * <p>
+     * The message configuration settings for the campaign.
+     * </p>
      * 
-     * @return The message configuration settings.
+     * @return The message configuration settings for the campaign.
      */
 
     public MessageConfiguration getMessageConfiguration() {
@@ -328,10 +440,12 @@ public class WriteCampaignRequest implements Serializable, Cloneable, Structured
     }
 
     /**
-     * The message configuration settings.
+     * <p>
+     * The message configuration settings for the campaign.
+     * </p>
      * 
      * @param messageConfiguration
-     *        The message configuration settings.
+     *        The message configuration settings for the campaign.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -341,7 +455,9 @@ public class WriteCampaignRequest implements Serializable, Cloneable, Structured
     }
 
     /**
+     * <p>
      * The custom name of the campaign.
+     * </p>
      * 
      * @param name
      *        The custom name of the campaign.
@@ -352,7 +468,9 @@ public class WriteCampaignRequest implements Serializable, Cloneable, Structured
     }
 
     /**
+     * <p>
      * The custom name of the campaign.
+     * </p>
      * 
      * @return The custom name of the campaign.
      */
@@ -362,7 +480,9 @@ public class WriteCampaignRequest implements Serializable, Cloneable, Structured
     }
 
     /**
+     * <p>
      * The custom name of the campaign.
+     * </p>
      * 
      * @param name
      *        The custom name of the campaign.
@@ -375,10 +495,12 @@ public class WriteCampaignRequest implements Serializable, Cloneable, Structured
     }
 
     /**
-     * The campaign schedule.
+     * <p>
+     * The schedule settings for the campaign.
+     * </p>
      * 
      * @param schedule
-     *        The campaign schedule.
+     *        The schedule settings for the campaign.
      */
 
     public void setSchedule(Schedule schedule) {
@@ -386,9 +508,11 @@ public class WriteCampaignRequest implements Serializable, Cloneable, Structured
     }
 
     /**
-     * The campaign schedule.
+     * <p>
+     * The schedule settings for the campaign.
+     * </p>
      * 
-     * @return The campaign schedule.
+     * @return The schedule settings for the campaign.
      */
 
     public Schedule getSchedule() {
@@ -396,10 +520,12 @@ public class WriteCampaignRequest implements Serializable, Cloneable, Structured
     }
 
     /**
-     * The campaign schedule.
+     * <p>
+     * The schedule settings for the campaign.
+     * </p>
      * 
      * @param schedule
-     *        The campaign schedule.
+     *        The schedule settings for the campaign.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -409,10 +535,12 @@ public class WriteCampaignRequest implements Serializable, Cloneable, Structured
     }
 
     /**
-     * The ID of the segment to which the campaign sends messages.
+     * <p>
+     * The unique identifier for the segment to associate with the campaign.
+     * </p>
      * 
      * @param segmentId
-     *        The ID of the segment to which the campaign sends messages.
+     *        The unique identifier for the segment to associate with the campaign.
      */
 
     public void setSegmentId(String segmentId) {
@@ -420,9 +548,11 @@ public class WriteCampaignRequest implements Serializable, Cloneable, Structured
     }
 
     /**
-     * The ID of the segment to which the campaign sends messages.
+     * <p>
+     * The unique identifier for the segment to associate with the campaign.
+     * </p>
      * 
-     * @return The ID of the segment to which the campaign sends messages.
+     * @return The unique identifier for the segment to associate with the campaign.
      */
 
     public String getSegmentId() {
@@ -430,10 +560,12 @@ public class WriteCampaignRequest implements Serializable, Cloneable, Structured
     }
 
     /**
-     * The ID of the segment to which the campaign sends messages.
+     * <p>
+     * The unique identifier for the segment to associate with the campaign.
+     * </p>
      * 
      * @param segmentId
-     *        The ID of the segment to which the campaign sends messages.
+     *        The unique identifier for the segment to associate with the campaign.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -443,10 +575,12 @@ public class WriteCampaignRequest implements Serializable, Cloneable, Structured
     }
 
     /**
-     * The version of the segment to which the campaign sends messages.
+     * <p>
+     * The version of the segment to associate with the campaign.
+     * </p>
      * 
      * @param segmentVersion
-     *        The version of the segment to which the campaign sends messages.
+     *        The version of the segment to associate with the campaign.
      */
 
     public void setSegmentVersion(Integer segmentVersion) {
@@ -454,9 +588,11 @@ public class WriteCampaignRequest implements Serializable, Cloneable, Structured
     }
 
     /**
-     * The version of the segment to which the campaign sends messages.
+     * <p>
+     * The version of the segment to associate with the campaign.
+     * </p>
      * 
-     * @return The version of the segment to which the campaign sends messages.
+     * @return The version of the segment to associate with the campaign.
      */
 
     public Integer getSegmentVersion() {
@@ -464,10 +600,12 @@ public class WriteCampaignRequest implements Serializable, Cloneable, Structured
     }
 
     /**
-     * The version of the segment to which the campaign sends messages.
+     * <p>
+     * The version of the segment to associate with the campaign.
+     * </p>
      * 
      * @param segmentVersion
-     *        The version of the segment to which the campaign sends messages.
+     *        The version of the segment to associate with the campaign.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -477,10 +615,79 @@ public class WriteCampaignRequest implements Serializable, Cloneable, Structured
     }
 
     /**
-     * A custom description for the treatment.
+     * <p>
+     * A string-to-string map of key-value pairs that defines the tags to associate with the campaign. Each tag consists
+     * of a required tag key and an associated tag value.
+     * </p>
+     * 
+     * @return A string-to-string map of key-value pairs that defines the tags to associate with the campaign. Each tag
+     *         consists of a required tag key and an associated tag value.
+     */
+
+    public java.util.Map<String, String> getTags() {
+        return tags;
+    }
+
+    /**
+     * <p>
+     * A string-to-string map of key-value pairs that defines the tags to associate with the campaign. Each tag consists
+     * of a required tag key and an associated tag value.
+     * </p>
+     * 
+     * @param tags
+     *        A string-to-string map of key-value pairs that defines the tags to associate with the campaign. Each tag
+     *        consists of a required tag key and an associated tag value.
+     */
+
+    public void setTags(java.util.Map<String, String> tags) {
+        this.tags = tags;
+    }
+
+    /**
+     * <p>
+     * A string-to-string map of key-value pairs that defines the tags to associate with the campaign. Each tag consists
+     * of a required tag key and an associated tag value.
+     * </p>
+     * 
+     * @param tags
+     *        A string-to-string map of key-value pairs that defines the tags to associate with the campaign. Each tag
+     *        consists of a required tag key and an associated tag value.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public WriteCampaignRequest withTags(java.util.Map<String, String> tags) {
+        setTags(tags);
+        return this;
+    }
+
+    public WriteCampaignRequest addTagsEntry(String key, String value) {
+        if (null == this.tags) {
+            this.tags = new java.util.HashMap<String, String>();
+        }
+        if (this.tags.containsKey(key))
+            throw new IllegalArgumentException("Duplicated keys (" + key.toString() + ") are provided.");
+        this.tags.put(key, value);
+        return this;
+    }
+
+    /**
+     * Removes all the entries added into Tags.
+     *
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public WriteCampaignRequest clearTagsEntries() {
+        this.tags = null;
+        return this;
+    }
+
+    /**
+     * <p>
+     * The custom description of a variation of the campaign to use for A/B testing.
+     * </p>
      * 
      * @param treatmentDescription
-     *        A custom description for the treatment.
+     *        The custom description of a variation of the campaign to use for A/B testing.
      */
 
     public void setTreatmentDescription(String treatmentDescription) {
@@ -488,9 +695,11 @@ public class WriteCampaignRequest implements Serializable, Cloneable, Structured
     }
 
     /**
-     * A custom description for the treatment.
+     * <p>
+     * The custom description of a variation of the campaign to use for A/B testing.
+     * </p>
      * 
-     * @return A custom description for the treatment.
+     * @return The custom description of a variation of the campaign to use for A/B testing.
      */
 
     public String getTreatmentDescription() {
@@ -498,10 +707,12 @@ public class WriteCampaignRequest implements Serializable, Cloneable, Structured
     }
 
     /**
-     * A custom description for the treatment.
+     * <p>
+     * The custom description of a variation of the campaign to use for A/B testing.
+     * </p>
      * 
      * @param treatmentDescription
-     *        A custom description for the treatment.
+     *        The custom description of a variation of the campaign to use for A/B testing.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -511,10 +722,12 @@ public class WriteCampaignRequest implements Serializable, Cloneable, Structured
     }
 
     /**
-     * The custom name of a variation of the campaign used for A/B testing.
+     * <p>
+     * The custom name of a variation of the campaign to use for A/B testing.
+     * </p>
      * 
      * @param treatmentName
-     *        The custom name of a variation of the campaign used for A/B testing.
+     *        The custom name of a variation of the campaign to use for A/B testing.
      */
 
     public void setTreatmentName(String treatmentName) {
@@ -522,9 +735,11 @@ public class WriteCampaignRequest implements Serializable, Cloneable, Structured
     }
 
     /**
-     * The custom name of a variation of the campaign used for A/B testing.
+     * <p>
+     * The custom name of a variation of the campaign to use for A/B testing.
+     * </p>
      * 
-     * @return The custom name of a variation of the campaign used for A/B testing.
+     * @return The custom name of a variation of the campaign to use for A/B testing.
      */
 
     public String getTreatmentName() {
@@ -532,10 +747,12 @@ public class WriteCampaignRequest implements Serializable, Cloneable, Structured
     }
 
     /**
-     * The custom name of a variation of the campaign used for A/B testing.
+     * <p>
+     * The custom name of a variation of the campaign to use for A/B testing.
+     * </p>
      * 
      * @param treatmentName
-     *        The custom name of a variation of the campaign used for A/B testing.
+     *        The custom name of a variation of the campaign to use for A/B testing.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -545,7 +762,8 @@ public class WriteCampaignRequest implements Serializable, Cloneable, Structured
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -577,6 +795,8 @@ public class WriteCampaignRequest implements Serializable, Cloneable, Structured
             sb.append("SegmentId: ").append(getSegmentId()).append(",");
         if (getSegmentVersion() != null)
             sb.append("SegmentVersion: ").append(getSegmentVersion()).append(",");
+        if (getTags() != null)
+            sb.append("Tags: ").append(getTags()).append(",");
         if (getTreatmentDescription() != null)
             sb.append("TreatmentDescription: ").append(getTreatmentDescription()).append(",");
         if (getTreatmentName() != null)
@@ -639,6 +859,10 @@ public class WriteCampaignRequest implements Serializable, Cloneable, Structured
             return false;
         if (other.getSegmentVersion() != null && other.getSegmentVersion().equals(this.getSegmentVersion()) == false)
             return false;
+        if (other.getTags() == null ^ this.getTags() == null)
+            return false;
+        if (other.getTags() != null && other.getTags().equals(this.getTags()) == false)
+            return false;
         if (other.getTreatmentDescription() == null ^ this.getTreatmentDescription() == null)
             return false;
         if (other.getTreatmentDescription() != null && other.getTreatmentDescription().equals(this.getTreatmentDescription()) == false)
@@ -666,6 +890,7 @@ public class WriteCampaignRequest implements Serializable, Cloneable, Structured
         hashCode = prime * hashCode + ((getSchedule() == null) ? 0 : getSchedule().hashCode());
         hashCode = prime * hashCode + ((getSegmentId() == null) ? 0 : getSegmentId().hashCode());
         hashCode = prime * hashCode + ((getSegmentVersion() == null) ? 0 : getSegmentVersion().hashCode());
+        hashCode = prime * hashCode + ((getTags() == null) ? 0 : getTags().hashCode());
         hashCode = prime * hashCode + ((getTreatmentDescription() == null) ? 0 : getTreatmentDescription().hashCode());
         hashCode = prime * hashCode + ((getTreatmentName() == null) ? 0 : getTreatmentName().hashCode());
         return hashCode;

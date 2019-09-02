@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -38,14 +38,14 @@ public class DescribeRuleResult extends com.amazonaws.AmazonWebServiceResult<com
     /**
      * <p>
      * The event pattern. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html">Events and
-     * Event Patterns</a> in the <i>Amazon CloudWatch Events User Guide</i>.
+     * href="https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-and-event-patterns.html">Event
+     * Patterns</a> in the <i>Amazon EventBridge User Guide</i>.
      * </p>
      */
     private String eventPattern;
     /**
      * <p>
-     * The scheduling expression. For example, "cron(0 20 * * ? *)", "rate(5 minutes)".
+     * The scheduling expression: for example, <code>"cron(0 20 * * ? *)"</code> or <code>"rate(5 minutes)"</code>.
      * </p>
      */
     private String scheduleExpression;
@@ -67,6 +67,19 @@ public class DescribeRuleResult extends com.amazonaws.AmazonWebServiceResult<com
      * </p>
      */
     private String roleArn;
+    /**
+     * <p>
+     * If this is a managed rule, created by an AWS service on your behalf, this field displays the principal name of
+     * the AWS service that created the rule.
+     * </p>
+     */
+    private String managedBy;
+    /**
+     * <p>
+     * The event bus associated with the rule.
+     * </p>
+     */
+    private String eventBusName;
 
     /**
      * <p>
@@ -151,14 +164,14 @@ public class DescribeRuleResult extends com.amazonaws.AmazonWebServiceResult<com
     /**
      * <p>
      * The event pattern. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html">Events and
-     * Event Patterns</a> in the <i>Amazon CloudWatch Events User Guide</i>.
+     * href="https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-and-event-patterns.html">Event
+     * Patterns</a> in the <i>Amazon EventBridge User Guide</i>.
      * </p>
      * 
      * @param eventPattern
      *        The event pattern. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html"
-     *        >Events and Event Patterns</a> in the <i>Amazon CloudWatch Events User Guide</i>.
+     *        href="https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-and-event-patterns.html">Event
+     *        Patterns</a> in the <i>Amazon EventBridge User Guide</i>.
      */
 
     public void setEventPattern(String eventPattern) {
@@ -168,13 +181,13 @@ public class DescribeRuleResult extends com.amazonaws.AmazonWebServiceResult<com
     /**
      * <p>
      * The event pattern. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html">Events and
-     * Event Patterns</a> in the <i>Amazon CloudWatch Events User Guide</i>.
+     * href="https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-and-event-patterns.html">Event
+     * Patterns</a> in the <i>Amazon EventBridge User Guide</i>.
      * </p>
      * 
      * @return The event pattern. For more information, see <a
-     *         href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html"
-     *         >Events and Event Patterns</a> in the <i>Amazon CloudWatch Events User Guide</i>.
+     *         href="https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-and-event-patterns.html">Event
+     *         Patterns</a> in the <i>Amazon EventBridge User Guide</i>.
      */
 
     public String getEventPattern() {
@@ -184,14 +197,14 @@ public class DescribeRuleResult extends com.amazonaws.AmazonWebServiceResult<com
     /**
      * <p>
      * The event pattern. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html">Events and
-     * Event Patterns</a> in the <i>Amazon CloudWatch Events User Guide</i>.
+     * href="https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-and-event-patterns.html">Event
+     * Patterns</a> in the <i>Amazon EventBridge User Guide</i>.
      * </p>
      * 
      * @param eventPattern
      *        The event pattern. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html"
-     *        >Events and Event Patterns</a> in the <i>Amazon CloudWatch Events User Guide</i>.
+     *        href="https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-and-event-patterns.html">Event
+     *        Patterns</a> in the <i>Amazon EventBridge User Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -202,11 +215,12 @@ public class DescribeRuleResult extends com.amazonaws.AmazonWebServiceResult<com
 
     /**
      * <p>
-     * The scheduling expression. For example, "cron(0 20 * * ? *)", "rate(5 minutes)".
+     * The scheduling expression: for example, <code>"cron(0 20 * * ? *)"</code> or <code>"rate(5 minutes)"</code>.
      * </p>
      * 
      * @param scheduleExpression
-     *        The scheduling expression. For example, "cron(0 20 * * ? *)", "rate(5 minutes)".
+     *        The scheduling expression: for example, <code>"cron(0 20 * * ? *)"</code> or
+     *        <code>"rate(5 minutes)"</code>.
      */
 
     public void setScheduleExpression(String scheduleExpression) {
@@ -215,10 +229,11 @@ public class DescribeRuleResult extends com.amazonaws.AmazonWebServiceResult<com
 
     /**
      * <p>
-     * The scheduling expression. For example, "cron(0 20 * * ? *)", "rate(5 minutes)".
+     * The scheduling expression: for example, <code>"cron(0 20 * * ? *)"</code> or <code>"rate(5 minutes)"</code>.
      * </p>
      * 
-     * @return The scheduling expression. For example, "cron(0 20 * * ? *)", "rate(5 minutes)".
+     * @return The scheduling expression: for example, <code>"cron(0 20 * * ? *)"</code> or
+     *         <code>"rate(5 minutes)"</code>.
      */
 
     public String getScheduleExpression() {
@@ -227,11 +242,12 @@ public class DescribeRuleResult extends com.amazonaws.AmazonWebServiceResult<com
 
     /**
      * <p>
-     * The scheduling expression. For example, "cron(0 20 * * ? *)", "rate(5 minutes)".
+     * The scheduling expression: for example, <code>"cron(0 20 * * ? *)"</code> or <code>"rate(5 minutes)"</code>.
      * </p>
      * 
      * @param scheduleExpression
-     *        The scheduling expression. For example, "cron(0 20 * * ? *)", "rate(5 minutes)".
+     *        The scheduling expression: for example, <code>"cron(0 20 * * ? *)"</code> or
+     *        <code>"rate(5 minutes)"</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -394,7 +410,94 @@ public class DescribeRuleResult extends com.amazonaws.AmazonWebServiceResult<com
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * <p>
+     * If this is a managed rule, created by an AWS service on your behalf, this field displays the principal name of
+     * the AWS service that created the rule.
+     * </p>
+     * 
+     * @param managedBy
+     *        If this is a managed rule, created by an AWS service on your behalf, this field displays the principal
+     *        name of the AWS service that created the rule.
+     */
+
+    public void setManagedBy(String managedBy) {
+        this.managedBy = managedBy;
+    }
+
+    /**
+     * <p>
+     * If this is a managed rule, created by an AWS service on your behalf, this field displays the principal name of
+     * the AWS service that created the rule.
+     * </p>
+     * 
+     * @return If this is a managed rule, created by an AWS service on your behalf, this field displays the principal
+     *         name of the AWS service that created the rule.
+     */
+
+    public String getManagedBy() {
+        return this.managedBy;
+    }
+
+    /**
+     * <p>
+     * If this is a managed rule, created by an AWS service on your behalf, this field displays the principal name of
+     * the AWS service that created the rule.
+     * </p>
+     * 
+     * @param managedBy
+     *        If this is a managed rule, created by an AWS service on your behalf, this field displays the principal
+     *        name of the AWS service that created the rule.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DescribeRuleResult withManagedBy(String managedBy) {
+        setManagedBy(managedBy);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The event bus associated with the rule.
+     * </p>
+     * 
+     * @param eventBusName
+     *        The event bus associated with the rule.
+     */
+
+    public void setEventBusName(String eventBusName) {
+        this.eventBusName = eventBusName;
+    }
+
+    /**
+     * <p>
+     * The event bus associated with the rule.
+     * </p>
+     * 
+     * @return The event bus associated with the rule.
+     */
+
+    public String getEventBusName() {
+        return this.eventBusName;
+    }
+
+    /**
+     * <p>
+     * The event bus associated with the rule.
+     * </p>
+     * 
+     * @param eventBusName
+     *        The event bus associated with the rule.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DescribeRuleResult withEventBusName(String eventBusName) {
+        setEventBusName(eventBusName);
+        return this;
+    }
+
+    /**
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -417,7 +520,11 @@ public class DescribeRuleResult extends com.amazonaws.AmazonWebServiceResult<com
         if (getDescription() != null)
             sb.append("Description: ").append(getDescription()).append(",");
         if (getRoleArn() != null)
-            sb.append("RoleArn: ").append(getRoleArn());
+            sb.append("RoleArn: ").append(getRoleArn()).append(",");
+        if (getManagedBy() != null)
+            sb.append("ManagedBy: ").append(getManagedBy()).append(",");
+        if (getEventBusName() != null)
+            sb.append("EventBusName: ").append(getEventBusName());
         sb.append("}");
         return sb.toString();
     }
@@ -460,6 +567,14 @@ public class DescribeRuleResult extends com.amazonaws.AmazonWebServiceResult<com
             return false;
         if (other.getRoleArn() != null && other.getRoleArn().equals(this.getRoleArn()) == false)
             return false;
+        if (other.getManagedBy() == null ^ this.getManagedBy() == null)
+            return false;
+        if (other.getManagedBy() != null && other.getManagedBy().equals(this.getManagedBy()) == false)
+            return false;
+        if (other.getEventBusName() == null ^ this.getEventBusName() == null)
+            return false;
+        if (other.getEventBusName() != null && other.getEventBusName().equals(this.getEventBusName()) == false)
+            return false;
         return true;
     }
 
@@ -475,6 +590,8 @@ public class DescribeRuleResult extends com.amazonaws.AmazonWebServiceResult<com
         hashCode = prime * hashCode + ((getState() == null) ? 0 : getState().hashCode());
         hashCode = prime * hashCode + ((getDescription() == null) ? 0 : getDescription().hashCode());
         hashCode = prime * hashCode + ((getRoleArn() == null) ? 0 : getRoleArn().hashCode());
+        hashCode = prime * hashCode + ((getManagedBy() == null) ? 0 : getManagedBy().hashCode());
+        hashCode = prime * hashCode + ((getEventBusName() == null) ? 0 : getEventBusName().hashCode());
         return hashCode;
     }
 

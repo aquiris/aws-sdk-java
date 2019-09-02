@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -86,7 +86,13 @@ public class Cluster implements Serializable, Cloneable, StructuredPojo {
     private String runningAmiVersion;
     /**
      * <p>
-     * The release label for the Amazon EMR release.
+     * The Amazon EMR release label, which determines the version of open-source application packages installed on the
+     * cluster. Release labels are in the form <code>emr-x.x.x</code>, where x.x.x is an Amazon EMR release version such
+     * as <code>emr-5.14.0</code>. For more information about Amazon EMR release versions and included application
+     * versions and features, see <a
+     * href="https://docs.aws.amazon.com/emr/latest/ReleaseGuide/">https://docs.aws.amazon.
+     * com/emr/latest/ReleaseGuide/</a>. The release label applies only to Amazon EMR releases version 4.0 and later.
+     * Earlier versions use <code>AmiVersion</code>.
      * </p>
      */
     private String releaseLabel;
@@ -104,6 +110,9 @@ public class Cluster implements Serializable, Cloneable, StructuredPojo {
      */
     private Boolean terminationProtected;
     /**
+     * <p>
+     * <i>This member will be deprecated.</i>
+     * </p>
      * <p>
      * Indicates whether the cluster is visible to all IAM users of the AWS account associated with the cluster. If this
      * value is set to <code>true</code>, all IAM users of that AWS account can view and manage the cluster if they have
@@ -204,7 +213,7 @@ public class Cluster implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * Attributes for Kerberos configuration when Kerberos authentication is enabled using a security configuration. For
-     * more information see <a href="http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-kerberos.html">Use
+     * more information see <a href="https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-kerberos.html">Use
      * Kerberos Authentication</a> in the <i>EMR Management Guide</i>.
      * </p>
      */
@@ -646,11 +655,23 @@ public class Cluster implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The release label for the Amazon EMR release.
+     * The Amazon EMR release label, which determines the version of open-source application packages installed on the
+     * cluster. Release labels are in the form <code>emr-x.x.x</code>, where x.x.x is an Amazon EMR release version such
+     * as <code>emr-5.14.0</code>. For more information about Amazon EMR release versions and included application
+     * versions and features, see <a
+     * href="https://docs.aws.amazon.com/emr/latest/ReleaseGuide/">https://docs.aws.amazon.
+     * com/emr/latest/ReleaseGuide/</a>. The release label applies only to Amazon EMR releases version 4.0 and later.
+     * Earlier versions use <code>AmiVersion</code>.
      * </p>
      * 
      * @param releaseLabel
-     *        The release label for the Amazon EMR release.
+     *        The Amazon EMR release label, which determines the version of open-source application packages installed
+     *        on the cluster. Release labels are in the form <code>emr-x.x.x</code>, where x.x.x is an Amazon EMR
+     *        release version such as <code>emr-5.14.0</code>. For more information about Amazon EMR release versions
+     *        and included application versions and features, see <a
+     *        href="https://docs.aws.amazon.com/emr/latest/ReleaseGuide/"
+     *        >https://docs.aws.amazon.com/emr/latest/ReleaseGuide/</a>. The release label applies only to Amazon EMR
+     *        releases version 4.0 and later. Earlier versions use <code>AmiVersion</code>.
      */
 
     public void setReleaseLabel(String releaseLabel) {
@@ -659,10 +680,22 @@ public class Cluster implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The release label for the Amazon EMR release.
+     * The Amazon EMR release label, which determines the version of open-source application packages installed on the
+     * cluster. Release labels are in the form <code>emr-x.x.x</code>, where x.x.x is an Amazon EMR release version such
+     * as <code>emr-5.14.0</code>. For more information about Amazon EMR release versions and included application
+     * versions and features, see <a
+     * href="https://docs.aws.amazon.com/emr/latest/ReleaseGuide/">https://docs.aws.amazon.
+     * com/emr/latest/ReleaseGuide/</a>. The release label applies only to Amazon EMR releases version 4.0 and later.
+     * Earlier versions use <code>AmiVersion</code>.
      * </p>
      * 
-     * @return The release label for the Amazon EMR release.
+     * @return The Amazon EMR release label, which determines the version of open-source application packages installed
+     *         on the cluster. Release labels are in the form <code>emr-x.x.x</code>, where x.x.x is an Amazon EMR
+     *         release version such as <code>emr-5.14.0</code>. For more information about Amazon EMR release versions
+     *         and included application versions and features, see <a
+     *         href="https://docs.aws.amazon.com/emr/latest/ReleaseGuide/"
+     *         >https://docs.aws.amazon.com/emr/latest/ReleaseGuide/</a>. The release label applies only to Amazon EMR
+     *         releases version 4.0 and later. Earlier versions use <code>AmiVersion</code>.
      */
 
     public String getReleaseLabel() {
@@ -671,11 +704,23 @@ public class Cluster implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The release label for the Amazon EMR release.
+     * The Amazon EMR release label, which determines the version of open-source application packages installed on the
+     * cluster. Release labels are in the form <code>emr-x.x.x</code>, where x.x.x is an Amazon EMR release version such
+     * as <code>emr-5.14.0</code>. For more information about Amazon EMR release versions and included application
+     * versions and features, see <a
+     * href="https://docs.aws.amazon.com/emr/latest/ReleaseGuide/">https://docs.aws.amazon.
+     * com/emr/latest/ReleaseGuide/</a>. The release label applies only to Amazon EMR releases version 4.0 and later.
+     * Earlier versions use <code>AmiVersion</code>.
      * </p>
      * 
      * @param releaseLabel
-     *        The release label for the Amazon EMR release.
+     *        The Amazon EMR release label, which determines the version of open-source application packages installed
+     *        on the cluster. Release labels are in the form <code>emr-x.x.x</code>, where x.x.x is an Amazon EMR
+     *        release version such as <code>emr-5.14.0</code>. For more information about Amazon EMR release versions
+     *        and included application versions and features, see <a
+     *        href="https://docs.aws.amazon.com/emr/latest/ReleaseGuide/"
+     *        >https://docs.aws.amazon.com/emr/latest/ReleaseGuide/</a>. The release label applies only to Amazon EMR
+     *        releases version 4.0 and later. Earlier versions use <code>AmiVersion</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -798,6 +843,9 @@ public class Cluster implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
+     * <i>This member will be deprecated.</i>
+     * </p>
+     * <p>
      * Indicates whether the cluster is visible to all IAM users of the AWS account associated with the cluster. If this
      * value is set to <code>true</code>, all IAM users of that AWS account can view and manage the cluster if they have
      * the proper policy permissions set. If this value is <code>false</code>, only the IAM user that created the
@@ -805,6 +853,8 @@ public class Cluster implements Serializable, Cloneable, StructuredPojo {
      * </p>
      * 
      * @param visibleToAllUsers
+     *        <i>This member will be deprecated.</i> </p>
+     *        <p>
      *        Indicates whether the cluster is visible to all IAM users of the AWS account associated with the cluster.
      *        If this value is set to <code>true</code>, all IAM users of that AWS account can view and manage the
      *        cluster if they have the proper policy permissions set. If this value is <code>false</code>, only the IAM
@@ -818,13 +868,18 @@ public class Cluster implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
+     * <i>This member will be deprecated.</i>
+     * </p>
+     * <p>
      * Indicates whether the cluster is visible to all IAM users of the AWS account associated with the cluster. If this
      * value is set to <code>true</code>, all IAM users of that AWS account can view and manage the cluster if they have
      * the proper policy permissions set. If this value is <code>false</code>, only the IAM user that created the
      * cluster can view and manage it. This value can be changed using the <a>SetVisibleToAllUsers</a> action.
      * </p>
      * 
-     * @return Indicates whether the cluster is visible to all IAM users of the AWS account associated with the cluster.
+     * @return <i>This member will be deprecated.</i> </p>
+     *         <p>
+     *         Indicates whether the cluster is visible to all IAM users of the AWS account associated with the cluster.
      *         If this value is set to <code>true</code>, all IAM users of that AWS account can view and manage the
      *         cluster if they have the proper policy permissions set. If this value is <code>false</code>, only the IAM
      *         user that created the cluster can view and manage it. This value can be changed using the
@@ -837,6 +892,9 @@ public class Cluster implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
+     * <i>This member will be deprecated.</i>
+     * </p>
+     * <p>
      * Indicates whether the cluster is visible to all IAM users of the AWS account associated with the cluster. If this
      * value is set to <code>true</code>, all IAM users of that AWS account can view and manage the cluster if they have
      * the proper policy permissions set. If this value is <code>false</code>, only the IAM user that created the
@@ -844,6 +902,8 @@ public class Cluster implements Serializable, Cloneable, StructuredPojo {
      * </p>
      * 
      * @param visibleToAllUsers
+     *        <i>This member will be deprecated.</i> </p>
+     *        <p>
      *        Indicates whether the cluster is visible to all IAM users of the AWS account associated with the cluster.
      *        If this value is set to <code>true</code>, all IAM users of that AWS account can view and manage the
      *        cluster if they have the proper policy permissions set. If this value is <code>false</code>, only the IAM
@@ -859,13 +919,18 @@ public class Cluster implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
+     * <i>This member will be deprecated.</i>
+     * </p>
+     * <p>
      * Indicates whether the cluster is visible to all IAM users of the AWS account associated with the cluster. If this
      * value is set to <code>true</code>, all IAM users of that AWS account can view and manage the cluster if they have
      * the proper policy permissions set. If this value is <code>false</code>, only the IAM user that created the
      * cluster can view and manage it. This value can be changed using the <a>SetVisibleToAllUsers</a> action.
      * </p>
      * 
-     * @return Indicates whether the cluster is visible to all IAM users of the AWS account associated with the cluster.
+     * @return <i>This member will be deprecated.</i> </p>
+     *         <p>
+     *         Indicates whether the cluster is visible to all IAM users of the AWS account associated with the cluster.
      *         If this value is set to <code>true</code>, all IAM users of that AWS account can view and manage the
      *         cluster if they have the proper policy permissions set. If this value is <code>false</code>, only the IAM
      *         user that created the cluster can view and manage it. This value can be changed using the
@@ -1668,14 +1733,14 @@ public class Cluster implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * Attributes for Kerberos configuration when Kerberos authentication is enabled using a security configuration. For
-     * more information see <a href="http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-kerberos.html">Use
+     * more information see <a href="https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-kerberos.html">Use
      * Kerberos Authentication</a> in the <i>EMR Management Guide</i>.
      * </p>
      * 
      * @param kerberosAttributes
      *        Attributes for Kerberos configuration when Kerberos authentication is enabled using a security
      *        configuration. For more information see <a
-     *        href="http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-kerberos.html">Use Kerberos
+     *        href="https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-kerberos.html">Use Kerberos
      *        Authentication</a> in the <i>EMR Management Guide</i>.
      */
 
@@ -1686,13 +1751,13 @@ public class Cluster implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * Attributes for Kerberos configuration when Kerberos authentication is enabled using a security configuration. For
-     * more information see <a href="http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-kerberos.html">Use
+     * more information see <a href="https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-kerberos.html">Use
      * Kerberos Authentication</a> in the <i>EMR Management Guide</i>.
      * </p>
      * 
      * @return Attributes for Kerberos configuration when Kerberos authentication is enabled using a security
      *         configuration. For more information see <a
-     *         href="http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-kerberos.html">Use Kerberos
+     *         href="https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-kerberos.html">Use Kerberos
      *         Authentication</a> in the <i>EMR Management Guide</i>.
      */
 
@@ -1703,14 +1768,14 @@ public class Cluster implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * Attributes for Kerberos configuration when Kerberos authentication is enabled using a security configuration. For
-     * more information see <a href="http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-kerberos.html">Use
+     * more information see <a href="https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-kerberos.html">Use
      * Kerberos Authentication</a> in the <i>EMR Management Guide</i>.
      * </p>
      * 
      * @param kerberosAttributes
      *        Attributes for Kerberos configuration when Kerberos authentication is enabled using a security
      *        configuration. For more information see <a
-     *        href="http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-kerberos.html">Use Kerberos
+     *        href="https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-kerberos.html">Use Kerberos
      *        Authentication</a> in the <i>EMR Management Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -1721,7 +1786,8 @@ public class Cluster implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

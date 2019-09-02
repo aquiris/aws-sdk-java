@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -20,7 +20,7 @@ import javax.annotation.Generated;
  * A summary of the information about a CloudFront distribution.
  * </p>
  * 
- * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2017-10-30/DistributionSummary" target="_top">AWS API
+ * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2019-03-26/DistributionSummary" target="_top">AWS API
  *      Documentation</a>
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
@@ -73,6 +73,12 @@ public class DistributionSummary implements Serializable, Cloneable {
     private Origins origins;
     /**
      * <p>
+     * A complex type that contains information about origin groups for this distribution.
+     * </p>
+     */
+    private OriginGroups originGroups;
+    /**
+     * <p>
      * A complex type that describes the default cache behavior if you don't specify a <code>CacheBehavior</code>
      * element or if files don't match any of the values of <code>PathPattern</code> in <code>CacheBehavior</code>
      * elements. You must create exactly one default cache behavior.
@@ -97,7 +103,11 @@ public class DistributionSummary implements Serializable, Cloneable {
      * </p>
      */
     private String comment;
-
+    /**
+     * <p>
+     * A complex type that contains information about price class for this streaming distribution.
+     * </p>
+     */
     private String priceClass;
     /**
      * <p>
@@ -105,9 +115,19 @@ public class DistributionSummary implements Serializable, Cloneable {
      * </p>
      */
     private Boolean enabled;
-
+    /**
+     * <p>
+     * A complex type that specifies whether you want viewers to use HTTP or HTTPS to request your objects, whether
+     * you're using an alternate domain name with HTTPS, and if so, if you're using AWS Certificate Manager (ACM) or a
+     * third-party certificate authority.
+     * </p>
+     */
     private ViewerCertificate viewerCertificate;
-
+    /**
+     * <p>
+     * A complex type that identifies ways in which you want to restrict distribution of your content.
+     * </p>
+     */
     private Restrictions restrictions;
     /**
      * <p>
@@ -129,6 +149,19 @@ public class DistributionSummary implements Serializable, Cloneable {
      * </p>
      */
     private Boolean isIPV6Enabled;
+    /**
+     * <p>
+     * AWS services in China customers must file for an Internet Content Provider (ICP) recordal if they want to serve
+     * content publicly on an alternate domain name, also known as a CNAME, that they've added to CloudFront.
+     * AliasICPRecordal provides the ICP recordal status for CNAMEs associated with distributions.
+     * </p>
+     * <p>
+     * For more information about ICP recordals, see <a
+     * href="https://docs.amazonaws.cn/en_us/aws/latest/userguide/accounts-and-credentials.html"> Signup, Accounts, and
+     * Credentials</a> in <i>Getting Started with AWS services in China</i>.
+     * </p>
+     */
+    private com.amazonaws.internal.SdkInternalList<AliasICPRecordal> aliasICPRecordals;
 
     /**
      * <p>
@@ -436,6 +469,46 @@ public class DistributionSummary implements Serializable, Cloneable {
 
     /**
      * <p>
+     * A complex type that contains information about origin groups for this distribution.
+     * </p>
+     * 
+     * @param originGroups
+     *        A complex type that contains information about origin groups for this distribution.
+     */
+
+    public void setOriginGroups(OriginGroups originGroups) {
+        this.originGroups = originGroups;
+    }
+
+    /**
+     * <p>
+     * A complex type that contains information about origin groups for this distribution.
+     * </p>
+     * 
+     * @return A complex type that contains information about origin groups for this distribution.
+     */
+
+    public OriginGroups getOriginGroups() {
+        return this.originGroups;
+    }
+
+    /**
+     * <p>
+     * A complex type that contains information about origin groups for this distribution.
+     * </p>
+     * 
+     * @param originGroups
+     *        A complex type that contains information about origin groups for this distribution.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DistributionSummary withOriginGroups(OriginGroups originGroups) {
+        setOriginGroups(originGroups);
+        return this;
+    }
+
+    /**
+     * <p>
      * A complex type that describes the default cache behavior if you don't specify a <code>CacheBehavior</code>
      * element or if files don't match any of the values of <code>PathPattern</code> in <code>CacheBehavior</code>
      * elements. You must create exactly one default cache behavior.
@@ -607,7 +680,12 @@ public class DistributionSummary implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * A complex type that contains information about price class for this streaming distribution.
+     * </p>
+     * 
      * @param priceClass
+     *        A complex type that contains information about price class for this streaming distribution.
      * @see PriceClass
      */
 
@@ -616,7 +694,11 @@ public class DistributionSummary implements Serializable, Cloneable {
     }
 
     /**
-     * @return
+     * <p>
+     * A complex type that contains information about price class for this streaming distribution.
+     * </p>
+     * 
+     * @return A complex type that contains information about price class for this streaming distribution.
      * @see PriceClass
      */
 
@@ -625,7 +707,12 @@ public class DistributionSummary implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * A complex type that contains information about price class for this streaming distribution.
+     * </p>
+     * 
      * @param priceClass
+     *        A complex type that contains information about price class for this streaming distribution.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see PriceClass
      */
@@ -636,7 +723,12 @@ public class DistributionSummary implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * A complex type that contains information about price class for this streaming distribution.
+     * </p>
+     * 
      * @param priceClass
+     *        A complex type that contains information about price class for this streaming distribution.
      * @see PriceClass
      */
 
@@ -645,7 +737,12 @@ public class DistributionSummary implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * A complex type that contains information about price class for this streaming distribution.
+     * </p>
+     * 
      * @param priceClass
+     *        A complex type that contains information about price class for this streaming distribution.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see PriceClass
      */
@@ -708,7 +805,16 @@ public class DistributionSummary implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * A complex type that specifies whether you want viewers to use HTTP or HTTPS to request your objects, whether
+     * you're using an alternate domain name with HTTPS, and if so, if you're using AWS Certificate Manager (ACM) or a
+     * third-party certificate authority.
+     * </p>
+     * 
      * @param viewerCertificate
+     *        A complex type that specifies whether you want viewers to use HTTP or HTTPS to request your objects,
+     *        whether you're using an alternate domain name with HTTPS, and if so, if you're using AWS Certificate
+     *        Manager (ACM) or a third-party certificate authority.
      */
 
     public void setViewerCertificate(ViewerCertificate viewerCertificate) {
@@ -716,7 +822,15 @@ public class DistributionSummary implements Serializable, Cloneable {
     }
 
     /**
-     * @return
+     * <p>
+     * A complex type that specifies whether you want viewers to use HTTP or HTTPS to request your objects, whether
+     * you're using an alternate domain name with HTTPS, and if so, if you're using AWS Certificate Manager (ACM) or a
+     * third-party certificate authority.
+     * </p>
+     * 
+     * @return A complex type that specifies whether you want viewers to use HTTP or HTTPS to request your objects,
+     *         whether you're using an alternate domain name with HTTPS, and if so, if you're using AWS Certificate
+     *         Manager (ACM) or a third-party certificate authority.
      */
 
     public ViewerCertificate getViewerCertificate() {
@@ -724,7 +838,16 @@ public class DistributionSummary implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * A complex type that specifies whether you want viewers to use HTTP or HTTPS to request your objects, whether
+     * you're using an alternate domain name with HTTPS, and if so, if you're using AWS Certificate Manager (ACM) or a
+     * third-party certificate authority.
+     * </p>
+     * 
      * @param viewerCertificate
+     *        A complex type that specifies whether you want viewers to use HTTP or HTTPS to request your objects,
+     *        whether you're using an alternate domain name with HTTPS, and if so, if you're using AWS Certificate
+     *        Manager (ACM) or a third-party certificate authority.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -734,7 +857,12 @@ public class DistributionSummary implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * A complex type that identifies ways in which you want to restrict distribution of your content.
+     * </p>
+     * 
      * @param restrictions
+     *        A complex type that identifies ways in which you want to restrict distribution of your content.
      */
 
     public void setRestrictions(Restrictions restrictions) {
@@ -742,7 +870,11 @@ public class DistributionSummary implements Serializable, Cloneable {
     }
 
     /**
-     * @return
+     * <p>
+     * A complex type that identifies ways in which you want to restrict distribution of your content.
+     * </p>
+     * 
+     * @return A complex type that identifies ways in which you want to restrict distribution of your content.
      */
 
     public Restrictions getRestrictions() {
@@ -750,7 +882,12 @@ public class DistributionSummary implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * A complex type that identifies ways in which you want to restrict distribution of your content.
+     * </p>
+     * 
      * @param restrictions
+     *        A complex type that identifies ways in which you want to restrict distribution of your content.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -945,7 +1082,137 @@ public class DistributionSummary implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * <p>
+     * AWS services in China customers must file for an Internet Content Provider (ICP) recordal if they want to serve
+     * content publicly on an alternate domain name, also known as a CNAME, that they've added to CloudFront.
+     * AliasICPRecordal provides the ICP recordal status for CNAMEs associated with distributions.
+     * </p>
+     * <p>
+     * For more information about ICP recordals, see <a
+     * href="https://docs.amazonaws.cn/en_us/aws/latest/userguide/accounts-and-credentials.html"> Signup, Accounts, and
+     * Credentials</a> in <i>Getting Started with AWS services in China</i>.
+     * </p>
+     * 
+     * @return AWS services in China customers must file for an Internet Content Provider (ICP) recordal if they want to
+     *         serve content publicly on an alternate domain name, also known as a CNAME, that they've added to
+     *         CloudFront. AliasICPRecordal provides the ICP recordal status for CNAMEs associated with
+     *         distributions.</p>
+     *         <p>
+     *         For more information about ICP recordals, see <a
+     *         href="https://docs.amazonaws.cn/en_us/aws/latest/userguide/accounts-and-credentials.html"> Signup,
+     *         Accounts, and Credentials</a> in <i>Getting Started with AWS services in China</i>.
+     */
+
+    public java.util.List<AliasICPRecordal> getAliasICPRecordals() {
+        if (aliasICPRecordals == null) {
+            aliasICPRecordals = new com.amazonaws.internal.SdkInternalList<AliasICPRecordal>();
+        }
+        return aliasICPRecordals;
+    }
+
+    /**
+     * <p>
+     * AWS services in China customers must file for an Internet Content Provider (ICP) recordal if they want to serve
+     * content publicly on an alternate domain name, also known as a CNAME, that they've added to CloudFront.
+     * AliasICPRecordal provides the ICP recordal status for CNAMEs associated with distributions.
+     * </p>
+     * <p>
+     * For more information about ICP recordals, see <a
+     * href="https://docs.amazonaws.cn/en_us/aws/latest/userguide/accounts-and-credentials.html"> Signup, Accounts, and
+     * Credentials</a> in <i>Getting Started with AWS services in China</i>.
+     * </p>
+     * 
+     * @param aliasICPRecordals
+     *        AWS services in China customers must file for an Internet Content Provider (ICP) recordal if they want to
+     *        serve content publicly on an alternate domain name, also known as a CNAME, that they've added to
+     *        CloudFront. AliasICPRecordal provides the ICP recordal status for CNAMEs associated with
+     *        distributions.</p>
+     *        <p>
+     *        For more information about ICP recordals, see <a
+     *        href="https://docs.amazonaws.cn/en_us/aws/latest/userguide/accounts-and-credentials.html"> Signup,
+     *        Accounts, and Credentials</a> in <i>Getting Started with AWS services in China</i>.
+     */
+
+    public void setAliasICPRecordals(java.util.Collection<AliasICPRecordal> aliasICPRecordals) {
+        if (aliasICPRecordals == null) {
+            this.aliasICPRecordals = null;
+            return;
+        }
+
+        this.aliasICPRecordals = new com.amazonaws.internal.SdkInternalList<AliasICPRecordal>(aliasICPRecordals);
+    }
+
+    /**
+     * <p>
+     * AWS services in China customers must file for an Internet Content Provider (ICP) recordal if they want to serve
+     * content publicly on an alternate domain name, also known as a CNAME, that they've added to CloudFront.
+     * AliasICPRecordal provides the ICP recordal status for CNAMEs associated with distributions.
+     * </p>
+     * <p>
+     * For more information about ICP recordals, see <a
+     * href="https://docs.amazonaws.cn/en_us/aws/latest/userguide/accounts-and-credentials.html"> Signup, Accounts, and
+     * Credentials</a> in <i>Getting Started with AWS services in China</i>.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setAliasICPRecordals(java.util.Collection)} or {@link #withAliasICPRecordals(java.util.Collection)} if
+     * you want to override the existing values.
+     * </p>
+     * 
+     * @param aliasICPRecordals
+     *        AWS services in China customers must file for an Internet Content Provider (ICP) recordal if they want to
+     *        serve content publicly on an alternate domain name, also known as a CNAME, that they've added to
+     *        CloudFront. AliasICPRecordal provides the ICP recordal status for CNAMEs associated with
+     *        distributions.</p>
+     *        <p>
+     *        For more information about ICP recordals, see <a
+     *        href="https://docs.amazonaws.cn/en_us/aws/latest/userguide/accounts-and-credentials.html"> Signup,
+     *        Accounts, and Credentials</a> in <i>Getting Started with AWS services in China</i>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DistributionSummary withAliasICPRecordals(AliasICPRecordal... aliasICPRecordals) {
+        if (this.aliasICPRecordals == null) {
+            setAliasICPRecordals(new com.amazonaws.internal.SdkInternalList<AliasICPRecordal>(aliasICPRecordals.length));
+        }
+        for (AliasICPRecordal ele : aliasICPRecordals) {
+            this.aliasICPRecordals.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * AWS services in China customers must file for an Internet Content Provider (ICP) recordal if they want to serve
+     * content publicly on an alternate domain name, also known as a CNAME, that they've added to CloudFront.
+     * AliasICPRecordal provides the ICP recordal status for CNAMEs associated with distributions.
+     * </p>
+     * <p>
+     * For more information about ICP recordals, see <a
+     * href="https://docs.amazonaws.cn/en_us/aws/latest/userguide/accounts-and-credentials.html"> Signup, Accounts, and
+     * Credentials</a> in <i>Getting Started with AWS services in China</i>.
+     * </p>
+     * 
+     * @param aliasICPRecordals
+     *        AWS services in China customers must file for an Internet Content Provider (ICP) recordal if they want to
+     *        serve content publicly on an alternate domain name, also known as a CNAME, that they've added to
+     *        CloudFront. AliasICPRecordal provides the ICP recordal status for CNAMEs associated with
+     *        distributions.</p>
+     *        <p>
+     *        For more information about ICP recordals, see <a
+     *        href="https://docs.amazonaws.cn/en_us/aws/latest/userguide/accounts-and-credentials.html"> Signup,
+     *        Accounts, and Credentials</a> in <i>Getting Started with AWS services in China</i>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DistributionSummary withAliasICPRecordals(java.util.Collection<AliasICPRecordal> aliasICPRecordals) {
+        setAliasICPRecordals(aliasICPRecordals);
+        return this;
+    }
+
+    /**
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -969,6 +1236,8 @@ public class DistributionSummary implements Serializable, Cloneable {
             sb.append("Aliases: ").append(getAliases()).append(",");
         if (getOrigins() != null)
             sb.append("Origins: ").append(getOrigins()).append(",");
+        if (getOriginGroups() != null)
+            sb.append("OriginGroups: ").append(getOriginGroups()).append(",");
         if (getDefaultCacheBehavior() != null)
             sb.append("DefaultCacheBehavior: ").append(getDefaultCacheBehavior()).append(",");
         if (getCacheBehaviors() != null)
@@ -990,7 +1259,9 @@ public class DistributionSummary implements Serializable, Cloneable {
         if (getHttpVersion() != null)
             sb.append("HttpVersion: ").append(getHttpVersion()).append(",");
         if (getIsIPV6Enabled() != null)
-            sb.append("IsIPV6Enabled: ").append(getIsIPV6Enabled());
+            sb.append("IsIPV6Enabled: ").append(getIsIPV6Enabled()).append(",");
+        if (getAliasICPRecordals() != null)
+            sb.append("AliasICPRecordals: ").append(getAliasICPRecordals());
         sb.append("}");
         return sb.toString();
     }
@@ -1032,6 +1303,10 @@ public class DistributionSummary implements Serializable, Cloneable {
         if (other.getOrigins() == null ^ this.getOrigins() == null)
             return false;
         if (other.getOrigins() != null && other.getOrigins().equals(this.getOrigins()) == false)
+            return false;
+        if (other.getOriginGroups() == null ^ this.getOriginGroups() == null)
+            return false;
+        if (other.getOriginGroups() != null && other.getOriginGroups().equals(this.getOriginGroups()) == false)
             return false;
         if (other.getDefaultCacheBehavior() == null ^ this.getDefaultCacheBehavior() == null)
             return false;
@@ -1077,6 +1352,10 @@ public class DistributionSummary implements Serializable, Cloneable {
             return false;
         if (other.getIsIPV6Enabled() != null && other.getIsIPV6Enabled().equals(this.getIsIPV6Enabled()) == false)
             return false;
+        if (other.getAliasICPRecordals() == null ^ this.getAliasICPRecordals() == null)
+            return false;
+        if (other.getAliasICPRecordals() != null && other.getAliasICPRecordals().equals(this.getAliasICPRecordals()) == false)
+            return false;
         return true;
     }
 
@@ -1092,6 +1371,7 @@ public class DistributionSummary implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getDomainName() == null) ? 0 : getDomainName().hashCode());
         hashCode = prime * hashCode + ((getAliases() == null) ? 0 : getAliases().hashCode());
         hashCode = prime * hashCode + ((getOrigins() == null) ? 0 : getOrigins().hashCode());
+        hashCode = prime * hashCode + ((getOriginGroups() == null) ? 0 : getOriginGroups().hashCode());
         hashCode = prime * hashCode + ((getDefaultCacheBehavior() == null) ? 0 : getDefaultCacheBehavior().hashCode());
         hashCode = prime * hashCode + ((getCacheBehaviors() == null) ? 0 : getCacheBehaviors().hashCode());
         hashCode = prime * hashCode + ((getCustomErrorResponses() == null) ? 0 : getCustomErrorResponses().hashCode());
@@ -1103,6 +1383,7 @@ public class DistributionSummary implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getWebACLId() == null) ? 0 : getWebACLId().hashCode());
         hashCode = prime * hashCode + ((getHttpVersion() == null) ? 0 : getHttpVersion().hashCode());
         hashCode = prime * hashCode + ((getIsIPV6Enabled() == null) ? 0 : getIsIPV6Enabled().hashCode());
+        hashCode = prime * hashCode + ((getAliasICPRecordals() == null) ? 0 : getAliasICPRecordals().hashCode());
         return hashCode;
     }
 

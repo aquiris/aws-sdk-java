@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -46,8 +46,40 @@ public class DescribeFleetsRequest extends AmazonWebServiceRequest implements Se
     private com.amazonaws.internal.SdkInternalList<String> fleetIds;
     /**
      * <p>
-     * One or more filters.
+     * The filters.
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>activity-status</code> - The progress of the EC2 Fleet ( <code>error</code> |
+     * <code>pending-fulfillment</code> | <code>pending-termination</code> | <code>fulfilled</code>).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>excess-capacity-termination-policy</code> - Indicates whether to terminate running instances if the target
+     * capacity is decreased below the current EC2 Fleet size (<code>true</code> | <code>false</code>).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>fleet-state</code> - The state of the EC2 Fleet (<code>submitted</code> | <code>active</code> |
+     * <code>deleted</code> | <code>failed</code> | <code>deleted-running</code> | <code>deleted-terminating</code> |
+     * <code>modifying</code>).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>replace-unhealthy-instances</code> - Indicates whether EC2 Fleet should replace unhealthy instances (
+     * <code>true</code> | <code>false</code>).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>type</code> - The type of request (<code>instant</code> | <code>request</code> | <code>maintain</code>).
+     * </p>
+     * </li>
+     * </ul>
      */
     private com.amazonaws.internal.SdkInternalList<Filter> filters;
 
@@ -215,10 +247,74 @@ public class DescribeFleetsRequest extends AmazonWebServiceRequest implements Se
 
     /**
      * <p>
-     * One or more filters.
+     * The filters.
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>activity-status</code> - The progress of the EC2 Fleet ( <code>error</code> |
+     * <code>pending-fulfillment</code> | <code>pending-termination</code> | <code>fulfilled</code>).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>excess-capacity-termination-policy</code> - Indicates whether to terminate running instances if the target
+     * capacity is decreased below the current EC2 Fleet size (<code>true</code> | <code>false</code>).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>fleet-state</code> - The state of the EC2 Fleet (<code>submitted</code> | <code>active</code> |
+     * <code>deleted</code> | <code>failed</code> | <code>deleted-running</code> | <code>deleted-terminating</code> |
+     * <code>modifying</code>).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>replace-unhealthy-instances</code> - Indicates whether EC2 Fleet should replace unhealthy instances (
+     * <code>true</code> | <code>false</code>).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>type</code> - The type of request (<code>instant</code> | <code>request</code> | <code>maintain</code>).
+     * </p>
+     * </li>
+     * </ul>
      * 
-     * @return One or more filters.
+     * @return The filters.</p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         <code>activity-status</code> - The progress of the EC2 Fleet ( <code>error</code> |
+     *         <code>pending-fulfillment</code> | <code>pending-termination</code> | <code>fulfilled</code>).
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>excess-capacity-termination-policy</code> - Indicates whether to terminate running instances if the
+     *         target capacity is decreased below the current EC2 Fleet size (<code>true</code> | <code>false</code>).
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>fleet-state</code> - The state of the EC2 Fleet (<code>submitted</code> | <code>active</code> |
+     *         <code>deleted</code> | <code>failed</code> | <code>deleted-running</code> |
+     *         <code>deleted-terminating</code> | <code>modifying</code>).
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>replace-unhealthy-instances</code> - Indicates whether EC2 Fleet should replace unhealthy instances
+     *         (<code>true</code> | <code>false</code>).
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>type</code> - The type of request (<code>instant</code> | <code>request</code> |
+     *         <code>maintain</code>).
+     *         </p>
+     *         </li>
      */
 
     public java.util.List<Filter> getFilters() {
@@ -230,11 +326,75 @@ public class DescribeFleetsRequest extends AmazonWebServiceRequest implements Se
 
     /**
      * <p>
-     * One or more filters.
+     * The filters.
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>activity-status</code> - The progress of the EC2 Fleet ( <code>error</code> |
+     * <code>pending-fulfillment</code> | <code>pending-termination</code> | <code>fulfilled</code>).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>excess-capacity-termination-policy</code> - Indicates whether to terminate running instances if the target
+     * capacity is decreased below the current EC2 Fleet size (<code>true</code> | <code>false</code>).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>fleet-state</code> - The state of the EC2 Fleet (<code>submitted</code> | <code>active</code> |
+     * <code>deleted</code> | <code>failed</code> | <code>deleted-running</code> | <code>deleted-terminating</code> |
+     * <code>modifying</code>).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>replace-unhealthy-instances</code> - Indicates whether EC2 Fleet should replace unhealthy instances (
+     * <code>true</code> | <code>false</code>).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>type</code> - The type of request (<code>instant</code> | <code>request</code> | <code>maintain</code>).
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param filters
-     *        One or more filters.
+     *        The filters.</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>activity-status</code> - The progress of the EC2 Fleet ( <code>error</code> |
+     *        <code>pending-fulfillment</code> | <code>pending-termination</code> | <code>fulfilled</code>).
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>excess-capacity-termination-policy</code> - Indicates whether to terminate running instances if the
+     *        target capacity is decreased below the current EC2 Fleet size (<code>true</code> | <code>false</code>).
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>fleet-state</code> - The state of the EC2 Fleet (<code>submitted</code> | <code>active</code> |
+     *        <code>deleted</code> | <code>failed</code> | <code>deleted-running</code> |
+     *        <code>deleted-terminating</code> | <code>modifying</code>).
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>replace-unhealthy-instances</code> - Indicates whether EC2 Fleet should replace unhealthy instances
+     *        (<code>true</code> | <code>false</code>).
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>type</code> - The type of request (<code>instant</code> | <code>request</code> |
+     *        <code>maintain</code>).
+     *        </p>
+     *        </li>
      */
 
     public void setFilters(java.util.Collection<Filter> filters) {
@@ -248,8 +408,40 @@ public class DescribeFleetsRequest extends AmazonWebServiceRequest implements Se
 
     /**
      * <p>
-     * One or more filters.
+     * The filters.
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>activity-status</code> - The progress of the EC2 Fleet ( <code>error</code> |
+     * <code>pending-fulfillment</code> | <code>pending-termination</code> | <code>fulfilled</code>).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>excess-capacity-termination-policy</code> - Indicates whether to terminate running instances if the target
+     * capacity is decreased below the current EC2 Fleet size (<code>true</code> | <code>false</code>).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>fleet-state</code> - The state of the EC2 Fleet (<code>submitted</code> | <code>active</code> |
+     * <code>deleted</code> | <code>failed</code> | <code>deleted-running</code> | <code>deleted-terminating</code> |
+     * <code>modifying</code>).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>replace-unhealthy-instances</code> - Indicates whether EC2 Fleet should replace unhealthy instances (
+     * <code>true</code> | <code>false</code>).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>type</code> - The type of request (<code>instant</code> | <code>request</code> | <code>maintain</code>).
+     * </p>
+     * </li>
+     * </ul>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
      * {@link #setFilters(java.util.Collection)} or {@link #withFilters(java.util.Collection)} if you want to override
@@ -257,7 +449,39 @@ public class DescribeFleetsRequest extends AmazonWebServiceRequest implements Se
      * </p>
      * 
      * @param filters
-     *        One or more filters.
+     *        The filters.</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>activity-status</code> - The progress of the EC2 Fleet ( <code>error</code> |
+     *        <code>pending-fulfillment</code> | <code>pending-termination</code> | <code>fulfilled</code>).
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>excess-capacity-termination-policy</code> - Indicates whether to terminate running instances if the
+     *        target capacity is decreased below the current EC2 Fleet size (<code>true</code> | <code>false</code>).
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>fleet-state</code> - The state of the EC2 Fleet (<code>submitted</code> | <code>active</code> |
+     *        <code>deleted</code> | <code>failed</code> | <code>deleted-running</code> |
+     *        <code>deleted-terminating</code> | <code>modifying</code>).
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>replace-unhealthy-instances</code> - Indicates whether EC2 Fleet should replace unhealthy instances
+     *        (<code>true</code> | <code>false</code>).
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>type</code> - The type of request (<code>instant</code> | <code>request</code> |
+     *        <code>maintain</code>).
+     *        </p>
+     *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -273,11 +497,75 @@ public class DescribeFleetsRequest extends AmazonWebServiceRequest implements Se
 
     /**
      * <p>
-     * One or more filters.
+     * The filters.
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>activity-status</code> - The progress of the EC2 Fleet ( <code>error</code> |
+     * <code>pending-fulfillment</code> | <code>pending-termination</code> | <code>fulfilled</code>).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>excess-capacity-termination-policy</code> - Indicates whether to terminate running instances if the target
+     * capacity is decreased below the current EC2 Fleet size (<code>true</code> | <code>false</code>).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>fleet-state</code> - The state of the EC2 Fleet (<code>submitted</code> | <code>active</code> |
+     * <code>deleted</code> | <code>failed</code> | <code>deleted-running</code> | <code>deleted-terminating</code> |
+     * <code>modifying</code>).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>replace-unhealthy-instances</code> - Indicates whether EC2 Fleet should replace unhealthy instances (
+     * <code>true</code> | <code>false</code>).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>type</code> - The type of request (<code>instant</code> | <code>request</code> | <code>maintain</code>).
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param filters
-     *        One or more filters.
+     *        The filters.</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>activity-status</code> - The progress of the EC2 Fleet ( <code>error</code> |
+     *        <code>pending-fulfillment</code> | <code>pending-termination</code> | <code>fulfilled</code>).
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>excess-capacity-termination-policy</code> - Indicates whether to terminate running instances if the
+     *        target capacity is decreased below the current EC2 Fleet size (<code>true</code> | <code>false</code>).
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>fleet-state</code> - The state of the EC2 Fleet (<code>submitted</code> | <code>active</code> |
+     *        <code>deleted</code> | <code>failed</code> | <code>deleted-running</code> |
+     *        <code>deleted-terminating</code> | <code>modifying</code>).
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>replace-unhealthy-instances</code> - Indicates whether EC2 Fleet should replace unhealthy instances
+     *        (<code>true</code> | <code>false</code>).
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>type</code> - The type of request (<code>instant</code> | <code>request</code> |
+     *        <code>maintain</code>).
+     *        </p>
+     *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -298,7 +586,8 @@ public class DescribeFleetsRequest extends AmazonWebServiceRequest implements Se
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -42,18 +42,18 @@ public class UpdateMatchmakingConfigurationRequest extends com.amazonaws.AmazonW
     private String description;
     /**
      * <p>
-     * Amazon Resource Name (<a href="http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html">ARN</a>) that
+     * Amazon Resource Name (<a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html">ARN</a>) that
      * is assigned to a game session queue and uniquely identifies it. Format is
-     * <code>arn:aws:gamelift:&lt;region&gt;::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912</code>. These queues are
-     * used when placing game sessions for matches that are created with this matchmaking configuration. Queues can be
-     * located in any region.
+     * <code>arn:aws:gamelift:&lt;region&gt;:&lt;aws account&gt;:gamesessionqueue/&lt;queue name&gt;</code>. These
+     * queues are used when placing game sessions for matches that are created with this matchmaking configuration.
+     * Queues can be located in any region.
      * </p>
      */
     private java.util.List<String> gameSessionQueueArns;
     /**
      * <p>
      * Maximum duration, in seconds, that a matchmaking ticket can remain in process before timing out. Requests that
-     * time out can be resubmitted as needed.
+     * fail due to timing out can be resubmitted as needed.
      * </p>
      */
     private Integer requestTimeoutSeconds;
@@ -66,8 +66,8 @@ public class UpdateMatchmakingConfigurationRequest extends com.amazonaws.AmazonW
     private Integer acceptanceTimeoutSeconds;
     /**
      * <p>
-     * Flag that determines whether or not a match that was created with this configuration must be accepted by the
-     * matched players. To require acceptance, set to TRUE.
+     * Flag that determines whether a match that was created with this configuration must be accepted by the matched
+     * players. To require acceptance, set to TRUE.
      * </p>
      */
     private Boolean acceptanceRequired;
@@ -81,7 +81,7 @@ public class UpdateMatchmakingConfigurationRequest extends com.amazonaws.AmazonW
     /**
      * <p>
      * SNS topic ARN that is set up to receive matchmaking notifications. See <a
-     * href="http://docs.aws.amazon.com/gamelift/latest/developerguide/match-notification.html"> Setting up
+     * href="https://docs.aws.amazon.com/gamelift/latest/developerguide/match-notification.html"> Setting up
      * Notifications for Matchmaking</a> for more information.
      * </p>
      */
@@ -96,7 +96,7 @@ public class UpdateMatchmakingConfigurationRequest extends com.amazonaws.AmazonW
     private Integer additionalPlayerCount;
     /**
      * <p>
-     * Information to attached to all events related to the matchmaking configuration.
+     * Information to add to all events related to the matchmaking configuration.
      * </p>
      */
     private String customEventData;
@@ -104,7 +104,7 @@ public class UpdateMatchmakingConfigurationRequest extends com.amazonaws.AmazonW
      * <p>
      * Set of custom properties for a game session, formatted as key:value pairs. These properties are passed to a game
      * server process in the <a>GameSession</a> object with a request to start a new game session (see <a href=
-     * "http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession"
+     * "https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession"
      * >Start a Game Session</a>). This information is added to the new <a>GameSession</a> object that is created for a
      * successful match.
      * </p>
@@ -114,12 +114,23 @@ public class UpdateMatchmakingConfigurationRequest extends com.amazonaws.AmazonW
      * <p>
      * Set of custom game session properties, formatted as a single string value. This data is passed to a game server
      * process in the <a>GameSession</a> object with a request to start a new game session (see <a href=
-     * "http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession"
+     * "https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession"
      * >Start a Game Session</a>). This information is added to the new <a>GameSession</a> object that is created for a
      * successful match.
      * </p>
      */
     private String gameSessionData;
+    /**
+     * <p>
+     * Method used to backfill game sessions created with this matchmaking configuration. Specify MANUAL when your game
+     * manages backfill requests manually or does not use the match backfill feature. Specify AUTOMATIC to have GameLift
+     * create a <a>StartMatchBackfill</a> request whenever a game session has one or more open slots. Learn more about
+     * manual and automatic backfill in <a
+     * href="https://docs.aws.amazon.com/gamelift/latest/developerguide/match-backfill.html">Backfill Existing Games
+     * with FlexMatch</a>.
+     * </p>
+     */
+    private String backfillMode;
 
     /**
      * <p>
@@ -203,18 +214,18 @@ public class UpdateMatchmakingConfigurationRequest extends com.amazonaws.AmazonW
 
     /**
      * <p>
-     * Amazon Resource Name (<a href="http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html">ARN</a>) that
+     * Amazon Resource Name (<a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html">ARN</a>) that
      * is assigned to a game session queue and uniquely identifies it. Format is
-     * <code>arn:aws:gamelift:&lt;region&gt;::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912</code>. These queues are
-     * used when placing game sessions for matches that are created with this matchmaking configuration. Queues can be
-     * located in any region.
+     * <code>arn:aws:gamelift:&lt;region&gt;:&lt;aws account&gt;:gamesessionqueue/&lt;queue name&gt;</code>. These
+     * queues are used when placing game sessions for matches that are created with this matchmaking configuration.
+     * Queues can be located in any region.
      * </p>
      * 
      * @return Amazon Resource Name (<a
-     *         href="http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html">ARN</a>) that is assigned to a
+     *         href="https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html">ARN</a>) that is assigned to a
      *         game session queue and uniquely identifies it. Format is
-     *         <code>arn:aws:gamelift:&lt;region&gt;::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912</code>. These
-     *         queues are used when placing game sessions for matches that are created with this matchmaking
+     *         <code>arn:aws:gamelift:&lt;region&gt;:&lt;aws account&gt;:gamesessionqueue/&lt;queue name&gt;</code>.
+     *         These queues are used when placing game sessions for matches that are created with this matchmaking
      *         configuration. Queues can be located in any region.
      */
 
@@ -224,18 +235,19 @@ public class UpdateMatchmakingConfigurationRequest extends com.amazonaws.AmazonW
 
     /**
      * <p>
-     * Amazon Resource Name (<a href="http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html">ARN</a>) that
+     * Amazon Resource Name (<a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html">ARN</a>) that
      * is assigned to a game session queue and uniquely identifies it. Format is
-     * <code>arn:aws:gamelift:&lt;region&gt;::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912</code>. These queues are
-     * used when placing game sessions for matches that are created with this matchmaking configuration. Queues can be
-     * located in any region.
+     * <code>arn:aws:gamelift:&lt;region&gt;:&lt;aws account&gt;:gamesessionqueue/&lt;queue name&gt;</code>. These
+     * queues are used when placing game sessions for matches that are created with this matchmaking configuration.
+     * Queues can be located in any region.
      * </p>
      * 
      * @param gameSessionQueueArns
-     *        Amazon Resource Name (<a href="http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html">ARN</a>)
-     *        that is assigned to a game session queue and uniquely identifies it. Format is
-     *        <code>arn:aws:gamelift:&lt;region&gt;::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912</code>. These
-     *        queues are used when placing game sessions for matches that are created with this matchmaking
+     *        Amazon Resource Name (<a
+     *        href="https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html">ARN</a>) that is assigned to a
+     *        game session queue and uniquely identifies it. Format is
+     *        <code>arn:aws:gamelift:&lt;region&gt;:&lt;aws account&gt;:gamesessionqueue/&lt;queue name&gt;</code>.
+     *        These queues are used when placing game sessions for matches that are created with this matchmaking
      *        configuration. Queues can be located in any region.
      */
 
@@ -250,11 +262,11 @@ public class UpdateMatchmakingConfigurationRequest extends com.amazonaws.AmazonW
 
     /**
      * <p>
-     * Amazon Resource Name (<a href="http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html">ARN</a>) that
+     * Amazon Resource Name (<a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html">ARN</a>) that
      * is assigned to a game session queue and uniquely identifies it. Format is
-     * <code>arn:aws:gamelift:&lt;region&gt;::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912</code>. These queues are
-     * used when placing game sessions for matches that are created with this matchmaking configuration. Queues can be
-     * located in any region.
+     * <code>arn:aws:gamelift:&lt;region&gt;:&lt;aws account&gt;:gamesessionqueue/&lt;queue name&gt;</code>. These
+     * queues are used when placing game sessions for matches that are created with this matchmaking configuration.
+     * Queues can be located in any region.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -263,10 +275,11 @@ public class UpdateMatchmakingConfigurationRequest extends com.amazonaws.AmazonW
      * </p>
      * 
      * @param gameSessionQueueArns
-     *        Amazon Resource Name (<a href="http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html">ARN</a>)
-     *        that is assigned to a game session queue and uniquely identifies it. Format is
-     *        <code>arn:aws:gamelift:&lt;region&gt;::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912</code>. These
-     *        queues are used when placing game sessions for matches that are created with this matchmaking
+     *        Amazon Resource Name (<a
+     *        href="https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html">ARN</a>) that is assigned to a
+     *        game session queue and uniquely identifies it. Format is
+     *        <code>arn:aws:gamelift:&lt;region&gt;:&lt;aws account&gt;:gamesessionqueue/&lt;queue name&gt;</code>.
+     *        These queues are used when placing game sessions for matches that are created with this matchmaking
      *        configuration. Queues can be located in any region.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -283,18 +296,19 @@ public class UpdateMatchmakingConfigurationRequest extends com.amazonaws.AmazonW
 
     /**
      * <p>
-     * Amazon Resource Name (<a href="http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html">ARN</a>) that
+     * Amazon Resource Name (<a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html">ARN</a>) that
      * is assigned to a game session queue and uniquely identifies it. Format is
-     * <code>arn:aws:gamelift:&lt;region&gt;::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912</code>. These queues are
-     * used when placing game sessions for matches that are created with this matchmaking configuration. Queues can be
-     * located in any region.
+     * <code>arn:aws:gamelift:&lt;region&gt;:&lt;aws account&gt;:gamesessionqueue/&lt;queue name&gt;</code>. These
+     * queues are used when placing game sessions for matches that are created with this matchmaking configuration.
+     * Queues can be located in any region.
      * </p>
      * 
      * @param gameSessionQueueArns
-     *        Amazon Resource Name (<a href="http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html">ARN</a>)
-     *        that is assigned to a game session queue and uniquely identifies it. Format is
-     *        <code>arn:aws:gamelift:&lt;region&gt;::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912</code>. These
-     *        queues are used when placing game sessions for matches that are created with this matchmaking
+     *        Amazon Resource Name (<a
+     *        href="https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html">ARN</a>) that is assigned to a
+     *        game session queue and uniquely identifies it. Format is
+     *        <code>arn:aws:gamelift:&lt;region&gt;:&lt;aws account&gt;:gamesessionqueue/&lt;queue name&gt;</code>.
+     *        These queues are used when placing game sessions for matches that are created with this matchmaking
      *        configuration. Queues can be located in any region.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -307,12 +321,12 @@ public class UpdateMatchmakingConfigurationRequest extends com.amazonaws.AmazonW
     /**
      * <p>
      * Maximum duration, in seconds, that a matchmaking ticket can remain in process before timing out. Requests that
-     * time out can be resubmitted as needed.
+     * fail due to timing out can be resubmitted as needed.
      * </p>
      * 
      * @param requestTimeoutSeconds
      *        Maximum duration, in seconds, that a matchmaking ticket can remain in process before timing out. Requests
-     *        that time out can be resubmitted as needed.
+     *        that fail due to timing out can be resubmitted as needed.
      */
 
     public void setRequestTimeoutSeconds(Integer requestTimeoutSeconds) {
@@ -322,11 +336,11 @@ public class UpdateMatchmakingConfigurationRequest extends com.amazonaws.AmazonW
     /**
      * <p>
      * Maximum duration, in seconds, that a matchmaking ticket can remain in process before timing out. Requests that
-     * time out can be resubmitted as needed.
+     * fail due to timing out can be resubmitted as needed.
      * </p>
      * 
      * @return Maximum duration, in seconds, that a matchmaking ticket can remain in process before timing out. Requests
-     *         that time out can be resubmitted as needed.
+     *         that fail due to timing out can be resubmitted as needed.
      */
 
     public Integer getRequestTimeoutSeconds() {
@@ -336,12 +350,12 @@ public class UpdateMatchmakingConfigurationRequest extends com.amazonaws.AmazonW
     /**
      * <p>
      * Maximum duration, in seconds, that a matchmaking ticket can remain in process before timing out. Requests that
-     * time out can be resubmitted as needed.
+     * fail due to timing out can be resubmitted as needed.
      * </p>
      * 
      * @param requestTimeoutSeconds
      *        Maximum duration, in seconds, that a matchmaking ticket can remain in process before timing out. Requests
-     *        that time out can be resubmitted as needed.
+     *        that fail due to timing out can be resubmitted as needed.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -398,13 +412,13 @@ public class UpdateMatchmakingConfigurationRequest extends com.amazonaws.AmazonW
 
     /**
      * <p>
-     * Flag that determines whether or not a match that was created with this configuration must be accepted by the
-     * matched players. To require acceptance, set to TRUE.
+     * Flag that determines whether a match that was created with this configuration must be accepted by the matched
+     * players. To require acceptance, set to TRUE.
      * </p>
      * 
      * @param acceptanceRequired
-     *        Flag that determines whether or not a match that was created with this configuration must be accepted by
-     *        the matched players. To require acceptance, set to TRUE.
+     *        Flag that determines whether a match that was created with this configuration must be accepted by the
+     *        matched players. To require acceptance, set to TRUE.
      */
 
     public void setAcceptanceRequired(Boolean acceptanceRequired) {
@@ -413,12 +427,12 @@ public class UpdateMatchmakingConfigurationRequest extends com.amazonaws.AmazonW
 
     /**
      * <p>
-     * Flag that determines whether or not a match that was created with this configuration must be accepted by the
-     * matched players. To require acceptance, set to TRUE.
+     * Flag that determines whether a match that was created with this configuration must be accepted by the matched
+     * players. To require acceptance, set to TRUE.
      * </p>
      * 
-     * @return Flag that determines whether or not a match that was created with this configuration must be accepted by
-     *         the matched players. To require acceptance, set to TRUE.
+     * @return Flag that determines whether a match that was created with this configuration must be accepted by the
+     *         matched players. To require acceptance, set to TRUE.
      */
 
     public Boolean getAcceptanceRequired() {
@@ -427,13 +441,13 @@ public class UpdateMatchmakingConfigurationRequest extends com.amazonaws.AmazonW
 
     /**
      * <p>
-     * Flag that determines whether or not a match that was created with this configuration must be accepted by the
-     * matched players. To require acceptance, set to TRUE.
+     * Flag that determines whether a match that was created with this configuration must be accepted by the matched
+     * players. To require acceptance, set to TRUE.
      * </p>
      * 
      * @param acceptanceRequired
-     *        Flag that determines whether or not a match that was created with this configuration must be accepted by
-     *        the matched players. To require acceptance, set to TRUE.
+     *        Flag that determines whether a match that was created with this configuration must be accepted by the
+     *        matched players. To require acceptance, set to TRUE.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -444,12 +458,12 @@ public class UpdateMatchmakingConfigurationRequest extends com.amazonaws.AmazonW
 
     /**
      * <p>
-     * Flag that determines whether or not a match that was created with this configuration must be accepted by the
-     * matched players. To require acceptance, set to TRUE.
+     * Flag that determines whether a match that was created with this configuration must be accepted by the matched
+     * players. To require acceptance, set to TRUE.
      * </p>
      * 
-     * @return Flag that determines whether or not a match that was created with this configuration must be accepted by
-     *         the matched players. To require acceptance, set to TRUE.
+     * @return Flag that determines whether a match that was created with this configuration must be accepted by the
+     *         matched players. To require acceptance, set to TRUE.
      */
 
     public Boolean isAcceptanceRequired() {
@@ -505,13 +519,13 @@ public class UpdateMatchmakingConfigurationRequest extends com.amazonaws.AmazonW
     /**
      * <p>
      * SNS topic ARN that is set up to receive matchmaking notifications. See <a
-     * href="http://docs.aws.amazon.com/gamelift/latest/developerguide/match-notification.html"> Setting up
+     * href="https://docs.aws.amazon.com/gamelift/latest/developerguide/match-notification.html"> Setting up
      * Notifications for Matchmaking</a> for more information.
      * </p>
      * 
      * @param notificationTarget
      *        SNS topic ARN that is set up to receive matchmaking notifications. See <a
-     *        href="http://docs.aws.amazon.com/gamelift/latest/developerguide/match-notification.html"> Setting up
+     *        href="https://docs.aws.amazon.com/gamelift/latest/developerguide/match-notification.html"> Setting up
      *        Notifications for Matchmaking</a> for more information.
      */
 
@@ -522,12 +536,12 @@ public class UpdateMatchmakingConfigurationRequest extends com.amazonaws.AmazonW
     /**
      * <p>
      * SNS topic ARN that is set up to receive matchmaking notifications. See <a
-     * href="http://docs.aws.amazon.com/gamelift/latest/developerguide/match-notification.html"> Setting up
+     * href="https://docs.aws.amazon.com/gamelift/latest/developerguide/match-notification.html"> Setting up
      * Notifications for Matchmaking</a> for more information.
      * </p>
      * 
      * @return SNS topic ARN that is set up to receive matchmaking notifications. See <a
-     *         href="http://docs.aws.amazon.com/gamelift/latest/developerguide/match-notification.html"> Setting up
+     *         href="https://docs.aws.amazon.com/gamelift/latest/developerguide/match-notification.html"> Setting up
      *         Notifications for Matchmaking</a> for more information.
      */
 
@@ -538,13 +552,13 @@ public class UpdateMatchmakingConfigurationRequest extends com.amazonaws.AmazonW
     /**
      * <p>
      * SNS topic ARN that is set up to receive matchmaking notifications. See <a
-     * href="http://docs.aws.amazon.com/gamelift/latest/developerguide/match-notification.html"> Setting up
+     * href="https://docs.aws.amazon.com/gamelift/latest/developerguide/match-notification.html"> Setting up
      * Notifications for Matchmaking</a> for more information.
      * </p>
      * 
      * @param notificationTarget
      *        SNS topic ARN that is set up to receive matchmaking notifications. See <a
-     *        href="http://docs.aws.amazon.com/gamelift/latest/developerguide/match-notification.html"> Setting up
+     *        href="https://docs.aws.amazon.com/gamelift/latest/developerguide/match-notification.html"> Setting up
      *        Notifications for Matchmaking</a> for more information.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -608,11 +622,11 @@ public class UpdateMatchmakingConfigurationRequest extends com.amazonaws.AmazonW
 
     /**
      * <p>
-     * Information to attached to all events related to the matchmaking configuration.
+     * Information to add to all events related to the matchmaking configuration.
      * </p>
      * 
      * @param customEventData
-     *        Information to attached to all events related to the matchmaking configuration.
+     *        Information to add to all events related to the matchmaking configuration.
      */
 
     public void setCustomEventData(String customEventData) {
@@ -621,10 +635,10 @@ public class UpdateMatchmakingConfigurationRequest extends com.amazonaws.AmazonW
 
     /**
      * <p>
-     * Information to attached to all events related to the matchmaking configuration.
+     * Information to add to all events related to the matchmaking configuration.
      * </p>
      * 
-     * @return Information to attached to all events related to the matchmaking configuration.
+     * @return Information to add to all events related to the matchmaking configuration.
      */
 
     public String getCustomEventData() {
@@ -633,11 +647,11 @@ public class UpdateMatchmakingConfigurationRequest extends com.amazonaws.AmazonW
 
     /**
      * <p>
-     * Information to attached to all events related to the matchmaking configuration.
+     * Information to add to all events related to the matchmaking configuration.
      * </p>
      * 
      * @param customEventData
-     *        Information to attached to all events related to the matchmaking configuration.
+     *        Information to add to all events related to the matchmaking configuration.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -650,7 +664,7 @@ public class UpdateMatchmakingConfigurationRequest extends com.amazonaws.AmazonW
      * <p>
      * Set of custom properties for a game session, formatted as key:value pairs. These properties are passed to a game
      * server process in the <a>GameSession</a> object with a request to start a new game session (see <a href=
-     * "http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession"
+     * "https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession"
      * >Start a Game Session</a>). This information is added to the new <a>GameSession</a> object that is created for a
      * successful match.
      * </p>
@@ -658,7 +672,7 @@ public class UpdateMatchmakingConfigurationRequest extends com.amazonaws.AmazonW
      * @return Set of custom properties for a game session, formatted as key:value pairs. These properties are passed to
      *         a game server process in the <a>GameSession</a> object with a request to start a new game session (see <a
      *         href=
-     *         "http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession"
+     *         "https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession"
      *         >Start a Game Session</a>). This information is added to the new <a>GameSession</a> object that is
      *         created for a successful match.
      */
@@ -671,7 +685,7 @@ public class UpdateMatchmakingConfigurationRequest extends com.amazonaws.AmazonW
      * <p>
      * Set of custom properties for a game session, formatted as key:value pairs. These properties are passed to a game
      * server process in the <a>GameSession</a> object with a request to start a new game session (see <a href=
-     * "http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession"
+     * "https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession"
      * >Start a Game Session</a>). This information is added to the new <a>GameSession</a> object that is created for a
      * successful match.
      * </p>
@@ -680,7 +694,7 @@ public class UpdateMatchmakingConfigurationRequest extends com.amazonaws.AmazonW
      *        Set of custom properties for a game session, formatted as key:value pairs. These properties are passed to
      *        a game server process in the <a>GameSession</a> object with a request to start a new game session (see <a
      *        href=
-     *        "http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession"
+     *        "https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession"
      *        >Start a Game Session</a>). This information is added to the new <a>GameSession</a> object that is created
      *        for a successful match.
      */
@@ -698,7 +712,7 @@ public class UpdateMatchmakingConfigurationRequest extends com.amazonaws.AmazonW
      * <p>
      * Set of custom properties for a game session, formatted as key:value pairs. These properties are passed to a game
      * server process in the <a>GameSession</a> object with a request to start a new game session (see <a href=
-     * "http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession"
+     * "https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession"
      * >Start a Game Session</a>). This information is added to the new <a>GameSession</a> object that is created for a
      * successful match.
      * </p>
@@ -712,7 +726,7 @@ public class UpdateMatchmakingConfigurationRequest extends com.amazonaws.AmazonW
      *        Set of custom properties for a game session, formatted as key:value pairs. These properties are passed to
      *        a game server process in the <a>GameSession</a> object with a request to start a new game session (see <a
      *        href=
-     *        "http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession"
+     *        "https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession"
      *        >Start a Game Session</a>). This information is added to the new <a>GameSession</a> object that is created
      *        for a successful match.
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -732,7 +746,7 @@ public class UpdateMatchmakingConfigurationRequest extends com.amazonaws.AmazonW
      * <p>
      * Set of custom properties for a game session, formatted as key:value pairs. These properties are passed to a game
      * server process in the <a>GameSession</a> object with a request to start a new game session (see <a href=
-     * "http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession"
+     * "https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession"
      * >Start a Game Session</a>). This information is added to the new <a>GameSession</a> object that is created for a
      * successful match.
      * </p>
@@ -741,7 +755,7 @@ public class UpdateMatchmakingConfigurationRequest extends com.amazonaws.AmazonW
      *        Set of custom properties for a game session, formatted as key:value pairs. These properties are passed to
      *        a game server process in the <a>GameSession</a> object with a request to start a new game session (see <a
      *        href=
-     *        "http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession"
+     *        "https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession"
      *        >Start a Game Session</a>). This information is added to the new <a>GameSession</a> object that is created
      *        for a successful match.
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -756,7 +770,7 @@ public class UpdateMatchmakingConfigurationRequest extends com.amazonaws.AmazonW
      * <p>
      * Set of custom game session properties, formatted as a single string value. This data is passed to a game server
      * process in the <a>GameSession</a> object with a request to start a new game session (see <a href=
-     * "http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession"
+     * "https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession"
      * >Start a Game Session</a>). This information is added to the new <a>GameSession</a> object that is created for a
      * successful match.
      * </p>
@@ -764,7 +778,7 @@ public class UpdateMatchmakingConfigurationRequest extends com.amazonaws.AmazonW
      * @param gameSessionData
      *        Set of custom game session properties, formatted as a single string value. This data is passed to a game
      *        server process in the <a>GameSession</a> object with a request to start a new game session (see <a href=
-     *        "http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession"
+     *        "https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession"
      *        >Start a Game Session</a>). This information is added to the new <a>GameSession</a> object that is created
      *        for a successful match.
      */
@@ -777,14 +791,14 @@ public class UpdateMatchmakingConfigurationRequest extends com.amazonaws.AmazonW
      * <p>
      * Set of custom game session properties, formatted as a single string value. This data is passed to a game server
      * process in the <a>GameSession</a> object with a request to start a new game session (see <a href=
-     * "http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession"
+     * "https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession"
      * >Start a Game Session</a>). This information is added to the new <a>GameSession</a> object that is created for a
      * successful match.
      * </p>
      * 
      * @return Set of custom game session properties, formatted as a single string value. This data is passed to a game
      *         server process in the <a>GameSession</a> object with a request to start a new game session (see <a href=
-     *         "http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession"
+     *         "https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession"
      *         >Start a Game Session</a>). This information is added to the new <a>GameSession</a> object that is
      *         created for a successful match.
      */
@@ -797,7 +811,7 @@ public class UpdateMatchmakingConfigurationRequest extends com.amazonaws.AmazonW
      * <p>
      * Set of custom game session properties, formatted as a single string value. This data is passed to a game server
      * process in the <a>GameSession</a> object with a request to start a new game session (see <a href=
-     * "http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession"
+     * "https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession"
      * >Start a Game Session</a>). This information is added to the new <a>GameSession</a> object that is created for a
      * successful match.
      * </p>
@@ -805,7 +819,7 @@ public class UpdateMatchmakingConfigurationRequest extends com.amazonaws.AmazonW
      * @param gameSessionData
      *        Set of custom game session properties, formatted as a single string value. This data is passed to a game
      *        server process in the <a>GameSession</a> object with a request to start a new game session (see <a href=
-     *        "http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession"
+     *        "https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession"
      *        >Start a Game Session</a>). This information is added to the new <a>GameSession</a> object that is created
      *        for a successful match.
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -817,7 +831,107 @@ public class UpdateMatchmakingConfigurationRequest extends com.amazonaws.AmazonW
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * <p>
+     * Method used to backfill game sessions created with this matchmaking configuration. Specify MANUAL when your game
+     * manages backfill requests manually or does not use the match backfill feature. Specify AUTOMATIC to have GameLift
+     * create a <a>StartMatchBackfill</a> request whenever a game session has one or more open slots. Learn more about
+     * manual and automatic backfill in <a
+     * href="https://docs.aws.amazon.com/gamelift/latest/developerguide/match-backfill.html">Backfill Existing Games
+     * with FlexMatch</a>.
+     * </p>
+     * 
+     * @param backfillMode
+     *        Method used to backfill game sessions created with this matchmaking configuration. Specify MANUAL when
+     *        your game manages backfill requests manually or does not use the match backfill feature. Specify AUTOMATIC
+     *        to have GameLift create a <a>StartMatchBackfill</a> request whenever a game session has one or more open
+     *        slots. Learn more about manual and automatic backfill in <a
+     *        href="https://docs.aws.amazon.com/gamelift/latest/developerguide/match-backfill.html">Backfill Existing
+     *        Games with FlexMatch</a>.
+     * @see BackfillMode
+     */
+
+    public void setBackfillMode(String backfillMode) {
+        this.backfillMode = backfillMode;
+    }
+
+    /**
+     * <p>
+     * Method used to backfill game sessions created with this matchmaking configuration. Specify MANUAL when your game
+     * manages backfill requests manually or does not use the match backfill feature. Specify AUTOMATIC to have GameLift
+     * create a <a>StartMatchBackfill</a> request whenever a game session has one or more open slots. Learn more about
+     * manual and automatic backfill in <a
+     * href="https://docs.aws.amazon.com/gamelift/latest/developerguide/match-backfill.html">Backfill Existing Games
+     * with FlexMatch</a>.
+     * </p>
+     * 
+     * @return Method used to backfill game sessions created with this matchmaking configuration. Specify MANUAL when
+     *         your game manages backfill requests manually or does not use the match backfill feature. Specify
+     *         AUTOMATIC to have GameLift create a <a>StartMatchBackfill</a> request whenever a game session has one or
+     *         more open slots. Learn more about manual and automatic backfill in <a
+     *         href="https://docs.aws.amazon.com/gamelift/latest/developerguide/match-backfill.html">Backfill Existing
+     *         Games with FlexMatch</a>.
+     * @see BackfillMode
+     */
+
+    public String getBackfillMode() {
+        return this.backfillMode;
+    }
+
+    /**
+     * <p>
+     * Method used to backfill game sessions created with this matchmaking configuration. Specify MANUAL when your game
+     * manages backfill requests manually or does not use the match backfill feature. Specify AUTOMATIC to have GameLift
+     * create a <a>StartMatchBackfill</a> request whenever a game session has one or more open slots. Learn more about
+     * manual and automatic backfill in <a
+     * href="https://docs.aws.amazon.com/gamelift/latest/developerguide/match-backfill.html">Backfill Existing Games
+     * with FlexMatch</a>.
+     * </p>
+     * 
+     * @param backfillMode
+     *        Method used to backfill game sessions created with this matchmaking configuration. Specify MANUAL when
+     *        your game manages backfill requests manually or does not use the match backfill feature. Specify AUTOMATIC
+     *        to have GameLift create a <a>StartMatchBackfill</a> request whenever a game session has one or more open
+     *        slots. Learn more about manual and automatic backfill in <a
+     *        href="https://docs.aws.amazon.com/gamelift/latest/developerguide/match-backfill.html">Backfill Existing
+     *        Games with FlexMatch</a>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see BackfillMode
+     */
+
+    public UpdateMatchmakingConfigurationRequest withBackfillMode(String backfillMode) {
+        setBackfillMode(backfillMode);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Method used to backfill game sessions created with this matchmaking configuration. Specify MANUAL when your game
+     * manages backfill requests manually or does not use the match backfill feature. Specify AUTOMATIC to have GameLift
+     * create a <a>StartMatchBackfill</a> request whenever a game session has one or more open slots. Learn more about
+     * manual and automatic backfill in <a
+     * href="https://docs.aws.amazon.com/gamelift/latest/developerguide/match-backfill.html">Backfill Existing Games
+     * with FlexMatch</a>.
+     * </p>
+     * 
+     * @param backfillMode
+     *        Method used to backfill game sessions created with this matchmaking configuration. Specify MANUAL when
+     *        your game manages backfill requests manually or does not use the match backfill feature. Specify AUTOMATIC
+     *        to have GameLift create a <a>StartMatchBackfill</a> request whenever a game session has one or more open
+     *        slots. Learn more about manual and automatic backfill in <a
+     *        href="https://docs.aws.amazon.com/gamelift/latest/developerguide/match-backfill.html">Backfill Existing
+     *        Games with FlexMatch</a>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see BackfillMode
+     */
+
+    public UpdateMatchmakingConfigurationRequest withBackfillMode(BackfillMode backfillMode) {
+        this.backfillMode = backfillMode.toString();
+        return this;
+    }
+
+    /**
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -850,7 +964,9 @@ public class UpdateMatchmakingConfigurationRequest extends com.amazonaws.AmazonW
         if (getGameProperties() != null)
             sb.append("GameProperties: ").append(getGameProperties()).append(",");
         if (getGameSessionData() != null)
-            sb.append("GameSessionData: ").append(getGameSessionData());
+            sb.append("GameSessionData: ").append(getGameSessionData()).append(",");
+        if (getBackfillMode() != null)
+            sb.append("BackfillMode: ").append(getBackfillMode());
         sb.append("}");
         return sb.toString();
     }
@@ -913,6 +1029,10 @@ public class UpdateMatchmakingConfigurationRequest extends com.amazonaws.AmazonW
             return false;
         if (other.getGameSessionData() != null && other.getGameSessionData().equals(this.getGameSessionData()) == false)
             return false;
+        if (other.getBackfillMode() == null ^ this.getBackfillMode() == null)
+            return false;
+        if (other.getBackfillMode() != null && other.getBackfillMode().equals(this.getBackfillMode()) == false)
+            return false;
         return true;
     }
 
@@ -933,6 +1053,7 @@ public class UpdateMatchmakingConfigurationRequest extends com.amazonaws.AmazonW
         hashCode = prime * hashCode + ((getCustomEventData() == null) ? 0 : getCustomEventData().hashCode());
         hashCode = prime * hashCode + ((getGameProperties() == null) ? 0 : getGameProperties().hashCode());
         hashCode = prime * hashCode + ((getGameSessionData() == null) ? 0 : getGameSessionData().hashCode());
+        hashCode = prime * hashCode + ((getBackfillMode() == null) ? 0 : getBackfillMode().hashCode());
         return hashCode;
     }
 

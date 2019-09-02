@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -36,10 +36,10 @@ public class StartLabelDetectionRequest extends com.amazonaws.AmazonWebServiceRe
     private String clientRequestToken;
     /**
      * <p>
-     * Specifies the minimum confidence that Rekognition Video must have in order to return a detected label. Confidence
-     * represents how certain Amazon Rekognition is that a label is correctly identified.0 is the lowest confidence. 100
-     * is the highest confidence. Rekognition Video doesn't return any labels with a confidence level lower than this
-     * specified value.
+     * Specifies the minimum confidence that Amazon Rekognition Video must have in order to return a detected label.
+     * Confidence represents how certain Amazon Rekognition is that a label is correctly identified.0 is the lowest
+     * confidence. 100 is the highest confidence. Amazon Rekognition Video doesn't return any labels with a confidence
+     * level lower than this specified value.
      * </p>
      * <p>
      * If you don't specify <code>MinConfidence</code>, the operation returns labels with confidence values greater than
@@ -49,15 +49,16 @@ public class StartLabelDetectionRequest extends com.amazonaws.AmazonWebServiceRe
     private Float minConfidence;
     /**
      * <p>
-     * The Amazon SNS topic ARN you want Rekognition Video to publish the completion status of the label detection
-     * operation to.
+     * The Amazon SNS topic ARN you want Amazon Rekognition Video to publish the completion status of the label
+     * detection operation to.
      * </p>
      */
     private NotificationChannel notificationChannel;
     /**
      * <p>
-     * Unique identifier you specify to identify the job in the completion status published to the Amazon Simple
-     * Notification Service topic.
+     * An identifier you specify that's returned in the completion notification that's published to your Amazon Simple
+     * Notification Service topic. For example, you can use <code>JobTag</code> to group related jobs and identify them
+     * in the completion notification.
      * </p>
      */
     private String jobTag;
@@ -156,10 +157,10 @@ public class StartLabelDetectionRequest extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * Specifies the minimum confidence that Rekognition Video must have in order to return a detected label. Confidence
-     * represents how certain Amazon Rekognition is that a label is correctly identified.0 is the lowest confidence. 100
-     * is the highest confidence. Rekognition Video doesn't return any labels with a confidence level lower than this
-     * specified value.
+     * Specifies the minimum confidence that Amazon Rekognition Video must have in order to return a detected label.
+     * Confidence represents how certain Amazon Rekognition is that a label is correctly identified.0 is the lowest
+     * confidence. 100 is the highest confidence. Amazon Rekognition Video doesn't return any labels with a confidence
+     * level lower than this specified value.
      * </p>
      * <p>
      * If you don't specify <code>MinConfidence</code>, the operation returns labels with confidence values greater than
@@ -167,10 +168,10 @@ public class StartLabelDetectionRequest extends com.amazonaws.AmazonWebServiceRe
      * </p>
      * 
      * @param minConfidence
-     *        Specifies the minimum confidence that Rekognition Video must have in order to return a detected label.
-     *        Confidence represents how certain Amazon Rekognition is that a label is correctly identified.0 is the
-     *        lowest confidence. 100 is the highest confidence. Rekognition Video doesn't return any labels with a
-     *        confidence level lower than this specified value.</p>
+     *        Specifies the minimum confidence that Amazon Rekognition Video must have in order to return a detected
+     *        label. Confidence represents how certain Amazon Rekognition is that a label is correctly identified.0 is
+     *        the lowest confidence. 100 is the highest confidence. Amazon Rekognition Video doesn't return any labels
+     *        with a confidence level lower than this specified value.</p>
      *        <p>
      *        If you don't specify <code>MinConfidence</code>, the operation returns labels with confidence values
      *        greater than or equal to 50 percent.
@@ -182,20 +183,20 @@ public class StartLabelDetectionRequest extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * Specifies the minimum confidence that Rekognition Video must have in order to return a detected label. Confidence
-     * represents how certain Amazon Rekognition is that a label is correctly identified.0 is the lowest confidence. 100
-     * is the highest confidence. Rekognition Video doesn't return any labels with a confidence level lower than this
-     * specified value.
+     * Specifies the minimum confidence that Amazon Rekognition Video must have in order to return a detected label.
+     * Confidence represents how certain Amazon Rekognition is that a label is correctly identified.0 is the lowest
+     * confidence. 100 is the highest confidence. Amazon Rekognition Video doesn't return any labels with a confidence
+     * level lower than this specified value.
      * </p>
      * <p>
      * If you don't specify <code>MinConfidence</code>, the operation returns labels with confidence values greater than
      * or equal to 50 percent.
      * </p>
      * 
-     * @return Specifies the minimum confidence that Rekognition Video must have in order to return a detected label.
-     *         Confidence represents how certain Amazon Rekognition is that a label is correctly identified.0 is the
-     *         lowest confidence. 100 is the highest confidence. Rekognition Video doesn't return any labels with a
-     *         confidence level lower than this specified value.</p>
+     * @return Specifies the minimum confidence that Amazon Rekognition Video must have in order to return a detected
+     *         label. Confidence represents how certain Amazon Rekognition is that a label is correctly identified.0 is
+     *         the lowest confidence. 100 is the highest confidence. Amazon Rekognition Video doesn't return any labels
+     *         with a confidence level lower than this specified value.</p>
      *         <p>
      *         If you don't specify <code>MinConfidence</code>, the operation returns labels with confidence values
      *         greater than or equal to 50 percent.
@@ -207,10 +208,10 @@ public class StartLabelDetectionRequest extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * Specifies the minimum confidence that Rekognition Video must have in order to return a detected label. Confidence
-     * represents how certain Amazon Rekognition is that a label is correctly identified.0 is the lowest confidence. 100
-     * is the highest confidence. Rekognition Video doesn't return any labels with a confidence level lower than this
-     * specified value.
+     * Specifies the minimum confidence that Amazon Rekognition Video must have in order to return a detected label.
+     * Confidence represents how certain Amazon Rekognition is that a label is correctly identified.0 is the lowest
+     * confidence. 100 is the highest confidence. Amazon Rekognition Video doesn't return any labels with a confidence
+     * level lower than this specified value.
      * </p>
      * <p>
      * If you don't specify <code>MinConfidence</code>, the operation returns labels with confidence values greater than
@@ -218,10 +219,10 @@ public class StartLabelDetectionRequest extends com.amazonaws.AmazonWebServiceRe
      * </p>
      * 
      * @param minConfidence
-     *        Specifies the minimum confidence that Rekognition Video must have in order to return a detected label.
-     *        Confidence represents how certain Amazon Rekognition is that a label is correctly identified.0 is the
-     *        lowest confidence. 100 is the highest confidence. Rekognition Video doesn't return any labels with a
-     *        confidence level lower than this specified value.</p>
+     *        Specifies the minimum confidence that Amazon Rekognition Video must have in order to return a detected
+     *        label. Confidence represents how certain Amazon Rekognition is that a label is correctly identified.0 is
+     *        the lowest confidence. 100 is the highest confidence. Amazon Rekognition Video doesn't return any labels
+     *        with a confidence level lower than this specified value.</p>
      *        <p>
      *        If you don't specify <code>MinConfidence</code>, the operation returns labels with confidence values
      *        greater than or equal to 50 percent.
@@ -235,12 +236,12 @@ public class StartLabelDetectionRequest extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * The Amazon SNS topic ARN you want Rekognition Video to publish the completion status of the label detection
-     * operation to.
+     * The Amazon SNS topic ARN you want Amazon Rekognition Video to publish the completion status of the label
+     * detection operation to.
      * </p>
      * 
      * @param notificationChannel
-     *        The Amazon SNS topic ARN you want Rekognition Video to publish the completion status of the label
+     *        The Amazon SNS topic ARN you want Amazon Rekognition Video to publish the completion status of the label
      *        detection operation to.
      */
 
@@ -250,11 +251,11 @@ public class StartLabelDetectionRequest extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * The Amazon SNS topic ARN you want Rekognition Video to publish the completion status of the label detection
-     * operation to.
+     * The Amazon SNS topic ARN you want Amazon Rekognition Video to publish the completion status of the label
+     * detection operation to.
      * </p>
      * 
-     * @return The Amazon SNS topic ARN you want Rekognition Video to publish the completion status of the label
+     * @return The Amazon SNS topic ARN you want Amazon Rekognition Video to publish the completion status of the label
      *         detection operation to.
      */
 
@@ -264,12 +265,12 @@ public class StartLabelDetectionRequest extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * The Amazon SNS topic ARN you want Rekognition Video to publish the completion status of the label detection
-     * operation to.
+     * The Amazon SNS topic ARN you want Amazon Rekognition Video to publish the completion status of the label
+     * detection operation to.
      * </p>
      * 
      * @param notificationChannel
-     *        The Amazon SNS topic ARN you want Rekognition Video to publish the completion status of the label
+     *        The Amazon SNS topic ARN you want Amazon Rekognition Video to publish the completion status of the label
      *        detection operation to.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -281,13 +282,15 @@ public class StartLabelDetectionRequest extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * Unique identifier you specify to identify the job in the completion status published to the Amazon Simple
-     * Notification Service topic.
+     * An identifier you specify that's returned in the completion notification that's published to your Amazon Simple
+     * Notification Service topic. For example, you can use <code>JobTag</code> to group related jobs and identify them
+     * in the completion notification.
      * </p>
      * 
      * @param jobTag
-     *        Unique identifier you specify to identify the job in the completion status published to the Amazon Simple
-     *        Notification Service topic.
+     *        An identifier you specify that's returned in the completion notification that's published to your Amazon
+     *        Simple Notification Service topic. For example, you can use <code>JobTag</code> to group related jobs and
+     *        identify them in the completion notification.
      */
 
     public void setJobTag(String jobTag) {
@@ -296,12 +299,14 @@ public class StartLabelDetectionRequest extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * Unique identifier you specify to identify the job in the completion status published to the Amazon Simple
-     * Notification Service topic.
+     * An identifier you specify that's returned in the completion notification that's published to your Amazon Simple
+     * Notification Service topic. For example, you can use <code>JobTag</code> to group related jobs and identify them
+     * in the completion notification.
      * </p>
      * 
-     * @return Unique identifier you specify to identify the job in the completion status published to the Amazon Simple
-     *         Notification Service topic.
+     * @return An identifier you specify that's returned in the completion notification that's published to your Amazon
+     *         Simple Notification Service topic. For example, you can use <code>JobTag</code> to group related jobs and
+     *         identify them in the completion notification.
      */
 
     public String getJobTag() {
@@ -310,13 +315,15 @@ public class StartLabelDetectionRequest extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * Unique identifier you specify to identify the job in the completion status published to the Amazon Simple
-     * Notification Service topic.
+     * An identifier you specify that's returned in the completion notification that's published to your Amazon Simple
+     * Notification Service topic. For example, you can use <code>JobTag</code> to group related jobs and identify them
+     * in the completion notification.
      * </p>
      * 
      * @param jobTag
-     *        Unique identifier you specify to identify the job in the completion status published to the Amazon Simple
-     *        Notification Service topic.
+     *        An identifier you specify that's returned in the completion notification that's published to your Amazon
+     *        Simple Notification Service topic. For example, you can use <code>JobTag</code> to group related jobs and
+     *        identify them in the completion notification.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -326,7 +333,8 @@ public class StartLabelDetectionRequest extends com.amazonaws.AmazonWebServiceRe
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -42,6 +42,8 @@ public class ContainerInstanceMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("registeredResources").build();
     private static final MarshallingInfo<String> STATUS_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("status").build();
+    private static final MarshallingInfo<String> STATUSREASON_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("statusReason").build();
     private static final MarshallingInfo<Boolean> AGENTCONNECTED_BINDING = MarshallingInfo.builder(MarshallingType.BOOLEAN)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("agentConnected").build();
     private static final MarshallingInfo<Integer> RUNNINGTASKSCOUNT_BINDING = MarshallingInfo.builder(MarshallingType.INTEGER)
@@ -53,9 +55,11 @@ public class ContainerInstanceMarshaller {
     private static final MarshallingInfo<List> ATTRIBUTES_BINDING = MarshallingInfo.builder(MarshallingType.LIST).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("attributes").build();
     private static final MarshallingInfo<java.util.Date> REGISTEREDAT_BINDING = MarshallingInfo.builder(MarshallingType.DATE)
-            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("registeredAt").build();
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("registeredAt").timestampFormat("unixTimestamp").build();
     private static final MarshallingInfo<List> ATTACHMENTS_BINDING = MarshallingInfo.builder(MarshallingType.LIST).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("attachments").build();
+    private static final MarshallingInfo<List> TAGS_BINDING = MarshallingInfo.builder(MarshallingType.LIST).marshallLocation(MarshallLocation.PAYLOAD)
+            .marshallLocationName("tags").build();
 
     private static final ContainerInstanceMarshaller instance = new ContainerInstanceMarshaller();
 
@@ -80,6 +84,7 @@ public class ContainerInstanceMarshaller {
             protocolMarshaller.marshall(containerInstance.getRemainingResources(), REMAININGRESOURCES_BINDING);
             protocolMarshaller.marshall(containerInstance.getRegisteredResources(), REGISTEREDRESOURCES_BINDING);
             protocolMarshaller.marshall(containerInstance.getStatus(), STATUS_BINDING);
+            protocolMarshaller.marshall(containerInstance.getStatusReason(), STATUSREASON_BINDING);
             protocolMarshaller.marshall(containerInstance.getAgentConnected(), AGENTCONNECTED_BINDING);
             protocolMarshaller.marshall(containerInstance.getRunningTasksCount(), RUNNINGTASKSCOUNT_BINDING);
             protocolMarshaller.marshall(containerInstance.getPendingTasksCount(), PENDINGTASKSCOUNT_BINDING);
@@ -87,6 +92,7 @@ public class ContainerInstanceMarshaller {
             protocolMarshaller.marshall(containerInstance.getAttributes(), ATTRIBUTES_BINDING);
             protocolMarshaller.marshall(containerInstance.getRegisteredAt(), REGISTEREDAT_BINDING);
             protocolMarshaller.marshall(containerInstance.getAttachments(), ATTACHMENTS_BINDING);
+            protocolMarshaller.marshall(containerInstance.getTags(), TAGS_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

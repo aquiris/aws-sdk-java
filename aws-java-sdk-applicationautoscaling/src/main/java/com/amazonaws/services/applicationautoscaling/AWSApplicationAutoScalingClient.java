@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -37,6 +37,8 @@ import com.amazonaws.protocol.json.*;
 import com.amazonaws.util.AWSRequestMetrics.Field;
 import com.amazonaws.annotation.ThreadSafe;
 import com.amazonaws.client.AwsSyncClientParams;
+import com.amazonaws.client.builder.AdvancedConfig;
+
 import com.amazonaws.services.applicationautoscaling.AWSApplicationAutoScalingClientBuilder;
 
 import com.amazonaws.AmazonServiceException;
@@ -49,99 +51,90 @@ import com.amazonaws.services.applicationautoscaling.model.transform.*;
  * return until the service call completes.
  * <p>
  * <p>
- * With Application Auto Scaling, you can configure automatic scaling for your scalable AWS resources. You can use
- * Application Auto Scaling to accomplish the following tasks:
+ * With Application Auto Scaling, you can configure automatic scaling for the following resources:
  * </p>
  * <ul>
  * <li>
  * <p>
- * Define scaling policies to automatically scale your AWS resources
+ * Amazon ECS services
  * </p>
  * </li>
  * <li>
  * <p>
- * Scale your resources in response to CloudWatch alarms
+ * Amazon EC2 Spot Fleet requests
  * </p>
  * </li>
  * <li>
  * <p>
- * Schedule one-time or recurring scaling actions
+ * Amazon EMR clusters
  * </p>
  * </li>
  * <li>
  * <p>
- * View the history of your scaling events
+ * Amazon AppStream 2.0 fleets
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * Amazon DynamoDB tables and global secondary indexes throughput capacity
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * Amazon Aurora Replicas
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * Amazon SageMaker endpoint variants
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * Custom resources provided by your own applications or services
  * </p>
  * </li>
  * </ul>
  * <p>
- * Application Auto Scaling can scale the following AWS resources:
+ * <b>API Summary</b>
+ * </p>
+ * <p>
+ * The Application Auto Scaling service API includes three key sets of actions:
  * </p>
  * <ul>
  * <li>
  * <p>
- * Amazon ECS services. For more information, see <a
- * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-auto-scaling.html">Service Auto Scaling</a>
- * in the <i>Amazon Elastic Container Service Developer Guide</i>.
+ * Register and manage scalable targets - Register AWS or custom resources as scalable targets (a resource that
+ * Application Auto Scaling can scale), set minimum and maximum capacity limits, and retrieve information on existing
+ * scalable targets.
  * </p>
  * </li>
  * <li>
  * <p>
- * Amazon EC2 Spot fleets. For more information, see <a
- * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/fleet-auto-scaling.html">Automatic Scaling for Spot
- * Fleet</a> in the <i>Amazon EC2 User Guide</i>.
+ * Configure and manage automatic scaling - Define scaling policies to dynamically scale your resources in response to
+ * CloudWatch alarms, schedule one-time or recurring scaling actions, and retrieve your recent scaling activity history.
  * </p>
  * </li>
  * <li>
  * <p>
- * Amazon EMR clusters. For more information, see <a
- * href="http://docs.aws.amazon.com/ElasticMapReduce/latest/ManagementGuide/emr-automatic-scaling.html">Using Automatic
- * Scaling in Amazon EMR</a> in the <i>Amazon EMR Management Guide</i>.
- * </p>
- * </li>
- * <li>
- * <p>
- * AppStream 2.0 fleets. For more information, see <a
- * href="http://docs.aws.amazon.com/appstream2/latest/developerguide/autoscaling.html">Fleet Auto Scaling for Amazon
- * AppStream 2.0</a> in the <i>Amazon AppStream 2.0 Developer Guide</i>.
- * </p>
- * </li>
- * <li>
- * <p>
- * Provisioned read and write capacity for Amazon DynamoDB tables and global secondary indexes. For more information,
- * see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/AutoScaling.html">Managing Throughput
- * Capacity Automatically with DynamoDB Auto Scaling</a> in the <i>Amazon DynamoDB Developer Guide</i>.
- * </p>
- * </li>
- * <li>
- * <p>
- * Amazon Aurora Replicas. For more information, see <a
- * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Aurora.Integrating.AutoScaling.html">Using Amazon Aurora
- * Auto Scaling with Aurora Replicas</a>.
- * </p>
- * </li>
- * <li>
- * <p>
- * Amazon SageMaker endpoints. For more information, see <a
- * href="http://docs.aws.amazon.com/sagemaker/latest/dg/endpoint-auto-scaling.html">Automatically Scaling Amazon
- * SageMaker Models</a>.
+ * Suspend and resume scaling - Temporarily suspend and later resume automatic scaling by calling the
+ * <a>RegisterScalableTarget</a> action for any Application Auto Scaling scalable target. You can suspend and resume,
+ * individually or in combination, scale-out activities triggered by a scaling policy, scale-in activities triggered by
+ * a scaling policy, and scheduled scaling.
  * </p>
  * </li>
  * </ul>
  * <p>
- * To configure automatic scaling for multiple resources across multiple services, use AWS Auto Scaling to create a
- * scaling plan for your application. For more information, see <a href="http://aws.amazon.com/autoscaling">AWS Auto
- * Scaling</a>.
- * </p>
- * <p>
- * For a list of supported regions, see <a
- * href="http://docs.aws.amazon.com/general/latest/gr/rande.html#as-app_region">AWS Regions and Endpoints: Application
- * Auto Scaling</a> in the <i>AWS General Reference</i>.
+ * To learn more about Application Auto Scaling, including information about granting IAM users required permissions for
+ * Application Auto Scaling actions, see the <a
+ * href="https://docs.aws.amazon.com/autoscaling/application/userguide/what-is-application-auto-scaling.html"
+ * >Application Auto Scaling User Guide</a>.
  * </p>
  */
 @ThreadSafe
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AWSApplicationAutoScalingClient extends AmazonWebServiceClient implements AWSApplicationAutoScaling {
+
     /** Provider for AWS credentials. */
     private final AWSCredentialsProvider awsCredentialsProvider;
 
@@ -153,33 +146,38 @@ public class AWSApplicationAutoScalingClient extends AmazonWebServiceClient impl
     /** Client configuration factory providing ClientConfigurations tailored to this client */
     protected static final ClientConfigurationFactory configFactory = new ClientConfigurationFactory();
 
+    private final AdvancedConfig advancedConfig;
+
     private static final com.amazonaws.protocol.json.SdkJsonProtocolFactory protocolFactory = new com.amazonaws.protocol.json.SdkJsonProtocolFactory(
             new JsonClientMetadata()
                     .withProtocolVersion("1.1")
                     .withSupportsCbor(false)
                     .withSupportsIon(false)
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ValidationException").withModeledClass(
-                                    com.amazonaws.services.applicationautoscaling.model.ValidationException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ValidationException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.applicationautoscaling.model.transform.ValidationExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InternalServiceException").withModeledClass(
-                                    com.amazonaws.services.applicationautoscaling.model.InternalServiceException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InternalServiceException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.applicationautoscaling.model.transform.InternalServiceExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidNextTokenException").withModeledClass(
-                                    com.amazonaws.services.applicationautoscaling.model.InvalidNextTokenException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidNextTokenException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.applicationautoscaling.model.transform.InvalidNextTokenExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ObjectNotFoundException").withModeledClass(
-                                    com.amazonaws.services.applicationautoscaling.model.ObjectNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ObjectNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.applicationautoscaling.model.transform.ObjectNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("FailedResourceAccessException").withModeledClass(
-                                    com.amazonaws.services.applicationautoscaling.model.FailedResourceAccessException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("FailedResourceAccessException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.applicationautoscaling.model.transform.FailedResourceAccessExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("LimitExceededException").withModeledClass(
-                                    com.amazonaws.services.applicationautoscaling.model.LimitExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("LimitExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.applicationautoscaling.model.transform.LimitExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ConcurrentUpdateException").withModeledClass(
-                                    com.amazonaws.services.applicationautoscaling.model.ConcurrentUpdateException.class))
-                    .withBaseServiceExceptionClass(com.amazonaws.services.applicationautoscaling.model.AWSApplicationAutoScalingException.class));
+                            new JsonErrorShapeMetadata().withErrorCode("ConcurrentUpdateException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.applicationautoscaling.model.transform.ConcurrentUpdateExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode(null).withExceptionUnmarshaller(
+                                    new JsonBaseExceptionUnmarshaller<com.amazonaws.services.applicationautoscaling.model.AWSApplicationAutoScalingException>(
+                                            com.amazonaws.services.applicationautoscaling.model.AWSApplicationAutoScalingException.class))));
 
     /**
      * Constructs a new client to invoke service methods on Application Auto Scaling. A credentials provider chain will
@@ -266,6 +264,7 @@ public class AWSApplicationAutoScalingClient extends AmazonWebServiceClient impl
     public AWSApplicationAutoScalingClient(AWSCredentials awsCredentials, ClientConfiguration clientConfiguration) {
         super(clientConfiguration);
         this.awsCredentialsProvider = new StaticCredentialsProvider(awsCredentials);
+        this.advancedConfig = AdvancedConfig.EMPTY;
         init();
     }
 
@@ -331,6 +330,7 @@ public class AWSApplicationAutoScalingClient extends AmazonWebServiceClient impl
             RequestMetricCollector requestMetricCollector) {
         super(clientConfiguration, requestMetricCollector);
         this.awsCredentialsProvider = awsCredentialsProvider;
+        this.advancedConfig = AdvancedConfig.EMPTY;
         init();
     }
 
@@ -349,8 +349,23 @@ public class AWSApplicationAutoScalingClient extends AmazonWebServiceClient impl
      *        Object providing client parameters.
      */
     AWSApplicationAutoScalingClient(AwsSyncClientParams clientParams) {
+        this(clientParams, false);
+    }
+
+    /**
+     * Constructs a new client to invoke service methods on Application Auto Scaling using the specified parameters.
+     *
+     * <p>
+     * All service calls made using this new client object are blocking, and will not return until the service call
+     * completes.
+     *
+     * @param clientParams
+     *        Object providing client parameters.
+     */
+    AWSApplicationAutoScalingClient(AwsSyncClientParams clientParams, boolean endpointDiscoveryEnabled) {
         super(clientParams);
         this.awsCredentialsProvider = clientParams.getCredentialsProvider();
+        this.advancedConfig = clientParams.getAdvancedConfig();
         init();
     }
 
@@ -367,11 +382,18 @@ public class AWSApplicationAutoScalingClient extends AmazonWebServiceClient impl
 
     /**
      * <p>
-     * Deletes the specified Application Auto Scaling scaling policy.
+     * Deletes the specified scaling policy for an Application Auto Scaling scalable target.
      * </p>
      * <p>
-     * Deleting a policy deletes the underlying alarm action, but does not delete the CloudWatch alarm associated with
-     * the scaling policy, even if it no longer has an associated action.
+     * Deleting a step scaling policy deletes the underlying alarm action, but does not delete the CloudWatch alarm
+     * associated with the scaling policy, even if it no longer has an associated action.
+     * </p>
+     * <p>
+     * For more information, see <a href=
+     * "https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-step-scaling-policies.html#delete-step-scaling-policy"
+     * >Delete a Step Scaling Policy</a> and <a href=
+     * "https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-target-tracking.html#delete-target-tracking-policy"
+     * >Delete a Target Tracking Scaling Policy</a> in the <i>Application Auto Scaling User Guide</i>.
      * </p>
      * <p>
      * To create a scaling policy or update an existing one, see <a>PutScalingPolicy</a>.
@@ -417,6 +439,10 @@ public class AWSApplicationAutoScalingClient extends AmazonWebServiceClient impl
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Application Auto Scaling");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteScalingPolicy");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -435,7 +461,12 @@ public class AWSApplicationAutoScalingClient extends AmazonWebServiceClient impl
 
     /**
      * <p>
-     * Deletes the specified Application Auto Scaling scheduled action.
+     * Deletes the specified scheduled action for an Application Auto Scaling scalable target.
+     * </p>
+     * <p>
+     * For more information, see <a href=
+     * "https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-scheduled-scaling.html#delete-scheduled-action"
+     * >Delete a Scheduled Action</a> in the <i>Application Auto Scaling User Guide</i>.
      * </p>
      * 
      * @param deleteScheduledActionRequest
@@ -478,6 +509,10 @@ public class AWSApplicationAutoScalingClient extends AmazonWebServiceClient impl
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Application Auto Scaling");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteScheduledAction");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -497,7 +532,7 @@ public class AWSApplicationAutoScalingClient extends AmazonWebServiceClient impl
 
     /**
      * <p>
-     * Deregisters a scalable target.
+     * Deregisters an Application Auto Scaling scalable target.
      * </p>
      * <p>
      * Deregistering a scalable target deletes the scaling policies that are associated with it.
@@ -547,6 +582,10 @@ public class AWSApplicationAutoScalingClient extends AmazonWebServiceClient impl
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Application Auto Scaling");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeregisterScalableTarget");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -569,7 +608,7 @@ public class AWSApplicationAutoScalingClient extends AmazonWebServiceClient impl
      * Gets information about the scalable targets in the specified namespace.
      * </p>
      * <p>
-     * You can filter the results using the <code>ResourceIds</code> and <code>ScalableDimension</code> parameters.
+     * You can filter the results using <code>ResourceIds</code> and <code>ScalableDimension</code>.
      * </p>
      * <p>
      * To create a scalable target or update an existing one, see <a>RegisterScalableTarget</a>. If you are no longer
@@ -614,6 +653,10 @@ public class AWSApplicationAutoScalingClient extends AmazonWebServiceClient impl
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Application Auto Scaling");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeScalableTargets");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -637,7 +680,7 @@ public class AWSApplicationAutoScalingClient extends AmazonWebServiceClient impl
      * weeks.
      * </p>
      * <p>
-     * You can filter the results using the <code>ResourceId</code> and <code>ScalableDimension</code> parameters.
+     * You can filter the results using <code>ResourceId</code> and <code>ScalableDimension</code>.
      * </p>
      * <p>
      * Scaling activities are triggered by CloudWatch alarms that are associated with scaling policies. To view the
@@ -684,6 +727,10 @@ public class AWSApplicationAutoScalingClient extends AmazonWebServiceClient impl
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Application Auto Scaling");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeScalingActivities");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -703,11 +750,11 @@ public class AWSApplicationAutoScalingClient extends AmazonWebServiceClient impl
 
     /**
      * <p>
-     * Describes the scaling policies for the specified service namespace.
+     * Describes the Application Auto Scaling scaling policies for the specified service namespace.
      * </p>
      * <p>
-     * You can filter the results using the <code>ResourceId</code>, <code>ScalableDimension</code>, and
-     * <code>PolicyNames</code> parameters.
+     * You can filter the results using <code>ResourceId</code>, <code>ScalableDimension</code>, and
+     * <code>PolicyNames</code>.
      * </p>
      * <p>
      * To create a scaling policy or update an existing one, see <a>PutScalingPolicy</a>. If you are no longer using a
@@ -722,7 +769,7 @@ public class AWSApplicationAutoScalingClient extends AmazonWebServiceClient impl
      *         Failed access to resources caused an exception. This exception is thrown when Application Auto Scaling is
      *         unable to retrieve the alarms associated with a scaling policy due to a client error, for example, if the
      *         role ARN specified for a scalable target does not have permission to call the CloudWatch <a
-     *         href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_DescribeAlarms.html"
+     *         href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_DescribeAlarms.html"
      *         >DescribeAlarms</a> on your behalf.
      * @throws InvalidNextTokenException
      *         The next token supplied was invalid.
@@ -758,6 +805,10 @@ public class AWSApplicationAutoScalingClient extends AmazonWebServiceClient impl
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Application Auto Scaling");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeScalingPolicies");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -777,7 +828,7 @@ public class AWSApplicationAutoScalingClient extends AmazonWebServiceClient impl
 
     /**
      * <p>
-     * Describes the scheduled actions for the specified service namespace.
+     * Describes the Application Auto Scaling scheduled actions for the specified service namespace.
      * </p>
      * <p>
      * You can filter the results using the <code>ResourceId</code>, <code>ScalableDimension</code>, and
@@ -826,6 +877,10 @@ public class AWSApplicationAutoScalingClient extends AmazonWebServiceClient impl
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Application Auto Scaling");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeScheduledActions");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -850,7 +905,7 @@ public class AWSApplicationAutoScalingClient extends AmazonWebServiceClient impl
      * <p>
      * Each scalable target is identified by a service namespace, resource ID, and scalable dimension. A scaling policy
      * applies to the scalable target identified by those three attributes. You cannot create a scaling policy until you
-     * register the scalable target using <a>RegisterScalableTarget</a>.
+     * have registered the resource as a scalable target using <a>RegisterScalableTarget</a>.
      * </p>
      * <p>
      * To update a policy, specify its policy name and the parameters that you want to change. Any parameters that you
@@ -860,6 +915,20 @@ public class AWSApplicationAutoScalingClient extends AmazonWebServiceClient impl
      * You can view the scaling policies for a service namespace using <a>DescribeScalingPolicies</a>. If you are no
      * longer using a scaling policy, you can delete it using <a>DeleteScalingPolicy</a>.
      * </p>
+     * <p>
+     * Multiple scaling policies can be in force at the same time for the same scalable target. You can have one or more
+     * target tracking scaling policies, one or more step scaling policies, or both. However, there is a chance that
+     * multiple policies could conflict, instructing the scalable target to scale out or in at the same time.
+     * Application Auto Scaling gives precedence to the policy that provides the largest capacity for both scale in and
+     * scale out. For example, if one policy increases capacity by 3, another policy increases capacity by 200 percent,
+     * and the current capacity is 10, Application Auto Scaling uses the policy with the highest calculated capacity
+     * (200% of 10 = 20) and scales out to 30.
+     * </p>
+     * <p>
+     * Learn more about how to work with scaling policies in the <a
+     * href="https://docs.aws.amazon.com/autoscaling/application/userguide/what-is-application-auto-scaling.html"
+     * >Application Auto Scaling User Guide</a>.
+     * </p>
      * 
      * @param putScalingPolicyRequest
      * @return Result of the PutScalingPolicy operation returned by the service.
@@ -867,7 +936,7 @@ public class AWSApplicationAutoScalingClient extends AmazonWebServiceClient impl
      *         An exception was thrown for a validation issue. Review the available parameters for the API request.
      * @throws LimitExceededException
      *         A per-account resource limit is exceeded. For more information, see <a href=
-     *         "http://docs.aws.amazon.com/ApplicationAutoScaling/latest/userguide/application-auto-scaling-limits.html"
+     *         "https://docs.aws.amazon.com/ApplicationAutoScaling/latest/userguide/application-auto-scaling-limits.html"
      *         >Application Auto Scaling Limits</a>.
      * @throws ObjectNotFoundException
      *         The specified object could not be found. For any operation that depends on the existence of a scalable
@@ -881,7 +950,7 @@ public class AWSApplicationAutoScalingClient extends AmazonWebServiceClient impl
      *         Failed access to resources caused an exception. This exception is thrown when Application Auto Scaling is
      *         unable to retrieve the alarms associated with a scaling policy due to a client error, for example, if the
      *         role ARN specified for a scalable target does not have permission to call the CloudWatch <a
-     *         href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_DescribeAlarms.html"
+     *         href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_DescribeAlarms.html"
      *         >DescribeAlarms</a> on your behalf.
      * @throws InternalServiceException
      *         The service encountered an internal error.
@@ -911,6 +980,10 @@ public class AWSApplicationAutoScalingClient extends AmazonWebServiceClient impl
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Application Auto Scaling");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "PutScalingPolicy");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -934,7 +1007,7 @@ public class AWSApplicationAutoScalingClient extends AmazonWebServiceClient impl
      * <p>
      * Each scalable target is identified by a service namespace, resource ID, and scalable dimension. A scheduled
      * action applies to the scalable target identified by those three attributes. You cannot create a scheduled action
-     * until you register the scalable target using <a>RegisterScalableTarget</a>.
+     * until you have registered the resource as a scalable target using <a>RegisterScalableTarget</a>.
      * </p>
      * <p>
      * To update an action, specify its name and the parameters that you want to change. If you don't specify start and
@@ -945,6 +1018,11 @@ public class AWSApplicationAutoScalingClient extends AmazonWebServiceClient impl
      * You can view the scheduled actions using <a>DescribeScheduledActions</a>. If you are no longer using a scheduled
      * action, you can delete it using <a>DeleteScheduledAction</a>.
      * </p>
+     * <p>
+     * Learn more about how to work with scheduled actions in the <a
+     * href="https://docs.aws.amazon.com/autoscaling/application/userguide/what-is-application-auto-scaling.html"
+     * >Application Auto Scaling User Guide</a>.
+     * </p>
      * 
      * @param putScheduledActionRequest
      * @return Result of the PutScheduledAction operation returned by the service.
@@ -952,7 +1030,7 @@ public class AWSApplicationAutoScalingClient extends AmazonWebServiceClient impl
      *         An exception was thrown for a validation issue. Review the available parameters for the API request.
      * @throws LimitExceededException
      *         A per-account resource limit is exceeded. For more information, see <a href=
-     *         "http://docs.aws.amazon.com/ApplicationAutoScaling/latest/userguide/application-auto-scaling-limits.html"
+     *         "https://docs.aws.amazon.com/ApplicationAutoScaling/latest/userguide/application-auto-scaling-limits.html"
      *         >Application Auto Scaling Limits</a>.
      * @throws ObjectNotFoundException
      *         The specified object could not be found. For any operation that depends on the existence of a scalable
@@ -990,6 +1068,10 @@ public class AWSApplicationAutoScalingClient extends AmazonWebServiceClient impl
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Application Auto Scaling");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "PutScheduledAction");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1009,13 +1091,25 @@ public class AWSApplicationAutoScalingClient extends AmazonWebServiceClient impl
     /**
      * <p>
      * Registers or updates a scalable target. A scalable target is a resource that Application Auto Scaling can scale
-     * out or scale in. After you have registered a scalable target, you can use this operation to update the minimum
-     * and maximum values for its scalable dimension.
+     * out and scale in. Scalable targets are uniquely identified by the combination of resource ID, scalable dimension,
+     * and namespace.
      * </p>
      * <p>
-     * After you register a scalable target, you can create and apply scaling policies using <a>PutScalingPolicy</a>.
-     * You can view the scaling policies for a service namespace using <a>DescribeScalableTargets</a>. If you no longer
-     * need a scalable target, you can deregister it using <a>DeregisterScalableTarget</a>.
+     * When you register a new scalable target, you must specify values for minimum and maximum capacity. Application
+     * Auto Scaling will not scale capacity to values that are outside of this range.
+     * </p>
+     * <p>
+     * To update a scalable target, specify the parameter that you want to change as well as the following parameters
+     * that identify the scalable target: resource ID, scalable dimension, and namespace. Any parameters that you don't
+     * specify are not changed by this update request.
+     * </p>
+     * <p>
+     * After you register a scalable target, you do not need to register it again to use other Application Auto Scaling
+     * operations. To see which resources have been registered, use <a>DescribeScalableTargets</a>. You can also view
+     * the scaling policies for a service namespace by using <a>DescribeScalableTargets</a>.
+     * </p>
+     * <p>
+     * If you no longer need a scalable target, you can deregister it by using <a>DeregisterScalableTarget</a>.
      * </p>
      * 
      * @param registerScalableTargetRequest
@@ -1024,7 +1118,7 @@ public class AWSApplicationAutoScalingClient extends AmazonWebServiceClient impl
      *         An exception was thrown for a validation issue. Review the available parameters for the API request.
      * @throws LimitExceededException
      *         A per-account resource limit is exceeded. For more information, see <a href=
-     *         "http://docs.aws.amazon.com/ApplicationAutoScaling/latest/userguide/application-auto-scaling-limits.html"
+     *         "https://docs.aws.amazon.com/ApplicationAutoScaling/latest/userguide/application-auto-scaling-limits.html"
      *         >Application Auto Scaling Limits</a>.
      * @throws ConcurrentUpdateException
      *         Concurrent updates caused an exception, for example, if you request an update to an Application Auto
@@ -1057,6 +1151,10 @@ public class AWSApplicationAutoScalingClient extends AmazonWebServiceClient impl
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Application Auto Scaling");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "RegisterScalableTarget");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1098,9 +1196,18 @@ public class AWSApplicationAutoScalingClient extends AmazonWebServiceClient impl
     private <X, Y extends AmazonWebServiceRequest> Response<X> invoke(Request<Y> request, HttpResponseHandler<AmazonWebServiceResponse<X>> responseHandler,
             ExecutionContext executionContext) {
 
+        return invoke(request, responseHandler, executionContext, null, null);
+    }
+
+    /**
+     * Normal invoke with authentication. Credentials are required and may be overriden at the request level.
+     **/
+    private <X, Y extends AmazonWebServiceRequest> Response<X> invoke(Request<Y> request, HttpResponseHandler<AmazonWebServiceResponse<X>> responseHandler,
+            ExecutionContext executionContext, URI cachedEndpoint, URI uriFromEndpointTrait) {
+
         executionContext.setCredentialsProvider(CredentialUtils.getCredentialsProvider(request.getOriginalRequest(), awsCredentialsProvider));
 
-        return doInvoke(request, responseHandler, executionContext);
+        return doInvoke(request, responseHandler, executionContext, cachedEndpoint, uriFromEndpointTrait);
     }
 
     /**
@@ -1110,7 +1217,7 @@ public class AWSApplicationAutoScalingClient extends AmazonWebServiceClient impl
     private <X, Y extends AmazonWebServiceRequest> Response<X> anonymousInvoke(Request<Y> request,
             HttpResponseHandler<AmazonWebServiceResponse<X>> responseHandler, ExecutionContext executionContext) {
 
-        return doInvoke(request, responseHandler, executionContext);
+        return doInvoke(request, responseHandler, executionContext, null, null);
     }
 
     /**
@@ -1118,8 +1225,17 @@ public class AWSApplicationAutoScalingClient extends AmazonWebServiceClient impl
      * ExecutionContext beforehand.
      **/
     private <X, Y extends AmazonWebServiceRequest> Response<X> doInvoke(Request<Y> request, HttpResponseHandler<AmazonWebServiceResponse<X>> responseHandler,
-            ExecutionContext executionContext) {
-        request.setEndpoint(endpoint);
+            ExecutionContext executionContext, URI discoveredEndpoint, URI uriFromEndpointTrait) {
+
+        if (discoveredEndpoint != null) {
+            request.setEndpoint(discoveredEndpoint);
+            request.getOriginalRequest().getRequestClientOptions().appendUserAgent("endpoint-discovery");
+        } else if (uriFromEndpointTrait != null) {
+            request.setEndpoint(uriFromEndpointTrait);
+        } else {
+            request.setEndpoint(endpoint);
+        }
+
         request.setTimeOffset(timeOffset);
 
         HttpResponseHandler<AmazonServiceException> errorResponseHandler = protocolFactory.createErrorResponseHandler(new JsonErrorResponseMetadata());

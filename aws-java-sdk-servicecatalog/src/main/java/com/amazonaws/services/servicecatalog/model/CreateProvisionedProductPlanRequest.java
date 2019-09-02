@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -108,6 +108,10 @@ public class CreateProvisionedProductPlanRequest extends com.amazonaws.AmazonWeb
     /**
      * <p>
      * One or more tags.
+     * </p>
+     * <p>
+     * If the plan is for an existing provisioned product, the product must have a <code>RESOURCE_UPDATE</code>
+     * constraint with <code>TagUpdatesOnProvisionedProduct</code> set to <code>ALLOWED</code> to allow tag updates.
      * </p>
      */
     private java.util.List<Tag> tags;
@@ -713,8 +717,16 @@ public class CreateProvisionedProductPlanRequest extends com.amazonaws.AmazonWeb
      * <p>
      * One or more tags.
      * </p>
+     * <p>
+     * If the plan is for an existing provisioned product, the product must have a <code>RESOURCE_UPDATE</code>
+     * constraint with <code>TagUpdatesOnProvisionedProduct</code> set to <code>ALLOWED</code> to allow tag updates.
+     * </p>
      * 
-     * @return One or more tags.
+     * @return One or more tags.</p>
+     *         <p>
+     *         If the plan is for an existing provisioned product, the product must have a <code>RESOURCE_UPDATE</code>
+     *         constraint with <code>TagUpdatesOnProvisionedProduct</code> set to <code>ALLOWED</code> to allow tag
+     *         updates.
      */
 
     public java.util.List<Tag> getTags() {
@@ -725,9 +737,17 @@ public class CreateProvisionedProductPlanRequest extends com.amazonaws.AmazonWeb
      * <p>
      * One or more tags.
      * </p>
+     * <p>
+     * If the plan is for an existing provisioned product, the product must have a <code>RESOURCE_UPDATE</code>
+     * constraint with <code>TagUpdatesOnProvisionedProduct</code> set to <code>ALLOWED</code> to allow tag updates.
+     * </p>
      * 
      * @param tags
-     *        One or more tags.
+     *        One or more tags.</p>
+     *        <p>
+     *        If the plan is for an existing provisioned product, the product must have a <code>RESOURCE_UPDATE</code>
+     *        constraint with <code>TagUpdatesOnProvisionedProduct</code> set to <code>ALLOWED</code> to allow tag
+     *        updates.
      */
 
     public void setTags(java.util.Collection<Tag> tags) {
@@ -744,13 +764,21 @@ public class CreateProvisionedProductPlanRequest extends com.amazonaws.AmazonWeb
      * One or more tags.
      * </p>
      * <p>
+     * If the plan is for an existing provisioned product, the product must have a <code>RESOURCE_UPDATE</code>
+     * constraint with <code>TagUpdatesOnProvisionedProduct</code> set to <code>ALLOWED</code> to allow tag updates.
+     * </p>
+     * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
      * {@link #setTags(java.util.Collection)} or {@link #withTags(java.util.Collection)} if you want to override the
      * existing values.
      * </p>
      * 
      * @param tags
-     *        One or more tags.
+     *        One or more tags.</p>
+     *        <p>
+     *        If the plan is for an existing provisioned product, the product must have a <code>RESOURCE_UPDATE</code>
+     *        constraint with <code>TagUpdatesOnProvisionedProduct</code> set to <code>ALLOWED</code> to allow tag
+     *        updates.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -768,9 +796,17 @@ public class CreateProvisionedProductPlanRequest extends com.amazonaws.AmazonWeb
      * <p>
      * One or more tags.
      * </p>
+     * <p>
+     * If the plan is for an existing provisioned product, the product must have a <code>RESOURCE_UPDATE</code>
+     * constraint with <code>TagUpdatesOnProvisionedProduct</code> set to <code>ALLOWED</code> to allow tag updates.
+     * </p>
      * 
      * @param tags
-     *        One or more tags.
+     *        One or more tags.</p>
+     *        <p>
+     *        If the plan is for an existing provisioned product, the product must have a <code>RESOURCE_UPDATE</code>
+     *        constraint with <code>TagUpdatesOnProvisionedProduct</code> set to <code>ALLOWED</code> to allow tag
+     *        updates.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -780,7 +816,8 @@ public class CreateProvisionedProductPlanRequest extends com.amazonaws.AmazonWeb
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

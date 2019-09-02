@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -37,6 +37,8 @@ import com.amazonaws.protocol.json.*;
 import com.amazonaws.util.AWSRequestMetrics.Field;
 import com.amazonaws.annotation.ThreadSafe;
 import com.amazonaws.client.AwsSyncClientParams;
+import com.amazonaws.client.builder.AdvancedConfig;
+
 import com.amazonaws.services.mediaconvert.AWSMediaConvertClientBuilder;
 
 import com.amazonaws.AmazonServiceException;
@@ -53,6 +55,7 @@ import com.amazonaws.services.mediaconvert.model.transform.*;
 @ThreadSafe
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AWSMediaConvertClient extends AmazonWebServiceClient implements AWSMediaConvert {
+
     /** Provider for AWS credentials. */
     private final AWSCredentialsProvider awsCredentialsProvider;
 
@@ -64,6 +67,8 @@ public class AWSMediaConvertClient extends AmazonWebServiceClient implements AWS
     /** Client configuration factory providing ClientConfigurations tailored to this client */
     protected static final ClientConfigurationFactory configFactory = new ClientConfigurationFactory();
 
+    private final AdvancedConfig advancedConfig;
+
     private static final com.amazonaws.protocol.json.SdkJsonProtocolFactory protocolFactory = new com.amazonaws.protocol.json.SdkJsonProtocolFactory(
             new JsonClientMetadata()
                     .withProtocolVersion("1.1")
@@ -71,24 +76,27 @@ public class AWSMediaConvertClient extends AmazonWebServiceClient implements AWS
                     .withSupportsIon(false)
                     .withContentTypeOverride("")
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ForbiddenException").withModeledClass(
-                                    com.amazonaws.services.mediaconvert.model.ForbiddenException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ForbiddenException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.mediaconvert.model.transform.ForbiddenExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("NotFoundException").withModeledClass(
-                                    com.amazonaws.services.mediaconvert.model.NotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("NotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.mediaconvert.model.transform.NotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ConflictException").withModeledClass(
-                                    com.amazonaws.services.mediaconvert.model.ConflictException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ConflictException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.mediaconvert.model.transform.ConflictExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("TooManyRequestsException").withModeledClass(
-                                    com.amazonaws.services.mediaconvert.model.TooManyRequestsException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("TooManyRequestsException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.mediaconvert.model.transform.TooManyRequestsExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("BadRequestException").withModeledClass(
-                                    com.amazonaws.services.mediaconvert.model.BadRequestException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("BadRequestException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.mediaconvert.model.transform.BadRequestExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InternalServerErrorException").withModeledClass(
-                                    com.amazonaws.services.mediaconvert.model.InternalServerErrorException.class))
-                    .withBaseServiceExceptionClass(com.amazonaws.services.mediaconvert.model.AWSMediaConvertException.class));
+                            new JsonErrorShapeMetadata().withErrorCode("InternalServerErrorException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.mediaconvert.model.transform.InternalServerErrorExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode(null).withExceptionUnmarshaller(
+                                    new JsonBaseExceptionUnmarshaller<com.amazonaws.services.mediaconvert.model.AWSMediaConvertException>(
+                                            com.amazonaws.services.mediaconvert.model.AWSMediaConvertException.class))));
 
     public static AWSMediaConvertClientBuilder builder() {
         return AWSMediaConvertClientBuilder.standard();
@@ -105,8 +113,23 @@ public class AWSMediaConvertClient extends AmazonWebServiceClient implements AWS
      *        Object providing client parameters.
      */
     AWSMediaConvertClient(AwsSyncClientParams clientParams) {
+        this(clientParams, false);
+    }
+
+    /**
+     * Constructs a new client to invoke service methods on MediaConvert using the specified parameters.
+     *
+     * <p>
+     * All service calls made using this new client object are blocking, and will not return until the service call
+     * completes.
+     *
+     * @param clientParams
+     *        Object providing client parameters.
+     */
+    AWSMediaConvertClient(AwsSyncClientParams clientParams, boolean endpointDiscoveryEnabled) {
         super(clientParams);
         this.awsCredentialsProvider = clientParams.getCredentialsProvider();
+        this.advancedConfig = clientParams.getAdvancedConfig();
         init();
     }
 
@@ -122,11 +145,10 @@ public class AWSMediaConvertClient extends AmazonWebServiceClient implements AWS
     }
 
     /**
-     * Permanently remove a job from a queue. Once you have canceled a job, you can't start it again. You can't delete a
-     * running job.
+     * Associates an AWS Certificate Manager (ACM) Amazon Resource Name (ARN) with AWS Elemental MediaConvert.
      * 
-     * @param cancelJobRequest
-     * @return Result of the CancelJob operation returned by the service.
+     * @param associateCertificateRequest
+     * @return Result of the AssociateCertificate operation returned by the service.
      * @throws BadRequestException
      *         The service can't process your request because of a problem in the request. Please check your request
      *         form and syntax.
@@ -141,6 +163,72 @@ public class AWSMediaConvertClient extends AmazonWebServiceClient implements AWS
      *         accept requests.
      * @throws ConflictException
      *         The service could not complete your request because there is a conflict with the current state of the
+     *         resource.
+     * @sample AWSMediaConvert.AssociateCertificate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/mediaconvert-2017-08-29/AssociateCertificate"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public AssociateCertificateResult associateCertificate(AssociateCertificateRequest request) {
+        request = beforeClientExecution(request);
+        return executeAssociateCertificate(request);
+    }
+
+    @SdkInternalApi
+    final AssociateCertificateResult executeAssociateCertificate(AssociateCertificateRequest associateCertificateRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(associateCertificateRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<AssociateCertificateRequest> request = null;
+        Response<AssociateCertificateResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new AssociateCertificateRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(associateCertificateRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaConvert");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "AssociateCertificate");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<AssociateCertificateResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new AssociateCertificateResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * Permanently cancel a job. Once you have canceled a job, you can't start it again.
+     * 
+     * @param cancelJobRequest
+     * @return Result of the CancelJob operation returned by the service.
+     * @throws BadRequestException
+     *         The service can't process your request because of a problem in the request. Please check your request
+     *         form and syntax.
+     * @throws InternalServerErrorException
+     *         The service encountered an unexpected condition and can't fulfill your request.
+     * @throws ForbiddenException
+     *         You don't have permissions for this action with the credentials you sent.
+     * @throws NotFoundException
+     *         The resource you requested doesn't exist.
+     * @throws TooManyRequestsException
+     *         Too many requests have been sent in too short of a time. The service limits the rate at which it will
+     *         accept requests.
+     * @throws ConflictException
+     *         The service couldn't complete your request because there is a conflict with the current state of the
      *         resource.
      * @sample AWSMediaConvert.CancelJob
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/mediaconvert-2017-08-29/CancelJob" target="_top">AWS API
@@ -168,6 +256,10 @@ public class AWSMediaConvertClient extends AmazonWebServiceClient implements AWS
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaConvert");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CancelJob");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -194,16 +286,16 @@ public class AWSMediaConvertClient extends AmazonWebServiceClient implements AWS
      *         The service can't process your request because of a problem in the request. Please check your request
      *         form and syntax.
      * @throws InternalServerErrorException
-     *         The service encountered an unexpected condition and cannot fulfill your request.
+     *         The service encountered an unexpected condition and can't fulfill your request.
      * @throws ForbiddenException
      *         You don't have permissions for this action with the credentials you sent.
      * @throws NotFoundException
-     *         The resource you requested does not exist.
+     *         The resource you requested doesn't exist.
      * @throws TooManyRequestsException
      *         Too many requests have been sent in too short of a time. The service limits the rate at which it will
      *         accept requests.
      * @throws ConflictException
-     *         The service could not complete your request because there is a conflict with the current state of the
+     *         The service couldn't complete your request because there is a conflict with the current state of the
      *         resource.
      * @sample AWSMediaConvert.CreateJob
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/mediaconvert-2017-08-29/CreateJob" target="_top">AWS API
@@ -231,6 +323,10 @@ public class AWSMediaConvertClient extends AmazonWebServiceClient implements AWS
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaConvert");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateJob");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -257,16 +353,16 @@ public class AWSMediaConvertClient extends AmazonWebServiceClient implements AWS
      *         The service can't process your request because of a problem in the request. Please check your request
      *         form and syntax.
      * @throws InternalServerErrorException
-     *         The service encountered an unexpected condition and cannot fulfill your request.
+     *         The service encountered an unexpected condition and can't fulfill your request.
      * @throws ForbiddenException
      *         You don't have permissions for this action with the credentials you sent.
      * @throws NotFoundException
-     *         The resource you requested does not exist.
+     *         The resource you requested doesn't exist.
      * @throws TooManyRequestsException
      *         Too many requests have been sent in too short of a time. The service limits the rate at which it will
      *         accept requests.
      * @throws ConflictException
-     *         The service could not complete your request because there is a conflict with the current state of the
+     *         The service couldn't complete your request because there is a conflict with the current state of the
      *         resource.
      * @sample AWSMediaConvert.CreateJobTemplate
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/mediaconvert-2017-08-29/CreateJobTemplate" target="_top">AWS
@@ -294,6 +390,10 @@ public class AWSMediaConvertClient extends AmazonWebServiceClient implements AWS
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaConvert");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateJobTemplate");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -320,16 +420,16 @@ public class AWSMediaConvertClient extends AmazonWebServiceClient implements AWS
      *         The service can't process your request because of a problem in the request. Please check your request
      *         form and syntax.
      * @throws InternalServerErrorException
-     *         The service encountered an unexpected condition and cannot fulfill your request.
+     *         The service encountered an unexpected condition and can't fulfill your request.
      * @throws ForbiddenException
      *         You don't have permissions for this action with the credentials you sent.
      * @throws NotFoundException
-     *         The resource you requested does not exist.
+     *         The resource you requested doesn't exist.
      * @throws TooManyRequestsException
      *         Too many requests have been sent in too short of a time. The service limits the rate at which it will
      *         accept requests.
      * @throws ConflictException
-     *         The service could not complete your request because there is a conflict with the current state of the
+     *         The service couldn't complete your request because there is a conflict with the current state of the
      *         resource.
      * @sample AWSMediaConvert.CreatePreset
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/mediaconvert-2017-08-29/CreatePreset" target="_top">AWS API
@@ -357,6 +457,10 @@ public class AWSMediaConvertClient extends AmazonWebServiceClient implements AWS
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaConvert");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreatePreset");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -374,8 +478,8 @@ public class AWSMediaConvertClient extends AmazonWebServiceClient implements AWS
     }
 
     /**
-     * Create a new transcoding queue. For information about job templates see the User Guide at
-     * http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
+     * Create a new transcoding queue. For information about queues, see Working With Queues in the User Guide at
+     * https://docs.aws.amazon.com/mediaconvert/latest/ug/working-with-queues.html
      * 
      * @param createQueueRequest
      * @return Result of the CreateQueue operation returned by the service.
@@ -383,16 +487,16 @@ public class AWSMediaConvertClient extends AmazonWebServiceClient implements AWS
      *         The service can't process your request because of a problem in the request. Please check your request
      *         form and syntax.
      * @throws InternalServerErrorException
-     *         The service encountered an unexpected condition and cannot fulfill your request.
+     *         The service encountered an unexpected condition and can't fulfill your request.
      * @throws ForbiddenException
      *         You don't have permissions for this action with the credentials you sent.
      * @throws NotFoundException
-     *         The resource you requested does not exist.
+     *         The resource you requested doesn't exist.
      * @throws TooManyRequestsException
      *         Too many requests have been sent in too short of a time. The service limits the rate at which it will
      *         accept requests.
      * @throws ConflictException
-     *         The service could not complete your request because there is a conflict with the current state of the
+     *         The service couldn't complete your request because there is a conflict with the current state of the
      *         resource.
      * @sample AWSMediaConvert.CreateQueue
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/mediaconvert-2017-08-29/CreateQueue" target="_top">AWS API
@@ -420,6 +524,10 @@ public class AWSMediaConvertClient extends AmazonWebServiceClient implements AWS
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaConvert");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateQueue");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -445,16 +553,16 @@ public class AWSMediaConvertClient extends AmazonWebServiceClient implements AWS
      *         The service can't process your request because of a problem in the request. Please check your request
      *         form and syntax.
      * @throws InternalServerErrorException
-     *         The service encountered an unexpected condition and cannot fulfill your request.
+     *         The service encountered an unexpected condition and can't fulfill your request.
      * @throws ForbiddenException
      *         You don't have permissions for this action with the credentials you sent.
      * @throws NotFoundException
-     *         The resource you requested does not exist.
+     *         The resource you requested doesn't exist.
      * @throws TooManyRequestsException
      *         Too many requests have been sent in too short of a time. The service limits the rate at which it will
      *         accept requests.
      * @throws ConflictException
-     *         The service could not complete your request because there is a conflict with the current state of the
+     *         The service couldn't complete your request because there is a conflict with the current state of the
      *         resource.
      * @sample AWSMediaConvert.DeleteJobTemplate
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/mediaconvert-2017-08-29/DeleteJobTemplate" target="_top">AWS
@@ -482,6 +590,10 @@ public class AWSMediaConvertClient extends AmazonWebServiceClient implements AWS
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaConvert");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteJobTemplate");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -507,16 +619,16 @@ public class AWSMediaConvertClient extends AmazonWebServiceClient implements AWS
      *         The service can't process your request because of a problem in the request. Please check your request
      *         form and syntax.
      * @throws InternalServerErrorException
-     *         The service encountered an unexpected condition and cannot fulfill your request.
+     *         The service encountered an unexpected condition and can't fulfill your request.
      * @throws ForbiddenException
      *         You don't have permissions for this action with the credentials you sent.
      * @throws NotFoundException
-     *         The resource you requested does not exist.
+     *         The resource you requested doesn't exist.
      * @throws TooManyRequestsException
      *         Too many requests have been sent in too short of a time. The service limits the rate at which it will
      *         accept requests.
      * @throws ConflictException
-     *         The service could not complete your request because there is a conflict with the current state of the
+     *         The service couldn't complete your request because there is a conflict with the current state of the
      *         resource.
      * @sample AWSMediaConvert.DeletePreset
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/mediaconvert-2017-08-29/DeletePreset" target="_top">AWS API
@@ -544,6 +656,10 @@ public class AWSMediaConvertClient extends AmazonWebServiceClient implements AWS
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaConvert");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeletePreset");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -569,16 +685,16 @@ public class AWSMediaConvertClient extends AmazonWebServiceClient implements AWS
      *         The service can't process your request because of a problem in the request. Please check your request
      *         form and syntax.
      * @throws InternalServerErrorException
-     *         The service encountered an unexpected condition and cannot fulfill your request.
+     *         The service encountered an unexpected condition and can't fulfill your request.
      * @throws ForbiddenException
      *         You don't have permissions for this action with the credentials you sent.
      * @throws NotFoundException
-     *         The resource you requested does not exist.
+     *         The resource you requested doesn't exist.
      * @throws TooManyRequestsException
      *         Too many requests have been sent in too short of a time. The service limits the rate at which it will
      *         accept requests.
      * @throws ConflictException
-     *         The service could not complete your request because there is a conflict with the current state of the
+     *         The service couldn't complete your request because there is a conflict with the current state of the
      *         resource.
      * @sample AWSMediaConvert.DeleteQueue
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/mediaconvert-2017-08-29/DeleteQueue" target="_top">AWS API
@@ -606,6 +722,10 @@ public class AWSMediaConvertClient extends AmazonWebServiceClient implements AWS
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaConvert");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteQueue");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -666,12 +786,85 @@ public class AWSMediaConvertClient extends AmazonWebServiceClient implements AWS
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaConvert");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeEndpoints");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
 
             HttpResponseHandler<AmazonWebServiceResponse<DescribeEndpointsResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new DescribeEndpointsResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * Removes an association between the Amazon Resource Name (ARN) of an AWS Certificate Manager (ACM) certificate and
+     * an AWS Elemental MediaConvert resource.
+     * 
+     * @param disassociateCertificateRequest
+     * @return Result of the DisassociateCertificate operation returned by the service.
+     * @throws BadRequestException
+     *         The service can't process your request because of a problem in the request. Please check your request
+     *         form and syntax.
+     * @throws InternalServerErrorException
+     *         The service encountered an unexpected condition and cannot fulfill your request.
+     * @throws ForbiddenException
+     *         You don't have permissions for this action with the credentials you sent.
+     * @throws NotFoundException
+     *         The resource you requested does not exist.
+     * @throws TooManyRequestsException
+     *         Too many requests have been sent in too short of a time. The service limits the rate at which it will
+     *         accept requests.
+     * @throws ConflictException
+     *         The service could not complete your request because there is a conflict with the current state of the
+     *         resource.
+     * @sample AWSMediaConvert.DisassociateCertificate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/mediaconvert-2017-08-29/DisassociateCertificate"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public DisassociateCertificateResult disassociateCertificate(DisassociateCertificateRequest request) {
+        request = beforeClientExecution(request);
+        return executeDisassociateCertificate(request);
+    }
+
+    @SdkInternalApi
+    final DisassociateCertificateResult executeDisassociateCertificate(DisassociateCertificateRequest disassociateCertificateRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(disassociateCertificateRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DisassociateCertificateRequest> request = null;
+        Response<DisassociateCertificateResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DisassociateCertificateRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(disassociateCertificateRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaConvert");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DisassociateCertificate");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<DisassociateCertificateResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new DisassociateCertificateResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -691,16 +884,16 @@ public class AWSMediaConvertClient extends AmazonWebServiceClient implements AWS
      *         The service can't process your request because of a problem in the request. Please check your request
      *         form and syntax.
      * @throws InternalServerErrorException
-     *         The service encountered an unexpected condition and cannot fulfill your request.
+     *         The service encountered an unexpected condition and can't fulfill your request.
      * @throws ForbiddenException
      *         You don't have permissions for this action with the credentials you sent.
      * @throws NotFoundException
-     *         The resource you requested does not exist.
+     *         The resource you requested doesn't exist.
      * @throws TooManyRequestsException
      *         Too many requests have been sent in too short of a time. The service limits the rate at which it will
      *         accept requests.
      * @throws ConflictException
-     *         The service could not complete your request because there is a conflict with the current state of the
+     *         The service couldn't complete your request because there is a conflict with the current state of the
      *         resource.
      * @sample AWSMediaConvert.GetJob
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/mediaconvert-2017-08-29/GetJob" target="_top">AWS API
@@ -728,6 +921,10 @@ public class AWSMediaConvertClient extends AmazonWebServiceClient implements AWS
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaConvert");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetJob");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -753,16 +950,16 @@ public class AWSMediaConvertClient extends AmazonWebServiceClient implements AWS
      *         The service can't process your request because of a problem in the request. Please check your request
      *         form and syntax.
      * @throws InternalServerErrorException
-     *         The service encountered an unexpected condition and cannot fulfill your request.
+     *         The service encountered an unexpected condition and can't fulfill your request.
      * @throws ForbiddenException
      *         You don't have permissions for this action with the credentials you sent.
      * @throws NotFoundException
-     *         The resource you requested does not exist.
+     *         The resource you requested doesn't exist.
      * @throws TooManyRequestsException
      *         Too many requests have been sent in too short of a time. The service limits the rate at which it will
      *         accept requests.
      * @throws ConflictException
-     *         The service could not complete your request because there is a conflict with the current state of the
+     *         The service couldn't complete your request because there is a conflict with the current state of the
      *         resource.
      * @sample AWSMediaConvert.GetJobTemplate
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/mediaconvert-2017-08-29/GetJobTemplate" target="_top">AWS
@@ -790,6 +987,10 @@ public class AWSMediaConvertClient extends AmazonWebServiceClient implements AWS
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaConvert");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetJobTemplate");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -815,16 +1016,16 @@ public class AWSMediaConvertClient extends AmazonWebServiceClient implements AWS
      *         The service can't process your request because of a problem in the request. Please check your request
      *         form and syntax.
      * @throws InternalServerErrorException
-     *         The service encountered an unexpected condition and cannot fulfill your request.
+     *         The service encountered an unexpected condition and can't fulfill your request.
      * @throws ForbiddenException
      *         You don't have permissions for this action with the credentials you sent.
      * @throws NotFoundException
-     *         The resource you requested does not exist.
+     *         The resource you requested doesn't exist.
      * @throws TooManyRequestsException
      *         Too many requests have been sent in too short of a time. The service limits the rate at which it will
      *         accept requests.
      * @throws ConflictException
-     *         The service could not complete your request because there is a conflict with the current state of the
+     *         The service couldn't complete your request because there is a conflict with the current state of the
      *         resource.
      * @sample AWSMediaConvert.GetPreset
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/mediaconvert-2017-08-29/GetPreset" target="_top">AWS API
@@ -852,6 +1053,10 @@ public class AWSMediaConvertClient extends AmazonWebServiceClient implements AWS
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaConvert");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetPreset");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -877,16 +1082,16 @@ public class AWSMediaConvertClient extends AmazonWebServiceClient implements AWS
      *         The service can't process your request because of a problem in the request. Please check your request
      *         form and syntax.
      * @throws InternalServerErrorException
-     *         The service encountered an unexpected condition and cannot fulfill your request.
+     *         The service encountered an unexpected condition and can't fulfill your request.
      * @throws ForbiddenException
      *         You don't have permissions for this action with the credentials you sent.
      * @throws NotFoundException
-     *         The resource you requested does not exist.
+     *         The resource you requested doesn't exist.
      * @throws TooManyRequestsException
      *         Too many requests have been sent in too short of a time. The service limits the rate at which it will
      *         accept requests.
      * @throws ConflictException
-     *         The service could not complete your request because there is a conflict with the current state of the
+     *         The service couldn't complete your request because there is a conflict with the current state of the
      *         resource.
      * @sample AWSMediaConvert.GetQueue
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/mediaconvert-2017-08-29/GetQueue" target="_top">AWS API
@@ -914,6 +1119,10 @@ public class AWSMediaConvertClient extends AmazonWebServiceClient implements AWS
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaConvert");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetQueue");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -940,16 +1149,16 @@ public class AWSMediaConvertClient extends AmazonWebServiceClient implements AWS
      *         The service can't process your request because of a problem in the request. Please check your request
      *         form and syntax.
      * @throws InternalServerErrorException
-     *         The service encountered an unexpected condition and cannot fulfill your request.
+     *         The service encountered an unexpected condition and can't fulfill your request.
      * @throws ForbiddenException
      *         You don't have permissions for this action with the credentials you sent.
      * @throws NotFoundException
-     *         The resource you requested does not exist.
+     *         The resource you requested doesn't exist.
      * @throws TooManyRequestsException
      *         Too many requests have been sent in too short of a time. The service limits the rate at which it will
      *         accept requests.
      * @throws ConflictException
-     *         The service could not complete your request because there is a conflict with the current state of the
+     *         The service couldn't complete your request because there is a conflict with the current state of the
      *         resource.
      * @sample AWSMediaConvert.ListJobTemplates
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/mediaconvert-2017-08-29/ListJobTemplates" target="_top">AWS
@@ -977,6 +1186,10 @@ public class AWSMediaConvertClient extends AmazonWebServiceClient implements AWS
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaConvert");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListJobTemplates");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1004,16 +1217,16 @@ public class AWSMediaConvertClient extends AmazonWebServiceClient implements AWS
      *         The service can't process your request because of a problem in the request. Please check your request
      *         form and syntax.
      * @throws InternalServerErrorException
-     *         The service encountered an unexpected condition and cannot fulfill your request.
+     *         The service encountered an unexpected condition and can't fulfill your request.
      * @throws ForbiddenException
      *         You don't have permissions for this action with the credentials you sent.
      * @throws NotFoundException
-     *         The resource you requested does not exist.
+     *         The resource you requested doesn't exist.
      * @throws TooManyRequestsException
      *         Too many requests have been sent in too short of a time. The service limits the rate at which it will
      *         accept requests.
      * @throws ConflictException
-     *         The service could not complete your request because there is a conflict with the current state of the
+     *         The service couldn't complete your request because there is a conflict with the current state of the
      *         resource.
      * @sample AWSMediaConvert.ListJobs
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/mediaconvert-2017-08-29/ListJobs" target="_top">AWS API
@@ -1041,6 +1254,10 @@ public class AWSMediaConvertClient extends AmazonWebServiceClient implements AWS
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaConvert");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListJobs");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1067,16 +1284,16 @@ public class AWSMediaConvertClient extends AmazonWebServiceClient implements AWS
      *         The service can't process your request because of a problem in the request. Please check your request
      *         form and syntax.
      * @throws InternalServerErrorException
-     *         The service encountered an unexpected condition and cannot fulfill your request.
+     *         The service encountered an unexpected condition and can't fulfill your request.
      * @throws ForbiddenException
      *         You don't have permissions for this action with the credentials you sent.
      * @throws NotFoundException
-     *         The resource you requested does not exist.
+     *         The resource you requested doesn't exist.
      * @throws TooManyRequestsException
      *         Too many requests have been sent in too short of a time. The service limits the rate at which it will
      *         accept requests.
      * @throws ConflictException
-     *         The service could not complete your request because there is a conflict with the current state of the
+     *         The service couldn't complete your request because there is a conflict with the current state of the
      *         resource.
      * @sample AWSMediaConvert.ListPresets
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/mediaconvert-2017-08-29/ListPresets" target="_top">AWS API
@@ -1104,6 +1321,10 @@ public class AWSMediaConvertClient extends AmazonWebServiceClient implements AWS
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaConvert");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListPresets");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1130,16 +1351,16 @@ public class AWSMediaConvertClient extends AmazonWebServiceClient implements AWS
      *         The service can't process your request because of a problem in the request. Please check your request
      *         form and syntax.
      * @throws InternalServerErrorException
-     *         The service encountered an unexpected condition and cannot fulfill your request.
+     *         The service encountered an unexpected condition and can't fulfill your request.
      * @throws ForbiddenException
      *         You don't have permissions for this action with the credentials you sent.
      * @throws NotFoundException
-     *         The resource you requested does not exist.
+     *         The resource you requested doesn't exist.
      * @throws TooManyRequestsException
      *         Too many requests have been sent in too short of a time. The service limits the rate at which it will
      *         accept requests.
      * @throws ConflictException
-     *         The service could not complete your request because there is a conflict with the current state of the
+     *         The service couldn't complete your request because there is a conflict with the current state of the
      *         resource.
      * @sample AWSMediaConvert.ListQueues
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/mediaconvert-2017-08-29/ListQueues" target="_top">AWS API
@@ -1167,12 +1388,216 @@ public class AWSMediaConvertClient extends AmazonWebServiceClient implements AWS
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaConvert");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListQueues");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
 
             HttpResponseHandler<AmazonWebServiceResponse<ListQueuesResult>> responseHandler = protocolFactory.createResponseHandler(new JsonOperationMetadata()
                     .withPayloadJson(true).withHasStreamingSuccessResponse(false), new ListQueuesResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * Retrieve the tags for a MediaConvert resource.
+     * 
+     * @param listTagsForResourceRequest
+     * @return Result of the ListTagsForResource operation returned by the service.
+     * @throws BadRequestException
+     *         The service can't process your request because of a problem in the request. Please check your request
+     *         form and syntax.
+     * @throws InternalServerErrorException
+     *         The service encountered an unexpected condition and can't fulfill your request.
+     * @throws ForbiddenException
+     *         You don't have permissions for this action with the credentials you sent.
+     * @throws NotFoundException
+     *         The resource you requested doesn't exist.
+     * @throws TooManyRequestsException
+     *         Too many requests have been sent in too short of a time. The service limits the rate at which it will
+     *         accept requests.
+     * @throws ConflictException
+     *         The service couldn't complete your request because there is a conflict with the current state of the
+     *         resource.
+     * @sample AWSMediaConvert.ListTagsForResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/mediaconvert-2017-08-29/ListTagsForResource"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public ListTagsForResourceResult listTagsForResource(ListTagsForResourceRequest request) {
+        request = beforeClientExecution(request);
+        return executeListTagsForResource(request);
+    }
+
+    @SdkInternalApi
+    final ListTagsForResourceResult executeListTagsForResource(ListTagsForResourceRequest listTagsForResourceRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(listTagsForResourceRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<ListTagsForResourceRequest> request = null;
+        Response<ListTagsForResourceResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new ListTagsForResourceRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listTagsForResourceRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaConvert");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListTagsForResource");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<ListTagsForResourceResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new ListTagsForResourceResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * Add tags to a MediaConvert queue, preset, or job template. For information about tagging, see the User Guide at
+     * https://docs.aws.amazon.com/mediaconvert/latest/ug/tagging-resources.html
+     * 
+     * @param tagResourceRequest
+     * @return Result of the TagResource operation returned by the service.
+     * @throws BadRequestException
+     *         The service can't process your request because of a problem in the request. Please check your request
+     *         form and syntax.
+     * @throws InternalServerErrorException
+     *         The service encountered an unexpected condition and can't fulfill your request.
+     * @throws ForbiddenException
+     *         You don't have permissions for this action with the credentials you sent.
+     * @throws NotFoundException
+     *         The resource you requested doesn't exist.
+     * @throws TooManyRequestsException
+     *         Too many requests have been sent in too short of a time. The service limits the rate at which it will
+     *         accept requests.
+     * @throws ConflictException
+     *         The service couldn't complete your request because there is a conflict with the current state of the
+     *         resource.
+     * @sample AWSMediaConvert.TagResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/mediaconvert-2017-08-29/TagResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public TagResourceResult tagResource(TagResourceRequest request) {
+        request = beforeClientExecution(request);
+        return executeTagResource(request);
+    }
+
+    @SdkInternalApi
+    final TagResourceResult executeTagResource(TagResourceRequest tagResourceRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(tagResourceRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<TagResourceRequest> request = null;
+        Response<TagResourceResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new TagResourceRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(tagResourceRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaConvert");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "TagResource");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<TagResourceResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new TagResourceResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * Remove tags from a MediaConvert queue, preset, or job template. For information about tagging, see the User Guide
+     * at https://docs.aws.amazon.com/mediaconvert/latest/ug/tagging-resources.html
+     * 
+     * @param untagResourceRequest
+     * @return Result of the UntagResource operation returned by the service.
+     * @throws BadRequestException
+     *         The service can't process your request because of a problem in the request. Please check your request
+     *         form and syntax.
+     * @throws InternalServerErrorException
+     *         The service encountered an unexpected condition and can't fulfill your request.
+     * @throws ForbiddenException
+     *         You don't have permissions for this action with the credentials you sent.
+     * @throws NotFoundException
+     *         The resource you requested doesn't exist.
+     * @throws TooManyRequestsException
+     *         Too many requests have been sent in too short of a time. The service limits the rate at which it will
+     *         accept requests.
+     * @throws ConflictException
+     *         The service couldn't complete your request because there is a conflict with the current state of the
+     *         resource.
+     * @sample AWSMediaConvert.UntagResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/mediaconvert-2017-08-29/UntagResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public UntagResourceResult untagResource(UntagResourceRequest request) {
+        request = beforeClientExecution(request);
+        return executeUntagResource(request);
+    }
+
+    @SdkInternalApi
+    final UntagResourceResult executeUntagResource(UntagResourceRequest untagResourceRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(untagResourceRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<UntagResourceRequest> request = null;
+        Response<UntagResourceResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new UntagResourceRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(untagResourceRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaConvert");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UntagResource");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<UntagResourceResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new UntagResourceResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -1192,16 +1617,16 @@ public class AWSMediaConvertClient extends AmazonWebServiceClient implements AWS
      *         The service can't process your request because of a problem in the request. Please check your request
      *         form and syntax.
      * @throws InternalServerErrorException
-     *         The service encountered an unexpected condition and cannot fulfill your request.
+     *         The service encountered an unexpected condition and can't fulfill your request.
      * @throws ForbiddenException
      *         You don't have permissions for this action with the credentials you sent.
      * @throws NotFoundException
-     *         The resource you requested does not exist.
+     *         The resource you requested doesn't exist.
      * @throws TooManyRequestsException
      *         Too many requests have been sent in too short of a time. The service limits the rate at which it will
      *         accept requests.
      * @throws ConflictException
-     *         The service could not complete your request because there is a conflict with the current state of the
+     *         The service couldn't complete your request because there is a conflict with the current state of the
      *         resource.
      * @sample AWSMediaConvert.UpdateJobTemplate
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/mediaconvert-2017-08-29/UpdateJobTemplate" target="_top">AWS
@@ -1229,6 +1654,10 @@ public class AWSMediaConvertClient extends AmazonWebServiceClient implements AWS
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaConvert");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateJobTemplate");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1254,16 +1683,16 @@ public class AWSMediaConvertClient extends AmazonWebServiceClient implements AWS
      *         The service can't process your request because of a problem in the request. Please check your request
      *         form and syntax.
      * @throws InternalServerErrorException
-     *         The service encountered an unexpected condition and cannot fulfill your request.
+     *         The service encountered an unexpected condition and can't fulfill your request.
      * @throws ForbiddenException
      *         You don't have permissions for this action with the credentials you sent.
      * @throws NotFoundException
-     *         The resource you requested does not exist.
+     *         The resource you requested doesn't exist.
      * @throws TooManyRequestsException
      *         Too many requests have been sent in too short of a time. The service limits the rate at which it will
      *         accept requests.
      * @throws ConflictException
-     *         The service could not complete your request because there is a conflict with the current state of the
+     *         The service couldn't complete your request because there is a conflict with the current state of the
      *         resource.
      * @sample AWSMediaConvert.UpdatePreset
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/mediaconvert-2017-08-29/UpdatePreset" target="_top">AWS API
@@ -1291,6 +1720,10 @@ public class AWSMediaConvertClient extends AmazonWebServiceClient implements AWS
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaConvert");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdatePreset");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1316,16 +1749,16 @@ public class AWSMediaConvertClient extends AmazonWebServiceClient implements AWS
      *         The service can't process your request because of a problem in the request. Please check your request
      *         form and syntax.
      * @throws InternalServerErrorException
-     *         The service encountered an unexpected condition and cannot fulfill your request.
+     *         The service encountered an unexpected condition and can't fulfill your request.
      * @throws ForbiddenException
      *         You don't have permissions for this action with the credentials you sent.
      * @throws NotFoundException
-     *         The resource you requested does not exist.
+     *         The resource you requested doesn't exist.
      * @throws TooManyRequestsException
      *         Too many requests have been sent in too short of a time. The service limits the rate at which it will
      *         accept requests.
      * @throws ConflictException
-     *         The service could not complete your request because there is a conflict with the current state of the
+     *         The service couldn't complete your request because there is a conflict with the current state of the
      *         resource.
      * @sample AWSMediaConvert.UpdateQueue
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/mediaconvert-2017-08-29/UpdateQueue" target="_top">AWS API
@@ -1353,6 +1786,10 @@ public class AWSMediaConvertClient extends AmazonWebServiceClient implements AWS
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaConvert");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateQueue");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1393,9 +1830,18 @@ public class AWSMediaConvertClient extends AmazonWebServiceClient implements AWS
     private <X, Y extends AmazonWebServiceRequest> Response<X> invoke(Request<Y> request, HttpResponseHandler<AmazonWebServiceResponse<X>> responseHandler,
             ExecutionContext executionContext) {
 
+        return invoke(request, responseHandler, executionContext, null, null);
+    }
+
+    /**
+     * Normal invoke with authentication. Credentials are required and may be overriden at the request level.
+     **/
+    private <X, Y extends AmazonWebServiceRequest> Response<X> invoke(Request<Y> request, HttpResponseHandler<AmazonWebServiceResponse<X>> responseHandler,
+            ExecutionContext executionContext, URI cachedEndpoint, URI uriFromEndpointTrait) {
+
         executionContext.setCredentialsProvider(CredentialUtils.getCredentialsProvider(request.getOriginalRequest(), awsCredentialsProvider));
 
-        return doInvoke(request, responseHandler, executionContext);
+        return doInvoke(request, responseHandler, executionContext, cachedEndpoint, uriFromEndpointTrait);
     }
 
     /**
@@ -1405,7 +1851,7 @@ public class AWSMediaConvertClient extends AmazonWebServiceClient implements AWS
     private <X, Y extends AmazonWebServiceRequest> Response<X> anonymousInvoke(Request<Y> request,
             HttpResponseHandler<AmazonWebServiceResponse<X>> responseHandler, ExecutionContext executionContext) {
 
-        return doInvoke(request, responseHandler, executionContext);
+        return doInvoke(request, responseHandler, executionContext, null, null);
     }
 
     /**
@@ -1413,8 +1859,17 @@ public class AWSMediaConvertClient extends AmazonWebServiceClient implements AWS
      * ExecutionContext beforehand.
      **/
     private <X, Y extends AmazonWebServiceRequest> Response<X> doInvoke(Request<Y> request, HttpResponseHandler<AmazonWebServiceResponse<X>> responseHandler,
-            ExecutionContext executionContext) {
-        request.setEndpoint(endpoint);
+            ExecutionContext executionContext, URI discoveredEndpoint, URI uriFromEndpointTrait) {
+
+        if (discoveredEndpoint != null) {
+            request.setEndpoint(discoveredEndpoint);
+            request.getOriginalRequest().getRequestClientOptions().appendUserAgent("endpoint-discovery");
+        } else if (uriFromEndpointTrait != null) {
+            request.setEndpoint(uriFromEndpointTrait);
+        } else {
+            request.setEndpoint(endpoint);
+        }
+
         request.setTimeOffset(timeOffset);
 
         HttpResponseHandler<AmazonServiceException> errorResponseHandler = protocolFactory.createErrorResponseHandler(new JsonErrorResponseMetadata());

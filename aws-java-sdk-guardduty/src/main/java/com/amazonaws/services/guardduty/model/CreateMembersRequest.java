@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -18,7 +18,6 @@ import javax.annotation.Generated;
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
- * CreateMembers request body.
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/CreateMembers" target="_top">AWS API
  *      Documentation</a>
@@ -27,16 +26,64 @@ import com.amazonaws.AmazonWebServiceRequest;
 public class CreateMembersRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
+     * <p>
+     * The unique ID of the detector of the GuardDuty account with which you want to associate member accounts.
+     * </p>
+     */
+    private String detectorId;
+    /**
+     * <p>
      * A list of account ID and email address pairs of the accounts that you want to associate with the master GuardDuty
      * account.
+     * </p>
      */
     private java.util.List<AccountDetail> accountDetails;
-    /** The unique ID of the detector of the GuardDuty account with which you want to associate member accounts. */
-    private String detectorId;
 
     /**
+     * <p>
+     * The unique ID of the detector of the GuardDuty account with which you want to associate member accounts.
+     * </p>
+     * 
+     * @param detectorId
+     *        The unique ID of the detector of the GuardDuty account with which you want to associate member accounts.
+     */
+
+    public void setDetectorId(String detectorId) {
+        this.detectorId = detectorId;
+    }
+
+    /**
+     * <p>
+     * The unique ID of the detector of the GuardDuty account with which you want to associate member accounts.
+     * </p>
+     * 
+     * @return The unique ID of the detector of the GuardDuty account with which you want to associate member accounts.
+     */
+
+    public String getDetectorId() {
+        return this.detectorId;
+    }
+
+    /**
+     * <p>
+     * The unique ID of the detector of the GuardDuty account with which you want to associate member accounts.
+     * </p>
+     * 
+     * @param detectorId
+     *        The unique ID of the detector of the GuardDuty account with which you want to associate member accounts.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateMembersRequest withDetectorId(String detectorId) {
+        setDetectorId(detectorId);
+        return this;
+    }
+
+    /**
+     * <p>
      * A list of account ID and email address pairs of the accounts that you want to associate with the master GuardDuty
      * account.
+     * </p>
      * 
      * @return A list of account ID and email address pairs of the accounts that you want to associate with the master
      *         GuardDuty account.
@@ -47,8 +94,10 @@ public class CreateMembersRequest extends com.amazonaws.AmazonWebServiceRequest 
     }
 
     /**
+     * <p>
      * A list of account ID and email address pairs of the accounts that you want to associate with the master GuardDuty
      * account.
+     * </p>
      * 
      * @param accountDetails
      *        A list of account ID and email address pairs of the accounts that you want to associate with the master
@@ -65,8 +114,10 @@ public class CreateMembersRequest extends com.amazonaws.AmazonWebServiceRequest 
     }
 
     /**
+     * <p>
      * A list of account ID and email address pairs of the accounts that you want to associate with the master GuardDuty
      * account.
+     * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
      * {@link #setAccountDetails(java.util.Collection)} or {@link #withAccountDetails(java.util.Collection)} if you want
@@ -90,8 +141,10 @@ public class CreateMembersRequest extends com.amazonaws.AmazonWebServiceRequest 
     }
 
     /**
+     * <p>
      * A list of account ID and email address pairs of the accounts that you want to associate with the master GuardDuty
      * account.
+     * </p>
      * 
      * @param accountDetails
      *        A list of account ID and email address pairs of the accounts that you want to associate with the master
@@ -105,41 +158,8 @@ public class CreateMembersRequest extends com.amazonaws.AmazonWebServiceRequest 
     }
 
     /**
-     * The unique ID of the detector of the GuardDuty account with which you want to associate member accounts.
-     * 
-     * @param detectorId
-     *        The unique ID of the detector of the GuardDuty account with which you want to associate member accounts.
-     */
-
-    public void setDetectorId(String detectorId) {
-        this.detectorId = detectorId;
-    }
-
-    /**
-     * The unique ID of the detector of the GuardDuty account with which you want to associate member accounts.
-     * 
-     * @return The unique ID of the detector of the GuardDuty account with which you want to associate member accounts.
-     */
-
-    public String getDetectorId() {
-        return this.detectorId;
-    }
-
-    /**
-     * The unique ID of the detector of the GuardDuty account with which you want to associate member accounts.
-     * 
-     * @param detectorId
-     *        The unique ID of the detector of the GuardDuty account with which you want to associate member accounts.
-     * @return Returns a reference to this object so that method calls can be chained together.
-     */
-
-    public CreateMembersRequest withDetectorId(String detectorId) {
-        setDetectorId(detectorId);
-        return this;
-    }
-
-    /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -149,10 +169,10 @@ public class CreateMembersRequest extends com.amazonaws.AmazonWebServiceRequest 
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
-        if (getAccountDetails() != null)
-            sb.append("AccountDetails: ").append(getAccountDetails()).append(",");
         if (getDetectorId() != null)
-            sb.append("DetectorId: ").append(getDetectorId());
+            sb.append("DetectorId: ").append(getDetectorId()).append(",");
+        if (getAccountDetails() != null)
+            sb.append("AccountDetails: ").append(getAccountDetails());
         sb.append("}");
         return sb.toString();
     }
@@ -167,13 +187,13 @@ public class CreateMembersRequest extends com.amazonaws.AmazonWebServiceRequest 
         if (obj instanceof CreateMembersRequest == false)
             return false;
         CreateMembersRequest other = (CreateMembersRequest) obj;
-        if (other.getAccountDetails() == null ^ this.getAccountDetails() == null)
-            return false;
-        if (other.getAccountDetails() != null && other.getAccountDetails().equals(this.getAccountDetails()) == false)
-            return false;
         if (other.getDetectorId() == null ^ this.getDetectorId() == null)
             return false;
         if (other.getDetectorId() != null && other.getDetectorId().equals(this.getDetectorId()) == false)
+            return false;
+        if (other.getAccountDetails() == null ^ this.getAccountDetails() == null)
+            return false;
+        if (other.getAccountDetails() != null && other.getAccountDetails().equals(this.getAccountDetails()) == false)
             return false;
         return true;
     }
@@ -183,8 +203,8 @@ public class CreateMembersRequest extends com.amazonaws.AmazonWebServiceRequest 
         final int prime = 31;
         int hashCode = 1;
 
-        hashCode = prime * hashCode + ((getAccountDetails() == null) ? 0 : getAccountDetails().hashCode());
         hashCode = prime * hashCode + ((getDetectorId() == null) ? 0 : getDetectorId().hashCode());
+        hashCode = prime * hashCode + ((getAccountDetails() == null) ? 0 : getAccountDetails().hashCode());
         return hashCode;
     }
 

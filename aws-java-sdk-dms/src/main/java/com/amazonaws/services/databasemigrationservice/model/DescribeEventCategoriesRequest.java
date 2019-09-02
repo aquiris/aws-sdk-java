@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -31,7 +31,7 @@ public class DescribeEventCategoriesRequest extends com.amazonaws.AmazonWebServi
      * The type of AWS DMS resource that generates events.
      * </p>
      * <p>
-     * Valid values: replication-instance | migration-task
+     * Valid values: replication-instance | replication-task
      * </p>
      */
     private String sourceType;
@@ -47,13 +47,13 @@ public class DescribeEventCategoriesRequest extends com.amazonaws.AmazonWebServi
      * The type of AWS DMS resource that generates events.
      * </p>
      * <p>
-     * Valid values: replication-instance | migration-task
+     * Valid values: replication-instance | replication-task
      * </p>
      * 
      * @param sourceType
      *        The type of AWS DMS resource that generates events. </p>
      *        <p>
-     *        Valid values: replication-instance | migration-task
+     *        Valid values: replication-instance | replication-task
      */
 
     public void setSourceType(String sourceType) {
@@ -65,12 +65,12 @@ public class DescribeEventCategoriesRequest extends com.amazonaws.AmazonWebServi
      * The type of AWS DMS resource that generates events.
      * </p>
      * <p>
-     * Valid values: replication-instance | migration-task
+     * Valid values: replication-instance | replication-task
      * </p>
      * 
      * @return The type of AWS DMS resource that generates events. </p>
      *         <p>
-     *         Valid values: replication-instance | migration-task
+     *         Valid values: replication-instance | replication-task
      */
 
     public String getSourceType() {
@@ -82,13 +82,13 @@ public class DescribeEventCategoriesRequest extends com.amazonaws.AmazonWebServi
      * The type of AWS DMS resource that generates events.
      * </p>
      * <p>
-     * Valid values: replication-instance | migration-task
+     * Valid values: replication-instance | replication-task
      * </p>
      * 
      * @param sourceType
      *        The type of AWS DMS resource that generates events. </p>
      *        <p>
-     *        Valid values: replication-instance | migration-task
+     *        Valid values: replication-instance | replication-task
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -168,7 +168,8 @@ public class DescribeEventCategoriesRequest extends com.amazonaws.AmazonWebServi
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -76,12 +76,19 @@ public class DescribeDBClustersRequest extends com.amazonaws.AmazonWebServiceReq
     private Integer maxRecords;
     /**
      * <p>
-     * An optional pagination token provided by a previous <a>DescribeDBClusters</a> request. If this parameter is
+     * An optional pagination token provided by a previous <code>DescribeDBClusters</code> request. If this parameter is
      * specified, the response includes only records beyond the marker, up to the value specified by
      * <code>MaxRecords</code>.
      * </p>
      */
     private String marker;
+    /**
+     * <p>
+     * Optional Boolean parameter that specifies whether the output includes information about clusters shared from
+     * other AWS accounts.
+     * </p>
+     */
+    private Boolean includeShared;
 
     /**
      * <p>
@@ -430,14 +437,14 @@ public class DescribeDBClustersRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * An optional pagination token provided by a previous <a>DescribeDBClusters</a> request. If this parameter is
+     * An optional pagination token provided by a previous <code>DescribeDBClusters</code> request. If this parameter is
      * specified, the response includes only records beyond the marker, up to the value specified by
      * <code>MaxRecords</code>.
      * </p>
      * 
      * @param marker
-     *        An optional pagination token provided by a previous <a>DescribeDBClusters</a> request. If this parameter
-     *        is specified, the response includes only records beyond the marker, up to the value specified by
+     *        An optional pagination token provided by a previous <code>DescribeDBClusters</code> request. If this
+     *        parameter is specified, the response includes only records beyond the marker, up to the value specified by
      *        <code>MaxRecords</code>.
      */
 
@@ -447,14 +454,14 @@ public class DescribeDBClustersRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * An optional pagination token provided by a previous <a>DescribeDBClusters</a> request. If this parameter is
+     * An optional pagination token provided by a previous <code>DescribeDBClusters</code> request. If this parameter is
      * specified, the response includes only records beyond the marker, up to the value specified by
      * <code>MaxRecords</code>.
      * </p>
      * 
-     * @return An optional pagination token provided by a previous <a>DescribeDBClusters</a> request. If this parameter
-     *         is specified, the response includes only records beyond the marker, up to the value specified by
-     *         <code>MaxRecords</code>.
+     * @return An optional pagination token provided by a previous <code>DescribeDBClusters</code> request. If this
+     *         parameter is specified, the response includes only records beyond the marker, up to the value specified
+     *         by <code>MaxRecords</code>.
      */
 
     public String getMarker() {
@@ -463,14 +470,14 @@ public class DescribeDBClustersRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * An optional pagination token provided by a previous <a>DescribeDBClusters</a> request. If this parameter is
+     * An optional pagination token provided by a previous <code>DescribeDBClusters</code> request. If this parameter is
      * specified, the response includes only records beyond the marker, up to the value specified by
      * <code>MaxRecords</code>.
      * </p>
      * 
      * @param marker
-     *        An optional pagination token provided by a previous <a>DescribeDBClusters</a> request. If this parameter
-     *        is specified, the response includes only records beyond the marker, up to the value specified by
+     *        An optional pagination token provided by a previous <code>DescribeDBClusters</code> request. If this
+     *        parameter is specified, the response includes only records beyond the marker, up to the value specified by
      *        <code>MaxRecords</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -481,7 +488,68 @@ public class DescribeDBClustersRequest extends com.amazonaws.AmazonWebServiceReq
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * <p>
+     * Optional Boolean parameter that specifies whether the output includes information about clusters shared from
+     * other AWS accounts.
+     * </p>
+     * 
+     * @param includeShared
+     *        Optional Boolean parameter that specifies whether the output includes information about clusters shared
+     *        from other AWS accounts.
+     */
+
+    public void setIncludeShared(Boolean includeShared) {
+        this.includeShared = includeShared;
+    }
+
+    /**
+     * <p>
+     * Optional Boolean parameter that specifies whether the output includes information about clusters shared from
+     * other AWS accounts.
+     * </p>
+     * 
+     * @return Optional Boolean parameter that specifies whether the output includes information about clusters shared
+     *         from other AWS accounts.
+     */
+
+    public Boolean getIncludeShared() {
+        return this.includeShared;
+    }
+
+    /**
+     * <p>
+     * Optional Boolean parameter that specifies whether the output includes information about clusters shared from
+     * other AWS accounts.
+     * </p>
+     * 
+     * @param includeShared
+     *        Optional Boolean parameter that specifies whether the output includes information about clusters shared
+     *        from other AWS accounts.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DescribeDBClustersRequest withIncludeShared(Boolean includeShared) {
+        setIncludeShared(includeShared);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Optional Boolean parameter that specifies whether the output includes information about clusters shared from
+     * other AWS accounts.
+     * </p>
+     * 
+     * @return Optional Boolean parameter that specifies whether the output includes information about clusters shared
+     *         from other AWS accounts.
+     */
+
+    public Boolean isIncludeShared() {
+        return this.includeShared;
+    }
+
+    /**
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -498,7 +566,9 @@ public class DescribeDBClustersRequest extends com.amazonaws.AmazonWebServiceReq
         if (getMaxRecords() != null)
             sb.append("MaxRecords: ").append(getMaxRecords()).append(",");
         if (getMarker() != null)
-            sb.append("Marker: ").append(getMarker());
+            sb.append("Marker: ").append(getMarker()).append(",");
+        if (getIncludeShared() != null)
+            sb.append("IncludeShared: ").append(getIncludeShared());
         sb.append("}");
         return sb.toString();
     }
@@ -529,6 +599,10 @@ public class DescribeDBClustersRequest extends com.amazonaws.AmazonWebServiceReq
             return false;
         if (other.getMarker() != null && other.getMarker().equals(this.getMarker()) == false)
             return false;
+        if (other.getIncludeShared() == null ^ this.getIncludeShared() == null)
+            return false;
+        if (other.getIncludeShared() != null && other.getIncludeShared().equals(this.getIncludeShared()) == false)
+            return false;
         return true;
     }
 
@@ -541,6 +615,7 @@ public class DescribeDBClustersRequest extends com.amazonaws.AmazonWebServiceReq
         hashCode = prime * hashCode + ((getFilters() == null) ? 0 : getFilters().hashCode());
         hashCode = prime * hashCode + ((getMaxRecords() == null) ? 0 : getMaxRecords().hashCode());
         hashCode = prime * hashCode + ((getMarker() == null) ? 0 : getMarker().hashCode());
+        hashCode = prime * hashCode + ((getIncludeShared() == null) ? 0 : getIncludeShared().hashCode());
         return hashCode;
     }
 

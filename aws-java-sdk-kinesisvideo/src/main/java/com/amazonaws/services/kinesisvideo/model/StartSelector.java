@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -30,7 +30,7 @@ import com.amazonaws.protocol.ProtocolMarshaller;
  * </li>
  * <li>
  * <p>
- * Identify a specific chunk. You can identify a specific chunk either by providing a fragment number or time stamp
+ * Identify a specific chunk. You can identify a specific chunk either by providing a fragment number or timestamp
  * (server or producer).
  * </p>
  * </li>
@@ -67,14 +67,14 @@ public class StartSelector implements Serializable, Cloneable, StructuredPojo {
      * </li>
      * <li>
      * <p>
-     * FRAGMENT_NUMBER - Start with the chunk containing the specific fragment. You must also specify the
-     * <code>StartFragmentNumber</code>.
+     * FRAGMENT_NUMBER - Start with the chunk after a specific fragment. You must also specify the
+     * <code>AfterFragmentNumber</code> parameter.
      * </p>
      * </li>
      * <li>
      * <p>
      * PRODUCER_TIMESTAMP or SERVER_TIMESTAMP - Start with the chunk containing a fragment with the specified producer
-     * or server time stamp. You specify the time stamp by adding <code>StartTimestamp</code>.
+     * or server timestamp. You specify the timestamp by adding <code>StartTimestamp</code>.
      * </p>
      * </li>
      * <li>
@@ -99,9 +99,9 @@ public class StartSelector implements Serializable, Cloneable, StructuredPojo {
     private String afterFragmentNumber;
     /**
      * <p>
-     * A time stamp value. This value is required if you choose the PRODUCER_TIMESTAMP or the SERVER_TIMESTAMP as the
+     * A timestamp value. This value is required if you choose the PRODUCER_TIMESTAMP or the SERVER_TIMESTAMP as the
      * <code>startSelectorType</code>. The <code>GetMedia</code> API then starts with the chunk containing the fragment
-     * that has the specified time stamp.
+     * that has the specified timestamp.
      * </p>
      */
     private java.util.Date startTimestamp;
@@ -130,14 +130,14 @@ public class StartSelector implements Serializable, Cloneable, StructuredPojo {
      * </li>
      * <li>
      * <p>
-     * FRAGMENT_NUMBER - Start with the chunk containing the specific fragment. You must also specify the
-     * <code>StartFragmentNumber</code>.
+     * FRAGMENT_NUMBER - Start with the chunk after a specific fragment. You must also specify the
+     * <code>AfterFragmentNumber</code> parameter.
      * </p>
      * </li>
      * <li>
      * <p>
      * PRODUCER_TIMESTAMP or SERVER_TIMESTAMP - Start with the chunk containing a fragment with the specified producer
-     * or server time stamp. You specify the time stamp by adding <code>StartTimestamp</code>.
+     * or server timestamp. You specify the timestamp by adding <code>StartTimestamp</code>.
      * </p>
      * </li>
      * <li>
@@ -168,14 +168,14 @@ public class StartSelector implements Serializable, Cloneable, StructuredPojo {
      *        </li>
      *        <li>
      *        <p>
-     *        FRAGMENT_NUMBER - Start with the chunk containing the specific fragment. You must also specify the
-     *        <code>StartFragmentNumber</code>.
+     *        FRAGMENT_NUMBER - Start with the chunk after a specific fragment. You must also specify the
+     *        <code>AfterFragmentNumber</code> parameter.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
      *        PRODUCER_TIMESTAMP or SERVER_TIMESTAMP - Start with the chunk containing a fragment with the specified
-     *        producer or server time stamp. You specify the time stamp by adding <code>StartTimestamp</code>.
+     *        producer or server timestamp. You specify the timestamp by adding <code>StartTimestamp</code>.
      *        </p>
      *        </li>
      *        <li>
@@ -213,14 +213,14 @@ public class StartSelector implements Serializable, Cloneable, StructuredPojo {
      * </li>
      * <li>
      * <p>
-     * FRAGMENT_NUMBER - Start with the chunk containing the specific fragment. You must also specify the
-     * <code>StartFragmentNumber</code>.
+     * FRAGMENT_NUMBER - Start with the chunk after a specific fragment. You must also specify the
+     * <code>AfterFragmentNumber</code> parameter.
      * </p>
      * </li>
      * <li>
      * <p>
      * PRODUCER_TIMESTAMP or SERVER_TIMESTAMP - Start with the chunk containing a fragment with the specified producer
-     * or server time stamp. You specify the time stamp by adding <code>StartTimestamp</code>.
+     * or server timestamp. You specify the timestamp by adding <code>StartTimestamp</code>.
      * </p>
      * </li>
      * <li>
@@ -250,14 +250,14 @@ public class StartSelector implements Serializable, Cloneable, StructuredPojo {
      *         </li>
      *         <li>
      *         <p>
-     *         FRAGMENT_NUMBER - Start with the chunk containing the specific fragment. You must also specify the
-     *         <code>StartFragmentNumber</code>.
+     *         FRAGMENT_NUMBER - Start with the chunk after a specific fragment. You must also specify the
+     *         <code>AfterFragmentNumber</code> parameter.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
      *         PRODUCER_TIMESTAMP or SERVER_TIMESTAMP - Start with the chunk containing a fragment with the specified
-     *         producer or server time stamp. You specify the time stamp by adding <code>StartTimestamp</code>.
+     *         producer or server timestamp. You specify the timestamp by adding <code>StartTimestamp</code>.
      *         </p>
      *         </li>
      *         <li>
@@ -295,14 +295,14 @@ public class StartSelector implements Serializable, Cloneable, StructuredPojo {
      * </li>
      * <li>
      * <p>
-     * FRAGMENT_NUMBER - Start with the chunk containing the specific fragment. You must also specify the
-     * <code>StartFragmentNumber</code>.
+     * FRAGMENT_NUMBER - Start with the chunk after a specific fragment. You must also specify the
+     * <code>AfterFragmentNumber</code> parameter.
      * </p>
      * </li>
      * <li>
      * <p>
      * PRODUCER_TIMESTAMP or SERVER_TIMESTAMP - Start with the chunk containing a fragment with the specified producer
-     * or server time stamp. You specify the time stamp by adding <code>StartTimestamp</code>.
+     * or server timestamp. You specify the timestamp by adding <code>StartTimestamp</code>.
      * </p>
      * </li>
      * <li>
@@ -333,14 +333,14 @@ public class StartSelector implements Serializable, Cloneable, StructuredPojo {
      *        </li>
      *        <li>
      *        <p>
-     *        FRAGMENT_NUMBER - Start with the chunk containing the specific fragment. You must also specify the
-     *        <code>StartFragmentNumber</code>.
+     *        FRAGMENT_NUMBER - Start with the chunk after a specific fragment. You must also specify the
+     *        <code>AfterFragmentNumber</code> parameter.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
      *        PRODUCER_TIMESTAMP or SERVER_TIMESTAMP - Start with the chunk containing a fragment with the specified
-     *        producer or server time stamp. You specify the time stamp by adding <code>StartTimestamp</code>.
+     *        producer or server timestamp. You specify the timestamp by adding <code>StartTimestamp</code>.
      *        </p>
      *        </li>
      *        <li>
@@ -380,14 +380,14 @@ public class StartSelector implements Serializable, Cloneable, StructuredPojo {
      * </li>
      * <li>
      * <p>
-     * FRAGMENT_NUMBER - Start with the chunk containing the specific fragment. You must also specify the
-     * <code>StartFragmentNumber</code>.
+     * FRAGMENT_NUMBER - Start with the chunk after a specific fragment. You must also specify the
+     * <code>AfterFragmentNumber</code> parameter.
      * </p>
      * </li>
      * <li>
      * <p>
      * PRODUCER_TIMESTAMP or SERVER_TIMESTAMP - Start with the chunk containing a fragment with the specified producer
-     * or server time stamp. You specify the time stamp by adding <code>StartTimestamp</code>.
+     * or server timestamp. You specify the timestamp by adding <code>StartTimestamp</code>.
      * </p>
      * </li>
      * <li>
@@ -418,14 +418,14 @@ public class StartSelector implements Serializable, Cloneable, StructuredPojo {
      *        </li>
      *        <li>
      *        <p>
-     *        FRAGMENT_NUMBER - Start with the chunk containing the specific fragment. You must also specify the
-     *        <code>StartFragmentNumber</code>.
+     *        FRAGMENT_NUMBER - Start with the chunk after a specific fragment. You must also specify the
+     *        <code>AfterFragmentNumber</code> parameter.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
      *        PRODUCER_TIMESTAMP or SERVER_TIMESTAMP - Start with the chunk containing a fragment with the specified
-     *        producer or server time stamp. You specify the time stamp by adding <code>StartTimestamp</code>.
+     *        producer or server timestamp. You specify the timestamp by adding <code>StartTimestamp</code>.
      *        </p>
      *        </li>
      *        <li>
@@ -493,15 +493,15 @@ public class StartSelector implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * A time stamp value. This value is required if you choose the PRODUCER_TIMESTAMP or the SERVER_TIMESTAMP as the
+     * A timestamp value. This value is required if you choose the PRODUCER_TIMESTAMP or the SERVER_TIMESTAMP as the
      * <code>startSelectorType</code>. The <code>GetMedia</code> API then starts with the chunk containing the fragment
-     * that has the specified time stamp.
+     * that has the specified timestamp.
      * </p>
      * 
      * @param startTimestamp
-     *        A time stamp value. This value is required if you choose the PRODUCER_TIMESTAMP or the SERVER_TIMESTAMP as
+     *        A timestamp value. This value is required if you choose the PRODUCER_TIMESTAMP or the SERVER_TIMESTAMP as
      *        the <code>startSelectorType</code>. The <code>GetMedia</code> API then starts with the chunk containing
-     *        the fragment that has the specified time stamp.
+     *        the fragment that has the specified timestamp.
      */
 
     public void setStartTimestamp(java.util.Date startTimestamp) {
@@ -510,14 +510,14 @@ public class StartSelector implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * A time stamp value. This value is required if you choose the PRODUCER_TIMESTAMP or the SERVER_TIMESTAMP as the
+     * A timestamp value. This value is required if you choose the PRODUCER_TIMESTAMP or the SERVER_TIMESTAMP as the
      * <code>startSelectorType</code>. The <code>GetMedia</code> API then starts with the chunk containing the fragment
-     * that has the specified time stamp.
+     * that has the specified timestamp.
      * </p>
      * 
-     * @return A time stamp value. This value is required if you choose the PRODUCER_TIMESTAMP or the SERVER_TIMESTAMP
-     *         as the <code>startSelectorType</code>. The <code>GetMedia</code> API then starts with the chunk
-     *         containing the fragment that has the specified time stamp.
+     * @return A timestamp value. This value is required if you choose the PRODUCER_TIMESTAMP or the SERVER_TIMESTAMP as
+     *         the <code>startSelectorType</code>. The <code>GetMedia</code> API then starts with the chunk containing
+     *         the fragment that has the specified timestamp.
      */
 
     public java.util.Date getStartTimestamp() {
@@ -526,15 +526,15 @@ public class StartSelector implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * A time stamp value. This value is required if you choose the PRODUCER_TIMESTAMP or the SERVER_TIMESTAMP as the
+     * A timestamp value. This value is required if you choose the PRODUCER_TIMESTAMP or the SERVER_TIMESTAMP as the
      * <code>startSelectorType</code>. The <code>GetMedia</code> API then starts with the chunk containing the fragment
-     * that has the specified time stamp.
+     * that has the specified timestamp.
      * </p>
      * 
      * @param startTimestamp
-     *        A time stamp value. This value is required if you choose the PRODUCER_TIMESTAMP or the SERVER_TIMESTAMP as
+     *        A timestamp value. This value is required if you choose the PRODUCER_TIMESTAMP or the SERVER_TIMESTAMP as
      *        the <code>startSelectorType</code>. The <code>GetMedia</code> API then starts with the chunk containing
-     *        the fragment that has the specified time stamp.
+     *        the fragment that has the specified timestamp.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -590,7 +590,8 @@ public class StartSelector implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

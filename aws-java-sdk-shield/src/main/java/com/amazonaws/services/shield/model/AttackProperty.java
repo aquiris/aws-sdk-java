@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -30,14 +30,15 @@ public class AttackProperty implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The type of DDoS event that was observed. <code>NETWORK</code> indicates layer 3 and layer 4 events and
-     * <code>APPLICATION</code> indicates layer 7 events.
+     * The type of distributed denial of service (DDoS) event that was observed. <code>NETWORK</code> indicates layer 3
+     * and layer 4 events and <code>APPLICATION</code> indicates layer 7 events.
      * </p>
      */
     private String attackLayer;
     /**
      * <p>
-     * Defines the DDoS attack property information that is provided.
+     * Defines the DDoS attack property information that is provided. The <code>WORDPRESS_PINGBACK_REFLECTOR</code> and
+     * <code>WORDPRESS_PINGBACK_SOURCE</code> values are valid only for WordPress reflective pingback DDoS attacks.
      * </p>
      */
     private String attackPropertyIdentifier;
@@ -63,13 +64,13 @@ public class AttackProperty implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The type of DDoS event that was observed. <code>NETWORK</code> indicates layer 3 and layer 4 events and
-     * <code>APPLICATION</code> indicates layer 7 events.
+     * The type of distributed denial of service (DDoS) event that was observed. <code>NETWORK</code> indicates layer 3
+     * and layer 4 events and <code>APPLICATION</code> indicates layer 7 events.
      * </p>
      * 
      * @param attackLayer
-     *        The type of DDoS event that was observed. <code>NETWORK</code> indicates layer 3 and layer 4 events and
-     *        <code>APPLICATION</code> indicates layer 7 events.
+     *        The type of distributed denial of service (DDoS) event that was observed. <code>NETWORK</code> indicates
+     *        layer 3 and layer 4 events and <code>APPLICATION</code> indicates layer 7 events.
      * @see AttackLayer
      */
 
@@ -79,12 +80,12 @@ public class AttackProperty implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The type of DDoS event that was observed. <code>NETWORK</code> indicates layer 3 and layer 4 events and
-     * <code>APPLICATION</code> indicates layer 7 events.
+     * The type of distributed denial of service (DDoS) event that was observed. <code>NETWORK</code> indicates layer 3
+     * and layer 4 events and <code>APPLICATION</code> indicates layer 7 events.
      * </p>
      * 
-     * @return The type of DDoS event that was observed. <code>NETWORK</code> indicates layer 3 and layer 4 events and
-     *         <code>APPLICATION</code> indicates layer 7 events.
+     * @return The type of distributed denial of service (DDoS) event that was observed. <code>NETWORK</code> indicates
+     *         layer 3 and layer 4 events and <code>APPLICATION</code> indicates layer 7 events.
      * @see AttackLayer
      */
 
@@ -94,13 +95,13 @@ public class AttackProperty implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The type of DDoS event that was observed. <code>NETWORK</code> indicates layer 3 and layer 4 events and
-     * <code>APPLICATION</code> indicates layer 7 events.
+     * The type of distributed denial of service (DDoS) event that was observed. <code>NETWORK</code> indicates layer 3
+     * and layer 4 events and <code>APPLICATION</code> indicates layer 7 events.
      * </p>
      * 
      * @param attackLayer
-     *        The type of DDoS event that was observed. <code>NETWORK</code> indicates layer 3 and layer 4 events and
-     *        <code>APPLICATION</code> indicates layer 7 events.
+     *        The type of distributed denial of service (DDoS) event that was observed. <code>NETWORK</code> indicates
+     *        layer 3 and layer 4 events and <code>APPLICATION</code> indicates layer 7 events.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see AttackLayer
      */
@@ -112,13 +113,13 @@ public class AttackProperty implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The type of DDoS event that was observed. <code>NETWORK</code> indicates layer 3 and layer 4 events and
-     * <code>APPLICATION</code> indicates layer 7 events.
+     * The type of distributed denial of service (DDoS) event that was observed. <code>NETWORK</code> indicates layer 3
+     * and layer 4 events and <code>APPLICATION</code> indicates layer 7 events.
      * </p>
      * 
      * @param attackLayer
-     *        The type of DDoS event that was observed. <code>NETWORK</code> indicates layer 3 and layer 4 events and
-     *        <code>APPLICATION</code> indicates layer 7 events.
+     *        The type of distributed denial of service (DDoS) event that was observed. <code>NETWORK</code> indicates
+     *        layer 3 and layer 4 events and <code>APPLICATION</code> indicates layer 7 events.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see AttackLayer
      */
@@ -130,11 +131,14 @@ public class AttackProperty implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Defines the DDoS attack property information that is provided.
+     * Defines the DDoS attack property information that is provided. The <code>WORDPRESS_PINGBACK_REFLECTOR</code> and
+     * <code>WORDPRESS_PINGBACK_SOURCE</code> values are valid only for WordPress reflective pingback DDoS attacks.
      * </p>
      * 
      * @param attackPropertyIdentifier
-     *        Defines the DDoS attack property information that is provided.
+     *        Defines the DDoS attack property information that is provided. The
+     *        <code>WORDPRESS_PINGBACK_REFLECTOR</code> and <code>WORDPRESS_PINGBACK_SOURCE</code> values are valid only
+     *        for WordPress reflective pingback DDoS attacks.
      * @see AttackPropertyIdentifier
      */
 
@@ -144,10 +148,13 @@ public class AttackProperty implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Defines the DDoS attack property information that is provided.
+     * Defines the DDoS attack property information that is provided. The <code>WORDPRESS_PINGBACK_REFLECTOR</code> and
+     * <code>WORDPRESS_PINGBACK_SOURCE</code> values are valid only for WordPress reflective pingback DDoS attacks.
      * </p>
      * 
-     * @return Defines the DDoS attack property information that is provided.
+     * @return Defines the DDoS attack property information that is provided. The
+     *         <code>WORDPRESS_PINGBACK_REFLECTOR</code> and <code>WORDPRESS_PINGBACK_SOURCE</code> values are valid
+     *         only for WordPress reflective pingback DDoS attacks.
      * @see AttackPropertyIdentifier
      */
 
@@ -157,11 +164,14 @@ public class AttackProperty implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Defines the DDoS attack property information that is provided.
+     * Defines the DDoS attack property information that is provided. The <code>WORDPRESS_PINGBACK_REFLECTOR</code> and
+     * <code>WORDPRESS_PINGBACK_SOURCE</code> values are valid only for WordPress reflective pingback DDoS attacks.
      * </p>
      * 
      * @param attackPropertyIdentifier
-     *        Defines the DDoS attack property information that is provided.
+     *        Defines the DDoS attack property information that is provided. The
+     *        <code>WORDPRESS_PINGBACK_REFLECTOR</code> and <code>WORDPRESS_PINGBACK_SOURCE</code> values are valid only
+     *        for WordPress reflective pingback DDoS attacks.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see AttackPropertyIdentifier
      */
@@ -173,11 +183,14 @@ public class AttackProperty implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Defines the DDoS attack property information that is provided.
+     * Defines the DDoS attack property information that is provided. The <code>WORDPRESS_PINGBACK_REFLECTOR</code> and
+     * <code>WORDPRESS_PINGBACK_SOURCE</code> values are valid only for WordPress reflective pingback DDoS attacks.
      * </p>
      * 
      * @param attackPropertyIdentifier
-     *        Defines the DDoS attack property information that is provided.
+     *        Defines the DDoS attack property information that is provided. The
+     *        <code>WORDPRESS_PINGBACK_REFLECTOR</code> and <code>WORDPRESS_PINGBACK_SOURCE</code> values are valid only
+     *        for WordPress reflective pingback DDoS attacks.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see AttackPropertyIdentifier
      */
@@ -363,7 +376,8 @@ public class AttackProperty implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

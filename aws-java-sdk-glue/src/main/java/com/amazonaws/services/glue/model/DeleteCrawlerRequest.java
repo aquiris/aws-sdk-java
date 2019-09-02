@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,18 +27,18 @@ public class DeleteCrawlerRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * Name of the crawler to remove.
+     * The name of the crawler to remove.
      * </p>
      */
     private String name;
 
     /**
      * <p>
-     * Name of the crawler to remove.
+     * The name of the crawler to remove.
      * </p>
      * 
      * @param name
-     *        Name of the crawler to remove.
+     *        The name of the crawler to remove.
      */
 
     public void setName(String name) {
@@ -47,10 +47,10 @@ public class DeleteCrawlerRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * Name of the crawler to remove.
+     * The name of the crawler to remove.
      * </p>
      * 
-     * @return Name of the crawler to remove.
+     * @return The name of the crawler to remove.
      */
 
     public String getName() {
@@ -59,11 +59,11 @@ public class DeleteCrawlerRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * Name of the crawler to remove.
+     * The name of the crawler to remove.
      * </p>
      * 
      * @param name
-     *        Name of the crawler to remove.
+     *        The name of the crawler to remove.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -73,7 +73,8 @@ public class DeleteCrawlerRequest extends com.amazonaws.AmazonWebServiceRequest 
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

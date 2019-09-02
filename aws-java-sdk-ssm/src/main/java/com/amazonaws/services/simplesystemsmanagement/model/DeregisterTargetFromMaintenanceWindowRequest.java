@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,7 +27,7 @@ public class DeregisterTargetFromMaintenanceWindowRequest extends com.amazonaws.
 
     /**
      * <p>
-     * The ID of the Maintenance Window the target should be removed from.
+     * The ID of the maintenance window the target should be removed from.
      * </p>
      */
     private String windowId;
@@ -40,18 +40,18 @@ public class DeregisterTargetFromMaintenanceWindowRequest extends com.amazonaws.
     /**
      * <p>
      * The system checks if the target is being referenced by a task. If the target is being referenced, the system
-     * returns an error and does not deregister the target from the Maintenance Window.
+     * returns an error and does not deregister the target from the maintenance window.
      * </p>
      */
     private Boolean safe;
 
     /**
      * <p>
-     * The ID of the Maintenance Window the target should be removed from.
+     * The ID of the maintenance window the target should be removed from.
      * </p>
      * 
      * @param windowId
-     *        The ID of the Maintenance Window the target should be removed from.
+     *        The ID of the maintenance window the target should be removed from.
      */
 
     public void setWindowId(String windowId) {
@@ -60,10 +60,10 @@ public class DeregisterTargetFromMaintenanceWindowRequest extends com.amazonaws.
 
     /**
      * <p>
-     * The ID of the Maintenance Window the target should be removed from.
+     * The ID of the maintenance window the target should be removed from.
      * </p>
      * 
-     * @return The ID of the Maintenance Window the target should be removed from.
+     * @return The ID of the maintenance window the target should be removed from.
      */
 
     public String getWindowId() {
@@ -72,11 +72,11 @@ public class DeregisterTargetFromMaintenanceWindowRequest extends com.amazonaws.
 
     /**
      * <p>
-     * The ID of the Maintenance Window the target should be removed from.
+     * The ID of the maintenance window the target should be removed from.
      * </p>
      * 
      * @param windowId
-     *        The ID of the Maintenance Window the target should be removed from.
+     *        The ID of the maintenance window the target should be removed from.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -128,12 +128,12 @@ public class DeregisterTargetFromMaintenanceWindowRequest extends com.amazonaws.
     /**
      * <p>
      * The system checks if the target is being referenced by a task. If the target is being referenced, the system
-     * returns an error and does not deregister the target from the Maintenance Window.
+     * returns an error and does not deregister the target from the maintenance window.
      * </p>
      * 
      * @param safe
      *        The system checks if the target is being referenced by a task. If the target is being referenced, the
-     *        system returns an error and does not deregister the target from the Maintenance Window.
+     *        system returns an error and does not deregister the target from the maintenance window.
      */
 
     public void setSafe(Boolean safe) {
@@ -143,11 +143,11 @@ public class DeregisterTargetFromMaintenanceWindowRequest extends com.amazonaws.
     /**
      * <p>
      * The system checks if the target is being referenced by a task. If the target is being referenced, the system
-     * returns an error and does not deregister the target from the Maintenance Window.
+     * returns an error and does not deregister the target from the maintenance window.
      * </p>
      * 
      * @return The system checks if the target is being referenced by a task. If the target is being referenced, the
-     *         system returns an error and does not deregister the target from the Maintenance Window.
+     *         system returns an error and does not deregister the target from the maintenance window.
      */
 
     public Boolean getSafe() {
@@ -157,12 +157,12 @@ public class DeregisterTargetFromMaintenanceWindowRequest extends com.amazonaws.
     /**
      * <p>
      * The system checks if the target is being referenced by a task. If the target is being referenced, the system
-     * returns an error and does not deregister the target from the Maintenance Window.
+     * returns an error and does not deregister the target from the maintenance window.
      * </p>
      * 
      * @param safe
      *        The system checks if the target is being referenced by a task. If the target is being referenced, the
-     *        system returns an error and does not deregister the target from the Maintenance Window.
+     *        system returns an error and does not deregister the target from the maintenance window.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -174,11 +174,11 @@ public class DeregisterTargetFromMaintenanceWindowRequest extends com.amazonaws.
     /**
      * <p>
      * The system checks if the target is being referenced by a task. If the target is being referenced, the system
-     * returns an error and does not deregister the target from the Maintenance Window.
+     * returns an error and does not deregister the target from the maintenance window.
      * </p>
      * 
      * @return The system checks if the target is being referenced by a task. If the target is being referenced, the
-     *         system returns an error and does not deregister the target from the Maintenance Window.
+     *         system returns an error and does not deregister the target from the maintenance window.
      */
 
     public Boolean isSafe() {
@@ -186,7 +186,8 @@ public class DeregisterTargetFromMaintenanceWindowRequest extends com.amazonaws.
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -91,7 +91,7 @@ public class DescribeTagsRequest extends com.amazonaws.AmazonWebServiceRequest i
      * </ul>
      * <p>
      * For more information about Amazon Redshift resource types and constructing ARNs, go to <a href=
-     * "http://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-overview.html#redshift-iam-access-control-specify-actions"
+     * "https://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-overview.html#redshift-iam-access-control-specify-actions"
      * >Specifying Policy Elements: Actions, Effects, Resources, and Principals</a> in the Amazon Redshift Cluster
      * Management Guide.
      * </p>
@@ -238,7 +238,7 @@ public class DescribeTagsRequest extends com.amazonaws.AmazonWebServiceRequest i
      * </ul>
      * <p>
      * For more information about Amazon Redshift resource types and constructing ARNs, go to <a href=
-     * "http://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-overview.html#redshift-iam-access-control-specify-actions"
+     * "https://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-overview.html#redshift-iam-access-control-specify-actions"
      * >Specifying Policy Elements: Actions, Effects, Resources, and Principals</a> in the Amazon Redshift Cluster
      * Management Guide.
      * </p>
@@ -299,7 +299,7 @@ public class DescribeTagsRequest extends com.amazonaws.AmazonWebServiceRequest i
      *        </ul>
      *        <p>
      *        For more information about Amazon Redshift resource types and constructing ARNs, go to <a href=
-     *        "http://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-overview.html#redshift-iam-access-control-specify-actions"
+     *        "https://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-overview.html#redshift-iam-access-control-specify-actions"
      *        >Specifying Policy Elements: Actions, Effects, Resources, and Principals</a> in the Amazon Redshift
      *        Cluster Management Guide.
      */
@@ -366,7 +366,7 @@ public class DescribeTagsRequest extends com.amazonaws.AmazonWebServiceRequest i
      * </ul>
      * <p>
      * For more information about Amazon Redshift resource types and constructing ARNs, go to <a href=
-     * "http://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-overview.html#redshift-iam-access-control-specify-actions"
+     * "https://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-overview.html#redshift-iam-access-control-specify-actions"
      * >Specifying Policy Elements: Actions, Effects, Resources, and Principals</a> in the Amazon Redshift Cluster
      * Management Guide.
      * </p>
@@ -426,7 +426,7 @@ public class DescribeTagsRequest extends com.amazonaws.AmazonWebServiceRequest i
      *         </ul>
      *         <p>
      *         For more information about Amazon Redshift resource types and constructing ARNs, go to <a href=
-     *         "http://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-overview.html#redshift-iam-access-control-specify-actions"
+     *         "https://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-overview.html#redshift-iam-access-control-specify-actions"
      *         >Specifying Policy Elements: Actions, Effects, Resources, and Principals</a> in the Amazon Redshift
      *         Cluster Management Guide.
      */
@@ -493,7 +493,7 @@ public class DescribeTagsRequest extends com.amazonaws.AmazonWebServiceRequest i
      * </ul>
      * <p>
      * For more information about Amazon Redshift resource types and constructing ARNs, go to <a href=
-     * "http://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-overview.html#redshift-iam-access-control-specify-actions"
+     * "https://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-overview.html#redshift-iam-access-control-specify-actions"
      * >Specifying Policy Elements: Actions, Effects, Resources, and Principals</a> in the Amazon Redshift Cluster
      * Management Guide.
      * </p>
@@ -554,7 +554,7 @@ public class DescribeTagsRequest extends com.amazonaws.AmazonWebServiceRequest i
      *        </ul>
      *        <p>
      *        For more information about Amazon Redshift resource types and constructing ARNs, go to <a href=
-     *        "http://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-overview.html#redshift-iam-access-control-specify-actions"
+     *        "https://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-overview.html#redshift-iam-access-control-specify-actions"
      *        >Specifying Policy Elements: Actions, Effects, Resources, and Principals</a> in the Amazon Redshift
      *        Cluster Management Guide.
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -884,7 +884,8 @@ public class DescribeTagsRequest extends com.amazonaws.AmazonWebServiceRequest i
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

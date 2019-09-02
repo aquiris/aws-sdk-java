@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -18,7 +18,9 @@ import com.amazonaws.protocol.StructuredPojo;
 import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
- * Information about the AWS_API_CALL action described in this finding.
+ * <p>
+ * Contains information about the API operation.
+ * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/AwsApiCallAction" target="_top">AWS API
  *      Documentation</a>
@@ -26,19 +28,41 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AwsApiCallAction implements Serializable, Cloneable, StructuredPojo {
 
-    /** AWS API name. */
+    /**
+     * <p>
+     * AWS API name.
+     * </p>
+     */
     private String api;
-    /** AWS API caller type. */
+    /**
+     * <p>
+     * AWS API caller type.
+     * </p>
+     */
     private String callerType;
-    /** Domain information for the AWS API call. */
+    /**
+     * <p>
+     * Domain information for the AWS API call.
+     * </p>
+     */
     private DomainDetails domainDetails;
-    /** Remote IP information of the connection. */
+    /**
+     * <p>
+     * Remote IP information of the connection.
+     * </p>
+     */
     private RemoteIpDetails remoteIpDetails;
-    /** AWS service name whose API was invoked. */
+    /**
+     * <p>
+     * AWS service name whose API was invoked.
+     * </p>
+     */
     private String serviceName;
 
     /**
+     * <p>
      * AWS API name.
+     * </p>
      * 
      * @param api
      *        AWS API name.
@@ -49,7 +73,9 @@ public class AwsApiCallAction implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
+     * <p>
      * AWS API name.
+     * </p>
      * 
      * @return AWS API name.
      */
@@ -59,7 +85,9 @@ public class AwsApiCallAction implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
+     * <p>
      * AWS API name.
+     * </p>
      * 
      * @param api
      *        AWS API name.
@@ -72,7 +100,9 @@ public class AwsApiCallAction implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
+     * <p>
      * AWS API caller type.
+     * </p>
      * 
      * @param callerType
      *        AWS API caller type.
@@ -83,7 +113,9 @@ public class AwsApiCallAction implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
+     * <p>
      * AWS API caller type.
+     * </p>
      * 
      * @return AWS API caller type.
      */
@@ -93,7 +125,9 @@ public class AwsApiCallAction implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
+     * <p>
      * AWS API caller type.
+     * </p>
      * 
      * @param callerType
      *        AWS API caller type.
@@ -106,7 +140,9 @@ public class AwsApiCallAction implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
+     * <p>
      * Domain information for the AWS API call.
+     * </p>
      * 
      * @param domainDetails
      *        Domain information for the AWS API call.
@@ -117,7 +153,9 @@ public class AwsApiCallAction implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
+     * <p>
      * Domain information for the AWS API call.
+     * </p>
      * 
      * @return Domain information for the AWS API call.
      */
@@ -127,7 +165,9 @@ public class AwsApiCallAction implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
+     * <p>
      * Domain information for the AWS API call.
+     * </p>
      * 
      * @param domainDetails
      *        Domain information for the AWS API call.
@@ -140,7 +180,9 @@ public class AwsApiCallAction implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
+     * <p>
      * Remote IP information of the connection.
+     * </p>
      * 
      * @param remoteIpDetails
      *        Remote IP information of the connection.
@@ -151,7 +193,9 @@ public class AwsApiCallAction implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
+     * <p>
      * Remote IP information of the connection.
+     * </p>
      * 
      * @return Remote IP information of the connection.
      */
@@ -161,7 +205,9 @@ public class AwsApiCallAction implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
+     * <p>
      * Remote IP information of the connection.
+     * </p>
      * 
      * @param remoteIpDetails
      *        Remote IP information of the connection.
@@ -174,7 +220,9 @@ public class AwsApiCallAction implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
+     * <p>
      * AWS service name whose API was invoked.
+     * </p>
      * 
      * @param serviceName
      *        AWS service name whose API was invoked.
@@ -185,7 +233,9 @@ public class AwsApiCallAction implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
+     * <p>
      * AWS service name whose API was invoked.
+     * </p>
      * 
      * @return AWS service name whose API was invoked.
      */
@@ -195,7 +245,9 @@ public class AwsApiCallAction implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
+     * <p>
      * AWS service name whose API was invoked.
+     * </p>
      * 
      * @param serviceName
      *        AWS service name whose API was invoked.
@@ -208,7 +260,8 @@ public class AwsApiCallAction implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

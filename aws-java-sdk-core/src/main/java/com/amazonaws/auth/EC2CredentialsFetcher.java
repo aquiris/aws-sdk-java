@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2011-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -123,7 +123,7 @@ class EC2CredentialsFetcher {
                 credentialsEndpointProvider.getRetryPolicy(),
                 credentialsEndpointProvider.getHeaders());
 
-            node = Jackson.jsonNodeOf(credentialsResponse);
+            node = Jackson.fromSensitiveJsonString(credentialsResponse, JsonNode.class);
             accessKey = node.get(ACCESS_KEY_ID);
             secretKey = node.get(SECRET_ACCESS_KEY);
             token = node.get(TOKEN);

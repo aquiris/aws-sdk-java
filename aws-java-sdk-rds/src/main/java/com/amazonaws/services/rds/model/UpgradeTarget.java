@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -47,7 +47,7 @@ public class UpgradeTarget implements Serializable, Cloneable {
     /**
      * <p>
      * A value that indicates whether the target version is applied to any source DB instances that have
-     * AutoMinorVersionUpgrade set to true.
+     * <code>AutoMinorVersionUpgrade</code> set to true.
      * </p>
      */
     private Boolean autoUpgrade;
@@ -181,12 +181,12 @@ public class UpgradeTarget implements Serializable, Cloneable {
     /**
      * <p>
      * A value that indicates whether the target version is applied to any source DB instances that have
-     * AutoMinorVersionUpgrade set to true.
+     * <code>AutoMinorVersionUpgrade</code> set to true.
      * </p>
      * 
      * @param autoUpgrade
      *        A value that indicates whether the target version is applied to any source DB instances that have
-     *        AutoMinorVersionUpgrade set to true.
+     *        <code>AutoMinorVersionUpgrade</code> set to true.
      */
 
     public void setAutoUpgrade(Boolean autoUpgrade) {
@@ -196,11 +196,11 @@ public class UpgradeTarget implements Serializable, Cloneable {
     /**
      * <p>
      * A value that indicates whether the target version is applied to any source DB instances that have
-     * AutoMinorVersionUpgrade set to true.
+     * <code>AutoMinorVersionUpgrade</code> set to true.
      * </p>
      * 
      * @return A value that indicates whether the target version is applied to any source DB instances that have
-     *         AutoMinorVersionUpgrade set to true.
+     *         <code>AutoMinorVersionUpgrade</code> set to true.
      */
 
     public Boolean getAutoUpgrade() {
@@ -210,12 +210,12 @@ public class UpgradeTarget implements Serializable, Cloneable {
     /**
      * <p>
      * A value that indicates whether the target version is applied to any source DB instances that have
-     * AutoMinorVersionUpgrade set to true.
+     * <code>AutoMinorVersionUpgrade</code> set to true.
      * </p>
      * 
      * @param autoUpgrade
      *        A value that indicates whether the target version is applied to any source DB instances that have
-     *        AutoMinorVersionUpgrade set to true.
+     *        <code>AutoMinorVersionUpgrade</code> set to true.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -227,11 +227,11 @@ public class UpgradeTarget implements Serializable, Cloneable {
     /**
      * <p>
      * A value that indicates whether the target version is applied to any source DB instances that have
-     * AutoMinorVersionUpgrade set to true.
+     * <code>AutoMinorVersionUpgrade</code> set to true.
      * </p>
      * 
      * @return A value that indicates whether the target version is applied to any source DB instances that have
-     *         AutoMinorVersionUpgrade set to true.
+     *         <code>AutoMinorVersionUpgrade</code> set to true.
      */
 
     public Boolean isAutoUpgrade() {
@@ -291,7 +291,8 @@ public class UpgradeTarget implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,19 +27,19 @@ public class RemoveTagsFromResourceRequest extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * The type of resource of which you want to remove a tag.
+     * The type of resource from which you want to remove a tag.
      * </p>
      * <note>
      * <p>
-     * The ManagedInstance type for this API action is only for on-premises managed instances. You must specify the the
-     * name of the managed instance in the following format: mi-ID_number. For example, mi-1a2b3c4d5e6f.
+     * The ManagedInstance type for this API action is only for on-premises managed instances. Specify the name of the
+     * managed instance in the following format: mi-ID_number. For example, mi-1a2b3c4d5e6f.
      * </p>
      * </note>
      */
     private String resourceType;
     /**
      * <p>
-     * The resource ID for which you want to remove tags. Use the ID of the resource. Here are some examples:
+     * The ID of the resource from which you want to remove tags. For example:
      * </p>
      * <p>
      * ManagedInstance: mi-012345abcde
@@ -55,8 +55,8 @@ public class RemoveTagsFromResourceRequest extends com.amazonaws.AmazonWebServic
      * </p>
      * <note>
      * <p>
-     * The ManagedInstance type for this API action is only for on-premises managed instances. You must specify the the
-     * name of the managed instance in the following format: mi-ID_number. For example, mi-1a2b3c4d5e6f.
+     * The ManagedInstance type for this API action is only for on-premises managed instances. Specify the name of the
+     * managed instance in the following format: mi-ID_number. For example, mi-1a2b3c4d5e6f.
      * </p>
      * </note>
      */
@@ -70,20 +70,20 @@ public class RemoveTagsFromResourceRequest extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * The type of resource of which you want to remove a tag.
+     * The type of resource from which you want to remove a tag.
      * </p>
      * <note>
      * <p>
-     * The ManagedInstance type for this API action is only for on-premises managed instances. You must specify the the
-     * name of the managed instance in the following format: mi-ID_number. For example, mi-1a2b3c4d5e6f.
+     * The ManagedInstance type for this API action is only for on-premises managed instances. Specify the name of the
+     * managed instance in the following format: mi-ID_number. For example, mi-1a2b3c4d5e6f.
      * </p>
      * </note>
      * 
      * @param resourceType
-     *        The type of resource of which you want to remove a tag.</p> <note>
+     *        The type of resource from which you want to remove a tag.</p> <note>
      *        <p>
-     *        The ManagedInstance type for this API action is only for on-premises managed instances. You must specify
-     *        the the name of the managed instance in the following format: mi-ID_number. For example, mi-1a2b3c4d5e6f.
+     *        The ManagedInstance type for this API action is only for on-premises managed instances. Specify the name
+     *        of the managed instance in the following format: mi-ID_number. For example, mi-1a2b3c4d5e6f.
      *        </p>
      * @see ResourceTypeForTagging
      */
@@ -94,19 +94,19 @@ public class RemoveTagsFromResourceRequest extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * The type of resource of which you want to remove a tag.
+     * The type of resource from which you want to remove a tag.
      * </p>
      * <note>
      * <p>
-     * The ManagedInstance type for this API action is only for on-premises managed instances. You must specify the the
-     * name of the managed instance in the following format: mi-ID_number. For example, mi-1a2b3c4d5e6f.
+     * The ManagedInstance type for this API action is only for on-premises managed instances. Specify the name of the
+     * managed instance in the following format: mi-ID_number. For example, mi-1a2b3c4d5e6f.
      * </p>
      * </note>
      * 
-     * @return The type of resource of which you want to remove a tag.</p> <note>
+     * @return The type of resource from which you want to remove a tag.</p> <note>
      *         <p>
-     *         The ManagedInstance type for this API action is only for on-premises managed instances. You must specify
-     *         the the name of the managed instance in the following format: mi-ID_number. For example, mi-1a2b3c4d5e6f.
+     *         The ManagedInstance type for this API action is only for on-premises managed instances. Specify the name
+     *         of the managed instance in the following format: mi-ID_number. For example, mi-1a2b3c4d5e6f.
      *         </p>
      * @see ResourceTypeForTagging
      */
@@ -117,20 +117,20 @@ public class RemoveTagsFromResourceRequest extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * The type of resource of which you want to remove a tag.
+     * The type of resource from which you want to remove a tag.
      * </p>
      * <note>
      * <p>
-     * The ManagedInstance type for this API action is only for on-premises managed instances. You must specify the the
-     * name of the managed instance in the following format: mi-ID_number. For example, mi-1a2b3c4d5e6f.
+     * The ManagedInstance type for this API action is only for on-premises managed instances. Specify the name of the
+     * managed instance in the following format: mi-ID_number. For example, mi-1a2b3c4d5e6f.
      * </p>
      * </note>
      * 
      * @param resourceType
-     *        The type of resource of which you want to remove a tag.</p> <note>
+     *        The type of resource from which you want to remove a tag.</p> <note>
      *        <p>
-     *        The ManagedInstance type for this API action is only for on-premises managed instances. You must specify
-     *        the the name of the managed instance in the following format: mi-ID_number. For example, mi-1a2b3c4d5e6f.
+     *        The ManagedInstance type for this API action is only for on-premises managed instances. Specify the name
+     *        of the managed instance in the following format: mi-ID_number. For example, mi-1a2b3c4d5e6f.
      *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see ResourceTypeForTagging
@@ -143,20 +143,20 @@ public class RemoveTagsFromResourceRequest extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * The type of resource of which you want to remove a tag.
+     * The type of resource from which you want to remove a tag.
      * </p>
      * <note>
      * <p>
-     * The ManagedInstance type for this API action is only for on-premises managed instances. You must specify the the
-     * name of the managed instance in the following format: mi-ID_number. For example, mi-1a2b3c4d5e6f.
+     * The ManagedInstance type for this API action is only for on-premises managed instances. Specify the name of the
+     * managed instance in the following format: mi-ID_number. For example, mi-1a2b3c4d5e6f.
      * </p>
      * </note>
      * 
      * @param resourceType
-     *        The type of resource of which you want to remove a tag.</p> <note>
+     *        The type of resource from which you want to remove a tag.</p> <note>
      *        <p>
-     *        The ManagedInstance type for this API action is only for on-premises managed instances. You must specify
-     *        the the name of the managed instance in the following format: mi-ID_number. For example, mi-1a2b3c4d5e6f.
+     *        The ManagedInstance type for this API action is only for on-premises managed instances. Specify the name
+     *        of the managed instance in the following format: mi-ID_number. For example, mi-1a2b3c4d5e6f.
      *        </p>
      * @see ResourceTypeForTagging
      */
@@ -167,20 +167,20 @@ public class RemoveTagsFromResourceRequest extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * The type of resource of which you want to remove a tag.
+     * The type of resource from which you want to remove a tag.
      * </p>
      * <note>
      * <p>
-     * The ManagedInstance type for this API action is only for on-premises managed instances. You must specify the the
-     * name of the managed instance in the following format: mi-ID_number. For example, mi-1a2b3c4d5e6f.
+     * The ManagedInstance type for this API action is only for on-premises managed instances. Specify the name of the
+     * managed instance in the following format: mi-ID_number. For example, mi-1a2b3c4d5e6f.
      * </p>
      * </note>
      * 
      * @param resourceType
-     *        The type of resource of which you want to remove a tag.</p> <note>
+     *        The type of resource from which you want to remove a tag.</p> <note>
      *        <p>
-     *        The ManagedInstance type for this API action is only for on-premises managed instances. You must specify
-     *        the the name of the managed instance in the following format: mi-ID_number. For example, mi-1a2b3c4d5e6f.
+     *        The ManagedInstance type for this API action is only for on-premises managed instances. Specify the name
+     *        of the managed instance in the following format: mi-ID_number. For example, mi-1a2b3c4d5e6f.
      *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see ResourceTypeForTagging
@@ -193,7 +193,7 @@ public class RemoveTagsFromResourceRequest extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * The resource ID for which you want to remove tags. Use the ID of the resource. Here are some examples:
+     * The ID of the resource from which you want to remove tags. For example:
      * </p>
      * <p>
      * ManagedInstance: mi-012345abcde
@@ -209,13 +209,13 @@ public class RemoveTagsFromResourceRequest extends com.amazonaws.AmazonWebServic
      * </p>
      * <note>
      * <p>
-     * The ManagedInstance type for this API action is only for on-premises managed instances. You must specify the the
-     * name of the managed instance in the following format: mi-ID_number. For example, mi-1a2b3c4d5e6f.
+     * The ManagedInstance type for this API action is only for on-premises managed instances. Specify the name of the
+     * managed instance in the following format: mi-ID_number. For example, mi-1a2b3c4d5e6f.
      * </p>
      * </note>
      * 
      * @param resourceId
-     *        The resource ID for which you want to remove tags. Use the ID of the resource. Here are some examples:</p>
+     *        The ID of the resource from which you want to remove tags. For example:</p>
      *        <p>
      *        ManagedInstance: mi-012345abcde
      *        </p>
@@ -230,8 +230,8 @@ public class RemoveTagsFromResourceRequest extends com.amazonaws.AmazonWebServic
      *        </p>
      *        <note>
      *        <p>
-     *        The ManagedInstance type for this API action is only for on-premises managed instances. You must specify
-     *        the the name of the managed instance in the following format: mi-ID_number. For example, mi-1a2b3c4d5e6f.
+     *        The ManagedInstance type for this API action is only for on-premises managed instances. Specify the name
+     *        of the managed instance in the following format: mi-ID_number. For example, mi-1a2b3c4d5e6f.
      *        </p>
      */
 
@@ -241,7 +241,7 @@ public class RemoveTagsFromResourceRequest extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * The resource ID for which you want to remove tags. Use the ID of the resource. Here are some examples:
+     * The ID of the resource from which you want to remove tags. For example:
      * </p>
      * <p>
      * ManagedInstance: mi-012345abcde
@@ -257,13 +257,12 @@ public class RemoveTagsFromResourceRequest extends com.amazonaws.AmazonWebServic
      * </p>
      * <note>
      * <p>
-     * The ManagedInstance type for this API action is only for on-premises managed instances. You must specify the the
-     * name of the managed instance in the following format: mi-ID_number. For example, mi-1a2b3c4d5e6f.
+     * The ManagedInstance type for this API action is only for on-premises managed instances. Specify the name of the
+     * managed instance in the following format: mi-ID_number. For example, mi-1a2b3c4d5e6f.
      * </p>
      * </note>
      * 
-     * @return The resource ID for which you want to remove tags. Use the ID of the resource. Here are some
-     *         examples:</p>
+     * @return The ID of the resource from which you want to remove tags. For example:</p>
      *         <p>
      *         ManagedInstance: mi-012345abcde
      *         </p>
@@ -278,8 +277,8 @@ public class RemoveTagsFromResourceRequest extends com.amazonaws.AmazonWebServic
      *         </p>
      *         <note>
      *         <p>
-     *         The ManagedInstance type for this API action is only for on-premises managed instances. You must specify
-     *         the the name of the managed instance in the following format: mi-ID_number. For example, mi-1a2b3c4d5e6f.
+     *         The ManagedInstance type for this API action is only for on-premises managed instances. Specify the name
+     *         of the managed instance in the following format: mi-ID_number. For example, mi-1a2b3c4d5e6f.
      *         </p>
      */
 
@@ -289,7 +288,7 @@ public class RemoveTagsFromResourceRequest extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * The resource ID for which you want to remove tags. Use the ID of the resource. Here are some examples:
+     * The ID of the resource from which you want to remove tags. For example:
      * </p>
      * <p>
      * ManagedInstance: mi-012345abcde
@@ -305,13 +304,13 @@ public class RemoveTagsFromResourceRequest extends com.amazonaws.AmazonWebServic
      * </p>
      * <note>
      * <p>
-     * The ManagedInstance type for this API action is only for on-premises managed instances. You must specify the the
-     * name of the managed instance in the following format: mi-ID_number. For example, mi-1a2b3c4d5e6f.
+     * The ManagedInstance type for this API action is only for on-premises managed instances. Specify the name of the
+     * managed instance in the following format: mi-ID_number. For example, mi-1a2b3c4d5e6f.
      * </p>
      * </note>
      * 
      * @param resourceId
-     *        The resource ID for which you want to remove tags. Use the ID of the resource. Here are some examples:</p>
+     *        The ID of the resource from which you want to remove tags. For example:</p>
      *        <p>
      *        ManagedInstance: mi-012345abcde
      *        </p>
@@ -326,8 +325,8 @@ public class RemoveTagsFromResourceRequest extends com.amazonaws.AmazonWebServic
      *        </p>
      *        <note>
      *        <p>
-     *        The ManagedInstance type for this API action is only for on-premises managed instances. You must specify
-     *        the the name of the managed instance in the following format: mi-ID_number. For example, mi-1a2b3c4d5e6f.
+     *        The ManagedInstance type for this API action is only for on-premises managed instances. Specify the name
+     *        of the managed instance in the following format: mi-ID_number. For example, mi-1a2b3c4d5e6f.
      *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -411,7 +410,8 @@ public class RemoveTagsFromResourceRequest extends com.amazonaws.AmazonWebServic
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

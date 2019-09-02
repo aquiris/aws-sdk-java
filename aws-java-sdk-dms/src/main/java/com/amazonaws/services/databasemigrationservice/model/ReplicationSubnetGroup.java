@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -34,7 +34,7 @@ public class ReplicationSubnetGroup implements Serializable, Cloneable, Structur
     private String replicationSubnetGroupIdentifier;
     /**
      * <p>
-     * The description of the replication subnet group.
+     * A description for the replication subnet group.
      * </p>
      */
     private String replicationSubnetGroupDescription;
@@ -99,11 +99,11 @@ public class ReplicationSubnetGroup implements Serializable, Cloneable, Structur
 
     /**
      * <p>
-     * The description of the replication subnet group.
+     * A description for the replication subnet group.
      * </p>
      * 
      * @param replicationSubnetGroupDescription
-     *        The description of the replication subnet group.
+     *        A description for the replication subnet group.
      */
 
     public void setReplicationSubnetGroupDescription(String replicationSubnetGroupDescription) {
@@ -112,10 +112,10 @@ public class ReplicationSubnetGroup implements Serializable, Cloneable, Structur
 
     /**
      * <p>
-     * The description of the replication subnet group.
+     * A description for the replication subnet group.
      * </p>
      * 
-     * @return The description of the replication subnet group.
+     * @return A description for the replication subnet group.
      */
 
     public String getReplicationSubnetGroupDescription() {
@@ -124,11 +124,11 @@ public class ReplicationSubnetGroup implements Serializable, Cloneable, Structur
 
     /**
      * <p>
-     * The description of the replication subnet group.
+     * A description for the replication subnet group.
      * </p>
      * 
      * @param replicationSubnetGroupDescription
-     *        The description of the replication subnet group.
+     *        A description for the replication subnet group.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -288,7 +288,8 @@ public class ReplicationSubnetGroup implements Serializable, Cloneable, Structur
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

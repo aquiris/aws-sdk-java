@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -28,7 +28,7 @@ public class ReplicationTask implements Serializable, Cloneable, StructuredPojo 
 
     /**
      * <p>
-     * The replication task identifier.
+     * The user-assigned replication task identifier or name.
      * </p>
      * <p>
      * Constraints:
@@ -120,8 +120,9 @@ public class ReplicationTask implements Serializable, Cloneable, StructuredPojo 
     private java.util.Date replicationTaskStartDate;
     /**
      * <p>
-     * Indicates when you want a change data capture (CDC) operation to start. Use either CdcStartPosition or
-     * CdcStartTime to specify when you want a CDC operation to start. Specifying both values results in an error.
+     * Indicates when you want a change data capture (CDC) operation to start. Use either <code>CdcStartPosition</code>
+     * or <code>CdcStartTime</code> to specify when you want the CDC operation to start. Specifying both values results
+     * in an error.
      * </p>
      * <p>
      * The value can be in date, checkpoint, or LSN/SCN format.
@@ -173,7 +174,7 @@ public class ReplicationTask implements Serializable, Cloneable, StructuredPojo 
 
     /**
      * <p>
-     * The replication task identifier.
+     * The user-assigned replication task identifier or name.
      * </p>
      * <p>
      * Constraints:
@@ -197,7 +198,7 @@ public class ReplicationTask implements Serializable, Cloneable, StructuredPojo 
      * </ul>
      * 
      * @param replicationTaskIdentifier
-     *        The replication task identifier.</p>
+     *        The user-assigned replication task identifier or name.</p>
      *        <p>
      *        Constraints:
      *        </p>
@@ -225,7 +226,7 @@ public class ReplicationTask implements Serializable, Cloneable, StructuredPojo 
 
     /**
      * <p>
-     * The replication task identifier.
+     * The user-assigned replication task identifier or name.
      * </p>
      * <p>
      * Constraints:
@@ -248,7 +249,7 @@ public class ReplicationTask implements Serializable, Cloneable, StructuredPojo 
      * </li>
      * </ul>
      * 
-     * @return The replication task identifier.</p>
+     * @return The user-assigned replication task identifier or name.</p>
      *         <p>
      *         Constraints:
      *         </p>
@@ -276,7 +277,7 @@ public class ReplicationTask implements Serializable, Cloneable, StructuredPojo 
 
     /**
      * <p>
-     * The replication task identifier.
+     * The user-assigned replication task identifier or name.
      * </p>
      * <p>
      * Constraints:
@@ -300,7 +301,7 @@ public class ReplicationTask implements Serializable, Cloneable, StructuredPojo 
      * </ul>
      * 
      * @param replicationTaskIdentifier
-     *        The replication task identifier.</p>
+     *        The user-assigned replication task identifier or name.</p>
      *        <p>
      *        Constraints:
      *        </p>
@@ -803,8 +804,9 @@ public class ReplicationTask implements Serializable, Cloneable, StructuredPojo 
 
     /**
      * <p>
-     * Indicates when you want a change data capture (CDC) operation to start. Use either CdcStartPosition or
-     * CdcStartTime to specify when you want a CDC operation to start. Specifying both values results in an error.
+     * Indicates when you want a change data capture (CDC) operation to start. Use either <code>CdcStartPosition</code>
+     * or <code>CdcStartTime</code> to specify when you want the CDC operation to start. Specifying both values results
+     * in an error.
      * </p>
      * <p>
      * The value can be in date, checkpoint, or LSN/SCN format.
@@ -821,9 +823,9 @@ public class ReplicationTask implements Serializable, Cloneable, StructuredPojo 
      * </p>
      * 
      * @param cdcStartPosition
-     *        Indicates when you want a change data capture (CDC) operation to start. Use either CdcStartPosition or
-     *        CdcStartTime to specify when you want a CDC operation to start. Specifying both values results in an
-     *        error.</p>
+     *        Indicates when you want a change data capture (CDC) operation to start. Use either
+     *        <code>CdcStartPosition</code> or <code>CdcStartTime</code> to specify when you want the CDC operation to
+     *        start. Specifying both values results in an error.</p>
      *        <p>
      *        The value can be in date, checkpoint, or LSN/SCN format.
      *        </p>
@@ -844,8 +846,9 @@ public class ReplicationTask implements Serializable, Cloneable, StructuredPojo 
 
     /**
      * <p>
-     * Indicates when you want a change data capture (CDC) operation to start. Use either CdcStartPosition or
-     * CdcStartTime to specify when you want a CDC operation to start. Specifying both values results in an error.
+     * Indicates when you want a change data capture (CDC) operation to start. Use either <code>CdcStartPosition</code>
+     * or <code>CdcStartTime</code> to specify when you want the CDC operation to start. Specifying both values results
+     * in an error.
      * </p>
      * <p>
      * The value can be in date, checkpoint, or LSN/SCN format.
@@ -861,9 +864,9 @@ public class ReplicationTask implements Serializable, Cloneable, StructuredPojo 
      * LSN Example: --cdc-start-position “mysql-bin-changelog.000024:373”
      * </p>
      * 
-     * @return Indicates when you want a change data capture (CDC) operation to start. Use either CdcStartPosition or
-     *         CdcStartTime to specify when you want a CDC operation to start. Specifying both values results in an
-     *         error.</p>
+     * @return Indicates when you want a change data capture (CDC) operation to start. Use either
+     *         <code>CdcStartPosition</code> or <code>CdcStartTime</code> to specify when you want the CDC operation to
+     *         start. Specifying both values results in an error.</p>
      *         <p>
      *         The value can be in date, checkpoint, or LSN/SCN format.
      *         </p>
@@ -884,8 +887,9 @@ public class ReplicationTask implements Serializable, Cloneable, StructuredPojo 
 
     /**
      * <p>
-     * Indicates when you want a change data capture (CDC) operation to start. Use either CdcStartPosition or
-     * CdcStartTime to specify when you want a CDC operation to start. Specifying both values results in an error.
+     * Indicates when you want a change data capture (CDC) operation to start. Use either <code>CdcStartPosition</code>
+     * or <code>CdcStartTime</code> to specify when you want the CDC operation to start. Specifying both values results
+     * in an error.
      * </p>
      * <p>
      * The value can be in date, checkpoint, or LSN/SCN format.
@@ -902,9 +906,9 @@ public class ReplicationTask implements Serializable, Cloneable, StructuredPojo 
      * </p>
      * 
      * @param cdcStartPosition
-     *        Indicates when you want a change data capture (CDC) operation to start. Use either CdcStartPosition or
-     *        CdcStartTime to specify when you want a CDC operation to start. Specifying both values results in an
-     *        error.</p>
+     *        Indicates when you want a change data capture (CDC) operation to start. Use either
+     *        <code>CdcStartPosition</code> or <code>CdcStartTime</code> to specify when you want the CDC operation to
+     *        start. Specifying both values results in an error.</p>
      *        <p>
      *        The value can be in date, checkpoint, or LSN/SCN format.
      *        </p>
@@ -1134,7 +1138,8 @@ public class ReplicationTask implements Serializable, Cloneable, StructuredPojo 
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

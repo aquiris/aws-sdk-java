@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -31,6 +31,12 @@ public class RemovePermissionRequest extends com.amazonaws.AmazonWebServiceReque
      * </p>
      */
     private String statementId;
+    /**
+     * <p>
+     * The name of the event bus to revoke permissions for. If you omit this, the default event bus is used.
+     * </p>
+     */
+    private String eventBusName;
 
     /**
      * <p>
@@ -76,7 +82,48 @@ public class RemovePermissionRequest extends com.amazonaws.AmazonWebServiceReque
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * <p>
+     * The name of the event bus to revoke permissions for. If you omit this, the default event bus is used.
+     * </p>
+     * 
+     * @param eventBusName
+     *        The name of the event bus to revoke permissions for. If you omit this, the default event bus is used.
+     */
+
+    public void setEventBusName(String eventBusName) {
+        this.eventBusName = eventBusName;
+    }
+
+    /**
+     * <p>
+     * The name of the event bus to revoke permissions for. If you omit this, the default event bus is used.
+     * </p>
+     * 
+     * @return The name of the event bus to revoke permissions for. If you omit this, the default event bus is used.
+     */
+
+    public String getEventBusName() {
+        return this.eventBusName;
+    }
+
+    /**
+     * <p>
+     * The name of the event bus to revoke permissions for. If you omit this, the default event bus is used.
+     * </p>
+     * 
+     * @param eventBusName
+     *        The name of the event bus to revoke permissions for. If you omit this, the default event bus is used.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public RemovePermissionRequest withEventBusName(String eventBusName) {
+        setEventBusName(eventBusName);
+        return this;
+    }
+
+    /**
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -87,7 +134,9 @@ public class RemovePermissionRequest extends com.amazonaws.AmazonWebServiceReque
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getStatementId() != null)
-            sb.append("StatementId: ").append(getStatementId());
+            sb.append("StatementId: ").append(getStatementId()).append(",");
+        if (getEventBusName() != null)
+            sb.append("EventBusName: ").append(getEventBusName());
         sb.append("}");
         return sb.toString();
     }
@@ -106,6 +155,10 @@ public class RemovePermissionRequest extends com.amazonaws.AmazonWebServiceReque
             return false;
         if (other.getStatementId() != null && other.getStatementId().equals(this.getStatementId()) == false)
             return false;
+        if (other.getEventBusName() == null ^ this.getEventBusName() == null)
+            return false;
+        if (other.getEventBusName() != null && other.getEventBusName().equals(this.getEventBusName()) == false)
+            return false;
         return true;
     }
 
@@ -115,6 +168,7 @@ public class RemovePermissionRequest extends com.amazonaws.AmazonWebServiceReque
         int hashCode = 1;
 
         hashCode = prime * hashCode + ((getStatementId() == null) ? 0 : getStatementId().hashCode());
+        hashCode = prime * hashCode + ((getEventBusName() == null) ? 0 : getEventBusName().hashCode());
         return hashCode;
     }
 

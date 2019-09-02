@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,21 +27,21 @@ public class PutRuleRequest extends com.amazonaws.AmazonWebServiceRequest implem
 
     /**
      * <p>
-     * The name of the rule that you are creating or updating.
+     * The name of the rule that you're creating or updating.
      * </p>
      */
     private String name;
     /**
      * <p>
-     * The scheduling expression. For example, "cron(0 20 * * ? *)" or "rate(5 minutes)".
+     * The scheduling expression: for example, <code>"cron(0 20 * * ? *)"</code> or <code>"rate(5 minutes)"</code>.
      * </p>
      */
     private String scheduleExpression;
     /**
      * <p>
      * The event pattern. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html">Events and
-     * Event Patterns</a> in the <i>Amazon CloudWatch Events User Guide</i>.
+     * href="https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-and-event-patterns.html">Event
+     * Patterns</a> in the <i>Amazon EventBridge User Guide</i>.
      * </p>
      */
     private String eventPattern;
@@ -63,14 +63,26 @@ public class PutRuleRequest extends com.amazonaws.AmazonWebServiceRequest implem
      * </p>
      */
     private String roleArn;
+    /**
+     * <p>
+     * The list of key-value pairs to associate with the rule.
+     * </p>
+     */
+    private java.util.List<Tag> tags;
+    /**
+     * <p>
+     * The event bus to associate with this rule. If you omit this, the default event bus is used.
+     * </p>
+     */
+    private String eventBusName;
 
     /**
      * <p>
-     * The name of the rule that you are creating or updating.
+     * The name of the rule that you're creating or updating.
      * </p>
      * 
      * @param name
-     *        The name of the rule that you are creating or updating.
+     *        The name of the rule that you're creating or updating.
      */
 
     public void setName(String name) {
@@ -79,10 +91,10 @@ public class PutRuleRequest extends com.amazonaws.AmazonWebServiceRequest implem
 
     /**
      * <p>
-     * The name of the rule that you are creating or updating.
+     * The name of the rule that you're creating or updating.
      * </p>
      * 
-     * @return The name of the rule that you are creating or updating.
+     * @return The name of the rule that you're creating or updating.
      */
 
     public String getName() {
@@ -91,11 +103,11 @@ public class PutRuleRequest extends com.amazonaws.AmazonWebServiceRequest implem
 
     /**
      * <p>
-     * The name of the rule that you are creating or updating.
+     * The name of the rule that you're creating or updating.
      * </p>
      * 
      * @param name
-     *        The name of the rule that you are creating or updating.
+     *        The name of the rule that you're creating or updating.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -106,11 +118,12 @@ public class PutRuleRequest extends com.amazonaws.AmazonWebServiceRequest implem
 
     /**
      * <p>
-     * The scheduling expression. For example, "cron(0 20 * * ? *)" or "rate(5 minutes)".
+     * The scheduling expression: for example, <code>"cron(0 20 * * ? *)"</code> or <code>"rate(5 minutes)"</code>.
      * </p>
      * 
      * @param scheduleExpression
-     *        The scheduling expression. For example, "cron(0 20 * * ? *)" or "rate(5 minutes)".
+     *        The scheduling expression: for example, <code>"cron(0 20 * * ? *)"</code> or
+     *        <code>"rate(5 minutes)"</code>.
      */
 
     public void setScheduleExpression(String scheduleExpression) {
@@ -119,10 +132,11 @@ public class PutRuleRequest extends com.amazonaws.AmazonWebServiceRequest implem
 
     /**
      * <p>
-     * The scheduling expression. For example, "cron(0 20 * * ? *)" or "rate(5 minutes)".
+     * The scheduling expression: for example, <code>"cron(0 20 * * ? *)"</code> or <code>"rate(5 minutes)"</code>.
      * </p>
      * 
-     * @return The scheduling expression. For example, "cron(0 20 * * ? *)" or "rate(5 minutes)".
+     * @return The scheduling expression: for example, <code>"cron(0 20 * * ? *)"</code> or
+     *         <code>"rate(5 minutes)"</code>.
      */
 
     public String getScheduleExpression() {
@@ -131,11 +145,12 @@ public class PutRuleRequest extends com.amazonaws.AmazonWebServiceRequest implem
 
     /**
      * <p>
-     * The scheduling expression. For example, "cron(0 20 * * ? *)" or "rate(5 minutes)".
+     * The scheduling expression: for example, <code>"cron(0 20 * * ? *)"</code> or <code>"rate(5 minutes)"</code>.
      * </p>
      * 
      * @param scheduleExpression
-     *        The scheduling expression. For example, "cron(0 20 * * ? *)" or "rate(5 minutes)".
+     *        The scheduling expression: for example, <code>"cron(0 20 * * ? *)"</code> or
+     *        <code>"rate(5 minutes)"</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -147,14 +162,14 @@ public class PutRuleRequest extends com.amazonaws.AmazonWebServiceRequest implem
     /**
      * <p>
      * The event pattern. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html">Events and
-     * Event Patterns</a> in the <i>Amazon CloudWatch Events User Guide</i>.
+     * href="https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-and-event-patterns.html">Event
+     * Patterns</a> in the <i>Amazon EventBridge User Guide</i>.
      * </p>
      * 
      * @param eventPattern
      *        The event pattern. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html"
-     *        >Events and Event Patterns</a> in the <i>Amazon CloudWatch Events User Guide</i>.
+     *        href="https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-and-event-patterns.html">Event
+     *        Patterns</a> in the <i>Amazon EventBridge User Guide</i>.
      */
 
     public void setEventPattern(String eventPattern) {
@@ -164,13 +179,13 @@ public class PutRuleRequest extends com.amazonaws.AmazonWebServiceRequest implem
     /**
      * <p>
      * The event pattern. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html">Events and
-     * Event Patterns</a> in the <i>Amazon CloudWatch Events User Guide</i>.
+     * href="https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-and-event-patterns.html">Event
+     * Patterns</a> in the <i>Amazon EventBridge User Guide</i>.
      * </p>
      * 
      * @return The event pattern. For more information, see <a
-     *         href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html"
-     *         >Events and Event Patterns</a> in the <i>Amazon CloudWatch Events User Guide</i>.
+     *         href="https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-and-event-patterns.html">Event
+     *         Patterns</a> in the <i>Amazon EventBridge User Guide</i>.
      */
 
     public String getEventPattern() {
@@ -180,14 +195,14 @@ public class PutRuleRequest extends com.amazonaws.AmazonWebServiceRequest implem
     /**
      * <p>
      * The event pattern. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html">Events and
-     * Event Patterns</a> in the <i>Amazon CloudWatch Events User Guide</i>.
+     * href="https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-and-event-patterns.html">Event
+     * Patterns</a> in the <i>Amazon EventBridge User Guide</i>.
      * </p>
      * 
      * @param eventPattern
      *        The event pattern. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html"
-     *        >Events and Event Patterns</a> in the <i>Amazon CloudWatch Events User Guide</i>.
+     *        href="https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-and-event-patterns.html">Event
+     *        Patterns</a> in the <i>Amazon EventBridge User Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -350,7 +365,118 @@ public class PutRuleRequest extends com.amazonaws.AmazonWebServiceRequest implem
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * <p>
+     * The list of key-value pairs to associate with the rule.
+     * </p>
+     * 
+     * @return The list of key-value pairs to associate with the rule.
+     */
+
+    public java.util.List<Tag> getTags() {
+        return tags;
+    }
+
+    /**
+     * <p>
+     * The list of key-value pairs to associate with the rule.
+     * </p>
+     * 
+     * @param tags
+     *        The list of key-value pairs to associate with the rule.
+     */
+
+    public void setTags(java.util.Collection<Tag> tags) {
+        if (tags == null) {
+            this.tags = null;
+            return;
+        }
+
+        this.tags = new java.util.ArrayList<Tag>(tags);
+    }
+
+    /**
+     * <p>
+     * The list of key-value pairs to associate with the rule.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setTags(java.util.Collection)} or {@link #withTags(java.util.Collection)} if you want to override the
+     * existing values.
+     * </p>
+     * 
+     * @param tags
+     *        The list of key-value pairs to associate with the rule.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public PutRuleRequest withTags(Tag... tags) {
+        if (this.tags == null) {
+            setTags(new java.util.ArrayList<Tag>(tags.length));
+        }
+        for (Tag ele : tags) {
+            this.tags.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * The list of key-value pairs to associate with the rule.
+     * </p>
+     * 
+     * @param tags
+     *        The list of key-value pairs to associate with the rule.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public PutRuleRequest withTags(java.util.Collection<Tag> tags) {
+        setTags(tags);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The event bus to associate with this rule. If you omit this, the default event bus is used.
+     * </p>
+     * 
+     * @param eventBusName
+     *        The event bus to associate with this rule. If you omit this, the default event bus is used.
+     */
+
+    public void setEventBusName(String eventBusName) {
+        this.eventBusName = eventBusName;
+    }
+
+    /**
+     * <p>
+     * The event bus to associate with this rule. If you omit this, the default event bus is used.
+     * </p>
+     * 
+     * @return The event bus to associate with this rule. If you omit this, the default event bus is used.
+     */
+
+    public String getEventBusName() {
+        return this.eventBusName;
+    }
+
+    /**
+     * <p>
+     * The event bus to associate with this rule. If you omit this, the default event bus is used.
+     * </p>
+     * 
+     * @param eventBusName
+     *        The event bus to associate with this rule. If you omit this, the default event bus is used.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public PutRuleRequest withEventBusName(String eventBusName) {
+        setEventBusName(eventBusName);
+        return this;
+    }
+
+    /**
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -371,7 +497,11 @@ public class PutRuleRequest extends com.amazonaws.AmazonWebServiceRequest implem
         if (getDescription() != null)
             sb.append("Description: ").append(getDescription()).append(",");
         if (getRoleArn() != null)
-            sb.append("RoleArn: ").append(getRoleArn());
+            sb.append("RoleArn: ").append(getRoleArn()).append(",");
+        if (getTags() != null)
+            sb.append("Tags: ").append(getTags()).append(",");
+        if (getEventBusName() != null)
+            sb.append("EventBusName: ").append(getEventBusName());
         sb.append("}");
         return sb.toString();
     }
@@ -410,6 +540,14 @@ public class PutRuleRequest extends com.amazonaws.AmazonWebServiceRequest implem
             return false;
         if (other.getRoleArn() != null && other.getRoleArn().equals(this.getRoleArn()) == false)
             return false;
+        if (other.getTags() == null ^ this.getTags() == null)
+            return false;
+        if (other.getTags() != null && other.getTags().equals(this.getTags()) == false)
+            return false;
+        if (other.getEventBusName() == null ^ this.getEventBusName() == null)
+            return false;
+        if (other.getEventBusName() != null && other.getEventBusName().equals(this.getEventBusName()) == false)
+            return false;
         return true;
     }
 
@@ -424,6 +562,8 @@ public class PutRuleRequest extends com.amazonaws.AmazonWebServiceRequest implem
         hashCode = prime * hashCode + ((getState() == null) ? 0 : getState().hashCode());
         hashCode = prime * hashCode + ((getDescription() == null) ? 0 : getDescription().hashCode());
         hashCode = prime * hashCode + ((getRoleArn() == null) ? 0 : getRoleArn().hashCode());
+        hashCode = prime * hashCode + ((getTags() == null) ? 0 : getTags().hashCode());
+        hashCode = prime * hashCode + ((getEventBusName() == null) ? 0 : getEventBusName().hashCode());
         return hashCode;
     }
 

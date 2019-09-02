@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,7 @@
  */
 package com.amazonaws.services.directconnect.model.transform;
 
+import java.util.List;
 import javax.annotation.Generated;
 
 import com.amazonaws.SdkClientException;
@@ -37,6 +38,8 @@ public class AllocateHostedConnectionRequestMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("connectionName").build();
     private static final MarshallingInfo<Integer> VLAN_BINDING = MarshallingInfo.builder(MarshallingType.INTEGER).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("vlan").build();
+    private static final MarshallingInfo<List> TAGS_BINDING = MarshallingInfo.builder(MarshallingType.LIST).marshallLocation(MarshallLocation.PAYLOAD)
+            .marshallLocationName("tags").build();
 
     private static final AllocateHostedConnectionRequestMarshaller instance = new AllocateHostedConnectionRequestMarshaller();
 
@@ -59,6 +62,7 @@ public class AllocateHostedConnectionRequestMarshaller {
             protocolMarshaller.marshall(allocateHostedConnectionRequest.getBandwidth(), BANDWIDTH_BINDING);
             protocolMarshaller.marshall(allocateHostedConnectionRequest.getConnectionName(), CONNECTIONNAME_BINDING);
             protocolMarshaller.marshall(allocateHostedConnectionRequest.getVlan(), VLAN_BINDING);
+            protocolMarshaller.marshall(allocateHostedConnectionRequest.getTags(), TAGS_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

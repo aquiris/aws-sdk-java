@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -70,6 +70,18 @@ public class DeviceData implements Serializable, Cloneable, StructuredPojo {
      * </p>
      */
     private String deviceStatus;
+    /**
+     * <p>
+     * The ARN of the network profile associated with a device.
+     * </p>
+     */
+    private String networkProfileArn;
+    /**
+     * <p>
+     * The name of the network profile associated with a device.
+     * </p>
+     */
+    private String networkProfileName;
     /**
      * <p>
      * The room ARN associated with a device.
@@ -390,6 +402,86 @@ public class DeviceData implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
+     * The ARN of the network profile associated with a device.
+     * </p>
+     * 
+     * @param networkProfileArn
+     *        The ARN of the network profile associated with a device.
+     */
+
+    public void setNetworkProfileArn(String networkProfileArn) {
+        this.networkProfileArn = networkProfileArn;
+    }
+
+    /**
+     * <p>
+     * The ARN of the network profile associated with a device.
+     * </p>
+     * 
+     * @return The ARN of the network profile associated with a device.
+     */
+
+    public String getNetworkProfileArn() {
+        return this.networkProfileArn;
+    }
+
+    /**
+     * <p>
+     * The ARN of the network profile associated with a device.
+     * </p>
+     * 
+     * @param networkProfileArn
+     *        The ARN of the network profile associated with a device.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DeviceData withNetworkProfileArn(String networkProfileArn) {
+        setNetworkProfileArn(networkProfileArn);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The name of the network profile associated with a device.
+     * </p>
+     * 
+     * @param networkProfileName
+     *        The name of the network profile associated with a device.
+     */
+
+    public void setNetworkProfileName(String networkProfileName) {
+        this.networkProfileName = networkProfileName;
+    }
+
+    /**
+     * <p>
+     * The name of the network profile associated with a device.
+     * </p>
+     * 
+     * @return The name of the network profile associated with a device.
+     */
+
+    public String getNetworkProfileName() {
+        return this.networkProfileName;
+    }
+
+    /**
+     * <p>
+     * The name of the network profile associated with a device.
+     * </p>
+     * 
+     * @param networkProfileName
+     *        The name of the network profile associated with a device.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DeviceData withNetworkProfileName(String networkProfileName) {
+        setNetworkProfileName(networkProfileName);
+        return this;
+    }
+
+    /**
+     * <p>
      * The room ARN associated with a device.
      * </p>
      * 
@@ -509,7 +601,8 @@ public class DeviceData implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -533,6 +626,10 @@ public class DeviceData implements Serializable, Cloneable, StructuredPojo {
             sb.append("MacAddress: ").append(getMacAddress()).append(",");
         if (getDeviceStatus() != null)
             sb.append("DeviceStatus: ").append(getDeviceStatus()).append(",");
+        if (getNetworkProfileArn() != null)
+            sb.append("NetworkProfileArn: ").append(getNetworkProfileArn()).append(",");
+        if (getNetworkProfileName() != null)
+            sb.append("NetworkProfileName: ").append(getNetworkProfileName()).append(",");
         if (getRoomArn() != null)
             sb.append("RoomArn: ").append(getRoomArn()).append(",");
         if (getRoomName() != null)
@@ -581,6 +678,14 @@ public class DeviceData implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getDeviceStatus() != null && other.getDeviceStatus().equals(this.getDeviceStatus()) == false)
             return false;
+        if (other.getNetworkProfileArn() == null ^ this.getNetworkProfileArn() == null)
+            return false;
+        if (other.getNetworkProfileArn() != null && other.getNetworkProfileArn().equals(this.getNetworkProfileArn()) == false)
+            return false;
+        if (other.getNetworkProfileName() == null ^ this.getNetworkProfileName() == null)
+            return false;
+        if (other.getNetworkProfileName() != null && other.getNetworkProfileName().equals(this.getNetworkProfileName()) == false)
+            return false;
         if (other.getRoomArn() == null ^ this.getRoomArn() == null)
             return false;
         if (other.getRoomArn() != null && other.getRoomArn().equals(this.getRoomArn()) == false)
@@ -608,6 +713,8 @@ public class DeviceData implements Serializable, Cloneable, StructuredPojo {
         hashCode = prime * hashCode + ((getSoftwareVersion() == null) ? 0 : getSoftwareVersion().hashCode());
         hashCode = prime * hashCode + ((getMacAddress() == null) ? 0 : getMacAddress().hashCode());
         hashCode = prime * hashCode + ((getDeviceStatus() == null) ? 0 : getDeviceStatus().hashCode());
+        hashCode = prime * hashCode + ((getNetworkProfileArn() == null) ? 0 : getNetworkProfileArn().hashCode());
+        hashCode = prime * hashCode + ((getNetworkProfileName() == null) ? 0 : getNetworkProfileName().hashCode());
         hashCode = prime * hashCode + ((getRoomArn() == null) ? 0 : getRoomArn().hashCode());
         hashCode = prime * hashCode + ((getRoomName() == null) ? 0 : getRoomName().hashCode());
         hashCode = prime * hashCode + ((getDeviceStatusInfo() == null) ? 0 : getDeviceStatusInfo().hashCode());

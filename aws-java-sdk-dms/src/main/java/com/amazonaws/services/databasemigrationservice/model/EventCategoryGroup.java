@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -31,13 +31,13 @@ public class EventCategoryGroup implements Serializable, Cloneable, StructuredPo
      * The type of AWS DMS resource that generates events.
      * </p>
      * <p>
-     * Valid values: replication-instance | replication-server | security-group | migration-task
+     * Valid values: replication-instance | replication-server | security-group | replication-task
      * </p>
      */
     private String sourceType;
     /**
      * <p>
-     * A list of event categories for a <code>SourceType</code> that you want to subscribe to.
+     * A list of event categories from a source type that you've chosen.
      * </p>
      */
     private java.util.List<String> eventCategories;
@@ -47,13 +47,13 @@ public class EventCategoryGroup implements Serializable, Cloneable, StructuredPo
      * The type of AWS DMS resource that generates events.
      * </p>
      * <p>
-     * Valid values: replication-instance | replication-server | security-group | migration-task
+     * Valid values: replication-instance | replication-server | security-group | replication-task
      * </p>
      * 
      * @param sourceType
      *        The type of AWS DMS resource that generates events. </p>
      *        <p>
-     *        Valid values: replication-instance | replication-server | security-group | migration-task
+     *        Valid values: replication-instance | replication-server | security-group | replication-task
      */
 
     public void setSourceType(String sourceType) {
@@ -65,12 +65,12 @@ public class EventCategoryGroup implements Serializable, Cloneable, StructuredPo
      * The type of AWS DMS resource that generates events.
      * </p>
      * <p>
-     * Valid values: replication-instance | replication-server | security-group | migration-task
+     * Valid values: replication-instance | replication-server | security-group | replication-task
      * </p>
      * 
      * @return The type of AWS DMS resource that generates events. </p>
      *         <p>
-     *         Valid values: replication-instance | replication-server | security-group | migration-task
+     *         Valid values: replication-instance | replication-server | security-group | replication-task
      */
 
     public String getSourceType() {
@@ -82,13 +82,13 @@ public class EventCategoryGroup implements Serializable, Cloneable, StructuredPo
      * The type of AWS DMS resource that generates events.
      * </p>
      * <p>
-     * Valid values: replication-instance | replication-server | security-group | migration-task
+     * Valid values: replication-instance | replication-server | security-group | replication-task
      * </p>
      * 
      * @param sourceType
      *        The type of AWS DMS resource that generates events. </p>
      *        <p>
-     *        Valid values: replication-instance | replication-server | security-group | migration-task
+     *        Valid values: replication-instance | replication-server | security-group | replication-task
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -99,10 +99,10 @@ public class EventCategoryGroup implements Serializable, Cloneable, StructuredPo
 
     /**
      * <p>
-     * A list of event categories for a <code>SourceType</code> that you want to subscribe to.
+     * A list of event categories from a source type that you've chosen.
      * </p>
      * 
-     * @return A list of event categories for a <code>SourceType</code> that you want to subscribe to.
+     * @return A list of event categories from a source type that you've chosen.
      */
 
     public java.util.List<String> getEventCategories() {
@@ -111,11 +111,11 @@ public class EventCategoryGroup implements Serializable, Cloneable, StructuredPo
 
     /**
      * <p>
-     * A list of event categories for a <code>SourceType</code> that you want to subscribe to.
+     * A list of event categories from a source type that you've chosen.
      * </p>
      * 
      * @param eventCategories
-     *        A list of event categories for a <code>SourceType</code> that you want to subscribe to.
+     *        A list of event categories from a source type that you've chosen.
      */
 
     public void setEventCategories(java.util.Collection<String> eventCategories) {
@@ -129,7 +129,7 @@ public class EventCategoryGroup implements Serializable, Cloneable, StructuredPo
 
     /**
      * <p>
-     * A list of event categories for a <code>SourceType</code> that you want to subscribe to.
+     * A list of event categories from a source type that you've chosen.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -138,7 +138,7 @@ public class EventCategoryGroup implements Serializable, Cloneable, StructuredPo
      * </p>
      * 
      * @param eventCategories
-     *        A list of event categories for a <code>SourceType</code> that you want to subscribe to.
+     *        A list of event categories from a source type that you've chosen.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -154,11 +154,11 @@ public class EventCategoryGroup implements Serializable, Cloneable, StructuredPo
 
     /**
      * <p>
-     * A list of event categories for a <code>SourceType</code> that you want to subscribe to.
+     * A list of event categories from a source type that you've chosen.
      * </p>
      * 
      * @param eventCategories
-     *        A list of event categories for a <code>SourceType</code> that you want to subscribe to.
+     *        A list of event categories from a source type that you've chosen.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -168,7 +168,8 @@ public class EventCategoryGroup implements Serializable, Cloneable, StructuredPo
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

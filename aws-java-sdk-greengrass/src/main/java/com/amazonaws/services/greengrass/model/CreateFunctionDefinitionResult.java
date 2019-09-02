@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -31,9 +31,9 @@ public class CreateFunctionDefinitionResult extends com.amazonaws.AmazonWebServi
     private String id;
     /** The time, in milliseconds since the epoch, when the definition was last updated. */
     private String lastUpdatedTimestamp;
-    /** The latest version of the definition. */
+    /** The ID of the latest version associated with the definition. */
     private String latestVersion;
-    /** The ARN of the latest version of the definition. */
+    /** The ARN of the latest version associated with the definition. */
     private String latestVersionArn;
     /** The name of the definition. */
     private String name;
@@ -175,10 +175,10 @@ public class CreateFunctionDefinitionResult extends com.amazonaws.AmazonWebServi
     }
 
     /**
-     * The latest version of the definition.
+     * The ID of the latest version associated with the definition.
      * 
      * @param latestVersion
-     *        The latest version of the definition.
+     *        The ID of the latest version associated with the definition.
      */
 
     public void setLatestVersion(String latestVersion) {
@@ -186,9 +186,9 @@ public class CreateFunctionDefinitionResult extends com.amazonaws.AmazonWebServi
     }
 
     /**
-     * The latest version of the definition.
+     * The ID of the latest version associated with the definition.
      * 
-     * @return The latest version of the definition.
+     * @return The ID of the latest version associated with the definition.
      */
 
     public String getLatestVersion() {
@@ -196,10 +196,10 @@ public class CreateFunctionDefinitionResult extends com.amazonaws.AmazonWebServi
     }
 
     /**
-     * The latest version of the definition.
+     * The ID of the latest version associated with the definition.
      * 
      * @param latestVersion
-     *        The latest version of the definition.
+     *        The ID of the latest version associated with the definition.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -209,10 +209,10 @@ public class CreateFunctionDefinitionResult extends com.amazonaws.AmazonWebServi
     }
 
     /**
-     * The ARN of the latest version of the definition.
+     * The ARN of the latest version associated with the definition.
      * 
      * @param latestVersionArn
-     *        The ARN of the latest version of the definition.
+     *        The ARN of the latest version associated with the definition.
      */
 
     public void setLatestVersionArn(String latestVersionArn) {
@@ -220,9 +220,9 @@ public class CreateFunctionDefinitionResult extends com.amazonaws.AmazonWebServi
     }
 
     /**
-     * The ARN of the latest version of the definition.
+     * The ARN of the latest version associated with the definition.
      * 
-     * @return The ARN of the latest version of the definition.
+     * @return The ARN of the latest version associated with the definition.
      */
 
     public String getLatestVersionArn() {
@@ -230,10 +230,10 @@ public class CreateFunctionDefinitionResult extends com.amazonaws.AmazonWebServi
     }
 
     /**
-     * The ARN of the latest version of the definition.
+     * The ARN of the latest version associated with the definition.
      * 
      * @param latestVersionArn
-     *        The ARN of the latest version of the definition.
+     *        The ARN of the latest version associated with the definition.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -277,7 +277,8 @@ public class CreateFunctionDefinitionResult extends com.amazonaws.AmazonWebServi
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -34,6 +34,8 @@ public class CreateFleetRequestMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("Description").build();
     private static final MarshallingInfo<String> BUILDID_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("BuildId").build();
+    private static final MarshallingInfo<String> SCRIPTID_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
+            .marshallLocationName("ScriptId").build();
     private static final MarshallingInfo<String> SERVERLAUNCHPATH_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("ServerLaunchPath").build();
     private static final MarshallingInfo<String> SERVERLAUNCHPARAMETERS_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
@@ -58,6 +60,8 @@ public class CreateFleetRequestMarshaller {
             .marshallLocationName("PeerVpcId").build();
     private static final MarshallingInfo<String> FLEETTYPE_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("FleetType").build();
+    private static final MarshallingInfo<String> INSTANCEROLEARN_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("InstanceRoleArn").build();
 
     private static final CreateFleetRequestMarshaller instance = new CreateFleetRequestMarshaller();
 
@@ -78,6 +82,7 @@ public class CreateFleetRequestMarshaller {
             protocolMarshaller.marshall(createFleetRequest.getName(), NAME_BINDING);
             protocolMarshaller.marshall(createFleetRequest.getDescription(), DESCRIPTION_BINDING);
             protocolMarshaller.marshall(createFleetRequest.getBuildId(), BUILDID_BINDING);
+            protocolMarshaller.marshall(createFleetRequest.getScriptId(), SCRIPTID_BINDING);
             protocolMarshaller.marshall(createFleetRequest.getServerLaunchPath(), SERVERLAUNCHPATH_BINDING);
             protocolMarshaller.marshall(createFleetRequest.getServerLaunchParameters(), SERVERLAUNCHPARAMETERS_BINDING);
             protocolMarshaller.marshall(createFleetRequest.getLogPaths(), LOGPATHS_BINDING);
@@ -90,6 +95,7 @@ public class CreateFleetRequestMarshaller {
             protocolMarshaller.marshall(createFleetRequest.getPeerVpcAwsAccountId(), PEERVPCAWSACCOUNTID_BINDING);
             protocolMarshaller.marshall(createFleetRequest.getPeerVpcId(), PEERVPCID_BINDING);
             protocolMarshaller.marshall(createFleetRequest.getFleetType(), FLEETTYPE_BINDING);
+            protocolMarshaller.marshall(createFleetRequest.getInstanceRoleArn(), INSTANCEROLEARN_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

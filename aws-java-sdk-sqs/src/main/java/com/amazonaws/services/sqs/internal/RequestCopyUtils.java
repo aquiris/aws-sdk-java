@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2011-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,11 +29,12 @@ public class RequestCopyUtils {
     public static SendMessageBatchRequestEntry createSendMessageBatchRequestEntryFrom(String id,
                                                                                       SendMessageRequest sendMessageRequest) {
         return new SendMessageBatchRequestEntry()
-                .withId(id)
-                .withMessageBody(sendMessageRequest.getMessageBody())
-                .withDelaySeconds(sendMessageRequest.getDelaySeconds())
-                .withMessageAttributes(sendMessageRequest.getMessageAttributes())
-                .withMessageDeduplicationId(sendMessageRequest.getMessageDeduplicationId())
-                .withMessageGroupId(sendMessageRequest.getMessageGroupId());
+            .withId(id)
+            .withMessageBody(sendMessageRequest.getMessageBody())
+            .withDelaySeconds(sendMessageRequest.getDelaySeconds())
+            .withMessageAttributes(sendMessageRequest.getMessageAttributes())
+            .withMessageDeduplicationId(sendMessageRequest.getMessageDeduplicationId())
+            .withMessageGroupId(sendMessageRequest.getMessageGroupId())
+            .withMessageSystemAttributes(sendMessageRequest.getMessageSystemAttributes());
     }
 }

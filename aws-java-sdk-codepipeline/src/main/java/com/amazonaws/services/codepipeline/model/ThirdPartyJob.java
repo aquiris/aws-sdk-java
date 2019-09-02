@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -19,8 +19,8 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * A response to a PollForThirdPartyJobs request returned by AWS CodePipeline when there is a job to be worked upon by a
- * partner action.
+ * A response to a <code>PollForThirdPartyJobs </code>request returned by AWS CodePipeline when there is a job to be
+ * worked upon by a partner action.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/ThirdPartyJob" target="_top">AWS API
@@ -31,8 +31,8 @@ public class ThirdPartyJob implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The clientToken portion of the clientId and clientToken pair used to verify that the calling entity is allowed
-     * access to the job and its details.
+     * The <code>clientToken</code> portion of the <code>clientId</code> and <code>clientToken</code> pair used to
+     * verify that the calling entity is allowed access to the job and its details.
      * </p>
      */
     private String clientId;
@@ -45,13 +45,13 @@ public class ThirdPartyJob implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The clientToken portion of the clientId and clientToken pair used to verify that the calling entity is allowed
-     * access to the job and its details.
+     * The <code>clientToken</code> portion of the <code>clientId</code> and <code>clientToken</code> pair used to
+     * verify that the calling entity is allowed access to the job and its details.
      * </p>
      * 
      * @param clientId
-     *        The clientToken portion of the clientId and clientToken pair used to verify that the calling entity is
-     *        allowed access to the job and its details.
+     *        The <code>clientToken</code> portion of the <code>clientId</code> and <code>clientToken</code> pair used
+     *        to verify that the calling entity is allowed access to the job and its details.
      */
 
     public void setClientId(String clientId) {
@@ -60,12 +60,12 @@ public class ThirdPartyJob implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The clientToken portion of the clientId and clientToken pair used to verify that the calling entity is allowed
-     * access to the job and its details.
+     * The <code>clientToken</code> portion of the <code>clientId</code> and <code>clientToken</code> pair used to
+     * verify that the calling entity is allowed access to the job and its details.
      * </p>
      * 
-     * @return The clientToken portion of the clientId and clientToken pair used to verify that the calling entity is
-     *         allowed access to the job and its details.
+     * @return The <code>clientToken</code> portion of the <code>clientId</code> and <code>clientToken</code> pair used
+     *         to verify that the calling entity is allowed access to the job and its details.
      */
 
     public String getClientId() {
@@ -74,13 +74,13 @@ public class ThirdPartyJob implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The clientToken portion of the clientId and clientToken pair used to verify that the calling entity is allowed
-     * access to the job and its details.
+     * The <code>clientToken</code> portion of the <code>clientId</code> and <code>clientToken</code> pair used to
+     * verify that the calling entity is allowed access to the job and its details.
      * </p>
      * 
      * @param clientId
-     *        The clientToken portion of the clientId and clientToken pair used to verify that the calling entity is
-     *        allowed access to the job and its details.
+     *        The <code>clientToken</code> portion of the <code>clientId</code> and <code>clientToken</code> pair used
+     *        to verify that the calling entity is allowed access to the job and its details.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -130,7 +130,8 @@ public class ThirdPartyJob implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

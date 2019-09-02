@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -29,6 +29,8 @@ public class HlsSettingsMarshaller {
 
     private static final MarshallingInfo<String> AUDIOGROUPID_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("audioGroupId").build();
+    private static final MarshallingInfo<String> AUDIOONLYCONTAINER_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("audioOnlyContainer").build();
     private static final MarshallingInfo<String> AUDIORENDITIONSETS_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("audioRenditionSets").build();
     private static final MarshallingInfo<String> AUDIOTRACKTYPE_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
@@ -55,6 +57,7 @@ public class HlsSettingsMarshaller {
 
         try {
             protocolMarshaller.marshall(hlsSettings.getAudioGroupId(), AUDIOGROUPID_BINDING);
+            protocolMarshaller.marshall(hlsSettings.getAudioOnlyContainer(), AUDIOONLYCONTAINER_BINDING);
             protocolMarshaller.marshall(hlsSettings.getAudioRenditionSets(), AUDIORENDITIONSETS_BINDING);
             protocolMarshaller.marshall(hlsSettings.getAudioTrackType(), AUDIOTRACKTYPE_BINDING);
             protocolMarshaller.marshall(hlsSettings.getIFrameOnlyManifest(), IFRAMEONLYMANIFEST_BINDING);

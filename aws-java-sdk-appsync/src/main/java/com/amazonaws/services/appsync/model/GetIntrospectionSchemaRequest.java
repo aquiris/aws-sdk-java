@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -37,6 +37,12 @@ public class GetIntrospectionSchemaRequest extends com.amazonaws.AmazonWebServic
      * </p>
      */
     private String format;
+    /**
+     * <p>
+     * A flag that specifies whether the schema introspection should contain directives.
+     * </p>
+     */
+    private Boolean includeDirectives;
 
     /**
      * <p>
@@ -138,7 +144,60 @@ public class GetIntrospectionSchemaRequest extends com.amazonaws.AmazonWebServic
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * <p>
+     * A flag that specifies whether the schema introspection should contain directives.
+     * </p>
+     * 
+     * @param includeDirectives
+     *        A flag that specifies whether the schema introspection should contain directives.
+     */
+
+    public void setIncludeDirectives(Boolean includeDirectives) {
+        this.includeDirectives = includeDirectives;
+    }
+
+    /**
+     * <p>
+     * A flag that specifies whether the schema introspection should contain directives.
+     * </p>
+     * 
+     * @return A flag that specifies whether the schema introspection should contain directives.
+     */
+
+    public Boolean getIncludeDirectives() {
+        return this.includeDirectives;
+    }
+
+    /**
+     * <p>
+     * A flag that specifies whether the schema introspection should contain directives.
+     * </p>
+     * 
+     * @param includeDirectives
+     *        A flag that specifies whether the schema introspection should contain directives.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public GetIntrospectionSchemaRequest withIncludeDirectives(Boolean includeDirectives) {
+        setIncludeDirectives(includeDirectives);
+        return this;
+    }
+
+    /**
+     * <p>
+     * A flag that specifies whether the schema introspection should contain directives.
+     * </p>
+     * 
+     * @return A flag that specifies whether the schema introspection should contain directives.
+     */
+
+    public Boolean isIncludeDirectives() {
+        return this.includeDirectives;
+    }
+
+    /**
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -151,7 +210,9 @@ public class GetIntrospectionSchemaRequest extends com.amazonaws.AmazonWebServic
         if (getApiId() != null)
             sb.append("ApiId: ").append(getApiId()).append(",");
         if (getFormat() != null)
-            sb.append("Format: ").append(getFormat());
+            sb.append("Format: ").append(getFormat()).append(",");
+        if (getIncludeDirectives() != null)
+            sb.append("IncludeDirectives: ").append(getIncludeDirectives());
         sb.append("}");
         return sb.toString();
     }
@@ -174,6 +235,10 @@ public class GetIntrospectionSchemaRequest extends com.amazonaws.AmazonWebServic
             return false;
         if (other.getFormat() != null && other.getFormat().equals(this.getFormat()) == false)
             return false;
+        if (other.getIncludeDirectives() == null ^ this.getIncludeDirectives() == null)
+            return false;
+        if (other.getIncludeDirectives() != null && other.getIncludeDirectives().equals(this.getIncludeDirectives()) == false)
+            return false;
         return true;
     }
 
@@ -184,6 +249,7 @@ public class GetIntrospectionSchemaRequest extends com.amazonaws.AmazonWebServic
 
         hashCode = prime * hashCode + ((getApiId() == null) ? 0 : getApiId().hashCode());
         hashCode = prime * hashCode + ((getFormat() == null) ? 0 : getFormat().hashCode());
+        hashCode = prime * hashCode + ((getIncludeDirectives() == null) ? 0 : getIncludeDirectives().hashCode());
         return hashCode;
     }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -80,6 +80,14 @@ public class CreateDevEndpointResultJsonUnmarshaller implements Unmarshaller<Cre
                     context.nextToken();
                     createDevEndpointResult.setNumberOfNodes(context.getUnmarshaller(Integer.class).unmarshall(context));
                 }
+                if (context.testExpression("WorkerType", targetDepth)) {
+                    context.nextToken();
+                    createDevEndpointResult.setWorkerType(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("NumberOfWorkers", targetDepth)) {
+                    context.nextToken();
+                    createDevEndpointResult.setNumberOfWorkers(context.getUnmarshaller(Integer.class).unmarshall(context));
+                }
                 if (context.testExpression("AvailabilityZone", targetDepth)) {
                     context.nextToken();
                     createDevEndpointResult.setAvailabilityZone(context.getUnmarshaller(String.class).unmarshall(context));
@@ -100,9 +108,18 @@ public class CreateDevEndpointResultJsonUnmarshaller implements Unmarshaller<Cre
                     context.nextToken();
                     createDevEndpointResult.setFailureReason(context.getUnmarshaller(String.class).unmarshall(context));
                 }
+                if (context.testExpression("SecurityConfiguration", targetDepth)) {
+                    context.nextToken();
+                    createDevEndpointResult.setSecurityConfiguration(context.getUnmarshaller(String.class).unmarshall(context));
+                }
                 if (context.testExpression("CreatedTimestamp", targetDepth)) {
                     context.nextToken();
-                    createDevEndpointResult.setCreatedTimestamp(context.getUnmarshaller(java.util.Date.class).unmarshall(context));
+                    createDevEndpointResult.setCreatedTimestamp(DateJsonUnmarshallerFactory.getInstance("unixTimestamp").unmarshall(context));
+                }
+                if (context.testExpression("Arguments", targetDepth)) {
+                    context.nextToken();
+                    createDevEndpointResult.setArguments(new MapUnmarshaller<String, String>(context.getUnmarshaller(String.class), context
+                            .getUnmarshaller(String.class)).unmarshall(context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null || context.getLastParsedParentElement().equals(currentParentElement)) {

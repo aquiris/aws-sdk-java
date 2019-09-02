@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -36,13 +36,14 @@ public class TableVersionError implements Serializable, Cloneable, StructuredPoj
     private String tableName;
     /**
      * <p>
-     * The ID value of the version in question.
+     * The ID value of the version in question. A <code>VersionID</code> is a string representation of an integer. Each
+     * version is incremented by 1.
      * </p>
      */
     private String versionId;
     /**
      * <p>
-     * Detail about the error.
+     * The details about the error.
      * </p>
      */
     private ErrorDetail errorDetail;
@@ -89,11 +90,13 @@ public class TableVersionError implements Serializable, Cloneable, StructuredPoj
 
     /**
      * <p>
-     * The ID value of the version in question.
+     * The ID value of the version in question. A <code>VersionID</code> is a string representation of an integer. Each
+     * version is incremented by 1.
      * </p>
      * 
      * @param versionId
-     *        The ID value of the version in question.
+     *        The ID value of the version in question. A <code>VersionID</code> is a string representation of an
+     *        integer. Each version is incremented by 1.
      */
 
     public void setVersionId(String versionId) {
@@ -102,10 +105,12 @@ public class TableVersionError implements Serializable, Cloneable, StructuredPoj
 
     /**
      * <p>
-     * The ID value of the version in question.
+     * The ID value of the version in question. A <code>VersionID</code> is a string representation of an integer. Each
+     * version is incremented by 1.
      * </p>
      * 
-     * @return The ID value of the version in question.
+     * @return The ID value of the version in question. A <code>VersionID</code> is a string representation of an
+     *         integer. Each version is incremented by 1.
      */
 
     public String getVersionId() {
@@ -114,11 +119,13 @@ public class TableVersionError implements Serializable, Cloneable, StructuredPoj
 
     /**
      * <p>
-     * The ID value of the version in question.
+     * The ID value of the version in question. A <code>VersionID</code> is a string representation of an integer. Each
+     * version is incremented by 1.
      * </p>
      * 
      * @param versionId
-     *        The ID value of the version in question.
+     *        The ID value of the version in question. A <code>VersionID</code> is a string representation of an
+     *        integer. Each version is incremented by 1.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -129,11 +136,11 @@ public class TableVersionError implements Serializable, Cloneable, StructuredPoj
 
     /**
      * <p>
-     * Detail about the error.
+     * The details about the error.
      * </p>
      * 
      * @param errorDetail
-     *        Detail about the error.
+     *        The details about the error.
      */
 
     public void setErrorDetail(ErrorDetail errorDetail) {
@@ -142,10 +149,10 @@ public class TableVersionError implements Serializable, Cloneable, StructuredPoj
 
     /**
      * <p>
-     * Detail about the error.
+     * The details about the error.
      * </p>
      * 
-     * @return Detail about the error.
+     * @return The details about the error.
      */
 
     public ErrorDetail getErrorDetail() {
@@ -154,11 +161,11 @@ public class TableVersionError implements Serializable, Cloneable, StructuredPoj
 
     /**
      * <p>
-     * Detail about the error.
+     * The details about the error.
      * </p>
      * 
      * @param errorDetail
-     *        Detail about the error.
+     *        The details about the error.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -168,7 +175,8 @@ public class TableVersionError implements Serializable, Cloneable, StructuredPoj
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -18,7 +18,9 @@ import com.amazonaws.protocol.StructuredPojo;
 import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
- * The result from sending a message to an address.
+ * <p>
+ * Provides information about the results of sending a message directly to an endpoint address.
+ * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/MessageResult" target="_top">AWS API
  *      Documentation</a>
@@ -26,20 +28,180 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class MessageResult implements Serializable, Cloneable, StructuredPojo {
 
-    /** Delivery status of message. */
+    /**
+     * <p>
+     * The delivery status of the message. Possible values are:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * DUPLICATE - The endpoint address is a duplicate of another endpoint address. Amazon Pinpoint won't attempt to
+     * send the message again.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * OPT_OUT - The user who's associated with the endpoint address has opted out of receiving messages from you.
+     * Amazon Pinpoint won't attempt to send the message again.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * PERMANENT_FAILURE - An error occurred when delivering the message to the endpoint address. Amazon Pinpoint won't
+     * attempt to send the message again.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * SUCCESSFUL - The message was successfully delivered to the endpoint address.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * TEMPORARY_FAILURE - A temporary error occurred. Amazon Pinpoint will attempt to deliver the message again later.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * THROTTLED - Amazon Pinpoint throttled the operation to send the message to the endpoint address.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * TIMEOUT - The message couldn't be sent within the timeout period.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * UNKNOWN_FAILURE - An unknown error occurred.
+     * </p>
+     * </li>
+     * </ul>
+     */
     private String deliveryStatus;
-    /** Downstream service status code. */
+    /**
+     * <p>
+     * The unique identifier for the message that was sent.
+     * </p>
+     */
+    private String messageId;
+    /**
+     * <p>
+     * The downstream service status code for delivering the message.
+     * </p>
+     */
     private Integer statusCode;
-    /** Status message for message delivery. */
+    /**
+     * <p>
+     * The status message for delivering the message.
+     * </p>
+     */
     private String statusMessage;
-    /** If token was updated as part of delivery. (This is GCM Specific) */
+    /**
+     * <p>
+     * For push notifications that are sent through the GCM channel, specifies whether the token was updated as part of
+     * delivering the message.
+     * </p>
+     */
     private String updatedToken;
 
     /**
-     * Delivery status of message.
+     * <p>
+     * The delivery status of the message. Possible values are:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * DUPLICATE - The endpoint address is a duplicate of another endpoint address. Amazon Pinpoint won't attempt to
+     * send the message again.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * OPT_OUT - The user who's associated with the endpoint address has opted out of receiving messages from you.
+     * Amazon Pinpoint won't attempt to send the message again.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * PERMANENT_FAILURE - An error occurred when delivering the message to the endpoint address. Amazon Pinpoint won't
+     * attempt to send the message again.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * SUCCESSFUL - The message was successfully delivered to the endpoint address.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * TEMPORARY_FAILURE - A temporary error occurred. Amazon Pinpoint will attempt to deliver the message again later.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * THROTTLED - Amazon Pinpoint throttled the operation to send the message to the endpoint address.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * TIMEOUT - The message couldn't be sent within the timeout period.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * UNKNOWN_FAILURE - An unknown error occurred.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param deliveryStatus
-     *        Delivery status of message.
+     *        The delivery status of the message. Possible values are:</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        DUPLICATE - The endpoint address is a duplicate of another endpoint address. Amazon Pinpoint won't attempt
+     *        to send the message again.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        OPT_OUT - The user who's associated with the endpoint address has opted out of receiving messages from
+     *        you. Amazon Pinpoint won't attempt to send the message again.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        PERMANENT_FAILURE - An error occurred when delivering the message to the endpoint address. Amazon Pinpoint
+     *        won't attempt to send the message again.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        SUCCESSFUL - The message was successfully delivered to the endpoint address.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        TEMPORARY_FAILURE - A temporary error occurred. Amazon Pinpoint will attempt to deliver the message again
+     *        later.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        THROTTLED - Amazon Pinpoint throttled the operation to send the message to the endpoint address.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        TIMEOUT - The message couldn't be sent within the timeout period.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        UNKNOWN_FAILURE - An unknown error occurred.
+     *        </p>
+     *        </li>
      * @see DeliveryStatus
      */
 
@@ -48,9 +210,101 @@ public class MessageResult implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Delivery status of message.
+     * <p>
+     * The delivery status of the message. Possible values are:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * DUPLICATE - The endpoint address is a duplicate of another endpoint address. Amazon Pinpoint won't attempt to
+     * send the message again.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * OPT_OUT - The user who's associated with the endpoint address has opted out of receiving messages from you.
+     * Amazon Pinpoint won't attempt to send the message again.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * PERMANENT_FAILURE - An error occurred when delivering the message to the endpoint address. Amazon Pinpoint won't
+     * attempt to send the message again.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * SUCCESSFUL - The message was successfully delivered to the endpoint address.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * TEMPORARY_FAILURE - A temporary error occurred. Amazon Pinpoint will attempt to deliver the message again later.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * THROTTLED - Amazon Pinpoint throttled the operation to send the message to the endpoint address.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * TIMEOUT - The message couldn't be sent within the timeout period.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * UNKNOWN_FAILURE - An unknown error occurred.
+     * </p>
+     * </li>
+     * </ul>
      * 
-     * @return Delivery status of message.
+     * @return The delivery status of the message. Possible values are:</p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         DUPLICATE - The endpoint address is a duplicate of another endpoint address. Amazon Pinpoint won't
+     *         attempt to send the message again.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         OPT_OUT - The user who's associated with the endpoint address has opted out of receiving messages from
+     *         you. Amazon Pinpoint won't attempt to send the message again.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         PERMANENT_FAILURE - An error occurred when delivering the message to the endpoint address. Amazon
+     *         Pinpoint won't attempt to send the message again.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         SUCCESSFUL - The message was successfully delivered to the endpoint address.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         TEMPORARY_FAILURE - A temporary error occurred. Amazon Pinpoint will attempt to deliver the message again
+     *         later.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         THROTTLED - Amazon Pinpoint throttled the operation to send the message to the endpoint address.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         TIMEOUT - The message couldn't be sent within the timeout period.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         UNKNOWN_FAILURE - An unknown error occurred.
+     *         </p>
+     *         </li>
      * @see DeliveryStatus
      */
 
@@ -59,10 +313,102 @@ public class MessageResult implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Delivery status of message.
+     * <p>
+     * The delivery status of the message. Possible values are:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * DUPLICATE - The endpoint address is a duplicate of another endpoint address. Amazon Pinpoint won't attempt to
+     * send the message again.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * OPT_OUT - The user who's associated with the endpoint address has opted out of receiving messages from you.
+     * Amazon Pinpoint won't attempt to send the message again.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * PERMANENT_FAILURE - An error occurred when delivering the message to the endpoint address. Amazon Pinpoint won't
+     * attempt to send the message again.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * SUCCESSFUL - The message was successfully delivered to the endpoint address.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * TEMPORARY_FAILURE - A temporary error occurred. Amazon Pinpoint will attempt to deliver the message again later.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * THROTTLED - Amazon Pinpoint throttled the operation to send the message to the endpoint address.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * TIMEOUT - The message couldn't be sent within the timeout period.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * UNKNOWN_FAILURE - An unknown error occurred.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param deliveryStatus
-     *        Delivery status of message.
+     *        The delivery status of the message. Possible values are:</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        DUPLICATE - The endpoint address is a duplicate of another endpoint address. Amazon Pinpoint won't attempt
+     *        to send the message again.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        OPT_OUT - The user who's associated with the endpoint address has opted out of receiving messages from
+     *        you. Amazon Pinpoint won't attempt to send the message again.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        PERMANENT_FAILURE - An error occurred when delivering the message to the endpoint address. Amazon Pinpoint
+     *        won't attempt to send the message again.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        SUCCESSFUL - The message was successfully delivered to the endpoint address.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        TEMPORARY_FAILURE - A temporary error occurred. Amazon Pinpoint will attempt to deliver the message again
+     *        later.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        THROTTLED - Amazon Pinpoint throttled the operation to send the message to the endpoint address.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        TIMEOUT - The message couldn't be sent within the timeout period.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        UNKNOWN_FAILURE - An unknown error occurred.
+     *        </p>
+     *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see DeliveryStatus
      */
@@ -73,10 +419,102 @@ public class MessageResult implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Delivery status of message.
+     * <p>
+     * The delivery status of the message. Possible values are:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * DUPLICATE - The endpoint address is a duplicate of another endpoint address. Amazon Pinpoint won't attempt to
+     * send the message again.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * OPT_OUT - The user who's associated with the endpoint address has opted out of receiving messages from you.
+     * Amazon Pinpoint won't attempt to send the message again.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * PERMANENT_FAILURE - An error occurred when delivering the message to the endpoint address. Amazon Pinpoint won't
+     * attempt to send the message again.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * SUCCESSFUL - The message was successfully delivered to the endpoint address.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * TEMPORARY_FAILURE - A temporary error occurred. Amazon Pinpoint will attempt to deliver the message again later.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * THROTTLED - Amazon Pinpoint throttled the operation to send the message to the endpoint address.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * TIMEOUT - The message couldn't be sent within the timeout period.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * UNKNOWN_FAILURE - An unknown error occurred.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param deliveryStatus
-     *        Delivery status of message.
+     *        The delivery status of the message. Possible values are:</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        DUPLICATE - The endpoint address is a duplicate of another endpoint address. Amazon Pinpoint won't attempt
+     *        to send the message again.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        OPT_OUT - The user who's associated with the endpoint address has opted out of receiving messages from
+     *        you. Amazon Pinpoint won't attempt to send the message again.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        PERMANENT_FAILURE - An error occurred when delivering the message to the endpoint address. Amazon Pinpoint
+     *        won't attempt to send the message again.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        SUCCESSFUL - The message was successfully delivered to the endpoint address.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        TEMPORARY_FAILURE - A temporary error occurred. Amazon Pinpoint will attempt to deliver the message again
+     *        later.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        THROTTLED - Amazon Pinpoint throttled the operation to send the message to the endpoint address.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        TIMEOUT - The message couldn't be sent within the timeout period.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        UNKNOWN_FAILURE - An unknown error occurred.
+     *        </p>
+     *        </li>
      * @see DeliveryStatus
      */
 
@@ -85,10 +523,102 @@ public class MessageResult implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Delivery status of message.
+     * <p>
+     * The delivery status of the message. Possible values are:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * DUPLICATE - The endpoint address is a duplicate of another endpoint address. Amazon Pinpoint won't attempt to
+     * send the message again.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * OPT_OUT - The user who's associated with the endpoint address has opted out of receiving messages from you.
+     * Amazon Pinpoint won't attempt to send the message again.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * PERMANENT_FAILURE - An error occurred when delivering the message to the endpoint address. Amazon Pinpoint won't
+     * attempt to send the message again.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * SUCCESSFUL - The message was successfully delivered to the endpoint address.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * TEMPORARY_FAILURE - A temporary error occurred. Amazon Pinpoint will attempt to deliver the message again later.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * THROTTLED - Amazon Pinpoint throttled the operation to send the message to the endpoint address.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * TIMEOUT - The message couldn't be sent within the timeout period.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * UNKNOWN_FAILURE - An unknown error occurred.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param deliveryStatus
-     *        Delivery status of message.
+     *        The delivery status of the message. Possible values are:</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        DUPLICATE - The endpoint address is a duplicate of another endpoint address. Amazon Pinpoint won't attempt
+     *        to send the message again.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        OPT_OUT - The user who's associated with the endpoint address has opted out of receiving messages from
+     *        you. Amazon Pinpoint won't attempt to send the message again.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        PERMANENT_FAILURE - An error occurred when delivering the message to the endpoint address. Amazon Pinpoint
+     *        won't attempt to send the message again.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        SUCCESSFUL - The message was successfully delivered to the endpoint address.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        TEMPORARY_FAILURE - A temporary error occurred. Amazon Pinpoint will attempt to deliver the message again
+     *        later.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        THROTTLED - Amazon Pinpoint throttled the operation to send the message to the endpoint address.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        TIMEOUT - The message couldn't be sent within the timeout period.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        UNKNOWN_FAILURE - An unknown error occurred.
+     *        </p>
+     *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see DeliveryStatus
      */
@@ -99,10 +629,52 @@ public class MessageResult implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Downstream service status code.
+     * <p>
+     * The unique identifier for the message that was sent.
+     * </p>
+     * 
+     * @param messageId
+     *        The unique identifier for the message that was sent.
+     */
+
+    public void setMessageId(String messageId) {
+        this.messageId = messageId;
+    }
+
+    /**
+     * <p>
+     * The unique identifier for the message that was sent.
+     * </p>
+     * 
+     * @return The unique identifier for the message that was sent.
+     */
+
+    public String getMessageId() {
+        return this.messageId;
+    }
+
+    /**
+     * <p>
+     * The unique identifier for the message that was sent.
+     * </p>
+     * 
+     * @param messageId
+     *        The unique identifier for the message that was sent.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public MessageResult withMessageId(String messageId) {
+        setMessageId(messageId);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The downstream service status code for delivering the message.
+     * </p>
      * 
      * @param statusCode
-     *        Downstream service status code.
+     *        The downstream service status code for delivering the message.
      */
 
     public void setStatusCode(Integer statusCode) {
@@ -110,9 +682,11 @@ public class MessageResult implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Downstream service status code.
+     * <p>
+     * The downstream service status code for delivering the message.
+     * </p>
      * 
-     * @return Downstream service status code.
+     * @return The downstream service status code for delivering the message.
      */
 
     public Integer getStatusCode() {
@@ -120,10 +694,12 @@ public class MessageResult implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Downstream service status code.
+     * <p>
+     * The downstream service status code for delivering the message.
+     * </p>
      * 
      * @param statusCode
-     *        Downstream service status code.
+     *        The downstream service status code for delivering the message.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -133,10 +709,12 @@ public class MessageResult implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Status message for message delivery.
+     * <p>
+     * The status message for delivering the message.
+     * </p>
      * 
      * @param statusMessage
-     *        Status message for message delivery.
+     *        The status message for delivering the message.
      */
 
     public void setStatusMessage(String statusMessage) {
@@ -144,9 +722,11 @@ public class MessageResult implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Status message for message delivery.
+     * <p>
+     * The status message for delivering the message.
+     * </p>
      * 
-     * @return Status message for message delivery.
+     * @return The status message for delivering the message.
      */
 
     public String getStatusMessage() {
@@ -154,10 +734,12 @@ public class MessageResult implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Status message for message delivery.
+     * <p>
+     * The status message for delivering the message.
+     * </p>
      * 
      * @param statusMessage
-     *        Status message for message delivery.
+     *        The status message for delivering the message.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -167,10 +749,14 @@ public class MessageResult implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * If token was updated as part of delivery. (This is GCM Specific)
+     * <p>
+     * For push notifications that are sent through the GCM channel, specifies whether the token was updated as part of
+     * delivering the message.
+     * </p>
      * 
      * @param updatedToken
-     *        If token was updated as part of delivery. (This is GCM Specific)
+     *        For push notifications that are sent through the GCM channel, specifies whether the token was updated as
+     *        part of delivering the message.
      */
 
     public void setUpdatedToken(String updatedToken) {
@@ -178,9 +764,13 @@ public class MessageResult implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * If token was updated as part of delivery. (This is GCM Specific)
+     * <p>
+     * For push notifications that are sent through the GCM channel, specifies whether the token was updated as part of
+     * delivering the message.
+     * </p>
      * 
-     * @return If token was updated as part of delivery. (This is GCM Specific)
+     * @return For push notifications that are sent through the GCM channel, specifies whether the token was updated as
+     *         part of delivering the message.
      */
 
     public String getUpdatedToken() {
@@ -188,10 +778,14 @@ public class MessageResult implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * If token was updated as part of delivery. (This is GCM Specific)
+     * <p>
+     * For push notifications that are sent through the GCM channel, specifies whether the token was updated as part of
+     * delivering the message.
+     * </p>
      * 
      * @param updatedToken
-     *        If token was updated as part of delivery. (This is GCM Specific)
+     *        For push notifications that are sent through the GCM channel, specifies whether the token was updated as
+     *        part of delivering the message.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -201,7 +795,8 @@ public class MessageResult implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -213,6 +808,8 @@ public class MessageResult implements Serializable, Cloneable, StructuredPojo {
         sb.append("{");
         if (getDeliveryStatus() != null)
             sb.append("DeliveryStatus: ").append(getDeliveryStatus()).append(",");
+        if (getMessageId() != null)
+            sb.append("MessageId: ").append(getMessageId()).append(",");
         if (getStatusCode() != null)
             sb.append("StatusCode: ").append(getStatusCode()).append(",");
         if (getStatusMessage() != null)
@@ -237,6 +834,10 @@ public class MessageResult implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getDeliveryStatus() != null && other.getDeliveryStatus().equals(this.getDeliveryStatus()) == false)
             return false;
+        if (other.getMessageId() == null ^ this.getMessageId() == null)
+            return false;
+        if (other.getMessageId() != null && other.getMessageId().equals(this.getMessageId()) == false)
+            return false;
         if (other.getStatusCode() == null ^ this.getStatusCode() == null)
             return false;
         if (other.getStatusCode() != null && other.getStatusCode().equals(this.getStatusCode()) == false)
@@ -258,6 +859,7 @@ public class MessageResult implements Serializable, Cloneable, StructuredPojo {
         int hashCode = 1;
 
         hashCode = prime * hashCode + ((getDeliveryStatus() == null) ? 0 : getDeliveryStatus().hashCode());
+        hashCode = prime * hashCode + ((getMessageId() == null) ? 0 : getMessageId().hashCode());
         hashCode = prime * hashCode + ((getStatusCode() == null) ? 0 : getStatusCode().hashCode());
         hashCode = prime * hashCode + ((getStatusMessage() == null) ? 0 : getStatusMessage().hashCode());
         hashCode = prime * hashCode + ((getUpdatedToken() == null) ? 0 : getUpdatedToken().hashCode());

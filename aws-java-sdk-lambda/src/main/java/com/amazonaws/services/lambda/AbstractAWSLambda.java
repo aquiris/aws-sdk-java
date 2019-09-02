@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -16,6 +16,7 @@ import javax.annotation.Generated;
 
 import com.amazonaws.services.lambda.model.*;
 import com.amazonaws.*;
+import com.amazonaws.services.lambda.waiters.AWSLambdaWaiters;
 
 /**
  * Abstract implementation of {@code AWSLambda}. Convenient method forms pass through to the corresponding overload that
@@ -34,6 +35,11 @@ public class AbstractAWSLambda implements AWSLambda {
 
     @Override
     public void setRegion(com.amazonaws.regions.Region region) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public AddLayerVersionPermissionResult addLayerVersionPermission(AddLayerVersionPermissionRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -78,6 +84,11 @@ public class AbstractAWSLambda implements AWSLambda {
     }
 
     @Override
+    public DeleteLayerVersionResult deleteLayerVersion(DeleteLayerVersionRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public GetAccountSettingsResult getAccountSettings(GetAccountSettingsRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -99,6 +110,21 @@ public class AbstractAWSLambda implements AWSLambda {
 
     @Override
     public GetFunctionConfigurationResult getFunctionConfiguration(GetFunctionConfigurationRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public GetLayerVersionResult getLayerVersion(GetLayerVersionRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public GetLayerVersionByArnResult getLayerVersionByArn(GetLayerVersionByArnRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public GetLayerVersionPolicyResult getLayerVersionPolicy(GetLayerVersionPolicyRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -144,6 +170,16 @@ public class AbstractAWSLambda implements AWSLambda {
     }
 
     @Override
+    public ListLayerVersionsResult listLayerVersions(ListLayerVersionsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public ListLayersResult listLayers(ListLayersRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public ListTagsResult listTags(ListTagsRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -154,12 +190,22 @@ public class AbstractAWSLambda implements AWSLambda {
     }
 
     @Override
+    public PublishLayerVersionResult publishLayerVersion(PublishLayerVersionRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public PublishVersionResult publishVersion(PublishVersionRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
     @Override
     public PutFunctionConcurrencyResult putFunctionConcurrency(PutFunctionConcurrencyRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public RemoveLayerVersionPermissionResult removeLayerVersionPermission(RemoveLayerVersionPermissionRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -205,6 +251,11 @@ public class AbstractAWSLambda implements AWSLambda {
 
     @Override
     public com.amazonaws.ResponseMetadata getCachedResponseMetadata(com.amazonaws.AmazonWebServiceRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public AWSLambdaWaiters waiters() {
         throw new java.lang.UnsupportedOperationException();
     }
 

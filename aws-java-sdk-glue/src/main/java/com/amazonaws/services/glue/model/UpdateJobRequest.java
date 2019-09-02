@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,7 +27,7 @@ public class UpdateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * Name of the job definition to update.
+     * The name of the job definition to update.
      * </p>
      */
     private String jobName;
@@ -40,11 +40,11 @@ public class UpdateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * Name of the job definition to update.
+     * The name of the job definition to update.
      * </p>
      * 
      * @param jobName
-     *        Name of the job definition to update.
+     *        The name of the job definition to update.
      */
 
     public void setJobName(String jobName) {
@@ -53,10 +53,10 @@ public class UpdateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * Name of the job definition to update.
+     * The name of the job definition to update.
      * </p>
      * 
-     * @return Name of the job definition to update.
+     * @return The name of the job definition to update.
      */
 
     public String getJobName() {
@@ -65,11 +65,11 @@ public class UpdateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * Name of the job definition to update.
+     * The name of the job definition to update.
      * </p>
      * 
      * @param jobName
-     *        Name of the job definition to update.
+     *        The name of the job definition to update.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -119,7 +119,8 @@ public class UpdateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

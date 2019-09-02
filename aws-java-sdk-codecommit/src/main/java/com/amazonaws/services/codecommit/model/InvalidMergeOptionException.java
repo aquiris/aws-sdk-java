@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -16,7 +16,8 @@ import javax.annotation.Generated;
 
 /**
  * <p>
- * The specified merge option is not valid. The only valid value is FAST_FORWARD_MERGE.
+ * The specified merge option is not valid for this operation. Not all merge strategies are supported for all
+ * operations.
  * </p>
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")

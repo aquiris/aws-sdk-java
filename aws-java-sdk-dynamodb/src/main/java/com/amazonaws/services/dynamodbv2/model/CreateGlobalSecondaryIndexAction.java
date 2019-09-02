@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -53,7 +53,7 @@ public class CreateGlobalSecondaryIndexAction implements Serializable, Cloneable
      * </p>
      * <p>
      * For current minimum and maximum provisioned throughput values, see <a
-     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a> in the <i>Amazon
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a> in the <i>Amazon
      * DynamoDB Developer Guide</i>.
      * </p>
      */
@@ -221,7 +221,7 @@ public class CreateGlobalSecondaryIndexAction implements Serializable, Cloneable
      * </p>
      * <p>
      * For current minimum and maximum provisioned throughput values, see <a
-     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a> in the <i>Amazon
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a> in the <i>Amazon
      * DynamoDB Developer Guide</i>.
      * </p>
      * 
@@ -229,7 +229,7 @@ public class CreateGlobalSecondaryIndexAction implements Serializable, Cloneable
      *        Represents the provisioned throughput settings for the specified global secondary index.</p>
      *        <p>
      *        For current minimum and maximum provisioned throughput values, see <a
-     *        href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a> in the
+     *        href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a> in the
      *        <i>Amazon DynamoDB Developer Guide</i>.
      */
 
@@ -243,14 +243,14 @@ public class CreateGlobalSecondaryIndexAction implements Serializable, Cloneable
      * </p>
      * <p>
      * For current minimum and maximum provisioned throughput values, see <a
-     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a> in the <i>Amazon
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a> in the <i>Amazon
      * DynamoDB Developer Guide</i>.
      * </p>
      * 
      * @return Represents the provisioned throughput settings for the specified global secondary index.</p>
      *         <p>
      *         For current minimum and maximum provisioned throughput values, see <a
-     *         href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a> in the
+     *         href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a> in the
      *         <i>Amazon DynamoDB Developer Guide</i>.
      */
 
@@ -264,7 +264,7 @@ public class CreateGlobalSecondaryIndexAction implements Serializable, Cloneable
      * </p>
      * <p>
      * For current minimum and maximum provisioned throughput values, see <a
-     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a> in the <i>Amazon
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a> in the <i>Amazon
      * DynamoDB Developer Guide</i>.
      * </p>
      * 
@@ -272,7 +272,7 @@ public class CreateGlobalSecondaryIndexAction implements Serializable, Cloneable
      *        Represents the provisioned throughput settings for the specified global secondary index.</p>
      *        <p>
      *        For current minimum and maximum provisioned throughput values, see <a
-     *        href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a> in the
+     *        href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a> in the
      *        <i>Amazon DynamoDB Developer Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -283,7 +283,8 @@ public class CreateGlobalSecondaryIndexAction implements Serializable, Cloneable
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

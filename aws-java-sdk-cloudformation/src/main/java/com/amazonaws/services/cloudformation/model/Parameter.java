@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -50,7 +50,7 @@ public class Parameter implements Serializable, Cloneable {
      * <p>
      * Read-only. The value that corresponds to a Systems Manager parameter key. This field is returned only for <a
      * href=
-     * "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/parameters-section-structure.html#aws-ssm-parameter-types"
+     * "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/parameters-section-structure.html#aws-ssm-parameter-types"
      * > <code>SSM</code> parameter types</a> in the template.
      * </p>
      */
@@ -206,14 +206,14 @@ public class Parameter implements Serializable, Cloneable {
      * <p>
      * Read-only. The value that corresponds to a Systems Manager parameter key. This field is returned only for <a
      * href=
-     * "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/parameters-section-structure.html#aws-ssm-parameter-types"
+     * "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/parameters-section-structure.html#aws-ssm-parameter-types"
      * > <code>SSM</code> parameter types</a> in the template.
      * </p>
      * 
      * @param resolvedValue
      *        Read-only. The value that corresponds to a Systems Manager parameter key. This field is returned only for
      *        <a href=
-     *        "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/parameters-section-structure.html#aws-ssm-parameter-types"
+     *        "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/parameters-section-structure.html#aws-ssm-parameter-types"
      *        > <code>SSM</code> parameter types</a> in the template.
      */
 
@@ -225,13 +225,13 @@ public class Parameter implements Serializable, Cloneable {
      * <p>
      * Read-only. The value that corresponds to a Systems Manager parameter key. This field is returned only for <a
      * href=
-     * "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/parameters-section-structure.html#aws-ssm-parameter-types"
+     * "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/parameters-section-structure.html#aws-ssm-parameter-types"
      * > <code>SSM</code> parameter types</a> in the template.
      * </p>
      * 
      * @return Read-only. The value that corresponds to a Systems Manager parameter key. This field is returned only for
      *         <a href=
-     *         "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/parameters-section-structure.html#aws-ssm-parameter-types"
+     *         "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/parameters-section-structure.html#aws-ssm-parameter-types"
      *         > <code>SSM</code> parameter types</a> in the template.
      */
 
@@ -243,14 +243,14 @@ public class Parameter implements Serializable, Cloneable {
      * <p>
      * Read-only. The value that corresponds to a Systems Manager parameter key. This field is returned only for <a
      * href=
-     * "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/parameters-section-structure.html#aws-ssm-parameter-types"
+     * "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/parameters-section-structure.html#aws-ssm-parameter-types"
      * > <code>SSM</code> parameter types</a> in the template.
      * </p>
      * 
      * @param resolvedValue
      *        Read-only. The value that corresponds to a Systems Manager parameter key. This field is returned only for
      *        <a href=
-     *        "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/parameters-section-structure.html#aws-ssm-parameter-types"
+     *        "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/parameters-section-structure.html#aws-ssm-parameter-types"
      *        > <code>SSM</code> parameter types</a> in the template.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -261,7 +261,8 @@ public class Parameter implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

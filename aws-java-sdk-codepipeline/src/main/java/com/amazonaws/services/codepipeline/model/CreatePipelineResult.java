@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -17,7 +17,7 @@ import javax.annotation.Generated;
 
 /**
  * <p>
- * Represents the output of a CreatePipeline action.
+ * Represents the output of a <code>CreatePipeline</code> action.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/CreatePipeline" target="_top">AWS API
@@ -32,6 +32,12 @@ public class CreatePipelineResult extends com.amazonaws.AmazonWebServiceResult<c
      * </p>
      */
     private PipelineDeclaration pipeline;
+    /**
+     * <p>
+     * Specifies the tags applied to the pipeline.
+     * </p>
+     */
+    private java.util.List<Tag> tags;
 
     /**
      * <p>
@@ -74,7 +80,78 @@ public class CreatePipelineResult extends com.amazonaws.AmazonWebServiceResult<c
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * <p>
+     * Specifies the tags applied to the pipeline.
+     * </p>
+     * 
+     * @return Specifies the tags applied to the pipeline.
+     */
+
+    public java.util.List<Tag> getTags() {
+        return tags;
+    }
+
+    /**
+     * <p>
+     * Specifies the tags applied to the pipeline.
+     * </p>
+     * 
+     * @param tags
+     *        Specifies the tags applied to the pipeline.
+     */
+
+    public void setTags(java.util.Collection<Tag> tags) {
+        if (tags == null) {
+            this.tags = null;
+            return;
+        }
+
+        this.tags = new java.util.ArrayList<Tag>(tags);
+    }
+
+    /**
+     * <p>
+     * Specifies the tags applied to the pipeline.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setTags(java.util.Collection)} or {@link #withTags(java.util.Collection)} if you want to override the
+     * existing values.
+     * </p>
+     * 
+     * @param tags
+     *        Specifies the tags applied to the pipeline.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreatePipelineResult withTags(Tag... tags) {
+        if (this.tags == null) {
+            setTags(new java.util.ArrayList<Tag>(tags.length));
+        }
+        for (Tag ele : tags) {
+            this.tags.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * Specifies the tags applied to the pipeline.
+     * </p>
+     * 
+     * @param tags
+     *        Specifies the tags applied to the pipeline.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreatePipelineResult withTags(java.util.Collection<Tag> tags) {
+        setTags(tags);
+        return this;
+    }
+
+    /**
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -85,7 +162,9 @@ public class CreatePipelineResult extends com.amazonaws.AmazonWebServiceResult<c
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getPipeline() != null)
-            sb.append("Pipeline: ").append(getPipeline());
+            sb.append("Pipeline: ").append(getPipeline()).append(",");
+        if (getTags() != null)
+            sb.append("Tags: ").append(getTags());
         sb.append("}");
         return sb.toString();
     }
@@ -104,6 +183,10 @@ public class CreatePipelineResult extends com.amazonaws.AmazonWebServiceResult<c
             return false;
         if (other.getPipeline() != null && other.getPipeline().equals(this.getPipeline()) == false)
             return false;
+        if (other.getTags() == null ^ this.getTags() == null)
+            return false;
+        if (other.getTags() != null && other.getTags().equals(this.getTags()) == false)
+            return false;
         return true;
     }
 
@@ -113,6 +196,7 @@ public class CreatePipelineResult extends com.amazonaws.AmazonWebServiceResult<c
         int hashCode = 1;
 
         hashCode = prime * hashCode + ((getPipeline() == null) ? 0 : getPipeline().hashCode());
+        hashCode = prime * hashCode + ((getTags() == null) ? 0 : getTags().hashCode());
         return hashCode;
     }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -33,7 +33,7 @@ public class ListEndpointsRequest extends com.amazonaws.AmazonWebServiceRequest 
     private String sortBy;
     /**
      * <p>
-     * The sort order for results. The default is <code>Ascending</code>.
+     * The sort order for results. The default is <code>Descending</code>.
      * </p>
      */
     private String sortOrder;
@@ -64,7 +64,8 @@ public class ListEndpointsRequest extends com.amazonaws.AmazonWebServiceRequest 
     private java.util.Date creationTimeBefore;
     /**
      * <p>
-     * A filter that returns only endpoints that were created after the specified time (timestamp).
+     * A filter that returns only endpoints with a creation time greater than or equal to the specified time
+     * (timestamp).
      * </p>
      */
     private java.util.Date creationTimeAfter;
@@ -148,11 +149,11 @@ public class ListEndpointsRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * The sort order for results. The default is <code>Ascending</code>.
+     * The sort order for results. The default is <code>Descending</code>.
      * </p>
      * 
      * @param sortOrder
-     *        The sort order for results. The default is <code>Ascending</code>.
+     *        The sort order for results. The default is <code>Descending</code>.
      * @see OrderKey
      */
 
@@ -162,10 +163,10 @@ public class ListEndpointsRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * The sort order for results. The default is <code>Ascending</code>.
+     * The sort order for results. The default is <code>Descending</code>.
      * </p>
      * 
-     * @return The sort order for results. The default is <code>Ascending</code>.
+     * @return The sort order for results. The default is <code>Descending</code>.
      * @see OrderKey
      */
 
@@ -175,11 +176,11 @@ public class ListEndpointsRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * The sort order for results. The default is <code>Ascending</code>.
+     * The sort order for results. The default is <code>Descending</code>.
      * </p>
      * 
      * @param sortOrder
-     *        The sort order for results. The default is <code>Ascending</code>.
+     *        The sort order for results. The default is <code>Descending</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see OrderKey
      */
@@ -191,11 +192,11 @@ public class ListEndpointsRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * The sort order for results. The default is <code>Ascending</code>.
+     * The sort order for results. The default is <code>Descending</code>.
      * </p>
      * 
      * @param sortOrder
-     *        The sort order for results. The default is <code>Ascending</code>.
+     *        The sort order for results. The default is <code>Descending</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see OrderKey
      */
@@ -373,11 +374,13 @@ public class ListEndpointsRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * A filter that returns only endpoints that were created after the specified time (timestamp).
+     * A filter that returns only endpoints with a creation time greater than or equal to the specified time
+     * (timestamp).
      * </p>
      * 
      * @param creationTimeAfter
-     *        A filter that returns only endpoints that were created after the specified time (timestamp).
+     *        A filter that returns only endpoints with a creation time greater than or equal to the specified time
+     *        (timestamp).
      */
 
     public void setCreationTimeAfter(java.util.Date creationTimeAfter) {
@@ -386,10 +389,12 @@ public class ListEndpointsRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * A filter that returns only endpoints that were created after the specified time (timestamp).
+     * A filter that returns only endpoints with a creation time greater than or equal to the specified time
+     * (timestamp).
      * </p>
      * 
-     * @return A filter that returns only endpoints that were created after the specified time (timestamp).
+     * @return A filter that returns only endpoints with a creation time greater than or equal to the specified time
+     *         (timestamp).
      */
 
     public java.util.Date getCreationTimeAfter() {
@@ -398,11 +403,13 @@ public class ListEndpointsRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * A filter that returns only endpoints that were created after the specified time (timestamp).
+     * A filter that returns only endpoints with a creation time greater than or equal to the specified time
+     * (timestamp).
      * </p>
      * 
      * @param creationTimeAfter
-     *        A filter that returns only endpoints that were created after the specified time (timestamp).
+     *        A filter that returns only endpoints with a creation time greater than or equal to the specified time
+     *        (timestamp).
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -551,7 +558,8 @@ public class ListEndpointsRequest extends com.amazonaws.AmazonWebServiceRequest 
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

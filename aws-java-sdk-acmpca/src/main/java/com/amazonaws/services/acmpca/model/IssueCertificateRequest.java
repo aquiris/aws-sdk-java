@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -31,7 +31,7 @@ public class IssueCertificateRequest extends com.amazonaws.AmazonWebServiceReque
      * of the form:
      * </p>
      * <p>
-     * <code>arn:aws:acm:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> </code>
+     * <code>arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> </code>
      * </p>
      */
     private String certificateAuthorityArn;
@@ -60,16 +60,62 @@ public class IssueCertificateRequest extends com.amazonaws.AmazonWebServiceReque
     private String signingAlgorithm;
     /**
      * <p>
+     * Specifies a custom configuration template to use when issuing a certificate. If this parameter is not provided,
+     * ACM Private CA defaults to the <code>EndEntityCertificate/V1</code> template.
+     * </p>
+     * <p>
+     * The following service-owned <code>TemplateArn</code> values are supported by ACM Private CA:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * arn:aws:acm-pca:::template/EndEntityCertificate/V1
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * arn:aws:acm-pca:::template/SubordinateCACertificate_PathLen0/V1
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * arn:aws:acm-pca:::template/SubordinateCACertificate_PathLen1/V1
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * arn:aws:acm-pca:::template/SubordinateCACertificate_PathLen2/V1
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * arn:aws:acm-pca:::template/SubordinateCACertificate_PathLen3/V1
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * arn:aws:acm-pca:::template/RootCACertificate/V1
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * For more information, see <a
+     * href="https://docs.aws.amazon.com/acm-pca/latest/userguide/UsingTemplates.html">Using Templates</a>.
+     * </p>
+     */
+    private String templateArn;
+    /**
+     * <p>
      * The type of the validity period.
      * </p>
      */
     private Validity validity;
     /**
      * <p>
-     * Custom string that can be used to distinguish between calls to the <b>IssueCertificate</b> function. Idempotency
+     * Custom string that can be used to distinguish between calls to the <b>IssueCertificate</b> action. Idempotency
      * tokens time out after one hour. Therefore, if you call <b>IssueCertificate</b> multiple times with the same
-     * idempotency token within 5 minutes, ACM PCA recognizes that you are requesting only one certificate and will
-     * issue only one. If you change the idempotency token for each call, PCA recognizes that you are requesting
+     * idempotency token within 5 minutes, ACM Private CA recognizes that you are requesting only one certificate and
+     * will issue only one. If you change the idempotency token for each call, PCA recognizes that you are requesting
      * multiple certificates.
      * </p>
      */
@@ -81,14 +127,14 @@ public class IssueCertificateRequest extends com.amazonaws.AmazonWebServiceReque
      * of the form:
      * </p>
      * <p>
-     * <code>arn:aws:acm:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> </code>
+     * <code>arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> </code>
      * </p>
      * 
      * @param certificateAuthorityArn
      *        The Amazon Resource Name (ARN) that was returned when you called <a>CreateCertificateAuthority</a>. This
      *        must be of the form:</p>
      *        <p>
-     *        <code>arn:aws:acm:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> </code>
+     *        <code>arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> </code>
      */
 
     public void setCertificateAuthorityArn(String certificateAuthorityArn) {
@@ -101,13 +147,13 @@ public class IssueCertificateRequest extends com.amazonaws.AmazonWebServiceReque
      * of the form:
      * </p>
      * <p>
-     * <code>arn:aws:acm:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> </code>
+     * <code>arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> </code>
      * </p>
      * 
      * @return The Amazon Resource Name (ARN) that was returned when you called <a>CreateCertificateAuthority</a>. This
      *         must be of the form:</p>
      *         <p>
-     *         <code>arn:aws:acm:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> </code>
+     *         <code>arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> </code>
      */
 
     public String getCertificateAuthorityArn() {
@@ -120,14 +166,14 @@ public class IssueCertificateRequest extends com.amazonaws.AmazonWebServiceReque
      * of the form:
      * </p>
      * <p>
-     * <code>arn:aws:acm:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> </code>
+     * <code>arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> </code>
      * </p>
      * 
      * @param certificateAuthorityArn
      *        The Amazon Resource Name (ARN) that was returned when you called <a>CreateCertificateAuthority</a>. This
      *        must be of the form:</p>
      *        <p>
-     *        <code>arn:aws:acm:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> </code>
+     *        <code>arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> </code>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -327,6 +373,283 @@ public class IssueCertificateRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
+     * Specifies a custom configuration template to use when issuing a certificate. If this parameter is not provided,
+     * ACM Private CA defaults to the <code>EndEntityCertificate/V1</code> template.
+     * </p>
+     * <p>
+     * The following service-owned <code>TemplateArn</code> values are supported by ACM Private CA:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * arn:aws:acm-pca:::template/EndEntityCertificate/V1
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * arn:aws:acm-pca:::template/SubordinateCACertificate_PathLen0/V1
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * arn:aws:acm-pca:::template/SubordinateCACertificate_PathLen1/V1
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * arn:aws:acm-pca:::template/SubordinateCACertificate_PathLen2/V1
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * arn:aws:acm-pca:::template/SubordinateCACertificate_PathLen3/V1
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * arn:aws:acm-pca:::template/RootCACertificate/V1
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * For more information, see <a
+     * href="https://docs.aws.amazon.com/acm-pca/latest/userguide/UsingTemplates.html">Using Templates</a>.
+     * </p>
+     * 
+     * @param templateArn
+     *        Specifies a custom configuration template to use when issuing a certificate. If this parameter is not
+     *        provided, ACM Private CA defaults to the <code>EndEntityCertificate/V1</code> template.</p>
+     *        <p>
+     *        The following service-owned <code>TemplateArn</code> values are supported by ACM Private CA:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        arn:aws:acm-pca:::template/EndEntityCertificate/V1
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        arn:aws:acm-pca:::template/SubordinateCACertificate_PathLen0/V1
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        arn:aws:acm-pca:::template/SubordinateCACertificate_PathLen1/V1
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        arn:aws:acm-pca:::template/SubordinateCACertificate_PathLen2/V1
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        arn:aws:acm-pca:::template/SubordinateCACertificate_PathLen3/V1
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        arn:aws:acm-pca:::template/RootCACertificate/V1
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        For more information, see <a
+     *        href="https://docs.aws.amazon.com/acm-pca/latest/userguide/UsingTemplates.html">Using Templates</a>.
+     */
+
+    public void setTemplateArn(String templateArn) {
+        this.templateArn = templateArn;
+    }
+
+    /**
+     * <p>
+     * Specifies a custom configuration template to use when issuing a certificate. If this parameter is not provided,
+     * ACM Private CA defaults to the <code>EndEntityCertificate/V1</code> template.
+     * </p>
+     * <p>
+     * The following service-owned <code>TemplateArn</code> values are supported by ACM Private CA:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * arn:aws:acm-pca:::template/EndEntityCertificate/V1
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * arn:aws:acm-pca:::template/SubordinateCACertificate_PathLen0/V1
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * arn:aws:acm-pca:::template/SubordinateCACertificate_PathLen1/V1
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * arn:aws:acm-pca:::template/SubordinateCACertificate_PathLen2/V1
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * arn:aws:acm-pca:::template/SubordinateCACertificate_PathLen3/V1
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * arn:aws:acm-pca:::template/RootCACertificate/V1
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * For more information, see <a
+     * href="https://docs.aws.amazon.com/acm-pca/latest/userguide/UsingTemplates.html">Using Templates</a>.
+     * </p>
+     * 
+     * @return Specifies a custom configuration template to use when issuing a certificate. If this parameter is not
+     *         provided, ACM Private CA defaults to the <code>EndEntityCertificate/V1</code> template.</p>
+     *         <p>
+     *         The following service-owned <code>TemplateArn</code> values are supported by ACM Private CA:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         arn:aws:acm-pca:::template/EndEntityCertificate/V1
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         arn:aws:acm-pca:::template/SubordinateCACertificate_PathLen0/V1
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         arn:aws:acm-pca:::template/SubordinateCACertificate_PathLen1/V1
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         arn:aws:acm-pca:::template/SubordinateCACertificate_PathLen2/V1
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         arn:aws:acm-pca:::template/SubordinateCACertificate_PathLen3/V1
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         arn:aws:acm-pca:::template/RootCACertificate/V1
+     *         </p>
+     *         </li>
+     *         </ul>
+     *         <p>
+     *         For more information, see <a
+     *         href="https://docs.aws.amazon.com/acm-pca/latest/userguide/UsingTemplates.html">Using Templates</a>.
+     */
+
+    public String getTemplateArn() {
+        return this.templateArn;
+    }
+
+    /**
+     * <p>
+     * Specifies a custom configuration template to use when issuing a certificate. If this parameter is not provided,
+     * ACM Private CA defaults to the <code>EndEntityCertificate/V1</code> template.
+     * </p>
+     * <p>
+     * The following service-owned <code>TemplateArn</code> values are supported by ACM Private CA:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * arn:aws:acm-pca:::template/EndEntityCertificate/V1
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * arn:aws:acm-pca:::template/SubordinateCACertificate_PathLen0/V1
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * arn:aws:acm-pca:::template/SubordinateCACertificate_PathLen1/V1
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * arn:aws:acm-pca:::template/SubordinateCACertificate_PathLen2/V1
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * arn:aws:acm-pca:::template/SubordinateCACertificate_PathLen3/V1
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * arn:aws:acm-pca:::template/RootCACertificate/V1
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * For more information, see <a
+     * href="https://docs.aws.amazon.com/acm-pca/latest/userguide/UsingTemplates.html">Using Templates</a>.
+     * </p>
+     * 
+     * @param templateArn
+     *        Specifies a custom configuration template to use when issuing a certificate. If this parameter is not
+     *        provided, ACM Private CA defaults to the <code>EndEntityCertificate/V1</code> template.</p>
+     *        <p>
+     *        The following service-owned <code>TemplateArn</code> values are supported by ACM Private CA:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        arn:aws:acm-pca:::template/EndEntityCertificate/V1
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        arn:aws:acm-pca:::template/SubordinateCACertificate_PathLen0/V1
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        arn:aws:acm-pca:::template/SubordinateCACertificate_PathLen1/V1
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        arn:aws:acm-pca:::template/SubordinateCACertificate_PathLen2/V1
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        arn:aws:acm-pca:::template/SubordinateCACertificate_PathLen3/V1
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        arn:aws:acm-pca:::template/RootCACertificate/V1
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        For more information, see <a
+     *        href="https://docs.aws.amazon.com/acm-pca/latest/userguide/UsingTemplates.html">Using Templates</a>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public IssueCertificateRequest withTemplateArn(String templateArn) {
+        setTemplateArn(templateArn);
+        return this;
+    }
+
+    /**
+     * <p>
      * The type of the validity period.
      * </p>
      * 
@@ -367,18 +690,18 @@ public class IssueCertificateRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * Custom string that can be used to distinguish between calls to the <b>IssueCertificate</b> function. Idempotency
+     * Custom string that can be used to distinguish between calls to the <b>IssueCertificate</b> action. Idempotency
      * tokens time out after one hour. Therefore, if you call <b>IssueCertificate</b> multiple times with the same
-     * idempotency token within 5 minutes, ACM PCA recognizes that you are requesting only one certificate and will
-     * issue only one. If you change the idempotency token for each call, PCA recognizes that you are requesting
+     * idempotency token within 5 minutes, ACM Private CA recognizes that you are requesting only one certificate and
+     * will issue only one. If you change the idempotency token for each call, PCA recognizes that you are requesting
      * multiple certificates.
      * </p>
      * 
      * @param idempotencyToken
-     *        Custom string that can be used to distinguish between calls to the <b>IssueCertificate</b> function.
+     *        Custom string that can be used to distinguish between calls to the <b>IssueCertificate</b> action.
      *        Idempotency tokens time out after one hour. Therefore, if you call <b>IssueCertificate</b> multiple times
-     *        with the same idempotency token within 5 minutes, ACM PCA recognizes that you are requesting only one
-     *        certificate and will issue only one. If you change the idempotency token for each call, PCA recognizes
+     *        with the same idempotency token within 5 minutes, ACM Private CA recognizes that you are requesting only
+     *        one certificate and will issue only one. If you change the idempotency token for each call, PCA recognizes
      *        that you are requesting multiple certificates.
      */
 
@@ -388,18 +711,18 @@ public class IssueCertificateRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * Custom string that can be used to distinguish between calls to the <b>IssueCertificate</b> function. Idempotency
+     * Custom string that can be used to distinguish between calls to the <b>IssueCertificate</b> action. Idempotency
      * tokens time out after one hour. Therefore, if you call <b>IssueCertificate</b> multiple times with the same
-     * idempotency token within 5 minutes, ACM PCA recognizes that you are requesting only one certificate and will
-     * issue only one. If you change the idempotency token for each call, PCA recognizes that you are requesting
+     * idempotency token within 5 minutes, ACM Private CA recognizes that you are requesting only one certificate and
+     * will issue only one. If you change the idempotency token for each call, PCA recognizes that you are requesting
      * multiple certificates.
      * </p>
      * 
-     * @return Custom string that can be used to distinguish between calls to the <b>IssueCertificate</b> function.
+     * @return Custom string that can be used to distinguish between calls to the <b>IssueCertificate</b> action.
      *         Idempotency tokens time out after one hour. Therefore, if you call <b>IssueCertificate</b> multiple times
-     *         with the same idempotency token within 5 minutes, ACM PCA recognizes that you are requesting only one
-     *         certificate and will issue only one. If you change the idempotency token for each call, PCA recognizes
-     *         that you are requesting multiple certificates.
+     *         with the same idempotency token within 5 minutes, ACM Private CA recognizes that you are requesting only
+     *         one certificate and will issue only one. If you change the idempotency token for each call, PCA
+     *         recognizes that you are requesting multiple certificates.
      */
 
     public String getIdempotencyToken() {
@@ -408,18 +731,18 @@ public class IssueCertificateRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * Custom string that can be used to distinguish between calls to the <b>IssueCertificate</b> function. Idempotency
+     * Custom string that can be used to distinguish between calls to the <b>IssueCertificate</b> action. Idempotency
      * tokens time out after one hour. Therefore, if you call <b>IssueCertificate</b> multiple times with the same
-     * idempotency token within 5 minutes, ACM PCA recognizes that you are requesting only one certificate and will
-     * issue only one. If you change the idempotency token for each call, PCA recognizes that you are requesting
+     * idempotency token within 5 minutes, ACM Private CA recognizes that you are requesting only one certificate and
+     * will issue only one. If you change the idempotency token for each call, PCA recognizes that you are requesting
      * multiple certificates.
      * </p>
      * 
      * @param idempotencyToken
-     *        Custom string that can be used to distinguish between calls to the <b>IssueCertificate</b> function.
+     *        Custom string that can be used to distinguish between calls to the <b>IssueCertificate</b> action.
      *        Idempotency tokens time out after one hour. Therefore, if you call <b>IssueCertificate</b> multiple times
-     *        with the same idempotency token within 5 minutes, ACM PCA recognizes that you are requesting only one
-     *        certificate and will issue only one. If you change the idempotency token for each call, PCA recognizes
+     *        with the same idempotency token within 5 minutes, ACM Private CA recognizes that you are requesting only
+     *        one certificate and will issue only one. If you change the idempotency token for each call, PCA recognizes
      *        that you are requesting multiple certificates.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -430,7 +753,8 @@ public class IssueCertificateRequest extends com.amazonaws.AmazonWebServiceReque
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -446,6 +770,8 @@ public class IssueCertificateRequest extends com.amazonaws.AmazonWebServiceReque
             sb.append("Csr: ").append(getCsr()).append(",");
         if (getSigningAlgorithm() != null)
             sb.append("SigningAlgorithm: ").append(getSigningAlgorithm()).append(",");
+        if (getTemplateArn() != null)
+            sb.append("TemplateArn: ").append(getTemplateArn()).append(",");
         if (getValidity() != null)
             sb.append("Validity: ").append(getValidity()).append(",");
         if (getIdempotencyToken() != null)
@@ -476,6 +802,10 @@ public class IssueCertificateRequest extends com.amazonaws.AmazonWebServiceReque
             return false;
         if (other.getSigningAlgorithm() != null && other.getSigningAlgorithm().equals(this.getSigningAlgorithm()) == false)
             return false;
+        if (other.getTemplateArn() == null ^ this.getTemplateArn() == null)
+            return false;
+        if (other.getTemplateArn() != null && other.getTemplateArn().equals(this.getTemplateArn()) == false)
+            return false;
         if (other.getValidity() == null ^ this.getValidity() == null)
             return false;
         if (other.getValidity() != null && other.getValidity().equals(this.getValidity()) == false)
@@ -495,6 +825,7 @@ public class IssueCertificateRequest extends com.amazonaws.AmazonWebServiceReque
         hashCode = prime * hashCode + ((getCertificateAuthorityArn() == null) ? 0 : getCertificateAuthorityArn().hashCode());
         hashCode = prime * hashCode + ((getCsr() == null) ? 0 : getCsr().hashCode());
         hashCode = prime * hashCode + ((getSigningAlgorithm() == null) ? 0 : getSigningAlgorithm().hashCode());
+        hashCode = prime * hashCode + ((getTemplateArn() == null) ? 0 : getTemplateArn().hashCode());
         hashCode = prime * hashCode + ((getValidity() == null) ? 0 : getValidity().hashCode());
         hashCode = prime * hashCode + ((getIdempotencyToken() == null) ? 0 : getIdempotencyToken().hashCode());
         return hashCode;

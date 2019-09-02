@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -36,7 +36,9 @@ public class RepositoryMarshaller {
     private static final MarshallingInfo<String> REPOSITORYURI_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("repositoryUri").build();
     private static final MarshallingInfo<java.util.Date> CREATEDAT_BINDING = MarshallingInfo.builder(MarshallingType.DATE)
-            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("createdAt").build();
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("createdAt").timestampFormat("unixTimestamp").build();
+    private static final MarshallingInfo<String> IMAGETAGMUTABILITY_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("imageTagMutability").build();
 
     private static final RepositoryMarshaller instance = new RepositoryMarshaller();
 
@@ -59,6 +61,7 @@ public class RepositoryMarshaller {
             protocolMarshaller.marshall(repository.getRepositoryName(), REPOSITORYNAME_BINDING);
             protocolMarshaller.marshall(repository.getRepositoryUri(), REPOSITORYURI_BINDING);
             protocolMarshaller.marshall(repository.getCreatedAt(), CREATEDAT_BINDING);
+            protocolMarshaller.marshall(repository.getImageTagMutability(), IMAGETAGMUTABILITY_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

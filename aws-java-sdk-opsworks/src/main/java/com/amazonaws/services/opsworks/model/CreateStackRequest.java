@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -33,9 +33,25 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
     private String name;
     /**
      * <p>
-     * The stack's AWS region, such as "ap-south-1". For more information about Amazon regions, see <a
-     * href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>.
+     * The stack's AWS region, such as <code>ap-south-1</code>. For more information about Amazon regions, see <a
+     * href="https://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>.
      * </p>
+     * <note>
+     * <p>
+     * In the AWS CLI, this API maps to the <code>--stack-region</code> parameter. If the <code>--stack-region</code>
+     * parameter and the AWS CLI common parameter <code>--region</code> are set to the same value, the stack uses a
+     * <i>regional</i> endpoint. If the <code>--stack-region</code> parameter is not set, but the AWS CLI
+     * <code>--region</code> parameter is, this also results in a stack with a <i>regional</i> endpoint. However, if the
+     * <code>--region</code> parameter is set to <code>us-east-1</code>, and the <code>--stack-region</code> parameter
+     * is set to one of the following, then the stack uses a legacy or <i>classic</i> region:
+     * <code>us-west-1, us-west-2, sa-east-1, eu-central-1, eu-west-1, ap-northeast-1, ap-southeast-1, ap-southeast-2</code>
+     * . In this case, the actual API endpoint of the stack is in <code>us-east-1</code>. Only the preceding regions are
+     * supported as classic regions in the <code>us-east-1</code> API endpoint. Because it is a best practice to choose
+     * the regional endpoint that is closest to where you manage AWS, we recommend that you use regional endpoints for
+     * new stacks. The AWS CLI common <code>--region</code> parameter always specifies a regional API endpoint; it
+     * cannot be used to specify a classic AWS OpsWorks Stacks region.
+     * </p>
+     * </note>
      */
     private String region;
     /**
@@ -77,10 +93,10 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </li>
      * </ul>
      * <p>
-     * For more information on how to use AWS OpsWorks Stacks with a VPC, see <a
-     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html">Running a Stack in a VPC</a>.
-     * For more information on default VPC and EC2-Classic, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported Platforms</a>.
+     * For more information about how to use AWS OpsWorks Stacks with a VPC, see <a
+     * href="https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html">Running a Stack in a VPC</a>.
+     * For more information about default VPC and EC2-Classic, see <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported Platforms</a>.
      * </p>
      */
     private String vpcId;
@@ -95,7 +111,7 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * The stack's AWS Identity and Access Management (IAM) role, which allows AWS OpsWorks Stacks to work with AWS
      * resources on your behalf. You must set this parameter to the Amazon Resource Name (ARN) for an existing IAM role.
      * For more information about IAM ARNs, see <a
-     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.
+     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.
      * </p>
      */
     private String serviceRoleArn;
@@ -103,7 +119,7 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <p>
      * The Amazon Resource Name (ARN) of an IAM profile that is the default profile for all of the stack's EC2
      * instances. For more information about IAM ARNs, see <a
-     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.
+     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.
      * </p>
      */
     private String defaultInstanceProfileArn;
@@ -115,9 +131,9 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <ul>
      * <li>
      * <p>
-     * A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2017.09</code>,
-     * <code>Amazon Linux 2017.03</code>, <code>Amazon Linux 2016.09</code>, <code>Amazon Linux 2016.03</code>,
-     * <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>.
+     * A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2018.03</code>,
+     * <code>Amazon Linux 2017.09</code>, <code>Amazon Linux 2017.03</code>, <code>Amazon Linux 2016.09</code>,
+     * <code>Amazon Linux 2016.03</code>, <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>.
      * </p>
      * </li>
      * <li>
@@ -147,14 +163,15 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <li>
      * <p>
      * A custom AMI: <code>Custom</code>. You specify the custom AMI you want to use when you create instances. For more
-     * information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html">
-     * Using Custom AMIs</a>.
+     * information, see <a
+     * href="https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html"> Using Custom
+     * AMIs</a>.
      * </p>
      * </li>
      * </ul>
      * <p>
-     * The default option is the current Amazon Linux version. For more information on the supported operating systems,
-     * see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS OpsWorks Stacks
+     * The default option is the current Amazon Linux version. For more information about supported operating systems,
+     * see <a href="https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS OpsWorks Stacks
      * Operating Systems</a>.
      * </p>
      */
@@ -188,7 +205,7 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </li>
      * <li>
      * <p>
-     * <code>Greek_Deities</code>
+     * <code>Greek_Deities_and_Titans</code>
      * </p>
      * </li>
      * <li>
@@ -231,7 +248,7 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
     /**
      * <p>
      * The stack's default Availability Zone, which must be in the specified region. For more information, see <a
-     * href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>. If you also specify a
+     * href="https://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>. If you also specify a
      * value for <code>DefaultSubnetId</code>, the subnet must be in the same zone. For more information, see the
      * <code>VpcId</code> parameter description.
      * </p>
@@ -256,9 +273,9 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <code>"{\"key1\": \"value1\", \"key2\": \"value2\",...}"</code>
      * </p>
      * <p>
-     * For more information on custom JSON, see <a
-     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html">Use Custom JSON to Modify the
-     * Stack Configuration Attributes</a>.
+     * For more information about custom JSON, see <a
+     * href="https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html">Use Custom JSON to Modify
+     * the Stack Configuration Attributes</a>.
      * </p>
      */
     private String customJson;
@@ -266,7 +283,7 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <p>
      * The configuration manager. When you create a stack we recommend that you use the configuration manager to specify
      * the Chef version: 12, 11.10, or 11.4 for Linux stacks, or 12.2 for Windows stacks. The default value for Linux
-     * stacks is currently 11.4.
+     * stacks is currently 12.
      * </p>
      */
     private StackConfigurationManager configurationManager;
@@ -274,7 +291,7 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <p>
      * A <code>ChefConfiguration</code> object that specifies whether to enable Berkshelf and the Berkshelf version on
      * Chef 11.10 stacks. For more information, see <a
-     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html">Create a New Stack</a>.
+     * href="https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html">Create a New Stack</a>.
      * </p>
      */
     private ChefConfiguration chefConfiguration;
@@ -312,22 +329,28 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </ul>
      * <p>
      * For more information, see <a
-     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html">Create a New Stack</a>.
+     * href="https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html">Create a New Stack</a>.
      * </p>
      */
     private Boolean useOpsworksSecurityGroups;
-
+    /**
+     * <p>
+     * Contains the information required to retrieve an app or cookbook from a repository. For more information, see <a
+     * href="https://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html">Adding Apps</a> or <a
+     * href="https://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook.html">Cookbooks and Recipes</a>.
+     * </p>
+     */
     private Source customCookbooksSource;
     /**
      * <p>
      * A default Amazon EC2 key pair name. The default value is none. If you specify a key pair name, AWS OpsWorks
      * installs the public key on the instance and you can use the private key with an SSH client to log in to the
      * instance. For more information, see <a
-     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-ssh.html"> Using SSH to Communicate
-     * with an Instance</a> and <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/security-ssh-access.html">
-     * Managing SSH Access</a>. You can override this setting by specifying a different key pair, or no key pair, when
-     * you <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html"> create an
-     * instance</a>.
+     * href="https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-ssh.html"> Using SSH to Communicate
+     * with an Instance</a> and <a
+     * href="https://docs.aws.amazon.com/opsworks/latest/userguide/security-ssh-access.html"> Managing SSH Access</a>.
+     * You can override this setting by specifying a different key pair, or no key pair, when you <a
+     * href="https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html"> create an instance</a>.
      * </p>
      */
     private String defaultSshKeyName;
@@ -335,8 +358,9 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <p>
      * The default root device type. This value is the default for all instances in the stack, but you can override it
      * when you create an instance. The default option is <code>instance-store</code>. For more information, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device">Storage
-     * for the Root Device</a>.
+     * href=
+     * "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device">Storage for
+     * the Root Device</a>.
      * </p>
      */
     private String defaultRootDeviceType;
@@ -415,13 +439,44 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * The stack's AWS region, such as "ap-south-1". For more information about Amazon regions, see <a
-     * href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>.
+     * The stack's AWS region, such as <code>ap-south-1</code>. For more information about Amazon regions, see <a
+     * href="https://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>.
      * </p>
+     * <note>
+     * <p>
+     * In the AWS CLI, this API maps to the <code>--stack-region</code> parameter. If the <code>--stack-region</code>
+     * parameter and the AWS CLI common parameter <code>--region</code> are set to the same value, the stack uses a
+     * <i>regional</i> endpoint. If the <code>--stack-region</code> parameter is not set, but the AWS CLI
+     * <code>--region</code> parameter is, this also results in a stack with a <i>regional</i> endpoint. However, if the
+     * <code>--region</code> parameter is set to <code>us-east-1</code>, and the <code>--stack-region</code> parameter
+     * is set to one of the following, then the stack uses a legacy or <i>classic</i> region:
+     * <code>us-west-1, us-west-2, sa-east-1, eu-central-1, eu-west-1, ap-northeast-1, ap-southeast-1, ap-southeast-2</code>
+     * . In this case, the actual API endpoint of the stack is in <code>us-east-1</code>. Only the preceding regions are
+     * supported as classic regions in the <code>us-east-1</code> API endpoint. Because it is a best practice to choose
+     * the regional endpoint that is closest to where you manage AWS, we recommend that you use regional endpoints for
+     * new stacks. The AWS CLI common <code>--region</code> parameter always specifies a regional API endpoint; it
+     * cannot be used to specify a classic AWS OpsWorks Stacks region.
+     * </p>
+     * </note>
      * 
      * @param region
-     *        The stack's AWS region, such as "ap-south-1". For more information about Amazon regions, see <a
-     *        href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>.
+     *        The stack's AWS region, such as <code>ap-south-1</code>. For more information about Amazon regions, see <a
+     *        href="https://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>.</p> <note>
+     *        <p>
+     *        In the AWS CLI, this API maps to the <code>--stack-region</code> parameter. If the
+     *        <code>--stack-region</code> parameter and the AWS CLI common parameter <code>--region</code> are set to
+     *        the same value, the stack uses a <i>regional</i> endpoint. If the <code>--stack-region</code> parameter is
+     *        not set, but the AWS CLI <code>--region</code> parameter is, this also results in a stack with a
+     *        <i>regional</i> endpoint. However, if the <code>--region</code> parameter is set to <code>us-east-1</code>
+     *        , and the <code>--stack-region</code> parameter is set to one of the following, then the stack uses a
+     *        legacy or <i>classic</i> region:
+     *        <code>us-west-1, us-west-2, sa-east-1, eu-central-1, eu-west-1, ap-northeast-1, ap-southeast-1, ap-southeast-2</code>
+     *        . In this case, the actual API endpoint of the stack is in <code>us-east-1</code>. Only the preceding
+     *        regions are supported as classic regions in the <code>us-east-1</code> API endpoint. Because it is a best
+     *        practice to choose the regional endpoint that is closest to where you manage AWS, we recommend that you
+     *        use regional endpoints for new stacks. The AWS CLI common <code>--region</code> parameter always specifies
+     *        a regional API endpoint; it cannot be used to specify a classic AWS OpsWorks Stacks region.
+     *        </p>
      */
 
     public void setRegion(String region) {
@@ -430,12 +485,43 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * The stack's AWS region, such as "ap-south-1". For more information about Amazon regions, see <a
-     * href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>.
+     * The stack's AWS region, such as <code>ap-south-1</code>. For more information about Amazon regions, see <a
+     * href="https://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>.
      * </p>
+     * <note>
+     * <p>
+     * In the AWS CLI, this API maps to the <code>--stack-region</code> parameter. If the <code>--stack-region</code>
+     * parameter and the AWS CLI common parameter <code>--region</code> are set to the same value, the stack uses a
+     * <i>regional</i> endpoint. If the <code>--stack-region</code> parameter is not set, but the AWS CLI
+     * <code>--region</code> parameter is, this also results in a stack with a <i>regional</i> endpoint. However, if the
+     * <code>--region</code> parameter is set to <code>us-east-1</code>, and the <code>--stack-region</code> parameter
+     * is set to one of the following, then the stack uses a legacy or <i>classic</i> region:
+     * <code>us-west-1, us-west-2, sa-east-1, eu-central-1, eu-west-1, ap-northeast-1, ap-southeast-1, ap-southeast-2</code>
+     * . In this case, the actual API endpoint of the stack is in <code>us-east-1</code>. Only the preceding regions are
+     * supported as classic regions in the <code>us-east-1</code> API endpoint. Because it is a best practice to choose
+     * the regional endpoint that is closest to where you manage AWS, we recommend that you use regional endpoints for
+     * new stacks. The AWS CLI common <code>--region</code> parameter always specifies a regional API endpoint; it
+     * cannot be used to specify a classic AWS OpsWorks Stacks region.
+     * </p>
+     * </note>
      * 
-     * @return The stack's AWS region, such as "ap-south-1". For more information about Amazon regions, see <a
-     *         href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>.
+     * @return The stack's AWS region, such as <code>ap-south-1</code>. For more information about Amazon regions, see
+     *         <a href="https://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>.</p> <note>
+     *         <p>
+     *         In the AWS CLI, this API maps to the <code>--stack-region</code> parameter. If the
+     *         <code>--stack-region</code> parameter and the AWS CLI common parameter <code>--region</code> are set to
+     *         the same value, the stack uses a <i>regional</i> endpoint. If the <code>--stack-region</code> parameter
+     *         is not set, but the AWS CLI <code>--region</code> parameter is, this also results in a stack with a
+     *         <i>regional</i> endpoint. However, if the <code>--region</code> parameter is set to
+     *         <code>us-east-1</code>, and the <code>--stack-region</code> parameter is set to one of the following,
+     *         then the stack uses a legacy or <i>classic</i> region:
+     *         <code>us-west-1, us-west-2, sa-east-1, eu-central-1, eu-west-1, ap-northeast-1, ap-southeast-1, ap-southeast-2</code>
+     *         . In this case, the actual API endpoint of the stack is in <code>us-east-1</code>. Only the preceding
+     *         regions are supported as classic regions in the <code>us-east-1</code> API endpoint. Because it is a best
+     *         practice to choose the regional endpoint that is closest to where you manage AWS, we recommend that you
+     *         use regional endpoints for new stacks. The AWS CLI common <code>--region</code> parameter always
+     *         specifies a regional API endpoint; it cannot be used to specify a classic AWS OpsWorks Stacks region.
+     *         </p>
      */
 
     public String getRegion() {
@@ -444,13 +530,44 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * The stack's AWS region, such as "ap-south-1". For more information about Amazon regions, see <a
-     * href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>.
+     * The stack's AWS region, such as <code>ap-south-1</code>. For more information about Amazon regions, see <a
+     * href="https://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>.
      * </p>
+     * <note>
+     * <p>
+     * In the AWS CLI, this API maps to the <code>--stack-region</code> parameter. If the <code>--stack-region</code>
+     * parameter and the AWS CLI common parameter <code>--region</code> are set to the same value, the stack uses a
+     * <i>regional</i> endpoint. If the <code>--stack-region</code> parameter is not set, but the AWS CLI
+     * <code>--region</code> parameter is, this also results in a stack with a <i>regional</i> endpoint. However, if the
+     * <code>--region</code> parameter is set to <code>us-east-1</code>, and the <code>--stack-region</code> parameter
+     * is set to one of the following, then the stack uses a legacy or <i>classic</i> region:
+     * <code>us-west-1, us-west-2, sa-east-1, eu-central-1, eu-west-1, ap-northeast-1, ap-southeast-1, ap-southeast-2</code>
+     * . In this case, the actual API endpoint of the stack is in <code>us-east-1</code>. Only the preceding regions are
+     * supported as classic regions in the <code>us-east-1</code> API endpoint. Because it is a best practice to choose
+     * the regional endpoint that is closest to where you manage AWS, we recommend that you use regional endpoints for
+     * new stacks. The AWS CLI common <code>--region</code> parameter always specifies a regional API endpoint; it
+     * cannot be used to specify a classic AWS OpsWorks Stacks region.
+     * </p>
+     * </note>
      * 
      * @param region
-     *        The stack's AWS region, such as "ap-south-1". For more information about Amazon regions, see <a
-     *        href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>.
+     *        The stack's AWS region, such as <code>ap-south-1</code>. For more information about Amazon regions, see <a
+     *        href="https://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>.</p> <note>
+     *        <p>
+     *        In the AWS CLI, this API maps to the <code>--stack-region</code> parameter. If the
+     *        <code>--stack-region</code> parameter and the AWS CLI common parameter <code>--region</code> are set to
+     *        the same value, the stack uses a <i>regional</i> endpoint. If the <code>--stack-region</code> parameter is
+     *        not set, but the AWS CLI <code>--region</code> parameter is, this also results in a stack with a
+     *        <i>regional</i> endpoint. However, if the <code>--region</code> parameter is set to <code>us-east-1</code>
+     *        , and the <code>--stack-region</code> parameter is set to one of the following, then the stack uses a
+     *        legacy or <i>classic</i> region:
+     *        <code>us-west-1, us-west-2, sa-east-1, eu-central-1, eu-west-1, ap-northeast-1, ap-southeast-1, ap-southeast-2</code>
+     *        . In this case, the actual API endpoint of the stack is in <code>us-east-1</code>. Only the preceding
+     *        regions are supported as classic regions in the <code>us-east-1</code> API endpoint. Because it is a best
+     *        practice to choose the regional endpoint that is closest to where you manage AWS, we recommend that you
+     *        use regional endpoints for new stacks. The AWS CLI common <code>--region</code> parameter always specifies
+     *        a regional API endpoint; it cannot be used to specify a classic AWS OpsWorks Stacks region.
+     *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -498,10 +615,10 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </li>
      * </ul>
      * <p>
-     * For more information on how to use AWS OpsWorks Stacks with a VPC, see <a
-     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html">Running a Stack in a VPC</a>.
-     * For more information on default VPC and EC2-Classic, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported Platforms</a>.
+     * For more information about how to use AWS OpsWorks Stacks with a VPC, see <a
+     * href="https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html">Running a Stack in a VPC</a>.
+     * For more information about default VPC and EC2-Classic, see <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported Platforms</a>.
      * </p>
      * 
      * @param vpcId
@@ -543,10 +660,10 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        </li>
      *        </ul>
      *        <p>
-     *        For more information on how to use AWS OpsWorks Stacks with a VPC, see <a
-     *        href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html">Running a Stack in a
-     *        VPC</a>. For more information on default VPC and EC2-Classic, see <a
-     *        href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported
+     *        For more information about how to use AWS OpsWorks Stacks with a VPC, see <a
+     *        href="https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html">Running a Stack in a
+     *        VPC</a>. For more information about default VPC and EC2-Classic, see <a
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported
      *        Platforms</a>.
      */
 
@@ -593,10 +710,10 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </li>
      * </ul>
      * <p>
-     * For more information on how to use AWS OpsWorks Stacks with a VPC, see <a
-     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html">Running a Stack in a VPC</a>.
-     * For more information on default VPC and EC2-Classic, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported Platforms</a>.
+     * For more information about how to use AWS OpsWorks Stacks with a VPC, see <a
+     * href="https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html">Running a Stack in a VPC</a>.
+     * For more information about default VPC and EC2-Classic, see <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported Platforms</a>.
      * </p>
      * 
      * @return The ID of the VPC that the stack is to be launched into. The VPC must be in the stack's region. All
@@ -637,10 +754,10 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      *         </li>
      *         </ul>
      *         <p>
-     *         For more information on how to use AWS OpsWorks Stacks with a VPC, see <a
-     *         href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html">Running a Stack in a
-     *         VPC</a>. For more information on default VPC and EC2-Classic, see <a
-     *         href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported
+     *         For more information about how to use AWS OpsWorks Stacks with a VPC, see <a
+     *         href="https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html">Running a Stack in a
+     *         VPC</a>. For more information about default VPC and EC2-Classic, see <a
+     *         href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported
      *         Platforms</a>.
      */
 
@@ -687,10 +804,10 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </li>
      * </ul>
      * <p>
-     * For more information on how to use AWS OpsWorks Stacks with a VPC, see <a
-     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html">Running a Stack in a VPC</a>.
-     * For more information on default VPC and EC2-Classic, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported Platforms</a>.
+     * For more information about how to use AWS OpsWorks Stacks with a VPC, see <a
+     * href="https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html">Running a Stack in a VPC</a>.
+     * For more information about default VPC and EC2-Classic, see <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported Platforms</a>.
      * </p>
      * 
      * @param vpcId
@@ -732,10 +849,10 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        </li>
      *        </ul>
      *        <p>
-     *        For more information on how to use AWS OpsWorks Stacks with a VPC, see <a
-     *        href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html">Running a Stack in a
-     *        VPC</a>. For more information on default VPC and EC2-Classic, see <a
-     *        href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported
+     *        For more information about how to use AWS OpsWorks Stacks with a VPC, see <a
+     *        href="https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html">Running a Stack in a
+     *        VPC</a>. For more information about default VPC and EC2-Classic, see <a
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported
      *        Platforms</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -814,14 +931,14 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * The stack's AWS Identity and Access Management (IAM) role, which allows AWS OpsWorks Stacks to work with AWS
      * resources on your behalf. You must set this parameter to the Amazon Resource Name (ARN) for an existing IAM role.
      * For more information about IAM ARNs, see <a
-     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.
+     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.
      * </p>
      * 
      * @param serviceRoleArn
      *        The stack's AWS Identity and Access Management (IAM) role, which allows AWS OpsWorks Stacks to work with
      *        AWS resources on your behalf. You must set this parameter to the Amazon Resource Name (ARN) for an
      *        existing IAM role. For more information about IAM ARNs, see <a
-     *        href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.
+     *        href="https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.
      */
 
     public void setServiceRoleArn(String serviceRoleArn) {
@@ -833,13 +950,13 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * The stack's AWS Identity and Access Management (IAM) role, which allows AWS OpsWorks Stacks to work with AWS
      * resources on your behalf. You must set this parameter to the Amazon Resource Name (ARN) for an existing IAM role.
      * For more information about IAM ARNs, see <a
-     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.
+     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.
      * </p>
      * 
      * @return The stack's AWS Identity and Access Management (IAM) role, which allows AWS OpsWorks Stacks to work with
      *         AWS resources on your behalf. You must set this parameter to the Amazon Resource Name (ARN) for an
      *         existing IAM role. For more information about IAM ARNs, see <a
-     *         href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.
+     *         href="https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.
      */
 
     public String getServiceRoleArn() {
@@ -851,14 +968,14 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * The stack's AWS Identity and Access Management (IAM) role, which allows AWS OpsWorks Stacks to work with AWS
      * resources on your behalf. You must set this parameter to the Amazon Resource Name (ARN) for an existing IAM role.
      * For more information about IAM ARNs, see <a
-     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.
+     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.
      * </p>
      * 
      * @param serviceRoleArn
      *        The stack's AWS Identity and Access Management (IAM) role, which allows AWS OpsWorks Stacks to work with
      *        AWS resources on your behalf. You must set this parameter to the Amazon Resource Name (ARN) for an
      *        existing IAM role. For more information about IAM ARNs, see <a
-     *        href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.
+     *        href="https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -871,13 +988,13 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <p>
      * The Amazon Resource Name (ARN) of an IAM profile that is the default profile for all of the stack's EC2
      * instances. For more information about IAM ARNs, see <a
-     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.
+     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.
      * </p>
      * 
      * @param defaultInstanceProfileArn
      *        The Amazon Resource Name (ARN) of an IAM profile that is the default profile for all of the stack's EC2
      *        instances. For more information about IAM ARNs, see <a
-     *        href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.
+     *        href="https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.
      */
 
     public void setDefaultInstanceProfileArn(String defaultInstanceProfileArn) {
@@ -888,12 +1005,12 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <p>
      * The Amazon Resource Name (ARN) of an IAM profile that is the default profile for all of the stack's EC2
      * instances. For more information about IAM ARNs, see <a
-     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.
+     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.
      * </p>
      * 
      * @return The Amazon Resource Name (ARN) of an IAM profile that is the default profile for all of the stack's EC2
      *         instances. For more information about IAM ARNs, see <a
-     *         href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.
+     *         href="https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.
      */
 
     public String getDefaultInstanceProfileArn() {
@@ -904,13 +1021,13 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <p>
      * The Amazon Resource Name (ARN) of an IAM profile that is the default profile for all of the stack's EC2
      * instances. For more information about IAM ARNs, see <a
-     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.
+     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.
      * </p>
      * 
      * @param defaultInstanceProfileArn
      *        The Amazon Resource Name (ARN) of an IAM profile that is the default profile for all of the stack's EC2
      *        instances. For more information about IAM ARNs, see <a
-     *        href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.
+     *        href="https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -927,9 +1044,9 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <ul>
      * <li>
      * <p>
-     * A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2017.09</code>,
-     * <code>Amazon Linux 2017.03</code>, <code>Amazon Linux 2016.09</code>, <code>Amazon Linux 2016.03</code>,
-     * <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>.
+     * A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2018.03</code>,
+     * <code>Amazon Linux 2017.09</code>, <code>Amazon Linux 2017.03</code>, <code>Amazon Linux 2016.09</code>,
+     * <code>Amazon Linux 2016.03</code>, <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>.
      * </p>
      * </li>
      * <li>
@@ -959,14 +1076,15 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <li>
      * <p>
      * A custom AMI: <code>Custom</code>. You specify the custom AMI you want to use when you create instances. For more
-     * information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html">
-     * Using Custom AMIs</a>.
+     * information, see <a
+     * href="https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html"> Using Custom
+     * AMIs</a>.
      * </p>
      * </li>
      * </ul>
      * <p>
-     * The default option is the current Amazon Linux version. For more information on the supported operating systems,
-     * see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS OpsWorks Stacks
+     * The default option is the current Amazon Linux version. For more information about supported operating systems,
+     * see <a href="https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS OpsWorks Stacks
      * Operating Systems</a>.
      * </p>
      * 
@@ -976,9 +1094,10 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        <ul>
      *        <li>
      *        <p>
-     *        A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2017.09</code>,
-     *        <code>Amazon Linux 2017.03</code>, <code>Amazon Linux 2016.09</code>, <code>Amazon Linux 2016.03</code>,
-     *        <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>.
+     *        A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2018.03</code>,
+     *        <code>Amazon Linux 2017.09</code>, <code>Amazon Linux 2017.03</code>, <code>Amazon Linux 2016.09</code>,
+     *        <code>Amazon Linux 2016.03</code>, <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>
+     *        .
      *        </p>
      *        </li>
      *        <li>
@@ -1009,14 +1128,14 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        <p>
      *        A custom AMI: <code>Custom</code>. You specify the custom AMI you want to use when you create instances.
      *        For more information, see <a
-     *        href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html"> Using Custom
-     *        AMIs</a>.
+     *        href="https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html"> Using
+     *        Custom AMIs</a>.
      *        </p>
      *        </li>
      *        </ul>
      *        <p>
-     *        The default option is the current Amazon Linux version. For more information on the supported operating
-     *        systems, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS
+     *        The default option is the current Amazon Linux version. For more information about supported operating
+     *        systems, see <a href="https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS
      *        OpsWorks Stacks Operating Systems</a>.
      */
 
@@ -1032,9 +1151,9 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <ul>
      * <li>
      * <p>
-     * A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2017.09</code>,
-     * <code>Amazon Linux 2017.03</code>, <code>Amazon Linux 2016.09</code>, <code>Amazon Linux 2016.03</code>,
-     * <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>.
+     * A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2018.03</code>,
+     * <code>Amazon Linux 2017.09</code>, <code>Amazon Linux 2017.03</code>, <code>Amazon Linux 2016.09</code>,
+     * <code>Amazon Linux 2016.03</code>, <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>.
      * </p>
      * </li>
      * <li>
@@ -1064,14 +1183,15 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <li>
      * <p>
      * A custom AMI: <code>Custom</code>. You specify the custom AMI you want to use when you create instances. For more
-     * information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html">
-     * Using Custom AMIs</a>.
+     * information, see <a
+     * href="https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html"> Using Custom
+     * AMIs</a>.
      * </p>
      * </li>
      * </ul>
      * <p>
-     * The default option is the current Amazon Linux version. For more information on the supported operating systems,
-     * see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS OpsWorks Stacks
+     * The default option is the current Amazon Linux version. For more information about supported operating systems,
+     * see <a href="https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS OpsWorks Stacks
      * Operating Systems</a>.
      * </p>
      * 
@@ -1080,9 +1200,10 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      *         <ul>
      *         <li>
      *         <p>
-     *         A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2017.09</code>,
-     *         <code>Amazon Linux 2017.03</code>, <code>Amazon Linux 2016.09</code>, <code>Amazon Linux 2016.03</code>,
-     *         <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>.
+     *         A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2018.03</code>,
+     *         <code>Amazon Linux 2017.09</code>, <code>Amazon Linux 2017.03</code>, <code>Amazon Linux 2016.09</code>,
+     *         <code>Amazon Linux 2016.03</code>, <code>Amazon Linux 2015.09</code>, or
+     *         <code>Amazon Linux 2015.03</code>.
      *         </p>
      *         </li>
      *         <li>
@@ -1113,14 +1234,14 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      *         <p>
      *         A custom AMI: <code>Custom</code>. You specify the custom AMI you want to use when you create instances.
      *         For more information, see <a
-     *         href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html"> Using
+     *         href="https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html"> Using
      *         Custom AMIs</a>.
      *         </p>
      *         </li>
      *         </ul>
      *         <p>
-     *         The default option is the current Amazon Linux version. For more information on the supported operating
-     *         systems, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS
+     *         The default option is the current Amazon Linux version. For more information about supported operating
+     *         systems, see <a href="https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS
      *         OpsWorks Stacks Operating Systems</a>.
      */
 
@@ -1136,9 +1257,9 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <ul>
      * <li>
      * <p>
-     * A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2017.09</code>,
-     * <code>Amazon Linux 2017.03</code>, <code>Amazon Linux 2016.09</code>, <code>Amazon Linux 2016.03</code>,
-     * <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>.
+     * A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2018.03</code>,
+     * <code>Amazon Linux 2017.09</code>, <code>Amazon Linux 2017.03</code>, <code>Amazon Linux 2016.09</code>,
+     * <code>Amazon Linux 2016.03</code>, <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>.
      * </p>
      * </li>
      * <li>
@@ -1168,14 +1289,15 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <li>
      * <p>
      * A custom AMI: <code>Custom</code>. You specify the custom AMI you want to use when you create instances. For more
-     * information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html">
-     * Using Custom AMIs</a>.
+     * information, see <a
+     * href="https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html"> Using Custom
+     * AMIs</a>.
      * </p>
      * </li>
      * </ul>
      * <p>
-     * The default option is the current Amazon Linux version. For more information on the supported operating systems,
-     * see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS OpsWorks Stacks
+     * The default option is the current Amazon Linux version. For more information about supported operating systems,
+     * see <a href="https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS OpsWorks Stacks
      * Operating Systems</a>.
      * </p>
      * 
@@ -1185,9 +1307,10 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        <ul>
      *        <li>
      *        <p>
-     *        A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2017.09</code>,
-     *        <code>Amazon Linux 2017.03</code>, <code>Amazon Linux 2016.09</code>, <code>Amazon Linux 2016.03</code>,
-     *        <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>.
+     *        A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2018.03</code>,
+     *        <code>Amazon Linux 2017.09</code>, <code>Amazon Linux 2017.03</code>, <code>Amazon Linux 2016.09</code>,
+     *        <code>Amazon Linux 2016.03</code>, <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>
+     *        .
      *        </p>
      *        </li>
      *        <li>
@@ -1218,14 +1341,14 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        <p>
      *        A custom AMI: <code>Custom</code>. You specify the custom AMI you want to use when you create instances.
      *        For more information, see <a
-     *        href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html"> Using Custom
-     *        AMIs</a>.
+     *        href="https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html"> Using
+     *        Custom AMIs</a>.
      *        </p>
      *        </li>
      *        </ul>
      *        <p>
-     *        The default option is the current Amazon Linux version. For more information on the supported operating
-     *        systems, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS
+     *        The default option is the current Amazon Linux version. For more information about supported operating
+     *        systems, see <a href="https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS
      *        OpsWorks Stacks Operating Systems</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -1264,7 +1387,7 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </li>
      * <li>
      * <p>
-     * <code>Greek_Deities</code>
+     * <code>Greek_Deities_and_Titans</code>
      * </p>
      * </li>
      * <li>
@@ -1330,7 +1453,7 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        </li>
      *        <li>
      *        <p>
-     *        <code>Greek_Deities</code>
+     *        <code>Greek_Deities_and_Titans</code>
      *        </p>
      *        </li>
      *        <li>
@@ -1402,7 +1525,7 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </li>
      * <li>
      * <p>
-     * <code>Greek_Deities</code>
+     * <code>Greek_Deities_and_Titans</code>
      * </p>
      * </li>
      * <li>
@@ -1468,7 +1591,7 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      *         </li>
      *         <li>
      *         <p>
-     *         <code>Greek_Deities</code>
+     *         <code>Greek_Deities_and_Titans</code>
      *         </p>
      *         </li>
      *         <li>
@@ -1540,7 +1663,7 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </li>
      * <li>
      * <p>
-     * <code>Greek_Deities</code>
+     * <code>Greek_Deities_and_Titans</code>
      * </p>
      * </li>
      * <li>
@@ -1606,7 +1729,7 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        </li>
      *        <li>
      *        <p>
-     *        <code>Greek_Deities</code>
+     *        <code>Greek_Deities_and_Titans</code>
      *        </p>
      *        </li>
      *        <li>
@@ -1654,14 +1777,14 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
     /**
      * <p>
      * The stack's default Availability Zone, which must be in the specified region. For more information, see <a
-     * href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>. If you also specify a
+     * href="https://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>. If you also specify a
      * value for <code>DefaultSubnetId</code>, the subnet must be in the same zone. For more information, see the
      * <code>VpcId</code> parameter description.
      * </p>
      * 
      * @param defaultAvailabilityZone
      *        The stack's default Availability Zone, which must be in the specified region. For more information, see <a
-     *        href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>. If you also
+     *        href="https://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>. If you also
      *        specify a value for <code>DefaultSubnetId</code>, the subnet must be in the same zone. For more
      *        information, see the <code>VpcId</code> parameter description.
      */
@@ -1673,13 +1796,13 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
     /**
      * <p>
      * The stack's default Availability Zone, which must be in the specified region. For more information, see <a
-     * href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>. If you also specify a
+     * href="https://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>. If you also specify a
      * value for <code>DefaultSubnetId</code>, the subnet must be in the same zone. For more information, see the
      * <code>VpcId</code> parameter description.
      * </p>
      * 
      * @return The stack's default Availability Zone, which must be in the specified region. For more information, see
-     *         <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>. If you also
+     *         <a href="https://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>. If you also
      *         specify a value for <code>DefaultSubnetId</code>, the subnet must be in the same zone. For more
      *         information, see the <code>VpcId</code> parameter description.
      */
@@ -1691,14 +1814,14 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
     /**
      * <p>
      * The stack's default Availability Zone, which must be in the specified region. For more information, see <a
-     * href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>. If you also specify a
+     * href="https://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>. If you also specify a
      * value for <code>DefaultSubnetId</code>, the subnet must be in the same zone. For more information, see the
      * <code>VpcId</code> parameter description.
      * </p>
      * 
      * @param defaultAvailabilityZone
      *        The stack's default Availability Zone, which must be in the specified region. For more information, see <a
-     *        href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>. If you also
+     *        href="https://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>. If you also
      *        specify a value for <code>DefaultSubnetId</code>, the subnet must be in the same zone. For more
      *        information, see the <code>VpcId</code> parameter description.
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -1782,9 +1905,9 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <code>"{\"key1\": \"value1\", \"key2\": \"value2\",...}"</code>
      * </p>
      * <p>
-     * For more information on custom JSON, see <a
-     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html">Use Custom JSON to Modify the
-     * Stack Configuration Attributes</a>.
+     * For more information about custom JSON, see <a
+     * href="https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html">Use Custom JSON to Modify
+     * the Stack Configuration Attributes</a>.
      * </p>
      * 
      * @param customJson
@@ -1795,8 +1918,8 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        <code>"{\"key1\": \"value1\", \"key2\": \"value2\",...}"</code>
      *        </p>
      *        <p>
-     *        For more information on custom JSON, see <a
-     *        href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html">Use Custom JSON to
+     *        For more information about custom JSON, see <a
+     *        href="https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html">Use Custom JSON to
      *        Modify the Stack Configuration Attributes</a>.
      */
 
@@ -1813,9 +1936,9 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <code>"{\"key1\": \"value1\", \"key2\": \"value2\",...}"</code>
      * </p>
      * <p>
-     * For more information on custom JSON, see <a
-     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html">Use Custom JSON to Modify the
-     * Stack Configuration Attributes</a>.
+     * For more information about custom JSON, see <a
+     * href="https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html">Use Custom JSON to Modify
+     * the Stack Configuration Attributes</a>.
      * </p>
      * 
      * @return A string that contains user-defined, custom JSON. It can be used to override the corresponding default
@@ -1825,8 +1948,8 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      *         <code>"{\"key1\": \"value1\", \"key2\": \"value2\",...}"</code>
      *         </p>
      *         <p>
-     *         For more information on custom JSON, see <a
-     *         href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html">Use Custom JSON to
+     *         For more information about custom JSON, see <a
+     *         href="https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html">Use Custom JSON to
      *         Modify the Stack Configuration Attributes</a>.
      */
 
@@ -1843,9 +1966,9 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <code>"{\"key1\": \"value1\", \"key2\": \"value2\",...}"</code>
      * </p>
      * <p>
-     * For more information on custom JSON, see <a
-     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html">Use Custom JSON to Modify the
-     * Stack Configuration Attributes</a>.
+     * For more information about custom JSON, see <a
+     * href="https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html">Use Custom JSON to Modify
+     * the Stack Configuration Attributes</a>.
      * </p>
      * 
      * @param customJson
@@ -1856,8 +1979,8 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        <code>"{\"key1\": \"value1\", \"key2\": \"value2\",...}"</code>
      *        </p>
      *        <p>
-     *        For more information on custom JSON, see <a
-     *        href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html">Use Custom JSON to
+     *        For more information about custom JSON, see <a
+     *        href="https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html">Use Custom JSON to
      *        Modify the Stack Configuration Attributes</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -1871,13 +1994,13 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <p>
      * The configuration manager. When you create a stack we recommend that you use the configuration manager to specify
      * the Chef version: 12, 11.10, or 11.4 for Linux stacks, or 12.2 for Windows stacks. The default value for Linux
-     * stacks is currently 11.4.
+     * stacks is currently 12.
      * </p>
      * 
      * @param configurationManager
      *        The configuration manager. When you create a stack we recommend that you use the configuration manager to
      *        specify the Chef version: 12, 11.10, or 11.4 for Linux stacks, or 12.2 for Windows stacks. The default
-     *        value for Linux stacks is currently 11.4.
+     *        value for Linux stacks is currently 12.
      */
 
     public void setConfigurationManager(StackConfigurationManager configurationManager) {
@@ -1888,12 +2011,12 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <p>
      * The configuration manager. When you create a stack we recommend that you use the configuration manager to specify
      * the Chef version: 12, 11.10, or 11.4 for Linux stacks, or 12.2 for Windows stacks. The default value for Linux
-     * stacks is currently 11.4.
+     * stacks is currently 12.
      * </p>
      * 
      * @return The configuration manager. When you create a stack we recommend that you use the configuration manager to
      *         specify the Chef version: 12, 11.10, or 11.4 for Linux stacks, or 12.2 for Windows stacks. The default
-     *         value for Linux stacks is currently 11.4.
+     *         value for Linux stacks is currently 12.
      */
 
     public StackConfigurationManager getConfigurationManager() {
@@ -1904,13 +2027,13 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <p>
      * The configuration manager. When you create a stack we recommend that you use the configuration manager to specify
      * the Chef version: 12, 11.10, or 11.4 for Linux stacks, or 12.2 for Windows stacks. The default value for Linux
-     * stacks is currently 11.4.
+     * stacks is currently 12.
      * </p>
      * 
      * @param configurationManager
      *        The configuration manager. When you create a stack we recommend that you use the configuration manager to
      *        specify the Chef version: 12, 11.10, or 11.4 for Linux stacks, or 12.2 for Windows stacks. The default
-     *        value for Linux stacks is currently 11.4.
+     *        value for Linux stacks is currently 12.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1923,13 +2046,13 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <p>
      * A <code>ChefConfiguration</code> object that specifies whether to enable Berkshelf and the Berkshelf version on
      * Chef 11.10 stacks. For more information, see <a
-     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html">Create a New Stack</a>.
+     * href="https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html">Create a New Stack</a>.
      * </p>
      * 
      * @param chefConfiguration
      *        A <code>ChefConfiguration</code> object that specifies whether to enable Berkshelf and the Berkshelf
      *        version on Chef 11.10 stacks. For more information, see <a
-     *        href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html">Create a New
+     *        href="https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html">Create a New
      *        Stack</a>.
      */
 
@@ -1941,12 +2064,12 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <p>
      * A <code>ChefConfiguration</code> object that specifies whether to enable Berkshelf and the Berkshelf version on
      * Chef 11.10 stacks. For more information, see <a
-     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html">Create a New Stack</a>.
+     * href="https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html">Create a New Stack</a>.
      * </p>
      * 
      * @return A <code>ChefConfiguration</code> object that specifies whether to enable Berkshelf and the Berkshelf
      *         version on Chef 11.10 stacks. For more information, see <a
-     *         href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html">Create a New
+     *         href="https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html">Create a New
      *         Stack</a>.
      */
 
@@ -1958,13 +2081,13 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <p>
      * A <code>ChefConfiguration</code> object that specifies whether to enable Berkshelf and the Berkshelf version on
      * Chef 11.10 stacks. For more information, see <a
-     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html">Create a New Stack</a>.
+     * href="https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html">Create a New Stack</a>.
      * </p>
      * 
      * @param chefConfiguration
      *        A <code>ChefConfiguration</code> object that specifies whether to enable Berkshelf and the Berkshelf
      *        version on Chef 11.10 stacks. For more information, see <a
-     *        href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html">Create a New
+     *        href="https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html">Create a New
      *        Stack</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -2054,7 +2177,7 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </ul>
      * <p>
      * For more information, see <a
-     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html">Create a New Stack</a>.
+     * href="https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html">Create a New Stack</a>.
      * </p>
      * 
      * @param useOpsworksSecurityGroups
@@ -2083,7 +2206,7 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        </ul>
      *        <p>
      *        For more information, see <a
-     *        href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html">Create a New
+     *        href="https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html">Create a New
      *        Stack</a>.
      */
 
@@ -2119,7 +2242,7 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </ul>
      * <p>
      * For more information, see <a
-     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html">Create a New Stack</a>.
+     * href="https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html">Create a New Stack</a>.
      * </p>
      * 
      * @return Whether to associate the AWS OpsWorks Stacks built-in security groups with the stack's layers.</p>
@@ -2147,7 +2270,7 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      *         </ul>
      *         <p>
      *         For more information, see <a
-     *         href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html">Create a New
+     *         href="https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html">Create a New
      *         Stack</a>.
      */
 
@@ -2183,7 +2306,7 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </ul>
      * <p>
      * For more information, see <a
-     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html">Create a New Stack</a>.
+     * href="https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html">Create a New Stack</a>.
      * </p>
      * 
      * @param useOpsworksSecurityGroups
@@ -2212,7 +2335,7 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        </ul>
      *        <p>
      *        For more information, see <a
-     *        href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html">Create a New
+     *        href="https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html">Create a New
      *        Stack</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -2250,7 +2373,7 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </ul>
      * <p>
      * For more information, see <a
-     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html">Create a New Stack</a>.
+     * href="https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html">Create a New Stack</a>.
      * </p>
      * 
      * @return Whether to associate the AWS OpsWorks Stacks built-in security groups with the stack's layers.</p>
@@ -2278,7 +2401,7 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      *         </ul>
      *         <p>
      *         For more information, see <a
-     *         href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html">Create a New
+     *         href="https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html">Create a New
      *         Stack</a>.
      */
 
@@ -2287,7 +2410,17 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
     }
 
     /**
+     * <p>
+     * Contains the information required to retrieve an app or cookbook from a repository. For more information, see <a
+     * href="https://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html">Adding Apps</a> or <a
+     * href="https://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook.html">Cookbooks and Recipes</a>.
+     * </p>
+     * 
      * @param customCookbooksSource
+     *        Contains the information required to retrieve an app or cookbook from a repository. For more information,
+     *        see <a href="https://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html">Adding
+     *        Apps</a> or <a href="https://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook.html">Cookbooks
+     *        and Recipes</a>.
      */
 
     public void setCustomCookbooksSource(Source customCookbooksSource) {
@@ -2295,7 +2428,17 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
     }
 
     /**
-     * @return
+     * <p>
+     * Contains the information required to retrieve an app or cookbook from a repository. For more information, see <a
+     * href="https://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html">Adding Apps</a> or <a
+     * href="https://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook.html">Cookbooks and Recipes</a>.
+     * </p>
+     * 
+     * @return Contains the information required to retrieve an app or cookbook from a repository. For more information,
+     *         see <a href="https://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html">Adding
+     *         Apps</a> or <a
+     *         href="https://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook.html">Cookbooks and
+     *         Recipes</a>.
      */
 
     public Source getCustomCookbooksSource() {
@@ -2303,7 +2446,17 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
     }
 
     /**
+     * <p>
+     * Contains the information required to retrieve an app or cookbook from a repository. For more information, see <a
+     * href="https://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html">Adding Apps</a> or <a
+     * href="https://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook.html">Cookbooks and Recipes</a>.
+     * </p>
+     * 
      * @param customCookbooksSource
+     *        Contains the information required to retrieve an app or cookbook from a repository. For more information,
+     *        see <a href="https://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html">Adding
+     *        Apps</a> or <a href="https://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook.html">Cookbooks
+     *        and Recipes</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -2317,22 +2470,22 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * A default Amazon EC2 key pair name. The default value is none. If you specify a key pair name, AWS OpsWorks
      * installs the public key on the instance and you can use the private key with an SSH client to log in to the
      * instance. For more information, see <a
-     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-ssh.html"> Using SSH to Communicate
-     * with an Instance</a> and <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/security-ssh-access.html">
-     * Managing SSH Access</a>. You can override this setting by specifying a different key pair, or no key pair, when
-     * you <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html"> create an
-     * instance</a>.
+     * href="https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-ssh.html"> Using SSH to Communicate
+     * with an Instance</a> and <a
+     * href="https://docs.aws.amazon.com/opsworks/latest/userguide/security-ssh-access.html"> Managing SSH Access</a>.
+     * You can override this setting by specifying a different key pair, or no key pair, when you <a
+     * href="https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html"> create an instance</a>.
      * </p>
      * 
      * @param defaultSshKeyName
      *        A default Amazon EC2 key pair name. The default value is none. If you specify a key pair name, AWS
      *        OpsWorks installs the public key on the instance and you can use the private key with an SSH client to log
      *        in to the instance. For more information, see <a
-     *        href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-ssh.html"> Using SSH to
+     *        href="https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-ssh.html"> Using SSH to
      *        Communicate with an Instance</a> and <a
-     *        href="http://docs.aws.amazon.com/opsworks/latest/userguide/security-ssh-access.html"> Managing SSH
+     *        href="https://docs.aws.amazon.com/opsworks/latest/userguide/security-ssh-access.html"> Managing SSH
      *        Access</a>. You can override this setting by specifying a different key pair, or no key pair, when you <a
-     *        href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html"> create an
+     *        href="https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html"> create an
      *        instance</a>.
      */
 
@@ -2345,21 +2498,21 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * A default Amazon EC2 key pair name. The default value is none. If you specify a key pair name, AWS OpsWorks
      * installs the public key on the instance and you can use the private key with an SSH client to log in to the
      * instance. For more information, see <a
-     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-ssh.html"> Using SSH to Communicate
-     * with an Instance</a> and <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/security-ssh-access.html">
-     * Managing SSH Access</a>. You can override this setting by specifying a different key pair, or no key pair, when
-     * you <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html"> create an
-     * instance</a>.
+     * href="https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-ssh.html"> Using SSH to Communicate
+     * with an Instance</a> and <a
+     * href="https://docs.aws.amazon.com/opsworks/latest/userguide/security-ssh-access.html"> Managing SSH Access</a>.
+     * You can override this setting by specifying a different key pair, or no key pair, when you <a
+     * href="https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html"> create an instance</a>.
      * </p>
      * 
      * @return A default Amazon EC2 key pair name. The default value is none. If you specify a key pair name, AWS
      *         OpsWorks installs the public key on the instance and you can use the private key with an SSH client to
      *         log in to the instance. For more information, see <a
-     *         href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-ssh.html"> Using SSH to
+     *         href="https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-ssh.html"> Using SSH to
      *         Communicate with an Instance</a> and <a
-     *         href="http://docs.aws.amazon.com/opsworks/latest/userguide/security-ssh-access.html"> Managing SSH
+     *         href="https://docs.aws.amazon.com/opsworks/latest/userguide/security-ssh-access.html"> Managing SSH
      *         Access</a>. You can override this setting by specifying a different key pair, or no key pair, when you <a
-     *         href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html"> create an
+     *         href="https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html"> create an
      *         instance</a>.
      */
 
@@ -2372,22 +2525,22 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * A default Amazon EC2 key pair name. The default value is none. If you specify a key pair name, AWS OpsWorks
      * installs the public key on the instance and you can use the private key with an SSH client to log in to the
      * instance. For more information, see <a
-     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-ssh.html"> Using SSH to Communicate
-     * with an Instance</a> and <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/security-ssh-access.html">
-     * Managing SSH Access</a>. You can override this setting by specifying a different key pair, or no key pair, when
-     * you <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html"> create an
-     * instance</a>.
+     * href="https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-ssh.html"> Using SSH to Communicate
+     * with an Instance</a> and <a
+     * href="https://docs.aws.amazon.com/opsworks/latest/userguide/security-ssh-access.html"> Managing SSH Access</a>.
+     * You can override this setting by specifying a different key pair, or no key pair, when you <a
+     * href="https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html"> create an instance</a>.
      * </p>
      * 
      * @param defaultSshKeyName
      *        A default Amazon EC2 key pair name. The default value is none. If you specify a key pair name, AWS
      *        OpsWorks installs the public key on the instance and you can use the private key with an SSH client to log
      *        in to the instance. For more information, see <a
-     *        href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-ssh.html"> Using SSH to
+     *        href="https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-ssh.html"> Using SSH to
      *        Communicate with an Instance</a> and <a
-     *        href="http://docs.aws.amazon.com/opsworks/latest/userguide/security-ssh-access.html"> Managing SSH
+     *        href="https://docs.aws.amazon.com/opsworks/latest/userguide/security-ssh-access.html"> Managing SSH
      *        Access</a>. You can override this setting by specifying a different key pair, or no key pair, when you <a
-     *        href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html"> create an
+     *        href="https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html"> create an
      *        instance</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -2401,15 +2554,16 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <p>
      * The default root device type. This value is the default for all instances in the stack, but you can override it
      * when you create an instance. The default option is <code>instance-store</code>. For more information, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device">Storage
-     * for the Root Device</a>.
+     * href=
+     * "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device">Storage for
+     * the Root Device</a>.
      * </p>
      * 
      * @param defaultRootDeviceType
      *        The default root device type. This value is the default for all instances in the stack, but you can
      *        override it when you create an instance. The default option is <code>instance-store</code>. For more
      *        information, see <a href=
-     *        "http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device"
+     *        "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device"
      *        >Storage for the Root Device</a>.
      * @see RootDeviceType
      */
@@ -2422,14 +2576,15 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <p>
      * The default root device type. This value is the default for all instances in the stack, but you can override it
      * when you create an instance. The default option is <code>instance-store</code>. For more information, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device">Storage
-     * for the Root Device</a>.
+     * href=
+     * "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device">Storage for
+     * the Root Device</a>.
      * </p>
      * 
      * @return The default root device type. This value is the default for all instances in the stack, but you can
      *         override it when you create an instance. The default option is <code>instance-store</code>. For more
      *         information, see <a href=
-     *         "http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device"
+     *         "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device"
      *         >Storage for the Root Device</a>.
      * @see RootDeviceType
      */
@@ -2442,15 +2597,16 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <p>
      * The default root device type. This value is the default for all instances in the stack, but you can override it
      * when you create an instance. The default option is <code>instance-store</code>. For more information, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device">Storage
-     * for the Root Device</a>.
+     * href=
+     * "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device">Storage for
+     * the Root Device</a>.
      * </p>
      * 
      * @param defaultRootDeviceType
      *        The default root device type. This value is the default for all instances in the stack, but you can
      *        override it when you create an instance. The default option is <code>instance-store</code>. For more
      *        information, see <a href=
-     *        "http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device"
+     *        "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device"
      *        >Storage for the Root Device</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see RootDeviceType
@@ -2465,15 +2621,16 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <p>
      * The default root device type. This value is the default for all instances in the stack, but you can override it
      * when you create an instance. The default option is <code>instance-store</code>. For more information, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device">Storage
-     * for the Root Device</a>.
+     * href=
+     * "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device">Storage for
+     * the Root Device</a>.
      * </p>
      * 
      * @param defaultRootDeviceType
      *        The default root device type. This value is the default for all instances in the stack, but you can
      *        override it when you create an instance. The default option is <code>instance-store</code>. For more
      *        information, see <a href=
-     *        "http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device"
+     *        "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device"
      *        >Storage for the Root Device</a>.
      * @see RootDeviceType
      */
@@ -2486,15 +2643,16 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <p>
      * The default root device type. This value is the default for all instances in the stack, but you can override it
      * when you create an instance. The default option is <code>instance-store</code>. For more information, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device">Storage
-     * for the Root Device</a>.
+     * href=
+     * "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device">Storage for
+     * the Root Device</a>.
      * </p>
      * 
      * @param defaultRootDeviceType
      *        The default root device type. This value is the default for all instances in the stack, but you can
      *        override it when you create an instance. The default option is <code>instance-store</code>. For more
      *        information, see <a href=
-     *        "http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device"
+     *        "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device"
      *        >Storage for the Root Device</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see RootDeviceType
@@ -2699,7 +2857,8 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,7 +27,7 @@ public class CreateOrganizationalUnitRequest extends com.amazonaws.AmazonWebServ
 
     /**
      * <p>
-     * The unique identifier (ID) of the parent root or OU in which you want to create the new OU.
+     * The unique identifier (ID) of the parent root or OU that you want to create the new OU in.
      * </p>
      * <p>
      * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a parent ID string requires one of the
@@ -36,14 +36,14 @@ public class CreateOrganizationalUnitRequest extends com.amazonaws.AmazonWebServ
      * <ul>
      * <li>
      * <p>
-     * Root: a string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
+     * <b>Root</b> - A string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or digits
-     * (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional lower-case
-     * letters or digits.
+     * <b>Organizational unit (OU)</b> - A string that begins with "ou-" followed by from 4 to 32 lower-case letters or
+     * digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional
+     * lower-case letters or digits.
      * </p>
      * </li>
      * </ul>
@@ -58,7 +58,7 @@ public class CreateOrganizationalUnitRequest extends com.amazonaws.AmazonWebServ
 
     /**
      * <p>
-     * The unique identifier (ID) of the parent root or OU in which you want to create the new OU.
+     * The unique identifier (ID) of the parent root or OU that you want to create the new OU in.
      * </p>
      * <p>
      * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a parent ID string requires one of the
@@ -67,20 +67,20 @@ public class CreateOrganizationalUnitRequest extends com.amazonaws.AmazonWebServ
      * <ul>
      * <li>
      * <p>
-     * Root: a string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
+     * <b>Root</b> - A string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or digits
-     * (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional lower-case
-     * letters or digits.
+     * <b>Organizational unit (OU)</b> - A string that begins with "ou-" followed by from 4 to 32 lower-case letters or
+     * digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional
+     * lower-case letters or digits.
      * </p>
      * </li>
      * </ul>
      * 
      * @param parentId
-     *        The unique identifier (ID) of the parent root or OU in which you want to create the new OU.</p>
+     *        The unique identifier (ID) of the parent root or OU that you want to create the new OU in.</p>
      *        <p>
      *        The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a parent ID string requires one of the
      *        following:
@@ -88,14 +88,14 @@ public class CreateOrganizationalUnitRequest extends com.amazonaws.AmazonWebServ
      *        <ul>
      *        <li>
      *        <p>
-     *        Root: a string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
+     *        <b>Root</b> - A string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or
-     *        digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional
-     *        lower-case letters or digits.
+     *        <b>Organizational unit (OU)</b> - A string that begins with "ou-" followed by from 4 to 32 lower-case
+     *        letters or digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32
+     *        additional lower-case letters or digits.
      *        </p>
      *        </li>
      */
@@ -106,7 +106,7 @@ public class CreateOrganizationalUnitRequest extends com.amazonaws.AmazonWebServ
 
     /**
      * <p>
-     * The unique identifier (ID) of the parent root or OU in which you want to create the new OU.
+     * The unique identifier (ID) of the parent root or OU that you want to create the new OU in.
      * </p>
      * <p>
      * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a parent ID string requires one of the
@@ -115,19 +115,19 @@ public class CreateOrganizationalUnitRequest extends com.amazonaws.AmazonWebServ
      * <ul>
      * <li>
      * <p>
-     * Root: a string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
+     * <b>Root</b> - A string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or digits
-     * (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional lower-case
-     * letters or digits.
+     * <b>Organizational unit (OU)</b> - A string that begins with "ou-" followed by from 4 to 32 lower-case letters or
+     * digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional
+     * lower-case letters or digits.
      * </p>
      * </li>
      * </ul>
      * 
-     * @return The unique identifier (ID) of the parent root or OU in which you want to create the new OU.</p>
+     * @return The unique identifier (ID) of the parent root or OU that you want to create the new OU in.</p>
      *         <p>
      *         The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a parent ID string requires one of
      *         the following:
@@ -135,14 +135,14 @@ public class CreateOrganizationalUnitRequest extends com.amazonaws.AmazonWebServ
      *         <ul>
      *         <li>
      *         <p>
-     *         Root: a string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
+     *         <b>Root</b> - A string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or
-     *         digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional
-     *         lower-case letters or digits.
+     *         <b>Organizational unit (OU)</b> - A string that begins with "ou-" followed by from 4 to 32 lower-case
+     *         letters or digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32
+     *         additional lower-case letters or digits.
      *         </p>
      *         </li>
      */
@@ -153,7 +153,7 @@ public class CreateOrganizationalUnitRequest extends com.amazonaws.AmazonWebServ
 
     /**
      * <p>
-     * The unique identifier (ID) of the parent root or OU in which you want to create the new OU.
+     * The unique identifier (ID) of the parent root or OU that you want to create the new OU in.
      * </p>
      * <p>
      * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a parent ID string requires one of the
@@ -162,20 +162,20 @@ public class CreateOrganizationalUnitRequest extends com.amazonaws.AmazonWebServ
      * <ul>
      * <li>
      * <p>
-     * Root: a string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
+     * <b>Root</b> - A string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or digits
-     * (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional lower-case
-     * letters or digits.
+     * <b>Organizational unit (OU)</b> - A string that begins with "ou-" followed by from 4 to 32 lower-case letters or
+     * digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional
+     * lower-case letters or digits.
      * </p>
      * </li>
      * </ul>
      * 
      * @param parentId
-     *        The unique identifier (ID) of the parent root or OU in which you want to create the new OU.</p>
+     *        The unique identifier (ID) of the parent root or OU that you want to create the new OU in.</p>
      *        <p>
      *        The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a parent ID string requires one of the
      *        following:
@@ -183,14 +183,14 @@ public class CreateOrganizationalUnitRequest extends com.amazonaws.AmazonWebServ
      *        <ul>
      *        <li>
      *        <p>
-     *        Root: a string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
+     *        <b>Root</b> - A string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or
-     *        digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional
-     *        lower-case letters or digits.
+     *        <b>Organizational unit (OU)</b> - A string that begins with "ou-" followed by from 4 to 32 lower-case
+     *        letters or digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32
+     *        additional lower-case letters or digits.
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -242,7 +242,8 @@ public class CreateOrganizationalUnitRequest extends com.amazonaws.AmazonWebServ
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

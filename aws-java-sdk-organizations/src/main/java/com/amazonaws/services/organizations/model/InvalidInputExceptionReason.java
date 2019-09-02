@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -38,7 +38,8 @@ public enum InvalidInputExceptionReason {
     MOVING_ACCOUNT_BETWEEN_DIFFERENT_ROOTS("MOVING_ACCOUNT_BETWEEN_DIFFERENT_ROOTS"),
     INVALID_FULL_NAME_TARGET("INVALID_FULL_NAME_TARGET"),
     UNRECOGNIZED_SERVICE_PRINCIPAL("UNRECOGNIZED_SERVICE_PRINCIPAL"),
-    INVALID_ROLE_NAME("INVALID_ROLE_NAME");
+    INVALID_ROLE_NAME("INVALID_ROLE_NAME"),
+    INVALID_SYSTEM_TAGS_PARAMETER("INVALID_SYSTEM_TAGS_PARAMETER");
 
     private String value;
 

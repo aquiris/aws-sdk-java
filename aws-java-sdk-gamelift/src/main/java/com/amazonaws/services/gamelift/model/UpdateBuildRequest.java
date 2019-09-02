@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -42,7 +42,7 @@ public class UpdateBuildRequest extends com.amazonaws.AmazonWebServiceRequest im
     private String name;
     /**
      * <p>
-     * Version that is associated with this build. Version strings do not need to be unique.
+     * Version that is associated with a build or script. Version strings do not need to be unique.
      * </p>
      */
     private String version;
@@ -129,11 +129,11 @@ public class UpdateBuildRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * Version that is associated with this build. Version strings do not need to be unique.
+     * Version that is associated with a build or script. Version strings do not need to be unique.
      * </p>
      * 
      * @param version
-     *        Version that is associated with this build. Version strings do not need to be unique.
+     *        Version that is associated with a build or script. Version strings do not need to be unique.
      */
 
     public void setVersion(String version) {
@@ -142,10 +142,10 @@ public class UpdateBuildRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * Version that is associated with this build. Version strings do not need to be unique.
+     * Version that is associated with a build or script. Version strings do not need to be unique.
      * </p>
      * 
-     * @return Version that is associated with this build. Version strings do not need to be unique.
+     * @return Version that is associated with a build or script. Version strings do not need to be unique.
      */
 
     public String getVersion() {
@@ -154,11 +154,11 @@ public class UpdateBuildRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * Version that is associated with this build. Version strings do not need to be unique.
+     * Version that is associated with a build or script. Version strings do not need to be unique.
      * </p>
      * 
      * @param version
-     *        Version that is associated with this build. Version strings do not need to be unique.
+     *        Version that is associated with a build or script. Version strings do not need to be unique.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -168,7 +168,8 @@ public class UpdateBuildRequest extends com.amazonaws.AmazonWebServiceRequest im
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

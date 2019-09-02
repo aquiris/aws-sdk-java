@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -26,7 +26,7 @@ import java.util.concurrent.ExecutorService;
  * notification when an asynchronous operation completes.
  * <p>
  * <p>
- * The Cost Explorer API allows you to programmatically query your cost and usage data. You can query for aggregated
+ * The Cost Explorer API enables you to programmatically query your cost and usage data. You can query for aggregated
  * data such as total monthly costs or total daily usage. You can also query for granular data, such as the number of
  * daily write operations for Amazon DynamoDB database tables in your production environment.
  * </p>
@@ -39,7 +39,7 @@ import java.util.concurrent.ExecutorService;
  * <ul>
  * <li>
  * <p>
- * https://ce.us-east-1.amazonaws.com
+ * <code>https://ce.us-east-1.amazonaws.com</code>
  * </p>
  * </li>
  * </ul>
@@ -99,6 +99,39 @@ public class AWSCostExplorerAsyncClient extends AWSCostExplorerClient implements
 
                 try {
                     result = executeGetCostAndUsage(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<GetCostForecastResult> getCostForecastAsync(GetCostForecastRequest request) {
+
+        return getCostForecastAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<GetCostForecastResult> getCostForecastAsync(final GetCostForecastRequest request,
+            final com.amazonaws.handlers.AsyncHandler<GetCostForecastRequest, GetCostForecastResult> asyncHandler) {
+        final GetCostForecastRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<GetCostForecastResult>() {
+            @Override
+            public GetCostForecastResult call() throws Exception {
+                GetCostForecastResult result = null;
+
+                try {
+                    result = executeGetCostForecast(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -249,6 +282,39 @@ public class AWSCostExplorerAsyncClient extends AWSCostExplorerClient implements
     }
 
     @Override
+    public java.util.concurrent.Future<GetRightsizingRecommendationResult> getRightsizingRecommendationAsync(GetRightsizingRecommendationRequest request) {
+
+        return getRightsizingRecommendationAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<GetRightsizingRecommendationResult> getRightsizingRecommendationAsync(final GetRightsizingRecommendationRequest request,
+            final com.amazonaws.handlers.AsyncHandler<GetRightsizingRecommendationRequest, GetRightsizingRecommendationResult> asyncHandler) {
+        final GetRightsizingRecommendationRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<GetRightsizingRecommendationResult>() {
+            @Override
+            public GetRightsizingRecommendationResult call() throws Exception {
+                GetRightsizingRecommendationResult result = null;
+
+                try {
+                    result = executeGetRightsizingRecommendation(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
     public java.util.concurrent.Future<GetTagsResult> getTagsAsync(GetTagsRequest request) {
 
         return getTagsAsync(request, null);
@@ -266,6 +332,39 @@ public class AWSCostExplorerAsyncClient extends AWSCostExplorerClient implements
 
                 try {
                     result = executeGetTags(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<GetUsageForecastResult> getUsageForecastAsync(GetUsageForecastRequest request) {
+
+        return getUsageForecastAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<GetUsageForecastResult> getUsageForecastAsync(final GetUsageForecastRequest request,
+            final com.amazonaws.handlers.AsyncHandler<GetUsageForecastRequest, GetUsageForecastResult> asyncHandler) {
+        final GetUsageForecastRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<GetUsageForecastResult>() {
+            @Override
+            public GetUsageForecastResult call() throws Exception {
+                GetUsageForecastResult result = null;
+
+                try {
+                    result = executeGetUsageForecast(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);

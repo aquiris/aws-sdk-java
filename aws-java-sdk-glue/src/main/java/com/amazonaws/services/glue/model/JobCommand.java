@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -30,24 +30,33 @@ public class JobCommand implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The name of the job command: this must be <code>glueetl</code>.
+     * The name of the job command. For an Apache Spark ETL job, this must be <code>glueetl</code>. For a Python shell
+     * job, it must be <code>pythonshell</code>.
      * </p>
      */
     private String name;
     /**
      * <p>
-     * Specifies the S3 path to a script that executes a job (required).
+     * Specifies the Amazon Simple Storage Service (Amazon S3) path to a script that executes a job.
      * </p>
      */
     private String scriptLocation;
+    /**
+     * <p>
+     * The Python version being used to execute a Python shell job. Allowed values are 2 or 3.
+     * </p>
+     */
+    private String pythonVersion;
 
     /**
      * <p>
-     * The name of the job command: this must be <code>glueetl</code>.
+     * The name of the job command. For an Apache Spark ETL job, this must be <code>glueetl</code>. For a Python shell
+     * job, it must be <code>pythonshell</code>.
      * </p>
      * 
      * @param name
-     *        The name of the job command: this must be <code>glueetl</code>.
+     *        The name of the job command. For an Apache Spark ETL job, this must be <code>glueetl</code>. For a Python
+     *        shell job, it must be <code>pythonshell</code>.
      */
 
     public void setName(String name) {
@@ -56,10 +65,12 @@ public class JobCommand implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The name of the job command: this must be <code>glueetl</code>.
+     * The name of the job command. For an Apache Spark ETL job, this must be <code>glueetl</code>. For a Python shell
+     * job, it must be <code>pythonshell</code>.
      * </p>
      * 
-     * @return The name of the job command: this must be <code>glueetl</code>.
+     * @return The name of the job command. For an Apache Spark ETL job, this must be <code>glueetl</code>. For a Python
+     *         shell job, it must be <code>pythonshell</code>.
      */
 
     public String getName() {
@@ -68,11 +79,13 @@ public class JobCommand implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The name of the job command: this must be <code>glueetl</code>.
+     * The name of the job command. For an Apache Spark ETL job, this must be <code>glueetl</code>. For a Python shell
+     * job, it must be <code>pythonshell</code>.
      * </p>
      * 
      * @param name
-     *        The name of the job command: this must be <code>glueetl</code>.
+     *        The name of the job command. For an Apache Spark ETL job, this must be <code>glueetl</code>. For a Python
+     *        shell job, it must be <code>pythonshell</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -83,11 +96,11 @@ public class JobCommand implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Specifies the S3 path to a script that executes a job (required).
+     * Specifies the Amazon Simple Storage Service (Amazon S3) path to a script that executes a job.
      * </p>
      * 
      * @param scriptLocation
-     *        Specifies the S3 path to a script that executes a job (required).
+     *        Specifies the Amazon Simple Storage Service (Amazon S3) path to a script that executes a job.
      */
 
     public void setScriptLocation(String scriptLocation) {
@@ -96,10 +109,10 @@ public class JobCommand implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Specifies the S3 path to a script that executes a job (required).
+     * Specifies the Amazon Simple Storage Service (Amazon S3) path to a script that executes a job.
      * </p>
      * 
-     * @return Specifies the S3 path to a script that executes a job (required).
+     * @return Specifies the Amazon Simple Storage Service (Amazon S3) path to a script that executes a job.
      */
 
     public String getScriptLocation() {
@@ -108,11 +121,11 @@ public class JobCommand implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Specifies the S3 path to a script that executes a job (required).
+     * Specifies the Amazon Simple Storage Service (Amazon S3) path to a script that executes a job.
      * </p>
      * 
      * @param scriptLocation
-     *        Specifies the S3 path to a script that executes a job (required).
+     *        Specifies the Amazon Simple Storage Service (Amazon S3) path to a script that executes a job.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -122,7 +135,48 @@ public class JobCommand implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * <p>
+     * The Python version being used to execute a Python shell job. Allowed values are 2 or 3.
+     * </p>
+     * 
+     * @param pythonVersion
+     *        The Python version being used to execute a Python shell job. Allowed values are 2 or 3.
+     */
+
+    public void setPythonVersion(String pythonVersion) {
+        this.pythonVersion = pythonVersion;
+    }
+
+    /**
+     * <p>
+     * The Python version being used to execute a Python shell job. Allowed values are 2 or 3.
+     * </p>
+     * 
+     * @return The Python version being used to execute a Python shell job. Allowed values are 2 or 3.
+     */
+
+    public String getPythonVersion() {
+        return this.pythonVersion;
+    }
+
+    /**
+     * <p>
+     * The Python version being used to execute a Python shell job. Allowed values are 2 or 3.
+     * </p>
+     * 
+     * @param pythonVersion
+     *        The Python version being used to execute a Python shell job. Allowed values are 2 or 3.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public JobCommand withPythonVersion(String pythonVersion) {
+        setPythonVersion(pythonVersion);
+        return this;
+    }
+
+    /**
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -135,7 +189,9 @@ public class JobCommand implements Serializable, Cloneable, StructuredPojo {
         if (getName() != null)
             sb.append("Name: ").append(getName()).append(",");
         if (getScriptLocation() != null)
-            sb.append("ScriptLocation: ").append(getScriptLocation());
+            sb.append("ScriptLocation: ").append(getScriptLocation()).append(",");
+        if (getPythonVersion() != null)
+            sb.append("PythonVersion: ").append(getPythonVersion());
         sb.append("}");
         return sb.toString();
     }
@@ -158,6 +214,10 @@ public class JobCommand implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getScriptLocation() != null && other.getScriptLocation().equals(this.getScriptLocation()) == false)
             return false;
+        if (other.getPythonVersion() == null ^ this.getPythonVersion() == null)
+            return false;
+        if (other.getPythonVersion() != null && other.getPythonVersion().equals(this.getPythonVersion()) == false)
+            return false;
         return true;
     }
 
@@ -168,6 +228,7 @@ public class JobCommand implements Serializable, Cloneable, StructuredPojo {
 
         hashCode = prime * hashCode + ((getName() == null) ? 0 : getName().hashCode());
         hashCode = prime * hashCode + ((getScriptLocation() == null) ? 0 : getScriptLocation().hashCode());
+        hashCode = prime * hashCode + ((getPythonVersion() == null) ? 0 : getPythonVersion().hashCode());
         return hashCode;
     }
 

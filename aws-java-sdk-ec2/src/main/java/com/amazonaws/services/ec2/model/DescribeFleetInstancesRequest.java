@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -47,8 +47,15 @@ public class DescribeFleetInstancesRequest extends AmazonWebServiceRequest imple
     private String fleetId;
     /**
      * <p>
-     * One or more filters.
+     * The filters.
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>instance-type</code> - The instance type.
+     * </p>
+     * </li>
+     * </ul>
      */
     private com.amazonaws.internal.SdkInternalList<Filter> filters;
 
@@ -183,10 +190,23 @@ public class DescribeFleetInstancesRequest extends AmazonWebServiceRequest imple
 
     /**
      * <p>
-     * One or more filters.
+     * The filters.
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>instance-type</code> - The instance type.
+     * </p>
+     * </li>
+     * </ul>
      * 
-     * @return One or more filters.
+     * @return The filters.</p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         <code>instance-type</code> - The instance type.
+     *         </p>
+     *         </li>
      */
 
     public java.util.List<Filter> getFilters() {
@@ -198,11 +218,24 @@ public class DescribeFleetInstancesRequest extends AmazonWebServiceRequest imple
 
     /**
      * <p>
-     * One or more filters.
+     * The filters.
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>instance-type</code> - The instance type.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param filters
-     *        One or more filters.
+     *        The filters.</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>instance-type</code> - The instance type.
+     *        </p>
+     *        </li>
      */
 
     public void setFilters(java.util.Collection<Filter> filters) {
@@ -216,8 +249,15 @@ public class DescribeFleetInstancesRequest extends AmazonWebServiceRequest imple
 
     /**
      * <p>
-     * One or more filters.
+     * The filters.
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>instance-type</code> - The instance type.
+     * </p>
+     * </li>
+     * </ul>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
      * {@link #setFilters(java.util.Collection)} or {@link #withFilters(java.util.Collection)} if you want to override
@@ -225,7 +265,13 @@ public class DescribeFleetInstancesRequest extends AmazonWebServiceRequest imple
      * </p>
      * 
      * @param filters
-     *        One or more filters.
+     *        The filters.</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>instance-type</code> - The instance type.
+     *        </p>
+     *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -241,11 +287,24 @@ public class DescribeFleetInstancesRequest extends AmazonWebServiceRequest imple
 
     /**
      * <p>
-     * One or more filters.
+     * The filters.
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>instance-type</code> - The instance type.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param filters
-     *        One or more filters.
+     *        The filters.</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>instance-type</code> - The instance type.
+     *        </p>
+     *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -266,7 +325,8 @@ public class DescribeFleetInstancesRequest extends AmazonWebServiceRequest imple
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

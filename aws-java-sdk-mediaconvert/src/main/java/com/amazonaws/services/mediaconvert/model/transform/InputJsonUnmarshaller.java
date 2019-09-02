@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -63,9 +63,17 @@ public class InputJsonUnmarshaller implements Unmarshaller<Input, JsonUnmarshall
                     input.setCaptionSelectors(new MapUnmarshaller<String, CaptionSelector>(context.getUnmarshaller(String.class),
                             CaptionSelectorJsonUnmarshaller.getInstance()).unmarshall(context));
                 }
+                if (context.testExpression("crop", targetDepth)) {
+                    context.nextToken();
+                    input.setCrop(RectangleJsonUnmarshaller.getInstance().unmarshall(context));
+                }
                 if (context.testExpression("deblockFilter", targetDepth)) {
                     context.nextToken();
                     input.setDeblockFilter(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("decryptionSettings", targetDepth)) {
+                    context.nextToken();
+                    input.setDecryptionSettings(InputDecryptionSettingsJsonUnmarshaller.getInstance().unmarshall(context));
                 }
                 if (context.testExpression("denoiseFilter", targetDepth)) {
                     context.nextToken();
@@ -83,9 +91,17 @@ public class InputJsonUnmarshaller implements Unmarshaller<Input, JsonUnmarshall
                     context.nextToken();
                     input.setFilterStrength(context.getUnmarshaller(Integer.class).unmarshall(context));
                 }
+                if (context.testExpression("imageInserter", targetDepth)) {
+                    context.nextToken();
+                    input.setImageInserter(ImageInserterJsonUnmarshaller.getInstance().unmarshall(context));
+                }
                 if (context.testExpression("inputClippings", targetDepth)) {
                     context.nextToken();
                     input.setInputClippings(new ListUnmarshaller<InputClipping>(InputClippingJsonUnmarshaller.getInstance()).unmarshall(context));
+                }
+                if (context.testExpression("position", targetDepth)) {
+                    context.nextToken();
+                    input.setPosition(RectangleJsonUnmarshaller.getInstance().unmarshall(context));
                 }
                 if (context.testExpression("programNumber", targetDepth)) {
                     context.nextToken();
@@ -94,6 +110,10 @@ public class InputJsonUnmarshaller implements Unmarshaller<Input, JsonUnmarshall
                 if (context.testExpression("psiControl", targetDepth)) {
                     context.nextToken();
                     input.setPsiControl(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("supplementalImps", targetDepth)) {
+                    context.nextToken();
+                    input.setSupplementalImps(new ListUnmarshaller<String>(context.getUnmarshaller(String.class)).unmarshall(context));
                 }
                 if (context.testExpression("timecodeSource", targetDepth)) {
                     context.nextToken();

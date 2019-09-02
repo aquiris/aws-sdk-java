@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -43,6 +43,12 @@ public class CreateCustomerGatewayRequest extends AmazonWebServiceRequest implem
      * </p>
      */
     private String publicIp;
+    /**
+     * <p>
+     * The Amazon Resource Name (ARN) for the customer gateway certificate.
+     * </p>
+     */
+    private String certificateArn;
     /**
      * <p>
      * The type of VPN connection that this customer gateway supports (<code>ipsec.1</code>).
@@ -193,6 +199,46 @@ public class CreateCustomerGatewayRequest extends AmazonWebServiceRequest implem
 
     /**
      * <p>
+     * The Amazon Resource Name (ARN) for the customer gateway certificate.
+     * </p>
+     * 
+     * @param certificateArn
+     *        The Amazon Resource Name (ARN) for the customer gateway certificate.
+     */
+
+    public void setCertificateArn(String certificateArn) {
+        this.certificateArn = certificateArn;
+    }
+
+    /**
+     * <p>
+     * The Amazon Resource Name (ARN) for the customer gateway certificate.
+     * </p>
+     * 
+     * @return The Amazon Resource Name (ARN) for the customer gateway certificate.
+     */
+
+    public String getCertificateArn() {
+        return this.certificateArn;
+    }
+
+    /**
+     * <p>
+     * The Amazon Resource Name (ARN) for the customer gateway certificate.
+     * </p>
+     * 
+     * @param certificateArn
+     *        The Amazon Resource Name (ARN) for the customer gateway certificate.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateCustomerGatewayRequest withCertificateArn(String certificateArn) {
+        setCertificateArn(certificateArn);
+        return this;
+    }
+
+    /**
+     * <p>
      * The type of VPN connection that this customer gateway supports (<code>ipsec.1</code>).
      * </p>
      * 
@@ -276,7 +322,8 @@ public class CreateCustomerGatewayRequest extends AmazonWebServiceRequest implem
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -290,6 +337,8 @@ public class CreateCustomerGatewayRequest extends AmazonWebServiceRequest implem
             sb.append("BgpAsn: ").append(getBgpAsn()).append(",");
         if (getPublicIp() != null)
             sb.append("PublicIp: ").append(getPublicIp()).append(",");
+        if (getCertificateArn() != null)
+            sb.append("CertificateArn: ").append(getCertificateArn()).append(",");
         if (getType() != null)
             sb.append("Type: ").append(getType());
         sb.append("}");
@@ -314,6 +363,10 @@ public class CreateCustomerGatewayRequest extends AmazonWebServiceRequest implem
             return false;
         if (other.getPublicIp() != null && other.getPublicIp().equals(this.getPublicIp()) == false)
             return false;
+        if (other.getCertificateArn() == null ^ this.getCertificateArn() == null)
+            return false;
+        if (other.getCertificateArn() != null && other.getCertificateArn().equals(this.getCertificateArn()) == false)
+            return false;
         if (other.getType() == null ^ this.getType() == null)
             return false;
         if (other.getType() != null && other.getType().equals(this.getType()) == false)
@@ -328,6 +381,7 @@ public class CreateCustomerGatewayRequest extends AmazonWebServiceRequest implem
 
         hashCode = prime * hashCode + ((getBgpAsn() == null) ? 0 : getBgpAsn().hashCode());
         hashCode = prime * hashCode + ((getPublicIp() == null) ? 0 : getPublicIp().hashCode());
+        hashCode = prime * hashCode + ((getCertificateArn() == null) ? 0 : getCertificateArn().hashCode());
         hashCode = prime * hashCode + ((getType() == null) ? 0 : getType().hashCode());
         return hashCode;
     }

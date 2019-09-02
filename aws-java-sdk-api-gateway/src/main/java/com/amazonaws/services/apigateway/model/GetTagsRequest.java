@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,8 +27,7 @@ public class GetTagsRequest extends com.amazonaws.AmazonWebServiceRequest implem
 
     /**
      * <p>
-     * [Required] The ARN of a resource that can be tagged. The resource ARN must be URL-encoded. At present,
-     * <a>Stage</a> is the only taggable resource.
+     * [Required] The ARN of a resource that can be tagged. The resource ARN must be URL-encoded.
      * </p>
      */
     private String resourceArn;
@@ -48,13 +47,11 @@ public class GetTagsRequest extends com.amazonaws.AmazonWebServiceRequest implem
 
     /**
      * <p>
-     * [Required] The ARN of a resource that can be tagged. The resource ARN must be URL-encoded. At present,
-     * <a>Stage</a> is the only taggable resource.
+     * [Required] The ARN of a resource that can be tagged. The resource ARN must be URL-encoded.
      * </p>
      * 
      * @param resourceArn
-     *        [Required] The ARN of a resource that can be tagged. The resource ARN must be URL-encoded. At present,
-     *        <a>Stage</a> is the only taggable resource.
+     *        [Required] The ARN of a resource that can be tagged. The resource ARN must be URL-encoded.
      */
 
     public void setResourceArn(String resourceArn) {
@@ -63,12 +60,10 @@ public class GetTagsRequest extends com.amazonaws.AmazonWebServiceRequest implem
 
     /**
      * <p>
-     * [Required] The ARN of a resource that can be tagged. The resource ARN must be URL-encoded. At present,
-     * <a>Stage</a> is the only taggable resource.
+     * [Required] The ARN of a resource that can be tagged. The resource ARN must be URL-encoded.
      * </p>
      * 
-     * @return [Required] The ARN of a resource that can be tagged. The resource ARN must be URL-encoded. At present,
-     *         <a>Stage</a> is the only taggable resource.
+     * @return [Required] The ARN of a resource that can be tagged. The resource ARN must be URL-encoded.
      */
 
     public String getResourceArn() {
@@ -77,13 +72,11 @@ public class GetTagsRequest extends com.amazonaws.AmazonWebServiceRequest implem
 
     /**
      * <p>
-     * [Required] The ARN of a resource that can be tagged. The resource ARN must be URL-encoded. At present,
-     * <a>Stage</a> is the only taggable resource.
+     * [Required] The ARN of a resource that can be tagged. The resource ARN must be URL-encoded.
      * </p>
      * 
      * @param resourceArn
-     *        [Required] The ARN of a resource that can be tagged. The resource ARN must be URL-encoded. At present,
-     *        <a>Stage</a> is the only taggable resource.
+     *        [Required] The ARN of a resource that can be tagged. The resource ARN must be URL-encoded.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -179,7 +172,8 @@ public class GetTagsRequest extends com.amazonaws.AmazonWebServiceRequest implem
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

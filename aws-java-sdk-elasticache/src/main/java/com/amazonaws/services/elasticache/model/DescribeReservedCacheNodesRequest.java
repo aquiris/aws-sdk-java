@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -63,15 +63,15 @@ public class DescribeReservedCacheNodesRequest extends com.amazonaws.AmazonWebSe
      * Current generation:
      * </p>
      * <p>
-     * <b>T2 node types:</b> <code>cache.t2.micro</code>, <code>cache.t2.small</code>, <code>cache.t2.medium</code>
-     * </p>
-     * <p>
-     * <b>M3 node types:</b> <code>cache.m3.medium</code>, <code>cache.m3.large</code>, <code>cache.m3.xlarge</code>,
-     * <code>cache.m3.2xlarge</code>
+     * <b>M5 node types:</b> <code>cache.m5.large</code>, <code>cache.m5.xlarge</code>, <code>cache.m5.2xlarge</code>,
+     * <code>cache.m5.4xlarge</code>, <code>cache.m5.12xlarge</code>, <code>cache.m5.24xlarge</code>
      * </p>
      * <p>
      * <b>M4 node types:</b> <code>cache.m4.large</code>, <code>cache.m4.xlarge</code>, <code>cache.m4.2xlarge</code>,
      * <code>cache.m4.4xlarge</code>, <code>cache.m4.10xlarge</code>
+     * </p>
+     * <p>
+     * <b>T2 node types:</b> <code>cache.t2.micro</code>, <code>cache.t2.small</code>, <code>cache.t2.medium</code>
      * </p>
      * </li>
      * <li>
@@ -84,6 +84,10 @@ public class DescribeReservedCacheNodesRequest extends com.amazonaws.AmazonWebSe
      * <p>
      * <b>M1 node types:</b> <code>cache.m1.small</code>, <code>cache.m1.medium</code>, <code>cache.m1.large</code>,
      * <code>cache.m1.xlarge</code>
+     * </p>
+     * <p>
+     * <b>M3 node types:</b> <code>cache.m3.medium</code>, <code>cache.m3.large</code>, <code>cache.m3.xlarge</code>,
+     * <code>cache.m3.2xlarge</code>
      * </p>
      * </li>
      * </ul>
@@ -113,8 +117,12 @@ public class DescribeReservedCacheNodesRequest extends com.amazonaws.AmazonWebSe
      * Current generation:
      * </p>
      * <p>
-     * <b>R3 node types:</b> <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>,
-     * <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code>
+     * <b>R5 node types:</b> <code>cache.r5.large</code>, <code>cache.r5.xlarge</code>, <code>cache.r5.2xlarge</code>,
+     * <code>cache.r5.4xlarge</code>, <code>cache.r5.12xlarge</code>, <code>cache.r5.24xlarge</code>
+     * </p>
+     * <p>
+     * <b>R4 node types:</b> <code>cache.r4.large</code>, <code>cache.r4.xlarge</code>, <code>cache.r4.2xlarge</code>,
+     * <code>cache.r4.4xlarge</code>, <code>cache.r4.8xlarge</code>, <code>cache.r4.16xlarge</code>
      * </p>
      * </li>
      * <li>
@@ -124,44 +132,40 @@ public class DescribeReservedCacheNodesRequest extends com.amazonaws.AmazonWebSe
      * <p>
      * <b>M2 node types:</b> <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>, <code>cache.m2.4xlarge</code>
      * </p>
+     * <p>
+     * <b>R3 node types:</b> <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>,
+     * <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code>
+     * </p>
      * </li>
      * </ul>
      * </li>
      * </ul>
      * <p>
-     * <b>Notes:</b>
+     * <b>Additional node type info</b>
      * </p>
      * <ul>
      * <li>
      * <p>
-     * All T2 instances are created in an Amazon Virtual Private Cloud (Amazon VPC).
+     * All current generation instance types are created in Amazon VPC by default.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Redis (cluster mode disabled): Redis backup/restore is not supported on T1 and T2 instances.
+     * Redis append-only files (AOF) are not supported for T1 or T2 instances.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Redis (cluster mode enabled): Backup/restore is not supported on T1 instances.
+     * Redis Multi-AZ with automatic failover is not supported on T1 instances.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Redis Append-only files (AOF) functionality is not supported for T1 or T2 instances.
+     * Redis configuration variables <code>appendonly</code> and <code>appendfsync</code> are not supported on Redis
+     * version 2.8.22 and later.
      * </p>
      * </li>
      * </ul>
-     * <p>
-     * For a complete listing of node types and specifications, see <a
-     * href="http://aws.amazon.com/elasticache/details">Amazon ElastiCache Product Features and Details</a> and either
-     * <a href=
-     * "http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific"
-     * >Cache Node Type-Specific Parameters for Memcached</a> or <a href=
-     * "http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific"
-     * >Cache Node Type-Specific Parameters for Redis</a>.
-     * </p>
      */
     private String cacheNodeType;
     /**
@@ -327,15 +331,15 @@ public class DescribeReservedCacheNodesRequest extends com.amazonaws.AmazonWebSe
      * Current generation:
      * </p>
      * <p>
-     * <b>T2 node types:</b> <code>cache.t2.micro</code>, <code>cache.t2.small</code>, <code>cache.t2.medium</code>
-     * </p>
-     * <p>
-     * <b>M3 node types:</b> <code>cache.m3.medium</code>, <code>cache.m3.large</code>, <code>cache.m3.xlarge</code>,
-     * <code>cache.m3.2xlarge</code>
+     * <b>M5 node types:</b> <code>cache.m5.large</code>, <code>cache.m5.xlarge</code>, <code>cache.m5.2xlarge</code>,
+     * <code>cache.m5.4xlarge</code>, <code>cache.m5.12xlarge</code>, <code>cache.m5.24xlarge</code>
      * </p>
      * <p>
      * <b>M4 node types:</b> <code>cache.m4.large</code>, <code>cache.m4.xlarge</code>, <code>cache.m4.2xlarge</code>,
      * <code>cache.m4.4xlarge</code>, <code>cache.m4.10xlarge</code>
+     * </p>
+     * <p>
+     * <b>T2 node types:</b> <code>cache.t2.micro</code>, <code>cache.t2.small</code>, <code>cache.t2.medium</code>
      * </p>
      * </li>
      * <li>
@@ -348,6 +352,10 @@ public class DescribeReservedCacheNodesRequest extends com.amazonaws.AmazonWebSe
      * <p>
      * <b>M1 node types:</b> <code>cache.m1.small</code>, <code>cache.m1.medium</code>, <code>cache.m1.large</code>,
      * <code>cache.m1.xlarge</code>
+     * </p>
+     * <p>
+     * <b>M3 node types:</b> <code>cache.m3.medium</code>, <code>cache.m3.large</code>, <code>cache.m3.xlarge</code>,
+     * <code>cache.m3.2xlarge</code>
      * </p>
      * </li>
      * </ul>
@@ -377,8 +385,12 @@ public class DescribeReservedCacheNodesRequest extends com.amazonaws.AmazonWebSe
      * Current generation:
      * </p>
      * <p>
-     * <b>R3 node types:</b> <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>,
-     * <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code>
+     * <b>R5 node types:</b> <code>cache.r5.large</code>, <code>cache.r5.xlarge</code>, <code>cache.r5.2xlarge</code>,
+     * <code>cache.r5.4xlarge</code>, <code>cache.r5.12xlarge</code>, <code>cache.r5.24xlarge</code>
+     * </p>
+     * <p>
+     * <b>R4 node types:</b> <code>cache.r4.large</code>, <code>cache.r4.xlarge</code>, <code>cache.r4.2xlarge</code>,
+     * <code>cache.r4.4xlarge</code>, <code>cache.r4.8xlarge</code>, <code>cache.r4.16xlarge</code>
      * </p>
      * </li>
      * <li>
@@ -388,44 +400,40 @@ public class DescribeReservedCacheNodesRequest extends com.amazonaws.AmazonWebSe
      * <p>
      * <b>M2 node types:</b> <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>, <code>cache.m2.4xlarge</code>
      * </p>
+     * <p>
+     * <b>R3 node types:</b> <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>,
+     * <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code>
+     * </p>
      * </li>
      * </ul>
      * </li>
      * </ul>
      * <p>
-     * <b>Notes:</b>
+     * <b>Additional node type info</b>
      * </p>
      * <ul>
      * <li>
      * <p>
-     * All T2 instances are created in an Amazon Virtual Private Cloud (Amazon VPC).
+     * All current generation instance types are created in Amazon VPC by default.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Redis (cluster mode disabled): Redis backup/restore is not supported on T1 and T2 instances.
+     * Redis append-only files (AOF) are not supported for T1 or T2 instances.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Redis (cluster mode enabled): Backup/restore is not supported on T1 instances.
+     * Redis Multi-AZ with automatic failover is not supported on T1 instances.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Redis Append-only files (AOF) functionality is not supported for T1 or T2 instances.
+     * Redis configuration variables <code>appendonly</code> and <code>appendfsync</code> are not supported on Redis
+     * version 2.8.22 and later.
      * </p>
      * </li>
      * </ul>
-     * <p>
-     * For a complete listing of node types and specifications, see <a
-     * href="http://aws.amazon.com/elasticache/details">Amazon ElastiCache Product Features and Details</a> and either
-     * <a href=
-     * "http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific"
-     * >Cache Node Type-Specific Parameters for Memcached</a> or <a href=
-     * "http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific"
-     * >Cache Node Type-Specific Parameters for Redis</a>.
-     * </p>
      * 
      * @param cacheNodeType
      *        The cache node type filter value. Use this parameter to show only those reservations matching the
@@ -446,16 +454,17 @@ public class DescribeReservedCacheNodesRequest extends com.amazonaws.AmazonWebSe
      *        Current generation:
      *        </p>
      *        <p>
-     *        <b>T2 node types:</b> <code>cache.t2.micro</code>, <code>cache.t2.small</code>,
-     *        <code>cache.t2.medium</code>
-     *        </p>
-     *        <p>
-     *        <b>M3 node types:</b> <code>cache.m3.medium</code>, <code>cache.m3.large</code>,
-     *        <code>cache.m3.xlarge</code>, <code>cache.m3.2xlarge</code>
+     *        <b>M5 node types:</b> <code>cache.m5.large</code>, <code>cache.m5.xlarge</code>,
+     *        <code>cache.m5.2xlarge</code>, <code>cache.m5.4xlarge</code>, <code>cache.m5.12xlarge</code>,
+     *        <code>cache.m5.24xlarge</code>
      *        </p>
      *        <p>
      *        <b>M4 node types:</b> <code>cache.m4.large</code>, <code>cache.m4.xlarge</code>,
      *        <code>cache.m4.2xlarge</code>, <code>cache.m4.4xlarge</code>, <code>cache.m4.10xlarge</code>
+     *        </p>
+     *        <p>
+     *        <b>T2 node types:</b> <code>cache.t2.micro</code>, <code>cache.t2.small</code>,
+     *        <code>cache.t2.medium</code>
      *        </p>
      *        </li>
      *        <li>
@@ -468,6 +477,10 @@ public class DescribeReservedCacheNodesRequest extends com.amazonaws.AmazonWebSe
      *        <p>
      *        <b>M1 node types:</b> <code>cache.m1.small</code>, <code>cache.m1.medium</code>,
      *        <code>cache.m1.large</code>, <code>cache.m1.xlarge</code>
+     *        </p>
+     *        <p>
+     *        <b>M3 node types:</b> <code>cache.m3.medium</code>, <code>cache.m3.large</code>,
+     *        <code>cache.m3.xlarge</code>, <code>cache.m3.2xlarge</code>
      *        </p>
      *        </li>
      *        </ul>
@@ -497,8 +510,14 @@ public class DescribeReservedCacheNodesRequest extends com.amazonaws.AmazonWebSe
      *        Current generation:
      *        </p>
      *        <p>
-     *        <b>R3 node types:</b> <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>,
-     *        <code>cache.r3.2xlarge</code>, <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code>
+     *        <b>R5 node types:</b> <code>cache.r5.large</code>, <code>cache.r5.xlarge</code>,
+     *        <code>cache.r5.2xlarge</code>, <code>cache.r5.4xlarge</code>, <code>cache.r5.12xlarge</code>,
+     *        <code>cache.r5.24xlarge</code>
+     *        </p>
+     *        <p>
+     *        <b>R4 node types:</b> <code>cache.r4.large</code>, <code>cache.r4.xlarge</code>,
+     *        <code>cache.r4.2xlarge</code>, <code>cache.r4.4xlarge</code>, <code>cache.r4.8xlarge</code>,
+     *        <code>cache.r4.16xlarge</code>
      *        </p>
      *        </li>
      *        <li>
@@ -509,43 +528,39 @@ public class DescribeReservedCacheNodesRequest extends com.amazonaws.AmazonWebSe
      *        <b>M2 node types:</b> <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>,
      *        <code>cache.m2.4xlarge</code>
      *        </p>
+     *        <p>
+     *        <b>R3 node types:</b> <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>,
+     *        <code>cache.r3.2xlarge</code>, <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code>
+     *        </p>
      *        </li>
      *        </ul>
      *        </li>
      *        </ul>
      *        <p>
-     *        <b>Notes:</b>
+     *        <b>Additional node type info</b>
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        All T2 instances are created in an Amazon Virtual Private Cloud (Amazon VPC).
+     *        All current generation instance types are created in Amazon VPC by default.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Redis (cluster mode disabled): Redis backup/restore is not supported on T1 and T2 instances.
+     *        Redis append-only files (AOF) are not supported for T1 or T2 instances.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Redis (cluster mode enabled): Backup/restore is not supported on T1 instances.
+     *        Redis Multi-AZ with automatic failover is not supported on T1 instances.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Redis Append-only files (AOF) functionality is not supported for T1 or T2 instances.
+     *        Redis configuration variables <code>appendonly</code> and <code>appendfsync</code> are not supported on
+     *        Redis version 2.8.22 and later.
      *        </p>
      *        </li>
-     *        </ul>
-     *        <p>
-     *        For a complete listing of node types and specifications, see <a
-     *        href="http://aws.amazon.com/elasticache/details">Amazon ElastiCache Product Features and Details</a> and
-     *        either <a href=
-     *        "http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific"
-     *        >Cache Node Type-Specific Parameters for Memcached</a> or <a href=
-     *        "http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific"
-     *        >Cache Node Type-Specific Parameters for Redis</a>.
      */
 
     public void setCacheNodeType(String cacheNodeType) {
@@ -573,15 +588,15 @@ public class DescribeReservedCacheNodesRequest extends com.amazonaws.AmazonWebSe
      * Current generation:
      * </p>
      * <p>
-     * <b>T2 node types:</b> <code>cache.t2.micro</code>, <code>cache.t2.small</code>, <code>cache.t2.medium</code>
-     * </p>
-     * <p>
-     * <b>M3 node types:</b> <code>cache.m3.medium</code>, <code>cache.m3.large</code>, <code>cache.m3.xlarge</code>,
-     * <code>cache.m3.2xlarge</code>
+     * <b>M5 node types:</b> <code>cache.m5.large</code>, <code>cache.m5.xlarge</code>, <code>cache.m5.2xlarge</code>,
+     * <code>cache.m5.4xlarge</code>, <code>cache.m5.12xlarge</code>, <code>cache.m5.24xlarge</code>
      * </p>
      * <p>
      * <b>M4 node types:</b> <code>cache.m4.large</code>, <code>cache.m4.xlarge</code>, <code>cache.m4.2xlarge</code>,
      * <code>cache.m4.4xlarge</code>, <code>cache.m4.10xlarge</code>
+     * </p>
+     * <p>
+     * <b>T2 node types:</b> <code>cache.t2.micro</code>, <code>cache.t2.small</code>, <code>cache.t2.medium</code>
      * </p>
      * </li>
      * <li>
@@ -594,6 +609,10 @@ public class DescribeReservedCacheNodesRequest extends com.amazonaws.AmazonWebSe
      * <p>
      * <b>M1 node types:</b> <code>cache.m1.small</code>, <code>cache.m1.medium</code>, <code>cache.m1.large</code>,
      * <code>cache.m1.xlarge</code>
+     * </p>
+     * <p>
+     * <b>M3 node types:</b> <code>cache.m3.medium</code>, <code>cache.m3.large</code>, <code>cache.m3.xlarge</code>,
+     * <code>cache.m3.2xlarge</code>
      * </p>
      * </li>
      * </ul>
@@ -623,8 +642,12 @@ public class DescribeReservedCacheNodesRequest extends com.amazonaws.AmazonWebSe
      * Current generation:
      * </p>
      * <p>
-     * <b>R3 node types:</b> <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>,
-     * <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code>
+     * <b>R5 node types:</b> <code>cache.r5.large</code>, <code>cache.r5.xlarge</code>, <code>cache.r5.2xlarge</code>,
+     * <code>cache.r5.4xlarge</code>, <code>cache.r5.12xlarge</code>, <code>cache.r5.24xlarge</code>
+     * </p>
+     * <p>
+     * <b>R4 node types:</b> <code>cache.r4.large</code>, <code>cache.r4.xlarge</code>, <code>cache.r4.2xlarge</code>,
+     * <code>cache.r4.4xlarge</code>, <code>cache.r4.8xlarge</code>, <code>cache.r4.16xlarge</code>
      * </p>
      * </li>
      * <li>
@@ -634,44 +657,40 @@ public class DescribeReservedCacheNodesRequest extends com.amazonaws.AmazonWebSe
      * <p>
      * <b>M2 node types:</b> <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>, <code>cache.m2.4xlarge</code>
      * </p>
+     * <p>
+     * <b>R3 node types:</b> <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>,
+     * <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code>
+     * </p>
      * </li>
      * </ul>
      * </li>
      * </ul>
      * <p>
-     * <b>Notes:</b>
+     * <b>Additional node type info</b>
      * </p>
      * <ul>
      * <li>
      * <p>
-     * All T2 instances are created in an Amazon Virtual Private Cloud (Amazon VPC).
+     * All current generation instance types are created in Amazon VPC by default.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Redis (cluster mode disabled): Redis backup/restore is not supported on T1 and T2 instances.
+     * Redis append-only files (AOF) are not supported for T1 or T2 instances.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Redis (cluster mode enabled): Backup/restore is not supported on T1 instances.
+     * Redis Multi-AZ with automatic failover is not supported on T1 instances.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Redis Append-only files (AOF) functionality is not supported for T1 or T2 instances.
+     * Redis configuration variables <code>appendonly</code> and <code>appendfsync</code> are not supported on Redis
+     * version 2.8.22 and later.
      * </p>
      * </li>
      * </ul>
-     * <p>
-     * For a complete listing of node types and specifications, see <a
-     * href="http://aws.amazon.com/elasticache/details">Amazon ElastiCache Product Features and Details</a> and either
-     * <a href=
-     * "http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific"
-     * >Cache Node Type-Specific Parameters for Memcached</a> or <a href=
-     * "http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific"
-     * >Cache Node Type-Specific Parameters for Redis</a>.
-     * </p>
      * 
      * @return The cache node type filter value. Use this parameter to show only those reservations matching the
      *         specified cache node type.</p>
@@ -691,16 +710,17 @@ public class DescribeReservedCacheNodesRequest extends com.amazonaws.AmazonWebSe
      *         Current generation:
      *         </p>
      *         <p>
-     *         <b>T2 node types:</b> <code>cache.t2.micro</code>, <code>cache.t2.small</code>,
-     *         <code>cache.t2.medium</code>
-     *         </p>
-     *         <p>
-     *         <b>M3 node types:</b> <code>cache.m3.medium</code>, <code>cache.m3.large</code>,
-     *         <code>cache.m3.xlarge</code>, <code>cache.m3.2xlarge</code>
+     *         <b>M5 node types:</b> <code>cache.m5.large</code>, <code>cache.m5.xlarge</code>,
+     *         <code>cache.m5.2xlarge</code>, <code>cache.m5.4xlarge</code>, <code>cache.m5.12xlarge</code>,
+     *         <code>cache.m5.24xlarge</code>
      *         </p>
      *         <p>
      *         <b>M4 node types:</b> <code>cache.m4.large</code>, <code>cache.m4.xlarge</code>,
      *         <code>cache.m4.2xlarge</code>, <code>cache.m4.4xlarge</code>, <code>cache.m4.10xlarge</code>
+     *         </p>
+     *         <p>
+     *         <b>T2 node types:</b> <code>cache.t2.micro</code>, <code>cache.t2.small</code>,
+     *         <code>cache.t2.medium</code>
      *         </p>
      *         </li>
      *         <li>
@@ -713,6 +733,10 @@ public class DescribeReservedCacheNodesRequest extends com.amazonaws.AmazonWebSe
      *         <p>
      *         <b>M1 node types:</b> <code>cache.m1.small</code>, <code>cache.m1.medium</code>,
      *         <code>cache.m1.large</code>, <code>cache.m1.xlarge</code>
+     *         </p>
+     *         <p>
+     *         <b>M3 node types:</b> <code>cache.m3.medium</code>, <code>cache.m3.large</code>,
+     *         <code>cache.m3.xlarge</code>, <code>cache.m3.2xlarge</code>
      *         </p>
      *         </li>
      *         </ul>
@@ -742,8 +766,14 @@ public class DescribeReservedCacheNodesRequest extends com.amazonaws.AmazonWebSe
      *         Current generation:
      *         </p>
      *         <p>
-     *         <b>R3 node types:</b> <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>,
-     *         <code>cache.r3.2xlarge</code>, <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code>
+     *         <b>R5 node types:</b> <code>cache.r5.large</code>, <code>cache.r5.xlarge</code>,
+     *         <code>cache.r5.2xlarge</code>, <code>cache.r5.4xlarge</code>, <code>cache.r5.12xlarge</code>,
+     *         <code>cache.r5.24xlarge</code>
+     *         </p>
+     *         <p>
+     *         <b>R4 node types:</b> <code>cache.r4.large</code>, <code>cache.r4.xlarge</code>,
+     *         <code>cache.r4.2xlarge</code>, <code>cache.r4.4xlarge</code>, <code>cache.r4.8xlarge</code>,
+     *         <code>cache.r4.16xlarge</code>
      *         </p>
      *         </li>
      *         <li>
@@ -754,43 +784,39 @@ public class DescribeReservedCacheNodesRequest extends com.amazonaws.AmazonWebSe
      *         <b>M2 node types:</b> <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>,
      *         <code>cache.m2.4xlarge</code>
      *         </p>
+     *         <p>
+     *         <b>R3 node types:</b> <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>,
+     *         <code>cache.r3.2xlarge</code>, <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code>
+     *         </p>
      *         </li>
      *         </ul>
      *         </li>
      *         </ul>
      *         <p>
-     *         <b>Notes:</b>
+     *         <b>Additional node type info</b>
      *         </p>
      *         <ul>
      *         <li>
      *         <p>
-     *         All T2 instances are created in an Amazon Virtual Private Cloud (Amazon VPC).
+     *         All current generation instance types are created in Amazon VPC by default.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         Redis (cluster mode disabled): Redis backup/restore is not supported on T1 and T2 instances.
+     *         Redis append-only files (AOF) are not supported for T1 or T2 instances.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         Redis (cluster mode enabled): Backup/restore is not supported on T1 instances.
+     *         Redis Multi-AZ with automatic failover is not supported on T1 instances.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         Redis Append-only files (AOF) functionality is not supported for T1 or T2 instances.
+     *         Redis configuration variables <code>appendonly</code> and <code>appendfsync</code> are not supported on
+     *         Redis version 2.8.22 and later.
      *         </p>
      *         </li>
-     *         </ul>
-     *         <p>
-     *         For a complete listing of node types and specifications, see <a
-     *         href="http://aws.amazon.com/elasticache/details">Amazon ElastiCache Product Features and Details</a> and
-     *         either <a href=
-     *         "http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific"
-     *         >Cache Node Type-Specific Parameters for Memcached</a> or <a href=
-     *         "http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific"
-     *         >Cache Node Type-Specific Parameters for Redis</a>.
      */
 
     public String getCacheNodeType() {
@@ -818,15 +844,15 @@ public class DescribeReservedCacheNodesRequest extends com.amazonaws.AmazonWebSe
      * Current generation:
      * </p>
      * <p>
-     * <b>T2 node types:</b> <code>cache.t2.micro</code>, <code>cache.t2.small</code>, <code>cache.t2.medium</code>
-     * </p>
-     * <p>
-     * <b>M3 node types:</b> <code>cache.m3.medium</code>, <code>cache.m3.large</code>, <code>cache.m3.xlarge</code>,
-     * <code>cache.m3.2xlarge</code>
+     * <b>M5 node types:</b> <code>cache.m5.large</code>, <code>cache.m5.xlarge</code>, <code>cache.m5.2xlarge</code>,
+     * <code>cache.m5.4xlarge</code>, <code>cache.m5.12xlarge</code>, <code>cache.m5.24xlarge</code>
      * </p>
      * <p>
      * <b>M4 node types:</b> <code>cache.m4.large</code>, <code>cache.m4.xlarge</code>, <code>cache.m4.2xlarge</code>,
      * <code>cache.m4.4xlarge</code>, <code>cache.m4.10xlarge</code>
+     * </p>
+     * <p>
+     * <b>T2 node types:</b> <code>cache.t2.micro</code>, <code>cache.t2.small</code>, <code>cache.t2.medium</code>
      * </p>
      * </li>
      * <li>
@@ -839,6 +865,10 @@ public class DescribeReservedCacheNodesRequest extends com.amazonaws.AmazonWebSe
      * <p>
      * <b>M1 node types:</b> <code>cache.m1.small</code>, <code>cache.m1.medium</code>, <code>cache.m1.large</code>,
      * <code>cache.m1.xlarge</code>
+     * </p>
+     * <p>
+     * <b>M3 node types:</b> <code>cache.m3.medium</code>, <code>cache.m3.large</code>, <code>cache.m3.xlarge</code>,
+     * <code>cache.m3.2xlarge</code>
      * </p>
      * </li>
      * </ul>
@@ -868,8 +898,12 @@ public class DescribeReservedCacheNodesRequest extends com.amazonaws.AmazonWebSe
      * Current generation:
      * </p>
      * <p>
-     * <b>R3 node types:</b> <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>,
-     * <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code>
+     * <b>R5 node types:</b> <code>cache.r5.large</code>, <code>cache.r5.xlarge</code>, <code>cache.r5.2xlarge</code>,
+     * <code>cache.r5.4xlarge</code>, <code>cache.r5.12xlarge</code>, <code>cache.r5.24xlarge</code>
+     * </p>
+     * <p>
+     * <b>R4 node types:</b> <code>cache.r4.large</code>, <code>cache.r4.xlarge</code>, <code>cache.r4.2xlarge</code>,
+     * <code>cache.r4.4xlarge</code>, <code>cache.r4.8xlarge</code>, <code>cache.r4.16xlarge</code>
      * </p>
      * </li>
      * <li>
@@ -879,44 +913,40 @@ public class DescribeReservedCacheNodesRequest extends com.amazonaws.AmazonWebSe
      * <p>
      * <b>M2 node types:</b> <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>, <code>cache.m2.4xlarge</code>
      * </p>
+     * <p>
+     * <b>R3 node types:</b> <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>,
+     * <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code>
+     * </p>
      * </li>
      * </ul>
      * </li>
      * </ul>
      * <p>
-     * <b>Notes:</b>
+     * <b>Additional node type info</b>
      * </p>
      * <ul>
      * <li>
      * <p>
-     * All T2 instances are created in an Amazon Virtual Private Cloud (Amazon VPC).
+     * All current generation instance types are created in Amazon VPC by default.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Redis (cluster mode disabled): Redis backup/restore is not supported on T1 and T2 instances.
+     * Redis append-only files (AOF) are not supported for T1 or T2 instances.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Redis (cluster mode enabled): Backup/restore is not supported on T1 instances.
+     * Redis Multi-AZ with automatic failover is not supported on T1 instances.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Redis Append-only files (AOF) functionality is not supported for T1 or T2 instances.
+     * Redis configuration variables <code>appendonly</code> and <code>appendfsync</code> are not supported on Redis
+     * version 2.8.22 and later.
      * </p>
      * </li>
      * </ul>
-     * <p>
-     * For a complete listing of node types and specifications, see <a
-     * href="http://aws.amazon.com/elasticache/details">Amazon ElastiCache Product Features and Details</a> and either
-     * <a href=
-     * "http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific"
-     * >Cache Node Type-Specific Parameters for Memcached</a> or <a href=
-     * "http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific"
-     * >Cache Node Type-Specific Parameters for Redis</a>.
-     * </p>
      * 
      * @param cacheNodeType
      *        The cache node type filter value. Use this parameter to show only those reservations matching the
@@ -937,16 +967,17 @@ public class DescribeReservedCacheNodesRequest extends com.amazonaws.AmazonWebSe
      *        Current generation:
      *        </p>
      *        <p>
-     *        <b>T2 node types:</b> <code>cache.t2.micro</code>, <code>cache.t2.small</code>,
-     *        <code>cache.t2.medium</code>
-     *        </p>
-     *        <p>
-     *        <b>M3 node types:</b> <code>cache.m3.medium</code>, <code>cache.m3.large</code>,
-     *        <code>cache.m3.xlarge</code>, <code>cache.m3.2xlarge</code>
+     *        <b>M5 node types:</b> <code>cache.m5.large</code>, <code>cache.m5.xlarge</code>,
+     *        <code>cache.m5.2xlarge</code>, <code>cache.m5.4xlarge</code>, <code>cache.m5.12xlarge</code>,
+     *        <code>cache.m5.24xlarge</code>
      *        </p>
      *        <p>
      *        <b>M4 node types:</b> <code>cache.m4.large</code>, <code>cache.m4.xlarge</code>,
      *        <code>cache.m4.2xlarge</code>, <code>cache.m4.4xlarge</code>, <code>cache.m4.10xlarge</code>
+     *        </p>
+     *        <p>
+     *        <b>T2 node types:</b> <code>cache.t2.micro</code>, <code>cache.t2.small</code>,
+     *        <code>cache.t2.medium</code>
      *        </p>
      *        </li>
      *        <li>
@@ -959,6 +990,10 @@ public class DescribeReservedCacheNodesRequest extends com.amazonaws.AmazonWebSe
      *        <p>
      *        <b>M1 node types:</b> <code>cache.m1.small</code>, <code>cache.m1.medium</code>,
      *        <code>cache.m1.large</code>, <code>cache.m1.xlarge</code>
+     *        </p>
+     *        <p>
+     *        <b>M3 node types:</b> <code>cache.m3.medium</code>, <code>cache.m3.large</code>,
+     *        <code>cache.m3.xlarge</code>, <code>cache.m3.2xlarge</code>
      *        </p>
      *        </li>
      *        </ul>
@@ -988,8 +1023,14 @@ public class DescribeReservedCacheNodesRequest extends com.amazonaws.AmazonWebSe
      *        Current generation:
      *        </p>
      *        <p>
-     *        <b>R3 node types:</b> <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>,
-     *        <code>cache.r3.2xlarge</code>, <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code>
+     *        <b>R5 node types:</b> <code>cache.r5.large</code>, <code>cache.r5.xlarge</code>,
+     *        <code>cache.r5.2xlarge</code>, <code>cache.r5.4xlarge</code>, <code>cache.r5.12xlarge</code>,
+     *        <code>cache.r5.24xlarge</code>
+     *        </p>
+     *        <p>
+     *        <b>R4 node types:</b> <code>cache.r4.large</code>, <code>cache.r4.xlarge</code>,
+     *        <code>cache.r4.2xlarge</code>, <code>cache.r4.4xlarge</code>, <code>cache.r4.8xlarge</code>,
+     *        <code>cache.r4.16xlarge</code>
      *        </p>
      *        </li>
      *        <li>
@@ -1000,43 +1041,39 @@ public class DescribeReservedCacheNodesRequest extends com.amazonaws.AmazonWebSe
      *        <b>M2 node types:</b> <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>,
      *        <code>cache.m2.4xlarge</code>
      *        </p>
+     *        <p>
+     *        <b>R3 node types:</b> <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>,
+     *        <code>cache.r3.2xlarge</code>, <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code>
+     *        </p>
      *        </li>
      *        </ul>
      *        </li>
      *        </ul>
      *        <p>
-     *        <b>Notes:</b>
+     *        <b>Additional node type info</b>
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        All T2 instances are created in an Amazon Virtual Private Cloud (Amazon VPC).
+     *        All current generation instance types are created in Amazon VPC by default.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Redis (cluster mode disabled): Redis backup/restore is not supported on T1 and T2 instances.
+     *        Redis append-only files (AOF) are not supported for T1 or T2 instances.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Redis (cluster mode enabled): Backup/restore is not supported on T1 instances.
+     *        Redis Multi-AZ with automatic failover is not supported on T1 instances.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Redis Append-only files (AOF) functionality is not supported for T1 or T2 instances.
+     *        Redis configuration variables <code>appendonly</code> and <code>appendfsync</code> are not supported on
+     *        Redis version 2.8.22 and later.
      *        </p>
      *        </li>
-     *        </ul>
-     *        <p>
-     *        For a complete listing of node types and specifications, see <a
-     *        href="http://aws.amazon.com/elasticache/details">Amazon ElastiCache Product Features and Details</a> and
-     *        either <a href=
-     *        "http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific"
-     *        >Cache Node Type-Specific Parameters for Memcached</a> or <a href=
-     *        "http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific"
-     *        >Cache Node Type-Specific Parameters for Redis</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1351,7 +1388,8 @@ public class DescribeReservedCacheNodesRequest extends com.amazonaws.AmazonWebSe
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

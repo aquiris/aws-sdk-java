@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,10 +27,11 @@ import com.amazonaws.protocol.ProtocolMarshaller;
  * <code>Quality</code>.
  * </p>
  * <p>
- * is the only Rekognition Video stored video operation that can return a <code>FaceDetail</code> object with all
- * attributes. To specify which attributes to return, use the <code>FaceAttributes</code> input parameter for . The
- * following Rekognition Video operations return only the default attributes. The corresponding Start operations don't
- * have a <code>FaceAttributes</code> input parameter.
+ * <a>GetFaceDetection</a> is the only Amazon Rekognition Video stored video operation that can return a
+ * <code>FaceDetail</code> object with all attributes. To specify which attributes to return, use the
+ * <code>FaceAttributes</code> input parameter for <a>StartFaceDetection</a>. The following Amazon Rekognition Video
+ * operations return only the default attributes. The corresponding Start operations don't have a
+ * <code>FaceAttributes</code> input parameter.
  * </p>
  * <ul>
  * <li>
@@ -50,9 +51,9 @@ import com.amazonaws.protocol.ProtocolMarshaller;
  * </li>
  * </ul>
  * <p>
- * The Rekognition Image and operations can return all facial attributes. To specify which attributes to return, use the
- * <code>Attributes</code> input parameter for <code>DetectFaces</code>. For <code>IndexFaces</code>, use the
- * <code>DetectAttributes</code> input parameter.
+ * The Amazon Rekognition Image <a>DetectFaces</a> and <a>IndexFaces</a> operations can return all facial attributes. To
+ * specify which attributes to return, use the <code>Attributes</code> input parameter for <code>DetectFaces</code>. For
+ * <code>IndexFaces</code>, use the <code>DetectAttributes</code> input parameter.
  * </p>
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
@@ -121,8 +122,10 @@ public class FaceDetail implements Serializable, Cloneable, StructuredPojo {
     private MouthOpen mouthOpen;
     /**
      * <p>
-     * The emotions detected on the face, and the confidence level in the determination. For example, HAPPY, SAD, and
-     * ANGRY.
+     * The emotions that appear to be expressed on the face, and the confidence level in the determination. The API is
+     * only making a determination of the physical appearance of a person's face. It is not a determination of the
+     * person’s internal emotional state and should not be used in such a way. For example, a person pretending to have
+     * a sad face might not be sad emotionally.
      * </p>
      */
     private java.util.List<Emotion> emotions;
@@ -560,12 +563,16 @@ public class FaceDetail implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The emotions detected on the face, and the confidence level in the determination. For example, HAPPY, SAD, and
-     * ANGRY.
+     * The emotions that appear to be expressed on the face, and the confidence level in the determination. The API is
+     * only making a determination of the physical appearance of a person's face. It is not a determination of the
+     * person’s internal emotional state and should not be used in such a way. For example, a person pretending to have
+     * a sad face might not be sad emotionally.
      * </p>
      * 
-     * @return The emotions detected on the face, and the confidence level in the determination. For example, HAPPY,
-     *         SAD, and ANGRY.
+     * @return The emotions that appear to be expressed on the face, and the confidence level in the determination. The
+     *         API is only making a determination of the physical appearance of a person's face. It is not a
+     *         determination of the person’s internal emotional state and should not be used in such a way. For example,
+     *         a person pretending to have a sad face might not be sad emotionally.
      */
 
     public java.util.List<Emotion> getEmotions() {
@@ -574,13 +581,17 @@ public class FaceDetail implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The emotions detected on the face, and the confidence level in the determination. For example, HAPPY, SAD, and
-     * ANGRY.
+     * The emotions that appear to be expressed on the face, and the confidence level in the determination. The API is
+     * only making a determination of the physical appearance of a person's face. It is not a determination of the
+     * person’s internal emotional state and should not be used in such a way. For example, a person pretending to have
+     * a sad face might not be sad emotionally.
      * </p>
      * 
      * @param emotions
-     *        The emotions detected on the face, and the confidence level in the determination. For example, HAPPY, SAD,
-     *        and ANGRY.
+     *        The emotions that appear to be expressed on the face, and the confidence level in the determination. The
+     *        API is only making a determination of the physical appearance of a person's face. It is not a
+     *        determination of the person’s internal emotional state and should not be used in such a way. For example,
+     *        a person pretending to have a sad face might not be sad emotionally.
      */
 
     public void setEmotions(java.util.Collection<Emotion> emotions) {
@@ -594,8 +605,10 @@ public class FaceDetail implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The emotions detected on the face, and the confidence level in the determination. For example, HAPPY, SAD, and
-     * ANGRY.
+     * The emotions that appear to be expressed on the face, and the confidence level in the determination. The API is
+     * only making a determination of the physical appearance of a person's face. It is not a determination of the
+     * person’s internal emotional state and should not be used in such a way. For example, a person pretending to have
+     * a sad face might not be sad emotionally.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -604,8 +617,10 @@ public class FaceDetail implements Serializable, Cloneable, StructuredPojo {
      * </p>
      * 
      * @param emotions
-     *        The emotions detected on the face, and the confidence level in the determination. For example, HAPPY, SAD,
-     *        and ANGRY.
+     *        The emotions that appear to be expressed on the face, and the confidence level in the determination. The
+     *        API is only making a determination of the physical appearance of a person's face. It is not a
+     *        determination of the person’s internal emotional state and should not be used in such a way. For example,
+     *        a person pretending to have a sad face might not be sad emotionally.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -621,13 +636,17 @@ public class FaceDetail implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The emotions detected on the face, and the confidence level in the determination. For example, HAPPY, SAD, and
-     * ANGRY.
+     * The emotions that appear to be expressed on the face, and the confidence level in the determination. The API is
+     * only making a determination of the physical appearance of a person's face. It is not a determination of the
+     * person’s internal emotional state and should not be used in such a way. For example, a person pretending to have
+     * a sad face might not be sad emotionally.
      * </p>
      * 
      * @param emotions
-     *        The emotions detected on the face, and the confidence level in the determination. For example, HAPPY, SAD,
-     *        and ANGRY.
+     *        The emotions that appear to be expressed on the face, and the confidence level in the determination. The
+     *        API is only making a determination of the physical appearance of a person's face. It is not a
+     *        determination of the person’s internal emotional state and should not be used in such a way. For example,
+     *        a person pretending to have a sad face might not be sad emotionally.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -833,7 +852,8 @@ public class FaceDetail implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

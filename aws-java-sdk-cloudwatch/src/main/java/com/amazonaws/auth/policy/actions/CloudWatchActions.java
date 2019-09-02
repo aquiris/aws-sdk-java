@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,6 +27,8 @@ public enum CloudWatchActions implements Action {
 
     /** Action for the DeleteAlarms operation. */
     DeleteAlarms("cloudwatch:DeleteAlarms"),
+    /** Action for the DeleteAnomalyDetector operation. */
+    DeleteAnomalyDetector("cloudwatch:DeleteAnomalyDetector"),
     /** Action for the DeleteDashboards operation. */
     DeleteDashboards("cloudwatch:DeleteDashboards"),
     /** Action for the DescribeAlarmHistory operation. */
@@ -35,6 +37,8 @@ public enum CloudWatchActions implements Action {
     DescribeAlarms("cloudwatch:DescribeAlarms"),
     /** Action for the DescribeAlarmsForMetric operation. */
     DescribeAlarmsForMetric("cloudwatch:DescribeAlarmsForMetric"),
+    /** Action for the DescribeAnomalyDetectors operation. */
+    DescribeAnomalyDetectors("cloudwatch:DescribeAnomalyDetectors"),
     /** Action for the DisableAlarmActions operation. */
     DisableAlarmActions("cloudwatch:DisableAlarmActions"),
     /** Action for the EnableAlarmActions operation. */
@@ -45,10 +49,16 @@ public enum CloudWatchActions implements Action {
     GetMetricData("cloudwatch:GetMetricData"),
     /** Action for the GetMetricStatistics operation. */
     GetMetricStatistics("cloudwatch:GetMetricStatistics"),
+    /** Action for the GetMetricWidgetImage operation. */
+    GetMetricWidgetImage("cloudwatch:GetMetricWidgetImage"),
     /** Action for the ListDashboards operation. */
     ListDashboards("cloudwatch:ListDashboards"),
     /** Action for the ListMetrics operation. */
     ListMetrics("cloudwatch:ListMetrics"),
+    /** Action for the ListTagsForResource operation. */
+    ListTagsForResource("cloudwatch:ListTagsForResource"),
+    /** Action for the PutAnomalyDetector operation. */
+    PutAnomalyDetector("cloudwatch:PutAnomalyDetector"),
     /** Action for the PutDashboard operation. */
     PutDashboard("cloudwatch:PutDashboard"),
     /** Action for the PutMetricAlarm operation. */
@@ -57,6 +67,10 @@ public enum CloudWatchActions implements Action {
     PutMetricData("cloudwatch:PutMetricData"),
     /** Action for the SetAlarmState operation. */
     SetAlarmState("cloudwatch:SetAlarmState"),
+    /** Action for the TagResource operation. */
+    TagResource("cloudwatch:TagResource"),
+    /** Action for the UntagResource operation. */
+    UntagResource("cloudwatch:UntagResource"),
 
     ;
 

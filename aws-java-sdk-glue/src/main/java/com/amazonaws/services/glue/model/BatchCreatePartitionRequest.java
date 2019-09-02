@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,7 +27,7 @@ public class BatchCreatePartitionRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * The ID of the catalog in which the partion is to be created. Currently, this should be the AWS account ID.
+     * The ID of the catalog in which the partition is to be created. Currently, this should be the AWS account ID.
      * </p>
      */
     private String catalogId;
@@ -52,11 +52,12 @@ public class BatchCreatePartitionRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * The ID of the catalog in which the partion is to be created. Currently, this should be the AWS account ID.
+     * The ID of the catalog in which the partition is to be created. Currently, this should be the AWS account ID.
      * </p>
      * 
      * @param catalogId
-     *        The ID of the catalog in which the partion is to be created. Currently, this should be the AWS account ID.
+     *        The ID of the catalog in which the partition is to be created. Currently, this should be the AWS account
+     *        ID.
      */
 
     public void setCatalogId(String catalogId) {
@@ -65,10 +66,10 @@ public class BatchCreatePartitionRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * The ID of the catalog in which the partion is to be created. Currently, this should be the AWS account ID.
+     * The ID of the catalog in which the partition is to be created. Currently, this should be the AWS account ID.
      * </p>
      * 
-     * @return The ID of the catalog in which the partion is to be created. Currently, this should be the AWS account
+     * @return The ID of the catalog in which the partition is to be created. Currently, this should be the AWS account
      *         ID.
      */
 
@@ -78,11 +79,12 @@ public class BatchCreatePartitionRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * The ID of the catalog in which the partion is to be created. Currently, this should be the AWS account ID.
+     * The ID of the catalog in which the partition is to be created. Currently, this should be the AWS account ID.
      * </p>
      * 
      * @param catalogId
-     *        The ID of the catalog in which the partion is to be created. Currently, this should be the AWS account ID.
+     *        The ID of the catalog in which the partition is to be created. Currently, this should be the AWS account
+     *        ID.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -242,7 +244,8 @@ public class BatchCreatePartitionRequest extends com.amazonaws.AmazonWebServiceR
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

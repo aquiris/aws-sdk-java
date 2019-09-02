@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -28,11 +28,15 @@ import com.amazonaws.annotation.SdkInternalApi;
 public class GetTraceSummariesRequestMarshaller {
 
     private static final MarshallingInfo<java.util.Date> STARTTIME_BINDING = MarshallingInfo.builder(MarshallingType.DATE)
-            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("StartTime").build();
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("StartTime").timestampFormat("unixTimestamp").build();
     private static final MarshallingInfo<java.util.Date> ENDTIME_BINDING = MarshallingInfo.builder(MarshallingType.DATE)
-            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("EndTime").build();
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("EndTime").timestampFormat("unixTimestamp").build();
+    private static final MarshallingInfo<String> TIMERANGETYPE_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("TimeRangeType").build();
     private static final MarshallingInfo<Boolean> SAMPLING_BINDING = MarshallingInfo.builder(MarshallingType.BOOLEAN)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("Sampling").build();
+    private static final MarshallingInfo<StructuredPojo> SAMPLINGSTRATEGY_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("SamplingStrategy").build();
     private static final MarshallingInfo<String> FILTEREXPRESSION_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("FilterExpression").build();
     private static final MarshallingInfo<String> NEXTTOKEN_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
@@ -56,7 +60,9 @@ public class GetTraceSummariesRequestMarshaller {
         try {
             protocolMarshaller.marshall(getTraceSummariesRequest.getStartTime(), STARTTIME_BINDING);
             protocolMarshaller.marshall(getTraceSummariesRequest.getEndTime(), ENDTIME_BINDING);
+            protocolMarshaller.marshall(getTraceSummariesRequest.getTimeRangeType(), TIMERANGETYPE_BINDING);
             protocolMarshaller.marshall(getTraceSummariesRequest.getSampling(), SAMPLING_BINDING);
+            protocolMarshaller.marshall(getTraceSummariesRequest.getSamplingStrategy(), SAMPLINGSTRATEGY_BINDING);
             protocolMarshaller.marshall(getTraceSummariesRequest.getFilterExpression(), FILTEREXPRESSION_BINDING);
             protocolMarshaller.marshall(getTraceSummariesRequest.getNextToken(), NEXTTOKEN_BINDING);
         } catch (Exception e) {

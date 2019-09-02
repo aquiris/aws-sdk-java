@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -66,9 +66,10 @@ public interface AmazonDynamoDB {
      * protocol from this client's {@link ClientConfiguration} will be used, which by default is HTTPS.
      * <p>
      * For more information on using AWS regions with the AWS SDK for Java, and a complete list of all available
-     * endpoints for all AWS services, see: <a
-     * href="http://developer.amazonwebservices.com/connect/entry.jspa?externalID=3912">
-     * http://developer.amazonwebservices.com/connect/entry.jspa?externalID=3912</a>
+     * endpoints for all AWS services, see: <a href=
+     * "https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/java-dg-region-selection.html#region-selection-choose-endpoint"
+     * > https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/java-dg-region-selection.html#region-selection-
+     * choose-endpoint</a>
      * <p>
      * <b>This method is not threadsafe. An endpoint should be configured when the client is created and before any
      * service requests are made. Changing it afterwards creates inevitable race conditions for any service requests in
@@ -115,26 +116,26 @@ public interface AmazonDynamoDB {
      * </p>
      * <p>
      * A single operation can retrieve up to 16 MB of data, which can contain as many as 100 items.
-     * <code>BatchGetItem</code> will return a partial result if the response size limit is exceeded, the table's
+     * <code>BatchGetItem</code> returns a partial result if the response size limit is exceeded, the table's
      * provisioned throughput is exceeded, or an internal processing failure occurs. If a partial result is returned,
      * the operation returns a value for <code>UnprocessedKeys</code>. You can use this value to retry the operation
      * starting with the next item to get.
      * </p>
      * <important>
      * <p>
-     * If you request more than 100 items <code>BatchGetItem</code> will return a <code>ValidationException</code> with
-     * the message "Too many items requested for the BatchGetItem call".
+     * If you request more than 100 items, <code>BatchGetItem</code> returns a <code>ValidationException</code> with the
+     * message "Too many items requested for the BatchGetItem call."
      * </p>
      * </important>
      * <p>
      * For example, if you ask to retrieve 100 items, but each individual item is 300 KB in size, the system returns 52
      * items (so as not to exceed the 16 MB limit). It also returns an appropriate <code>UnprocessedKeys</code> value so
      * you can get the next page of results. If desired, your application can include its own logic to assemble the
-     * pages of results into one data set.
+     * pages of results into one dataset.
      * </p>
      * <p>
      * If <i>none</i> of the items can be processed due to insufficient provisioned throughput on all of the tables in
-     * the request, then <code>BatchGetItem</code> will return a <code>ProvisionedThroughputExceededException</code>. If
+     * the request, then <code>BatchGetItem</code> returns a <code>ProvisionedThroughputExceededException</code>. If
      * <i>at least one</i> of the items is successfully processed, then <code>BatchGetItem</code> completes
      * successfully, while returning the keys of the unread items in <code>UnprocessedKeys</code>.
      * </p>
@@ -148,7 +149,7 @@ public interface AmazonDynamoDB {
      * </p>
      * <p>
      * For more information, see <a
-     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ErrorHandling.html#BatchOperations">Batch
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ErrorHandling.html#BatchOperations">Batch
      * Operations and Error Handling</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      * </p>
      * </important>
@@ -168,8 +169,8 @@ public interface AmazonDynamoDB {
      * <p>
      * If a requested item does not exist, it is not returned in the result. Requests for nonexistent items consume the
      * minimum read capacity units according to the type of read. For more information, see <a href=
-     * "http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#CapacityUnitCalculations"
-     * >Capacity Units Calculations</a> in the <i>Amazon DynamoDB Developer Guide</i>.
+     * "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#CapacityUnitCalculations"
+     * >Working with Tables</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      * </p>
      * 
      * @param batchGetItemRequest
@@ -179,11 +180,14 @@ public interface AmazonDynamoDB {
      *         Your request rate is too high. The AWS SDKs for DynamoDB automatically retry requests that receive this
      *         exception. Your request is eventually successful, unless your retry queue is too large to finish. Reduce
      *         the frequency of requests and use exponential backoff. For more information, go to <a href=
-     *         "http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Programming.Errors.html#Programming.Errors.RetryAndBackoff"
+     *         "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Programming.Errors.html#Programming.Errors.RetryAndBackoff"
      *         >Error Retries and Exponential Backoff</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      * @throws ResourceNotFoundException
      *         The operation tried to access a nonexistent table or index. The resource might not be specified
      *         correctly, or its status might not be <code>ACTIVE</code>.
+     * @throws RequestLimitExceededException
+     *         Throughput exceeds the current throughput limit for your account. Please contact AWS Support at <a
+     *         href="https://aws.amazon.com/support">AWS Support</a> to request a limit increase.
      * @throws InternalServerErrorException
      *         An error occurred on the server side.
      * @sample AmazonDynamoDB.BatchGetItem
@@ -227,9 +231,8 @@ public interface AmazonDynamoDB {
      * unprocessed items until all items have been processed.
      * </p>
      * <p>
-     * Note that if <i>none</i> of the items can be processed due to insufficient provisioned throughput on all of the
-     * tables in the request, then <code>BatchWriteItem</code> will return a
-     * <code>ProvisionedThroughputExceededException</code>.
+     * If <i>none</i> of the items can be processed due to insufficient provisioned throughput on all of the tables in
+     * the request, then <code>BatchWriteItem</code> returns a <code>ProvisionedThroughputExceededException</code>.
      * </p>
      * <important>
      * <p>
@@ -240,18 +243,17 @@ public interface AmazonDynamoDB {
      * likely to succeed.
      * </p>
      * <p>
-     * For more information, see <a
-     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ErrorHandling.html#BatchOperations">Batch
-     * Operations and Error Handling</a> in the <i>Amazon DynamoDB Developer Guide</i>.
+     * For more information, see <a href=
+     * "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ErrorHandling.html#Programming.Errors.BatchOperations"
+     * >Batch Operations and Error Handling</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      * </p>
      * </important>
      * <p>
      * With <code>BatchWriteItem</code>, you can efficiently write or delete large amounts of data, such as from Amazon
-     * Elastic MapReduce (EMR), or copy data from another database into DynamoDB. In order to improve performance with
-     * these large-scale operations, <code>BatchWriteItem</code> does not behave in the same way as individual
-     * <code>PutItem</code> and <code>DeleteItem</code> calls would. For example, you cannot specify conditions on
-     * individual put and delete requests, and <code>BatchWriteItem</code> does not return deleted items in the
-     * response.
+     * EMR, or copy data from another database into DynamoDB. In order to improve performance with these large-scale
+     * operations, <code>BatchWriteItem</code> does not behave in the same way as individual <code>PutItem</code> and
+     * <code>DeleteItem</code> calls would. For example, you cannot specify conditions on individual put and delete
+     * requests, and <code>BatchWriteItem</code> does not return deleted items in the response.
      * </p>
      * <p>
      * If you use a programming language that supports concurrency, you can use threads to write items in parallel. Your
@@ -316,7 +318,7 @@ public interface AmazonDynamoDB {
      *         Your request rate is too high. The AWS SDKs for DynamoDB automatically retry requests that receive this
      *         exception. Your request is eventually successful, unless your retry queue is too large to finish. Reduce
      *         the frequency of requests and use exponential backoff. For more information, go to <a href=
-     *         "http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Programming.Errors.html#Programming.Errors.RetryAndBackoff"
+     *         "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Programming.Errors.html#Programming.Errors.RetryAndBackoff"
      *         >Error Retries and Exponential Backoff</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      * @throws ResourceNotFoundException
      *         The operation tried to access a nonexistent table or index. The resource might not be specified
@@ -324,6 +326,9 @@ public interface AmazonDynamoDB {
      * @throws ItemCollectionSizeLimitExceededException
      *         An item collection is too large. This exception is only returned for tables that have one or more local
      *         secondary indexes.
+     * @throws RequestLimitExceededException
+     *         Throughput exceeds the current throughput limit for your account. Please contact AWS Support at <a
+     *         href="https://aws.amazon.com/support">AWS Support</a> to request a limit increase.
      * @throws InternalServerErrorException
      *         An error occurred on the server side.
      * @sample AmazonDynamoDB.BatchWriteItem
@@ -344,11 +349,11 @@ public interface AmazonDynamoDB {
      * Creates a backup for an existing table.
      * </p>
      * <p>
-     * Each time you create an On-Demand Backup, the entire table data is backed up. There is no limit to the number of
+     * Each time you create an on-demand backup, the entire table data is backed up. There is no limit to the number of
      * on-demand backups that can be taken.
      * </p>
      * <p>
-     * When you create an On-Demand Backup, a time marker of the request is cataloged, and the backup is created
+     * When you create an on-demand backup, a time marker of the request is cataloged, and the backup is created
      * asynchronously, by applying all changes until the time of the request to the last full table snapshot. Backup
      * requests are processed instantaneously and become available for restore within minutes.
      * </p>
@@ -360,8 +365,8 @@ public interface AmazonDynamoDB {
      * </p>
      * <p>
      * If you submit a backup request on 2018-12-14 at 14:25:00, the backup is guaranteed to contain all data committed
-     * to the table up to 14:24:00, and data committed after 14:26:00 will not be. The backup may or may not contain
-     * data modifications made between 14:24:00 and 14:26:00. On-Demand Backup does not support causal consistency.
+     * to the table up to 14:24:00, and data committed after 14:26:00 will not be. The backup might contain data
+     * modifications made between 14:24:00 and 14:26:00. On-demand backup does not support causal consistency.
      * </p>
      * <p>
      * Along with data, the following are also included on the backups:
@@ -399,23 +404,23 @@ public interface AmazonDynamoDB {
      * @throws ContinuousBackupsUnavailableException
      *         Backups have not yet been enabled for this table.
      * @throws BackupInUseException
-     *         There is another ongoing conflicting backup control plane operation on the table. The backups is either
+     *         There is another ongoing conflicting backup control plane operation on the table. The backup is either
      *         being created, deleted or restored to a table.
      * @throws LimitExceededException
-     *         Up to 50 <code>CreateBackup</code> operations are allowed per second, per account. There is no limit to
-     *         the number of daily on-demand backups that can be taken. </p>
+     *         There is no limit to the number of daily on-demand backups that can be taken. </p>
      *         <p>
-     *         Up to 10 simultaneous table operations are allowed per account. These operations include
+     *         Up to 50 simultaneous table operations are allowed per account. These operations include
      *         <code>CreateTable</code>, <code>UpdateTable</code>, <code>DeleteTable</code>,
      *         <code>UpdateTimeToLive</code>, <code>RestoreTableFromBackup</code>, and
      *         <code>RestoreTableToPointInTime</code>.
      *         </p>
      *         <p>
-     *         For tables with secondary indexes, only one of those tables can be in the <code>CREATING</code> state at
-     *         any point in time. Do not attempt to create more than one such table simultaneously.
+     *         The only exception is when you are creating a table with one or more secondary indexes. You can have up
+     *         to 25 such requests running at a time; however, if the table or index specifications are complex,
+     *         DynamoDB might temporarily reduce the number of concurrent operations.
      *         </p>
      *         <p>
-     *         The total limit of tables in the <code>ACTIVE</code> state is 250.
+     *         There is a soft account limit of 256 tables.
      * @throws InternalServerErrorException
      *         An error occurred on the server side.
      * @sample AmazonDynamoDB.CreateBackup
@@ -427,35 +432,31 @@ public interface AmazonDynamoDB {
     /**
      * <p>
      * Creates a global table from an existing table. A global table creates a replication relationship between two or
-     * more DynamoDB tables with the same table name in the provided regions.
+     * more DynamoDB tables with the same table name in the provided Regions.
      * </p>
      * <p>
-     * Tables can only be added as the replicas of a global table group under the following conditions:
+     * If you want to add a new replica table to a global table, each of the following conditions must be true:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * The tables must have the same name.
+     * The table must have the same primary key as all of the other replicas.
      * </p>
      * </li>
      * <li>
      * <p>
-     * The tables must contain no items.
+     * The table must have the same name as all of the other replicas.
      * </p>
      * </li>
      * <li>
      * <p>
-     * The tables must have the same hash key and sort key (if present).
+     * The table must have DynamoDB Streams enabled, with the stream containing both the new and the old images of the
+     * item.
      * </p>
      * </li>
      * <li>
      * <p>
-     * The tables must have DynamoDB Streams enabled (NEW_AND_OLD_IMAGES).
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * The tables must have same provisioned and maximum write capacity units.
+     * None of the replica tables in the global table can contain any data.
      * </p>
      * </li>
      * </ul>
@@ -473,30 +474,37 @@ public interface AmazonDynamoDB {
      * The global secondary indexes must have the same hash key and sort key (if present).
      * </p>
      * </li>
-     * <li>
-     * <p>
-     * The global secondary indexes must have the same provisioned and maximum write capacity units.
-     * </p>
-     * </li>
      * </ul>
+     * <important>
+     * <p>
+     * Write capacity settings should be set consistently across your replica tables and secondary indexes. DynamoDB
+     * strongly recommends enabling auto scaling to manage the write capacity settings for all of your global tables
+     * replicas and indexes.
+     * </p>
+     * <p>
+     * If you prefer to manage write capacity settings manually, you should provision equal replicated write capacity
+     * units to your replica tables. You should also provision equal replicated write capacity units to matching
+     * secondary indexes across your global table.
+     * </p>
+     * </important>
      * 
      * @param createGlobalTableRequest
      * @return Result of the CreateGlobalTable operation returned by the service.
      * @throws LimitExceededException
-     *         Up to 50 <code>CreateBackup</code> operations are allowed per second, per account. There is no limit to
-     *         the number of daily on-demand backups that can be taken. </p>
+     *         There is no limit to the number of daily on-demand backups that can be taken. </p>
      *         <p>
-     *         Up to 10 simultaneous table operations are allowed per account. These operations include
+     *         Up to 50 simultaneous table operations are allowed per account. These operations include
      *         <code>CreateTable</code>, <code>UpdateTable</code>, <code>DeleteTable</code>,
      *         <code>UpdateTimeToLive</code>, <code>RestoreTableFromBackup</code>, and
      *         <code>RestoreTableToPointInTime</code>.
      *         </p>
      *         <p>
-     *         For tables with secondary indexes, only one of those tables can be in the <code>CREATING</code> state at
-     *         any point in time. Do not attempt to create more than one such table simultaneously.
+     *         The only exception is when you are creating a table with one or more secondary indexes. You can have up
+     *         to 25 such requests running at a time; however, if the table or index specifications are complex,
+     *         DynamoDB might temporarily reduce the number of concurrent operations.
      *         </p>
      *         <p>
-     *         The total limit of tables in the <code>ACTIVE</code> state is 250.
+     *         There is a soft account limit of 256 tables.
      * @throws InternalServerErrorException
      *         An error occurred on the server side.
      * @throws GlobalTableAlreadyExistsException
@@ -513,8 +521,8 @@ public interface AmazonDynamoDB {
     /**
      * <p>
      * The <code>CreateTable</code> operation adds a new table to your account. In an AWS account, table names must be
-     * unique within each region. That is, you can have two tables with same name if you create the tables in different
-     * regions.
+     * unique within each Region. That is, you can have two tables with same name if you create the tables in different
+     * Regions.
      * </p>
      * <p>
      * <code>CreateTable</code> is an asynchronous operation. Upon receiving a <code>CreateTable</code> request,
@@ -538,20 +546,20 @@ public interface AmazonDynamoDB {
      *         The operation conflicts with the resource's availability. For example, you attempted to recreate an
      *         existing table, or tried to delete a table currently in the <code>CREATING</code> state.
      * @throws LimitExceededException
-     *         Up to 50 <code>CreateBackup</code> operations are allowed per second, per account. There is no limit to
-     *         the number of daily on-demand backups that can be taken. </p>
+     *         There is no limit to the number of daily on-demand backups that can be taken. </p>
      *         <p>
-     *         Up to 10 simultaneous table operations are allowed per account. These operations include
+     *         Up to 50 simultaneous table operations are allowed per account. These operations include
      *         <code>CreateTable</code>, <code>UpdateTable</code>, <code>DeleteTable</code>,
      *         <code>UpdateTimeToLive</code>, <code>RestoreTableFromBackup</code>, and
      *         <code>RestoreTableToPointInTime</code>.
      *         </p>
      *         <p>
-     *         For tables with secondary indexes, only one of those tables can be in the <code>CREATING</code> state at
-     *         any point in time. Do not attempt to create more than one such table simultaneously.
+     *         The only exception is when you are creating a table with one or more secondary indexes. You can have up
+     *         to 25 such requests running at a time; however, if the table or index specifications are complex,
+     *         DynamoDB might temporarily reduce the number of concurrent operations.
      *         </p>
      *         <p>
-     *         The total limit of tables in the <code>ACTIVE</code> state is 250.
+     *         There is a soft account limit of 256 tables.
      * @throws InternalServerErrorException
      *         An error occurred on the server side.
      * @sample AmazonDynamoDB.CreateTable
@@ -581,23 +589,23 @@ public interface AmazonDynamoDB {
      * @throws BackupNotFoundException
      *         Backup not found for the given BackupARN.
      * @throws BackupInUseException
-     *         There is another ongoing conflicting backup control plane operation on the table. The backups is either
+     *         There is another ongoing conflicting backup control plane operation on the table. The backup is either
      *         being created, deleted or restored to a table.
      * @throws LimitExceededException
-     *         Up to 50 <code>CreateBackup</code> operations are allowed per second, per account. There is no limit to
-     *         the number of daily on-demand backups that can be taken. </p>
+     *         There is no limit to the number of daily on-demand backups that can be taken. </p>
      *         <p>
-     *         Up to 10 simultaneous table operations are allowed per account. These operations include
+     *         Up to 50 simultaneous table operations are allowed per account. These operations include
      *         <code>CreateTable</code>, <code>UpdateTable</code>, <code>DeleteTable</code>,
      *         <code>UpdateTimeToLive</code>, <code>RestoreTableFromBackup</code>, and
      *         <code>RestoreTableToPointInTime</code>.
      *         </p>
      *         <p>
-     *         For tables with secondary indexes, only one of those tables can be in the <code>CREATING</code> state at
-     *         any point in time. Do not attempt to create more than one such table simultaneously.
+     *         The only exception is when you are creating a table with one or more secondary indexes. You can have up
+     *         to 25 such requests running at a time; however, if the table or index specifications are complex,
+     *         DynamoDB might temporarily reduce the number of concurrent operations.
      *         </p>
      *         <p>
-     *         The total limit of tables in the <code>ACTIVE</code> state is 250.
+     *         There is a soft account limit of 256 tables.
      * @throws InternalServerErrorException
      *         An error occurred on the server side.
      * @sample AmazonDynamoDB.DeleteBackup
@@ -633,7 +641,7 @@ public interface AmazonDynamoDB {
      *         Your request rate is too high. The AWS SDKs for DynamoDB automatically retry requests that receive this
      *         exception. Your request is eventually successful, unless your retry queue is too large to finish. Reduce
      *         the frequency of requests and use exponential backoff. For more information, go to <a href=
-     *         "http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Programming.Errors.html#Programming.Errors.RetryAndBackoff"
+     *         "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Programming.Errors.html#Programming.Errors.RetryAndBackoff"
      *         >Error Retries and Exponential Backoff</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      * @throws ResourceNotFoundException
      *         The operation tried to access a nonexistent table or index. The resource might not be specified
@@ -641,6 +649,11 @@ public interface AmazonDynamoDB {
      * @throws ItemCollectionSizeLimitExceededException
      *         An item collection is too large. This exception is only returned for tables that have one or more local
      *         secondary indexes.
+     * @throws TransactionConflictException
+     *         Operation was rejected because there is an ongoing transaction for the item.
+     * @throws RequestLimitExceededException
+     *         Throughput exceeds the current throughput limit for your account. Please contact AWS Support at <a
+     *         href="https://aws.amazon.com/support">AWS Support</a> to request a limit increase.
      * @throws InternalServerErrorException
      *         An error occurred on the server side.
      * @sample AmazonDynamoDB.DeleteItem
@@ -699,20 +712,20 @@ public interface AmazonDynamoDB {
      *         The operation tried to access a nonexistent table or index. The resource might not be specified
      *         correctly, or its status might not be <code>ACTIVE</code>.
      * @throws LimitExceededException
-     *         Up to 50 <code>CreateBackup</code> operations are allowed per second, per account. There is no limit to
-     *         the number of daily on-demand backups that can be taken. </p>
+     *         There is no limit to the number of daily on-demand backups that can be taken. </p>
      *         <p>
-     *         Up to 10 simultaneous table operations are allowed per account. These operations include
+     *         Up to 50 simultaneous table operations are allowed per account. These operations include
      *         <code>CreateTable</code>, <code>UpdateTable</code>, <code>DeleteTable</code>,
      *         <code>UpdateTimeToLive</code>, <code>RestoreTableFromBackup</code>, and
      *         <code>RestoreTableToPointInTime</code>.
      *         </p>
      *         <p>
-     *         For tables with secondary indexes, only one of those tables can be in the <code>CREATING</code> state at
-     *         any point in time. Do not attempt to create more than one such table simultaneously.
+     *         The only exception is when you are creating a table with one or more secondary indexes. You can have up
+     *         to 25 such requests running at a time; however, if the table or index specifications are complex,
+     *         DynamoDB might temporarily reduce the number of concurrent operations.
      *         </p>
      *         <p>
-     *         The total limit of tables in the <code>ACTIVE</code> state is 250.
+     *         There is a soft account limit of 256 tables.
      * @throws InternalServerErrorException
      *         An error occurred on the server side.
      * @sample AmazonDynamoDB.DeleteTable
@@ -755,7 +768,7 @@ public interface AmazonDynamoDB {
      * <code>PointInTimeRecoveryStatus</code> will be set to ENABLED.
      * </p>
      * <p>
-     * Once continuous backups and point in time recovery are enabled, you can restore to any point in time within
+     * After continuous backups and point in time recovery are enabled, you can restore to any point in time within
      * <code>EarliestRestorableDateTime</code> and <code>LatestRestorableDateTime</code>.
      * </p>
      * <p>
@@ -781,6 +794,19 @@ public interface AmazonDynamoDB {
 
     /**
      * <p>
+     * Returns the regional endpoint information.
+     * </p>
+     * 
+     * @param describeEndpointsRequest
+     * @return Result of the DescribeEndpoints operation returned by the service.
+     * @sample AmazonDynamoDB.DescribeEndpoints
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/DescribeEndpoints" target="_top">AWS API
+     *      Documentation</a>
+     */
+    DescribeEndpointsResult describeEndpoints(DescribeEndpointsRequest describeEndpointsRequest);
+
+    /**
+     * <p>
      * Returns information about the specified global table.
      * </p>
      * 
@@ -798,7 +824,7 @@ public interface AmazonDynamoDB {
 
     /**
      * <p>
-     * Describes region specific settings for a global table.
+     * Describes Region-specific settings for a global table.
      * </p>
      * 
      * @param describeGlobalTableSettingsRequest
@@ -815,14 +841,14 @@ public interface AmazonDynamoDB {
 
     /**
      * <p>
-     * Returns the current provisioned-capacity limits for your AWS account in a region, both for the region as a whole
+     * Returns the current provisioned-capacity limits for your AWS account in a Region, both for the Region as a whole
      * and for any one DynamoDB table that you create there.
      * </p>
      * <p>
      * When you establish an AWS account, the account has initial limits on the maximum read capacity units and write
-     * capacity units that you can provision across all of your DynamoDB tables in a given region. Also, there are
+     * capacity units that you can provision across all of your DynamoDB tables in a given Region. Also, there are
      * per-table limits that apply when you create a table there. For more information, see <a
-     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a> page in the
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a> page in the
      * <i>Amazon DynamoDB Developer Guide</i>.
      * </p>
      * <p>
@@ -838,13 +864,13 @@ public interface AmazonDynamoDB {
      * <ol>
      * <li>
      * <p>
-     * Call <code>DescribeLimits</code> for a particular region to obtain your current account limits on provisioned
+     * Call <code>DescribeLimits</code> for a particular Region to obtain your current account limits on provisioned
      * capacity there.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Create a variable to hold the aggregate read capacity units provisioned for all your tables in that region, and
+     * Create a variable to hold the aggregate read capacity units provisioned for all your tables in that Region, and
      * one to hold the aggregate write capacity units. Zero them both.
      * </p>
      * </li>
@@ -879,7 +905,7 @@ public interface AmazonDynamoDB {
      * </li>
      * <li>
      * <p>
-     * Report the account limits for that region returned by <code>DescribeLimits</code>, along with the total current
+     * Report the account limits for that Region returned by <code>DescribeLimits</code>, along with the total current
      * provisioned capacity levels you have calculated.
      * </p>
      * </li>
@@ -892,9 +918,9 @@ public interface AmazonDynamoDB {
      * capacity of the new table itself and all its global secondary indexes.
      * </p>
      * <p>
-     * For existing tables and their GSIs, DynamoDB will not let you increase provisioned capacity extremely rapidly,
-     * but the only upper limit that applies is that the aggregate provisioned capacity over all your tables and GSIs
-     * cannot exceed either of the per-account limits.
+     * For existing tables and their GSIs, DynamoDB doesn't let you increase provisioned capacity extremely rapidly. But
+     * the only upper limit that applies is that the aggregate provisioned capacity over all your tables and GSIs cannot
+     * exceed either of the per-account limits.
      * </p>
      * <note>
      * <p>
@@ -989,11 +1015,14 @@ public interface AmazonDynamoDB {
      *         Your request rate is too high. The AWS SDKs for DynamoDB automatically retry requests that receive this
      *         exception. Your request is eventually successful, unless your retry queue is too large to finish. Reduce
      *         the frequency of requests and use exponential backoff. For more information, go to <a href=
-     *         "http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Programming.Errors.html#Programming.Errors.RetryAndBackoff"
+     *         "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Programming.Errors.html#Programming.Errors.RetryAndBackoff"
      *         >Error Retries and Exponential Backoff</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      * @throws ResourceNotFoundException
      *         The operation tried to access a nonexistent table or index. The resource might not be specified
      *         correctly, or its status might not be <code>ACTIVE</code>.
+     * @throws RequestLimitExceededException
+     *         Throughput exceeds the current throughput limit for your account. Please contact AWS Support at <a
+     *         href="https://aws.amazon.com/support">AWS Support</a> to request a limit increase.
      * @throws InternalServerErrorException
      *         An error occurred on the server side.
      * @sample AmazonDynamoDB.GetItem
@@ -1019,15 +1048,15 @@ public interface AmazonDynamoDB {
     /**
      * <p>
      * List backups associated with an AWS account. To list backups for a given table, specify <code>TableName</code>.
-     * <code>ListBackups</code> returns a paginated list of results with at most 1MB worth of items in a page. You can
+     * <code>ListBackups</code> returns a paginated list of results with at most 1 MB worth of items in a page. You can
      * also specify a limit for the maximum number of entries to be returned in a page.
      * </p>
      * <p>
-     * In the request, start time is inclusive but end time is exclusive. Note that these limits are for the time at
+     * In the request, start time is inclusive, but end time is exclusive. Note that these limits are for the time at
      * which the original backup was requested.
      * </p>
      * <p>
-     * You can call <code>ListBackups</code> a maximum of 5 times per second.
+     * You can call <code>ListBackups</code> a maximum of five times per second.
      * </p>
      * 
      * @param listBackupsRequest
@@ -1042,7 +1071,7 @@ public interface AmazonDynamoDB {
 
     /**
      * <p>
-     * Lists all global tables that have a replica in the specified region.
+     * Lists all global tables that have a replica in the specified Region.
      * </p>
      * 
      * @param listGlobalTablesRequest
@@ -1107,7 +1136,7 @@ public interface AmazonDynamoDB {
      * </p>
      * <p>
      * For an overview on tagging DynamoDB resources, see <a
-     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html">Tagging for DynamoDB</a> in
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html">Tagging for DynamoDB</a> in
      * the <i>Amazon DynamoDB Developer Guide</i>.
      * </p>
      * 
@@ -1144,61 +1173,61 @@ public interface AmazonDynamoDB {
      * <li>
      * <p>
      * <a href="http://docs.aws.amazon.com/goto/aws-cli/dynamodb-2012-08-10/PutItem"> PutItem in the AWS Command Line
-     * Interface </a>
+     * Interface</a>
      * </p>
      * </li>
      * <li>
      * <p>
      * <a href="http://docs.aws.amazon.com/goto/DotNetSDKV3/dynamodb-2012-08-10/PutItem"> PutItem in the AWS SDK for
-     * .NET </a>
+     * .NET</a>
      * </p>
      * </li>
      * <li>
      * <p>
-     * <a href="http://docs.aws.amazon.com/goto/SdkForCpp/dynamodb-2012-08-10/PutItem"> PutItem in the AWS SDK for C++
-     * </a>
+     * <a href="http://docs.aws.amazon.com/goto/SdkForCpp/dynamodb-2012-08-10/PutItem"> PutItem in the AWS SDK for
+     * C++</a>
      * </p>
      * </li>
      * <li>
      * <p>
-     * <a href="http://docs.aws.amazon.com/goto/SdkForGoV1/dynamodb-2012-08-10/PutItem"> PutItem in the AWS SDK for Go
-     * </a>
+     * <a href="http://docs.aws.amazon.com/goto/SdkForGoV1/dynamodb-2012-08-10/PutItem"> PutItem in the AWS SDK for
+     * Go</a>
      * </p>
      * </li>
      * <li>
      * <p>
-     * <a href="http://docs.aws.amazon.com/goto/SdkForJava/dynamodb-2012-08-10/PutItem"> PutItem in the AWS SDK for Java
-     * </a>
+     * <a href="http://docs.aws.amazon.com/goto/SdkForJava/dynamodb-2012-08-10/PutItem"> PutItem in the AWS SDK for
+     * Java</a>
      * </p>
      * </li>
      * <li>
      * <p>
      * <a href="http://docs.aws.amazon.com/goto/AWSJavaScriptSDK/dynamodb-2012-08-10/PutItem"> PutItem in the AWS SDK
-     * for JavaScript </a>
+     * for JavaScript</a>
      * </p>
      * </li>
      * <li>
      * <p>
      * <a href="http://docs.aws.amazon.com/goto/SdkForPHPV3/dynamodb-2012-08-10/PutItem"> PutItem in the AWS SDK for PHP
-     * V3 </a>
+     * V3</a>
      * </p>
      * </li>
      * <li>
      * <p>
-     * <a href="http://docs.aws.amazon.com/goto/boto3/dynamodb-2012-08-10/PutItem"> PutItem in the AWS SDK for Python
-     * </a>
+     * <a href="http://docs.aws.amazon.com/goto/boto3/dynamodb-2012-08-10/PutItem"> PutItem in the AWS SDK for
+     * Python</a>
      * </p>
      * </li>
      * <li>
      * <p>
      * <a href="http://docs.aws.amazon.com/goto/SdkForRubyV2/dynamodb-2012-08-10/PutItem"> PutItem in the AWS SDK for
-     * Ruby V2 </a>
+     * Ruby V2</a>
      * </p>
      * </li>
      * </ul>
      * </important>
      * <p>
-     * When you add an item, the primary key attribute(s) are the only required attributes. Attribute values cannot be
+     * When you add an item, the primary key attributes are the only required attributes. Attribute values cannot be
      * null. String and Binary type attributes must have lengths greater than zero. Set type attributes cannot be empty.
      * Requests with empty values will be rejected with a <code>ValidationException</code> exception.
      * </p>
@@ -1212,7 +1241,7 @@ public interface AmazonDynamoDB {
      * </note>
      * <p>
      * For more information about <code>PutItem</code>, see <a
-     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithItems.html">Working with
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithItems.html">Working with
      * Items</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      * </p>
      * 
@@ -1225,7 +1254,7 @@ public interface AmazonDynamoDB {
      *         Your request rate is too high. The AWS SDKs for DynamoDB automatically retry requests that receive this
      *         exception. Your request is eventually successful, unless your retry queue is too large to finish. Reduce
      *         the frequency of requests and use exponential backoff. For more information, go to <a href=
-     *         "http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Programming.Errors.html#Programming.Errors.RetryAndBackoff"
+     *         "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Programming.Errors.html#Programming.Errors.RetryAndBackoff"
      *         >Error Retries and Exponential Backoff</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      * @throws ResourceNotFoundException
      *         The operation tried to access a nonexistent table or index. The resource might not be specified
@@ -1233,6 +1262,11 @@ public interface AmazonDynamoDB {
      * @throws ItemCollectionSizeLimitExceededException
      *         An item collection is too large. This exception is only returned for tables that have one or more local
      *         secondary indexes.
+     * @throws TransactionConflictException
+     *         Operation was rejected because there is an ongoing transaction for the item.
+     * @throws RequestLimitExceededException
+     *         Throughput exceeds the current throughput limit for your account. Please contact AWS Support at <a
+     *         href="https://aws.amazon.com/support">AWS Support</a> to request a limit increase.
      * @throws InternalServerErrorException
      *         An error occurred on the server side.
      * @sample AmazonDynamoDB.PutItem
@@ -1292,8 +1326,8 @@ public interface AmazonDynamoDB {
      * <code>Limit</code> parameter) or a maximum of 1 MB of data and then apply any filtering to the results using
      * <code>FilterExpression</code>. If <code>LastEvaluatedKey</code> is present in the response, you will need to
      * paginate the result set. For more information, see <a
-     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.html#Query.Pagination">Paginating the
-     * Results</a> in the <i>Amazon DynamoDB Developer Guide</i>.
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.html#Query.Pagination">Paginating
+     * the Results</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      * </p>
      * <p>
      * <code>FilterExpression</code> is applied after a <code>Query</code> finishes, but before the results are
@@ -1320,11 +1354,14 @@ public interface AmazonDynamoDB {
      *         Your request rate is too high. The AWS SDKs for DynamoDB automatically retry requests that receive this
      *         exception. Your request is eventually successful, unless your retry queue is too large to finish. Reduce
      *         the frequency of requests and use exponential backoff. For more information, go to <a href=
-     *         "http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Programming.Errors.html#Programming.Errors.RetryAndBackoff"
+     *         "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Programming.Errors.html#Programming.Errors.RetryAndBackoff"
      *         >Error Retries and Exponential Backoff</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      * @throws ResourceNotFoundException
      *         The operation tried to access a nonexistent table or index. The resource might not be specified
      *         correctly, or its status might not be <code>ACTIVE</code>.
+     * @throws RequestLimitExceededException
+     *         Throughput exceeds the current throughput limit for your account. Please contact AWS Support at <a
+     *         href="https://aws.amazon.com/support">AWS Support</a> to request a limit increase.
      * @throws InternalServerErrorException
      *         An error occurred on the server side.
      * @sample AmazonDynamoDB.Query
@@ -1357,7 +1394,7 @@ public interface AmazonDynamoDB {
      * </li>
      * <li>
      * <p>
-     * Cloudwatch metrics and alarms
+     * Amazon CloudWatch metrics and alarms
      * </p>
      * </li>
      * <li>
@@ -1386,23 +1423,23 @@ public interface AmazonDynamoDB {
      * @throws BackupNotFoundException
      *         Backup not found for the given BackupARN.
      * @throws BackupInUseException
-     *         There is another ongoing conflicting backup control plane operation on the table. The backups is either
+     *         There is another ongoing conflicting backup control plane operation on the table. The backup is either
      *         being created, deleted or restored to a table.
      * @throws LimitExceededException
-     *         Up to 50 <code>CreateBackup</code> operations are allowed per second, per account. There is no limit to
-     *         the number of daily on-demand backups that can be taken. </p>
+     *         There is no limit to the number of daily on-demand backups that can be taken. </p>
      *         <p>
-     *         Up to 10 simultaneous table operations are allowed per account. These operations include
+     *         Up to 50 simultaneous table operations are allowed per account. These operations include
      *         <code>CreateTable</code>, <code>UpdateTable</code>, <code>DeleteTable</code>,
      *         <code>UpdateTimeToLive</code>, <code>RestoreTableFromBackup</code>, and
      *         <code>RestoreTableToPointInTime</code>.
      *         </p>
      *         <p>
-     *         For tables with secondary indexes, only one of those tables can be in the <code>CREATING</code> state at
-     *         any point in time. Do not attempt to create more than one such table simultaneously.
+     *         The only exception is when you are creating a table with one or more secondary indexes. You can have up
+     *         to 25 such requests running at a time; however, if the table or index specifications are complex,
+     *         DynamoDB might temporarily reduce the number of concurrent operations.
      *         </p>
      *         <p>
-     *         The total limit of tables in the <code>ACTIVE</code> state is 250.
+     *         There is a soft account limit of 256 tables.
      * @throws InternalServerErrorException
      *         An error occurred on the server side.
      * @sample AmazonDynamoDB.RestoreTableFromBackup
@@ -1466,7 +1503,7 @@ public interface AmazonDynamoDB {
      * </li>
      * <li>
      * <p>
-     * Cloudwatch metrics and alarms
+     * Amazon CloudWatch metrics and alarms
      * </p>
      * </li>
      * <li>
@@ -1501,20 +1538,20 @@ public interface AmazonDynamoDB {
      * @throws TableInUseException
      *         A target table with the specified name is either being created or deleted.
      * @throws LimitExceededException
-     *         Up to 50 <code>CreateBackup</code> operations are allowed per second, per account. There is no limit to
-     *         the number of daily on-demand backups that can be taken. </p>
+     *         There is no limit to the number of daily on-demand backups that can be taken. </p>
      *         <p>
-     *         Up to 10 simultaneous table operations are allowed per account. These operations include
+     *         Up to 50 simultaneous table operations are allowed per account. These operations include
      *         <code>CreateTable</code>, <code>UpdateTable</code>, <code>DeleteTable</code>,
      *         <code>UpdateTimeToLive</code>, <code>RestoreTableFromBackup</code>, and
      *         <code>RestoreTableToPointInTime</code>.
      *         </p>
      *         <p>
-     *         For tables with secondary indexes, only one of those tables can be in the <code>CREATING</code> state at
-     *         any point in time. Do not attempt to create more than one such table simultaneously.
+     *         The only exception is when you are creating a table with one or more secondary indexes. You can have up
+     *         to 25 such requests running at a time; however, if the table or index specifications are complex,
+     *         DynamoDB might temporarily reduce the number of concurrent operations.
      *         </p>
      *         <p>
-     *         The total limit of tables in the <code>ACTIVE</code> state is 250.
+     *         There is a soft account limit of 256 tables.
      * @throws InvalidRestoreTimeException
      *         An invalid restore time was specified. RestoreDateTime must be between EarliestRestorableDateTime and
      *         LatestRestorableDateTime.
@@ -1535,24 +1572,24 @@ public interface AmazonDynamoDB {
      * operation.
      * </p>
      * <p>
-     * If the total number of scanned items exceeds the maximum data set size limit of 1 MB, the scan stops and results
+     * If the total number of scanned items exceeds the maximum dataset size limit of 1 MB, the scan stops and results
      * are returned to the user as a <code>LastEvaluatedKey</code> value to continue the scan in a subsequent operation.
      * The results also include the number of items exceeding the limit. A scan can result in no table data meeting the
      * filter criteria.
      * </p>
      * <p>
-     * A single <code>Scan</code> operation will read up to the maximum number of items set (if using the
-     * <code>Limit</code> parameter) or a maximum of 1 MB of data and then apply any filtering to the results using
-     * <code>FilterExpression</code>. If <code>LastEvaluatedKey</code> is present in the response, you will need to
-     * paginate the result set. For more information, see <a
-     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Scan.html#Scan.Pagination">Paginating the
+     * A single <code>Scan</code> operation reads up to the maximum number of items set (if using the <code>Limit</code>
+     * parameter) or a maximum of 1 MB of data and then apply any filtering to the results using
+     * <code>FilterExpression</code>. If <code>LastEvaluatedKey</code> is present in the response, you need to paginate
+     * the result set. For more information, see <a
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Scan.html#Scan.Pagination">Paginating the
      * Results</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      * </p>
      * <p>
      * <code>Scan</code> operations proceed sequentially; however, for faster performance on a large table or secondary
      * index, applications can request a parallel <code>Scan</code> operation by providing the <code>Segment</code> and
      * <code>TotalSegments</code> parameters. For more information, see <a
-     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Scan.html#Scan.ParallelScan">Parallel
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Scan.html#Scan.ParallelScan">Parallel
      * Scan</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      * </p>
      * <p>
@@ -1569,11 +1606,14 @@ public interface AmazonDynamoDB {
      *         Your request rate is too high. The AWS SDKs for DynamoDB automatically retry requests that receive this
      *         exception. Your request is eventually successful, unless your retry queue is too large to finish. Reduce
      *         the frequency of requests and use exponential backoff. For more information, go to <a href=
-     *         "http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Programming.Errors.html#Programming.Errors.RetryAndBackoff"
+     *         "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Programming.Errors.html#Programming.Errors.RetryAndBackoff"
      *         >Error Retries and Exponential Backoff</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      * @throws ResourceNotFoundException
      *         The operation tried to access a nonexistent table or index. The resource might not be specified
      *         correctly, or its status might not be <code>ACTIVE</code>.
+     * @throws RequestLimitExceededException
+     *         Throughput exceeds the current throughput limit for your account. Please contact AWS Support at <a
+     *         href="https://aws.amazon.com/support">AWS Support</a> to request a limit increase.
      * @throws InternalServerErrorException
      *         An error occurred on the server side.
      * @sample AmazonDynamoDB.Scan
@@ -1607,31 +1647,31 @@ public interface AmazonDynamoDB {
      * <p>
      * Associate a set of tags with an Amazon DynamoDB resource. You can then activate these user-defined tags so that
      * they appear on the Billing and Cost Management console for cost allocation tracking. You can call TagResource up
-     * to 5 times per second, per account.
+     * to five times per second, per account.
      * </p>
      * <p>
      * For an overview on tagging DynamoDB resources, see <a
-     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html">Tagging for DynamoDB</a> in
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html">Tagging for DynamoDB</a> in
      * the <i>Amazon DynamoDB Developer Guide</i>.
      * </p>
      * 
      * @param tagResourceRequest
      * @return Result of the TagResource operation returned by the service.
      * @throws LimitExceededException
-     *         Up to 50 <code>CreateBackup</code> operations are allowed per second, per account. There is no limit to
-     *         the number of daily on-demand backups that can be taken. </p>
+     *         There is no limit to the number of daily on-demand backups that can be taken. </p>
      *         <p>
-     *         Up to 10 simultaneous table operations are allowed per account. These operations include
+     *         Up to 50 simultaneous table operations are allowed per account. These operations include
      *         <code>CreateTable</code>, <code>UpdateTable</code>, <code>DeleteTable</code>,
      *         <code>UpdateTimeToLive</code>, <code>RestoreTableFromBackup</code>, and
      *         <code>RestoreTableToPointInTime</code>.
      *         </p>
      *         <p>
-     *         For tables with secondary indexes, only one of those tables can be in the <code>CREATING</code> state at
-     *         any point in time. Do not attempt to create more than one such table simultaneously.
+     *         The only exception is when you are creating a table with one or more secondary indexes. You can have up
+     *         to 25 such requests running at a time; however, if the table or index specifications are complex,
+     *         DynamoDB might temporarily reduce the number of concurrent operations.
      *         </p>
      *         <p>
-     *         The total limit of tables in the <code>ACTIVE</code> state is 250.
+     *         There is a soft account limit of 256 tables.
      * @throws ResourceNotFoundException
      *         The operation tried to access a nonexistent table or index. The resource might not be specified
      *         correctly, or its status might not be <code>ACTIVE</code>.
@@ -1648,32 +1688,849 @@ public interface AmazonDynamoDB {
 
     /**
      * <p>
-     * Removes the association of tags from an Amazon DynamoDB resource. You can call UntagResource up to 5 times per
-     * second, per account.
+     * <code>TransactGetItems</code> is a synchronous operation that atomically retrieves multiple items from one or
+     * more tables (but not from indexes) in a single account and Region. A <code>TransactGetItems</code> call can
+     * contain up to 25 <code>TransactGetItem</code> objects, each of which contains a <code>Get</code> structure that
+     * specifies an item to retrieve from a table in the account and Region. A call to <code>TransactGetItems</code>
+     * cannot retrieve items from tables in more than one AWS account or Region. The aggregate size of the items in the
+     * transaction cannot exceed 4 MB.
+     * </p>
+     * <note>
+     * <p>
+     * All AWS Regions and AWS GovCloud (US) support up to 25 items per transaction with up to 4 MB of data, except the
+     * following AWS Regions:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * China (Beijing)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * China (Ningxia)
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * The China (Beijing) and China (Ningxia) Regions support up to 10 items per transaction with up to 4 MB of data.
+     * </p>
+     * </note>
+     * <p>
+     * DynamoDB rejects the entire <code>TransactGetItems</code> request if any of the following is true:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * A conflicting operation is in the process of updating an item to be read.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * There is insufficient provisioned capacity for the transaction to be completed.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * There is a user error, such as an invalid data format.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * The aggregate size of the items in the transaction cannot exceed 4 MB.
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param transactGetItemsRequest
+     * @return Result of the TransactGetItems operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         The operation tried to access a nonexistent table or index. The resource might not be specified
+     *         correctly, or its status might not be <code>ACTIVE</code>.
+     * @throws TransactionCanceledException
+     *         The entire transaction request was canceled.</p>
+     *         <p>
+     *         DynamoDB cancels a <code>TransactWriteItems</code> request under the following circumstances:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         A condition in one of the condition expressions is not met.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         A table in the <code>TransactWriteItems</code> request is in a different account or region.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         More than one action in the <code>TransactWriteItems</code> operation targets the same item.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         There is insufficient provisioned capacity for the transaction to be completed.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         An item size becomes too large (larger than 400 KB), or a local secondary index (LSI) becomes too large,
+     *         or a similar validation error occurs because of changes made by the transaction.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         The aggregate size of the items in the transaction exceeds 4 MBs.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         There is a user error, such as an invalid data format.
+     *         </p>
+     *         </li>
+     *         </ul>
+     *         <p>
+     *         DynamoDB cancels a <code>TransactGetItems</code> request under the following circumstances:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         There is an ongoing <code>TransactGetItems</code> operation that conflicts with a concurrent
+     *         <code>PutItem</code>, <code>UpdateItem</code>, <code>DeleteItem</code> or <code>TransactWriteItems</code>
+     *         request. In this case the <code>TransactGetItems</code> operation fails with a
+     *         <code>TransactionCanceledException</code>.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         A table in the <code>TransactGetItems</code> request is in a different account or region.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         There is insufficient provisioned capacity for the transaction to be completed.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         The aggregate size of the items in the transaction exceeds 4 MBs.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         There is a user error, such as an invalid data format.
+     *         </p>
+     *         </li>
+     *         </ul>
+     *         <note>
+     *         <p>
+     *         If using Java, DynamoDB lists the cancellation reasons on the <code>CancellationReasons</code> property.
+     *         This property is not set for other languages. Transaction cancellation reasons are ordered in the order
+     *         of requested items, if an item has no error it will have <code>NONE</code> code and <code>Null</code>
+     *         message.
+     *         </p>
+     *         </note>
+     *         <p>
+     *         Cancellation reason codes and possible error messages:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         No Errors:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         Code: <code>NONE</code>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Message: <code>null</code>
+     *         </p>
+     *         </li>
+     *         </ul>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Conditional Check Failed:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         Code: <code>ConditionalCheckFailed</code>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Message: The conditional request failed.
+     *         </p>
+     *         </li>
+     *         </ul>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Item Collection Size Limit Exceeded:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         Code: <code>ItemCollectionSizeLimitExceeded</code>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Message: Collection size exceeded.
+     *         </p>
+     *         </li>
+     *         </ul>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Transaction Conflict:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         Code: <code>TransactionConflict</code>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Message: Transaction is ongoing for the item.
+     *         </p>
+     *         </li>
+     *         </ul>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Provisioned Throughput Exceeded:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         Code: <code>ProvisionedThroughputExceeded</code>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Messages:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         The level of configured provisioned throughput for the table was exceeded. Consider increasing your
+     *         provisioning level with the UpdateTable API.
+     *         </p>
+     *         <note>
+     *         <p>
+     *         This Message is received when provisioned throughput is exceeded is on a provisioned DynamoDB table.
+     *         </p>
+     *         </note></li>
+     *         <li>
+     *         <p>
+     *         The level of configured provisioned throughput for one or more global secondary indexes of the table was
+     *         exceeded. Consider increasing your provisioning level for the under-provisioned global secondary indexes
+     *         with the UpdateTable API.
+     *         </p>
+     *         <note>
+     *         <p>
+     *         This message is returned when provisioned throughput is exceeded is on a provisioned GSI.
+     *         </p>
+     *         </note></li>
+     *         </ul>
+     *         </li>
+     *         </ul>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Throttling Error:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         Code: <code>ThrottlingError</code>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Messages:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         Throughput exceeds the current capacity of your table or index. DynamoDB is automatically scaling your
+     *         table or index so please try again shortly. If exceptions persist, check if you have a hot key:
+     *         https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/bp-partition-key-design.html.
+     *         </p>
+     *         <note>
+     *         <p>
+     *         This message is returned when writes get throttled on an On-Demand table as DynamoDB is automatically
+     *         scaling the table.
+     *         </p>
+     *         </note></li>
+     *         <li>
+     *         <p>
+     *         Throughput exceeds the current capacity for one or more global secondary indexes. DynamoDB is
+     *         automatically scaling your index so please try again shortly.
+     *         </p>
+     *         <note>
+     *         <p>
+     *         This message is returned when when writes get throttled on an On-Demand GSI as DynamoDB is automatically
+     *         scaling the GSI.
+     *         </p>
+     *         </note></li>
+     *         </ul>
+     *         </li>
+     *         </ul>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Validation Error:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         Code: <code>ValidationError</code>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Messages:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         One or more parameter values were invalid.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         The update expression attempted to update the secondary index key beyond allowed size limits.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         The update expression attempted to update the secondary index key to unsupported type.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         An operand in the update expression has an incorrect data type.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Item size to update has exceeded the maximum allowed size.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Number overflow. Attempting to store a number with magnitude larger than supported range.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Type mismatch for attribute to update.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Nesting Levels have exceeded supported limits.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         The document path provided in the update expression is invalid for update.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         The provided expression refers to an attribute that does not exist in the item.
+     *         </p>
+     *         </li>
+     *         </ul>
+     *         </li>
+     *         </ul>
+     *         </li>
+     * @throws ProvisionedThroughputExceededException
+     *         Your request rate is too high. The AWS SDKs for DynamoDB automatically retry requests that receive this
+     *         exception. Your request is eventually successful, unless your retry queue is too large to finish. Reduce
+     *         the frequency of requests and use exponential backoff. For more information, go to <a href=
+     *         "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Programming.Errors.html#Programming.Errors.RetryAndBackoff"
+     *         >Error Retries and Exponential Backoff</a> in the <i>Amazon DynamoDB Developer Guide</i>.
+     * @throws InternalServerErrorException
+     *         An error occurred on the server side.
+     * @sample AmazonDynamoDB.TransactGetItems
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/TransactGetItems" target="_top">AWS API
+     *      Documentation</a>
+     */
+    TransactGetItemsResult transactGetItems(TransactGetItemsRequest transactGetItemsRequest);
+
+    /**
+     * <p>
+     * <code>TransactWriteItems</code> is a synchronous write operation that groups up to 25 action requests. These
+     * actions can target items in different tables, but not in different AWS accounts or Regions, and no two actions
+     * can target the same item. For example, you cannot both <code>ConditionCheck</code> and <code>Update</code> the
+     * same item. The aggregate size of the items in the transaction cannot exceed 4 MB.
+     * </p>
+     * <note>
+     * <p>
+     * All AWS Regions and AWS GovCloud (US) support up to 25 items per transaction with up to 4 MB of data, except the
+     * following AWS Regions:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * China (Beijing)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * China (Ningxia)
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * The China (Beijing) and China (Ningxia) Regions support up to 10 items per transaction with up to 4 MB of data.
+     * </p>
+     * </note>
+     * <p>
+     * The actions are completed atomically so that either all of them succeed, or all of them fail. They are defined by
+     * the following objects:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>Put</code>  &#x97;   Initiates a <code>PutItem</code> operation to write a new item. This structure
+     * specifies the primary key of the item to be written, the name of the table to write it in, an optional condition
+     * expression that must be satisfied for the write to succeed, a list of the item's attributes, and a field
+     * indicating whether to retrieve the item's attributes if the condition is not met.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>Update</code>  &#x97;   Initiates an <code>UpdateItem</code> operation to update an existing item. This
+     * structure specifies the primary key of the item to be updated, the name of the table where it resides, an
+     * optional condition expression that must be satisfied for the update to succeed, an expression that defines one or
+     * more attributes to be updated, and a field indicating whether to retrieve the item's attributes if the condition
+     * is not met.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>Delete</code>  &#x97;   Initiates a <code>DeleteItem</code> operation to delete an existing item. This
+     * structure specifies the primary key of the item to be deleted, the name of the table where it resides, an
+     * optional condition expression that must be satisfied for the deletion to succeed, and a field indicating whether
+     * to retrieve the item's attributes if the condition is not met.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ConditionCheck</code>  &#x97;   Applies a condition to an item that is not being modified by the
+     * transaction. This structure specifies the primary key of the item to be checked, the name of the table where it
+     * resides, a condition expression that must be satisfied for the transaction to succeed, and a field indicating
+     * whether to retrieve the item's attributes if the condition is not met.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * DynamoDB rejects the entire <code>TransactWriteItems</code> request if any of the following is true:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * A condition in one of the condition expressions is not met.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * An ongoing operation is in the process of updating the same item.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * There is insufficient provisioned capacity for the transaction to be completed.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * An item size becomes too large (bigger than 400 KB), a local secondary index (LSI) becomes too large, or a
+     * similar validation error occurs because of changes made by the transaction.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * The aggregate size of the items in the transaction exceeds 4 MB.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * There is a user error, such as an invalid data format.
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param transactWriteItemsRequest
+     * @return Result of the TransactWriteItems operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         The operation tried to access a nonexistent table or index. The resource might not be specified
+     *         correctly, or its status might not be <code>ACTIVE</code>.
+     * @throws TransactionCanceledException
+     *         The entire transaction request was canceled.</p>
+     *         <p>
+     *         DynamoDB cancels a <code>TransactWriteItems</code> request under the following circumstances:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         A condition in one of the condition expressions is not met.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         A table in the <code>TransactWriteItems</code> request is in a different account or region.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         More than one action in the <code>TransactWriteItems</code> operation targets the same item.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         There is insufficient provisioned capacity for the transaction to be completed.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         An item size becomes too large (larger than 400 KB), or a local secondary index (LSI) becomes too large,
+     *         or a similar validation error occurs because of changes made by the transaction.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         The aggregate size of the items in the transaction exceeds 4 MBs.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         There is a user error, such as an invalid data format.
+     *         </p>
+     *         </li>
+     *         </ul>
+     *         <p>
+     *         DynamoDB cancels a <code>TransactGetItems</code> request under the following circumstances:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         There is an ongoing <code>TransactGetItems</code> operation that conflicts with a concurrent
+     *         <code>PutItem</code>, <code>UpdateItem</code>, <code>DeleteItem</code> or <code>TransactWriteItems</code>
+     *         request. In this case the <code>TransactGetItems</code> operation fails with a
+     *         <code>TransactionCanceledException</code>.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         A table in the <code>TransactGetItems</code> request is in a different account or region.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         There is insufficient provisioned capacity for the transaction to be completed.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         The aggregate size of the items in the transaction exceeds 4 MBs.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         There is a user error, such as an invalid data format.
+     *         </p>
+     *         </li>
+     *         </ul>
+     *         <note>
+     *         <p>
+     *         If using Java, DynamoDB lists the cancellation reasons on the <code>CancellationReasons</code> property.
+     *         This property is not set for other languages. Transaction cancellation reasons are ordered in the order
+     *         of requested items, if an item has no error it will have <code>NONE</code> code and <code>Null</code>
+     *         message.
+     *         </p>
+     *         </note>
+     *         <p>
+     *         Cancellation reason codes and possible error messages:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         No Errors:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         Code: <code>NONE</code>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Message: <code>null</code>
+     *         </p>
+     *         </li>
+     *         </ul>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Conditional Check Failed:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         Code: <code>ConditionalCheckFailed</code>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Message: The conditional request failed.
+     *         </p>
+     *         </li>
+     *         </ul>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Item Collection Size Limit Exceeded:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         Code: <code>ItemCollectionSizeLimitExceeded</code>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Message: Collection size exceeded.
+     *         </p>
+     *         </li>
+     *         </ul>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Transaction Conflict:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         Code: <code>TransactionConflict</code>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Message: Transaction is ongoing for the item.
+     *         </p>
+     *         </li>
+     *         </ul>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Provisioned Throughput Exceeded:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         Code: <code>ProvisionedThroughputExceeded</code>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Messages:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         The level of configured provisioned throughput for the table was exceeded. Consider increasing your
+     *         provisioning level with the UpdateTable API.
+     *         </p>
+     *         <note>
+     *         <p>
+     *         This Message is received when provisioned throughput is exceeded is on a provisioned DynamoDB table.
+     *         </p>
+     *         </note></li>
+     *         <li>
+     *         <p>
+     *         The level of configured provisioned throughput for one or more global secondary indexes of the table was
+     *         exceeded. Consider increasing your provisioning level for the under-provisioned global secondary indexes
+     *         with the UpdateTable API.
+     *         </p>
+     *         <note>
+     *         <p>
+     *         This message is returned when provisioned throughput is exceeded is on a provisioned GSI.
+     *         </p>
+     *         </note></li>
+     *         </ul>
+     *         </li>
+     *         </ul>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Throttling Error:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         Code: <code>ThrottlingError</code>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Messages:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         Throughput exceeds the current capacity of your table or index. DynamoDB is automatically scaling your
+     *         table or index so please try again shortly. If exceptions persist, check if you have a hot key:
+     *         https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/bp-partition-key-design.html.
+     *         </p>
+     *         <note>
+     *         <p>
+     *         This message is returned when writes get throttled on an On-Demand table as DynamoDB is automatically
+     *         scaling the table.
+     *         </p>
+     *         </note></li>
+     *         <li>
+     *         <p>
+     *         Throughput exceeds the current capacity for one or more global secondary indexes. DynamoDB is
+     *         automatically scaling your index so please try again shortly.
+     *         </p>
+     *         <note>
+     *         <p>
+     *         This message is returned when when writes get throttled on an On-Demand GSI as DynamoDB is automatically
+     *         scaling the GSI.
+     *         </p>
+     *         </note></li>
+     *         </ul>
+     *         </li>
+     *         </ul>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Validation Error:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         Code: <code>ValidationError</code>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Messages:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         One or more parameter values were invalid.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         The update expression attempted to update the secondary index key beyond allowed size limits.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         The update expression attempted to update the secondary index key to unsupported type.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         An operand in the update expression has an incorrect data type.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Item size to update has exceeded the maximum allowed size.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Number overflow. Attempting to store a number with magnitude larger than supported range.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Type mismatch for attribute to update.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Nesting Levels have exceeded supported limits.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         The document path provided in the update expression is invalid for update.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         The provided expression refers to an attribute that does not exist in the item.
+     *         </p>
+     *         </li>
+     *         </ul>
+     *         </li>
+     *         </ul>
+     *         </li>
+     * @throws TransactionInProgressException
+     *         The transaction with the given request token is already in progress.
+     * @throws IdempotentParameterMismatchException
+     *         DynamoDB rejected the request because you retried a request with a different payload but with an
+     *         idempotent token that was already used.
+     * @throws ProvisionedThroughputExceededException
+     *         Your request rate is too high. The AWS SDKs for DynamoDB automatically retry requests that receive this
+     *         exception. Your request is eventually successful, unless your retry queue is too large to finish. Reduce
+     *         the frequency of requests and use exponential backoff. For more information, go to <a href=
+     *         "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Programming.Errors.html#Programming.Errors.RetryAndBackoff"
+     *         >Error Retries and Exponential Backoff</a> in the <i>Amazon DynamoDB Developer Guide</i>.
+     * @throws InternalServerErrorException
+     *         An error occurred on the server side.
+     * @sample AmazonDynamoDB.TransactWriteItems
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/TransactWriteItems" target="_top">AWS
+     *      API Documentation</a>
+     */
+    TransactWriteItemsResult transactWriteItems(TransactWriteItemsRequest transactWriteItemsRequest);
+
+    /**
+     * <p>
+     * Removes the association of tags from an Amazon DynamoDB resource. You can call <code>UntagResource</code> up to
+     * five times per second, per account.
      * </p>
      * <p>
      * For an overview on tagging DynamoDB resources, see <a
-     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html">Tagging for DynamoDB</a> in
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html">Tagging for DynamoDB</a> in
      * the <i>Amazon DynamoDB Developer Guide</i>.
      * </p>
      * 
      * @param untagResourceRequest
      * @return Result of the UntagResource operation returned by the service.
      * @throws LimitExceededException
-     *         Up to 50 <code>CreateBackup</code> operations are allowed per second, per account. There is no limit to
-     *         the number of daily on-demand backups that can be taken. </p>
+     *         There is no limit to the number of daily on-demand backups that can be taken. </p>
      *         <p>
-     *         Up to 10 simultaneous table operations are allowed per account. These operations include
+     *         Up to 50 simultaneous table operations are allowed per account. These operations include
      *         <code>CreateTable</code>, <code>UpdateTable</code>, <code>DeleteTable</code>,
      *         <code>UpdateTimeToLive</code>, <code>RestoreTableFromBackup</code>, and
      *         <code>RestoreTableToPointInTime</code>.
      *         </p>
      *         <p>
-     *         For tables with secondary indexes, only one of those tables can be in the <code>CREATING</code> state at
-     *         any point in time. Do not attempt to create more than one such table simultaneously.
+     *         The only exception is when you are creating a table with one or more secondary indexes. You can have up
+     *         to 25 such requests running at a time; however, if the table or index specifications are complex,
+     *         DynamoDB might temporarily reduce the number of concurrent operations.
      *         </p>
      *         <p>
-     *         The total limit of tables in the <code>ACTIVE</code> state is 250.
+     *         There is a soft account limit of 256 tables.
      * @throws ResourceNotFoundException
      *         The operation tried to access a nonexistent table or index. The resource might not be specified
      *         correctly, or its status might not be <code>ACTIVE</code>.
@@ -1701,7 +2558,7 @@ public interface AmazonDynamoDB {
      * </p>
      * <p>
      * <code>LatestRestorableDateTime</code> is typically 5 minutes before the current time. You can restore your table
-     * to any point in time during the last 35 days..
+     * to any point in time during the last 35 days.
      * </p>
      * 
      * @param updateContinuousBackupsRequest
@@ -1722,9 +2579,8 @@ public interface AmazonDynamoDB {
     /**
      * <p>
      * Adds or removes replicas in the specified global table. The global table must already exist to be able to use
-     * this operation. Any replica to be added must be empty, must have the same name as the global table, must have the
-     * same key schema, and must have DynamoDB Streams enabled and must have same provisioned and maximum write capacity
-     * units.
+     * this operation. Any replica to be added must be empty, have the same name as the global table, have the same key
+     * schema, have DynamoDB Streams enabled, and have the same provisioned and maximum write capacity units.
      * </p>
      * <note>
      * <p>
@@ -1786,20 +2642,20 @@ public interface AmazonDynamoDB {
      * @throws IndexNotFoundException
      *         The operation tried to access a nonexistent index.
      * @throws LimitExceededException
-     *         Up to 50 <code>CreateBackup</code> operations are allowed per second, per account. There is no limit to
-     *         the number of daily on-demand backups that can be taken. </p>
+     *         There is no limit to the number of daily on-demand backups that can be taken. </p>
      *         <p>
-     *         Up to 10 simultaneous table operations are allowed per account. These operations include
+     *         Up to 50 simultaneous table operations are allowed per account. These operations include
      *         <code>CreateTable</code>, <code>UpdateTable</code>, <code>DeleteTable</code>,
      *         <code>UpdateTimeToLive</code>, <code>RestoreTableFromBackup</code>, and
      *         <code>RestoreTableToPointInTime</code>.
      *         </p>
      *         <p>
-     *         For tables with secondary indexes, only one of those tables can be in the <code>CREATING</code> state at
-     *         any point in time. Do not attempt to create more than one such table simultaneously.
+     *         The only exception is when you are creating a table with one or more secondary indexes. You can have up
+     *         to 25 such requests running at a time; however, if the table or index specifications are complex,
+     *         DynamoDB might temporarily reduce the number of concurrent operations.
      *         </p>
      *         <p>
-     *         The total limit of tables in the <code>ACTIVE</code> state is 250.
+     *         There is a soft account limit of 256 tables.
      * @throws ResourceInUseException
      *         The operation conflicts with the resource's availability. For example, you attempted to recreate an
      *         existing table, or tried to delete a table currently in the <code>CREATING</code> state.
@@ -1832,7 +2688,7 @@ public interface AmazonDynamoDB {
      *         Your request rate is too high. The AWS SDKs for DynamoDB automatically retry requests that receive this
      *         exception. Your request is eventually successful, unless your retry queue is too large to finish. Reduce
      *         the frequency of requests and use exponential backoff. For more information, go to <a href=
-     *         "http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Programming.Errors.html#Programming.Errors.RetryAndBackoff"
+     *         "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Programming.Errors.html#Programming.Errors.RetryAndBackoff"
      *         >Error Retries and Exponential Backoff</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      * @throws ResourceNotFoundException
      *         The operation tried to access a nonexistent table or index. The resource might not be specified
@@ -1840,6 +2696,11 @@ public interface AmazonDynamoDB {
      * @throws ItemCollectionSizeLimitExceededException
      *         An item collection is too large. This exception is only returned for tables that have one or more local
      *         secondary indexes.
+     * @throws TransactionConflictException
+     *         Operation was rejected because there is an ongoing transaction for the item.
+     * @throws RequestLimitExceededException
+     *         Throughput exceeds the current throughput limit for your account. Please contact AWS Support at <a
+     *         href="https://aws.amazon.com/support">AWS Support</a> to request a limit increase.
      * @throws InternalServerErrorException
      *         An error occurred on the server side.
      * @sample AmazonDynamoDB.UpdateItem
@@ -1879,7 +2740,7 @@ public interface AmazonDynamoDB {
      * </li>
      * <li>
      * <p>
-     * Enable or disable Streams on the table.
+     * Enable or disable DynamoDB Streams on the table.
      * </p>
      * </li>
      * <li>
@@ -1889,7 +2750,7 @@ public interface AmazonDynamoDB {
      * </li>
      * <li>
      * <p>
-     * Create a new global secondary index on the table. Once the index begins backfilling, you can use
+     * Create a new global secondary index on the table. After the index begins backfilling, you can use
      * <code>UpdateTable</code> to perform other operations.
      * </p>
      * </li>
@@ -1911,20 +2772,20 @@ public interface AmazonDynamoDB {
      *         The operation tried to access a nonexistent table or index. The resource might not be specified
      *         correctly, or its status might not be <code>ACTIVE</code>.
      * @throws LimitExceededException
-     *         Up to 50 <code>CreateBackup</code> operations are allowed per second, per account. There is no limit to
-     *         the number of daily on-demand backups that can be taken. </p>
+     *         There is no limit to the number of daily on-demand backups that can be taken. </p>
      *         <p>
-     *         Up to 10 simultaneous table operations are allowed per account. These operations include
+     *         Up to 50 simultaneous table operations are allowed per account. These operations include
      *         <code>CreateTable</code>, <code>UpdateTable</code>, <code>DeleteTable</code>,
      *         <code>UpdateTimeToLive</code>, <code>RestoreTableFromBackup</code>, and
      *         <code>RestoreTableToPointInTime</code>.
      *         </p>
      *         <p>
-     *         For tables with secondary indexes, only one of those tables can be in the <code>CREATING</code> state at
-     *         any point in time. Do not attempt to create more than one such table simultaneously.
+     *         The only exception is when you are creating a table with one or more secondary indexes. You can have up
+     *         to 25 such requests running at a time; however, if the table or index specifications are complex,
+     *         DynamoDB might temporarily reduce the number of concurrent operations.
      *         </p>
      *         <p>
-     *         The total limit of tables in the <code>ACTIVE</code> state is 250.
+     *         There is a soft account limit of 256 tables.
      * @throws InternalServerErrorException
      *         An error occurred on the server side.
      * @sample AmazonDynamoDB.UpdateTable
@@ -1942,10 +2803,10 @@ public interface AmazonDynamoDB {
 
     /**
      * <p>
-     * The UpdateTimeToLive method will enable or disable TTL for the specified table. A successful
-     * <code>UpdateTimeToLive</code> call returns the current <code>TimeToLiveSpecification</code>; it may take up to
-     * one hour for the change to fully process. Any additional <code>UpdateTimeToLive</code> calls for the same table
-     * during this one hour duration result in a <code>ValidationException</code>.
+     * The <code>UpdateTimeToLive</code> method enables or disables Time to Live (TTL) for the specified table. A
+     * successful <code>UpdateTimeToLive</code> call returns the current <code>TimeToLiveSpecification</code>. It can
+     * take up to one hour for the change to fully process. Any additional <code>UpdateTimeToLive</code> calls for the
+     * same table during this one hour duration result in a <code>ValidationException</code>.
      * </p>
      * <p>
      * TTL compares the current time in epoch time format to the time stored in the TTL attribute of an item. If the
@@ -1954,7 +2815,7 @@ public interface AmazonDynamoDB {
      * </p>
      * <note>
      * <p>
-     * The epoch time format is the number of seconds elapsed since 12:00:00 AM January 1st, 1970 UTC.
+     * The epoch time format is the number of seconds elapsed since 12:00:00 AM January 1, 1970 UTC.
      * </p>
      * </note>
      * <p>
@@ -1969,12 +2830,13 @@ public interface AmazonDynamoDB {
      * </p>
      * </important>
      * <p>
-     * As items are deleted, they are removed from any Local Secondary Index and Global Secondary Index immediately in
+     * As items are deleted, they are removed from any local secondary index and global secondary index immediately in
      * the same eventually consistent way as a standard delete operation.
      * </p>
      * <p>
-     * For more information, see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/TTL.html">Time
-     * To Live</a> in the Amazon DynamoDB Developer Guide.
+     * For more information, see <a
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/TTL.html">Time To Live</a> in the Amazon
+     * DynamoDB Developer Guide.
      * </p>
      * 
      * @param updateTimeToLiveRequest
@@ -1987,20 +2849,20 @@ public interface AmazonDynamoDB {
      *         The operation tried to access a nonexistent table or index. The resource might not be specified
      *         correctly, or its status might not be <code>ACTIVE</code>.
      * @throws LimitExceededException
-     *         Up to 50 <code>CreateBackup</code> operations are allowed per second, per account. There is no limit to
-     *         the number of daily on-demand backups that can be taken. </p>
+     *         There is no limit to the number of daily on-demand backups that can be taken. </p>
      *         <p>
-     *         Up to 10 simultaneous table operations are allowed per account. These operations include
+     *         Up to 50 simultaneous table operations are allowed per account. These operations include
      *         <code>CreateTable</code>, <code>UpdateTable</code>, <code>DeleteTable</code>,
      *         <code>UpdateTimeToLive</code>, <code>RestoreTableFromBackup</code>, and
      *         <code>RestoreTableToPointInTime</code>.
      *         </p>
      *         <p>
-     *         For tables with secondary indexes, only one of those tables can be in the <code>CREATING</code> state at
-     *         any point in time. Do not attempt to create more than one such table simultaneously.
+     *         The only exception is when you are creating a table with one or more secondary indexes. You can have up
+     *         to 25 such requests running at a time; however, if the table or index specifications are complex,
+     *         DynamoDB might temporarily reduce the number of concurrent operations.
      *         </p>
      *         <p>
-     *         The total limit of tables in the <code>ACTIVE</code> state is 250.
+     *         There is a soft account limit of 256 tables.
      * @throws InternalServerErrorException
      *         An error occurred on the server side.
      * @sample AmazonDynamoDB.UpdateTimeToLive

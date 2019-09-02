@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -36,10 +36,11 @@ public class UpdateRuntimeConfigurationRequest extends com.amazonaws.AmazonWebSe
     private String fleetId;
     /**
      * <p>
-     * Instructions for launching server processes on each instance in the fleet. The run-time configuration for a fleet
-     * has a collection of server process configurations, one for each type of server process to run on an instance. A
-     * server process configuration specifies the location of the server executable, launch parameters, and the number
-     * of concurrent processes with that configuration to maintain on each instance.
+     * Instructions for launching server processes on each instance in the fleet. Server processes run either a custom
+     * game build executable or a Realtime Servers script. The run-time configuration lists the types of server
+     * processes to run on an instance and includes the following configuration settings: the server executable or
+     * launch script file, launch parameters, and the number of processes to run concurrently on each instance. A
+     * CreateFleet request must include a run-time configuration with at least one server process configuration.
      * </p>
      */
     private RuntimeConfiguration runtimeConfiguration;
@@ -86,17 +87,20 @@ public class UpdateRuntimeConfigurationRequest extends com.amazonaws.AmazonWebSe
 
     /**
      * <p>
-     * Instructions for launching server processes on each instance in the fleet. The run-time configuration for a fleet
-     * has a collection of server process configurations, one for each type of server process to run on an instance. A
-     * server process configuration specifies the location of the server executable, launch parameters, and the number
-     * of concurrent processes with that configuration to maintain on each instance.
+     * Instructions for launching server processes on each instance in the fleet. Server processes run either a custom
+     * game build executable or a Realtime Servers script. The run-time configuration lists the types of server
+     * processes to run on an instance and includes the following configuration settings: the server executable or
+     * launch script file, launch parameters, and the number of processes to run concurrently on each instance. A
+     * CreateFleet request must include a run-time configuration with at least one server process configuration.
      * </p>
      * 
      * @param runtimeConfiguration
-     *        Instructions for launching server processes on each instance in the fleet. The run-time configuration for
-     *        a fleet has a collection of server process configurations, one for each type of server process to run on
-     *        an instance. A server process configuration specifies the location of the server executable, launch
-     *        parameters, and the number of concurrent processes with that configuration to maintain on each instance.
+     *        Instructions for launching server processes on each instance in the fleet. Server processes run either a
+     *        custom game build executable or a Realtime Servers script. The run-time configuration lists the types of
+     *        server processes to run on an instance and includes the following configuration settings: the server
+     *        executable or launch script file, launch parameters, and the number of processes to run concurrently on
+     *        each instance. A CreateFleet request must include a run-time configuration with at least one server
+     *        process configuration.
      */
 
     public void setRuntimeConfiguration(RuntimeConfiguration runtimeConfiguration) {
@@ -105,16 +109,19 @@ public class UpdateRuntimeConfigurationRequest extends com.amazonaws.AmazonWebSe
 
     /**
      * <p>
-     * Instructions for launching server processes on each instance in the fleet. The run-time configuration for a fleet
-     * has a collection of server process configurations, one for each type of server process to run on an instance. A
-     * server process configuration specifies the location of the server executable, launch parameters, and the number
-     * of concurrent processes with that configuration to maintain on each instance.
+     * Instructions for launching server processes on each instance in the fleet. Server processes run either a custom
+     * game build executable or a Realtime Servers script. The run-time configuration lists the types of server
+     * processes to run on an instance and includes the following configuration settings: the server executable or
+     * launch script file, launch parameters, and the number of processes to run concurrently on each instance. A
+     * CreateFleet request must include a run-time configuration with at least one server process configuration.
      * </p>
      * 
-     * @return Instructions for launching server processes on each instance in the fleet. The run-time configuration for
-     *         a fleet has a collection of server process configurations, one for each type of server process to run on
-     *         an instance. A server process configuration specifies the location of the server executable, launch
-     *         parameters, and the number of concurrent processes with that configuration to maintain on each instance.
+     * @return Instructions for launching server processes on each instance in the fleet. Server processes run either a
+     *         custom game build executable or a Realtime Servers script. The run-time configuration lists the types of
+     *         server processes to run on an instance and includes the following configuration settings: the server
+     *         executable or launch script file, launch parameters, and the number of processes to run concurrently on
+     *         each instance. A CreateFleet request must include a run-time configuration with at least one server
+     *         process configuration.
      */
 
     public RuntimeConfiguration getRuntimeConfiguration() {
@@ -123,17 +130,20 @@ public class UpdateRuntimeConfigurationRequest extends com.amazonaws.AmazonWebSe
 
     /**
      * <p>
-     * Instructions for launching server processes on each instance in the fleet. The run-time configuration for a fleet
-     * has a collection of server process configurations, one for each type of server process to run on an instance. A
-     * server process configuration specifies the location of the server executable, launch parameters, and the number
-     * of concurrent processes with that configuration to maintain on each instance.
+     * Instructions for launching server processes on each instance in the fleet. Server processes run either a custom
+     * game build executable or a Realtime Servers script. The run-time configuration lists the types of server
+     * processes to run on an instance and includes the following configuration settings: the server executable or
+     * launch script file, launch parameters, and the number of processes to run concurrently on each instance. A
+     * CreateFleet request must include a run-time configuration with at least one server process configuration.
      * </p>
      * 
      * @param runtimeConfiguration
-     *        Instructions for launching server processes on each instance in the fleet. The run-time configuration for
-     *        a fleet has a collection of server process configurations, one for each type of server process to run on
-     *        an instance. A server process configuration specifies the location of the server executable, launch
-     *        parameters, and the number of concurrent processes with that configuration to maintain on each instance.
+     *        Instructions for launching server processes on each instance in the fleet. Server processes run either a
+     *        custom game build executable or a Realtime Servers script. The run-time configuration lists the types of
+     *        server processes to run on an instance and includes the following configuration settings: the server
+     *        executable or launch script file, launch parameters, and the number of processes to run concurrently on
+     *        each instance. A CreateFleet request must include a run-time configuration with at least one server
+     *        process configuration.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -143,7 +153,8 @@ public class UpdateRuntimeConfigurationRequest extends com.amazonaws.AmazonWebSe
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

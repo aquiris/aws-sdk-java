@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -18,7 +18,9 @@ import com.amazonaws.protocol.StructuredPojo;
 import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
- * Other private IP address information of the EC2 instance.
+ * <p>
+ * Contains information about the private IP address.
+ * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/PrivateIpAddressDetails" target="_top">AWS
  *      API Documentation</a>
@@ -26,13 +28,23 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class PrivateIpAddressDetails implements Serializable, Cloneable, StructuredPojo {
 
-    /** Private DNS name of the EC2 instance. */
+    /**
+     * <p>
+     * Private DNS name of the EC2 instance.
+     * </p>
+     */
     private String privateDnsName;
-    /** Private IP address of the EC2 instance. */
+    /**
+     * <p>
+     * Private IP address of the EC2 instance.
+     * </p>
+     */
     private String privateIpAddress;
 
     /**
+     * <p>
      * Private DNS name of the EC2 instance.
+     * </p>
      * 
      * @param privateDnsName
      *        Private DNS name of the EC2 instance.
@@ -43,7 +55,9 @@ public class PrivateIpAddressDetails implements Serializable, Cloneable, Structu
     }
 
     /**
+     * <p>
      * Private DNS name of the EC2 instance.
+     * </p>
      * 
      * @return Private DNS name of the EC2 instance.
      */
@@ -53,7 +67,9 @@ public class PrivateIpAddressDetails implements Serializable, Cloneable, Structu
     }
 
     /**
+     * <p>
      * Private DNS name of the EC2 instance.
+     * </p>
      * 
      * @param privateDnsName
      *        Private DNS name of the EC2 instance.
@@ -66,7 +82,9 @@ public class PrivateIpAddressDetails implements Serializable, Cloneable, Structu
     }
 
     /**
+     * <p>
      * Private IP address of the EC2 instance.
+     * </p>
      * 
      * @param privateIpAddress
      *        Private IP address of the EC2 instance.
@@ -77,7 +95,9 @@ public class PrivateIpAddressDetails implements Serializable, Cloneable, Structu
     }
 
     /**
+     * <p>
      * Private IP address of the EC2 instance.
+     * </p>
      * 
      * @return Private IP address of the EC2 instance.
      */
@@ -87,7 +107,9 @@ public class PrivateIpAddressDetails implements Serializable, Cloneable, Structu
     }
 
     /**
+     * <p>
      * Private IP address of the EC2 instance.
+     * </p>
      * 
      * @param privateIpAddress
      *        Private IP address of the EC2 instance.
@@ -100,7 +122,8 @@ public class PrivateIpAddressDetails implements Serializable, Cloneable, Structu
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

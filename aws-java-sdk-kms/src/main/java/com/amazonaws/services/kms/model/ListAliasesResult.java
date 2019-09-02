@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -39,7 +39,7 @@ public class ListAliasesResult extends com.amazonaws.AmazonWebServiceResult<com.
     /**
      * <p>
      * A flag that indicates whether there are more items in the list. When this value is true, the list in this
-     * response is truncated. To get more items, pass the value of the <code>NextMarker</code> element in this response
+     * response is truncated. To get more items, pass the value of the <code>NextMarker</code> element in thisresponse
      * to the <code>Marker</code> parameter in a subsequent request.
      * </p>
      */
@@ -167,14 +167,14 @@ public class ListAliasesResult extends com.amazonaws.AmazonWebServiceResult<com.
     /**
      * <p>
      * A flag that indicates whether there are more items in the list. When this value is true, the list in this
-     * response is truncated. To get more items, pass the value of the <code>NextMarker</code> element in this response
+     * response is truncated. To get more items, pass the value of the <code>NextMarker</code> element in thisresponse
      * to the <code>Marker</code> parameter in a subsequent request.
      * </p>
      * 
      * @param truncated
      *        A flag that indicates whether there are more items in the list. When this value is true, the list in this
-     *        response is truncated. To get more items, pass the value of the <code>NextMarker</code> element in this
-     *        response to the <code>Marker</code> parameter in a subsequent request.
+     *        response is truncated. To get more items, pass the value of the <code>NextMarker</code> element in
+     *        thisresponse to the <code>Marker</code> parameter in a subsequent request.
      */
 
     public void setTruncated(Boolean truncated) {
@@ -184,13 +184,13 @@ public class ListAliasesResult extends com.amazonaws.AmazonWebServiceResult<com.
     /**
      * <p>
      * A flag that indicates whether there are more items in the list. When this value is true, the list in this
-     * response is truncated. To get more items, pass the value of the <code>NextMarker</code> element in this response
+     * response is truncated. To get more items, pass the value of the <code>NextMarker</code> element in thisresponse
      * to the <code>Marker</code> parameter in a subsequent request.
      * </p>
      * 
      * @return A flag that indicates whether there are more items in the list. When this value is true, the list in this
-     *         response is truncated. To get more items, pass the value of the <code>NextMarker</code> element in this
-     *         response to the <code>Marker</code> parameter in a subsequent request.
+     *         response is truncated. To get more items, pass the value of the <code>NextMarker</code> element in
+     *         thisresponse to the <code>Marker</code> parameter in a subsequent request.
      */
 
     public Boolean getTruncated() {
@@ -200,14 +200,14 @@ public class ListAliasesResult extends com.amazonaws.AmazonWebServiceResult<com.
     /**
      * <p>
      * A flag that indicates whether there are more items in the list. When this value is true, the list in this
-     * response is truncated. To get more items, pass the value of the <code>NextMarker</code> element in this response
+     * response is truncated. To get more items, pass the value of the <code>NextMarker</code> element in thisresponse
      * to the <code>Marker</code> parameter in a subsequent request.
      * </p>
      * 
      * @param truncated
      *        A flag that indicates whether there are more items in the list. When this value is true, the list in this
-     *        response is truncated. To get more items, pass the value of the <code>NextMarker</code> element in this
-     *        response to the <code>Marker</code> parameter in a subsequent request.
+     *        response is truncated. To get more items, pass the value of the <code>NextMarker</code> element in
+     *        thisresponse to the <code>Marker</code> parameter in a subsequent request.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -219,13 +219,13 @@ public class ListAliasesResult extends com.amazonaws.AmazonWebServiceResult<com.
     /**
      * <p>
      * A flag that indicates whether there are more items in the list. When this value is true, the list in this
-     * response is truncated. To get more items, pass the value of the <code>NextMarker</code> element in this response
+     * response is truncated. To get more items, pass the value of the <code>NextMarker</code> element in thisresponse
      * to the <code>Marker</code> parameter in a subsequent request.
      * </p>
      * 
      * @return A flag that indicates whether there are more items in the list. When this value is true, the list in this
-     *         response is truncated. To get more items, pass the value of the <code>NextMarker</code> element in this
-     *         response to the <code>Marker</code> parameter in a subsequent request.
+     *         response is truncated. To get more items, pass the value of the <code>NextMarker</code> element in
+     *         thisresponse to the <code>Marker</code> parameter in a subsequent request.
      */
 
     public Boolean isTruncated() {
@@ -233,7 +233,8 @@ public class ListAliasesResult extends com.amazonaws.AmazonWebServiceResult<com.
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

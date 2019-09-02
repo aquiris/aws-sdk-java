@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -16,17 +16,24 @@ package com.amazonaws;
 
 import com.amazonaws.annotation.NotThreadSafe;
 import com.amazonaws.http.IdleConnectionReaper;
+import com.amazonaws.http.SystemPropertyTlsKeyManagersProvider;
+import com.amazonaws.http.TlsKeyManagersProvider;
 import com.amazonaws.retry.PredefinedRetryPolicies;
 import com.amazonaws.retry.RetryPolicy;
 import com.amazonaws.util.ValidationUtils;
 import com.amazonaws.util.VersionInfoUtils;
 import java.net.InetAddress;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicReference;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 /**
  * Client configuration options such as proxy settings, user agent string, max retry attempts, etc.
@@ -35,6 +42,7 @@ import java.util.Map;
  */
 @NotThreadSafe
 public class ClientConfiguration {
+    private static final Log log = LogFactory.getLog(ClientConfiguration.class);
 
     /** The default timeout for creating new connections. */
     public static final int DEFAULT_CONNECTION_TIMEOUT = 10 * 1000;
@@ -51,6 +59,11 @@ public class ClientConfiguration {
      * The default timeout for a request. This is disabled by default.
      */
     public static final int DEFAULT_CLIENT_EXECUTION_TIMEOUT = 0;
+
+    /**
+     * The default on whether to disable {@code Socket} proxies.
+     */
+    public static final boolean DEFAULT_DISABLE_SOCKET_PROXY = false;
 
     /** The default max connection pool size. */
     public static final int DEFAULT_MAX_CONNECTIONS = 50;
@@ -149,6 +162,13 @@ public class ClientConfiguration {
      */
     private Protocol protocol = Protocol.HTTPS;
 
+    /**
+     * The protocol to use when connecting to an HTTP proxy.
+     * <p>
+     * The default configuration is to use {@link Protocol#HTTP}.
+     */
+    private Protocol proxyProtocol = Protocol.HTTP;
+
     /** Optionally specifies the proxy host to connect through. */
     private String proxyHost = null;
 
@@ -174,6 +194,17 @@ public class ClientConfiguration {
     private List<ProxyAuthenticationMethod> proxyAuthenticationMethods = null;
 
     /**
+     * Controls whether {@link java.net.Socket}s created by the client should
+     * use the default {@link java.net.ProxySelector} when connecting to the
+     * remote host to find an appropriate proxy or connect directly to the
+     * host.
+     * <p />
+     * Note this property is only guaranteed to be honored when using the
+     * default connection factories.
+     */
+    private boolean disableSocketProxy = DEFAULT_DISABLE_SOCKET_PROXY;
+
+    /**
      * Whether to pre-emptively authenticate against a proxy server using basic authentication
      */
     private boolean preemptiveBasicProxyAuth;
@@ -182,7 +213,7 @@ public class ClientConfiguration {
     private int maxConnections = DEFAULT_MAX_CONNECTIONS;
 
     /**
-     * The amount of time to wait (in milliseconds) for data to be transfered over an established,
+     * The amount of time to wait (in milliseconds) for data to be transferred over an established,
      * open connection before the connection is timed out. A value of 0 means infinity, and is not
      * recommended.
      */
@@ -323,6 +354,20 @@ public class ClientConfiguration {
      */
     private final ApacheHttpClientConfig apacheHttpClientConfig;
 
+    /**
+     * Configuration option to disable the host prefix injection.
+     *
+     * The hostPrefix template is specified in the service model and is used by the SDK to modify the endpoint
+     * the request is sent to. Host prefix injection is enabled by default. This option can be set to disable the behavior.
+     */
+    private boolean disableHostPrefixInjection;
+
+    private final AtomicReference<URLHolder> httpProxyHolder = new AtomicReference<URLHolder>();
+
+    private final AtomicReference<URLHolder> httpsProxyHolder = new AtomicReference<URLHolder>();
+
+    private TlsKeyManagersProvider tlsKeyManagersProvider;
+
     public ClientConfiguration() {
         apacheHttpClientConfig = new ApacheHttpClientConfig();
     }
@@ -335,6 +380,7 @@ public class ClientConfiguration {
         this.throttleRetries = other.useThrottledRetries();
         this.localAddress = other.getLocalAddress();
         this.protocol = other.getProtocol();
+        this.proxyProtocol = other.getProxyProtocol();
         this.proxyDomain = other.getProxyDomain();
         this.proxyHost = other.getProxyHost();
         this.proxyPassword = other.getProxyPassword();
@@ -342,6 +388,7 @@ public class ClientConfiguration {
         this.proxyUsername = other.getProxyUsername();
         this.proxyWorkstation = other.getProxyWorkstation();
         this.nonProxyHosts = other.getNonProxyHosts();
+        this.disableSocketProxy = other.disableSocketProxy();
         this.proxyAuthenticationMethods = other.getProxyAuthenticationMethods();
         this.preemptiveBasicProxyAuth = other.isPreemptiveBasicProxyAuth();
         this.socketTimeout = other.getSocketTimeout();
@@ -367,6 +414,10 @@ public class ClientConfiguration {
         this.headers.clear();
         this.headers.putAll(other.getHeaders());
         this.maxConsecutiveRetriesBeforeThrottling = other.getMaxConsecutiveRetriesBeforeThrottling();
+        this.disableHostPrefixInjection = other.disableHostPrefixInjection;
+        this.httpProxyHolder.set(other.httpProxyHolder.get());
+        this.httpsProxyHolder.set(other.httpsProxyHolder.get());
+        this.tlsKeyManagersProvider = other.tlsKeyManagersProvider;
     }
 
     /**
@@ -583,6 +634,50 @@ public class ClientConfiguration {
     }
 
     /**
+     * Returns the value for the given environment variable.
+     */
+    private String getEnvironmentVariable(String environmentVariable) {
+        return System.getenv(environmentVariable);
+    }
+
+    /**
+     * Returns the value for the given environment variable if its set, otherwise returns
+     * the lowercase version of variable.
+     */
+    private String getEnvironmentVariableCaseInsensitive(String environmentVariable) {
+        return getEnvironmentVariable(environmentVariable) != null
+                ? getEnvironmentVariable(environmentVariable)
+                : getEnvironmentVariable(environmentVariable.toLowerCase());
+    }
+
+    /**
+     * @return The {@link Protocol} to use for connecting to the proxy.
+     */
+    public Protocol getProxyProtocol() {
+        return proxyProtocol;
+    }
+
+    /**
+     * Set the {@link Protocol} to use for connecting to the proxy.
+     *
+     * @param proxyProtocol The protocol.
+     * @return The updated ClientConfiguration object.
+     */
+    public ClientConfiguration withProxyProtocol(Protocol proxyProtocol) {
+        this.proxyProtocol = proxyProtocol == null ? Protocol.HTTP : proxyProtocol;
+        return this;
+    }
+
+    /**
+     * Set the {@link Protocol} to use for connecting to the proxy.
+     *
+     * @param proxyProtocol The protocol.
+     */
+    public void setProxyProtocol(Protocol proxyProtocol) {
+        withProxyProtocol(proxyProtocol);
+    }
+
+    /**
      * Returns the Java system property for proxy host depending on
      * {@link #getProtocol()}: i.e. if protocol is https, returns
      * the value of the system property https.proxyHost, otherwise
@@ -595,17 +690,43 @@ public class ClientConfiguration {
     }
 
     /**
+     * Returns the environment variable for proxy host depending on
+     * {@link #getProtocol()}: i.e. if protocol is https, returns
+     * the host in the value of the environment variable HTTPS_PROXY/https_proxy,
+     * otherwise, returns the host in the value of the environment
+     * variable HTTP_PROXY/http_proxy.
+     */
+    private String getProxyHostEnvironment() {
+        URL httpProxy = getHttpProxyEnvironmentVariable();
+        if (httpProxy != null) {
+            return httpProxy.getHost();
+        }
+        return null;
+    }
+
+    /**
      * Returns the optional proxy host the client will connect
      * through.  Returns either the proxyHost set on this object, or
      * if not provided, checks the value of the Java system property
      * for proxy host according to {@link #getProtocol()}: i.e. if
      * protocol is https, returns the value of the system property
      * https.proxyHost, otherwise returns value of http.proxyHost.
+     * If neither are set, checks the value of the environment variable
+     * according to {@link #getProtocol()}: i.e. if protocol is https,
+     * returns the host in the value of the HTTPS_PROXY/https_proxy
+     * environment variable, otherwise returns the host in the value
+     * of the HTTP_PROXY/http_proxy environment variable.
      *
      * @return The proxy host the client will connect through.
      */
     public String getProxyHost() {
-        return (proxyHost != null) ? proxyHost : getProxyHostProperty();
+        if (proxyHost != null) {
+            return proxyHost;
+        } else if (getProxyHostProperty() != null) {
+            return getProxyHostProperty();
+        } else {
+            return getProxyHostEnvironment();
+        }
     }
 
     /**
@@ -639,14 +760,28 @@ public class ClientConfiguration {
      * if the system property is not set with a valid port number.
      */
     private int getProxyPortProperty() {
-        final String proxyPortString = (getProtocol() == Protocol.HTTPS)
-                    ? getSystemProperty("https.proxyPort")
-                    : getSystemProperty("http.proxyPort");
         try {
-            return Integer.parseInt(proxyPortString);
+            return getProtocol() == Protocol.HTTPS
+                    ? Integer.parseInt(getSystemProperty("https.proxyPort"))
+                    : Integer.parseInt(getSystemProperty("http.proxyPort"));
         } catch (NumberFormatException e) {
             return proxyPort;
         }
+    }
+
+    /**
+     * Returns the environment variable for proxy port depending on
+     * {@link #getProtocol()}: i.e. if protocol is https, returns
+     * the port in the value of the environment variable HTTPS_PROXY/https_proxy,
+     * otherwise, returns the port in the value of the environment
+     * variable HTTP_PROXY/http_proxy.
+     */
+    private int getProxyPortEnvironment() {
+        URL httpProxy = getHttpProxyEnvironmentVariable();
+        if (httpProxy != null) {
+            return httpProxy.getPort();
+        }
+        return proxyPort;
     }
 
     /**
@@ -656,11 +791,22 @@ public class ClientConfiguration {
      * for proxy port according to {@link #getProtocol()}: i.e. if
      * protocol is https, returns the value of the system property
      * https.proxyPort, otherwise returns value of http.proxyPort.
+     * If neither are set, checks the value of the environment variable
+     * according to {@link #getProtocol()}: i.e. if protocol is https,
+     * returns the port in the value of the HTTPS_PROXY/https_proxy
+     * environment variable, otherwise returns the port in the value
+     * of the HTTP_PROXY/http_proxy environment variable.
      *
      * @return The proxy port the client will connect through.
      */
     public int getProxyPort() {
-        return (proxyPort >= 0) ? proxyPort : getProxyPortProperty();
+        if (proxyPort >= 0) {
+            return proxyPort;
+        } else if (getProxyPortProperty() >= 0) {
+            return getProxyPortProperty();
+        } else {
+            return getProxyPortEnvironment();
+        }
     }
 
     /**
@@ -687,6 +833,34 @@ public class ClientConfiguration {
     }
 
     /**
+     * Set whether to disable proxies at the socket level.
+     *
+     * @param disableSocketProxy Whether to disable proxies at the socket level.
+     *
+     * @return The updated ClientConfiguration object.
+     */
+    public ClientConfiguration withDisableSocketProxy(boolean disableSocketProxy) {
+        this.disableSocketProxy = disableSocketProxy;
+        return this;
+    }
+
+    /**
+     * Set whether to disable proxies at the socket level.
+     *
+     * @param disableSocketProxy Whether to disable proxies at the socket level.
+     */
+    public void setDisableSocketProxy(boolean disableSocketProxy) {
+        withDisableSocketProxy(disableSocketProxy);
+    }
+
+    /**
+     * @return Whether to disable proxies at the socket level.
+     */
+    public boolean disableSocketProxy() {
+        return disableSocketProxy;
+    }
+
+    /**
      * Returns the Java system property for proxy user name depending on
      * {@link #getProtocol()}: i.e. if protocol is https, returns
      * the value of the system property https.proxyUser, otherwise
@@ -699,19 +873,48 @@ public class ClientConfiguration {
     }
 
     /**
+     * Returns the environment variable for proxy host depending on
+     * {@link #getProtocol()}: i.e. if protocol is https, returns
+     * the user name in the value of the environment variable
+     * HTTPS_PROXY/https_proxy, otherwise, returns the user name in
+     * the value of the environment variable HTTP_PROXY/http_proxy.
+     */
+    private String getProxyUsernameEnvironment() {
+        URL httpProxy = getHttpProxyEnvironmentVariable();
+        if (httpProxy != null) {
+            try {
+                return httpProxy.getUserInfo().split(":", 2)[0];
+            } catch (Exception ignored) {
+            }
+        }
+        return null;
+    }
+
+    /**
      * Returns the optional proxy user name to use if connecting
      * through a proxy.  Returns either the proxyUsername set on this
      * object, or if not provided, checks the value of the Java system
      * property for proxy user name according to {@link #getProtocol()}:
      * i.e. if protocol is https, returns the value of the system
      * property https.proxyUser, otherwise returns value of
-     * http.proxyUser.
+     * http.proxyUser. If neither are set, checks the value of the
+     * environment variable according to {@link #getProtocol()}: i.e.
+     * if protocol is https, returns the user name in the value of the
+     * HTTPS_PROXY/https_proxy environment variable, otherwise returns
+     * the user name in the value of the HTTP_PROXY/http_proxy environment
+     * variable.
      *
      * @return The optional proxy user name the configured client will use if connecting through a
      *         proxy.
      */
     public String getProxyUsername() {
-        return (proxyUsername != null) ? proxyUsername : getProxyUsernameProperty();
+        if (proxyUsername != null) {
+            return proxyUsername;
+        } else if (getProxyUsernameProperty() != null) {
+            return getProxyUsernameProperty();
+        } else {
+            return getProxyUsernameEnvironment();
+        }
     }
 
     /**
@@ -749,18 +952,47 @@ public class ClientConfiguration {
     }
 
     /**
+     * Returns the environment variable for proxy host depending on
+     * {@link #getProtocol()}: i.e. if protocol is https, returns
+     * the password in the value of the environment variable HTTPS_PROXY/https_proxy,
+     * otherwise, returns the password in the value of the environment
+     * variable HTTP_PROXY/http_proxy.
+     */
+    private String getProxyPasswordEnvironment() {
+        URL httpProxy = getHttpProxyEnvironmentVariable();
+        if (httpProxy != null) {
+            try {
+                return httpProxy.getUserInfo().split(":", 2)[1];
+            } catch (Exception ignored) {
+            }
+        }
+        return null;
+    }
+
+    /**
      * Returns the optional proxy password to use if connecting
      * through a proxy.  Returns either the proxyPassword set on this
      * object, or if not provided, checks the value of the Java system
      * property for proxy password according to {@link #getProtocol()}:
      * i.e. if protocol is https, returns the value of the system
      * property https.proxyPassword, otherwise returns value of
-     * http.proxyPassword.
+     * http.proxyPassword. If neither are set, checks the value of the
+     * environment variable according to {@link #getProtocol()}: i.e. if
+     * protocol is https, returns the password in the value of the
+     * HTTPS_PROXY/https_proxy environment variable, otherwise returns
+     * the password in the value of the HTTP_PROXY/http_proxy environment
+     * variable.
      *
      * @return The password to use when connecting through a proxy.
      */
     public String getProxyPassword() {
-        return (proxyPassword != null) ? proxyPassword : getProxyPasswordProperty();
+        if (proxyPassword != null) {
+            return proxyPassword;
+        } else if (getProxyPasswordProperty() != null) {
+            return getProxyPasswordProperty();
+        } else {
+            return getProxyPasswordEnvironment();
+        }
     }
 
     /**
@@ -859,22 +1091,47 @@ public class ClientConfiguration {
     /**
      * Returns the Java system property for nonProxyHosts. We still honor this property even
      * {@link #getProtocol()} is https, see http://docs.oracle.com/javase/7/docs/api/java/net/doc-files/net-properties.html.
+     *
+     * This method expects the property to be set as pipe separated list.
      */
     private String getNonProxyHostsProperty() {
         return getSystemProperty("http.nonProxyHosts");
     }
 
     /**
+     * Returns the value of the environment variable NO_PROXY/no_proxy. This method expects
+     * the environment variable to be set as a comma separated list, so this method
+     * converts the comma separated list to pipe separated list to be used internally.
+     */
+    private String getNonProxyHostsEnvironment() {
+        String nonProxyHosts = getEnvironmentVariableCaseInsensitive("NO_PROXY");
+        if (nonProxyHosts != null) {
+            nonProxyHosts = nonProxyHosts.replace(",", "|");
+        }
+
+        return nonProxyHosts;
+    }
+
+    /**
      * Returns the optional hosts the client will access without going
      * through the proxy. Returns either the nonProxyHosts set on this
-     * object, or if not provided, checks the value of the Java system property
-     * for nonProxyHosts according to {@link #getProtocol()}: i.e. if
-     * protocol is https, returns null, otherwise returns value of http.nonProxyHosts.
+     * object, or if not provided, returns the value of the Java system property
+     * http.nonProxyHosts. We still honor this property even when
+     * {@link #getProtocol()} is https, see http://docs.oracle.com/javase/7/docs/api/java/net/doc-files/net-properties.html.
+     * This property is expected to be set as a pipe separated list. If neither are set,
+     * returns the value of the environment variable NO_PROXY/no_proxy. This environment
+     * variable is expected to be set as a comma separated list.
      *
      * @return The hosts the client will connect through bypassing the proxy.
      */
     public String getNonProxyHosts() {
-        return nonProxyHosts != null ? nonProxyHosts : getNonProxyHostsProperty();
+        if (nonProxyHosts != null) {
+            return nonProxyHosts;
+        } else if (getNonProxyHostsProperty() != null) {
+            return getNonProxyHostsProperty();
+        } else {
+            return getNonProxyHostsEnvironment();
+        }
     }
 
     /**
@@ -1023,11 +1280,11 @@ public class ClientConfiguration {
     }
 
     /**
-     * Returns the amount of time to wait (in milliseconds) for data to be transfered over an
+     * Returns the amount of time to wait (in milliseconds) for data to be transferred over an
      * established, open connection before the connection times out and is closed. A value of 0
      * means infinity, and isn't recommended.
      *
-     * @return The amount of time to wait (in milliseconds) for data to be transfered over an
+     * @return The amount of time to wait (in milliseconds) for data to be transferred over an
      *         established, open connection before the connection times out and is closed.
      */
     public int getSocketTimeout() {
@@ -1035,12 +1292,12 @@ public class ClientConfiguration {
     }
 
     /**
-     * Sets the amount of time to wait (in milliseconds) for data to be transfered over an
+     * Sets the amount of time to wait (in milliseconds) for data to be transferred over an
      * established, open connection before the connection times out and is closed. A value of 0
      * means infinity, and isn't recommended.
      *
      * @param socketTimeout
-     *            The amount of time to wait (in milliseconds) for data to be transfered over an
+     *            The amount of time to wait (in milliseconds) for data to be transferred over an
      *            established, open connection before the connection times out and is closed.
      */
     public void setSocketTimeout(int socketTimeout) {
@@ -1048,12 +1305,12 @@ public class ClientConfiguration {
     }
 
     /**
-     * Sets the amount of time to wait (in milliseconds) for data to be transfered over an
+     * Sets the amount of time to wait (in milliseconds) for data to be transferred over an
      * established, open connection before the connection times out and is closed, and returns the
      * updated ClientConfiguration object so that additional method calls may be chained together.
      *
      * @param socketTimeout
-     *            The amount of time to wait (in milliseconds) for data to be transfered over an
+     *            The amount of time to wait (in milliseconds) for data to be transferred over an
      *            established, open connection before the connection times out and is closed.
      * @return The updated ClientConfiguration object.
      */
@@ -2110,5 +2367,99 @@ public class ClientConfiguration {
      */
     public Map<String, String> getHeaders() {
         return Collections.unmodifiableMap(headers);
+    }
+
+    /**
+     * Returns the boolean value to indicate if the host prefix injection is disabled or not.
+     *
+     * The hostPrefix template is specified in the service model and is used by the SDK to modify the endpoint
+     * the request is sent to. Host prefix injection is enabled by default. This option can be set to disable the behavior.
+     */
+    public boolean isDisableHostPrefixInjection() {
+        return disableHostPrefixInjection;
+    }
+
+    /**
+     * Sets the configuration option to disable the host prefix injection.
+     *
+     * The hostPrefix template is specified in the service model and is used by the SDK to modify the endpoint
+     * the request is sent to. Host prefix injection is enabled by default. This option can be set to disable the behavior.
+     */
+    public void setDisableHostPrefixInjection(boolean disableHostPrefixInjection) {
+        this.disableHostPrefixInjection = disableHostPrefixInjection;
+    }
+
+    /**
+     * Sets the configuration option to disable the host prefix injection.
+     *
+     * The hostPrefix template is specified in the service model and is used by the SDK to modify the endpoint
+     * the request is sent to. Host prefix injection is enabled by default. This option can be set to disable the behavior.
+     */
+    public ClientConfiguration withDisableHostPrefixInjection(boolean disableHostPrefixInjection) {
+        setDisableHostPrefixInjection(disableHostPrefixInjection);
+        return this;
+    }
+
+    /**
+     * @return {@link TlsKeyManagersProvider} that will provide the {@link javax.net.ssl.KeyManager}s to use when
+     * constructing the client's SSL context.
+     * <p>
+     * The default is {@link SystemPropertyTlsKeyManagersProvider}.
+     */
+    public TlsKeyManagersProvider getTlsKeyManagersProvider() {
+        return tlsKeyManagersProvider;
+    }
+
+    /**
+     * Sets {@link TlsKeyManagersProvider} that will provide the {@link javax.net.ssl.KeyManager}s to use when
+     * constructing the client's SSL context.
+     * <p>
+     * The default is {@link SystemPropertyTlsKeyManagersProvider}.
+     */
+    public ClientConfiguration withTlsKeyManagersProvider(TlsKeyManagersProvider tlsKeyManagersProvider) {
+        this.tlsKeyManagersProvider = tlsKeyManagersProvider;
+        return this;
+    }
+
+    /**
+     * Sets {@link TlsKeyManagersProvider} that will provide the {@link javax.net.ssl.KeyManager}s to use when
+     * constructing the client's SSL context.
+     * <p>
+     * The default used by the client will be {@link SystemPropertyTlsKeyManagersProvider}. Set an instance {@link
+     * com.amazonaws.http.NoneTlsKeyManagersProvider} or another instance of {@link TlsKeyManagersProvider} to override
+     * it.
+     */
+    public void setTlsKeyManagersProvider(TlsKeyManagersProvider tlsKeyManagersProvider) {
+        withTlsKeyManagersProvider(tlsKeyManagersProvider);
+    }
+
+    private URL getHttpProxyEnvironmentVariable() {
+        if (getProtocol() == Protocol.HTTP) {
+            return getUrlEnvVar(httpProxyHolder, "HTTP_PROXY");
+        }
+        return getUrlEnvVar(httpsProxyHolder, "HTTPS_PROXY");
+    }
+
+    private URL getUrlEnvVar(AtomicReference<URLHolder> cache, String name) {
+        if (cache.get() == null) {
+            URLHolder holder = new URLHolder();
+            String value = getEnvironmentVariableCaseInsensitive(name);
+            if (value != null) {
+                try {
+                    holder.url = new URL(value);
+                } catch (MalformedURLException e) {
+                    if (log.isWarnEnabled()) {
+                        log.warn(String.format("Unable to parse %s environment variable value '%s' as URL. It is " +
+                                "malformed.", name, value), e);
+                    }
+                }
+            }
+            cache.compareAndSet(null, holder);
+        }
+        return cache.get().url;
+    }
+
+    static class URLHolder {
+        private URL url;
     }
 }

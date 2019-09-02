@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -33,11 +33,18 @@ public class M3u8Settings implements Serializable, Cloneable, StructuredPojo {
      * and can be entered in ranges and/or by comma separation.
      */
     private java.util.List<Integer> audioPids;
-
+    /**
+     * If INSERT, Nielsen inaudible tones for media tracking will be detected in the input audio and an equivalent ID3
+     * tag will be inserted in the output.
+     */
     private String nielsenId3;
     /** The number of milliseconds between instances of this table in the output transport stream. */
     private Integer patInterval;
-
+    /**
+     * When set to PCR_EVERY_PES_PACKET a Program Clock Reference value is inserted for every Packetized Elementary
+     * Stream (PES) header. This parameter is effective only when the PCR PID is the same as the video or audio
+     * elementary stream.
+     */
     private String pcrControl;
     /**
      * Packet Identifier (PID) of the Program Clock Reference (PCR) in the transport stream. When no value is given, the
@@ -54,9 +61,18 @@ public class M3u8Settings implements Serializable, Cloneable, StructuredPojo {
     private Integer programNumber;
     /** Packet Identifier (PID) of the SCTE-35 stream in the transport stream. */
     private Integer scte35Pid;
-
+    /**
+     * For SCTE-35 markers from your input-- Choose Passthrough (PASSTHROUGH) if you want SCTE-35 markers that appear in
+     * your input to also appear in this output. Choose None (NONE) if you don't want SCTE-35 markers in this output.
+     * For SCTE-35 markers from an ESAM XML document-- Choose None (NONE) if you don't want manifest conditioning. Choose
+     * Passthrough (PASSTHROUGH) and choose Ad markers (adMarkers) if you do want manifest conditioning. In both cases,
+     * also provide the ESAM XML as a string in the setting Signal processing notification XML (sccXml).
+     */
     private String scte35Source;
-
+    /**
+     * Applies only to HLS outputs. Use this setting to specify whether the service inserts the ID3 timed metadata from
+     * the input in this output.
+     */
     private String timedMetadata;
     /** Packet Identifier (PID) of the timed metadata stream in the transport stream. */
     private Integer timedMetadataPid;
@@ -170,7 +186,12 @@ public class M3u8Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * If INSERT, Nielsen inaudible tones for media tracking will be detected in the input audio and an equivalent ID3
+     * tag will be inserted in the output.
+     * 
      * @param nielsenId3
+     *        If INSERT, Nielsen inaudible tones for media tracking will be detected in the input audio and an
+     *        equivalent ID3 tag will be inserted in the output.
      * @see M3u8NielsenId3
      */
 
@@ -179,7 +200,11 @@ public class M3u8Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * @return
+     * If INSERT, Nielsen inaudible tones for media tracking will be detected in the input audio and an equivalent ID3
+     * tag will be inserted in the output.
+     * 
+     * @return If INSERT, Nielsen inaudible tones for media tracking will be detected in the input audio and an
+     *         equivalent ID3 tag will be inserted in the output.
      * @see M3u8NielsenId3
      */
 
@@ -188,7 +213,12 @@ public class M3u8Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * If INSERT, Nielsen inaudible tones for media tracking will be detected in the input audio and an equivalent ID3
+     * tag will be inserted in the output.
+     * 
      * @param nielsenId3
+     *        If INSERT, Nielsen inaudible tones for media tracking will be detected in the input audio and an
+     *        equivalent ID3 tag will be inserted in the output.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see M3u8NielsenId3
      */
@@ -199,7 +229,12 @@ public class M3u8Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * If INSERT, Nielsen inaudible tones for media tracking will be detected in the input audio and an equivalent ID3
+     * tag will be inserted in the output.
+     * 
      * @param nielsenId3
+     *        If INSERT, Nielsen inaudible tones for media tracking will be detected in the input audio and an
+     *        equivalent ID3 tag will be inserted in the output.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see M3u8NielsenId3
      */
@@ -244,7 +279,14 @@ public class M3u8Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * When set to PCR_EVERY_PES_PACKET a Program Clock Reference value is inserted for every Packetized Elementary
+     * Stream (PES) header. This parameter is effective only when the PCR PID is the same as the video or audio
+     * elementary stream.
+     * 
      * @param pcrControl
+     *        When set to PCR_EVERY_PES_PACKET a Program Clock Reference value is inserted for every Packetized
+     *        Elementary Stream (PES) header. This parameter is effective only when the PCR PID is the same as the video
+     *        or audio elementary stream.
      * @see M3u8PcrControl
      */
 
@@ -253,7 +295,13 @@ public class M3u8Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * @return
+     * When set to PCR_EVERY_PES_PACKET a Program Clock Reference value is inserted for every Packetized Elementary
+     * Stream (PES) header. This parameter is effective only when the PCR PID is the same as the video or audio
+     * elementary stream.
+     * 
+     * @return When set to PCR_EVERY_PES_PACKET a Program Clock Reference value is inserted for every Packetized
+     *         Elementary Stream (PES) header. This parameter is effective only when the PCR PID is the same as the
+     *         video or audio elementary stream.
      * @see M3u8PcrControl
      */
 
@@ -262,7 +310,14 @@ public class M3u8Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * When set to PCR_EVERY_PES_PACKET a Program Clock Reference value is inserted for every Packetized Elementary
+     * Stream (PES) header. This parameter is effective only when the PCR PID is the same as the video or audio
+     * elementary stream.
+     * 
      * @param pcrControl
+     *        When set to PCR_EVERY_PES_PACKET a Program Clock Reference value is inserted for every Packetized
+     *        Elementary Stream (PES) header. This parameter is effective only when the PCR PID is the same as the video
+     *        or audio elementary stream.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see M3u8PcrControl
      */
@@ -273,7 +328,14 @@ public class M3u8Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * When set to PCR_EVERY_PES_PACKET a Program Clock Reference value is inserted for every Packetized Elementary
+     * Stream (PES) header. This parameter is effective only when the PCR PID is the same as the video or audio
+     * elementary stream.
+     * 
      * @param pcrControl
+     *        When set to PCR_EVERY_PES_PACKET a Program Clock Reference value is inserted for every Packetized
+     *        Elementary Stream (PES) header. This parameter is effective only when the PCR PID is the same as the video
+     *        or audio elementary stream.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see M3u8PcrControl
      */
@@ -494,7 +556,19 @@ public class M3u8Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * For SCTE-35 markers from your input-- Choose Passthrough (PASSTHROUGH) if you want SCTE-35 markers that appear in
+     * your input to also appear in this output. Choose None (NONE) if you don't want SCTE-35 markers in this output.
+     * For SCTE-35 markers from an ESAM XML document-- Choose None (NONE) if you don't want manifest conditioning. Choose
+     * Passthrough (PASSTHROUGH) and choose Ad markers (adMarkers) if you do want manifest conditioning. In both cases,
+     * also provide the ESAM XML as a string in the setting Signal processing notification XML (sccXml).
+     * 
      * @param scte35Source
+     *        For SCTE-35 markers from your input-- Choose Passthrough (PASSTHROUGH) if you want SCTE-35 markers that
+     *        appear in your input to also appear in this output. Choose None (NONE) if you don't want SCTE-35 markers
+     *        in this output. For SCTE-35 markers from an ESAM XML document-- Choose None (NONE) if you don't want
+     *        manifest conditioning. Choose Passthrough (PASSTHROUGH) and choose Ad markers (adMarkers) if you do want
+     *        manifest conditioning. In both cases, also provide the ESAM XML as a string in the setting Signal
+     *        processing notification XML (sccXml).
      * @see M3u8Scte35Source
      */
 
@@ -503,7 +577,18 @@ public class M3u8Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * @return
+     * For SCTE-35 markers from your input-- Choose Passthrough (PASSTHROUGH) if you want SCTE-35 markers that appear in
+     * your input to also appear in this output. Choose None (NONE) if you don't want SCTE-35 markers in this output.
+     * For SCTE-35 markers from an ESAM XML document-- Choose None (NONE) if you don't want manifest conditioning. Choose
+     * Passthrough (PASSTHROUGH) and choose Ad markers (adMarkers) if you do want manifest conditioning. In both cases,
+     * also provide the ESAM XML as a string in the setting Signal processing notification XML (sccXml).
+     * 
+     * @return For SCTE-35 markers from your input-- Choose Passthrough (PASSTHROUGH) if you want SCTE-35 markers that
+     *         appear in your input to also appear in this output. Choose None (NONE) if you don't want SCTE-35 markers
+     *         in this output. For SCTE-35 markers from an ESAM XML document-- Choose None (NONE) if you don't want
+     *         manifest conditioning. Choose Passthrough (PASSTHROUGH) and choose Ad markers (adMarkers) if you do want
+     *         manifest conditioning. In both cases, also provide the ESAM XML as a string in the setting Signal
+     *         processing notification XML (sccXml).
      * @see M3u8Scte35Source
      */
 
@@ -512,7 +597,19 @@ public class M3u8Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * For SCTE-35 markers from your input-- Choose Passthrough (PASSTHROUGH) if you want SCTE-35 markers that appear in
+     * your input to also appear in this output. Choose None (NONE) if you don't want SCTE-35 markers in this output.
+     * For SCTE-35 markers from an ESAM XML document-- Choose None (NONE) if you don't want manifest conditioning. Choose
+     * Passthrough (PASSTHROUGH) and choose Ad markers (adMarkers) if you do want manifest conditioning. In both cases,
+     * also provide the ESAM XML as a string in the setting Signal processing notification XML (sccXml).
+     * 
      * @param scte35Source
+     *        For SCTE-35 markers from your input-- Choose Passthrough (PASSTHROUGH) if you want SCTE-35 markers that
+     *        appear in your input to also appear in this output. Choose None (NONE) if you don't want SCTE-35 markers
+     *        in this output. For SCTE-35 markers from an ESAM XML document-- Choose None (NONE) if you don't want
+     *        manifest conditioning. Choose Passthrough (PASSTHROUGH) and choose Ad markers (adMarkers) if you do want
+     *        manifest conditioning. In both cases, also provide the ESAM XML as a string in the setting Signal
+     *        processing notification XML (sccXml).
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see M3u8Scte35Source
      */
@@ -523,7 +620,19 @@ public class M3u8Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * For SCTE-35 markers from your input-- Choose Passthrough (PASSTHROUGH) if you want SCTE-35 markers that appear in
+     * your input to also appear in this output. Choose None (NONE) if you don't want SCTE-35 markers in this output.
+     * For SCTE-35 markers from an ESAM XML document-- Choose None (NONE) if you don't want manifest conditioning. Choose
+     * Passthrough (PASSTHROUGH) and choose Ad markers (adMarkers) if you do want manifest conditioning. In both cases,
+     * also provide the ESAM XML as a string in the setting Signal processing notification XML (sccXml).
+     * 
      * @param scte35Source
+     *        For SCTE-35 markers from your input-- Choose Passthrough (PASSTHROUGH) if you want SCTE-35 markers that
+     *        appear in your input to also appear in this output. Choose None (NONE) if you don't want SCTE-35 markers
+     *        in this output. For SCTE-35 markers from an ESAM XML document-- Choose None (NONE) if you don't want
+     *        manifest conditioning. Choose Passthrough (PASSTHROUGH) and choose Ad markers (adMarkers) if you do want
+     *        manifest conditioning. In both cases, also provide the ESAM XML as a string in the setting Signal
+     *        processing notification XML (sccXml).
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see M3u8Scte35Source
      */
@@ -534,7 +643,12 @@ public class M3u8Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Applies only to HLS outputs. Use this setting to specify whether the service inserts the ID3 timed metadata from
+     * the input in this output.
+     * 
      * @param timedMetadata
+     *        Applies only to HLS outputs. Use this setting to specify whether the service inserts the ID3 timed
+     *        metadata from the input in this output.
      * @see TimedMetadata
      */
 
@@ -543,7 +657,11 @@ public class M3u8Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * @return
+     * Applies only to HLS outputs. Use this setting to specify whether the service inserts the ID3 timed metadata from
+     * the input in this output.
+     * 
+     * @return Applies only to HLS outputs. Use this setting to specify whether the service inserts the ID3 timed
+     *         metadata from the input in this output.
      * @see TimedMetadata
      */
 
@@ -552,7 +670,12 @@ public class M3u8Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Applies only to HLS outputs. Use this setting to specify whether the service inserts the ID3 timed metadata from
+     * the input in this output.
+     * 
      * @param timedMetadata
+     *        Applies only to HLS outputs. Use this setting to specify whether the service inserts the ID3 timed
+     *        metadata from the input in this output.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see TimedMetadata
      */
@@ -563,7 +686,12 @@ public class M3u8Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Applies only to HLS outputs. Use this setting to specify whether the service inserts the ID3 timed metadata from
+     * the input in this output.
+     * 
      * @param timedMetadata
+     *        Applies only to HLS outputs. Use this setting to specify whether the service inserts the ID3 timed
+     *        metadata from the input in this output.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see TimedMetadata
      */
@@ -676,7 +804,8 @@ public class M3u8Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

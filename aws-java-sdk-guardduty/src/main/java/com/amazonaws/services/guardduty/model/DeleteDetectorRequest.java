@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -25,14 +25,20 @@ import com.amazonaws.AmazonWebServiceRequest;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DeleteDetectorRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
-    /** The unique ID that specifies the detector that you want to delete. */
+    /**
+     * <p>
+     * The unique ID of the detector that you want to delete.
+     * </p>
+     */
     private String detectorId;
 
     /**
-     * The unique ID that specifies the detector that you want to delete.
+     * <p>
+     * The unique ID of the detector that you want to delete.
+     * </p>
      * 
      * @param detectorId
-     *        The unique ID that specifies the detector that you want to delete.
+     *        The unique ID of the detector that you want to delete.
      */
 
     public void setDetectorId(String detectorId) {
@@ -40,9 +46,11 @@ public class DeleteDetectorRequest extends com.amazonaws.AmazonWebServiceRequest
     }
 
     /**
-     * The unique ID that specifies the detector that you want to delete.
+     * <p>
+     * The unique ID of the detector that you want to delete.
+     * </p>
      * 
-     * @return The unique ID that specifies the detector that you want to delete.
+     * @return The unique ID of the detector that you want to delete.
      */
 
     public String getDetectorId() {
@@ -50,10 +58,12 @@ public class DeleteDetectorRequest extends com.amazonaws.AmazonWebServiceRequest
     }
 
     /**
-     * The unique ID that specifies the detector that you want to delete.
+     * <p>
+     * The unique ID of the detector that you want to delete.
+     * </p>
      * 
      * @param detectorId
-     *        The unique ID that specifies the detector that you want to delete.
+     *        The unique ID of the detector that you want to delete.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -63,7 +73,8 @@ public class DeleteDetectorRequest extends com.amazonaws.AmazonWebServiceRequest
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

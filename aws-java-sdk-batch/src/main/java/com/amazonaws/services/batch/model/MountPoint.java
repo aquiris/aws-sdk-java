@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -19,7 +19,10 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * Details on a Docker volume mount point that is used in a job's container properties.
+ * Details on a Docker volume mount point that is used in a job's container properties. This parameter maps to
+ * <code>Volumes</code> in the <a
+ * href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.19/#create-a-container">Create a
+ * container</a> section of the Docker Remote API and the <code>--volume</code> option to docker run.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/batch-2016-08-10/MountPoint" target="_top">AWS API
@@ -189,7 +192,8 @@ public class MountPoint implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

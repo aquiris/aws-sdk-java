@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -23,10 +23,20 @@ import javax.annotation.Generated;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CreateThreatIntelSetResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
+    /**
+     * <p>
+     * The ID of the ThreatIntelSet resource.
+     * </p>
+     */
     private String threatIntelSetId;
 
     /**
+     * <p>
+     * The ID of the ThreatIntelSet resource.
+     * </p>
+     * 
      * @param threatIntelSetId
+     *        The ID of the ThreatIntelSet resource.
      */
 
     public void setThreatIntelSetId(String threatIntelSetId) {
@@ -34,7 +44,11 @@ public class CreateThreatIntelSetResult extends com.amazonaws.AmazonWebServiceRe
     }
 
     /**
-     * @return
+     * <p>
+     * The ID of the ThreatIntelSet resource.
+     * </p>
+     * 
+     * @return The ID of the ThreatIntelSet resource.
      */
 
     public String getThreatIntelSetId() {
@@ -42,7 +56,12 @@ public class CreateThreatIntelSetResult extends com.amazonaws.AmazonWebServiceRe
     }
 
     /**
+     * <p>
+     * The ID of the ThreatIntelSet resource.
+     * </p>
+     * 
      * @param threatIntelSetId
+     *        The ID of the ThreatIntelSet resource.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -52,7 +71,8 @@ public class CreateThreatIntelSetResult extends com.amazonaws.AmazonWebServiceRe
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

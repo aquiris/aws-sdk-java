@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -36,7 +36,7 @@ public class ListContainerInstancesRequest extends com.amazonaws.AmazonWebServic
      * <p>
      * You can filter the results of a <code>ListContainerInstances</code> operation with cluster query language
      * statements. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html">Cluster Query
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html">Cluster Query
      * Language</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      */
@@ -71,7 +71,7 @@ public class ListContainerInstancesRequest extends com.amazonaws.AmazonWebServic
      * Filters the container instances by status. For example, if you specify the <code>DRAINING</code> status, the
      * results include only container instances that have been set to <code>DRAINING</code> using
      * <a>UpdateContainerInstancesState</a>. If you do not specify this parameter, the default is to include container
-     * instances set to <code>ACTIVE</code> and <code>DRAINING</code>.
+     * instances set to all states other than <code>INACTIVE</code>.
      * </p>
      */
     private String status;
@@ -126,14 +126,14 @@ public class ListContainerInstancesRequest extends com.amazonaws.AmazonWebServic
      * <p>
      * You can filter the results of a <code>ListContainerInstances</code> operation with cluster query language
      * statements. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html">Cluster Query
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html">Cluster Query
      * Language</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
      * @param filter
      *        You can filter the results of a <code>ListContainerInstances</code> operation with cluster query language
      *        statements. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html">Cluster
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html">Cluster
      *        Query Language</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      */
 
@@ -145,13 +145,13 @@ public class ListContainerInstancesRequest extends com.amazonaws.AmazonWebServic
      * <p>
      * You can filter the results of a <code>ListContainerInstances</code> operation with cluster query language
      * statements. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html">Cluster Query
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html">Cluster Query
      * Language</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
      * @return You can filter the results of a <code>ListContainerInstances</code> operation with cluster query language
      *         statements. For more information, see <a
-     *         href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html">Cluster
+     *         href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html">Cluster
      *         Query Language</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      */
 
@@ -163,14 +163,14 @@ public class ListContainerInstancesRequest extends com.amazonaws.AmazonWebServic
      * <p>
      * You can filter the results of a <code>ListContainerInstances</code> operation with cluster query language
      * statements. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html">Cluster Query
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html">Cluster Query
      * Language</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
      * @param filter
      *        You can filter the results of a <code>ListContainerInstances</code> operation with cluster query language
      *        statements. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html">Cluster
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html">Cluster
      *        Query Language</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -343,14 +343,14 @@ public class ListContainerInstancesRequest extends com.amazonaws.AmazonWebServic
      * Filters the container instances by status. For example, if you specify the <code>DRAINING</code> status, the
      * results include only container instances that have been set to <code>DRAINING</code> using
      * <a>UpdateContainerInstancesState</a>. If you do not specify this parameter, the default is to include container
-     * instances set to <code>ACTIVE</code> and <code>DRAINING</code>.
+     * instances set to all states other than <code>INACTIVE</code>.
      * </p>
      * 
      * @param status
      *        Filters the container instances by status. For example, if you specify the <code>DRAINING</code> status,
      *        the results include only container instances that have been set to <code>DRAINING</code> using
      *        <a>UpdateContainerInstancesState</a>. If you do not specify this parameter, the default is to include
-     *        container instances set to <code>ACTIVE</code> and <code>DRAINING</code>.
+     *        container instances set to all states other than <code>INACTIVE</code>.
      * @see ContainerInstanceStatus
      */
 
@@ -363,13 +363,13 @@ public class ListContainerInstancesRequest extends com.amazonaws.AmazonWebServic
      * Filters the container instances by status. For example, if you specify the <code>DRAINING</code> status, the
      * results include only container instances that have been set to <code>DRAINING</code> using
      * <a>UpdateContainerInstancesState</a>. If you do not specify this parameter, the default is to include container
-     * instances set to <code>ACTIVE</code> and <code>DRAINING</code>.
+     * instances set to all states other than <code>INACTIVE</code>.
      * </p>
      * 
      * @return Filters the container instances by status. For example, if you specify the <code>DRAINING</code> status,
      *         the results include only container instances that have been set to <code>DRAINING</code> using
      *         <a>UpdateContainerInstancesState</a>. If you do not specify this parameter, the default is to include
-     *         container instances set to <code>ACTIVE</code> and <code>DRAINING</code>.
+     *         container instances set to all states other than <code>INACTIVE</code>.
      * @see ContainerInstanceStatus
      */
 
@@ -382,14 +382,14 @@ public class ListContainerInstancesRequest extends com.amazonaws.AmazonWebServic
      * Filters the container instances by status. For example, if you specify the <code>DRAINING</code> status, the
      * results include only container instances that have been set to <code>DRAINING</code> using
      * <a>UpdateContainerInstancesState</a>. If you do not specify this parameter, the default is to include container
-     * instances set to <code>ACTIVE</code> and <code>DRAINING</code>.
+     * instances set to all states other than <code>INACTIVE</code>.
      * </p>
      * 
      * @param status
      *        Filters the container instances by status. For example, if you specify the <code>DRAINING</code> status,
      *        the results include only container instances that have been set to <code>DRAINING</code> using
      *        <a>UpdateContainerInstancesState</a>. If you do not specify this parameter, the default is to include
-     *        container instances set to <code>ACTIVE</code> and <code>DRAINING</code>.
+     *        container instances set to all states other than <code>INACTIVE</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see ContainerInstanceStatus
      */
@@ -404,14 +404,14 @@ public class ListContainerInstancesRequest extends com.amazonaws.AmazonWebServic
      * Filters the container instances by status. For example, if you specify the <code>DRAINING</code> status, the
      * results include only container instances that have been set to <code>DRAINING</code> using
      * <a>UpdateContainerInstancesState</a>. If you do not specify this parameter, the default is to include container
-     * instances set to <code>ACTIVE</code> and <code>DRAINING</code>.
+     * instances set to all states other than <code>INACTIVE</code>.
      * </p>
      * 
      * @param status
      *        Filters the container instances by status. For example, if you specify the <code>DRAINING</code> status,
      *        the results include only container instances that have been set to <code>DRAINING</code> using
      *        <a>UpdateContainerInstancesState</a>. If you do not specify this parameter, the default is to include
-     *        container instances set to <code>ACTIVE</code> and <code>DRAINING</code>.
+     *        container instances set to all states other than <code>INACTIVE</code>.
      * @see ContainerInstanceStatus
      */
 
@@ -424,14 +424,14 @@ public class ListContainerInstancesRequest extends com.amazonaws.AmazonWebServic
      * Filters the container instances by status. For example, if you specify the <code>DRAINING</code> status, the
      * results include only container instances that have been set to <code>DRAINING</code> using
      * <a>UpdateContainerInstancesState</a>. If you do not specify this parameter, the default is to include container
-     * instances set to <code>ACTIVE</code> and <code>DRAINING</code>.
+     * instances set to all states other than <code>INACTIVE</code>.
      * </p>
      * 
      * @param status
      *        Filters the container instances by status. For example, if you specify the <code>DRAINING</code> status,
      *        the results include only container instances that have been set to <code>DRAINING</code> using
      *        <a>UpdateContainerInstancesState</a>. If you do not specify this parameter, the default is to include
-     *        container instances set to <code>ACTIVE</code> and <code>DRAINING</code>.
+     *        container instances set to all states other than <code>INACTIVE</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see ContainerInstanceStatus
      */
@@ -442,7 +442,8 @@ public class ListContainerInstancesRequest extends com.amazonaws.AmazonWebServic
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

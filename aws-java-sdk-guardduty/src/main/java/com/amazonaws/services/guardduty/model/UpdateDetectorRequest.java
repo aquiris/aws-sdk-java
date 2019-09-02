@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -18,7 +18,6 @@ import javax.annotation.Generated;
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
- * UpdateDetector request body.
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/UpdateDetector" target="_top">AWS API
  *      Documentation</a>
@@ -26,13 +25,29 @@ import com.amazonaws.AmazonWebServiceRequest;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class UpdateDetectorRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
-    /** The unique ID of the detector that you want to update. */
+    /**
+     * <p>
+     * The unique ID of the detector that you want to update.
+     * </p>
+     */
     private String detectorId;
-    /** Updated boolean value for the detector that specifies whether the detector is enabled. */
+    /**
+     * <p>
+     * Updated boolean value for the detector that specifies whether the detector is enabled.
+     * </p>
+     */
     private Boolean enable;
+    /**
+     * <p>
+     * A enum value that specifies how frequently customer got Finding updates published.
+     * </p>
+     */
+    private String findingPublishingFrequency;
 
     /**
+     * <p>
      * The unique ID of the detector that you want to update.
+     * </p>
      * 
      * @param detectorId
      *        The unique ID of the detector that you want to update.
@@ -43,7 +58,9 @@ public class UpdateDetectorRequest extends com.amazonaws.AmazonWebServiceRequest
     }
 
     /**
+     * <p>
      * The unique ID of the detector that you want to update.
+     * </p>
      * 
      * @return The unique ID of the detector that you want to update.
      */
@@ -53,7 +70,9 @@ public class UpdateDetectorRequest extends com.amazonaws.AmazonWebServiceRequest
     }
 
     /**
+     * <p>
      * The unique ID of the detector that you want to update.
+     * </p>
      * 
      * @param detectorId
      *        The unique ID of the detector that you want to update.
@@ -66,7 +85,9 @@ public class UpdateDetectorRequest extends com.amazonaws.AmazonWebServiceRequest
     }
 
     /**
+     * <p>
      * Updated boolean value for the detector that specifies whether the detector is enabled.
+     * </p>
      * 
      * @param enable
      *        Updated boolean value for the detector that specifies whether the detector is enabled.
@@ -77,7 +98,9 @@ public class UpdateDetectorRequest extends com.amazonaws.AmazonWebServiceRequest
     }
 
     /**
+     * <p>
      * Updated boolean value for the detector that specifies whether the detector is enabled.
+     * </p>
      * 
      * @return Updated boolean value for the detector that specifies whether the detector is enabled.
      */
@@ -87,7 +110,9 @@ public class UpdateDetectorRequest extends com.amazonaws.AmazonWebServiceRequest
     }
 
     /**
+     * <p>
      * Updated boolean value for the detector that specifies whether the detector is enabled.
+     * </p>
      * 
      * @param enable
      *        Updated boolean value for the detector that specifies whether the detector is enabled.
@@ -100,7 +125,9 @@ public class UpdateDetectorRequest extends com.amazonaws.AmazonWebServiceRequest
     }
 
     /**
+     * <p>
      * Updated boolean value for the detector that specifies whether the detector is enabled.
+     * </p>
      * 
      * @return Updated boolean value for the detector that specifies whether the detector is enabled.
      */
@@ -110,7 +137,67 @@ public class UpdateDetectorRequest extends com.amazonaws.AmazonWebServiceRequest
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * <p>
+     * A enum value that specifies how frequently customer got Finding updates published.
+     * </p>
+     * 
+     * @param findingPublishingFrequency
+     *        A enum value that specifies how frequently customer got Finding updates published.
+     * @see FindingPublishingFrequency
+     */
+
+    public void setFindingPublishingFrequency(String findingPublishingFrequency) {
+        this.findingPublishingFrequency = findingPublishingFrequency;
+    }
+
+    /**
+     * <p>
+     * A enum value that specifies how frequently customer got Finding updates published.
+     * </p>
+     * 
+     * @return A enum value that specifies how frequently customer got Finding updates published.
+     * @see FindingPublishingFrequency
+     */
+
+    public String getFindingPublishingFrequency() {
+        return this.findingPublishingFrequency;
+    }
+
+    /**
+     * <p>
+     * A enum value that specifies how frequently customer got Finding updates published.
+     * </p>
+     * 
+     * @param findingPublishingFrequency
+     *        A enum value that specifies how frequently customer got Finding updates published.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see FindingPublishingFrequency
+     */
+
+    public UpdateDetectorRequest withFindingPublishingFrequency(String findingPublishingFrequency) {
+        setFindingPublishingFrequency(findingPublishingFrequency);
+        return this;
+    }
+
+    /**
+     * <p>
+     * A enum value that specifies how frequently customer got Finding updates published.
+     * </p>
+     * 
+     * @param findingPublishingFrequency
+     *        A enum value that specifies how frequently customer got Finding updates published.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see FindingPublishingFrequency
+     */
+
+    public UpdateDetectorRequest withFindingPublishingFrequency(FindingPublishingFrequency findingPublishingFrequency) {
+        this.findingPublishingFrequency = findingPublishingFrequency.toString();
+        return this;
+    }
+
+    /**
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -123,7 +210,9 @@ public class UpdateDetectorRequest extends com.amazonaws.AmazonWebServiceRequest
         if (getDetectorId() != null)
             sb.append("DetectorId: ").append(getDetectorId()).append(",");
         if (getEnable() != null)
-            sb.append("Enable: ").append(getEnable());
+            sb.append("Enable: ").append(getEnable()).append(",");
+        if (getFindingPublishingFrequency() != null)
+            sb.append("FindingPublishingFrequency: ").append(getFindingPublishingFrequency());
         sb.append("}");
         return sb.toString();
     }
@@ -146,6 +235,10 @@ public class UpdateDetectorRequest extends com.amazonaws.AmazonWebServiceRequest
             return false;
         if (other.getEnable() != null && other.getEnable().equals(this.getEnable()) == false)
             return false;
+        if (other.getFindingPublishingFrequency() == null ^ this.getFindingPublishingFrequency() == null)
+            return false;
+        if (other.getFindingPublishingFrequency() != null && other.getFindingPublishingFrequency().equals(this.getFindingPublishingFrequency()) == false)
+            return false;
         return true;
     }
 
@@ -156,6 +249,7 @@ public class UpdateDetectorRequest extends com.amazonaws.AmazonWebServiceRequest
 
         hashCode = prime * hashCode + ((getDetectorId() == null) ? 0 : getDetectorId().hashCode());
         hashCode = prime * hashCode + ((getEnable() == null) ? 0 : getEnable().hashCode());
+        hashCode = prime * hashCode + ((getFindingPublishingFrequency() == null) ? 0 : getFindingPublishingFrequency().hashCode());
         return hashCode;
     }
 

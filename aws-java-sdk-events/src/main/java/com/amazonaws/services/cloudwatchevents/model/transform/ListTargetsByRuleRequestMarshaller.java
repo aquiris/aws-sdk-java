@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -29,6 +29,8 @@ public class ListTargetsByRuleRequestMarshaller {
 
     private static final MarshallingInfo<String> RULE_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("Rule").build();
+    private static final MarshallingInfo<String> EVENTBUSNAME_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("EventBusName").build();
     private static final MarshallingInfo<String> NEXTTOKEN_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("NextToken").build();
     private static final MarshallingInfo<Integer> LIMIT_BINDING = MarshallingInfo.builder(MarshallingType.INTEGER).marshallLocation(MarshallLocation.PAYLOAD)
@@ -51,6 +53,7 @@ public class ListTargetsByRuleRequestMarshaller {
 
         try {
             protocolMarshaller.marshall(listTargetsByRuleRequest.getRule(), RULE_BINDING);
+            protocolMarshaller.marshall(listTargetsByRuleRequest.getEventBusName(), EVENTBUSNAME_BINDING);
             protocolMarshaller.marshall(listTargetsByRuleRequest.getNextToken(), NEXTTOKEN_BINDING);
             protocolMarshaller.marshall(listTargetsByRuleRequest.getLimit(), LIMIT_BINDING);
         } catch (Exception e) {

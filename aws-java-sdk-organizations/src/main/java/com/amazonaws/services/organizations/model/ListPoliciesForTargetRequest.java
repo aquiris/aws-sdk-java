@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -36,19 +36,19 @@ public class ListPoliciesForTargetRequest extends com.amazonaws.AmazonWebService
      * <ul>
      * <li>
      * <p>
-     * Root: a string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
+     * <b>Root</b> - A string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Account: a string that consists of exactly 12 digits.
+     * <b>Account</b> - A string that consists of exactly 12 digits.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or digits
-     * (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional lower-case
-     * letters or digits.
+     * <b>Organizational unit (OU)</b> - A string that begins with "ou-" followed by from 4 to 32 lower-case letters or
+     * digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional
+     * lower-case letters or digits.
      * </p>
      * </li>
      * </ul>
@@ -70,13 +70,13 @@ public class ListPoliciesForTargetRequest extends com.amazonaws.AmazonWebService
     private String nextToken;
     /**
      * <p>
-     * (Optional) Use this to limit the number of results you want included in the response. If you do not include this
-     * parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum
-     * you specify, the <code>NextToken</code> response element is present and has a value (is not null). Include that
-     * value as the <code>NextToken</code> request parameter in the next call to the operation to get the next part of
-     * the results. Note that Organizations might return fewer results than the maximum even when there are more results
-     * available. You should check <code>NextToken</code> after every operation to ensure that you receive all of the
-     * results.
+     * (Optional) Use this to limit the number of results you want included per page in the response. If you do not
+     * include this parameter, it defaults to a value that is specific to the operation. If additional items exist
+     * beyond the maximum you specify, the <code>NextToken</code> response element is present and has a value (is not
+     * null). Include that value as the <code>NextToken</code> request parameter in the next call to the operation to
+     * get the next part of the results. Note that Organizations might return fewer results than the maximum even when
+     * there are more results available. You should check <code>NextToken</code> after every operation to ensure that
+     * you receive all of the results.
      * </p>
      */
     private Integer maxResults;
@@ -92,19 +92,19 @@ public class ListPoliciesForTargetRequest extends com.amazonaws.AmazonWebService
      * <ul>
      * <li>
      * <p>
-     * Root: a string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
+     * <b>Root</b> - A string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Account: a string that consists of exactly 12 digits.
+     * <b>Account</b> - A string that consists of exactly 12 digits.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or digits
-     * (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional lower-case
-     * letters or digits.
+     * <b>Organizational unit (OU)</b> - A string that begins with "ou-" followed by from 4 to 32 lower-case letters or
+     * digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional
+     * lower-case letters or digits.
      * </p>
      * </li>
      * </ul>
@@ -119,19 +119,19 @@ public class ListPoliciesForTargetRequest extends com.amazonaws.AmazonWebService
      *        <ul>
      *        <li>
      *        <p>
-     *        Root: a string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
+     *        <b>Root</b> - A string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Account: a string that consists of exactly 12 digits.
+     *        <b>Account</b> - A string that consists of exactly 12 digits.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or
-     *        digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional
-     *        lower-case letters or digits.
+     *        <b>Organizational unit (OU)</b> - A string that begins with "ou-" followed by from 4 to 32 lower-case
+     *        letters or digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32
+     *        additional lower-case letters or digits.
      *        </p>
      *        </li>
      */
@@ -151,19 +151,19 @@ public class ListPoliciesForTargetRequest extends com.amazonaws.AmazonWebService
      * <ul>
      * <li>
      * <p>
-     * Root: a string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
+     * <b>Root</b> - A string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Account: a string that consists of exactly 12 digits.
+     * <b>Account</b> - A string that consists of exactly 12 digits.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or digits
-     * (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional lower-case
-     * letters or digits.
+     * <b>Organizational unit (OU)</b> - A string that begins with "ou-" followed by from 4 to 32 lower-case letters or
+     * digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional
+     * lower-case letters or digits.
      * </p>
      * </li>
      * </ul>
@@ -177,19 +177,19 @@ public class ListPoliciesForTargetRequest extends com.amazonaws.AmazonWebService
      *         <ul>
      *         <li>
      *         <p>
-     *         Root: a string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
+     *         <b>Root</b> - A string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         Account: a string that consists of exactly 12 digits.
+     *         <b>Account</b> - A string that consists of exactly 12 digits.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or
-     *         digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional
-     *         lower-case letters or digits.
+     *         <b>Organizational unit (OU)</b> - A string that begins with "ou-" followed by from 4 to 32 lower-case
+     *         letters or digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32
+     *         additional lower-case letters or digits.
      *         </p>
      *         </li>
      */
@@ -209,19 +209,19 @@ public class ListPoliciesForTargetRequest extends com.amazonaws.AmazonWebService
      * <ul>
      * <li>
      * <p>
-     * Root: a string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
+     * <b>Root</b> - A string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Account: a string that consists of exactly 12 digits.
+     * <b>Account</b> - A string that consists of exactly 12 digits.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or digits
-     * (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional lower-case
-     * letters or digits.
+     * <b>Organizational unit (OU)</b> - A string that begins with "ou-" followed by from 4 to 32 lower-case letters or
+     * digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional
+     * lower-case letters or digits.
      * </p>
      * </li>
      * </ul>
@@ -236,19 +236,19 @@ public class ListPoliciesForTargetRequest extends com.amazonaws.AmazonWebService
      *        <ul>
      *        <li>
      *        <p>
-     *        Root: a string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
+     *        <b>Root</b> - A string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Account: a string that consists of exactly 12 digits.
+     *        <b>Account</b> - A string that consists of exactly 12 digits.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or
-     *        digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional
-     *        lower-case letters or digits.
+     *        <b>Organizational unit (OU)</b> - A string that begins with "ou-" followed by from 4 to 32 lower-case
+     *        letters or digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32
+     *        additional lower-case letters or digits.
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -386,18 +386,18 @@ public class ListPoliciesForTargetRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * (Optional) Use this to limit the number of results you want included in the response. If you do not include this
-     * parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum
-     * you specify, the <code>NextToken</code> response element is present and has a value (is not null). Include that
-     * value as the <code>NextToken</code> request parameter in the next call to the operation to get the next part of
-     * the results. Note that Organizations might return fewer results than the maximum even when there are more results
-     * available. You should check <code>NextToken</code> after every operation to ensure that you receive all of the
-     * results.
+     * (Optional) Use this to limit the number of results you want included per page in the response. If you do not
+     * include this parameter, it defaults to a value that is specific to the operation. If additional items exist
+     * beyond the maximum you specify, the <code>NextToken</code> response element is present and has a value (is not
+     * null). Include that value as the <code>NextToken</code> request parameter in the next call to the operation to
+     * get the next part of the results. Note that Organizations might return fewer results than the maximum even when
+     * there are more results available. You should check <code>NextToken</code> after every operation to ensure that
+     * you receive all of the results.
      * </p>
      * 
      * @param maxResults
-     *        (Optional) Use this to limit the number of results you want included in the response. If you do not
-     *        include this parameter, it defaults to a value that is specific to the operation. If additional items
+     *        (Optional) Use this to limit the number of results you want included per page in the response. If you do
+     *        not include this parameter, it defaults to a value that is specific to the operation. If additional items
      *        exist beyond the maximum you specify, the <code>NextToken</code> response element is present and has a
      *        value (is not null). Include that value as the <code>NextToken</code> request parameter in the next call
      *        to the operation to get the next part of the results. Note that Organizations might return fewer results
@@ -411,17 +411,17 @@ public class ListPoliciesForTargetRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * (Optional) Use this to limit the number of results you want included in the response. If you do not include this
-     * parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum
-     * you specify, the <code>NextToken</code> response element is present and has a value (is not null). Include that
-     * value as the <code>NextToken</code> request parameter in the next call to the operation to get the next part of
-     * the results. Note that Organizations might return fewer results than the maximum even when there are more results
-     * available. You should check <code>NextToken</code> after every operation to ensure that you receive all of the
-     * results.
+     * (Optional) Use this to limit the number of results you want included per page in the response. If you do not
+     * include this parameter, it defaults to a value that is specific to the operation. If additional items exist
+     * beyond the maximum you specify, the <code>NextToken</code> response element is present and has a value (is not
+     * null). Include that value as the <code>NextToken</code> request parameter in the next call to the operation to
+     * get the next part of the results. Note that Organizations might return fewer results than the maximum even when
+     * there are more results available. You should check <code>NextToken</code> after every operation to ensure that
+     * you receive all of the results.
      * </p>
      * 
-     * @return (Optional) Use this to limit the number of results you want included in the response. If you do not
-     *         include this parameter, it defaults to a value that is specific to the operation. If additional items
+     * @return (Optional) Use this to limit the number of results you want included per page in the response. If you do
+     *         not include this parameter, it defaults to a value that is specific to the operation. If additional items
      *         exist beyond the maximum you specify, the <code>NextToken</code> response element is present and has a
      *         value (is not null). Include that value as the <code>NextToken</code> request parameter in the next call
      *         to the operation to get the next part of the results. Note that Organizations might return fewer results
@@ -435,18 +435,18 @@ public class ListPoliciesForTargetRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * (Optional) Use this to limit the number of results you want included in the response. If you do not include this
-     * parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum
-     * you specify, the <code>NextToken</code> response element is present and has a value (is not null). Include that
-     * value as the <code>NextToken</code> request parameter in the next call to the operation to get the next part of
-     * the results. Note that Organizations might return fewer results than the maximum even when there are more results
-     * available. You should check <code>NextToken</code> after every operation to ensure that you receive all of the
-     * results.
+     * (Optional) Use this to limit the number of results you want included per page in the response. If you do not
+     * include this parameter, it defaults to a value that is specific to the operation. If additional items exist
+     * beyond the maximum you specify, the <code>NextToken</code> response element is present and has a value (is not
+     * null). Include that value as the <code>NextToken</code> request parameter in the next call to the operation to
+     * get the next part of the results. Note that Organizations might return fewer results than the maximum even when
+     * there are more results available. You should check <code>NextToken</code> after every operation to ensure that
+     * you receive all of the results.
      * </p>
      * 
      * @param maxResults
-     *        (Optional) Use this to limit the number of results you want included in the response. If you do not
-     *        include this parameter, it defaults to a value that is specific to the operation. If additional items
+     *        (Optional) Use this to limit the number of results you want included per page in the response. If you do
+     *        not include this parameter, it defaults to a value that is specific to the operation. If additional items
      *        exist beyond the maximum you specify, the <code>NextToken</code> response element is present and has a
      *        value (is not null). Include that value as the <code>NextToken</code> request parameter in the next call
      *        to the operation to get the next part of the results. Note that Organizations might return fewer results
@@ -461,7 +461,8 @@ public class ListPoliciesForTargetRequest extends com.amazonaws.AmazonWebService
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

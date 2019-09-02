@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -34,6 +34,12 @@ public class ActionContext implements Serializable, Cloneable, StructuredPojo {
      * </p>
      */
     private String name;
+    /**
+     * <p>
+     * The system-generated unique ID that corresponds to an action's execution.
+     * </p>
+     */
+    private String actionExecutionId;
 
     /**
      * <p>
@@ -76,7 +82,48 @@ public class ActionContext implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * <p>
+     * The system-generated unique ID that corresponds to an action's execution.
+     * </p>
+     * 
+     * @param actionExecutionId
+     *        The system-generated unique ID that corresponds to an action's execution.
+     */
+
+    public void setActionExecutionId(String actionExecutionId) {
+        this.actionExecutionId = actionExecutionId;
+    }
+
+    /**
+     * <p>
+     * The system-generated unique ID that corresponds to an action's execution.
+     * </p>
+     * 
+     * @return The system-generated unique ID that corresponds to an action's execution.
+     */
+
+    public String getActionExecutionId() {
+        return this.actionExecutionId;
+    }
+
+    /**
+     * <p>
+     * The system-generated unique ID that corresponds to an action's execution.
+     * </p>
+     * 
+     * @param actionExecutionId
+     *        The system-generated unique ID that corresponds to an action's execution.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ActionContext withActionExecutionId(String actionExecutionId) {
+        setActionExecutionId(actionExecutionId);
+        return this;
+    }
+
+    /**
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -87,7 +134,9 @@ public class ActionContext implements Serializable, Cloneable, StructuredPojo {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getName() != null)
-            sb.append("Name: ").append(getName());
+            sb.append("Name: ").append(getName()).append(",");
+        if (getActionExecutionId() != null)
+            sb.append("ActionExecutionId: ").append(getActionExecutionId());
         sb.append("}");
         return sb.toString();
     }
@@ -106,6 +155,10 @@ public class ActionContext implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getName() != null && other.getName().equals(this.getName()) == false)
             return false;
+        if (other.getActionExecutionId() == null ^ this.getActionExecutionId() == null)
+            return false;
+        if (other.getActionExecutionId() != null && other.getActionExecutionId().equals(this.getActionExecutionId()) == false)
+            return false;
         return true;
     }
 
@@ -115,6 +168,7 @@ public class ActionContext implements Serializable, Cloneable, StructuredPojo {
         int hashCode = 1;
 
         hashCode = prime * hashCode + ((getName() == null) ? 0 : getName().hashCode());
+        hashCode = prime * hashCode + ((getActionExecutionId() == null) ? 0 : getActionExecutionId().hashCode());
         return hashCode;
     }
 

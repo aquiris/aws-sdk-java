@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -54,7 +54,7 @@ public class ReplicationGroup implements Serializable, Cloneable {
     private ReplicationGroupPendingModifiedValues pendingModifiedValues;
     /**
      * <p>
-     * The identifiers of all the nodes that are part of this replication group.
+     * The names of all the cache clusters that are part of this replication group.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<String> memberClusters;
@@ -87,7 +87,7 @@ public class ReplicationGroup implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * Redis (cluster mode disabled): T1 and T2 cache node types.
+     * Redis (cluster mode disabled): T1 node types.
      * </p>
      * </li>
      * <li>
@@ -170,6 +170,10 @@ public class ReplicationGroup implements Serializable, Cloneable {
      * you create a cluster.
      * </p>
      * <p>
+     * <b>Required:</b> Only available when creating a replication group in an Amazon VPC using redis version
+     * <code>3.2.6</code>, <code>4.x</code> or later.
+     * </p>
+     * <p>
      * Default: <code>false</code>
      * </p>
      */
@@ -184,10 +188,20 @@ public class ReplicationGroup implements Serializable, Cloneable {
      * create a cluster.
      * </p>
      * <p>
+     * <b>Required:</b> Only available when creating a replication group in an Amazon VPC using redis version
+     * <code>3.2.6</code>, <code>4.x</code> or later.
+     * </p>
+     * <p>
      * Default: <code>false</code>
      * </p>
      */
     private Boolean atRestEncryptionEnabled;
+    /**
+     * <p>
+     * The ID of the KMS key used to encrypt the disk in the cluster.
+     * </p>
+     */
+    private String kmsKeyId;
 
     /**
      * <p>
@@ -363,10 +377,10 @@ public class ReplicationGroup implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The identifiers of all the nodes that are part of this replication group.
+     * The names of all the cache clusters that are part of this replication group.
      * </p>
      * 
-     * @return The identifiers of all the nodes that are part of this replication group.
+     * @return The names of all the cache clusters that are part of this replication group.
      */
 
     public java.util.List<String> getMemberClusters() {
@@ -378,11 +392,11 @@ public class ReplicationGroup implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The identifiers of all the nodes that are part of this replication group.
+     * The names of all the cache clusters that are part of this replication group.
      * </p>
      * 
      * @param memberClusters
-     *        The identifiers of all the nodes that are part of this replication group.
+     *        The names of all the cache clusters that are part of this replication group.
      */
 
     public void setMemberClusters(java.util.Collection<String> memberClusters) {
@@ -396,7 +410,7 @@ public class ReplicationGroup implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The identifiers of all the nodes that are part of this replication group.
+     * The names of all the cache clusters that are part of this replication group.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -405,7 +419,7 @@ public class ReplicationGroup implements Serializable, Cloneable {
      * </p>
      * 
      * @param memberClusters
-     *        The identifiers of all the nodes that are part of this replication group.
+     *        The names of all the cache clusters that are part of this replication group.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -421,11 +435,11 @@ public class ReplicationGroup implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The identifiers of all the nodes that are part of this replication group.
+     * The names of all the cache clusters that are part of this replication group.
      * </p>
      * 
      * @param memberClusters
-     *        The identifiers of all the nodes that are part of this replication group.
+     *        The names of all the cache clusters that are part of this replication group.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -578,7 +592,7 @@ public class ReplicationGroup implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * Redis (cluster mode disabled): T1 and T2 cache node types.
+     * Redis (cluster mode disabled): T1 node types.
      * </p>
      * </li>
      * <li>
@@ -601,7 +615,7 @@ public class ReplicationGroup implements Serializable, Cloneable {
      *        </li>
      *        <li>
      *        <p>
-     *        Redis (cluster mode disabled): T1 and T2 cache node types.
+     *        Redis (cluster mode disabled): T1 node types.
      *        </p>
      *        </li>
      *        <li>
@@ -631,7 +645,7 @@ public class ReplicationGroup implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * Redis (cluster mode disabled): T1 and T2 cache node types.
+     * Redis (cluster mode disabled): T1 node types.
      * </p>
      * </li>
      * <li>
@@ -653,7 +667,7 @@ public class ReplicationGroup implements Serializable, Cloneable {
      *         </li>
      *         <li>
      *         <p>
-     *         Redis (cluster mode disabled): T1 and T2 cache node types.
+     *         Redis (cluster mode disabled): T1 node types.
      *         </p>
      *         </li>
      *         <li>
@@ -683,7 +697,7 @@ public class ReplicationGroup implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * Redis (cluster mode disabled): T1 and T2 cache node types.
+     * Redis (cluster mode disabled): T1 node types.
      * </p>
      * </li>
      * <li>
@@ -706,7 +720,7 @@ public class ReplicationGroup implements Serializable, Cloneable {
      *        </li>
      *        <li>
      *        <p>
-     *        Redis (cluster mode disabled): T1 and T2 cache node types.
+     *        Redis (cluster mode disabled): T1 node types.
      *        </p>
      *        </li>
      *        <li>
@@ -738,7 +752,7 @@ public class ReplicationGroup implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * Redis (cluster mode disabled): T1 and T2 cache node types.
+     * Redis (cluster mode disabled): T1 node types.
      * </p>
      * </li>
      * <li>
@@ -761,7 +775,7 @@ public class ReplicationGroup implements Serializable, Cloneable {
      *        </li>
      *        <li>
      *        <p>
-     *        Redis (cluster mode disabled): T1 and T2 cache node types.
+     *        Redis (cluster mode disabled): T1 node types.
      *        </p>
      *        </li>
      *        <li>
@@ -791,7 +805,7 @@ public class ReplicationGroup implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * Redis (cluster mode disabled): T1 and T2 cache node types.
+     * Redis (cluster mode disabled): T1 node types.
      * </p>
      * </li>
      * <li>
@@ -814,7 +828,7 @@ public class ReplicationGroup implements Serializable, Cloneable {
      *        </li>
      *        <li>
      *        <p>
-     *        Redis (cluster mode disabled): T1 and T2 cache node types.
+     *        Redis (cluster mode disabled): T1 node types.
      *        </p>
      *        </li>
      *        <li>
@@ -1261,6 +1275,10 @@ public class ReplicationGroup implements Serializable, Cloneable {
      * you create a cluster.
      * </p>
      * <p>
+     * <b>Required:</b> Only available when creating a replication group in an Amazon VPC using redis version
+     * <code>3.2.6</code>, <code>4.x</code> or later.
+     * </p>
+     * <p>
      * Default: <code>false</code>
      * </p>
      * 
@@ -1270,6 +1288,10 @@ public class ReplicationGroup implements Serializable, Cloneable {
      *        You cannot modify the value of <code>TransitEncryptionEnabled</code> after the cluster is created. To
      *        enable in-transit encryption on a cluster you must set <code>TransitEncryptionEnabled</code> to
      *        <code>true</code> when you create a cluster.
+     *        </p>
+     *        <p>
+     *        <b>Required:</b> Only available when creating a replication group in an Amazon VPC using redis version
+     *        <code>3.2.6</code>, <code>4.x</code> or later.
      *        </p>
      *        <p>
      *        Default: <code>false</code>
@@ -1289,6 +1311,10 @@ public class ReplicationGroup implements Serializable, Cloneable {
      * you create a cluster.
      * </p>
      * <p>
+     * <b>Required:</b> Only available when creating a replication group in an Amazon VPC using redis version
+     * <code>3.2.6</code>, <code>4.x</code> or later.
+     * </p>
+     * <p>
      * Default: <code>false</code>
      * </p>
      * 
@@ -1297,6 +1323,10 @@ public class ReplicationGroup implements Serializable, Cloneable {
      *         You cannot modify the value of <code>TransitEncryptionEnabled</code> after the cluster is created. To
      *         enable in-transit encryption on a cluster you must set <code>TransitEncryptionEnabled</code> to
      *         <code>true</code> when you create a cluster.
+     *         </p>
+     *         <p>
+     *         <b>Required:</b> Only available when creating a replication group in an Amazon VPC using redis version
+     *         <code>3.2.6</code>, <code>4.x</code> or later.
      *         </p>
      *         <p>
      *         Default: <code>false</code>
@@ -1316,6 +1346,10 @@ public class ReplicationGroup implements Serializable, Cloneable {
      * you create a cluster.
      * </p>
      * <p>
+     * <b>Required:</b> Only available when creating a replication group in an Amazon VPC using redis version
+     * <code>3.2.6</code>, <code>4.x</code> or later.
+     * </p>
+     * <p>
      * Default: <code>false</code>
      * </p>
      * 
@@ -1325,6 +1359,10 @@ public class ReplicationGroup implements Serializable, Cloneable {
      *        You cannot modify the value of <code>TransitEncryptionEnabled</code> after the cluster is created. To
      *        enable in-transit encryption on a cluster you must set <code>TransitEncryptionEnabled</code> to
      *        <code>true</code> when you create a cluster.
+     *        </p>
+     *        <p>
+     *        <b>Required:</b> Only available when creating a replication group in an Amazon VPC using redis version
+     *        <code>3.2.6</code>, <code>4.x</code> or later.
      *        </p>
      *        <p>
      *        Default: <code>false</code>
@@ -1346,6 +1384,10 @@ public class ReplicationGroup implements Serializable, Cloneable {
      * you create a cluster.
      * </p>
      * <p>
+     * <b>Required:</b> Only available when creating a replication group in an Amazon VPC using redis version
+     * <code>3.2.6</code>, <code>4.x</code> or later.
+     * </p>
+     * <p>
      * Default: <code>false</code>
      * </p>
      * 
@@ -1354,6 +1396,10 @@ public class ReplicationGroup implements Serializable, Cloneable {
      *         You cannot modify the value of <code>TransitEncryptionEnabled</code> after the cluster is created. To
      *         enable in-transit encryption on a cluster you must set <code>TransitEncryptionEnabled</code> to
      *         <code>true</code> when you create a cluster.
+     *         </p>
+     *         <p>
+     *         <b>Required:</b> Only available when creating a replication group in an Amazon VPC using redis version
+     *         <code>3.2.6</code>, <code>4.x</code> or later.
      *         </p>
      *         <p>
      *         Default: <code>false</code>
@@ -1373,6 +1419,10 @@ public class ReplicationGroup implements Serializable, Cloneable {
      * create a cluster.
      * </p>
      * <p>
+     * <b>Required:</b> Only available when creating a replication group in an Amazon VPC using redis version
+     * <code>3.2.6</code>, <code>4.x</code> or later.
+     * </p>
+     * <p>
      * Default: <code>false</code>
      * </p>
      * 
@@ -1382,6 +1432,10 @@ public class ReplicationGroup implements Serializable, Cloneable {
      *        You cannot modify the value of <code>AtRestEncryptionEnabled</code> after the cluster is created. To
      *        enable encryption at-rest on a cluster you must set <code>AtRestEncryptionEnabled</code> to
      *        <code>true</code> when you create a cluster.
+     *        </p>
+     *        <p>
+     *        <b>Required:</b> Only available when creating a replication group in an Amazon VPC using redis version
+     *        <code>3.2.6</code>, <code>4.x</code> or later.
      *        </p>
      *        <p>
      *        Default: <code>false</code>
@@ -1401,6 +1455,10 @@ public class ReplicationGroup implements Serializable, Cloneable {
      * create a cluster.
      * </p>
      * <p>
+     * <b>Required:</b> Only available when creating a replication group in an Amazon VPC using redis version
+     * <code>3.2.6</code>, <code>4.x</code> or later.
+     * </p>
+     * <p>
      * Default: <code>false</code>
      * </p>
      * 
@@ -1409,6 +1467,10 @@ public class ReplicationGroup implements Serializable, Cloneable {
      *         You cannot modify the value of <code>AtRestEncryptionEnabled</code> after the cluster is created. To
      *         enable encryption at-rest on a cluster you must set <code>AtRestEncryptionEnabled</code> to
      *         <code>true</code> when you create a cluster.
+     *         </p>
+     *         <p>
+     *         <b>Required:</b> Only available when creating a replication group in an Amazon VPC using redis version
+     *         <code>3.2.6</code>, <code>4.x</code> or later.
      *         </p>
      *         <p>
      *         Default: <code>false</code>
@@ -1428,6 +1490,10 @@ public class ReplicationGroup implements Serializable, Cloneable {
      * create a cluster.
      * </p>
      * <p>
+     * <b>Required:</b> Only available when creating a replication group in an Amazon VPC using redis version
+     * <code>3.2.6</code>, <code>4.x</code> or later.
+     * </p>
+     * <p>
      * Default: <code>false</code>
      * </p>
      * 
@@ -1437,6 +1503,10 @@ public class ReplicationGroup implements Serializable, Cloneable {
      *        You cannot modify the value of <code>AtRestEncryptionEnabled</code> after the cluster is created. To
      *        enable encryption at-rest on a cluster you must set <code>AtRestEncryptionEnabled</code> to
      *        <code>true</code> when you create a cluster.
+     *        </p>
+     *        <p>
+     *        <b>Required:</b> Only available when creating a replication group in an Amazon VPC using redis version
+     *        <code>3.2.6</code>, <code>4.x</code> or later.
      *        </p>
      *        <p>
      *        Default: <code>false</code>
@@ -1458,6 +1528,10 @@ public class ReplicationGroup implements Serializable, Cloneable {
      * create a cluster.
      * </p>
      * <p>
+     * <b>Required:</b> Only available when creating a replication group in an Amazon VPC using redis version
+     * <code>3.2.6</code>, <code>4.x</code> or later.
+     * </p>
+     * <p>
      * Default: <code>false</code>
      * </p>
      * 
@@ -1468,6 +1542,10 @@ public class ReplicationGroup implements Serializable, Cloneable {
      *         <code>true</code> when you create a cluster.
      *         </p>
      *         <p>
+     *         <b>Required:</b> Only available when creating a replication group in an Amazon VPC using redis version
+     *         <code>3.2.6</code>, <code>4.x</code> or later.
+     *         </p>
+     *         <p>
      *         Default: <code>false</code>
      */
 
@@ -1476,7 +1554,48 @@ public class ReplicationGroup implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * <p>
+     * The ID of the KMS key used to encrypt the disk in the cluster.
+     * </p>
+     * 
+     * @param kmsKeyId
+     *        The ID of the KMS key used to encrypt the disk in the cluster.
+     */
+
+    public void setKmsKeyId(String kmsKeyId) {
+        this.kmsKeyId = kmsKeyId;
+    }
+
+    /**
+     * <p>
+     * The ID of the KMS key used to encrypt the disk in the cluster.
+     * </p>
+     * 
+     * @return The ID of the KMS key used to encrypt the disk in the cluster.
+     */
+
+    public String getKmsKeyId() {
+        return this.kmsKeyId;
+    }
+
+    /**
+     * <p>
+     * The ID of the KMS key used to encrypt the disk in the cluster.
+     * </p>
+     * 
+     * @param kmsKeyId
+     *        The ID of the KMS key used to encrypt the disk in the cluster.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ReplicationGroup withKmsKeyId(String kmsKeyId) {
+        setKmsKeyId(kmsKeyId);
+        return this;
+    }
+
+    /**
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -1517,7 +1636,9 @@ public class ReplicationGroup implements Serializable, Cloneable {
         if (getTransitEncryptionEnabled() != null)
             sb.append("TransitEncryptionEnabled: ").append(getTransitEncryptionEnabled()).append(",");
         if (getAtRestEncryptionEnabled() != null)
-            sb.append("AtRestEncryptionEnabled: ").append(getAtRestEncryptionEnabled());
+            sb.append("AtRestEncryptionEnabled: ").append(getAtRestEncryptionEnabled()).append(",");
+        if (getKmsKeyId() != null)
+            sb.append("KmsKeyId: ").append(getKmsKeyId());
         sb.append("}");
         return sb.toString();
     }
@@ -1596,6 +1717,10 @@ public class ReplicationGroup implements Serializable, Cloneable {
             return false;
         if (other.getAtRestEncryptionEnabled() != null && other.getAtRestEncryptionEnabled().equals(this.getAtRestEncryptionEnabled()) == false)
             return false;
+        if (other.getKmsKeyId() == null ^ this.getKmsKeyId() == null)
+            return false;
+        if (other.getKmsKeyId() != null && other.getKmsKeyId().equals(this.getKmsKeyId()) == false)
+            return false;
         return true;
     }
 
@@ -1620,6 +1745,7 @@ public class ReplicationGroup implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getAuthTokenEnabled() == null) ? 0 : getAuthTokenEnabled().hashCode());
         hashCode = prime * hashCode + ((getTransitEncryptionEnabled() == null) ? 0 : getTransitEncryptionEnabled().hashCode());
         hashCode = prime * hashCode + ((getAtRestEncryptionEnabled() == null) ? 0 : getAtRestEncryptionEnabled().hashCode());
+        hashCode = prime * hashCode + ((getKmsKeyId() == null) ? 0 : getKmsKeyId().hashCode());
         return hashCode;
     }
 

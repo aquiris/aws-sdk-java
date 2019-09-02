@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -49,10 +49,10 @@ public class ListRetirableGrantsRequest extends com.amazonaws.AmazonWebServiceRe
      * </p>
      * <p>
      * To specify the retiring principal, use the <a
-     * href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Name (ARN)</a>
+     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Name (ARN)</a>
      * of an AWS principal. Valid AWS principals include AWS accounts (root), IAM users, federated users, and assumed
      * role users. For examples of the ARN syntax for specifying a principal, see <a
-     * href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam">AWS Identity and
+     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam">AWS Identity and
      * Access Management (IAM)</a> in the Example ARNs section of the <i>Amazon Web Services General Reference</i>.
      * </p>
      */
@@ -177,10 +177,10 @@ public class ListRetirableGrantsRequest extends com.amazonaws.AmazonWebServiceRe
      * </p>
      * <p>
      * To specify the retiring principal, use the <a
-     * href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Name (ARN)</a>
+     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Name (ARN)</a>
      * of an AWS principal. Valid AWS principals include AWS accounts (root), IAM users, federated users, and assumed
      * role users. For examples of the ARN syntax for specifying a principal, see <a
-     * href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam">AWS Identity and
+     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam">AWS Identity and
      * Access Management (IAM)</a> in the Example ARNs section of the <i>Amazon Web Services General Reference</i>.
      * </p>
      * 
@@ -188,10 +188,10 @@ public class ListRetirableGrantsRequest extends com.amazonaws.AmazonWebServiceRe
      *        The retiring principal for which to list grants.</p>
      *        <p>
      *        To specify the retiring principal, use the <a
-     *        href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Name
+     *        href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Name
      *        (ARN)</a> of an AWS principal. Valid AWS principals include AWS accounts (root), IAM users, federated
      *        users, and assumed role users. For examples of the ARN syntax for specifying a principal, see <a
-     *        href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam">AWS
+     *        href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam">AWS
      *        Identity and Access Management (IAM)</a> in the Example ARNs section of the <i>Amazon Web Services General
      *        Reference</i>.
      */
@@ -206,20 +206,20 @@ public class ListRetirableGrantsRequest extends com.amazonaws.AmazonWebServiceRe
      * </p>
      * <p>
      * To specify the retiring principal, use the <a
-     * href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Name (ARN)</a>
+     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Name (ARN)</a>
      * of an AWS principal. Valid AWS principals include AWS accounts (root), IAM users, federated users, and assumed
      * role users. For examples of the ARN syntax for specifying a principal, see <a
-     * href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam">AWS Identity and
+     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam">AWS Identity and
      * Access Management (IAM)</a> in the Example ARNs section of the <i>Amazon Web Services General Reference</i>.
      * </p>
      * 
      * @return The retiring principal for which to list grants.</p>
      *         <p>
      *         To specify the retiring principal, use the <a
-     *         href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Name
+     *         href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Name
      *         (ARN)</a> of an AWS principal. Valid AWS principals include AWS accounts (root), IAM users, federated
      *         users, and assumed role users. For examples of the ARN syntax for specifying a principal, see <a
-     *         href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam">AWS
+     *         href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam">AWS
      *         Identity and Access Management (IAM)</a> in the Example ARNs section of the <i>Amazon Web Services
      *         General Reference</i>.
      */
@@ -234,10 +234,10 @@ public class ListRetirableGrantsRequest extends com.amazonaws.AmazonWebServiceRe
      * </p>
      * <p>
      * To specify the retiring principal, use the <a
-     * href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Name (ARN)</a>
+     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Name (ARN)</a>
      * of an AWS principal. Valid AWS principals include AWS accounts (root), IAM users, federated users, and assumed
      * role users. For examples of the ARN syntax for specifying a principal, see <a
-     * href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam">AWS Identity and
+     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam">AWS Identity and
      * Access Management (IAM)</a> in the Example ARNs section of the <i>Amazon Web Services General Reference</i>.
      * </p>
      * 
@@ -245,10 +245,10 @@ public class ListRetirableGrantsRequest extends com.amazonaws.AmazonWebServiceRe
      *        The retiring principal for which to list grants.</p>
      *        <p>
      *        To specify the retiring principal, use the <a
-     *        href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Name
+     *        href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Name
      *        (ARN)</a> of an AWS principal. Valid AWS principals include AWS accounts (root), IAM users, federated
      *        users, and assumed role users. For examples of the ARN syntax for specifying a principal, see <a
-     *        href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam">AWS
+     *        href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam">AWS
      *        Identity and Access Management (IAM)</a> in the Example ARNs section of the <i>Amazon Web Services General
      *        Reference</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -260,7 +260,8 @@ public class ListRetirableGrantsRequest extends com.amazonaws.AmazonWebServiceRe
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

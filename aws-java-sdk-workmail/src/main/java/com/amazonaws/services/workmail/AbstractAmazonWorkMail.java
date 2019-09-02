@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -118,6 +118,11 @@ public class AbstractAmazonWorkMail implements AmazonWorkMail {
     }
 
     @Override
+    public GetMailboxDetailsResult getMailboxDetails(GetMailboxDetailsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public ListAliasesResult listAliases(ListAliasesRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -169,6 +174,11 @@ public class AbstractAmazonWorkMail implements AmazonWorkMail {
 
     @Override
     public ResetPasswordResult resetPassword(ResetPasswordRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public UpdateMailboxQuotaResult updateMailboxQuota(UpdateMailboxQuotaRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 

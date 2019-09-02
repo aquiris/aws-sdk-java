@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -20,7 +20,6 @@ import com.amazonaws.services.sagemaker.model.*;
 import com.amazonaws.waiters.*;
 
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AmazonSageMakerWaiters {
@@ -30,7 +29,7 @@ public class AmazonSageMakerWaiters {
      */
     private final AmazonSageMaker client;
 
-    private final ExecutorService executorService = Executors.newFixedThreadPool(50);
+    private final ExecutorService executorService = WaiterExecutorServiceFactory.buildExecutorServiceForWaiter("AmazonSageMakerWaiters");
 
     /**
      * Constructs a new AmazonSageMakerWaiters with the given client
@@ -110,6 +109,21 @@ public class AmazonSageMakerWaiters {
                 .withSdkFunction(new DescribeNotebookInstanceFunction(client))
                 .withAcceptors(new NotebookInstanceInService.IsInServiceMatcher(), new NotebookInstanceInService.IsFailedMatcher())
                 .withDefaultPollingStrategy(new PollingStrategy(new MaxAttemptsRetryStrategy(60), new FixedDelayStrategy(30)))
+                .withExecutorService(executorService).build();
+    }
+
+    /**
+     * Builds a TransformJobCompletedOrStopped waiter by using custom parameters waiterParameters and other parameters
+     * defined in the waiters specification, and then polls until it determines whether the resource entered the desired
+     * state or not, where polling criteria is bound by either default polling strategy or custom polling strategy.
+     */
+    public Waiter<DescribeTransformJobRequest> transformJobCompletedOrStopped() {
+
+        return new WaiterBuilder<DescribeTransformJobRequest, DescribeTransformJobResult>()
+                .withSdkFunction(new DescribeTransformJobFunction(client))
+                .withAcceptors(new TransformJobCompletedOrStopped.IsCompletedMatcher(), new TransformJobCompletedOrStopped.IsStoppedMatcher(),
+                        new TransformJobCompletedOrStopped.IsFailedMatcher(), new TransformJobCompletedOrStopped.IsValidationExceptionMatcher())
+                .withDefaultPollingStrategy(new PollingStrategy(new MaxAttemptsRetryStrategy(60), new FixedDelayStrategy(60)))
                 .withExecutorService(executorService).build();
     }
 

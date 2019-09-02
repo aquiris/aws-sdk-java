@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -30,12 +30,12 @@ import com.amazonaws.protocol.ProtocolMarshaller;
  * <code>LoggingInfo</code> has been deprecated. To specify an S3 bucket to contain logs, instead use the
  * <code>OutputS3BucketName</code> and <code>OutputS3KeyPrefix</code> options in the
  * <code>TaskInvocationParameters</code> structure. For information about how Systems Manager handles these options for
- * the supported Maintenance Window task types, see <a>MaintenanceWindowTaskInvocationParameters</a>.
+ * the supported maintenance window task types, see <a>MaintenanceWindowTaskInvocationParameters</a>.
  * </p>
  * <p>
  * <code>TaskParameters</code> has been deprecated. To specify parameters to pass to a task when it runs, instead use
  * the <code>Parameters</code> option in the <code>TaskInvocationParameters</code> structure. For information about how
- * Systems Manager handles these options for the supported Maintenance Window task types, see
+ * Systems Manager handles these options for the supported maintenance window task types, see
  * <a>MaintenanceWindowTaskInvocationParameters</a>.
  * </p>
  * <p>
@@ -283,7 +283,8 @@ public class MaintenanceWindowLambdaParameters implements Serializable, Cloneabl
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -298,7 +299,7 @@ public class MaintenanceWindowLambdaParameters implements Serializable, Cloneabl
         if (getQualifier() != null)
             sb.append("Qualifier: ").append(getQualifier()).append(",");
         if (getPayload() != null)
-            sb.append("Payload: ").append(getPayload());
+            sb.append("Payload: ").append("***Sensitive Data Redacted***");
         sb.append("}");
         return sb.toString();
     }

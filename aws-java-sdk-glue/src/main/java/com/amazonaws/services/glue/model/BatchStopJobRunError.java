@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -30,13 +30,13 @@ public class BatchStopJobRunError implements Serializable, Cloneable, Structured
 
     /**
      * <p>
-     * The name of the job definition used in the job run in question.
+     * The name of the job definition that is used in the job run in question.
      * </p>
      */
     private String jobName;
     /**
      * <p>
-     * The JobRunId of the job run in question.
+     * The <code>JobRunId</code> of the job run in question.
      * </p>
      */
     private String jobRunId;
@@ -49,11 +49,11 @@ public class BatchStopJobRunError implements Serializable, Cloneable, Structured
 
     /**
      * <p>
-     * The name of the job definition used in the job run in question.
+     * The name of the job definition that is used in the job run in question.
      * </p>
      * 
      * @param jobName
-     *        The name of the job definition used in the job run in question.
+     *        The name of the job definition that is used in the job run in question.
      */
 
     public void setJobName(String jobName) {
@@ -62,10 +62,10 @@ public class BatchStopJobRunError implements Serializable, Cloneable, Structured
 
     /**
      * <p>
-     * The name of the job definition used in the job run in question.
+     * The name of the job definition that is used in the job run in question.
      * </p>
      * 
-     * @return The name of the job definition used in the job run in question.
+     * @return The name of the job definition that is used in the job run in question.
      */
 
     public String getJobName() {
@@ -74,11 +74,11 @@ public class BatchStopJobRunError implements Serializable, Cloneable, Structured
 
     /**
      * <p>
-     * The name of the job definition used in the job run in question.
+     * The name of the job definition that is used in the job run in question.
      * </p>
      * 
      * @param jobName
-     *        The name of the job definition used in the job run in question.
+     *        The name of the job definition that is used in the job run in question.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -89,11 +89,11 @@ public class BatchStopJobRunError implements Serializable, Cloneable, Structured
 
     /**
      * <p>
-     * The JobRunId of the job run in question.
+     * The <code>JobRunId</code> of the job run in question.
      * </p>
      * 
      * @param jobRunId
-     *        The JobRunId of the job run in question.
+     *        The <code>JobRunId</code> of the job run in question.
      */
 
     public void setJobRunId(String jobRunId) {
@@ -102,10 +102,10 @@ public class BatchStopJobRunError implements Serializable, Cloneable, Structured
 
     /**
      * <p>
-     * The JobRunId of the job run in question.
+     * The <code>JobRunId</code> of the job run in question.
      * </p>
      * 
-     * @return The JobRunId of the job run in question.
+     * @return The <code>JobRunId</code> of the job run in question.
      */
 
     public String getJobRunId() {
@@ -114,11 +114,11 @@ public class BatchStopJobRunError implements Serializable, Cloneable, Structured
 
     /**
      * <p>
-     * The JobRunId of the job run in question.
+     * The <code>JobRunId</code> of the job run in question.
      * </p>
      * 
      * @param jobRunId
-     *        The JobRunId of the job run in question.
+     *        The <code>JobRunId</code> of the job run in question.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -168,7 +168,8 @@ public class BatchStopJobRunError implements Serializable, Cloneable, Structured
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

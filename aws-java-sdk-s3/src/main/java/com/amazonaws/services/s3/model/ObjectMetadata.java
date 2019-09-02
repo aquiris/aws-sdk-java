@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -29,6 +29,7 @@ import com.amazonaws.services.s3.internal.ObjectExpirationResult;
 import com.amazonaws.services.s3.internal.ObjectRestoreResult;
 import com.amazonaws.services.s3.internal.S3RequesterChargedResult;
 import com.amazonaws.services.s3.internal.ServerSideEncryptionResult;
+import com.amazonaws.util.DateUtils;
 
 /**
  * Represents the object metadata that is stored with Amazon S3. This includes custom
@@ -790,11 +791,9 @@ public class ObjectMetadata implements ServerSideEncryptionResult, S3RequesterCh
     }
 
     /**
-     * Sets the {@link BucketLifecycleConfiguration} rule ID for this object's
-     * expiration
-     *
-     * @param expirationTimeRuleId
-     *            The rule ID for this object's expiration
+     * For internal use only. This will *not* set the object's expiration time
+     * rule id, and is only used to set the value in the object after receiving
+     * the value in a response from S3.
      */
     public void setExpirationTimeRuleId(String expirationTimeRuleId) {
         this.expirationTimeRuleId = expirationTimeRuleId;
@@ -892,6 +891,15 @@ public class ObjectMetadata implements ServerSideEncryptionResult, S3RequesterCh
                 .get(Headers.SERVER_SIDE_ENCRYPTION_AWS_KMS_KEYID);
     }
 
+    /**
+     * Returns the AWS Key Management System encryption context used for Server Side
+     * Encryption of the Amazon S3 object.
+     */
+    public String getSSEAwsKmsEncryptionContext() {
+        return (String) metadata
+            .get(Headers.SERVER_SIDE_ENCRYPTION_AWS_KMS_CONTEXT);
+    }
+
     @Override
     public boolean isRequesterCharged() {
         return metadata.get(Headers.REQUESTER_CHARGED_HEADER) != null;
@@ -956,5 +964,30 @@ public class ObjectMetadata implements ServerSideEncryptionResult, S3RequesterCh
      */
     public String getReplicationStatus() {
         return (String) metadata.get(Headers.OBJECT_REPLICATION_STATUS);
+    }
+
+    /**
+     * The Object Lock mode applied to this object.
+     */
+    public String getObjectLockMode() {
+        return (String) metadata.get(Headers.OBJECT_LOCK_MODE);
+    }
+
+    /**
+     * The date and time this object's Object Lock will expire.
+     */
+    public Date getObjectLockRetainUntilDate() {
+        String dateStr = (String) metadata.get(Headers.OBJECT_LOCK_RETAIN_UNTIL_DATE);
+        if (dateStr != null) {
+            return DateUtils.parseISO8601Date(dateStr);
+        }
+        return null;
+    }
+
+    /**
+     * The Legal Hold status of the specified object.
+     */
+    public String getObjectLockLegalHoldStatus() {
+        return (String) metadata.get(Headers.OBJECT_LOCK_LEGAL_HOLD_STATUS);
     }
 }

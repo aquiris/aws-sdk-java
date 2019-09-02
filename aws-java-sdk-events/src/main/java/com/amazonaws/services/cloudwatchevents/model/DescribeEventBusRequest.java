@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -26,7 +26,55 @@ import com.amazonaws.AmazonWebServiceRequest;
 public class DescribeEventBusRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * <p>
+     * The name of the event bus to show details for. If you omit this, the default event bus is displayed.
+     * </p>
+     */
+    private String name;
+
+    /**
+     * <p>
+     * The name of the event bus to show details for. If you omit this, the default event bus is displayed.
+     * </p>
+     * 
+     * @param name
+     *        The name of the event bus to show details for. If you omit this, the default event bus is displayed.
+     */
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * <p>
+     * The name of the event bus to show details for. If you omit this, the default event bus is displayed.
+     * </p>
+     * 
+     * @return The name of the event bus to show details for. If you omit this, the default event bus is displayed.
+     */
+
+    public String getName() {
+        return this.name;
+    }
+
+    /**
+     * <p>
+     * The name of the event bus to show details for. If you omit this, the default event bus is displayed.
+     * </p>
+     * 
+     * @param name
+     *        The name of the event bus to show details for. If you omit this, the default event bus is displayed.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DescribeEventBusRequest withName(String name) {
+        setName(name);
+        return this;
+    }
+
+    /**
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -36,6 +84,8 @@ public class DescribeEventBusRequest extends com.amazonaws.AmazonWebServiceReque
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
+        if (getName() != null)
+            sb.append("Name: ").append(getName());
         sb.append("}");
         return sb.toString();
     }
@@ -50,6 +100,10 @@ public class DescribeEventBusRequest extends com.amazonaws.AmazonWebServiceReque
         if (obj instanceof DescribeEventBusRequest == false)
             return false;
         DescribeEventBusRequest other = (DescribeEventBusRequest) obj;
+        if (other.getName() == null ^ this.getName() == null)
+            return false;
+        if (other.getName() != null && other.getName().equals(this.getName()) == false)
+            return false;
         return true;
     }
 
@@ -58,6 +112,7 @@ public class DescribeEventBusRequest extends com.amazonaws.AmazonWebServiceReque
         final int prime = 31;
         int hashCode = 1;
 
+        hashCode = prime * hashCode + ((getName() == null) ? 0 : getName().hashCode());
         return hashCode;
     }
 

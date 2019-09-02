@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,7 +27,8 @@ public class DeleteTagsRequest extends com.amazonaws.AmazonWebServiceRequest imp
 
     /**
      * <p>
-     * The ID of the WorkSpace. To find this ID, use <a>DescribeWorkspaces</a>.
+     * The identifier of the WorkSpaces resource. The supported resource types are WorkSpaces, registered directories,
+     * images, custom bundles, and IP access control groups.
      * </p>
      */
     private String resourceId;
@@ -40,11 +41,13 @@ public class DeleteTagsRequest extends com.amazonaws.AmazonWebServiceRequest imp
 
     /**
      * <p>
-     * The ID of the WorkSpace. To find this ID, use <a>DescribeWorkspaces</a>.
+     * The identifier of the WorkSpaces resource. The supported resource types are WorkSpaces, registered directories,
+     * images, custom bundles, and IP access control groups.
      * </p>
      * 
      * @param resourceId
-     *        The ID of the WorkSpace. To find this ID, use <a>DescribeWorkspaces</a>.
+     *        The identifier of the WorkSpaces resource. The supported resource types are WorkSpaces, registered
+     *        directories, images, custom bundles, and IP access control groups.
      */
 
     public void setResourceId(String resourceId) {
@@ -53,10 +56,12 @@ public class DeleteTagsRequest extends com.amazonaws.AmazonWebServiceRequest imp
 
     /**
      * <p>
-     * The ID of the WorkSpace. To find this ID, use <a>DescribeWorkspaces</a>.
+     * The identifier of the WorkSpaces resource. The supported resource types are WorkSpaces, registered directories,
+     * images, custom bundles, and IP access control groups.
      * </p>
      * 
-     * @return The ID of the WorkSpace. To find this ID, use <a>DescribeWorkspaces</a>.
+     * @return The identifier of the WorkSpaces resource. The supported resource types are WorkSpaces, registered
+     *         directories, images, custom bundles, and IP access control groups.
      */
 
     public String getResourceId() {
@@ -65,11 +70,13 @@ public class DeleteTagsRequest extends com.amazonaws.AmazonWebServiceRequest imp
 
     /**
      * <p>
-     * The ID of the WorkSpace. To find this ID, use <a>DescribeWorkspaces</a>.
+     * The identifier of the WorkSpaces resource. The supported resource types are WorkSpaces, registered directories,
+     * images, custom bundles, and IP access control groups.
      * </p>
      * 
      * @param resourceId
-     *        The ID of the WorkSpace. To find this ID, use <a>DescribeWorkspaces</a>.
+     *        The identifier of the WorkSpaces resource. The supported resource types are WorkSpaces, registered
+     *        directories, images, custom bundles, and IP access control groups.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -152,7 +159,8 @@ public class DeleteTagsRequest extends com.amazonaws.AmazonWebServiceRequest imp
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -25,17 +25,36 @@ import com.amazonaws.AmazonWebServiceRequest;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class GetCampaignsRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
+    /**
+     * <p>
+     * The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon
+     * Pinpoint console.
+     * </p>
+     */
     private String applicationId;
-    /** The number of entries you want on each page in the response. */
+    /**
+     * <p>
+     * The maximum number of items to include in each page of a paginated response. This parameter is currently not
+     * supported by the App Metrics and Campaign Metrics resources.
+     * </p>
+     */
     private String pageSize;
     /**
-     * The NextToken string returned on a previous page that you use to get the next page of results in a paginated
-     * response.
+     * <p>
+     * The NextToken string that specifies which page of results to return in a paginated response.
+     * </p>
      */
     private String token;
 
     /**
+     * <p>
+     * The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon
+     * Pinpoint console.
+     * </p>
+     * 
      * @param applicationId
+     *        The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the
+     *        Amazon Pinpoint console.
      */
 
     public void setApplicationId(String applicationId) {
@@ -43,7 +62,13 @@ public class GetCampaignsRequest extends com.amazonaws.AmazonWebServiceRequest i
     }
 
     /**
-     * @return
+     * <p>
+     * The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon
+     * Pinpoint console.
+     * </p>
+     * 
+     * @return The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the
+     *         Amazon Pinpoint console.
      */
 
     public String getApplicationId() {
@@ -51,7 +76,14 @@ public class GetCampaignsRequest extends com.amazonaws.AmazonWebServiceRequest i
     }
 
     /**
+     * <p>
+     * The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the Amazon
+     * Pinpoint console.
+     * </p>
+     * 
      * @param applicationId
+     *        The unique identifier for the application. This identifier is displayed as the <b>Project ID</b> on the
+     *        Amazon Pinpoint console.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -61,10 +93,14 @@ public class GetCampaignsRequest extends com.amazonaws.AmazonWebServiceRequest i
     }
 
     /**
-     * The number of entries you want on each page in the response.
+     * <p>
+     * The maximum number of items to include in each page of a paginated response. This parameter is currently not
+     * supported by the App Metrics and Campaign Metrics resources.
+     * </p>
      * 
      * @param pageSize
-     *        The number of entries you want on each page in the response.
+     *        The maximum number of items to include in each page of a paginated response. This parameter is currently
+     *        not supported by the App Metrics and Campaign Metrics resources.
      */
 
     public void setPageSize(String pageSize) {
@@ -72,9 +108,13 @@ public class GetCampaignsRequest extends com.amazonaws.AmazonWebServiceRequest i
     }
 
     /**
-     * The number of entries you want on each page in the response.
+     * <p>
+     * The maximum number of items to include in each page of a paginated response. This parameter is currently not
+     * supported by the App Metrics and Campaign Metrics resources.
+     * </p>
      * 
-     * @return The number of entries you want on each page in the response.
+     * @return The maximum number of items to include in each page of a paginated response. This parameter is currently
+     *         not supported by the App Metrics and Campaign Metrics resources.
      */
 
     public String getPageSize() {
@@ -82,10 +122,14 @@ public class GetCampaignsRequest extends com.amazonaws.AmazonWebServiceRequest i
     }
 
     /**
-     * The number of entries you want on each page in the response.
+     * <p>
+     * The maximum number of items to include in each page of a paginated response. This parameter is currently not
+     * supported by the App Metrics and Campaign Metrics resources.
+     * </p>
      * 
      * @param pageSize
-     *        The number of entries you want on each page in the response.
+     *        The maximum number of items to include in each page of a paginated response. This parameter is currently
+     *        not supported by the App Metrics and Campaign Metrics resources.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -95,12 +139,12 @@ public class GetCampaignsRequest extends com.amazonaws.AmazonWebServiceRequest i
     }
 
     /**
-     * The NextToken string returned on a previous page that you use to get the next page of results in a paginated
-     * response.
+     * <p>
+     * The NextToken string that specifies which page of results to return in a paginated response.
+     * </p>
      * 
      * @param token
-     *        The NextToken string returned on a previous page that you use to get the next page of results in a
-     *        paginated response.
+     *        The NextToken string that specifies which page of results to return in a paginated response.
      */
 
     public void setToken(String token) {
@@ -108,11 +152,11 @@ public class GetCampaignsRequest extends com.amazonaws.AmazonWebServiceRequest i
     }
 
     /**
-     * The NextToken string returned on a previous page that you use to get the next page of results in a paginated
-     * response.
+     * <p>
+     * The NextToken string that specifies which page of results to return in a paginated response.
+     * </p>
      * 
-     * @return The NextToken string returned on a previous page that you use to get the next page of results in a
-     *         paginated response.
+     * @return The NextToken string that specifies which page of results to return in a paginated response.
      */
 
     public String getToken() {
@@ -120,12 +164,12 @@ public class GetCampaignsRequest extends com.amazonaws.AmazonWebServiceRequest i
     }
 
     /**
-     * The NextToken string returned on a previous page that you use to get the next page of results in a paginated
-     * response.
+     * <p>
+     * The NextToken string that specifies which page of results to return in a paginated response.
+     * </p>
      * 
      * @param token
-     *        The NextToken string returned on a previous page that you use to get the next page of results in a
-     *        paginated response.
+     *        The NextToken string that specifies which page of results to return in a paginated response.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -135,7 +179,8 @@ public class GetCampaignsRequest extends com.amazonaws.AmazonWebServiceRequest i
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -13,7 +13,8 @@
 
 /**
  * <p>
- * Stub description
+ * Describes all of the AWS IoT 1-Click device-related API operations for the service. Also provides sample requests,
+ * responses, and errors for the supported web services protocols.
  * </p>
  */
 package com.amazonaws.services.iot1clickdevices;

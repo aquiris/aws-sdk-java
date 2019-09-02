@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -33,7 +33,8 @@ public class CreateStageRequest extends com.amazonaws.AmazonWebServiceRequest im
     private String restApiId;
     /**
      * <p>
-     * [Required] The name for the <a>Stage</a> resource.
+     * [Required] The name for the <a>Stage</a> resource. Stage names can only contain alphanumeric characters, hyphens,
+     * and underscores. Maximum length is 128 characters.
      * </p>
      */
     private String stageName;
@@ -80,6 +81,12 @@ public class CreateStageRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </p>
      */
     private CanarySettings canarySettings;
+    /**
+     * <p>
+     * Specifies whether active tracing with X-ray is enabled for the <a>Stage</a>.
+     * </p>
+     */
+    private Boolean tracingEnabled;
     /**
      * <p>
      * The key-value map of strings. The valid character set is [a-zA-Z+-=._:/]. The tag key can be up to 128 characters
@@ -130,11 +137,13 @@ public class CreateStageRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * [Required] The name for the <a>Stage</a> resource.
+     * [Required] The name for the <a>Stage</a> resource. Stage names can only contain alphanumeric characters, hyphens,
+     * and underscores. Maximum length is 128 characters.
      * </p>
      * 
      * @param stageName
-     *        [Required] The name for the <a>Stage</a> resource.
+     *        [Required] The name for the <a>Stage</a> resource. Stage names can only contain alphanumeric characters,
+     *        hyphens, and underscores. Maximum length is 128 characters.
      */
 
     public void setStageName(String stageName) {
@@ -143,10 +152,12 @@ public class CreateStageRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * [Required] The name for the <a>Stage</a> resource.
+     * [Required] The name for the <a>Stage</a> resource. Stage names can only contain alphanumeric characters, hyphens,
+     * and underscores. Maximum length is 128 characters.
      * </p>
      * 
-     * @return [Required] The name for the <a>Stage</a> resource.
+     * @return [Required] The name for the <a>Stage</a> resource. Stage names can only contain alphanumeric characters,
+     *         hyphens, and underscores. Maximum length is 128 characters.
      */
 
     public String getStageName() {
@@ -155,11 +166,13 @@ public class CreateStageRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * [Required] The name for the <a>Stage</a> resource.
+     * [Required] The name for the <a>Stage</a> resource. Stage names can only contain alphanumeric characters, hyphens,
+     * and underscores. Maximum length is 128 characters.
      * </p>
      * 
      * @param stageName
-     *        [Required] The name for the <a>Stage</a> resource.
+     *        [Required] The name for the <a>Stage</a> resource. Stage names can only contain alphanumeric characters,
+     *        hyphens, and underscores. Maximum length is 128 characters.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -492,6 +505,58 @@ public class CreateStageRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
+     * Specifies whether active tracing with X-ray is enabled for the <a>Stage</a>.
+     * </p>
+     * 
+     * @param tracingEnabled
+     *        Specifies whether active tracing with X-ray is enabled for the <a>Stage</a>.
+     */
+
+    public void setTracingEnabled(Boolean tracingEnabled) {
+        this.tracingEnabled = tracingEnabled;
+    }
+
+    /**
+     * <p>
+     * Specifies whether active tracing with X-ray is enabled for the <a>Stage</a>.
+     * </p>
+     * 
+     * @return Specifies whether active tracing with X-ray is enabled for the <a>Stage</a>.
+     */
+
+    public Boolean getTracingEnabled() {
+        return this.tracingEnabled;
+    }
+
+    /**
+     * <p>
+     * Specifies whether active tracing with X-ray is enabled for the <a>Stage</a>.
+     * </p>
+     * 
+     * @param tracingEnabled
+     *        Specifies whether active tracing with X-ray is enabled for the <a>Stage</a>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateStageRequest withTracingEnabled(Boolean tracingEnabled) {
+        setTracingEnabled(tracingEnabled);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Specifies whether active tracing with X-ray is enabled for the <a>Stage</a>.
+     * </p>
+     * 
+     * @return Specifies whether active tracing with X-ray is enabled for the <a>Stage</a>.
+     */
+
+    public Boolean isTracingEnabled() {
+        return this.tracingEnabled;
+    }
+
+    /**
+     * <p>
      * The key-value map of strings. The valid character set is [a-zA-Z+-=._:/]. The tag key can be up to 128 characters
      * and must not start with <code>aws:</code>. The tag value can be up to 256 characters.
      * </p>
@@ -558,7 +623,8 @@ public class CreateStageRequest extends com.amazonaws.AmazonWebServiceRequest im
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -586,6 +652,8 @@ public class CreateStageRequest extends com.amazonaws.AmazonWebServiceRequest im
             sb.append("DocumentationVersion: ").append(getDocumentationVersion()).append(",");
         if (getCanarySettings() != null)
             sb.append("CanarySettings: ").append(getCanarySettings()).append(",");
+        if (getTracingEnabled() != null)
+            sb.append("TracingEnabled: ").append(getTracingEnabled()).append(",");
         if (getTags() != null)
             sb.append("Tags: ").append(getTags());
         sb.append("}");
@@ -638,6 +706,10 @@ public class CreateStageRequest extends com.amazonaws.AmazonWebServiceRequest im
             return false;
         if (other.getCanarySettings() != null && other.getCanarySettings().equals(this.getCanarySettings()) == false)
             return false;
+        if (other.getTracingEnabled() == null ^ this.getTracingEnabled() == null)
+            return false;
+        if (other.getTracingEnabled() != null && other.getTracingEnabled().equals(this.getTracingEnabled()) == false)
+            return false;
         if (other.getTags() == null ^ this.getTags() == null)
             return false;
         if (other.getTags() != null && other.getTags().equals(this.getTags()) == false)
@@ -659,6 +731,7 @@ public class CreateStageRequest extends com.amazonaws.AmazonWebServiceRequest im
         hashCode = prime * hashCode + ((getVariables() == null) ? 0 : getVariables().hashCode());
         hashCode = prime * hashCode + ((getDocumentationVersion() == null) ? 0 : getDocumentationVersion().hashCode());
         hashCode = prime * hashCode + ((getCanarySettings() == null) ? 0 : getCanarySettings().hashCode());
+        hashCode = prime * hashCode + ((getTracingEnabled() == null) ? 0 : getTracingEnabled().hashCode());
         hashCode = prime * hashCode + ((getTags() == null) ? 0 : getTags().hashCode());
         return hashCode;
     }

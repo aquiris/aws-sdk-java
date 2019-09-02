@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,7 +27,7 @@ public class UpdateUserDefinedFunctionRequest extends com.amazonaws.AmazonWebSer
 
     /**
      * <p>
-     * The ID of the Data Catalog where the function to be updated is located. If none is supplied, the AWS account ID
+     * The ID of the Data Catalog where the function to be updated is located. If none is provided, the AWS account ID
      * is used by default.
      * </p>
      */
@@ -46,19 +46,19 @@ public class UpdateUserDefinedFunctionRequest extends com.amazonaws.AmazonWebSer
     private String functionName;
     /**
      * <p>
-     * A <code>FunctionInput</code> object that re-defines the function in the Data Catalog.
+     * A <code>FunctionInput</code> object that redefines the function in the Data Catalog.
      * </p>
      */
     private UserDefinedFunctionInput functionInput;
 
     /**
      * <p>
-     * The ID of the Data Catalog where the function to be updated is located. If none is supplied, the AWS account ID
+     * The ID of the Data Catalog where the function to be updated is located. If none is provided, the AWS account ID
      * is used by default.
      * </p>
      * 
      * @param catalogId
-     *        The ID of the Data Catalog where the function to be updated is located. If none is supplied, the AWS
+     *        The ID of the Data Catalog where the function to be updated is located. If none is provided, the AWS
      *        account ID is used by default.
      */
 
@@ -68,11 +68,11 @@ public class UpdateUserDefinedFunctionRequest extends com.amazonaws.AmazonWebSer
 
     /**
      * <p>
-     * The ID of the Data Catalog where the function to be updated is located. If none is supplied, the AWS account ID
+     * The ID of the Data Catalog where the function to be updated is located. If none is provided, the AWS account ID
      * is used by default.
      * </p>
      * 
-     * @return The ID of the Data Catalog where the function to be updated is located. If none is supplied, the AWS
+     * @return The ID of the Data Catalog where the function to be updated is located. If none is provided, the AWS
      *         account ID is used by default.
      */
 
@@ -82,12 +82,12 @@ public class UpdateUserDefinedFunctionRequest extends com.amazonaws.AmazonWebSer
 
     /**
      * <p>
-     * The ID of the Data Catalog where the function to be updated is located. If none is supplied, the AWS account ID
+     * The ID of the Data Catalog where the function to be updated is located. If none is provided, the AWS account ID
      * is used by default.
      * </p>
      * 
      * @param catalogId
-     *        The ID of the Data Catalog where the function to be updated is located. If none is supplied, the AWS
+     *        The ID of the Data Catalog where the function to be updated is located. If none is provided, the AWS
      *        account ID is used by default.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -179,11 +179,11 @@ public class UpdateUserDefinedFunctionRequest extends com.amazonaws.AmazonWebSer
 
     /**
      * <p>
-     * A <code>FunctionInput</code> object that re-defines the function in the Data Catalog.
+     * A <code>FunctionInput</code> object that redefines the function in the Data Catalog.
      * </p>
      * 
      * @param functionInput
-     *        A <code>FunctionInput</code> object that re-defines the function in the Data Catalog.
+     *        A <code>FunctionInput</code> object that redefines the function in the Data Catalog.
      */
 
     public void setFunctionInput(UserDefinedFunctionInput functionInput) {
@@ -192,10 +192,10 @@ public class UpdateUserDefinedFunctionRequest extends com.amazonaws.AmazonWebSer
 
     /**
      * <p>
-     * A <code>FunctionInput</code> object that re-defines the function in the Data Catalog.
+     * A <code>FunctionInput</code> object that redefines the function in the Data Catalog.
      * </p>
      * 
-     * @return A <code>FunctionInput</code> object that re-defines the function in the Data Catalog.
+     * @return A <code>FunctionInput</code> object that redefines the function in the Data Catalog.
      */
 
     public UserDefinedFunctionInput getFunctionInput() {
@@ -204,11 +204,11 @@ public class UpdateUserDefinedFunctionRequest extends com.amazonaws.AmazonWebSer
 
     /**
      * <p>
-     * A <code>FunctionInput</code> object that re-defines the function in the Data Catalog.
+     * A <code>FunctionInput</code> object that redefines the function in the Data Catalog.
      * </p>
      * 
      * @param functionInput
-     *        A <code>FunctionInput</code> object that re-defines the function in the Data Catalog.
+     *        A <code>FunctionInput</code> object that redefines the function in the Data Catalog.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -218,7 +218,8 @@ public class UpdateUserDefinedFunctionRequest extends com.amazonaws.AmazonWebSer
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

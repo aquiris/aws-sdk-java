@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -35,15 +35,15 @@ public class CreateCertificateAuthorityRequest extends com.amazonaws.AmazonWebSe
     /**
      * <p>
      * Contains a Boolean value that you can use to enable a certification revocation list (CRL) for the CA, the name of
-     * the S3 bucket to which ACM PCA will write the CRL, and an optional CNAME alias that you can use to hide the name
-     * of your bucket in the <b>CRL Distribution Points</b> extension of your CA certificate. For more information, see
-     * the <a>CrlConfiguration</a> structure.
+     * the S3 bucket to which ACM Private CA will write the CRL, and an optional CNAME alias that you can use to hide
+     * the name of your bucket in the <b>CRL Distribution Points</b> extension of your CA certificate. For more
+     * information, see the <a>CrlConfiguration</a> structure.
      * </p>
      */
     private RevocationConfiguration revocationConfiguration;
     /**
      * <p>
-     * The type of the certificate authority. Currently, this must be <b>SUBORDINATE</b>.
+     * The type of the certificate authority.
      * </p>
      */
     private String certificateAuthorityType;
@@ -51,12 +51,24 @@ public class CreateCertificateAuthorityRequest extends com.amazonaws.AmazonWebSe
      * <p>
      * Alphanumeric string that can be used to distinguish between calls to <b>CreateCertificateAuthority</b>.
      * Idempotency tokens time out after five minutes. Therefore, if you call <b>CreateCertificateAuthority</b> multiple
-     * times with the same idempotency token within a five minute period, ACM PCA recognizes that you are requesting
-     * only one certificate and will issue only one. If you change the idempotency token for each call, however, ACM PCA
-     * recognizes that you are requesting multiple certificates.
+     * times with the same idempotency token within a five minute period, ACM Private CA recognizes that you are
+     * requesting only one certificate. As a result, ACM Private CA issues only one. If you change the idempotency token
+     * for each call, however, ACM Private CA recognizes that you are requesting multiple certificates.
      * </p>
      */
     private String idempotencyToken;
+    /**
+     * <p>
+     * Key-value pairs that will be attached to the new private CA. You can associate up to 50 tags with a private CA.
+     * For information using tags with
+     * </p>
+     * <p>
+     * IAM to manage permissions, see <a
+     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_iam-tags.html">Controlling Access Using IAM
+     * Tags</a>.
+     * </p>
+     */
+    private java.util.List<Tag> tags;
 
     /**
      * <p>
@@ -107,16 +119,16 @@ public class CreateCertificateAuthorityRequest extends com.amazonaws.AmazonWebSe
     /**
      * <p>
      * Contains a Boolean value that you can use to enable a certification revocation list (CRL) for the CA, the name of
-     * the S3 bucket to which ACM PCA will write the CRL, and an optional CNAME alias that you can use to hide the name
-     * of your bucket in the <b>CRL Distribution Points</b> extension of your CA certificate. For more information, see
-     * the <a>CrlConfiguration</a> structure.
+     * the S3 bucket to which ACM Private CA will write the CRL, and an optional CNAME alias that you can use to hide
+     * the name of your bucket in the <b>CRL Distribution Points</b> extension of your CA certificate. For more
+     * information, see the <a>CrlConfiguration</a> structure.
      * </p>
      * 
      * @param revocationConfiguration
      *        Contains a Boolean value that you can use to enable a certification revocation list (CRL) for the CA, the
-     *        name of the S3 bucket to which ACM PCA will write the CRL, and an optional CNAME alias that you can use to
-     *        hide the name of your bucket in the <b>CRL Distribution Points</b> extension of your CA certificate. For
-     *        more information, see the <a>CrlConfiguration</a> structure.
+     *        name of the S3 bucket to which ACM Private CA will write the CRL, and an optional CNAME alias that you can
+     *        use to hide the name of your bucket in the <b>CRL Distribution Points</b> extension of your CA
+     *        certificate. For more information, see the <a>CrlConfiguration</a> structure.
      */
 
     public void setRevocationConfiguration(RevocationConfiguration revocationConfiguration) {
@@ -126,15 +138,15 @@ public class CreateCertificateAuthorityRequest extends com.amazonaws.AmazonWebSe
     /**
      * <p>
      * Contains a Boolean value that you can use to enable a certification revocation list (CRL) for the CA, the name of
-     * the S3 bucket to which ACM PCA will write the CRL, and an optional CNAME alias that you can use to hide the name
-     * of your bucket in the <b>CRL Distribution Points</b> extension of your CA certificate. For more information, see
-     * the <a>CrlConfiguration</a> structure.
+     * the S3 bucket to which ACM Private CA will write the CRL, and an optional CNAME alias that you can use to hide
+     * the name of your bucket in the <b>CRL Distribution Points</b> extension of your CA certificate. For more
+     * information, see the <a>CrlConfiguration</a> structure.
      * </p>
      * 
      * @return Contains a Boolean value that you can use to enable a certification revocation list (CRL) for the CA, the
-     *         name of the S3 bucket to which ACM PCA will write the CRL, and an optional CNAME alias that you can use
-     *         to hide the name of your bucket in the <b>CRL Distribution Points</b> extension of your CA certificate.
-     *         For more information, see the <a>CrlConfiguration</a> structure.
+     *         name of the S3 bucket to which ACM Private CA will write the CRL, and an optional CNAME alias that you
+     *         can use to hide the name of your bucket in the <b>CRL Distribution Points</b> extension of your CA
+     *         certificate. For more information, see the <a>CrlConfiguration</a> structure.
      */
 
     public RevocationConfiguration getRevocationConfiguration() {
@@ -144,16 +156,16 @@ public class CreateCertificateAuthorityRequest extends com.amazonaws.AmazonWebSe
     /**
      * <p>
      * Contains a Boolean value that you can use to enable a certification revocation list (CRL) for the CA, the name of
-     * the S3 bucket to which ACM PCA will write the CRL, and an optional CNAME alias that you can use to hide the name
-     * of your bucket in the <b>CRL Distribution Points</b> extension of your CA certificate. For more information, see
-     * the <a>CrlConfiguration</a> structure.
+     * the S3 bucket to which ACM Private CA will write the CRL, and an optional CNAME alias that you can use to hide
+     * the name of your bucket in the <b>CRL Distribution Points</b> extension of your CA certificate. For more
+     * information, see the <a>CrlConfiguration</a> structure.
      * </p>
      * 
      * @param revocationConfiguration
      *        Contains a Boolean value that you can use to enable a certification revocation list (CRL) for the CA, the
-     *        name of the S3 bucket to which ACM PCA will write the CRL, and an optional CNAME alias that you can use to
-     *        hide the name of your bucket in the <b>CRL Distribution Points</b> extension of your CA certificate. For
-     *        more information, see the <a>CrlConfiguration</a> structure.
+     *        name of the S3 bucket to which ACM Private CA will write the CRL, and an optional CNAME alias that you can
+     *        use to hide the name of your bucket in the <b>CRL Distribution Points</b> extension of your CA
+     *        certificate. For more information, see the <a>CrlConfiguration</a> structure.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -164,11 +176,11 @@ public class CreateCertificateAuthorityRequest extends com.amazonaws.AmazonWebSe
 
     /**
      * <p>
-     * The type of the certificate authority. Currently, this must be <b>SUBORDINATE</b>.
+     * The type of the certificate authority.
      * </p>
      * 
      * @param certificateAuthorityType
-     *        The type of the certificate authority. Currently, this must be <b>SUBORDINATE</b>.
+     *        The type of the certificate authority.
      * @see CertificateAuthorityType
      */
 
@@ -178,10 +190,10 @@ public class CreateCertificateAuthorityRequest extends com.amazonaws.AmazonWebSe
 
     /**
      * <p>
-     * The type of the certificate authority. Currently, this must be <b>SUBORDINATE</b>.
+     * The type of the certificate authority.
      * </p>
      * 
-     * @return The type of the certificate authority. Currently, this must be <b>SUBORDINATE</b>.
+     * @return The type of the certificate authority.
      * @see CertificateAuthorityType
      */
 
@@ -191,11 +203,11 @@ public class CreateCertificateAuthorityRequest extends com.amazonaws.AmazonWebSe
 
     /**
      * <p>
-     * The type of the certificate authority. Currently, this must be <b>SUBORDINATE</b>.
+     * The type of the certificate authority.
      * </p>
      * 
      * @param certificateAuthorityType
-     *        The type of the certificate authority. Currently, this must be <b>SUBORDINATE</b>.
+     *        The type of the certificate authority.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see CertificateAuthorityType
      */
@@ -207,11 +219,11 @@ public class CreateCertificateAuthorityRequest extends com.amazonaws.AmazonWebSe
 
     /**
      * <p>
-     * The type of the certificate authority. Currently, this must be <b>SUBORDINATE</b>.
+     * The type of the certificate authority.
      * </p>
      * 
      * @param certificateAuthorityType
-     *        The type of the certificate authority. Currently, this must be <b>SUBORDINATE</b>.
+     *        The type of the certificate authority.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see CertificateAuthorityType
      */
@@ -225,17 +237,18 @@ public class CreateCertificateAuthorityRequest extends com.amazonaws.AmazonWebSe
      * <p>
      * Alphanumeric string that can be used to distinguish between calls to <b>CreateCertificateAuthority</b>.
      * Idempotency tokens time out after five minutes. Therefore, if you call <b>CreateCertificateAuthority</b> multiple
-     * times with the same idempotency token within a five minute period, ACM PCA recognizes that you are requesting
-     * only one certificate and will issue only one. If you change the idempotency token for each call, however, ACM PCA
-     * recognizes that you are requesting multiple certificates.
+     * times with the same idempotency token within a five minute period, ACM Private CA recognizes that you are
+     * requesting only one certificate. As a result, ACM Private CA issues only one. If you change the idempotency token
+     * for each call, however, ACM Private CA recognizes that you are requesting multiple certificates.
      * </p>
      * 
      * @param idempotencyToken
      *        Alphanumeric string that can be used to distinguish between calls to <b>CreateCertificateAuthority</b>.
      *        Idempotency tokens time out after five minutes. Therefore, if you call <b>CreateCertificateAuthority</b>
-     *        multiple times with the same idempotency token within a five minute period, ACM PCA recognizes that you
-     *        are requesting only one certificate and will issue only one. If you change the idempotency token for each
-     *        call, however, ACM PCA recognizes that you are requesting multiple certificates.
+     *        multiple times with the same idempotency token within a five minute period, ACM Private CA recognizes that
+     *        you are requesting only one certificate. As a result, ACM Private CA issues only one. If you change the
+     *        idempotency token for each call, however, ACM Private CA recognizes that you are requesting multiple
+     *        certificates.
      */
 
     public void setIdempotencyToken(String idempotencyToken) {
@@ -246,16 +259,17 @@ public class CreateCertificateAuthorityRequest extends com.amazonaws.AmazonWebSe
      * <p>
      * Alphanumeric string that can be used to distinguish between calls to <b>CreateCertificateAuthority</b>.
      * Idempotency tokens time out after five minutes. Therefore, if you call <b>CreateCertificateAuthority</b> multiple
-     * times with the same idempotency token within a five minute period, ACM PCA recognizes that you are requesting
-     * only one certificate and will issue only one. If you change the idempotency token for each call, however, ACM PCA
-     * recognizes that you are requesting multiple certificates.
+     * times with the same idempotency token within a five minute period, ACM Private CA recognizes that you are
+     * requesting only one certificate. As a result, ACM Private CA issues only one. If you change the idempotency token
+     * for each call, however, ACM Private CA recognizes that you are requesting multiple certificates.
      * </p>
      * 
      * @return Alphanumeric string that can be used to distinguish between calls to <b>CreateCertificateAuthority</b>.
      *         Idempotency tokens time out after five minutes. Therefore, if you call <b>CreateCertificateAuthority</b>
-     *         multiple times with the same idempotency token within a five minute period, ACM PCA recognizes that you
-     *         are requesting only one certificate and will issue only one. If you change the idempotency token for each
-     *         call, however, ACM PCA recognizes that you are requesting multiple certificates.
+     *         multiple times with the same idempotency token within a five minute period, ACM Private CA recognizes
+     *         that you are requesting only one certificate. As a result, ACM Private CA issues only one. If you change
+     *         the idempotency token for each call, however, ACM Private CA recognizes that you are requesting multiple
+     *         certificates.
      */
 
     public String getIdempotencyToken() {
@@ -266,17 +280,18 @@ public class CreateCertificateAuthorityRequest extends com.amazonaws.AmazonWebSe
      * <p>
      * Alphanumeric string that can be used to distinguish between calls to <b>CreateCertificateAuthority</b>.
      * Idempotency tokens time out after five minutes. Therefore, if you call <b>CreateCertificateAuthority</b> multiple
-     * times with the same idempotency token within a five minute period, ACM PCA recognizes that you are requesting
-     * only one certificate and will issue only one. If you change the idempotency token for each call, however, ACM PCA
-     * recognizes that you are requesting multiple certificates.
+     * times with the same idempotency token within a five minute period, ACM Private CA recognizes that you are
+     * requesting only one certificate. As a result, ACM Private CA issues only one. If you change the idempotency token
+     * for each call, however, ACM Private CA recognizes that you are requesting multiple certificates.
      * </p>
      * 
      * @param idempotencyToken
      *        Alphanumeric string that can be used to distinguish between calls to <b>CreateCertificateAuthority</b>.
      *        Idempotency tokens time out after five minutes. Therefore, if you call <b>CreateCertificateAuthority</b>
-     *        multiple times with the same idempotency token within a five minute period, ACM PCA recognizes that you
-     *        are requesting only one certificate and will issue only one. If you change the idempotency token for each
-     *        call, however, ACM PCA recognizes that you are requesting multiple certificates.
+     *        multiple times with the same idempotency token within a five minute period, ACM Private CA recognizes that
+     *        you are requesting only one certificate. As a result, ACM Private CA issues only one. If you change the
+     *        idempotency token for each call, however, ACM Private CA recognizes that you are requesting multiple
+     *        certificates.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -286,7 +301,122 @@ public class CreateCertificateAuthorityRequest extends com.amazonaws.AmazonWebSe
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * <p>
+     * Key-value pairs that will be attached to the new private CA. You can associate up to 50 tags with a private CA.
+     * For information using tags with
+     * </p>
+     * <p>
+     * IAM to manage permissions, see <a
+     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_iam-tags.html">Controlling Access Using IAM
+     * Tags</a>.
+     * </p>
+     * 
+     * @return Key-value pairs that will be attached to the new private CA. You can associate up to 50 tags with a
+     *         private CA. For information using tags with </p>
+     *         <p>
+     *         IAM to manage permissions, see <a
+     *         href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_iam-tags.html">Controlling Access Using IAM
+     *         Tags</a>.
+     */
+
+    public java.util.List<Tag> getTags() {
+        return tags;
+    }
+
+    /**
+     * <p>
+     * Key-value pairs that will be attached to the new private CA. You can associate up to 50 tags with a private CA.
+     * For information using tags with
+     * </p>
+     * <p>
+     * IAM to manage permissions, see <a
+     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_iam-tags.html">Controlling Access Using IAM
+     * Tags</a>.
+     * </p>
+     * 
+     * @param tags
+     *        Key-value pairs that will be attached to the new private CA. You can associate up to 50 tags with a
+     *        private CA. For information using tags with </p>
+     *        <p>
+     *        IAM to manage permissions, see <a
+     *        href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_iam-tags.html">Controlling Access Using IAM
+     *        Tags</a>.
+     */
+
+    public void setTags(java.util.Collection<Tag> tags) {
+        if (tags == null) {
+            this.tags = null;
+            return;
+        }
+
+        this.tags = new java.util.ArrayList<Tag>(tags);
+    }
+
+    /**
+     * <p>
+     * Key-value pairs that will be attached to the new private CA. You can associate up to 50 tags with a private CA.
+     * For information using tags with
+     * </p>
+     * <p>
+     * IAM to manage permissions, see <a
+     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_iam-tags.html">Controlling Access Using IAM
+     * Tags</a>.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setTags(java.util.Collection)} or {@link #withTags(java.util.Collection)} if you want to override the
+     * existing values.
+     * </p>
+     * 
+     * @param tags
+     *        Key-value pairs that will be attached to the new private CA. You can associate up to 50 tags with a
+     *        private CA. For information using tags with </p>
+     *        <p>
+     *        IAM to manage permissions, see <a
+     *        href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_iam-tags.html">Controlling Access Using IAM
+     *        Tags</a>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateCertificateAuthorityRequest withTags(Tag... tags) {
+        if (this.tags == null) {
+            setTags(new java.util.ArrayList<Tag>(tags.length));
+        }
+        for (Tag ele : tags) {
+            this.tags.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * Key-value pairs that will be attached to the new private CA. You can associate up to 50 tags with a private CA.
+     * For information using tags with
+     * </p>
+     * <p>
+     * IAM to manage permissions, see <a
+     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_iam-tags.html">Controlling Access Using IAM
+     * Tags</a>.
+     * </p>
+     * 
+     * @param tags
+     *        Key-value pairs that will be attached to the new private CA. You can associate up to 50 tags with a
+     *        private CA. For information using tags with </p>
+     *        <p>
+     *        IAM to manage permissions, see <a
+     *        href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_iam-tags.html">Controlling Access Using IAM
+     *        Tags</a>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateCertificateAuthorityRequest withTags(java.util.Collection<Tag> tags) {
+        setTags(tags);
+        return this;
+    }
+
+    /**
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -303,7 +433,9 @@ public class CreateCertificateAuthorityRequest extends com.amazonaws.AmazonWebSe
         if (getCertificateAuthorityType() != null)
             sb.append("CertificateAuthorityType: ").append(getCertificateAuthorityType()).append(",");
         if (getIdempotencyToken() != null)
-            sb.append("IdempotencyToken: ").append(getIdempotencyToken());
+            sb.append("IdempotencyToken: ").append(getIdempotencyToken()).append(",");
+        if (getTags() != null)
+            sb.append("Tags: ").append(getTags());
         sb.append("}");
         return sb.toString();
     }
@@ -335,6 +467,10 @@ public class CreateCertificateAuthorityRequest extends com.amazonaws.AmazonWebSe
             return false;
         if (other.getIdempotencyToken() != null && other.getIdempotencyToken().equals(this.getIdempotencyToken()) == false)
             return false;
+        if (other.getTags() == null ^ this.getTags() == null)
+            return false;
+        if (other.getTags() != null && other.getTags().equals(this.getTags()) == false)
+            return false;
         return true;
     }
 
@@ -347,6 +483,7 @@ public class CreateCertificateAuthorityRequest extends com.amazonaws.AmazonWebSe
         hashCode = prime * hashCode + ((getRevocationConfiguration() == null) ? 0 : getRevocationConfiguration().hashCode());
         hashCode = prime * hashCode + ((getCertificateAuthorityType() == null) ? 0 : getCertificateAuthorityType().hashCode());
         hashCode = prime * hashCode + ((getIdempotencyToken() == null) ? 0 : getIdempotencyToken().hashCode());
+        hashCode = prime * hashCode + ((getTags() == null) ? 0 : getTags().hashCode());
         return hashCode;
     }
 

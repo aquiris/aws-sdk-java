@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -45,7 +45,7 @@ public class CopyFpgaImageRequest extends AmazonWebServiceRequest implements Ser
     private String name;
     /**
      * <p>
-     * The region that contains the source AFI.
+     * The Region that contains the source AFI.
      * </p>
      */
     private String sourceRegion;
@@ -53,7 +53,8 @@ public class CopyFpgaImageRequest extends AmazonWebServiceRequest implements Ser
      * <p>
      * Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more
      * information, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html">Ensuring Idempotency</a>.
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html">Ensuring
+     * Idempotency</a>.
      * </p>
      */
     private String clientToken;
@@ -180,11 +181,11 @@ public class CopyFpgaImageRequest extends AmazonWebServiceRequest implements Ser
 
     /**
      * <p>
-     * The region that contains the source AFI.
+     * The Region that contains the source AFI.
      * </p>
      * 
      * @param sourceRegion
-     *        The region that contains the source AFI.
+     *        The Region that contains the source AFI.
      */
 
     public void setSourceRegion(String sourceRegion) {
@@ -193,10 +194,10 @@ public class CopyFpgaImageRequest extends AmazonWebServiceRequest implements Ser
 
     /**
      * <p>
-     * The region that contains the source AFI.
+     * The Region that contains the source AFI.
      * </p>
      * 
-     * @return The region that contains the source AFI.
+     * @return The Region that contains the source AFI.
      */
 
     public String getSourceRegion() {
@@ -205,11 +206,11 @@ public class CopyFpgaImageRequest extends AmazonWebServiceRequest implements Ser
 
     /**
      * <p>
-     * The region that contains the source AFI.
+     * The Region that contains the source AFI.
      * </p>
      * 
      * @param sourceRegion
-     *        The region that contains the source AFI.
+     *        The Region that contains the source AFI.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -222,13 +223,14 @@ public class CopyFpgaImageRequest extends AmazonWebServiceRequest implements Ser
      * <p>
      * Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more
      * information, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html">Ensuring Idempotency</a>.
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html">Ensuring
+     * Idempotency</a>.
      * </p>
      * 
      * @param clientToken
      *        Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more
      *        information, see <a
-     *        href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html">Ensuring
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html">Ensuring
      *        Idempotency</a>.
      */
 
@@ -240,12 +242,13 @@ public class CopyFpgaImageRequest extends AmazonWebServiceRequest implements Ser
      * <p>
      * Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more
      * information, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html">Ensuring Idempotency</a>.
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html">Ensuring
+     * Idempotency</a>.
      * </p>
      * 
      * @return Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more
      *         information, see <a
-     *         href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html">Ensuring
+     *         href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html">Ensuring
      *         Idempotency</a>.
      */
 
@@ -257,13 +260,14 @@ public class CopyFpgaImageRequest extends AmazonWebServiceRequest implements Ser
      * <p>
      * Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more
      * information, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html">Ensuring Idempotency</a>.
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html">Ensuring
+     * Idempotency</a>.
      * </p>
      * 
      * @param clientToken
      *        Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more
      *        information, see <a
-     *        href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html">Ensuring
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html">Ensuring
      *        Idempotency</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -285,7 +289,8 @@ public class CopyFpgaImageRequest extends AmazonWebServiceRequest implements Ser
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

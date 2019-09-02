@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -48,9 +48,21 @@ public class DashPackageJsonUnmarshaller implements Unmarshaller<DashPackage, Js
                 break;
 
             if (token == FIELD_NAME || token == START_OBJECT) {
+                if (context.testExpression("adTriggers", targetDepth)) {
+                    context.nextToken();
+                    dashPackage.setAdTriggers(new ListUnmarshaller<String>(context.getUnmarshaller(String.class)).unmarshall(context));
+                }
+                if (context.testExpression("adsOnDeliveryRestrictions", targetDepth)) {
+                    context.nextToken();
+                    dashPackage.setAdsOnDeliveryRestrictions(context.getUnmarshaller(String.class).unmarshall(context));
+                }
                 if (context.testExpression("encryption", targetDepth)) {
                     context.nextToken();
                     dashPackage.setEncryption(DashEncryptionJsonUnmarshaller.getInstance().unmarshall(context));
+                }
+                if (context.testExpression("manifestLayout", targetDepth)) {
+                    context.nextToken();
+                    dashPackage.setManifestLayout(context.getUnmarshaller(String.class).unmarshall(context));
                 }
                 if (context.testExpression("manifestWindowSeconds", targetDepth)) {
                     context.nextToken();
@@ -64,6 +76,10 @@ public class DashPackageJsonUnmarshaller implements Unmarshaller<DashPackage, Js
                     context.nextToken();
                     dashPackage.setMinUpdatePeriodSeconds(context.getUnmarshaller(Integer.class).unmarshall(context));
                 }
+                if (context.testExpression("periodTriggers", targetDepth)) {
+                    context.nextToken();
+                    dashPackage.setPeriodTriggers(new ListUnmarshaller<String>(context.getUnmarshaller(String.class)).unmarshall(context));
+                }
                 if (context.testExpression("profile", targetDepth)) {
                     context.nextToken();
                     dashPackage.setProfile(context.getUnmarshaller(String.class).unmarshall(context));
@@ -71,6 +87,10 @@ public class DashPackageJsonUnmarshaller implements Unmarshaller<DashPackage, Js
                 if (context.testExpression("segmentDurationSeconds", targetDepth)) {
                     context.nextToken();
                     dashPackage.setSegmentDurationSeconds(context.getUnmarshaller(Integer.class).unmarshall(context));
+                }
+                if (context.testExpression("segmentTemplateFormat", targetDepth)) {
+                    context.nextToken();
+                    dashPackage.setSegmentTemplateFormat(context.getUnmarshaller(String.class).unmarshall(context));
                 }
                 if (context.testExpression("streamSelection", targetDepth)) {
                     context.nextToken();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,7 +27,7 @@ public class BatchDeleteTableVersionRequest extends com.amazonaws.AmazonWebServi
 
     /**
      * <p>
-     * The ID of the Data Catalog where the tables reside. If none is supplied, the AWS account ID is used by default.
+     * The ID of the Data Catalog where the tables reside. If none is provided, the AWS account ID is used by default.
      * </p>
      */
     private String catalogId;
@@ -45,18 +45,19 @@ public class BatchDeleteTableVersionRequest extends com.amazonaws.AmazonWebServi
     private String tableName;
     /**
      * <p>
-     * A list of the IDs of versions to be deleted.
+     * A list of the IDs of versions to be deleted. A <code>VersionId</code> is a string representation of an integer.
+     * Each version is incremented by 1.
      * </p>
      */
     private java.util.List<String> versionIds;
 
     /**
      * <p>
-     * The ID of the Data Catalog where the tables reside. If none is supplied, the AWS account ID is used by default.
+     * The ID of the Data Catalog where the tables reside. If none is provided, the AWS account ID is used by default.
      * </p>
      * 
      * @param catalogId
-     *        The ID of the Data Catalog where the tables reside. If none is supplied, the AWS account ID is used by
+     *        The ID of the Data Catalog where the tables reside. If none is provided, the AWS account ID is used by
      *        default.
      */
 
@@ -66,10 +67,10 @@ public class BatchDeleteTableVersionRequest extends com.amazonaws.AmazonWebServi
 
     /**
      * <p>
-     * The ID of the Data Catalog where the tables reside. If none is supplied, the AWS account ID is used by default.
+     * The ID of the Data Catalog where the tables reside. If none is provided, the AWS account ID is used by default.
      * </p>
      * 
-     * @return The ID of the Data Catalog where the tables reside. If none is supplied, the AWS account ID is used by
+     * @return The ID of the Data Catalog where the tables reside. If none is provided, the AWS account ID is used by
      *         default.
      */
 
@@ -79,11 +80,11 @@ public class BatchDeleteTableVersionRequest extends com.amazonaws.AmazonWebServi
 
     /**
      * <p>
-     * The ID of the Data Catalog where the tables reside. If none is supplied, the AWS account ID is used by default.
+     * The ID of the Data Catalog where the tables reside. If none is provided, the AWS account ID is used by default.
      * </p>
      * 
      * @param catalogId
-     *        The ID of the Data Catalog where the tables reside. If none is supplied, the AWS account ID is used by
+     *        The ID of the Data Catalog where the tables reside. If none is provided, the AWS account ID is used by
      *        default.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -178,10 +179,12 @@ public class BatchDeleteTableVersionRequest extends com.amazonaws.AmazonWebServi
 
     /**
      * <p>
-     * A list of the IDs of versions to be deleted.
+     * A list of the IDs of versions to be deleted. A <code>VersionId</code> is a string representation of an integer.
+     * Each version is incremented by 1.
      * </p>
      * 
-     * @return A list of the IDs of versions to be deleted.
+     * @return A list of the IDs of versions to be deleted. A <code>VersionId</code> is a string representation of an
+     *         integer. Each version is incremented by 1.
      */
 
     public java.util.List<String> getVersionIds() {
@@ -190,11 +193,13 @@ public class BatchDeleteTableVersionRequest extends com.amazonaws.AmazonWebServi
 
     /**
      * <p>
-     * A list of the IDs of versions to be deleted.
+     * A list of the IDs of versions to be deleted. A <code>VersionId</code> is a string representation of an integer.
+     * Each version is incremented by 1.
      * </p>
      * 
      * @param versionIds
-     *        A list of the IDs of versions to be deleted.
+     *        A list of the IDs of versions to be deleted. A <code>VersionId</code> is a string representation of an
+     *        integer. Each version is incremented by 1.
      */
 
     public void setVersionIds(java.util.Collection<String> versionIds) {
@@ -208,7 +213,8 @@ public class BatchDeleteTableVersionRequest extends com.amazonaws.AmazonWebServi
 
     /**
      * <p>
-     * A list of the IDs of versions to be deleted.
+     * A list of the IDs of versions to be deleted. A <code>VersionId</code> is a string representation of an integer.
+     * Each version is incremented by 1.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -217,7 +223,8 @@ public class BatchDeleteTableVersionRequest extends com.amazonaws.AmazonWebServi
      * </p>
      * 
      * @param versionIds
-     *        A list of the IDs of versions to be deleted.
+     *        A list of the IDs of versions to be deleted. A <code>VersionId</code> is a string representation of an
+     *        integer. Each version is incremented by 1.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -233,11 +240,13 @@ public class BatchDeleteTableVersionRequest extends com.amazonaws.AmazonWebServi
 
     /**
      * <p>
-     * A list of the IDs of versions to be deleted.
+     * A list of the IDs of versions to be deleted. A <code>VersionId</code> is a string representation of an integer.
+     * Each version is incremented by 1.
      * </p>
      * 
      * @param versionIds
-     *        A list of the IDs of versions to be deleted.
+     *        A list of the IDs of versions to be deleted. A <code>VersionId</code> is a string representation of an
+     *        integer. Each version is incremented by 1.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -247,7 +256,8 @@ public class BatchDeleteTableVersionRequest extends com.amazonaws.AmazonWebServi
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

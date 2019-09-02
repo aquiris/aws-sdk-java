@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -37,6 +37,8 @@ import com.amazonaws.protocol.json.*;
 import com.amazonaws.util.AWSRequestMetrics.Field;
 import com.amazonaws.annotation.ThreadSafe;
 import com.amazonaws.client.AwsSyncClientParams;
+import com.amazonaws.client.builder.AdvancedConfig;
+
 import com.amazonaws.services.kinesisvideo.AmazonKinesisVideoMediaClientBuilder;
 
 import com.amazonaws.util.ServiceClientHolderInputStream;
@@ -54,6 +56,7 @@ import com.amazonaws.services.kinesisvideo.model.transform.*;
 @ThreadSafe
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AmazonKinesisVideoMediaClient extends AmazonWebServiceClient implements AmazonKinesisVideoMedia {
+
     /** Provider for AWS credentials. */
     private final AWSCredentialsProvider awsCredentialsProvider;
 
@@ -65,6 +68,8 @@ public class AmazonKinesisVideoMediaClient extends AmazonWebServiceClient implem
     /** Client configuration factory providing ClientConfigurations tailored to this client */
     protected static final ClientConfigurationFactory configFactory = new ClientConfigurationFactory();
 
+    private final AdvancedConfig advancedConfig;
+
     private static final com.amazonaws.protocol.json.SdkJsonProtocolFactory protocolFactory = new com.amazonaws.protocol.json.SdkJsonProtocolFactory(
             new JsonClientMetadata()
                     .withProtocolVersion("1.1")
@@ -72,24 +77,27 @@ public class AmazonKinesisVideoMediaClient extends AmazonWebServiceClient implem
                     .withSupportsIon(false)
                     .withContentTypeOverride("")
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("NotAuthorizedException").withModeledClass(
-                                    com.amazonaws.services.kinesisvideo.model.NotAuthorizedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("NotAuthorizedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.kinesisvideo.model.transform.NotAuthorizedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidEndpointException").withModeledClass(
-                                    com.amazonaws.services.kinesisvideo.model.InvalidEndpointException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidEndpointException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.kinesisvideo.model.transform.InvalidEndpointExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidArgumentException").withModeledClass(
-                                    com.amazonaws.services.kinesisvideo.model.InvalidArgumentException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidArgumentException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.kinesisvideo.model.transform.InvalidArgumentExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ClientLimitExceededException").withModeledClass(
-                                    com.amazonaws.services.kinesisvideo.model.ClientLimitExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ClientLimitExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.kinesisvideo.model.transform.ClientLimitExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ConnectionLimitExceededException").withModeledClass(
-                                    com.amazonaws.services.kinesisvideo.model.ConnectionLimitExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ConnectionLimitExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.kinesisvideo.model.transform.ConnectionLimitExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withModeledClass(
-                                    com.amazonaws.services.kinesisvideo.model.ResourceNotFoundException.class))
-                    .withBaseServiceExceptionClass(com.amazonaws.services.kinesisvideo.model.AmazonKinesisVideoException.class));
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.kinesisvideo.model.transform.ResourceNotFoundExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode(null).withExceptionUnmarshaller(
+                                    new JsonBaseExceptionUnmarshaller<com.amazonaws.services.kinesisvideo.model.AmazonKinesisVideoException>(
+                                            com.amazonaws.services.kinesisvideo.model.AmazonKinesisVideoException.class))));
 
     public static AmazonKinesisVideoMediaClientBuilder builder() {
         return AmazonKinesisVideoMediaClientBuilder.standard();
@@ -106,8 +114,23 @@ public class AmazonKinesisVideoMediaClient extends AmazonWebServiceClient implem
      *        Object providing client parameters.
      */
     AmazonKinesisVideoMediaClient(AwsSyncClientParams clientParams) {
+        this(clientParams, false);
+    }
+
+    /**
+     * Constructs a new client to invoke service methods on Kinesis Video Media using the specified parameters.
+     *
+     * <p>
+     * All service calls made using this new client object are blocking, and will not return until the service call
+     * completes.
+     *
+     * @param clientParams
+     *        Object providing client parameters.
+     */
+    AmazonKinesisVideoMediaClient(AwsSyncClientParams clientParams, boolean endpointDiscoveryEnabled) {
         super(clientParams);
         this.awsCredentialsProvider = clientParams.getCredentialsProvider();
+        this.advancedConfig = clientParams.getAdvancedConfig();
         init();
     }
 
@@ -124,20 +147,23 @@ public class AmazonKinesisVideoMediaClient extends AmazonWebServiceClient implem
 
     /**
      * <p>
-     * Use this API to retrieve media content from a Kinesis video stream. In the request, you identify stream name or
-     * stream Amazon Resource Name (ARN), and the starting chunk. Kinesis Video Streams then returns a stream of chunks
-     * in order by fragment number.
+     * Use this API to retrieve media content from a Kinesis video stream. In the request, you identify the stream name
+     * or stream Amazon Resource Name (ARN), and the starting chunk. Kinesis Video Streams then returns a stream of
+     * chunks in order by fragment number.
      * </p>
      * <note>
      * <p>
-     * You must first call the <code>GetDataEndpoint</code> API to get an endpoint to which you can then send the
-     * <code>GetMedia</code> requests.
+     * You must first call the <code>GetDataEndpoint</code> API to get an endpoint. Then send the <code>GetMedia</code>
+     * requests to this endpoint using the <a href="https://docs.aws.amazon.com/cli/latest/reference/">--endpoint-url
+     * parameter</a>.
      * </p>
      * </note>
      * <p>
      * When you put media data (fragments) on a stream, Kinesis Video Streams stores each incoming fragment and related
-     * metadata in what is called a "chunk." For more information, see . The <code>GetMedia</code> API returns a stream
-     * of these chunks starting from the chunk that you specify in the request.
+     * metadata in what is called a "chunk." For more information, see <a
+     * href="https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/API_dataplane_PutMedia.html">PutMedia</a>. The
+     * <code>GetMedia</code> API returns a stream of these chunks starting from the chunk that you specify in the
+     * request.
      * </p>
      * <p>
      * The following limits apply when using the <code>GetMedia</code> API:
@@ -155,6 +181,35 @@ public class AmazonKinesisVideoMediaClient extends AmazonWebServiceClient implem
      * </p>
      * </li>
      * </ul>
+     * <note>
+     * <p>
+     * If an error is thrown after invoking a Kinesis Video Streams media API, in addition to the HTTP status code and
+     * the response body, it includes the following pieces of information:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>x-amz-ErrorType</code> HTTP header – contains a more specific error type in addition to what the HTTP
+     * status code provides.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>x-amz-RequestId</code> HTTP header – if you want to report an issue to AWS, the support team can better
+     * diagnose the problem if given the Request Id.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * Both the HTTP status code and the ErrorType header can be utilized to make programmatic decisions about whether
+     * errors are retry-able and under what conditions, as well as provide information on what actions the client
+     * programmer might need to take in order to successfully try again.
+     * </p>
+     * <p>
+     * For more information, see the <b>Errors</b> section at the bottom of this topic, as well as <a
+     * href="https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/CommonErrors.html">Common Errors</a>.
+     * </p>
+     * </note>
      * 
      * @param getMediaRequest
      * @return Result of the GetMedia operation returned by the service.
@@ -201,6 +256,10 @@ public class AmazonKinesisVideoMediaClient extends AmazonWebServiceClient implem
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Kinesis Video Media");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetMedia");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -243,9 +302,18 @@ public class AmazonKinesisVideoMediaClient extends AmazonWebServiceClient implem
     private <X, Y extends AmazonWebServiceRequest> Response<X> invoke(Request<Y> request, HttpResponseHandler<AmazonWebServiceResponse<X>> responseHandler,
             ExecutionContext executionContext) {
 
+        return invoke(request, responseHandler, executionContext, null, null);
+    }
+
+    /**
+     * Normal invoke with authentication. Credentials are required and may be overriden at the request level.
+     **/
+    private <X, Y extends AmazonWebServiceRequest> Response<X> invoke(Request<Y> request, HttpResponseHandler<AmazonWebServiceResponse<X>> responseHandler,
+            ExecutionContext executionContext, URI cachedEndpoint, URI uriFromEndpointTrait) {
+
         executionContext.setCredentialsProvider(CredentialUtils.getCredentialsProvider(request.getOriginalRequest(), awsCredentialsProvider));
 
-        return doInvoke(request, responseHandler, executionContext);
+        return doInvoke(request, responseHandler, executionContext, cachedEndpoint, uriFromEndpointTrait);
     }
 
     /**
@@ -255,7 +323,7 @@ public class AmazonKinesisVideoMediaClient extends AmazonWebServiceClient implem
     private <X, Y extends AmazonWebServiceRequest> Response<X> anonymousInvoke(Request<Y> request,
             HttpResponseHandler<AmazonWebServiceResponse<X>> responseHandler, ExecutionContext executionContext) {
 
-        return doInvoke(request, responseHandler, executionContext);
+        return doInvoke(request, responseHandler, executionContext, null, null);
     }
 
     /**
@@ -263,8 +331,17 @@ public class AmazonKinesisVideoMediaClient extends AmazonWebServiceClient implem
      * ExecutionContext beforehand.
      **/
     private <X, Y extends AmazonWebServiceRequest> Response<X> doInvoke(Request<Y> request, HttpResponseHandler<AmazonWebServiceResponse<X>> responseHandler,
-            ExecutionContext executionContext) {
-        request.setEndpoint(endpoint);
+            ExecutionContext executionContext, URI discoveredEndpoint, URI uriFromEndpointTrait) {
+
+        if (discoveredEndpoint != null) {
+            request.setEndpoint(discoveredEndpoint);
+            request.getOriginalRequest().getRequestClientOptions().appendUserAgent("endpoint-discovery");
+        } else if (uriFromEndpointTrait != null) {
+            request.setEndpoint(uriFromEndpointTrait);
+        } else {
+            request.setEndpoint(endpoint);
+        }
+
         request.setTimeOffset(timeOffset);
 
         HttpResponseHandler<AmazonServiceException> errorResponseHandler = protocolFactory.createErrorResponseHandler(new JsonErrorResponseMetadata());

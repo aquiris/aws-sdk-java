@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,7 +27,7 @@ public class DeleteImportedKeyMaterialRequest extends com.amazonaws.AmazonWebSer
 
     /**
      * <p>
-     * The identifier of the CMK whose key material to delete. The CMK's <code>Origin</code> must be
+     * Identifies the CMK from which you are deleting imported key material. The <code>Origin</code> of the CMK must be
      * <code>EXTERNAL</code>.
      * </p>
      * <p>
@@ -56,7 +56,7 @@ public class DeleteImportedKeyMaterialRequest extends com.amazonaws.AmazonWebSer
 
     /**
      * <p>
-     * The identifier of the CMK whose key material to delete. The CMK's <code>Origin</code> must be
+     * Identifies the CMK from which you are deleting imported key material. The <code>Origin</code> of the CMK must be
      * <code>EXTERNAL</code>.
      * </p>
      * <p>
@@ -82,8 +82,8 @@ public class DeleteImportedKeyMaterialRequest extends com.amazonaws.AmazonWebSer
      * </p>
      * 
      * @param keyId
-     *        The identifier of the CMK whose key material to delete. The CMK's <code>Origin</code> must be
-     *        <code>EXTERNAL</code>.</p>
+     *        Identifies the CMK from which you are deleting imported key material. The <code>Origin</code> of the CMK
+     *        must be <code>EXTERNAL</code>.</p>
      *        <p>
      *        Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
      *        </p>
@@ -112,7 +112,7 @@ public class DeleteImportedKeyMaterialRequest extends com.amazonaws.AmazonWebSer
 
     /**
      * <p>
-     * The identifier of the CMK whose key material to delete. The CMK's <code>Origin</code> must be
+     * Identifies the CMK from which you are deleting imported key material. The <code>Origin</code> of the CMK must be
      * <code>EXTERNAL</code>.
      * </p>
      * <p>
@@ -137,8 +137,8 @@ public class DeleteImportedKeyMaterialRequest extends com.amazonaws.AmazonWebSer
      * To get the key ID and key ARN for a CMK, use <a>ListKeys</a> or <a>DescribeKey</a>.
      * </p>
      * 
-     * @return The identifier of the CMK whose key material to delete. The CMK's <code>Origin</code> must be
-     *         <code>EXTERNAL</code>.</p>
+     * @return Identifies the CMK from which you are deleting imported key material. The <code>Origin</code> of the CMK
+     *         must be <code>EXTERNAL</code>.</p>
      *         <p>
      *         Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
      *         </p>
@@ -167,7 +167,7 @@ public class DeleteImportedKeyMaterialRequest extends com.amazonaws.AmazonWebSer
 
     /**
      * <p>
-     * The identifier of the CMK whose key material to delete. The CMK's <code>Origin</code> must be
+     * Identifies the CMK from which you are deleting imported key material. The <code>Origin</code> of the CMK must be
      * <code>EXTERNAL</code>.
      * </p>
      * <p>
@@ -193,8 +193,8 @@ public class DeleteImportedKeyMaterialRequest extends com.amazonaws.AmazonWebSer
      * </p>
      * 
      * @param keyId
-     *        The identifier of the CMK whose key material to delete. The CMK's <code>Origin</code> must be
-     *        <code>EXTERNAL</code>.</p>
+     *        Identifies the CMK from which you are deleting imported key material. The <code>Origin</code> of the CMK
+     *        must be <code>EXTERNAL</code>.</p>
      *        <p>
      *        Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
      *        </p>
@@ -224,7 +224,8 @@ public class DeleteImportedKeyMaterialRequest extends com.amazonaws.AmazonWebSer
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

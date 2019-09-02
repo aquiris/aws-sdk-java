@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,7 @@
  */
 package com.amazonaws.services.waf.model.waf_regional.transform;
 
+import java.util.List;
 import javax.annotation.Generated;
 
 import com.amazonaws.SdkClientException;
@@ -35,6 +36,8 @@ public class CreateWebACLRequestMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("DefaultAction").build();
     private static final MarshallingInfo<String> CHANGETOKEN_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("ChangeToken").build();
+    private static final MarshallingInfo<List> TAGS_BINDING = MarshallingInfo.builder(MarshallingType.LIST).marshallLocation(MarshallLocation.PAYLOAD)
+            .marshallLocationName("Tags").build();
 
     private static final CreateWebACLRequestMarshaller instance = new CreateWebACLRequestMarshaller();
 
@@ -56,6 +59,7 @@ public class CreateWebACLRequestMarshaller {
             protocolMarshaller.marshall(createWebACLRequest.getMetricName(), METRICNAME_BINDING);
             protocolMarshaller.marshall(createWebACLRequest.getDefaultAction(), DEFAULTACTION_BINDING);
             protocolMarshaller.marshall(createWebACLRequest.getChangeToken(), CHANGETOKEN_BINDING);
+            protocolMarshaller.marshall(createWebACLRequest.getTags(), TAGS_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

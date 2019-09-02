@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -18,7 +18,9 @@ import com.amazonaws.protocol.StructuredPojo;
 import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
- * Contains details about the member account.
+ * <p>
+ * Continas information about the member account
+ * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/Member" target="_top">AWS API
  *      Documentation</a>
@@ -26,22 +28,56 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class Member implements Serializable, Cloneable, StructuredPojo {
 
+    /**
+     * <p>
+     * Member account ID.
+     * </p>
+     */
     private String accountId;
-
+    /**
+     * <p>
+     * Member account's detector ID.
+     * </p>
+     */
     private String detectorId;
-    /** Member account's email address. */
-    private String email;
-    /** Timestamp at which the invitation was sent */
-    private String invitedAt;
-
+    /**
+     * <p>
+     * Master account ID.
+     * </p>
+     */
     private String masterId;
-    /** The status of the relationship between the member and the master. */
+    /**
+     * <p>
+     * Member account's email address.
+     * </p>
+     */
+    private String email;
+    /**
+     * <p>
+     * The status of the relationship between the member and the master.
+     * </p>
+     */
     private String relationshipStatus;
-
+    /**
+     * <p>
+     * Timestamp at which the invitation was sent
+     * </p>
+     */
+    private String invitedAt;
+    /**
+     * <p>
+     * Member last updated timestamp.
+     * </p>
+     */
     private String updatedAt;
 
     /**
+     * <p>
+     * Member account ID.
+     * </p>
+     * 
      * @param accountId
+     *        Member account ID.
      */
 
     public void setAccountId(String accountId) {
@@ -49,7 +85,11 @@ public class Member implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * @return
+     * <p>
+     * Member account ID.
+     * </p>
+     * 
+     * @return Member account ID.
      */
 
     public String getAccountId() {
@@ -57,7 +97,12 @@ public class Member implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
+     * Member account ID.
+     * </p>
+     * 
      * @param accountId
+     *        Member account ID.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -67,7 +112,12 @@ public class Member implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
+     * Member account's detector ID.
+     * </p>
+     * 
      * @param detectorId
+     *        Member account's detector ID.
      */
 
     public void setDetectorId(String detectorId) {
@@ -75,7 +125,11 @@ public class Member implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * @return
+     * <p>
+     * Member account's detector ID.
+     * </p>
+     * 
+     * @return Member account's detector ID.
      */
 
     public String getDetectorId() {
@@ -83,7 +137,12 @@ public class Member implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
+     * Member account's detector ID.
+     * </p>
+     * 
      * @param detectorId
+     *        Member account's detector ID.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -93,7 +152,49 @@ public class Member implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
+     * Master account ID.
+     * </p>
+     * 
+     * @param masterId
+     *        Master account ID.
+     */
+
+    public void setMasterId(String masterId) {
+        this.masterId = masterId;
+    }
+
+    /**
+     * <p>
+     * Master account ID.
+     * </p>
+     * 
+     * @return Master account ID.
+     */
+
+    public String getMasterId() {
+        return this.masterId;
+    }
+
+    /**
+     * <p>
+     * Master account ID.
+     * </p>
+     * 
+     * @param masterId
+     *        Master account ID.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Member withMasterId(String masterId) {
+        setMasterId(masterId);
+        return this;
+    }
+
+    /**
+     * <p>
      * Member account's email address.
+     * </p>
      * 
      * @param email
      *        Member account's email address.
@@ -104,7 +205,9 @@ public class Member implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
      * Member account's email address.
+     * </p>
      * 
      * @return Member account's email address.
      */
@@ -114,7 +217,9 @@ public class Member implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
      * Member account's email address.
+     * </p>
      * 
      * @param email
      *        Member account's email address.
@@ -127,67 +232,9 @@ public class Member implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Timestamp at which the invitation was sent
-     * 
-     * @param invitedAt
-     *        Timestamp at which the invitation was sent
-     */
-
-    public void setInvitedAt(String invitedAt) {
-        this.invitedAt = invitedAt;
-    }
-
-    /**
-     * Timestamp at which the invitation was sent
-     * 
-     * @return Timestamp at which the invitation was sent
-     */
-
-    public String getInvitedAt() {
-        return this.invitedAt;
-    }
-
-    /**
-     * Timestamp at which the invitation was sent
-     * 
-     * @param invitedAt
-     *        Timestamp at which the invitation was sent
-     * @return Returns a reference to this object so that method calls can be chained together.
-     */
-
-    public Member withInvitedAt(String invitedAt) {
-        setInvitedAt(invitedAt);
-        return this;
-    }
-
-    /**
-     * @param masterId
-     */
-
-    public void setMasterId(String masterId) {
-        this.masterId = masterId;
-    }
-
-    /**
-     * @return
-     */
-
-    public String getMasterId() {
-        return this.masterId;
-    }
-
-    /**
-     * @param masterId
-     * @return Returns a reference to this object so that method calls can be chained together.
-     */
-
-    public Member withMasterId(String masterId) {
-        setMasterId(masterId);
-        return this;
-    }
-
-    /**
+     * <p>
      * The status of the relationship between the member and the master.
+     * </p>
      * 
      * @param relationshipStatus
      *        The status of the relationship between the member and the master.
@@ -198,7 +245,9 @@ public class Member implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
      * The status of the relationship between the member and the master.
+     * </p>
      * 
      * @return The status of the relationship between the member and the master.
      */
@@ -208,7 +257,9 @@ public class Member implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
      * The status of the relationship between the member and the master.
+     * </p>
      * 
      * @param relationshipStatus
      *        The status of the relationship between the member and the master.
@@ -221,7 +272,52 @@ public class Member implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
+     * Timestamp at which the invitation was sent
+     * </p>
+     * 
+     * @param invitedAt
+     *        Timestamp at which the invitation was sent
+     */
+
+    public void setInvitedAt(String invitedAt) {
+        this.invitedAt = invitedAt;
+    }
+
+    /**
+     * <p>
+     * Timestamp at which the invitation was sent
+     * </p>
+     * 
+     * @return Timestamp at which the invitation was sent
+     */
+
+    public String getInvitedAt() {
+        return this.invitedAt;
+    }
+
+    /**
+     * <p>
+     * Timestamp at which the invitation was sent
+     * </p>
+     * 
+     * @param invitedAt
+     *        Timestamp at which the invitation was sent
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Member withInvitedAt(String invitedAt) {
+        setInvitedAt(invitedAt);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Member last updated timestamp.
+     * </p>
+     * 
      * @param updatedAt
+     *        Member last updated timestamp.
      */
 
     public void setUpdatedAt(String updatedAt) {
@@ -229,7 +325,11 @@ public class Member implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * @return
+     * <p>
+     * Member last updated timestamp.
+     * </p>
+     * 
+     * @return Member last updated timestamp.
      */
 
     public String getUpdatedAt() {
@@ -237,7 +337,12 @@ public class Member implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
+     * Member last updated timestamp.
+     * </p>
+     * 
      * @param updatedAt
+     *        Member last updated timestamp.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -247,7 +352,8 @@ public class Member implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -261,14 +367,14 @@ public class Member implements Serializable, Cloneable, StructuredPojo {
             sb.append("AccountId: ").append(getAccountId()).append(",");
         if (getDetectorId() != null)
             sb.append("DetectorId: ").append(getDetectorId()).append(",");
-        if (getEmail() != null)
-            sb.append("Email: ").append(getEmail()).append(",");
-        if (getInvitedAt() != null)
-            sb.append("InvitedAt: ").append(getInvitedAt()).append(",");
         if (getMasterId() != null)
             sb.append("MasterId: ").append(getMasterId()).append(",");
+        if (getEmail() != null)
+            sb.append("Email: ").append(getEmail()).append(",");
         if (getRelationshipStatus() != null)
             sb.append("RelationshipStatus: ").append(getRelationshipStatus()).append(",");
+        if (getInvitedAt() != null)
+            sb.append("InvitedAt: ").append(getInvitedAt()).append(",");
         if (getUpdatedAt() != null)
             sb.append("UpdatedAt: ").append(getUpdatedAt());
         sb.append("}");
@@ -293,21 +399,21 @@ public class Member implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getDetectorId() != null && other.getDetectorId().equals(this.getDetectorId()) == false)
             return false;
-        if (other.getEmail() == null ^ this.getEmail() == null)
-            return false;
-        if (other.getEmail() != null && other.getEmail().equals(this.getEmail()) == false)
-            return false;
-        if (other.getInvitedAt() == null ^ this.getInvitedAt() == null)
-            return false;
-        if (other.getInvitedAt() != null && other.getInvitedAt().equals(this.getInvitedAt()) == false)
-            return false;
         if (other.getMasterId() == null ^ this.getMasterId() == null)
             return false;
         if (other.getMasterId() != null && other.getMasterId().equals(this.getMasterId()) == false)
             return false;
+        if (other.getEmail() == null ^ this.getEmail() == null)
+            return false;
+        if (other.getEmail() != null && other.getEmail().equals(this.getEmail()) == false)
+            return false;
         if (other.getRelationshipStatus() == null ^ this.getRelationshipStatus() == null)
             return false;
         if (other.getRelationshipStatus() != null && other.getRelationshipStatus().equals(this.getRelationshipStatus()) == false)
+            return false;
+        if (other.getInvitedAt() == null ^ this.getInvitedAt() == null)
+            return false;
+        if (other.getInvitedAt() != null && other.getInvitedAt().equals(this.getInvitedAt()) == false)
             return false;
         if (other.getUpdatedAt() == null ^ this.getUpdatedAt() == null)
             return false;
@@ -323,10 +429,10 @@ public class Member implements Serializable, Cloneable, StructuredPojo {
 
         hashCode = prime * hashCode + ((getAccountId() == null) ? 0 : getAccountId().hashCode());
         hashCode = prime * hashCode + ((getDetectorId() == null) ? 0 : getDetectorId().hashCode());
-        hashCode = prime * hashCode + ((getEmail() == null) ? 0 : getEmail().hashCode());
-        hashCode = prime * hashCode + ((getInvitedAt() == null) ? 0 : getInvitedAt().hashCode());
         hashCode = prime * hashCode + ((getMasterId() == null) ? 0 : getMasterId().hashCode());
+        hashCode = prime * hashCode + ((getEmail() == null) ? 0 : getEmail().hashCode());
         hashCode = prime * hashCode + ((getRelationshipStatus() == null) ? 0 : getRelationshipStatus().hashCode());
+        hashCode = prime * hashCode + ((getInvitedAt() == null) ? 0 : getInvitedAt().hashCode());
         hashCode = prime * hashCode + ((getUpdatedAt() == null) ? 0 : getUpdatedAt().hashCode());
         return hashCode;
     }

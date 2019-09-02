@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -36,9 +36,11 @@ public class ProvisioningArtifactDetailMarshaller {
     private static final MarshallingInfo<String> TYPE_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("Type").build();
     private static final MarshallingInfo<java.util.Date> CREATEDTIME_BINDING = MarshallingInfo.builder(MarshallingType.DATE)
-            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("CreatedTime").build();
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("CreatedTime").timestampFormat("unixTimestamp").build();
     private static final MarshallingInfo<Boolean> ACTIVE_BINDING = MarshallingInfo.builder(MarshallingType.BOOLEAN).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("Active").build();
+    private static final MarshallingInfo<String> GUIDANCE_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
+            .marshallLocationName("Guidance").build();
 
     private static final ProvisioningArtifactDetailMarshaller instance = new ProvisioningArtifactDetailMarshaller();
 
@@ -62,6 +64,7 @@ public class ProvisioningArtifactDetailMarshaller {
             protocolMarshaller.marshall(provisioningArtifactDetail.getType(), TYPE_BINDING);
             protocolMarshaller.marshall(provisioningArtifactDetail.getCreatedTime(), CREATEDTIME_BINDING);
             protocolMarshaller.marshall(provisioningArtifactDetail.getActive(), ACTIVE_BINDING);
+            protocolMarshaller.marshall(provisioningArtifactDetail.getGuidance(), GUIDANCE_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

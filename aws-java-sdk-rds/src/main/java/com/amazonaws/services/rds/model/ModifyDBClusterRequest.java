@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -31,15 +31,8 @@ public class ModifyDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
      * The DB cluster identifier for the cluster being modified. This parameter is not case-sensitive.
      * </p>
      * <p>
-     * Constraints:
+     * Constraints: This identifier must match the identifier of an existing DB cluster.
      * </p>
-     * <ul>
-     * <li>
-     * <p>
-     * Must match the identifier of an existing DBCluster.
-     * </p>
-     * </li>
-     * </ul>
      */
     private String dBClusterIdentifier;
     /**
@@ -63,7 +56,7 @@ public class ModifyDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
      * </li>
      * <li>
      * <p>
-     * Cannot end with a hyphen or contain two consecutive hyphens
+     * Can't end with a hyphen or contain two consecutive hyphens
      * </p>
      * </li>
      * </ul>
@@ -74,20 +67,20 @@ public class ModifyDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
     private String newDBClusterIdentifier;
     /**
      * <p>
-     * A value that specifies whether the modifications in this request and any pending modifications are asynchronously
+     * A value that indicates whether the modifications in this request and any pending modifications are asynchronously
      * applied as soon as possible, regardless of the <code>PreferredMaintenanceWindow</code> setting for the DB
-     * cluster. If this parameter is set to <code>false</code>, changes to the DB cluster are applied during the next
-     * maintenance window.
+     * cluster. If this parameter is disabled, changes to the DB cluster are applied during the next maintenance window.
      * </p>
      * <p>
-     * The <code>ApplyImmediately</code> parameter only affects the <code>NewDBClusterIdentifier</code> and
-     * <code>MasterUserPassword</code> values. If you set the <code>ApplyImmediately</code> parameter value to false,
-     * then changes to the <code>NewDBClusterIdentifier</code> and <code>MasterUserPassword</code> values are applied
-     * during the next maintenance window. All other changes are applied immediately, regardless of the value of the
-     * <code>ApplyImmediately</code> parameter.
+     * The <code>ApplyImmediately</code> parameter only affects the <code>EnableIAMDatabaseAuthentication</code>,
+     * <code>MasterUserPassword</code>, and <code>NewDBClusterIdentifier</code> values. If the
+     * <code>ApplyImmediately</code> parameter is disabled, then changes to the
+     * <code>EnableIAMDatabaseAuthentication</code>, <code>MasterUserPassword</code>, and
+     * <code>NewDBClusterIdentifier</code> values are applied during the next maintenance window. All other changes are
+     * applied immediately, regardless of the value of the <code>ApplyImmediately</code> parameter.
      * </p>
      * <p>
-     * Default: <code>false</code>
+     * By default, this parameter is disabled.
      * </p>
      */
     private Boolean applyImmediately;
@@ -148,9 +141,9 @@ public class ModifyDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
      * <p>
      * A value that indicates that the DB cluster should be associated with the specified option group. Changing this
      * parameter doesn't result in an outage except in the following case, and the change is applied during the next
-     * maintenance window unless the <code>ApplyImmediately</code> parameter is set to <code>true</code> for this
-     * request. If the parameter change results in an option group that enables OEM, this change can cause a brief
-     * (sub-second) period during which new connections are rejected but existing connections are not interrupted.
+     * maintenance window unless the <code>ApplyImmediately</code> is enabled for this request. If the parameter change
+     * results in an option group that enables OEM, this change can cause a brief (sub-second) period during which new
+     * connections are rejected but existing connections are not interrupted.
      * </p>
      * <p>
      * Permanent options can't be removed from an option group. The option group can't be removed from a DB cluster once
@@ -165,9 +158,9 @@ public class ModifyDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
      * </p>
      * <p>
      * The default is a 30-minute window selected at random from an 8-hour block of time for each AWS Region. To see the
-     * time blocks available, see <a
-     * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html"> Adjusting the
-     * Preferred Maintenance Window</a> in the <i>Amazon RDS User Guide.</i>
+     * time blocks available, see <a href=
+     * "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora"
+     * > Adjusting the Preferred DB Cluster Maintenance Window</a> in the <i>Amazon Aurora User Guide.</i>
      * </p>
      * <p>
      * Constraints:
@@ -205,9 +198,9 @@ public class ModifyDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
      * </p>
      * <p>
      * The default is a 30-minute window selected at random from an 8-hour block of time for each AWS Region, occurring
-     * on a random day of the week. To see the time blocks available, see <a
-     * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html"> Adjusting the
-     * Preferred Maintenance Window</a> in the <i>Amazon RDS User Guide.</i>
+     * on a random day of the week. To see the time blocks available, see <a href=
+     * "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora"
+     * > Adjusting the Preferred DB Cluster Maintenance Window</a> in the <i>Amazon Aurora User Guide.</i>
      * </p>
      * <p>
      * Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.
@@ -219,11 +212,13 @@ public class ModifyDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
     private String preferredMaintenanceWindow;
     /**
      * <p>
-     * True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and otherwise
-     * false.
+     * A value that indicates whether to enable mapping of AWS Identity and Access Management (IAM) accounts to database
+     * accounts. By default, mapping is disabled.
      * </p>
      * <p>
-     * Default: <code>false</code>
+     * For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.html"> IAM Database
+     * Authentication</a> in the <i>Amazon Aurora User Guide.</i>
      * </p>
      */
     private Boolean enableIAMDatabaseAuthentication;
@@ -248,19 +243,61 @@ public class ModifyDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
     private Long backtrackWindow;
     /**
      * <p>
+     * The configuration setting for the log types to be enabled for export to CloudWatch Logs for a specific DB
+     * cluster.
+     * </p>
+     */
+    private CloudwatchLogsExportConfiguration cloudwatchLogsExportConfiguration;
+    /**
+     * <p>
      * The version number of the database engine to which you want to upgrade. Changing this parameter results in an
-     * outage. The change is applied during the next maintenance window unless the ApplyImmediately parameter is set to
-     * true.
+     * outage. The change is applied during the next maintenance window unless <code>ApplyImmediately</code> is enabled.
      * </p>
      * <p>
-     * For a list of valid engine versions, see <a>CreateDBInstance</a>, or call <a>DescribeDBEngineVersions</a>.
+     * To list all of the available engine versions for <code>aurora</code> (for MySQL 5.6-compatible Aurora), use the
+     * following command:
+     * </p>
+     * <p>
+     * <code>aws rds describe-db-engine-versions --engine aurora --query "DBEngineVersions[].EngineVersion"</code>
+     * </p>
+     * <p>
+     * To list all of the available engine versions for <code>aurora-mysql</code> (for MySQL 5.7-compatible Aurora), use
+     * the following command:
+     * </p>
+     * <p>
+     * <code>aws rds describe-db-engine-versions --engine aurora-mysql --query "DBEngineVersions[].EngineVersion"</code>
+     * </p>
+     * <p>
+     * To list all of the available engine versions for <code>aurora-postgresql</code>, use the following command:
+     * </p>
+     * <p>
+     * <code>aws rds describe-db-engine-versions --engine aurora-postgresql --query "DBEngineVersions[].EngineVersion"</code>
      * </p>
      */
     private String engineVersion;
-
     /**
      * <p>
-     * The DB cluster identifier for the cluster being modified. This parameter is not case-sensitive.
+     * A value that indicates whether major version upgrades are allowed.
+     * </p>
+     * <p>
+     * Constraints: You must allow major version upgrades when specifying a value for the <code>EngineVersion</code>
+     * parameter that is a different major version than the DB cluster's current version.
+     * </p>
+     */
+    private Boolean allowMajorVersionUpgrade;
+    /**
+     * <p>
+     * The name of the DB parameter group to apply to all instances of the DB cluster.
+     * </p>
+     * <note>
+     * <p>
+     * When you apply a parameter group using the <code>DBInstanceParameterGroupName</code> parameter, the DB cluster
+     * isn't rebooted automatically. Also, parameter changes aren't applied during the next maintenance window but
+     * instead are applied immediately.
+     * </p>
+     * </note>
+     * <p>
+     * Default: The existing name setting
      * </p>
      * <p>
      * Constraints:
@@ -268,22 +305,68 @@ public class ModifyDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
      * <ul>
      * <li>
      * <p>
-     * Must match the identifier of an existing DBCluster.
+     * The DB parameter group must be in the same DB parameter group family as this DB cluster.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * The <code>DBInstanceParameterGroupName</code> parameter is only valid in combination with the
+     * <code>AllowMajorVersionUpgrade</code> parameter.
      * </p>
      * </li>
      * </ul>
+     */
+    private String dBInstanceParameterGroupName;
+    /**
+     * <p>
+     * The scaling properties of the DB cluster. You can only modify scaling properties for DB clusters in
+     * <code>serverless</code> DB engine mode.
+     * </p>
+     */
+    private ScalingConfiguration scalingConfiguration;
+    /**
+     * <p>
+     * A value that indicates whether the DB cluster has deletion protection enabled. The database can't be deleted when
+     * deletion protection is enabled. By default, deletion protection is disabled.
+     * </p>
+     */
+    private Boolean deletionProtection;
+    /**
+     * <p>
+     * A value that indicates whether to enable the HTTP endpoint for an Aurora Serverless DB cluster. By default, the
+     * HTTP endpoint is disabled.
+     * </p>
+     * <p>
+     * When enabled, the HTTP endpoint provides a connectionless web service API for running SQL queries on the Aurora
+     * Serverless DB cluster. You can also query your database from inside the RDS console with the query editor.
+     * </p>
+     * <p>
+     * For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/data-api.html">Using the Data API for Aurora
+     * Serverless</a> in the <i>Amazon Aurora User Guide</i>.
+     * </p>
+     */
+    private Boolean enableHttpEndpoint;
+    /**
+     * <p>
+     * A value that indicates whether to copy all tags from the DB cluster to snapshots of the DB cluster. The default
+     * is not to copy them.
+     * </p>
+     */
+    private Boolean copyTagsToSnapshot;
+
+    /**
+     * <p>
+     * The DB cluster identifier for the cluster being modified. This parameter is not case-sensitive.
+     * </p>
+     * <p>
+     * Constraints: This identifier must match the identifier of an existing DB cluster.
+     * </p>
      * 
      * @param dBClusterIdentifier
      *        The DB cluster identifier for the cluster being modified. This parameter is not case-sensitive.</p>
      *        <p>
-     *        Constraints:
-     *        </p>
-     *        <ul>
-     *        <li>
-     *        <p>
-     *        Must match the identifier of an existing DBCluster.
-     *        </p>
-     *        </li>
+     *        Constraints: This identifier must match the identifier of an existing DB cluster.
      */
 
     public void setDBClusterIdentifier(String dBClusterIdentifier) {
@@ -295,26 +378,12 @@ public class ModifyDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
      * The DB cluster identifier for the cluster being modified. This parameter is not case-sensitive.
      * </p>
      * <p>
-     * Constraints:
+     * Constraints: This identifier must match the identifier of an existing DB cluster.
      * </p>
-     * <ul>
-     * <li>
-     * <p>
-     * Must match the identifier of an existing DBCluster.
-     * </p>
-     * </li>
-     * </ul>
      * 
      * @return The DB cluster identifier for the cluster being modified. This parameter is not case-sensitive.</p>
      *         <p>
-     *         Constraints:
-     *         </p>
-     *         <ul>
-     *         <li>
-     *         <p>
-     *         Must match the identifier of an existing DBCluster.
-     *         </p>
-     *         </li>
+     *         Constraints: This identifier must match the identifier of an existing DB cluster.
      */
 
     public String getDBClusterIdentifier() {
@@ -326,27 +395,13 @@ public class ModifyDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
      * The DB cluster identifier for the cluster being modified. This parameter is not case-sensitive.
      * </p>
      * <p>
-     * Constraints:
+     * Constraints: This identifier must match the identifier of an existing DB cluster.
      * </p>
-     * <ul>
-     * <li>
-     * <p>
-     * Must match the identifier of an existing DBCluster.
-     * </p>
-     * </li>
-     * </ul>
      * 
      * @param dBClusterIdentifier
      *        The DB cluster identifier for the cluster being modified. This parameter is not case-sensitive.</p>
      *        <p>
-     *        Constraints:
-     *        </p>
-     *        <ul>
-     *        <li>
-     *        <p>
-     *        Must match the identifier of an existing DBCluster.
-     *        </p>
-     *        </li>
+     *        Constraints: This identifier must match the identifier of an existing DB cluster.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -376,7 +431,7 @@ public class ModifyDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
      * </li>
      * <li>
      * <p>
-     * Cannot end with a hyphen or contain two consecutive hyphens
+     * Can't end with a hyphen or contain two consecutive hyphens
      * </p>
      * </li>
      * </ul>
@@ -403,7 +458,7 @@ public class ModifyDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
      *        </li>
      *        <li>
      *        <p>
-     *        Cannot end with a hyphen or contain two consecutive hyphens
+     *        Can't end with a hyphen or contain two consecutive hyphens
      *        </p>
      *        </li>
      *        </ul>
@@ -436,7 +491,7 @@ public class ModifyDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
      * </li>
      * <li>
      * <p>
-     * Cannot end with a hyphen or contain two consecutive hyphens
+     * Can't end with a hyphen or contain two consecutive hyphens
      * </p>
      * </li>
      * </ul>
@@ -462,7 +517,7 @@ public class ModifyDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
      *         </li>
      *         <li>
      *         <p>
-     *         Cannot end with a hyphen or contain two consecutive hyphens
+     *         Can't end with a hyphen or contain two consecutive hyphens
      *         </p>
      *         </li>
      *         </ul>
@@ -495,7 +550,7 @@ public class ModifyDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
      * </li>
      * <li>
      * <p>
-     * Cannot end with a hyphen or contain two consecutive hyphens
+     * Can't end with a hyphen or contain two consecutive hyphens
      * </p>
      * </li>
      * </ul>
@@ -522,7 +577,7 @@ public class ModifyDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
      *        </li>
      *        <li>
      *        <p>
-     *        Cannot end with a hyphen or contain two consecutive hyphens
+     *        Can't end with a hyphen or contain two consecutive hyphens
      *        </p>
      *        </li>
      *        </ul>
@@ -538,36 +593,37 @@ public class ModifyDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * A value that specifies whether the modifications in this request and any pending modifications are asynchronously
+     * A value that indicates whether the modifications in this request and any pending modifications are asynchronously
      * applied as soon as possible, regardless of the <code>PreferredMaintenanceWindow</code> setting for the DB
-     * cluster. If this parameter is set to <code>false</code>, changes to the DB cluster are applied during the next
-     * maintenance window.
+     * cluster. If this parameter is disabled, changes to the DB cluster are applied during the next maintenance window.
      * </p>
      * <p>
-     * The <code>ApplyImmediately</code> parameter only affects the <code>NewDBClusterIdentifier</code> and
-     * <code>MasterUserPassword</code> values. If you set the <code>ApplyImmediately</code> parameter value to false,
-     * then changes to the <code>NewDBClusterIdentifier</code> and <code>MasterUserPassword</code> values are applied
-     * during the next maintenance window. All other changes are applied immediately, regardless of the value of the
-     * <code>ApplyImmediately</code> parameter.
+     * The <code>ApplyImmediately</code> parameter only affects the <code>EnableIAMDatabaseAuthentication</code>,
+     * <code>MasterUserPassword</code>, and <code>NewDBClusterIdentifier</code> values. If the
+     * <code>ApplyImmediately</code> parameter is disabled, then changes to the
+     * <code>EnableIAMDatabaseAuthentication</code>, <code>MasterUserPassword</code>, and
+     * <code>NewDBClusterIdentifier</code> values are applied during the next maintenance window. All other changes are
+     * applied immediately, regardless of the value of the <code>ApplyImmediately</code> parameter.
      * </p>
      * <p>
-     * Default: <code>false</code>
+     * By default, this parameter is disabled.
      * </p>
      * 
      * @param applyImmediately
-     *        A value that specifies whether the modifications in this request and any pending modifications are
+     *        A value that indicates whether the modifications in this request and any pending modifications are
      *        asynchronously applied as soon as possible, regardless of the <code>PreferredMaintenanceWindow</code>
-     *        setting for the DB cluster. If this parameter is set to <code>false</code>, changes to the DB cluster are
-     *        applied during the next maintenance window.</p>
+     *        setting for the DB cluster. If this parameter is disabled, changes to the DB cluster are applied during
+     *        the next maintenance window.</p>
      *        <p>
-     *        The <code>ApplyImmediately</code> parameter only affects the <code>NewDBClusterIdentifier</code> and
-     *        <code>MasterUserPassword</code> values. If you set the <code>ApplyImmediately</code> parameter value to
-     *        false, then changes to the <code>NewDBClusterIdentifier</code> and <code>MasterUserPassword</code> values
-     *        are applied during the next maintenance window. All other changes are applied immediately, regardless of
-     *        the value of the <code>ApplyImmediately</code> parameter.
+     *        The <code>ApplyImmediately</code> parameter only affects the <code>EnableIAMDatabaseAuthentication</code>,
+     *        <code>MasterUserPassword</code>, and <code>NewDBClusterIdentifier</code> values. If the
+     *        <code>ApplyImmediately</code> parameter is disabled, then changes to the
+     *        <code>EnableIAMDatabaseAuthentication</code>, <code>MasterUserPassword</code>, and
+     *        <code>NewDBClusterIdentifier</code> values are applied during the next maintenance window. All other
+     *        changes are applied immediately, regardless of the value of the <code>ApplyImmediately</code> parameter.
      *        </p>
      *        <p>
-     *        Default: <code>false</code>
+     *        By default, this parameter is disabled.
      */
 
     public void setApplyImmediately(Boolean applyImmediately) {
@@ -576,35 +632,35 @@ public class ModifyDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * A value that specifies whether the modifications in this request and any pending modifications are asynchronously
+     * A value that indicates whether the modifications in this request and any pending modifications are asynchronously
      * applied as soon as possible, regardless of the <code>PreferredMaintenanceWindow</code> setting for the DB
-     * cluster. If this parameter is set to <code>false</code>, changes to the DB cluster are applied during the next
-     * maintenance window.
+     * cluster. If this parameter is disabled, changes to the DB cluster are applied during the next maintenance window.
      * </p>
      * <p>
-     * The <code>ApplyImmediately</code> parameter only affects the <code>NewDBClusterIdentifier</code> and
-     * <code>MasterUserPassword</code> values. If you set the <code>ApplyImmediately</code> parameter value to false,
-     * then changes to the <code>NewDBClusterIdentifier</code> and <code>MasterUserPassword</code> values are applied
-     * during the next maintenance window. All other changes are applied immediately, regardless of the value of the
-     * <code>ApplyImmediately</code> parameter.
+     * The <code>ApplyImmediately</code> parameter only affects the <code>EnableIAMDatabaseAuthentication</code>,
+     * <code>MasterUserPassword</code>, and <code>NewDBClusterIdentifier</code> values. If the
+     * <code>ApplyImmediately</code> parameter is disabled, then changes to the
+     * <code>EnableIAMDatabaseAuthentication</code>, <code>MasterUserPassword</code>, and
+     * <code>NewDBClusterIdentifier</code> values are applied during the next maintenance window. All other changes are
+     * applied immediately, regardless of the value of the <code>ApplyImmediately</code> parameter.
      * </p>
      * <p>
-     * Default: <code>false</code>
+     * By default, this parameter is disabled.
      * </p>
      * 
-     * @return A value that specifies whether the modifications in this request and any pending modifications are
+     * @return A value that indicates whether the modifications in this request and any pending modifications are
      *         asynchronously applied as soon as possible, regardless of the <code>PreferredMaintenanceWindow</code>
-     *         setting for the DB cluster. If this parameter is set to <code>false</code>, changes to the DB cluster are
-     *         applied during the next maintenance window.</p>
+     *         setting for the DB cluster. If this parameter is disabled, changes to the DB cluster are applied during
+     *         the next maintenance window.</p>
      *         <p>
-     *         The <code>ApplyImmediately</code> parameter only affects the <code>NewDBClusterIdentifier</code> and
-     *         <code>MasterUserPassword</code> values. If you set the <code>ApplyImmediately</code> parameter value to
-     *         false, then changes to the <code>NewDBClusterIdentifier</code> and <code>MasterUserPassword</code> values
-     *         are applied during the next maintenance window. All other changes are applied immediately, regardless of
-     *         the value of the <code>ApplyImmediately</code> parameter.
+     *         The <code>ApplyImmediately</code> parameter only affects the <code>EnableIAMDatabaseAuthentication</code>, <code>MasterUserPassword</code>, and <code>NewDBClusterIdentifier</code> values. If the
+     *         <code>ApplyImmediately</code> parameter is disabled, then changes to the
+     *         <code>EnableIAMDatabaseAuthentication</code>, <code>MasterUserPassword</code>, and
+     *         <code>NewDBClusterIdentifier</code> values are applied during the next maintenance window. All other
+     *         changes are applied immediately, regardless of the value of the <code>ApplyImmediately</code> parameter.
      *         </p>
      *         <p>
-     *         Default: <code>false</code>
+     *         By default, this parameter is disabled.
      */
 
     public Boolean getApplyImmediately() {
@@ -613,36 +669,37 @@ public class ModifyDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * A value that specifies whether the modifications in this request and any pending modifications are asynchronously
+     * A value that indicates whether the modifications in this request and any pending modifications are asynchronously
      * applied as soon as possible, regardless of the <code>PreferredMaintenanceWindow</code> setting for the DB
-     * cluster. If this parameter is set to <code>false</code>, changes to the DB cluster are applied during the next
-     * maintenance window.
+     * cluster. If this parameter is disabled, changes to the DB cluster are applied during the next maintenance window.
      * </p>
      * <p>
-     * The <code>ApplyImmediately</code> parameter only affects the <code>NewDBClusterIdentifier</code> and
-     * <code>MasterUserPassword</code> values. If you set the <code>ApplyImmediately</code> parameter value to false,
-     * then changes to the <code>NewDBClusterIdentifier</code> and <code>MasterUserPassword</code> values are applied
-     * during the next maintenance window. All other changes are applied immediately, regardless of the value of the
-     * <code>ApplyImmediately</code> parameter.
+     * The <code>ApplyImmediately</code> parameter only affects the <code>EnableIAMDatabaseAuthentication</code>,
+     * <code>MasterUserPassword</code>, and <code>NewDBClusterIdentifier</code> values. If the
+     * <code>ApplyImmediately</code> parameter is disabled, then changes to the
+     * <code>EnableIAMDatabaseAuthentication</code>, <code>MasterUserPassword</code>, and
+     * <code>NewDBClusterIdentifier</code> values are applied during the next maintenance window. All other changes are
+     * applied immediately, regardless of the value of the <code>ApplyImmediately</code> parameter.
      * </p>
      * <p>
-     * Default: <code>false</code>
+     * By default, this parameter is disabled.
      * </p>
      * 
      * @param applyImmediately
-     *        A value that specifies whether the modifications in this request and any pending modifications are
+     *        A value that indicates whether the modifications in this request and any pending modifications are
      *        asynchronously applied as soon as possible, regardless of the <code>PreferredMaintenanceWindow</code>
-     *        setting for the DB cluster. If this parameter is set to <code>false</code>, changes to the DB cluster are
-     *        applied during the next maintenance window.</p>
+     *        setting for the DB cluster. If this parameter is disabled, changes to the DB cluster are applied during
+     *        the next maintenance window.</p>
      *        <p>
-     *        The <code>ApplyImmediately</code> parameter only affects the <code>NewDBClusterIdentifier</code> and
-     *        <code>MasterUserPassword</code> values. If you set the <code>ApplyImmediately</code> parameter value to
-     *        false, then changes to the <code>NewDBClusterIdentifier</code> and <code>MasterUserPassword</code> values
-     *        are applied during the next maintenance window. All other changes are applied immediately, regardless of
-     *        the value of the <code>ApplyImmediately</code> parameter.
+     *        The <code>ApplyImmediately</code> parameter only affects the <code>EnableIAMDatabaseAuthentication</code>,
+     *        <code>MasterUserPassword</code>, and <code>NewDBClusterIdentifier</code> values. If the
+     *        <code>ApplyImmediately</code> parameter is disabled, then changes to the
+     *        <code>EnableIAMDatabaseAuthentication</code>, <code>MasterUserPassword</code>, and
+     *        <code>NewDBClusterIdentifier</code> values are applied during the next maintenance window. All other
+     *        changes are applied immediately, regardless of the value of the <code>ApplyImmediately</code> parameter.
      *        </p>
      *        <p>
-     *        Default: <code>false</code>
+     *        By default, this parameter is disabled.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -653,35 +710,35 @@ public class ModifyDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * A value that specifies whether the modifications in this request and any pending modifications are asynchronously
+     * A value that indicates whether the modifications in this request and any pending modifications are asynchronously
      * applied as soon as possible, regardless of the <code>PreferredMaintenanceWindow</code> setting for the DB
-     * cluster. If this parameter is set to <code>false</code>, changes to the DB cluster are applied during the next
-     * maintenance window.
+     * cluster. If this parameter is disabled, changes to the DB cluster are applied during the next maintenance window.
      * </p>
      * <p>
-     * The <code>ApplyImmediately</code> parameter only affects the <code>NewDBClusterIdentifier</code> and
-     * <code>MasterUserPassword</code> values. If you set the <code>ApplyImmediately</code> parameter value to false,
-     * then changes to the <code>NewDBClusterIdentifier</code> and <code>MasterUserPassword</code> values are applied
-     * during the next maintenance window. All other changes are applied immediately, regardless of the value of the
-     * <code>ApplyImmediately</code> parameter.
+     * The <code>ApplyImmediately</code> parameter only affects the <code>EnableIAMDatabaseAuthentication</code>,
+     * <code>MasterUserPassword</code>, and <code>NewDBClusterIdentifier</code> values. If the
+     * <code>ApplyImmediately</code> parameter is disabled, then changes to the
+     * <code>EnableIAMDatabaseAuthentication</code>, <code>MasterUserPassword</code>, and
+     * <code>NewDBClusterIdentifier</code> values are applied during the next maintenance window. All other changes are
+     * applied immediately, regardless of the value of the <code>ApplyImmediately</code> parameter.
      * </p>
      * <p>
-     * Default: <code>false</code>
+     * By default, this parameter is disabled.
      * </p>
      * 
-     * @return A value that specifies whether the modifications in this request and any pending modifications are
+     * @return A value that indicates whether the modifications in this request and any pending modifications are
      *         asynchronously applied as soon as possible, regardless of the <code>PreferredMaintenanceWindow</code>
-     *         setting for the DB cluster. If this parameter is set to <code>false</code>, changes to the DB cluster are
-     *         applied during the next maintenance window.</p>
+     *         setting for the DB cluster. If this parameter is disabled, changes to the DB cluster are applied during
+     *         the next maintenance window.</p>
      *         <p>
-     *         The <code>ApplyImmediately</code> parameter only affects the <code>NewDBClusterIdentifier</code> and
-     *         <code>MasterUserPassword</code> values. If you set the <code>ApplyImmediately</code> parameter value to
-     *         false, then changes to the <code>NewDBClusterIdentifier</code> and <code>MasterUserPassword</code> values
-     *         are applied during the next maintenance window. All other changes are applied immediately, regardless of
-     *         the value of the <code>ApplyImmediately</code> parameter.
+     *         The <code>ApplyImmediately</code> parameter only affects the <code>EnableIAMDatabaseAuthentication</code>, <code>MasterUserPassword</code>, and <code>NewDBClusterIdentifier</code> values. If the
+     *         <code>ApplyImmediately</code> parameter is disabled, then changes to the
+     *         <code>EnableIAMDatabaseAuthentication</code>, <code>MasterUserPassword</code>, and
+     *         <code>NewDBClusterIdentifier</code> values are applied during the next maintenance window. All other
+     *         changes are applied immediately, regardless of the value of the <code>ApplyImmediately</code> parameter.
      *         </p>
      *         <p>
-     *         Default: <code>false</code>
+     *         By default, this parameter is disabled.
      */
 
     public Boolean isApplyImmediately() {
@@ -1054,9 +1111,9 @@ public class ModifyDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
      * <p>
      * A value that indicates that the DB cluster should be associated with the specified option group. Changing this
      * parameter doesn't result in an outage except in the following case, and the change is applied during the next
-     * maintenance window unless the <code>ApplyImmediately</code> parameter is set to <code>true</code> for this
-     * request. If the parameter change results in an option group that enables OEM, this change can cause a brief
-     * (sub-second) period during which new connections are rejected but existing connections are not interrupted.
+     * maintenance window unless the <code>ApplyImmediately</code> is enabled for this request. If the parameter change
+     * results in an option group that enables OEM, this change can cause a brief (sub-second) period during which new
+     * connections are rejected but existing connections are not interrupted.
      * </p>
      * <p>
      * Permanent options can't be removed from an option group. The option group can't be removed from a DB cluster once
@@ -1066,10 +1123,9 @@ public class ModifyDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
      * @param optionGroupName
      *        A value that indicates that the DB cluster should be associated with the specified option group. Changing
      *        this parameter doesn't result in an outage except in the following case, and the change is applied during
-     *        the next maintenance window unless the <code>ApplyImmediately</code> parameter is set to <code>true</code>
-     *        for this request. If the parameter change results in an option group that enables OEM, this change can
-     *        cause a brief (sub-second) period during which new connections are rejected but existing connections are
-     *        not interrupted. </p>
+     *        the next maintenance window unless the <code>ApplyImmediately</code> is enabled for this request. If the
+     *        parameter change results in an option group that enables OEM, this change can cause a brief (sub-second)
+     *        period during which new connections are rejected but existing connections are not interrupted. </p>
      *        <p>
      *        Permanent options can't be removed from an option group. The option group can't be removed from a DB
      *        cluster once it is associated with a DB cluster.
@@ -1083,9 +1139,9 @@ public class ModifyDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
      * <p>
      * A value that indicates that the DB cluster should be associated with the specified option group. Changing this
      * parameter doesn't result in an outage except in the following case, and the change is applied during the next
-     * maintenance window unless the <code>ApplyImmediately</code> parameter is set to <code>true</code> for this
-     * request. If the parameter change results in an option group that enables OEM, this change can cause a brief
-     * (sub-second) period during which new connections are rejected but existing connections are not interrupted.
+     * maintenance window unless the <code>ApplyImmediately</code> is enabled for this request. If the parameter change
+     * results in an option group that enables OEM, this change can cause a brief (sub-second) period during which new
+     * connections are rejected but existing connections are not interrupted.
      * </p>
      * <p>
      * Permanent options can't be removed from an option group. The option group can't be removed from a DB cluster once
@@ -1094,10 +1150,9 @@ public class ModifyDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
      * 
      * @return A value that indicates that the DB cluster should be associated with the specified option group. Changing
      *         this parameter doesn't result in an outage except in the following case, and the change is applied during
-     *         the next maintenance window unless the <code>ApplyImmediately</code> parameter is set to
-     *         <code>true</code> for this request. If the parameter change results in an option group that enables OEM,
-     *         this change can cause a brief (sub-second) period during which new connections are rejected but existing
-     *         connections are not interrupted. </p>
+     *         the next maintenance window unless the <code>ApplyImmediately</code> is enabled for this request. If the
+     *         parameter change results in an option group that enables OEM, this change can cause a brief (sub-second)
+     *         period during which new connections are rejected but existing connections are not interrupted. </p>
      *         <p>
      *         Permanent options can't be removed from an option group. The option group can't be removed from a DB
      *         cluster once it is associated with a DB cluster.
@@ -1111,9 +1166,9 @@ public class ModifyDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
      * <p>
      * A value that indicates that the DB cluster should be associated with the specified option group. Changing this
      * parameter doesn't result in an outage except in the following case, and the change is applied during the next
-     * maintenance window unless the <code>ApplyImmediately</code> parameter is set to <code>true</code> for this
-     * request. If the parameter change results in an option group that enables OEM, this change can cause a brief
-     * (sub-second) period during which new connections are rejected but existing connections are not interrupted.
+     * maintenance window unless the <code>ApplyImmediately</code> is enabled for this request. If the parameter change
+     * results in an option group that enables OEM, this change can cause a brief (sub-second) period during which new
+     * connections are rejected but existing connections are not interrupted.
      * </p>
      * <p>
      * Permanent options can't be removed from an option group. The option group can't be removed from a DB cluster once
@@ -1123,10 +1178,9 @@ public class ModifyDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
      * @param optionGroupName
      *        A value that indicates that the DB cluster should be associated with the specified option group. Changing
      *        this parameter doesn't result in an outage except in the following case, and the change is applied during
-     *        the next maintenance window unless the <code>ApplyImmediately</code> parameter is set to <code>true</code>
-     *        for this request. If the parameter change results in an option group that enables OEM, this change can
-     *        cause a brief (sub-second) period during which new connections are rejected but existing connections are
-     *        not interrupted. </p>
+     *        the next maintenance window unless the <code>ApplyImmediately</code> is enabled for this request. If the
+     *        parameter change results in an option group that enables OEM, this change can cause a brief (sub-second)
+     *        period during which new connections are rejected but existing connections are not interrupted. </p>
      *        <p>
      *        Permanent options can't be removed from an option group. The option group can't be removed from a DB
      *        cluster once it is associated with a DB cluster.
@@ -1145,9 +1199,9 @@ public class ModifyDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
      * </p>
      * <p>
      * The default is a 30-minute window selected at random from an 8-hour block of time for each AWS Region. To see the
-     * time blocks available, see <a
-     * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html"> Adjusting the
-     * Preferred Maintenance Window</a> in the <i>Amazon RDS User Guide.</i>
+     * time blocks available, see <a href=
+     * "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora"
+     * > Adjusting the Preferred DB Cluster Maintenance Window</a> in the <i>Amazon Aurora User Guide.</i>
      * </p>
      * <p>
      * Constraints:
@@ -1180,9 +1234,9 @@ public class ModifyDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
      *        the <code>BackupRetentionPeriod</code> parameter. </p>
      *        <p>
      *        The default is a 30-minute window selected at random from an 8-hour block of time for each AWS Region. To
-     *        see the time blocks available, see <a
-     *        href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html"> Adjusting
-     *        the Preferred Maintenance Window</a> in the <i>Amazon RDS User Guide.</i>
+     *        see the time blocks available, see <a href=
+     *        "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora"
+     *        > Adjusting the Preferred DB Cluster Maintenance Window</a> in the <i>Amazon Aurora User Guide.</i>
      *        </p>
      *        <p>
      *        Constraints:
@@ -1221,9 +1275,9 @@ public class ModifyDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
      * </p>
      * <p>
      * The default is a 30-minute window selected at random from an 8-hour block of time for each AWS Region. To see the
-     * time blocks available, see <a
-     * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html"> Adjusting the
-     * Preferred Maintenance Window</a> in the <i>Amazon RDS User Guide.</i>
+     * time blocks available, see <a href=
+     * "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora"
+     * > Adjusting the Preferred DB Cluster Maintenance Window</a> in the <i>Amazon Aurora User Guide.</i>
      * </p>
      * <p>
      * Constraints:
@@ -1255,9 +1309,9 @@ public class ModifyDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
      *         the <code>BackupRetentionPeriod</code> parameter. </p>
      *         <p>
      *         The default is a 30-minute window selected at random from an 8-hour block of time for each AWS Region. To
-     *         see the time blocks available, see <a
-     *         href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html">
-     *         Adjusting the Preferred Maintenance Window</a> in the <i>Amazon RDS User Guide.</i>
+     *         see the time blocks available, see <a href=
+     *         "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora"
+     *         > Adjusting the Preferred DB Cluster Maintenance Window</a> in the <i>Amazon Aurora User Guide.</i>
      *         </p>
      *         <p>
      *         Constraints:
@@ -1296,9 +1350,9 @@ public class ModifyDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
      * </p>
      * <p>
      * The default is a 30-minute window selected at random from an 8-hour block of time for each AWS Region. To see the
-     * time blocks available, see <a
-     * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html"> Adjusting the
-     * Preferred Maintenance Window</a> in the <i>Amazon RDS User Guide.</i>
+     * time blocks available, see <a href=
+     * "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora"
+     * > Adjusting the Preferred DB Cluster Maintenance Window</a> in the <i>Amazon Aurora User Guide.</i>
      * </p>
      * <p>
      * Constraints:
@@ -1331,9 +1385,9 @@ public class ModifyDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
      *        the <code>BackupRetentionPeriod</code> parameter. </p>
      *        <p>
      *        The default is a 30-minute window selected at random from an 8-hour block of time for each AWS Region. To
-     *        see the time blocks available, see <a
-     *        href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html"> Adjusting
-     *        the Preferred Maintenance Window</a> in the <i>Amazon RDS User Guide.</i>
+     *        see the time blocks available, see <a href=
+     *        "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora"
+     *        > Adjusting the Preferred DB Cluster Maintenance Window</a> in the <i>Amazon Aurora User Guide.</i>
      *        </p>
      *        <p>
      *        Constraints:
@@ -1376,9 +1430,9 @@ public class ModifyDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
      * </p>
      * <p>
      * The default is a 30-minute window selected at random from an 8-hour block of time for each AWS Region, occurring
-     * on a random day of the week. To see the time blocks available, see <a
-     * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html"> Adjusting the
-     * Preferred Maintenance Window</a> in the <i>Amazon RDS User Guide.</i>
+     * on a random day of the week. To see the time blocks available, see <a href=
+     * "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora"
+     * > Adjusting the Preferred DB Cluster Maintenance Window</a> in the <i>Amazon Aurora User Guide.</i>
      * </p>
      * <p>
      * Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.
@@ -1394,9 +1448,9 @@ public class ModifyDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
      *        </p>
      *        <p>
      *        The default is a 30-minute window selected at random from an 8-hour block of time for each AWS Region,
-     *        occurring on a random day of the week. To see the time blocks available, see <a
-     *        href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html"> Adjusting
-     *        the Preferred Maintenance Window</a> in the <i>Amazon RDS User Guide.</i>
+     *        occurring on a random day of the week. To see the time blocks available, see <a href=
+     *        "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora"
+     *        > Adjusting the Preferred DB Cluster Maintenance Window</a> in the <i>Amazon Aurora User Guide.</i>
      *        </p>
      *        <p>
      *        Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.
@@ -1418,9 +1472,9 @@ public class ModifyDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
      * </p>
      * <p>
      * The default is a 30-minute window selected at random from an 8-hour block of time for each AWS Region, occurring
-     * on a random day of the week. To see the time blocks available, see <a
-     * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html"> Adjusting the
-     * Preferred Maintenance Window</a> in the <i>Amazon RDS User Guide.</i>
+     * on a random day of the week. To see the time blocks available, see <a href=
+     * "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora"
+     * > Adjusting the Preferred DB Cluster Maintenance Window</a> in the <i>Amazon Aurora User Guide.</i>
      * </p>
      * <p>
      * Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.
@@ -1435,9 +1489,9 @@ public class ModifyDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
      *         </p>
      *         <p>
      *         The default is a 30-minute window selected at random from an 8-hour block of time for each AWS Region,
-     *         occurring on a random day of the week. To see the time blocks available, see <a
-     *         href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html">
-     *         Adjusting the Preferred Maintenance Window</a> in the <i>Amazon RDS User Guide.</i>
+     *         occurring on a random day of the week. To see the time blocks available, see <a href=
+     *         "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora"
+     *         > Adjusting the Preferred DB Cluster Maintenance Window</a> in the <i>Amazon Aurora User Guide.</i>
      *         </p>
      *         <p>
      *         Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.
@@ -1459,9 +1513,9 @@ public class ModifyDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
      * </p>
      * <p>
      * The default is a 30-minute window selected at random from an 8-hour block of time for each AWS Region, occurring
-     * on a random day of the week. To see the time blocks available, see <a
-     * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html"> Adjusting the
-     * Preferred Maintenance Window</a> in the <i>Amazon RDS User Guide.</i>
+     * on a random day of the week. To see the time blocks available, see <a href=
+     * "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora"
+     * > Adjusting the Preferred DB Cluster Maintenance Window</a> in the <i>Amazon Aurora User Guide.</i>
      * </p>
      * <p>
      * Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.
@@ -1477,9 +1531,9 @@ public class ModifyDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
      *        </p>
      *        <p>
      *        The default is a 30-minute window selected at random from an 8-hour block of time for each AWS Region,
-     *        occurring on a random day of the week. To see the time blocks available, see <a
-     *        href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html"> Adjusting
-     *        the Preferred Maintenance Window</a> in the <i>Amazon RDS User Guide.</i>
+     *        occurring on a random day of the week. To see the time blocks available, see <a href=
+     *        "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora"
+     *        > Adjusting the Preferred DB Cluster Maintenance Window</a> in the <i>Amazon Aurora User Guide.</i>
      *        </p>
      *        <p>
      *        Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.
@@ -1496,18 +1550,22 @@ public class ModifyDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and otherwise
-     * false.
+     * A value that indicates whether to enable mapping of AWS Identity and Access Management (IAM) accounts to database
+     * accounts. By default, mapping is disabled.
      * </p>
      * <p>
-     * Default: <code>false</code>
+     * For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.html"> IAM Database
+     * Authentication</a> in the <i>Amazon Aurora User Guide.</i>
      * </p>
      * 
      * @param enableIAMDatabaseAuthentication
-     *        True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and
-     *        otherwise false.</p>
+     *        A value that indicates whether to enable mapping of AWS Identity and Access Management (IAM) accounts to
+     *        database accounts. By default, mapping is disabled.</p>
      *        <p>
-     *        Default: <code>false</code>
+     *        For more information, see <a
+     *        href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.html"> IAM
+     *        Database Authentication</a> in the <i>Amazon Aurora User Guide.</i>
      */
 
     public void setEnableIAMDatabaseAuthentication(Boolean enableIAMDatabaseAuthentication) {
@@ -1516,17 +1574,21 @@ public class ModifyDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and otherwise
-     * false.
+     * A value that indicates whether to enable mapping of AWS Identity and Access Management (IAM) accounts to database
+     * accounts. By default, mapping is disabled.
      * </p>
      * <p>
-     * Default: <code>false</code>
+     * For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.html"> IAM Database
+     * Authentication</a> in the <i>Amazon Aurora User Guide.</i>
      * </p>
      * 
-     * @return True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and
-     *         otherwise false.</p>
+     * @return A value that indicates whether to enable mapping of AWS Identity and Access Management (IAM) accounts to
+     *         database accounts. By default, mapping is disabled.</p>
      *         <p>
-     *         Default: <code>false</code>
+     *         For more information, see <a
+     *         href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.html"> IAM
+     *         Database Authentication</a> in the <i>Amazon Aurora User Guide.</i>
      */
 
     public Boolean getEnableIAMDatabaseAuthentication() {
@@ -1535,18 +1597,22 @@ public class ModifyDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and otherwise
-     * false.
+     * A value that indicates whether to enable mapping of AWS Identity and Access Management (IAM) accounts to database
+     * accounts. By default, mapping is disabled.
      * </p>
      * <p>
-     * Default: <code>false</code>
+     * For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.html"> IAM Database
+     * Authentication</a> in the <i>Amazon Aurora User Guide.</i>
      * </p>
      * 
      * @param enableIAMDatabaseAuthentication
-     *        True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and
-     *        otherwise false.</p>
+     *        A value that indicates whether to enable mapping of AWS Identity and Access Management (IAM) accounts to
+     *        database accounts. By default, mapping is disabled.</p>
      *        <p>
-     *        Default: <code>false</code>
+     *        For more information, see <a
+     *        href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.html"> IAM
+     *        Database Authentication</a> in the <i>Amazon Aurora User Guide.</i>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1557,17 +1623,21 @@ public class ModifyDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and otherwise
-     * false.
+     * A value that indicates whether to enable mapping of AWS Identity and Access Management (IAM) accounts to database
+     * accounts. By default, mapping is disabled.
      * </p>
      * <p>
-     * Default: <code>false</code>
+     * For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.html"> IAM Database
+     * Authentication</a> in the <i>Amazon Aurora User Guide.</i>
      * </p>
      * 
-     * @return True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and
-     *         otherwise false.</p>
+     * @return A value that indicates whether to enable mapping of AWS Identity and Access Management (IAM) accounts to
+     *         database accounts. By default, mapping is disabled.</p>
      *         <p>
-     *         Default: <code>false</code>
+     *         For more information, see <a
+     *         href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.html"> IAM
+     *         Database Authentication</a> in the <i>Amazon Aurora User Guide.</i>
      */
 
     public Boolean isEnableIAMDatabaseAuthentication() {
@@ -1691,20 +1761,100 @@ public class ModifyDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
+     * The configuration setting for the log types to be enabled for export to CloudWatch Logs for a specific DB
+     * cluster.
+     * </p>
+     * 
+     * @param cloudwatchLogsExportConfiguration
+     *        The configuration setting for the log types to be enabled for export to CloudWatch Logs for a specific DB
+     *        cluster.
+     */
+
+    public void setCloudwatchLogsExportConfiguration(CloudwatchLogsExportConfiguration cloudwatchLogsExportConfiguration) {
+        this.cloudwatchLogsExportConfiguration = cloudwatchLogsExportConfiguration;
+    }
+
+    /**
+     * <p>
+     * The configuration setting for the log types to be enabled for export to CloudWatch Logs for a specific DB
+     * cluster.
+     * </p>
+     * 
+     * @return The configuration setting for the log types to be enabled for export to CloudWatch Logs for a specific DB
+     *         cluster.
+     */
+
+    public CloudwatchLogsExportConfiguration getCloudwatchLogsExportConfiguration() {
+        return this.cloudwatchLogsExportConfiguration;
+    }
+
+    /**
+     * <p>
+     * The configuration setting for the log types to be enabled for export to CloudWatch Logs for a specific DB
+     * cluster.
+     * </p>
+     * 
+     * @param cloudwatchLogsExportConfiguration
+     *        The configuration setting for the log types to be enabled for export to CloudWatch Logs for a specific DB
+     *        cluster.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ModifyDBClusterRequest withCloudwatchLogsExportConfiguration(CloudwatchLogsExportConfiguration cloudwatchLogsExportConfiguration) {
+        setCloudwatchLogsExportConfiguration(cloudwatchLogsExportConfiguration);
+        return this;
+    }
+
+    /**
+     * <p>
      * The version number of the database engine to which you want to upgrade. Changing this parameter results in an
-     * outage. The change is applied during the next maintenance window unless the ApplyImmediately parameter is set to
-     * true.
+     * outage. The change is applied during the next maintenance window unless <code>ApplyImmediately</code> is enabled.
      * </p>
      * <p>
-     * For a list of valid engine versions, see <a>CreateDBInstance</a>, or call <a>DescribeDBEngineVersions</a>.
+     * To list all of the available engine versions for <code>aurora</code> (for MySQL 5.6-compatible Aurora), use the
+     * following command:
+     * </p>
+     * <p>
+     * <code>aws rds describe-db-engine-versions --engine aurora --query "DBEngineVersions[].EngineVersion"</code>
+     * </p>
+     * <p>
+     * To list all of the available engine versions for <code>aurora-mysql</code> (for MySQL 5.7-compatible Aurora), use
+     * the following command:
+     * </p>
+     * <p>
+     * <code>aws rds describe-db-engine-versions --engine aurora-mysql --query "DBEngineVersions[].EngineVersion"</code>
+     * </p>
+     * <p>
+     * To list all of the available engine versions for <code>aurora-postgresql</code>, use the following command:
+     * </p>
+     * <p>
+     * <code>aws rds describe-db-engine-versions --engine aurora-postgresql --query "DBEngineVersions[].EngineVersion"</code>
      * </p>
      * 
      * @param engineVersion
      *        The version number of the database engine to which you want to upgrade. Changing this parameter results in
-     *        an outage. The change is applied during the next maintenance window unless the ApplyImmediately parameter
-     *        is set to true.</p>
+     *        an outage. The change is applied during the next maintenance window unless <code>ApplyImmediately</code>
+     *        is enabled.</p>
      *        <p>
-     *        For a list of valid engine versions, see <a>CreateDBInstance</a>, or call <a>DescribeDBEngineVersions</a>.
+     *        To list all of the available engine versions for <code>aurora</code> (for MySQL 5.6-compatible Aurora),
+     *        use the following command:
+     *        </p>
+     *        <p>
+     *        <code>aws rds describe-db-engine-versions --engine aurora --query "DBEngineVersions[].EngineVersion"</code>
+     *        </p>
+     *        <p>
+     *        To list all of the available engine versions for <code>aurora-mysql</code> (for MySQL 5.7-compatible
+     *        Aurora), use the following command:
+     *        </p>
+     *        <p>
+     *        <code>aws rds describe-db-engine-versions --engine aurora-mysql --query "DBEngineVersions[].EngineVersion"</code>
+     *        </p>
+     *        <p>
+     *        To list all of the available engine versions for <code>aurora-postgresql</code>, use the following
+     *        command:
+     *        </p>
+     *        <p>
+     *        <code>aws rds describe-db-engine-versions --engine aurora-postgresql --query "DBEngineVersions[].EngineVersion"</code>
      */
 
     public void setEngineVersion(String engineVersion) {
@@ -1714,19 +1864,52 @@ public class ModifyDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
     /**
      * <p>
      * The version number of the database engine to which you want to upgrade. Changing this parameter results in an
-     * outage. The change is applied during the next maintenance window unless the ApplyImmediately parameter is set to
-     * true.
+     * outage. The change is applied during the next maintenance window unless <code>ApplyImmediately</code> is enabled.
      * </p>
      * <p>
-     * For a list of valid engine versions, see <a>CreateDBInstance</a>, or call <a>DescribeDBEngineVersions</a>.
+     * To list all of the available engine versions for <code>aurora</code> (for MySQL 5.6-compatible Aurora), use the
+     * following command:
+     * </p>
+     * <p>
+     * <code>aws rds describe-db-engine-versions --engine aurora --query "DBEngineVersions[].EngineVersion"</code>
+     * </p>
+     * <p>
+     * To list all of the available engine versions for <code>aurora-mysql</code> (for MySQL 5.7-compatible Aurora), use
+     * the following command:
+     * </p>
+     * <p>
+     * <code>aws rds describe-db-engine-versions --engine aurora-mysql --query "DBEngineVersions[].EngineVersion"</code>
+     * </p>
+     * <p>
+     * To list all of the available engine versions for <code>aurora-postgresql</code>, use the following command:
+     * </p>
+     * <p>
+     * <code>aws rds describe-db-engine-versions --engine aurora-postgresql --query "DBEngineVersions[].EngineVersion"</code>
      * </p>
      * 
      * @return The version number of the database engine to which you want to upgrade. Changing this parameter results
-     *         in an outage. The change is applied during the next maintenance window unless the ApplyImmediately
-     *         parameter is set to true.</p>
+     *         in an outage. The change is applied during the next maintenance window unless
+     *         <code>ApplyImmediately</code> is enabled.</p>
      *         <p>
-     *         For a list of valid engine versions, see <a>CreateDBInstance</a>, or call
-     *         <a>DescribeDBEngineVersions</a>.
+     *         To list all of the available engine versions for <code>aurora</code> (for MySQL 5.6-compatible Aurora),
+     *         use the following command:
+     *         </p>
+     *         <p>
+     *         <code>aws rds describe-db-engine-versions --engine aurora --query "DBEngineVersions[].EngineVersion"</code>
+     *         </p>
+     *         <p>
+     *         To list all of the available engine versions for <code>aurora-mysql</code> (for MySQL 5.7-compatible
+     *         Aurora), use the following command:
+     *         </p>
+     *         <p>
+     *         <code>aws rds describe-db-engine-versions --engine aurora-mysql --query "DBEngineVersions[].EngineVersion"</code>
+     *         </p>
+     *         <p>
+     *         To list all of the available engine versions for <code>aurora-postgresql</code>, use the following
+     *         command:
+     *         </p>
+     *         <p>
+     *         <code>aws rds describe-db-engine-versions --engine aurora-postgresql --query "DBEngineVersions[].EngineVersion"</code>
      */
 
     public String getEngineVersion() {
@@ -1736,19 +1919,53 @@ public class ModifyDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
     /**
      * <p>
      * The version number of the database engine to which you want to upgrade. Changing this parameter results in an
-     * outage. The change is applied during the next maintenance window unless the ApplyImmediately parameter is set to
-     * true.
+     * outage. The change is applied during the next maintenance window unless <code>ApplyImmediately</code> is enabled.
      * </p>
      * <p>
-     * For a list of valid engine versions, see <a>CreateDBInstance</a>, or call <a>DescribeDBEngineVersions</a>.
+     * To list all of the available engine versions for <code>aurora</code> (for MySQL 5.6-compatible Aurora), use the
+     * following command:
+     * </p>
+     * <p>
+     * <code>aws rds describe-db-engine-versions --engine aurora --query "DBEngineVersions[].EngineVersion"</code>
+     * </p>
+     * <p>
+     * To list all of the available engine versions for <code>aurora-mysql</code> (for MySQL 5.7-compatible Aurora), use
+     * the following command:
+     * </p>
+     * <p>
+     * <code>aws rds describe-db-engine-versions --engine aurora-mysql --query "DBEngineVersions[].EngineVersion"</code>
+     * </p>
+     * <p>
+     * To list all of the available engine versions for <code>aurora-postgresql</code>, use the following command:
+     * </p>
+     * <p>
+     * <code>aws rds describe-db-engine-versions --engine aurora-postgresql --query "DBEngineVersions[].EngineVersion"</code>
      * </p>
      * 
      * @param engineVersion
      *        The version number of the database engine to which you want to upgrade. Changing this parameter results in
-     *        an outage. The change is applied during the next maintenance window unless the ApplyImmediately parameter
-     *        is set to true.</p>
+     *        an outage. The change is applied during the next maintenance window unless <code>ApplyImmediately</code>
+     *        is enabled.</p>
      *        <p>
-     *        For a list of valid engine versions, see <a>CreateDBInstance</a>, or call <a>DescribeDBEngineVersions</a>.
+     *        To list all of the available engine versions for <code>aurora</code> (for MySQL 5.6-compatible Aurora),
+     *        use the following command:
+     *        </p>
+     *        <p>
+     *        <code>aws rds describe-db-engine-versions --engine aurora --query "DBEngineVersions[].EngineVersion"</code>
+     *        </p>
+     *        <p>
+     *        To list all of the available engine versions for <code>aurora-mysql</code> (for MySQL 5.7-compatible
+     *        Aurora), use the following command:
+     *        </p>
+     *        <p>
+     *        <code>aws rds describe-db-engine-versions --engine aurora-mysql --query "DBEngineVersions[].EngineVersion"</code>
+     *        </p>
+     *        <p>
+     *        To list all of the available engine versions for <code>aurora-postgresql</code>, use the following
+     *        command:
+     *        </p>
+     *        <p>
+     *        <code>aws rds describe-db-engine-versions --engine aurora-postgresql --query "DBEngineVersions[].EngineVersion"</code>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1758,7 +1975,580 @@ public class ModifyDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * <p>
+     * A value that indicates whether major version upgrades are allowed.
+     * </p>
+     * <p>
+     * Constraints: You must allow major version upgrades when specifying a value for the <code>EngineVersion</code>
+     * parameter that is a different major version than the DB cluster's current version.
+     * </p>
+     * 
+     * @param allowMajorVersionUpgrade
+     *        A value that indicates whether major version upgrades are allowed.</p>
+     *        <p>
+     *        Constraints: You must allow major version upgrades when specifying a value for the
+     *        <code>EngineVersion</code> parameter that is a different major version than the DB cluster's current
+     *        version.
+     */
+
+    public void setAllowMajorVersionUpgrade(Boolean allowMajorVersionUpgrade) {
+        this.allowMajorVersionUpgrade = allowMajorVersionUpgrade;
+    }
+
+    /**
+     * <p>
+     * A value that indicates whether major version upgrades are allowed.
+     * </p>
+     * <p>
+     * Constraints: You must allow major version upgrades when specifying a value for the <code>EngineVersion</code>
+     * parameter that is a different major version than the DB cluster's current version.
+     * </p>
+     * 
+     * @return A value that indicates whether major version upgrades are allowed.</p>
+     *         <p>
+     *         Constraints: You must allow major version upgrades when specifying a value for the
+     *         <code>EngineVersion</code> parameter that is a different major version than the DB cluster's current
+     *         version.
+     */
+
+    public Boolean getAllowMajorVersionUpgrade() {
+        return this.allowMajorVersionUpgrade;
+    }
+
+    /**
+     * <p>
+     * A value that indicates whether major version upgrades are allowed.
+     * </p>
+     * <p>
+     * Constraints: You must allow major version upgrades when specifying a value for the <code>EngineVersion</code>
+     * parameter that is a different major version than the DB cluster's current version.
+     * </p>
+     * 
+     * @param allowMajorVersionUpgrade
+     *        A value that indicates whether major version upgrades are allowed.</p>
+     *        <p>
+     *        Constraints: You must allow major version upgrades when specifying a value for the
+     *        <code>EngineVersion</code> parameter that is a different major version than the DB cluster's current
+     *        version.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ModifyDBClusterRequest withAllowMajorVersionUpgrade(Boolean allowMajorVersionUpgrade) {
+        setAllowMajorVersionUpgrade(allowMajorVersionUpgrade);
+        return this;
+    }
+
+    /**
+     * <p>
+     * A value that indicates whether major version upgrades are allowed.
+     * </p>
+     * <p>
+     * Constraints: You must allow major version upgrades when specifying a value for the <code>EngineVersion</code>
+     * parameter that is a different major version than the DB cluster's current version.
+     * </p>
+     * 
+     * @return A value that indicates whether major version upgrades are allowed.</p>
+     *         <p>
+     *         Constraints: You must allow major version upgrades when specifying a value for the
+     *         <code>EngineVersion</code> parameter that is a different major version than the DB cluster's current
+     *         version.
+     */
+
+    public Boolean isAllowMajorVersionUpgrade() {
+        return this.allowMajorVersionUpgrade;
+    }
+
+    /**
+     * <p>
+     * The name of the DB parameter group to apply to all instances of the DB cluster.
+     * </p>
+     * <note>
+     * <p>
+     * When you apply a parameter group using the <code>DBInstanceParameterGroupName</code> parameter, the DB cluster
+     * isn't rebooted automatically. Also, parameter changes aren't applied during the next maintenance window but
+     * instead are applied immediately.
+     * </p>
+     * </note>
+     * <p>
+     * Default: The existing name setting
+     * </p>
+     * <p>
+     * Constraints:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * The DB parameter group must be in the same DB parameter group family as this DB cluster.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * The <code>DBInstanceParameterGroupName</code> parameter is only valid in combination with the
+     * <code>AllowMajorVersionUpgrade</code> parameter.
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param dBInstanceParameterGroupName
+     *        The name of the DB parameter group to apply to all instances of the DB cluster. </p> <note>
+     *        <p>
+     *        When you apply a parameter group using the <code>DBInstanceParameterGroupName</code> parameter, the DB
+     *        cluster isn't rebooted automatically. Also, parameter changes aren't applied during the next maintenance
+     *        window but instead are applied immediately.
+     *        </p>
+     *        </note>
+     *        <p>
+     *        Default: The existing name setting
+     *        </p>
+     *        <p>
+     *        Constraints:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        The DB parameter group must be in the same DB parameter group family as this DB cluster.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        The <code>DBInstanceParameterGroupName</code> parameter is only valid in combination with the
+     *        <code>AllowMajorVersionUpgrade</code> parameter.
+     *        </p>
+     *        </li>
+     */
+
+    public void setDBInstanceParameterGroupName(String dBInstanceParameterGroupName) {
+        this.dBInstanceParameterGroupName = dBInstanceParameterGroupName;
+    }
+
+    /**
+     * <p>
+     * The name of the DB parameter group to apply to all instances of the DB cluster.
+     * </p>
+     * <note>
+     * <p>
+     * When you apply a parameter group using the <code>DBInstanceParameterGroupName</code> parameter, the DB cluster
+     * isn't rebooted automatically. Also, parameter changes aren't applied during the next maintenance window but
+     * instead are applied immediately.
+     * </p>
+     * </note>
+     * <p>
+     * Default: The existing name setting
+     * </p>
+     * <p>
+     * Constraints:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * The DB parameter group must be in the same DB parameter group family as this DB cluster.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * The <code>DBInstanceParameterGroupName</code> parameter is only valid in combination with the
+     * <code>AllowMajorVersionUpgrade</code> parameter.
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @return The name of the DB parameter group to apply to all instances of the DB cluster. </p> <note>
+     *         <p>
+     *         When you apply a parameter group using the <code>DBInstanceParameterGroupName</code> parameter, the DB
+     *         cluster isn't rebooted automatically. Also, parameter changes aren't applied during the next maintenance
+     *         window but instead are applied immediately.
+     *         </p>
+     *         </note>
+     *         <p>
+     *         Default: The existing name setting
+     *         </p>
+     *         <p>
+     *         Constraints:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         The DB parameter group must be in the same DB parameter group family as this DB cluster.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         The <code>DBInstanceParameterGroupName</code> parameter is only valid in combination with the
+     *         <code>AllowMajorVersionUpgrade</code> parameter.
+     *         </p>
+     *         </li>
+     */
+
+    public String getDBInstanceParameterGroupName() {
+        return this.dBInstanceParameterGroupName;
+    }
+
+    /**
+     * <p>
+     * The name of the DB parameter group to apply to all instances of the DB cluster.
+     * </p>
+     * <note>
+     * <p>
+     * When you apply a parameter group using the <code>DBInstanceParameterGroupName</code> parameter, the DB cluster
+     * isn't rebooted automatically. Also, parameter changes aren't applied during the next maintenance window but
+     * instead are applied immediately.
+     * </p>
+     * </note>
+     * <p>
+     * Default: The existing name setting
+     * </p>
+     * <p>
+     * Constraints:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * The DB parameter group must be in the same DB parameter group family as this DB cluster.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * The <code>DBInstanceParameterGroupName</code> parameter is only valid in combination with the
+     * <code>AllowMajorVersionUpgrade</code> parameter.
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param dBInstanceParameterGroupName
+     *        The name of the DB parameter group to apply to all instances of the DB cluster. </p> <note>
+     *        <p>
+     *        When you apply a parameter group using the <code>DBInstanceParameterGroupName</code> parameter, the DB
+     *        cluster isn't rebooted automatically. Also, parameter changes aren't applied during the next maintenance
+     *        window but instead are applied immediately.
+     *        </p>
+     *        </note>
+     *        <p>
+     *        Default: The existing name setting
+     *        </p>
+     *        <p>
+     *        Constraints:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        The DB parameter group must be in the same DB parameter group family as this DB cluster.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        The <code>DBInstanceParameterGroupName</code> parameter is only valid in combination with the
+     *        <code>AllowMajorVersionUpgrade</code> parameter.
+     *        </p>
+     *        </li>
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ModifyDBClusterRequest withDBInstanceParameterGroupName(String dBInstanceParameterGroupName) {
+        setDBInstanceParameterGroupName(dBInstanceParameterGroupName);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The scaling properties of the DB cluster. You can only modify scaling properties for DB clusters in
+     * <code>serverless</code> DB engine mode.
+     * </p>
+     * 
+     * @param scalingConfiguration
+     *        The scaling properties of the DB cluster. You can only modify scaling properties for DB clusters in
+     *        <code>serverless</code> DB engine mode.
+     */
+
+    public void setScalingConfiguration(ScalingConfiguration scalingConfiguration) {
+        this.scalingConfiguration = scalingConfiguration;
+    }
+
+    /**
+     * <p>
+     * The scaling properties of the DB cluster. You can only modify scaling properties for DB clusters in
+     * <code>serverless</code> DB engine mode.
+     * </p>
+     * 
+     * @return The scaling properties of the DB cluster. You can only modify scaling properties for DB clusters in
+     *         <code>serverless</code> DB engine mode.
+     */
+
+    public ScalingConfiguration getScalingConfiguration() {
+        return this.scalingConfiguration;
+    }
+
+    /**
+     * <p>
+     * The scaling properties of the DB cluster. You can only modify scaling properties for DB clusters in
+     * <code>serverless</code> DB engine mode.
+     * </p>
+     * 
+     * @param scalingConfiguration
+     *        The scaling properties of the DB cluster. You can only modify scaling properties for DB clusters in
+     *        <code>serverless</code> DB engine mode.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ModifyDBClusterRequest withScalingConfiguration(ScalingConfiguration scalingConfiguration) {
+        setScalingConfiguration(scalingConfiguration);
+        return this;
+    }
+
+    /**
+     * <p>
+     * A value that indicates whether the DB cluster has deletion protection enabled. The database can't be deleted when
+     * deletion protection is enabled. By default, deletion protection is disabled.
+     * </p>
+     * 
+     * @param deletionProtection
+     *        A value that indicates whether the DB cluster has deletion protection enabled. The database can't be
+     *        deleted when deletion protection is enabled. By default, deletion protection is disabled.
+     */
+
+    public void setDeletionProtection(Boolean deletionProtection) {
+        this.deletionProtection = deletionProtection;
+    }
+
+    /**
+     * <p>
+     * A value that indicates whether the DB cluster has deletion protection enabled. The database can't be deleted when
+     * deletion protection is enabled. By default, deletion protection is disabled.
+     * </p>
+     * 
+     * @return A value that indicates whether the DB cluster has deletion protection enabled. The database can't be
+     *         deleted when deletion protection is enabled. By default, deletion protection is disabled.
+     */
+
+    public Boolean getDeletionProtection() {
+        return this.deletionProtection;
+    }
+
+    /**
+     * <p>
+     * A value that indicates whether the DB cluster has deletion protection enabled. The database can't be deleted when
+     * deletion protection is enabled. By default, deletion protection is disabled.
+     * </p>
+     * 
+     * @param deletionProtection
+     *        A value that indicates whether the DB cluster has deletion protection enabled. The database can't be
+     *        deleted when deletion protection is enabled. By default, deletion protection is disabled.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ModifyDBClusterRequest withDeletionProtection(Boolean deletionProtection) {
+        setDeletionProtection(deletionProtection);
+        return this;
+    }
+
+    /**
+     * <p>
+     * A value that indicates whether the DB cluster has deletion protection enabled. The database can't be deleted when
+     * deletion protection is enabled. By default, deletion protection is disabled.
+     * </p>
+     * 
+     * @return A value that indicates whether the DB cluster has deletion protection enabled. The database can't be
+     *         deleted when deletion protection is enabled. By default, deletion protection is disabled.
+     */
+
+    public Boolean isDeletionProtection() {
+        return this.deletionProtection;
+    }
+
+    /**
+     * <p>
+     * A value that indicates whether to enable the HTTP endpoint for an Aurora Serverless DB cluster. By default, the
+     * HTTP endpoint is disabled.
+     * </p>
+     * <p>
+     * When enabled, the HTTP endpoint provides a connectionless web service API for running SQL queries on the Aurora
+     * Serverless DB cluster. You can also query your database from inside the RDS console with the query editor.
+     * </p>
+     * <p>
+     * For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/data-api.html">Using the Data API for Aurora
+     * Serverless</a> in the <i>Amazon Aurora User Guide</i>.
+     * </p>
+     * 
+     * @param enableHttpEndpoint
+     *        A value that indicates whether to enable the HTTP endpoint for an Aurora Serverless DB cluster. By
+     *        default, the HTTP endpoint is disabled.</p>
+     *        <p>
+     *        When enabled, the HTTP endpoint provides a connectionless web service API for running SQL queries on the
+     *        Aurora Serverless DB cluster. You can also query your database from inside the RDS console with the query
+     *        editor.
+     *        </p>
+     *        <p>
+     *        For more information, see <a
+     *        href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/data-api.html">Using the Data API for
+     *        Aurora Serverless</a> in the <i>Amazon Aurora User Guide</i>.
+     */
+
+    public void setEnableHttpEndpoint(Boolean enableHttpEndpoint) {
+        this.enableHttpEndpoint = enableHttpEndpoint;
+    }
+
+    /**
+     * <p>
+     * A value that indicates whether to enable the HTTP endpoint for an Aurora Serverless DB cluster. By default, the
+     * HTTP endpoint is disabled.
+     * </p>
+     * <p>
+     * When enabled, the HTTP endpoint provides a connectionless web service API for running SQL queries on the Aurora
+     * Serverless DB cluster. You can also query your database from inside the RDS console with the query editor.
+     * </p>
+     * <p>
+     * For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/data-api.html">Using the Data API for Aurora
+     * Serverless</a> in the <i>Amazon Aurora User Guide</i>.
+     * </p>
+     * 
+     * @return A value that indicates whether to enable the HTTP endpoint for an Aurora Serverless DB cluster. By
+     *         default, the HTTP endpoint is disabled.</p>
+     *         <p>
+     *         When enabled, the HTTP endpoint provides a connectionless web service API for running SQL queries on the
+     *         Aurora Serverless DB cluster. You can also query your database from inside the RDS console with the query
+     *         editor.
+     *         </p>
+     *         <p>
+     *         For more information, see <a
+     *         href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/data-api.html">Using the Data API for
+     *         Aurora Serverless</a> in the <i>Amazon Aurora User Guide</i>.
+     */
+
+    public Boolean getEnableHttpEndpoint() {
+        return this.enableHttpEndpoint;
+    }
+
+    /**
+     * <p>
+     * A value that indicates whether to enable the HTTP endpoint for an Aurora Serverless DB cluster. By default, the
+     * HTTP endpoint is disabled.
+     * </p>
+     * <p>
+     * When enabled, the HTTP endpoint provides a connectionless web service API for running SQL queries on the Aurora
+     * Serverless DB cluster. You can also query your database from inside the RDS console with the query editor.
+     * </p>
+     * <p>
+     * For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/data-api.html">Using the Data API for Aurora
+     * Serverless</a> in the <i>Amazon Aurora User Guide</i>.
+     * </p>
+     * 
+     * @param enableHttpEndpoint
+     *        A value that indicates whether to enable the HTTP endpoint for an Aurora Serverless DB cluster. By
+     *        default, the HTTP endpoint is disabled.</p>
+     *        <p>
+     *        When enabled, the HTTP endpoint provides a connectionless web service API for running SQL queries on the
+     *        Aurora Serverless DB cluster. You can also query your database from inside the RDS console with the query
+     *        editor.
+     *        </p>
+     *        <p>
+     *        For more information, see <a
+     *        href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/data-api.html">Using the Data API for
+     *        Aurora Serverless</a> in the <i>Amazon Aurora User Guide</i>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ModifyDBClusterRequest withEnableHttpEndpoint(Boolean enableHttpEndpoint) {
+        setEnableHttpEndpoint(enableHttpEndpoint);
+        return this;
+    }
+
+    /**
+     * <p>
+     * A value that indicates whether to enable the HTTP endpoint for an Aurora Serverless DB cluster. By default, the
+     * HTTP endpoint is disabled.
+     * </p>
+     * <p>
+     * When enabled, the HTTP endpoint provides a connectionless web service API for running SQL queries on the Aurora
+     * Serverless DB cluster. You can also query your database from inside the RDS console with the query editor.
+     * </p>
+     * <p>
+     * For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/data-api.html">Using the Data API for Aurora
+     * Serverless</a> in the <i>Amazon Aurora User Guide</i>.
+     * </p>
+     * 
+     * @return A value that indicates whether to enable the HTTP endpoint for an Aurora Serverless DB cluster. By
+     *         default, the HTTP endpoint is disabled.</p>
+     *         <p>
+     *         When enabled, the HTTP endpoint provides a connectionless web service API for running SQL queries on the
+     *         Aurora Serverless DB cluster. You can also query your database from inside the RDS console with the query
+     *         editor.
+     *         </p>
+     *         <p>
+     *         For more information, see <a
+     *         href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/data-api.html">Using the Data API for
+     *         Aurora Serverless</a> in the <i>Amazon Aurora User Guide</i>.
+     */
+
+    public Boolean isEnableHttpEndpoint() {
+        return this.enableHttpEndpoint;
+    }
+
+    /**
+     * <p>
+     * A value that indicates whether to copy all tags from the DB cluster to snapshots of the DB cluster. The default
+     * is not to copy them.
+     * </p>
+     * 
+     * @param copyTagsToSnapshot
+     *        A value that indicates whether to copy all tags from the DB cluster to snapshots of the DB cluster. The
+     *        default is not to copy them.
+     */
+
+    public void setCopyTagsToSnapshot(Boolean copyTagsToSnapshot) {
+        this.copyTagsToSnapshot = copyTagsToSnapshot;
+    }
+
+    /**
+     * <p>
+     * A value that indicates whether to copy all tags from the DB cluster to snapshots of the DB cluster. The default
+     * is not to copy them.
+     * </p>
+     * 
+     * @return A value that indicates whether to copy all tags from the DB cluster to snapshots of the DB cluster. The
+     *         default is not to copy them.
+     */
+
+    public Boolean getCopyTagsToSnapshot() {
+        return this.copyTagsToSnapshot;
+    }
+
+    /**
+     * <p>
+     * A value that indicates whether to copy all tags from the DB cluster to snapshots of the DB cluster. The default
+     * is not to copy them.
+     * </p>
+     * 
+     * @param copyTagsToSnapshot
+     *        A value that indicates whether to copy all tags from the DB cluster to snapshots of the DB cluster. The
+     *        default is not to copy them.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ModifyDBClusterRequest withCopyTagsToSnapshot(Boolean copyTagsToSnapshot) {
+        setCopyTagsToSnapshot(copyTagsToSnapshot);
+        return this;
+    }
+
+    /**
+     * <p>
+     * A value that indicates whether to copy all tags from the DB cluster to snapshots of the DB cluster. The default
+     * is not to copy them.
+     * </p>
+     * 
+     * @return A value that indicates whether to copy all tags from the DB cluster to snapshots of the DB cluster. The
+     *         default is not to copy them.
+     */
+
+    public Boolean isCopyTagsToSnapshot() {
+        return this.copyTagsToSnapshot;
+    }
+
+    /**
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -1794,8 +2584,22 @@ public class ModifyDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
             sb.append("EnableIAMDatabaseAuthentication: ").append(getEnableIAMDatabaseAuthentication()).append(",");
         if (getBacktrackWindow() != null)
             sb.append("BacktrackWindow: ").append(getBacktrackWindow()).append(",");
+        if (getCloudwatchLogsExportConfiguration() != null)
+            sb.append("CloudwatchLogsExportConfiguration: ").append(getCloudwatchLogsExportConfiguration()).append(",");
         if (getEngineVersion() != null)
-            sb.append("EngineVersion: ").append(getEngineVersion());
+            sb.append("EngineVersion: ").append(getEngineVersion()).append(",");
+        if (getAllowMajorVersionUpgrade() != null)
+            sb.append("AllowMajorVersionUpgrade: ").append(getAllowMajorVersionUpgrade()).append(",");
+        if (getDBInstanceParameterGroupName() != null)
+            sb.append("DBInstanceParameterGroupName: ").append(getDBInstanceParameterGroupName()).append(",");
+        if (getScalingConfiguration() != null)
+            sb.append("ScalingConfiguration: ").append(getScalingConfiguration()).append(",");
+        if (getDeletionProtection() != null)
+            sb.append("DeletionProtection: ").append(getDeletionProtection()).append(",");
+        if (getEnableHttpEndpoint() != null)
+            sb.append("EnableHttpEndpoint: ").append(getEnableHttpEndpoint()).append(",");
+        if (getCopyTagsToSnapshot() != null)
+            sb.append("CopyTagsToSnapshot: ").append(getCopyTagsToSnapshot());
         sb.append("}");
         return sb.toString();
     }
@@ -1863,9 +2667,38 @@ public class ModifyDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
             return false;
         if (other.getBacktrackWindow() != null && other.getBacktrackWindow().equals(this.getBacktrackWindow()) == false)
             return false;
+        if (other.getCloudwatchLogsExportConfiguration() == null ^ this.getCloudwatchLogsExportConfiguration() == null)
+            return false;
+        if (other.getCloudwatchLogsExportConfiguration() != null
+                && other.getCloudwatchLogsExportConfiguration().equals(this.getCloudwatchLogsExportConfiguration()) == false)
+            return false;
         if (other.getEngineVersion() == null ^ this.getEngineVersion() == null)
             return false;
         if (other.getEngineVersion() != null && other.getEngineVersion().equals(this.getEngineVersion()) == false)
+            return false;
+        if (other.getAllowMajorVersionUpgrade() == null ^ this.getAllowMajorVersionUpgrade() == null)
+            return false;
+        if (other.getAllowMajorVersionUpgrade() != null && other.getAllowMajorVersionUpgrade().equals(this.getAllowMajorVersionUpgrade()) == false)
+            return false;
+        if (other.getDBInstanceParameterGroupName() == null ^ this.getDBInstanceParameterGroupName() == null)
+            return false;
+        if (other.getDBInstanceParameterGroupName() != null && other.getDBInstanceParameterGroupName().equals(this.getDBInstanceParameterGroupName()) == false)
+            return false;
+        if (other.getScalingConfiguration() == null ^ this.getScalingConfiguration() == null)
+            return false;
+        if (other.getScalingConfiguration() != null && other.getScalingConfiguration().equals(this.getScalingConfiguration()) == false)
+            return false;
+        if (other.getDeletionProtection() == null ^ this.getDeletionProtection() == null)
+            return false;
+        if (other.getDeletionProtection() != null && other.getDeletionProtection().equals(this.getDeletionProtection()) == false)
+            return false;
+        if (other.getEnableHttpEndpoint() == null ^ this.getEnableHttpEndpoint() == null)
+            return false;
+        if (other.getEnableHttpEndpoint() != null && other.getEnableHttpEndpoint().equals(this.getEnableHttpEndpoint()) == false)
+            return false;
+        if (other.getCopyTagsToSnapshot() == null ^ this.getCopyTagsToSnapshot() == null)
+            return false;
+        if (other.getCopyTagsToSnapshot() != null && other.getCopyTagsToSnapshot().equals(this.getCopyTagsToSnapshot()) == false)
             return false;
         return true;
     }
@@ -1888,7 +2721,14 @@ public class ModifyDBClusterRequest extends com.amazonaws.AmazonWebServiceReques
         hashCode = prime * hashCode + ((getPreferredMaintenanceWindow() == null) ? 0 : getPreferredMaintenanceWindow().hashCode());
         hashCode = prime * hashCode + ((getEnableIAMDatabaseAuthentication() == null) ? 0 : getEnableIAMDatabaseAuthentication().hashCode());
         hashCode = prime * hashCode + ((getBacktrackWindow() == null) ? 0 : getBacktrackWindow().hashCode());
+        hashCode = prime * hashCode + ((getCloudwatchLogsExportConfiguration() == null) ? 0 : getCloudwatchLogsExportConfiguration().hashCode());
         hashCode = prime * hashCode + ((getEngineVersion() == null) ? 0 : getEngineVersion().hashCode());
+        hashCode = prime * hashCode + ((getAllowMajorVersionUpgrade() == null) ? 0 : getAllowMajorVersionUpgrade().hashCode());
+        hashCode = prime * hashCode + ((getDBInstanceParameterGroupName() == null) ? 0 : getDBInstanceParameterGroupName().hashCode());
+        hashCode = prime * hashCode + ((getScalingConfiguration() == null) ? 0 : getScalingConfiguration().hashCode());
+        hashCode = prime * hashCode + ((getDeletionProtection() == null) ? 0 : getDeletionProtection().hashCode());
+        hashCode = prime * hashCode + ((getEnableHttpEndpoint() == null) ? 0 : getEnableHttpEndpoint().hashCode());
+        hashCode = prime * hashCode + ((getCopyTagsToSnapshot() == null) ? 0 : getCopyTagsToSnapshot().hashCode());
         return hashCode;
     }
 

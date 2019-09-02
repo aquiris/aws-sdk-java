@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -76,7 +76,11 @@ public class Deployment implements Serializable, Cloneable, StructuredPojo {
      * </p>
      */
     private String comment;
-
+    /**
+     * <p>
+     * Used to specify a stack or deployment command.
+     * </p>
+     */
     private DeploymentCommand command;
     /**
      * <p>
@@ -112,8 +116,8 @@ public class Deployment implements Serializable, Cloneable, StructuredPojo {
      * </p>
      * <p>
      * For more information on custom JSON, see <a
-     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html">Use Custom JSON to Modify the
-     * Stack Configuration Attributes</a>.
+     * href="https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html">Use Custom JSON to Modify
+     * the Stack Configuration Attributes</a>.
      * </p>
      */
     private String customJson;
@@ -445,7 +449,12 @@ public class Deployment implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
+     * Used to specify a stack or deployment command.
+     * </p>
+     * 
      * @param command
+     *        Used to specify a stack or deployment command.
      */
 
     public void setCommand(DeploymentCommand command) {
@@ -453,7 +462,11 @@ public class Deployment implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * @return
+     * <p>
+     * Used to specify a stack or deployment command.
+     * </p>
+     * 
+     * @return Used to specify a stack or deployment command.
      */
 
     public DeploymentCommand getCommand() {
@@ -461,7 +474,12 @@ public class Deployment implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
+     * Used to specify a stack or deployment command.
+     * </p>
+     * 
      * @param command
+     *        Used to specify a stack or deployment command.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -620,8 +638,8 @@ public class Deployment implements Serializable, Cloneable, StructuredPojo {
      * </p>
      * <p>
      * For more information on custom JSON, see <a
-     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html">Use Custom JSON to Modify the
-     * Stack Configuration Attributes</a>.
+     * href="https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html">Use Custom JSON to Modify
+     * the Stack Configuration Attributes</a>.
      * </p>
      * 
      * @param customJson
@@ -633,7 +651,7 @@ public class Deployment implements Serializable, Cloneable, StructuredPojo {
      *        </p>
      *        <p>
      *        For more information on custom JSON, see <a
-     *        href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html">Use Custom JSON to
+     *        href="https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html">Use Custom JSON to
      *        Modify the Stack Configuration Attributes</a>.
      */
 
@@ -652,8 +670,8 @@ public class Deployment implements Serializable, Cloneable, StructuredPojo {
      * </p>
      * <p>
      * For more information on custom JSON, see <a
-     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html">Use Custom JSON to Modify the
-     * Stack Configuration Attributes</a>.
+     * href="https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html">Use Custom JSON to Modify
+     * the Stack Configuration Attributes</a>.
      * </p>
      * 
      * @return A string that contains user-defined custom JSON. It can be used to override the corresponding default
@@ -664,7 +682,7 @@ public class Deployment implements Serializable, Cloneable, StructuredPojo {
      *         </p>
      *         <p>
      *         For more information on custom JSON, see <a
-     *         href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html">Use Custom JSON to
+     *         href="https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html">Use Custom JSON to
      *         Modify the Stack Configuration Attributes</a>.
      */
 
@@ -683,8 +701,8 @@ public class Deployment implements Serializable, Cloneable, StructuredPojo {
      * </p>
      * <p>
      * For more information on custom JSON, see <a
-     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html">Use Custom JSON to Modify the
-     * Stack Configuration Attributes</a>.
+     * href="https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html">Use Custom JSON to Modify
+     * the Stack Configuration Attributes</a>.
      * </p>
      * 
      * @param customJson
@@ -696,7 +714,7 @@ public class Deployment implements Serializable, Cloneable, StructuredPojo {
      *        </p>
      *        <p>
      *        For more information on custom JSON, see <a
-     *        href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html">Use Custom JSON to
+     *        href="https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html">Use Custom JSON to
      *        Modify the Stack Configuration Attributes</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -780,7 +798,8 @@ public class Deployment implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

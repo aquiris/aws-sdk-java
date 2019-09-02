@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -19,7 +19,7 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * This object contains regions to setup the aggregator and an IAM role to retrieve organization details.
+ * This object contains regions to set up the aggregator and an IAM role to retrieve organization details.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/OrganizationAggregationSource"
@@ -30,7 +30,7 @@ public class OrganizationAggregationSource implements Serializable, Cloneable, S
 
     /**
      * <p>
-     * ARN of the IAM role used to retreive AWS Organization details associated with the aggregator account.
+     * ARN of the IAM role used to retrieve AWS Organization details associated with the aggregator account.
      * </p>
      */
     private String roleArn;
@@ -42,18 +42,18 @@ public class OrganizationAggregationSource implements Serializable, Cloneable, S
     private com.amazonaws.internal.SdkInternalList<String> awsRegions;
     /**
      * <p>
-     * If true, aggreagate existing AWS Config regions and future regions.
+     * If true, aggregate existing AWS Config regions and future regions.
      * </p>
      */
     private Boolean allAwsRegions;
 
     /**
      * <p>
-     * ARN of the IAM role used to retreive AWS Organization details associated with the aggregator account.
+     * ARN of the IAM role used to retrieve AWS Organization details associated with the aggregator account.
      * </p>
      * 
      * @param roleArn
-     *        ARN of the IAM role used to retreive AWS Organization details associated with the aggregator account.
+     *        ARN of the IAM role used to retrieve AWS Organization details associated with the aggregator account.
      */
 
     public void setRoleArn(String roleArn) {
@@ -62,10 +62,10 @@ public class OrganizationAggregationSource implements Serializable, Cloneable, S
 
     /**
      * <p>
-     * ARN of the IAM role used to retreive AWS Organization details associated with the aggregator account.
+     * ARN of the IAM role used to retrieve AWS Organization details associated with the aggregator account.
      * </p>
      * 
-     * @return ARN of the IAM role used to retreive AWS Organization details associated with the aggregator account.
+     * @return ARN of the IAM role used to retrieve AWS Organization details associated with the aggregator account.
      */
 
     public String getRoleArn() {
@@ -74,11 +74,11 @@ public class OrganizationAggregationSource implements Serializable, Cloneable, S
 
     /**
      * <p>
-     * ARN of the IAM role used to retreive AWS Organization details associated with the aggregator account.
+     * ARN of the IAM role used to retrieve AWS Organization details associated with the aggregator account.
      * </p>
      * 
      * @param roleArn
-     *        ARN of the IAM role used to retreive AWS Organization details associated with the aggregator account.
+     *        ARN of the IAM role used to retrieve AWS Organization details associated with the aggregator account.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -162,11 +162,11 @@ public class OrganizationAggregationSource implements Serializable, Cloneable, S
 
     /**
      * <p>
-     * If true, aggreagate existing AWS Config regions and future regions.
+     * If true, aggregate existing AWS Config regions and future regions.
      * </p>
      * 
      * @param allAwsRegions
-     *        If true, aggreagate existing AWS Config regions and future regions.
+     *        If true, aggregate existing AWS Config regions and future regions.
      */
 
     public void setAllAwsRegions(Boolean allAwsRegions) {
@@ -175,10 +175,10 @@ public class OrganizationAggregationSource implements Serializable, Cloneable, S
 
     /**
      * <p>
-     * If true, aggreagate existing AWS Config regions and future regions.
+     * If true, aggregate existing AWS Config regions and future regions.
      * </p>
      * 
-     * @return If true, aggreagate existing AWS Config regions and future regions.
+     * @return If true, aggregate existing AWS Config regions and future regions.
      */
 
     public Boolean getAllAwsRegions() {
@@ -187,11 +187,11 @@ public class OrganizationAggregationSource implements Serializable, Cloneable, S
 
     /**
      * <p>
-     * If true, aggreagate existing AWS Config regions and future regions.
+     * If true, aggregate existing AWS Config regions and future regions.
      * </p>
      * 
      * @param allAwsRegions
-     *        If true, aggreagate existing AWS Config regions and future regions.
+     *        If true, aggregate existing AWS Config regions and future regions.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -202,10 +202,10 @@ public class OrganizationAggregationSource implements Serializable, Cloneable, S
 
     /**
      * <p>
-     * If true, aggreagate existing AWS Config regions and future regions.
+     * If true, aggregate existing AWS Config regions and future regions.
      * </p>
      * 
-     * @return If true, aggreagate existing AWS Config regions and future regions.
+     * @return If true, aggregate existing AWS Config regions and future regions.
      */
 
     public Boolean isAllAwsRegions() {
@@ -213,7 +213,8 @@ public class OrganizationAggregationSource implements Serializable, Cloneable, S
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

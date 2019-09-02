@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -18,7 +18,9 @@ import com.amazonaws.protocol.StructuredPojo;
 import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
- * Security groups associated with the EC2 instance.
+ * <p>
+ * Contains information about the security group.
+ * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/SecurityGroup" target="_top">AWS API
  *      Documentation</a>
@@ -26,13 +28,23 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class SecurityGroup implements Serializable, Cloneable, StructuredPojo {
 
-    /** EC2 instance's security group ID. */
+    /**
+     * <p>
+     * EC2 instance's security group ID.
+     * </p>
+     */
     private String groupId;
-    /** EC2 instance's security group name. */
+    /**
+     * <p>
+     * EC2 instance's security group name.
+     * </p>
+     */
     private String groupName;
 
     /**
+     * <p>
      * EC2 instance's security group ID.
+     * </p>
      * 
      * @param groupId
      *        EC2 instance's security group ID.
@@ -43,7 +55,9 @@ public class SecurityGroup implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
      * EC2 instance's security group ID.
+     * </p>
      * 
      * @return EC2 instance's security group ID.
      */
@@ -53,7 +67,9 @@ public class SecurityGroup implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
      * EC2 instance's security group ID.
+     * </p>
      * 
      * @param groupId
      *        EC2 instance's security group ID.
@@ -66,7 +82,9 @@ public class SecurityGroup implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
      * EC2 instance's security group name.
+     * </p>
      * 
      * @param groupName
      *        EC2 instance's security group name.
@@ -77,7 +95,9 @@ public class SecurityGroup implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
      * EC2 instance's security group name.
+     * </p>
      * 
      * @return EC2 instance's security group name.
      */
@@ -87,7 +107,9 @@ public class SecurityGroup implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
      * EC2 instance's security group name.
+     * </p>
      * 
      * @param groupName
      *        EC2 instance's security group name.
@@ -100,7 +122,8 @@ public class SecurityGroup implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

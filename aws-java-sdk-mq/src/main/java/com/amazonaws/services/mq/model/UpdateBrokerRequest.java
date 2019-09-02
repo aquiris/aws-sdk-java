@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,6 +27,11 @@ import com.amazonaws.AmazonWebServiceRequest;
 public class UpdateBrokerRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
     /**
+     * Enables automatic upgrades to new minor versions for brokers, as Apache releases the versions. The automatic
+     * upgrades occur during the maintenance window of the broker or after a manual broker reboot.
+     */
+    private Boolean autoMinorVersionUpgrade;
+    /**
      * The name of the broker. This value must be unique in your AWS account, 1-50 characters long, must contain only
      * letters, numbers, dashes, and underscores, and must not contain whitespaces, brackets, wildcard characters, or
      * special characters.
@@ -34,6 +39,67 @@ public class UpdateBrokerRequest extends com.amazonaws.AmazonWebServiceRequest i
     private String brokerId;
     /** A list of information about the configuration. */
     private ConfigurationId configuration;
+    /**
+     * The version of the broker engine. For a list of supported engine versions, see
+     * https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html
+     */
+    private String engineVersion;
+    /** Enables Amazon CloudWatch logging for brokers. */
+    private Logs logs;
+    /** The list of security groups (1 minimum, 5 maximum) that authorize connections to brokers. */
+    private java.util.List<String> securityGroups;
+
+    /**
+     * Enables automatic upgrades to new minor versions for brokers, as Apache releases the versions. The automatic
+     * upgrades occur during the maintenance window of the broker or after a manual broker reboot.
+     * 
+     * @param autoMinorVersionUpgrade
+     *        Enables automatic upgrades to new minor versions for brokers, as Apache releases the versions. The
+     *        automatic upgrades occur during the maintenance window of the broker or after a manual broker reboot.
+     */
+
+    public void setAutoMinorVersionUpgrade(Boolean autoMinorVersionUpgrade) {
+        this.autoMinorVersionUpgrade = autoMinorVersionUpgrade;
+    }
+
+    /**
+     * Enables automatic upgrades to new minor versions for brokers, as Apache releases the versions. The automatic
+     * upgrades occur during the maintenance window of the broker or after a manual broker reboot.
+     * 
+     * @return Enables automatic upgrades to new minor versions for brokers, as Apache releases the versions. The
+     *         automatic upgrades occur during the maintenance window of the broker or after a manual broker reboot.
+     */
+
+    public Boolean getAutoMinorVersionUpgrade() {
+        return this.autoMinorVersionUpgrade;
+    }
+
+    /**
+     * Enables automatic upgrades to new minor versions for brokers, as Apache releases the versions. The automatic
+     * upgrades occur during the maintenance window of the broker or after a manual broker reboot.
+     * 
+     * @param autoMinorVersionUpgrade
+     *        Enables automatic upgrades to new minor versions for brokers, as Apache releases the versions. The
+     *        automatic upgrades occur during the maintenance window of the broker or after a manual broker reboot.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public UpdateBrokerRequest withAutoMinorVersionUpgrade(Boolean autoMinorVersionUpgrade) {
+        setAutoMinorVersionUpgrade(autoMinorVersionUpgrade);
+        return this;
+    }
+
+    /**
+     * Enables automatic upgrades to new minor versions for brokers, as Apache releases the versions. The automatic
+     * upgrades occur during the maintenance window of the broker or after a manual broker reboot.
+     * 
+     * @return Enables automatic upgrades to new minor versions for brokers, as Apache releases the versions. The
+     *         automatic upgrades occur during the maintenance window of the broker or after a manual broker reboot.
+     */
+
+    public Boolean isAutoMinorVersionUpgrade() {
+        return this.autoMinorVersionUpgrade;
+    }
 
     /**
      * The name of the broker. This value must be unique in your AWS account, 1-50 characters long, must contain only
@@ -116,7 +182,144 @@ public class UpdateBrokerRequest extends com.amazonaws.AmazonWebServiceRequest i
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * The version of the broker engine. For a list of supported engine versions, see
+     * https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html
+     * 
+     * @param engineVersion
+     *        The version of the broker engine. For a list of supported engine versions, see
+     *        https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html
+     */
+
+    public void setEngineVersion(String engineVersion) {
+        this.engineVersion = engineVersion;
+    }
+
+    /**
+     * The version of the broker engine. For a list of supported engine versions, see
+     * https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html
+     * 
+     * @return The version of the broker engine. For a list of supported engine versions, see
+     *         https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html
+     */
+
+    public String getEngineVersion() {
+        return this.engineVersion;
+    }
+
+    /**
+     * The version of the broker engine. For a list of supported engine versions, see
+     * https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html
+     * 
+     * @param engineVersion
+     *        The version of the broker engine. For a list of supported engine versions, see
+     *        https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public UpdateBrokerRequest withEngineVersion(String engineVersion) {
+        setEngineVersion(engineVersion);
+        return this;
+    }
+
+    /**
+     * Enables Amazon CloudWatch logging for brokers.
+     * 
+     * @param logs
+     *        Enables Amazon CloudWatch logging for brokers.
+     */
+
+    public void setLogs(Logs logs) {
+        this.logs = logs;
+    }
+
+    /**
+     * Enables Amazon CloudWatch logging for brokers.
+     * 
+     * @return Enables Amazon CloudWatch logging for brokers.
+     */
+
+    public Logs getLogs() {
+        return this.logs;
+    }
+
+    /**
+     * Enables Amazon CloudWatch logging for brokers.
+     * 
+     * @param logs
+     *        Enables Amazon CloudWatch logging for brokers.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public UpdateBrokerRequest withLogs(Logs logs) {
+        setLogs(logs);
+        return this;
+    }
+
+    /**
+     * The list of security groups (1 minimum, 5 maximum) that authorize connections to brokers.
+     * 
+     * @return The list of security groups (1 minimum, 5 maximum) that authorize connections to brokers.
+     */
+
+    public java.util.List<String> getSecurityGroups() {
+        return securityGroups;
+    }
+
+    /**
+     * The list of security groups (1 minimum, 5 maximum) that authorize connections to brokers.
+     * 
+     * @param securityGroups
+     *        The list of security groups (1 minimum, 5 maximum) that authorize connections to brokers.
+     */
+
+    public void setSecurityGroups(java.util.Collection<String> securityGroups) {
+        if (securityGroups == null) {
+            this.securityGroups = null;
+            return;
+        }
+
+        this.securityGroups = new java.util.ArrayList<String>(securityGroups);
+    }
+
+    /**
+     * The list of security groups (1 minimum, 5 maximum) that authorize connections to brokers.
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setSecurityGroups(java.util.Collection)} or {@link #withSecurityGroups(java.util.Collection)} if you want
+     * to override the existing values.
+     * </p>
+     * 
+     * @param securityGroups
+     *        The list of security groups (1 minimum, 5 maximum) that authorize connections to brokers.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public UpdateBrokerRequest withSecurityGroups(String... securityGroups) {
+        if (this.securityGroups == null) {
+            setSecurityGroups(new java.util.ArrayList<String>(securityGroups.length));
+        }
+        for (String ele : securityGroups) {
+            this.securityGroups.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * The list of security groups (1 minimum, 5 maximum) that authorize connections to brokers.
+     * 
+     * @param securityGroups
+     *        The list of security groups (1 minimum, 5 maximum) that authorize connections to brokers.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public UpdateBrokerRequest withSecurityGroups(java.util.Collection<String> securityGroups) {
+        setSecurityGroups(securityGroups);
+        return this;
+    }
+
+    /**
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -126,10 +329,18 @@ public class UpdateBrokerRequest extends com.amazonaws.AmazonWebServiceRequest i
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
+        if (getAutoMinorVersionUpgrade() != null)
+            sb.append("AutoMinorVersionUpgrade: ").append(getAutoMinorVersionUpgrade()).append(",");
         if (getBrokerId() != null)
             sb.append("BrokerId: ").append(getBrokerId()).append(",");
         if (getConfiguration() != null)
-            sb.append("Configuration: ").append(getConfiguration());
+            sb.append("Configuration: ").append(getConfiguration()).append(",");
+        if (getEngineVersion() != null)
+            sb.append("EngineVersion: ").append(getEngineVersion()).append(",");
+        if (getLogs() != null)
+            sb.append("Logs: ").append(getLogs()).append(",");
+        if (getSecurityGroups() != null)
+            sb.append("SecurityGroups: ").append(getSecurityGroups());
         sb.append("}");
         return sb.toString();
     }
@@ -144,6 +355,10 @@ public class UpdateBrokerRequest extends com.amazonaws.AmazonWebServiceRequest i
         if (obj instanceof UpdateBrokerRequest == false)
             return false;
         UpdateBrokerRequest other = (UpdateBrokerRequest) obj;
+        if (other.getAutoMinorVersionUpgrade() == null ^ this.getAutoMinorVersionUpgrade() == null)
+            return false;
+        if (other.getAutoMinorVersionUpgrade() != null && other.getAutoMinorVersionUpgrade().equals(this.getAutoMinorVersionUpgrade()) == false)
+            return false;
         if (other.getBrokerId() == null ^ this.getBrokerId() == null)
             return false;
         if (other.getBrokerId() != null && other.getBrokerId().equals(this.getBrokerId()) == false)
@@ -151,6 +366,18 @@ public class UpdateBrokerRequest extends com.amazonaws.AmazonWebServiceRequest i
         if (other.getConfiguration() == null ^ this.getConfiguration() == null)
             return false;
         if (other.getConfiguration() != null && other.getConfiguration().equals(this.getConfiguration()) == false)
+            return false;
+        if (other.getEngineVersion() == null ^ this.getEngineVersion() == null)
+            return false;
+        if (other.getEngineVersion() != null && other.getEngineVersion().equals(this.getEngineVersion()) == false)
+            return false;
+        if (other.getLogs() == null ^ this.getLogs() == null)
+            return false;
+        if (other.getLogs() != null && other.getLogs().equals(this.getLogs()) == false)
+            return false;
+        if (other.getSecurityGroups() == null ^ this.getSecurityGroups() == null)
+            return false;
+        if (other.getSecurityGroups() != null && other.getSecurityGroups().equals(this.getSecurityGroups()) == false)
             return false;
         return true;
     }
@@ -160,8 +387,12 @@ public class UpdateBrokerRequest extends com.amazonaws.AmazonWebServiceRequest i
         final int prime = 31;
         int hashCode = 1;
 
+        hashCode = prime * hashCode + ((getAutoMinorVersionUpgrade() == null) ? 0 : getAutoMinorVersionUpgrade().hashCode());
         hashCode = prime * hashCode + ((getBrokerId() == null) ? 0 : getBrokerId().hashCode());
         hashCode = prime * hashCode + ((getConfiguration() == null) ? 0 : getConfiguration().hashCode());
+        hashCode = prime * hashCode + ((getEngineVersion() == null) ? 0 : getEngineVersion().hashCode());
+        hashCode = prime * hashCode + ((getLogs() == null) ? 0 : getLogs().hashCode());
+        hashCode = prime * hashCode + ((getSecurityGroups() == null) ? 0 : getSecurityGroups().hashCode());
         return hashCode;
     }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -31,6 +31,12 @@ public class DescribeRuleRequest extends com.amazonaws.AmazonWebServiceRequest i
      * </p>
      */
     private String name;
+    /**
+     * <p>
+     * The event bus associated with the rule. If you omit this, the default event bus is used.
+     * </p>
+     */
+    private String eventBusName;
 
     /**
      * <p>
@@ -73,7 +79,48 @@ public class DescribeRuleRequest extends com.amazonaws.AmazonWebServiceRequest i
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * <p>
+     * The event bus associated with the rule. If you omit this, the default event bus is used.
+     * </p>
+     * 
+     * @param eventBusName
+     *        The event bus associated with the rule. If you omit this, the default event bus is used.
+     */
+
+    public void setEventBusName(String eventBusName) {
+        this.eventBusName = eventBusName;
+    }
+
+    /**
+     * <p>
+     * The event bus associated with the rule. If you omit this, the default event bus is used.
+     * </p>
+     * 
+     * @return The event bus associated with the rule. If you omit this, the default event bus is used.
+     */
+
+    public String getEventBusName() {
+        return this.eventBusName;
+    }
+
+    /**
+     * <p>
+     * The event bus associated with the rule. If you omit this, the default event bus is used.
+     * </p>
+     * 
+     * @param eventBusName
+     *        The event bus associated with the rule. If you omit this, the default event bus is used.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DescribeRuleRequest withEventBusName(String eventBusName) {
+        setEventBusName(eventBusName);
+        return this;
+    }
+
+    /**
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -84,7 +131,9 @@ public class DescribeRuleRequest extends com.amazonaws.AmazonWebServiceRequest i
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getName() != null)
-            sb.append("Name: ").append(getName());
+            sb.append("Name: ").append(getName()).append(",");
+        if (getEventBusName() != null)
+            sb.append("EventBusName: ").append(getEventBusName());
         sb.append("}");
         return sb.toString();
     }
@@ -103,6 +152,10 @@ public class DescribeRuleRequest extends com.amazonaws.AmazonWebServiceRequest i
             return false;
         if (other.getName() != null && other.getName().equals(this.getName()) == false)
             return false;
+        if (other.getEventBusName() == null ^ this.getEventBusName() == null)
+            return false;
+        if (other.getEventBusName() != null && other.getEventBusName().equals(this.getEventBusName()) == false)
+            return false;
         return true;
     }
 
@@ -112,6 +165,7 @@ public class DescribeRuleRequest extends com.amazonaws.AmazonWebServiceRequest i
         int hashCode = 1;
 
         hashCode = prime * hashCode + ((getName() == null) ? 0 : getName().hashCode());
+        hashCode = prime * hashCode + ((getEventBusName() == null) ? 0 : getEventBusName().hashCode());
         return hashCode;
     }
 

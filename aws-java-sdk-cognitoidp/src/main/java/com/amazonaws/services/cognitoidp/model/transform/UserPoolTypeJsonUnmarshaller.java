@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -70,11 +70,11 @@ public class UserPoolTypeJsonUnmarshaller implements Unmarshaller<UserPoolType, 
                 }
                 if (context.testExpression("LastModifiedDate", targetDepth)) {
                     context.nextToken();
-                    userPoolType.setLastModifiedDate(context.getUnmarshaller(java.util.Date.class).unmarshall(context));
+                    userPoolType.setLastModifiedDate(DateJsonUnmarshallerFactory.getInstance("unixTimestamp").unmarshall(context));
                 }
                 if (context.testExpression("CreationDate", targetDepth)) {
                     context.nextToken();
-                    userPoolType.setCreationDate(context.getUnmarshaller(java.util.Date.class).unmarshall(context));
+                    userPoolType.setCreationDate(DateJsonUnmarshallerFactory.getInstance("unixTimestamp").unmarshall(context));
                 }
                 if (context.testExpression("SchemaAttributes", targetDepth)) {
                     context.nextToken();
@@ -150,6 +150,10 @@ public class UserPoolTypeJsonUnmarshaller implements Unmarshaller<UserPoolType, 
                     context.nextToken();
                     userPoolType.setDomain(context.getUnmarshaller(String.class).unmarshall(context));
                 }
+                if (context.testExpression("CustomDomain", targetDepth)) {
+                    context.nextToken();
+                    userPoolType.setCustomDomain(context.getUnmarshaller(String.class).unmarshall(context));
+                }
                 if (context.testExpression("AdminCreateUserConfig", targetDepth)) {
                     context.nextToken();
                     userPoolType.setAdminCreateUserConfig(AdminCreateUserConfigTypeJsonUnmarshaller.getInstance().unmarshall(context));
@@ -157,6 +161,10 @@ public class UserPoolTypeJsonUnmarshaller implements Unmarshaller<UserPoolType, 
                 if (context.testExpression("UserPoolAddOns", targetDepth)) {
                     context.nextToken();
                     userPoolType.setUserPoolAddOns(UserPoolAddOnsTypeJsonUnmarshaller.getInstance().unmarshall(context));
+                }
+                if (context.testExpression("Arn", targetDepth)) {
+                    context.nextToken();
+                    userPoolType.setArn(context.getUnmarshaller(String.class).unmarshall(context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null || context.getLastParsedParentElement().equals(currentParentElement)) {

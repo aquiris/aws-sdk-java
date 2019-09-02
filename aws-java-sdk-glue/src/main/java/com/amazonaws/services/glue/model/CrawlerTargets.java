@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -30,7 +30,7 @@ public class CrawlerTargets implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Specifies Amazon S3 targets.
+     * Specifies Amazon Simple Storage Service (Amazon S3) targets.
      * </p>
      */
     private java.util.List<S3Target> s3Targets;
@@ -40,13 +40,25 @@ public class CrawlerTargets implements Serializable, Cloneable, StructuredPojo {
      * </p>
      */
     private java.util.List<JdbcTarget> jdbcTargets;
+    /**
+     * <p>
+     * Specifies Amazon DynamoDB targets.
+     * </p>
+     */
+    private java.util.List<DynamoDBTarget> dynamoDBTargets;
+    /**
+     * <p>
+     * Specifies AWS Glue Data Catalog targets.
+     * </p>
+     */
+    private java.util.List<CatalogTarget> catalogTargets;
 
     /**
      * <p>
-     * Specifies Amazon S3 targets.
+     * Specifies Amazon Simple Storage Service (Amazon S3) targets.
      * </p>
      * 
-     * @return Specifies Amazon S3 targets.
+     * @return Specifies Amazon Simple Storage Service (Amazon S3) targets.
      */
 
     public java.util.List<S3Target> getS3Targets() {
@@ -55,11 +67,11 @@ public class CrawlerTargets implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Specifies Amazon S3 targets.
+     * Specifies Amazon Simple Storage Service (Amazon S3) targets.
      * </p>
      * 
      * @param s3Targets
-     *        Specifies Amazon S3 targets.
+     *        Specifies Amazon Simple Storage Service (Amazon S3) targets.
      */
 
     public void setS3Targets(java.util.Collection<S3Target> s3Targets) {
@@ -73,7 +85,7 @@ public class CrawlerTargets implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Specifies Amazon S3 targets.
+     * Specifies Amazon Simple Storage Service (Amazon S3) targets.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -82,7 +94,7 @@ public class CrawlerTargets implements Serializable, Cloneable, StructuredPojo {
      * </p>
      * 
      * @param s3Targets
-     *        Specifies Amazon S3 targets.
+     *        Specifies Amazon Simple Storage Service (Amazon S3) targets.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -98,11 +110,11 @@ public class CrawlerTargets implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Specifies Amazon S3 targets.
+     * Specifies Amazon Simple Storage Service (Amazon S3) targets.
      * </p>
      * 
      * @param s3Targets
-     *        Specifies Amazon S3 targets.
+     *        Specifies Amazon Simple Storage Service (Amazon S3) targets.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -182,7 +194,148 @@ public class CrawlerTargets implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * <p>
+     * Specifies Amazon DynamoDB targets.
+     * </p>
+     * 
+     * @return Specifies Amazon DynamoDB targets.
+     */
+
+    public java.util.List<DynamoDBTarget> getDynamoDBTargets() {
+        return dynamoDBTargets;
+    }
+
+    /**
+     * <p>
+     * Specifies Amazon DynamoDB targets.
+     * </p>
+     * 
+     * @param dynamoDBTargets
+     *        Specifies Amazon DynamoDB targets.
+     */
+
+    public void setDynamoDBTargets(java.util.Collection<DynamoDBTarget> dynamoDBTargets) {
+        if (dynamoDBTargets == null) {
+            this.dynamoDBTargets = null;
+            return;
+        }
+
+        this.dynamoDBTargets = new java.util.ArrayList<DynamoDBTarget>(dynamoDBTargets);
+    }
+
+    /**
+     * <p>
+     * Specifies Amazon DynamoDB targets.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setDynamoDBTargets(java.util.Collection)} or {@link #withDynamoDBTargets(java.util.Collection)} if you
+     * want to override the existing values.
+     * </p>
+     * 
+     * @param dynamoDBTargets
+     *        Specifies Amazon DynamoDB targets.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CrawlerTargets withDynamoDBTargets(DynamoDBTarget... dynamoDBTargets) {
+        if (this.dynamoDBTargets == null) {
+            setDynamoDBTargets(new java.util.ArrayList<DynamoDBTarget>(dynamoDBTargets.length));
+        }
+        for (DynamoDBTarget ele : dynamoDBTargets) {
+            this.dynamoDBTargets.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * Specifies Amazon DynamoDB targets.
+     * </p>
+     * 
+     * @param dynamoDBTargets
+     *        Specifies Amazon DynamoDB targets.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CrawlerTargets withDynamoDBTargets(java.util.Collection<DynamoDBTarget> dynamoDBTargets) {
+        setDynamoDBTargets(dynamoDBTargets);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Specifies AWS Glue Data Catalog targets.
+     * </p>
+     * 
+     * @return Specifies AWS Glue Data Catalog targets.
+     */
+
+    public java.util.List<CatalogTarget> getCatalogTargets() {
+        return catalogTargets;
+    }
+
+    /**
+     * <p>
+     * Specifies AWS Glue Data Catalog targets.
+     * </p>
+     * 
+     * @param catalogTargets
+     *        Specifies AWS Glue Data Catalog targets.
+     */
+
+    public void setCatalogTargets(java.util.Collection<CatalogTarget> catalogTargets) {
+        if (catalogTargets == null) {
+            this.catalogTargets = null;
+            return;
+        }
+
+        this.catalogTargets = new java.util.ArrayList<CatalogTarget>(catalogTargets);
+    }
+
+    /**
+     * <p>
+     * Specifies AWS Glue Data Catalog targets.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setCatalogTargets(java.util.Collection)} or {@link #withCatalogTargets(java.util.Collection)} if you want
+     * to override the existing values.
+     * </p>
+     * 
+     * @param catalogTargets
+     *        Specifies AWS Glue Data Catalog targets.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CrawlerTargets withCatalogTargets(CatalogTarget... catalogTargets) {
+        if (this.catalogTargets == null) {
+            setCatalogTargets(new java.util.ArrayList<CatalogTarget>(catalogTargets.length));
+        }
+        for (CatalogTarget ele : catalogTargets) {
+            this.catalogTargets.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * Specifies AWS Glue Data Catalog targets.
+     * </p>
+     * 
+     * @param catalogTargets
+     *        Specifies AWS Glue Data Catalog targets.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CrawlerTargets withCatalogTargets(java.util.Collection<CatalogTarget> catalogTargets) {
+        setCatalogTargets(catalogTargets);
+        return this;
+    }
+
+    /**
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -195,7 +348,11 @@ public class CrawlerTargets implements Serializable, Cloneable, StructuredPojo {
         if (getS3Targets() != null)
             sb.append("S3Targets: ").append(getS3Targets()).append(",");
         if (getJdbcTargets() != null)
-            sb.append("JdbcTargets: ").append(getJdbcTargets());
+            sb.append("JdbcTargets: ").append(getJdbcTargets()).append(",");
+        if (getDynamoDBTargets() != null)
+            sb.append("DynamoDBTargets: ").append(getDynamoDBTargets()).append(",");
+        if (getCatalogTargets() != null)
+            sb.append("CatalogTargets: ").append(getCatalogTargets());
         sb.append("}");
         return sb.toString();
     }
@@ -218,6 +375,14 @@ public class CrawlerTargets implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getJdbcTargets() != null && other.getJdbcTargets().equals(this.getJdbcTargets()) == false)
             return false;
+        if (other.getDynamoDBTargets() == null ^ this.getDynamoDBTargets() == null)
+            return false;
+        if (other.getDynamoDBTargets() != null && other.getDynamoDBTargets().equals(this.getDynamoDBTargets()) == false)
+            return false;
+        if (other.getCatalogTargets() == null ^ this.getCatalogTargets() == null)
+            return false;
+        if (other.getCatalogTargets() != null && other.getCatalogTargets().equals(this.getCatalogTargets()) == false)
+            return false;
         return true;
     }
 
@@ -228,6 +393,8 @@ public class CrawlerTargets implements Serializable, Cloneable, StructuredPojo {
 
         hashCode = prime * hashCode + ((getS3Targets() == null) ? 0 : getS3Targets().hashCode());
         hashCode = prime * hashCode + ((getJdbcTargets() == null) ? 0 : getJdbcTargets().hashCode());
+        hashCode = prime * hashCode + ((getDynamoDBTargets() == null) ? 0 : getDynamoDBTargets().hashCode());
+        hashCode = prime * hashCode + ((getCatalogTargets() == null) ? 0 : getCatalogTargets().hashCode());
         return hashCode;
     }
 

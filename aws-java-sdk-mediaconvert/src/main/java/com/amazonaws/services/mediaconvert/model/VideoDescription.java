@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -26,21 +26,39 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class VideoDescription implements Serializable, Cloneable, StructuredPojo {
 
-    private String afdSignaling;
-
-    private String antiAlias;
-
-    private VideoCodecSettings codecSettings;
-
-    private String colorMetadata;
     /**
-     * Applies only if your input aspect ratio is different from your output aspect ratio. Use Input cropping rectangle
-     * (Crop) to specify the video area the service will include in the output. This will crop the input source, causing
-     * video pixels to be removed on encode. Do not use this setting if you have enabled Stretch to output
-     * (stretchToOutput) in your output settings.
+     * This setting only applies to H.264, H.265, and MPEG2 outputs. Use Insert AFD signaling (AfdSignaling) to specify
+     * whether the service includes AFD values in the output video data and what those values are. * Choose None to
+     * remove all AFD values from this output. * Choose Fixed to ignore input AFD values and instead encode the value
+     * specified in the job. * Choose Auto to calculate output AFD values based on the input AFD scaler data.
      */
+    private String afdSignaling;
+    /**
+     * The anti-alias filter is automatically applied to all outputs. The service no longer accepts the value DISABLED
+     * for AntiAlias. If you specify that in your job, the service will ignore the setting.
+     */
+    private String antiAlias;
+    /**
+     * Video codec settings, (CodecSettings) under (VideoDescription), contains the group of settings related to video
+     * encoding. The settings in this group vary depending on the value that you choose for Video codec (Codec). For
+     * each codec enum that you choose, define the corresponding settings object. The following lists the codec enum,
+     * settings object pairs. * H_264, H264Settings * H_265, H265Settings * MPEG2, Mpeg2Settings * PRORES, ProresSettings
+     * * FRAME_CAPTURE, FrameCaptureSettings
+     */
+    private VideoCodecSettings codecSettings;
+    /**
+     * Choose Insert (INSERT) for this setting to include color metadata in this output. Choose Ignore (IGNORE) to
+     * exclude color metadata from this output. If you don't specify a value, the service sets this to Insert by
+     * default.
+     */
+    private String colorMetadata;
+    /** Use Cropping selection (crop) to specify the video area that the service will include in the output video frame. */
     private Rectangle crop;
-
+    /**
+     * Applies only to 29.97 fps outputs. When this feature is enabled, the service will use drop-frame timecode on
+     * outputs. If it is not possible to use drop-frame timecode, the system will fall back to non-drop-frame. This
+     * setting is enabled by default when Timecode insertion (TimecodeInsertion) is enabled.
+     */
     private String dropFrameTimecode;
     /**
      * Applies only if you set AFD Signaling(AfdSignaling) to Fixed (FIXED). Use Fixed (FixedAfd) to specify a four-bit
@@ -53,22 +71,42 @@ public class VideoDescription implements Serializable, Cloneable, StructuredPojo
      */
     private Integer height;
     /**
-     * Use Position (Position) to point to a rectangle object to define your position. This setting overrides any other
-     * aspect ratio.
+     * Use Selection placement (position) to define the video area in your output frame. The area outside of the
+     * rectangle that you specify here is black.
      */
     private Rectangle position;
-
+    /**
+     * Use Respond to AFD (RespondToAfd) to specify how the service changes the video itself in response to AFD values
+     * in the input. * Choose Respond to clip the input video frame according to the AFD value, input display aspect
+     * ratio, and output display aspect ratio. * Choose Passthrough to include the input AFD values. Do not choose this
+     * when AfdSignaling is set to (NONE). A preferred implementation of this workflow is to set RespondToAfd to (NONE)
+     * and set AfdSignaling to (AUTO). * Choose None to remove all input AFD values from this output.
+     */
     private String respondToAfd;
-
+    /**
+     * Specify how the service handles outputs that have a different aspect ratio from the input aspect ratio. Choose
+     * Stretch to output (STRETCH_TO_OUTPUT) to have the service stretch your video image to fit. Keep the setting
+     * Default (DEFAULT) to have the service letterbox your video instead. This setting overrides any value that you
+     * specify for the setting Selection placement (position) in this output.
+     */
     private String scalingBehavior;
     /**
-     * Use Sharpness (Sharpness)setting to specify the strength of anti-aliasing. This setting changes the width of the
+     * Use Sharpness (Sharpness) setting to specify the strength of anti-aliasing. This setting changes the width of the
      * anti-alias filter kernel used for scaling. Sharpness only applies if your output resolution is different from
-     * your input resolution, and if you set Anti-alias (AntiAlias) to ENABLED. 0 is the softest setting, 100 the
-     * sharpest, and 50 recommended for most content.
+     * your input resolution. 0 is the softest setting, 100 the sharpest, and 50 recommended for most content.
      */
     private Integer sharpness;
-
+    /**
+     * Applies only to H.264, H.265, MPEG2, and ProRes outputs. Only enable Timecode insertion when the input frame rate
+     * is identical to the output frame rate. To include timecodes in this output, set Timecode insertion
+     * (VideoTimecodeInsertion) to PIC_TIMING_SEI. To leave them out, set it to DISABLED. Default is DISABLED. When the
+     * service inserts timecodes in an output, by default, it uses any embedded timecodes from the input. If none are
+     * present, the service will set the timecode for the first output frame to zero. To change this default behavior,
+     * adjust the settings under Timecode configuration (TimecodeConfig). In the console, these settings are located
+     * under Job > Job settings > Timecode configuration. Note - Timecode source under input settings
+     * (InputTimecodeSource) does not affect the timecodes that are inserted in the output. Source under Job settings >
+     * Timecode configuration (TimecodeSource) does.
+     */
     private String timecodeInsertion;
     /**
      * Find additional transcoding features under Preprocessors (VideoPreprocessors). Enable the features at each output
@@ -82,7 +120,17 @@ public class VideoDescription implements Serializable, Cloneable, StructuredPojo
     private Integer width;
 
     /**
+     * This setting only applies to H.264, H.265, and MPEG2 outputs. Use Insert AFD signaling (AfdSignaling) to specify
+     * whether the service includes AFD values in the output video data and what those values are. * Choose None to
+     * remove all AFD values from this output. * Choose Fixed to ignore input AFD values and instead encode the value
+     * specified in the job. * Choose Auto to calculate output AFD values based on the input AFD scaler data.
+     * 
      * @param afdSignaling
+     *        This setting only applies to H.264, H.265, and MPEG2 outputs. Use Insert AFD signaling (AfdSignaling) to
+     *        specify whether the service includes AFD values in the output video data and what those values are. *
+     *        Choose None to remove all AFD values from this output. * Choose Fixed to ignore input AFD values and
+     *        instead encode the value specified in the job. * Choose Auto to calculate output AFD values based on the
+     *        input AFD scaler data.
      * @see AfdSignaling
      */
 
@@ -91,7 +139,16 @@ public class VideoDescription implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * @return
+     * This setting only applies to H.264, H.265, and MPEG2 outputs. Use Insert AFD signaling (AfdSignaling) to specify
+     * whether the service includes AFD values in the output video data and what those values are. * Choose None to
+     * remove all AFD values from this output. * Choose Fixed to ignore input AFD values and instead encode the value
+     * specified in the job. * Choose Auto to calculate output AFD values based on the input AFD scaler data.
+     * 
+     * @return This setting only applies to H.264, H.265, and MPEG2 outputs. Use Insert AFD signaling (AfdSignaling) to
+     *         specify whether the service includes AFD values in the output video data and what those values are. *
+     *         Choose None to remove all AFD values from this output. * Choose Fixed to ignore input AFD values and
+     *         instead encode the value specified in the job. * Choose Auto to calculate output AFD values based on the
+     *         input AFD scaler data.
      * @see AfdSignaling
      */
 
@@ -100,7 +157,17 @@ public class VideoDescription implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
+     * This setting only applies to H.264, H.265, and MPEG2 outputs. Use Insert AFD signaling (AfdSignaling) to specify
+     * whether the service includes AFD values in the output video data and what those values are. * Choose None to
+     * remove all AFD values from this output. * Choose Fixed to ignore input AFD values and instead encode the value
+     * specified in the job. * Choose Auto to calculate output AFD values based on the input AFD scaler data.
+     * 
      * @param afdSignaling
+     *        This setting only applies to H.264, H.265, and MPEG2 outputs. Use Insert AFD signaling (AfdSignaling) to
+     *        specify whether the service includes AFD values in the output video data and what those values are. *
+     *        Choose None to remove all AFD values from this output. * Choose Fixed to ignore input AFD values and
+     *        instead encode the value specified in the job. * Choose Auto to calculate output AFD values based on the
+     *        input AFD scaler data.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see AfdSignaling
      */
@@ -111,7 +178,17 @@ public class VideoDescription implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
+     * This setting only applies to H.264, H.265, and MPEG2 outputs. Use Insert AFD signaling (AfdSignaling) to specify
+     * whether the service includes AFD values in the output video data and what those values are. * Choose None to
+     * remove all AFD values from this output. * Choose Fixed to ignore input AFD values and instead encode the value
+     * specified in the job. * Choose Auto to calculate output AFD values based on the input AFD scaler data.
+     * 
      * @param afdSignaling
+     *        This setting only applies to H.264, H.265, and MPEG2 outputs. Use Insert AFD signaling (AfdSignaling) to
+     *        specify whether the service includes AFD values in the output video data and what those values are. *
+     *        Choose None to remove all AFD values from this output. * Choose Fixed to ignore input AFD values and
+     *        instead encode the value specified in the job. * Choose Auto to calculate output AFD values based on the
+     *        input AFD scaler data.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see AfdSignaling
      */
@@ -122,7 +199,12 @@ public class VideoDescription implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
+     * The anti-alias filter is automatically applied to all outputs. The service no longer accepts the value DISABLED
+     * for AntiAlias. If you specify that in your job, the service will ignore the setting.
+     * 
      * @param antiAlias
+     *        The anti-alias filter is automatically applied to all outputs. The service no longer accepts the value
+     *        DISABLED for AntiAlias. If you specify that in your job, the service will ignore the setting.
      * @see AntiAlias
      */
 
@@ -131,7 +213,11 @@ public class VideoDescription implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * @return
+     * The anti-alias filter is automatically applied to all outputs. The service no longer accepts the value DISABLED
+     * for AntiAlias. If you specify that in your job, the service will ignore the setting.
+     * 
+     * @return The anti-alias filter is automatically applied to all outputs. The service no longer accepts the value
+     *         DISABLED for AntiAlias. If you specify that in your job, the service will ignore the setting.
      * @see AntiAlias
      */
 
@@ -140,7 +226,12 @@ public class VideoDescription implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
+     * The anti-alias filter is automatically applied to all outputs. The service no longer accepts the value DISABLED
+     * for AntiAlias. If you specify that in your job, the service will ignore the setting.
+     * 
      * @param antiAlias
+     *        The anti-alias filter is automatically applied to all outputs. The service no longer accepts the value
+     *        DISABLED for AntiAlias. If you specify that in your job, the service will ignore the setting.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see AntiAlias
      */
@@ -151,7 +242,12 @@ public class VideoDescription implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
+     * The anti-alias filter is automatically applied to all outputs. The service no longer accepts the value DISABLED
+     * for AntiAlias. If you specify that in your job, the service will ignore the setting.
+     * 
      * @param antiAlias
+     *        The anti-alias filter is automatically applied to all outputs. The service no longer accepts the value
+     *        DISABLED for AntiAlias. If you specify that in your job, the service will ignore the setting.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see AntiAlias
      */
@@ -162,7 +258,18 @@ public class VideoDescription implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
+     * Video codec settings, (CodecSettings) under (VideoDescription), contains the group of settings related to video
+     * encoding. The settings in this group vary depending on the value that you choose for Video codec (Codec). For
+     * each codec enum that you choose, define the corresponding settings object. The following lists the codec enum,
+     * settings object pairs. * H_264, H264Settings * H_265, H265Settings * MPEG2, Mpeg2Settings * PRORES, ProresSettings
+     * * FRAME_CAPTURE, FrameCaptureSettings
+     * 
      * @param codecSettings
+     *        Video codec settings, (CodecSettings) under (VideoDescription), contains the group of settings related to
+     *        video encoding. The settings in this group vary depending on the value that you choose for Video codec
+     *        (Codec). For each codec enum that you choose, define the corresponding settings object. The following
+     *        lists the codec enum, settings object pairs. * H_264, H264Settings * H_265, H265Settings * MPEG2,
+     *        Mpeg2Settings * PRORES, ProresSettings * FRAME_CAPTURE, FrameCaptureSettings
      */
 
     public void setCodecSettings(VideoCodecSettings codecSettings) {
@@ -170,7 +277,17 @@ public class VideoDescription implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * @return
+     * Video codec settings, (CodecSettings) under (VideoDescription), contains the group of settings related to video
+     * encoding. The settings in this group vary depending on the value that you choose for Video codec (Codec). For
+     * each codec enum that you choose, define the corresponding settings object. The following lists the codec enum,
+     * settings object pairs. * H_264, H264Settings * H_265, H265Settings * MPEG2, Mpeg2Settings * PRORES, ProresSettings
+     * * FRAME_CAPTURE, FrameCaptureSettings
+     * 
+     * @return Video codec settings, (CodecSettings) under (VideoDescription), contains the group of settings related to
+     *         video encoding. The settings in this group vary depending on the value that you choose for Video codec
+     *         (Codec). For each codec enum that you choose, define the corresponding settings object. The following
+     *         lists the codec enum, settings object pairs. * H_264, H264Settings * H_265, H265Settings * MPEG2,
+     *         Mpeg2Settings * PRORES, ProresSettings * FRAME_CAPTURE, FrameCaptureSettings
      */
 
     public VideoCodecSettings getCodecSettings() {
@@ -178,7 +295,18 @@ public class VideoDescription implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
+     * Video codec settings, (CodecSettings) under (VideoDescription), contains the group of settings related to video
+     * encoding. The settings in this group vary depending on the value that you choose for Video codec (Codec). For
+     * each codec enum that you choose, define the corresponding settings object. The following lists the codec enum,
+     * settings object pairs. * H_264, H264Settings * H_265, H265Settings * MPEG2, Mpeg2Settings * PRORES, ProresSettings
+     * * FRAME_CAPTURE, FrameCaptureSettings
+     * 
      * @param codecSettings
+     *        Video codec settings, (CodecSettings) under (VideoDescription), contains the group of settings related to
+     *        video encoding. The settings in this group vary depending on the value that you choose for Video codec
+     *        (Codec). For each codec enum that you choose, define the corresponding settings object. The following
+     *        lists the codec enum, settings object pairs. * H_264, H264Settings * H_265, H265Settings * MPEG2,
+     *        Mpeg2Settings * PRORES, ProresSettings * FRAME_CAPTURE, FrameCaptureSettings
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -188,7 +316,14 @@ public class VideoDescription implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
+     * Choose Insert (INSERT) for this setting to include color metadata in this output. Choose Ignore (IGNORE) to
+     * exclude color metadata from this output. If you don't specify a value, the service sets this to Insert by
+     * default.
+     * 
      * @param colorMetadata
+     *        Choose Insert (INSERT) for this setting to include color metadata in this output. Choose Ignore (IGNORE)
+     *        to exclude color metadata from this output. If you don't specify a value, the service sets this to Insert
+     *        by default.
      * @see ColorMetadata
      */
 
@@ -197,7 +332,13 @@ public class VideoDescription implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * @return
+     * Choose Insert (INSERT) for this setting to include color metadata in this output. Choose Ignore (IGNORE) to
+     * exclude color metadata from this output. If you don't specify a value, the service sets this to Insert by
+     * default.
+     * 
+     * @return Choose Insert (INSERT) for this setting to include color metadata in this output. Choose Ignore (IGNORE)
+     *         to exclude color metadata from this output. If you don't specify a value, the service sets this to Insert
+     *         by default.
      * @see ColorMetadata
      */
 
@@ -206,7 +347,14 @@ public class VideoDescription implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
+     * Choose Insert (INSERT) for this setting to include color metadata in this output. Choose Ignore (IGNORE) to
+     * exclude color metadata from this output. If you don't specify a value, the service sets this to Insert by
+     * default.
+     * 
      * @param colorMetadata
+     *        Choose Insert (INSERT) for this setting to include color metadata in this output. Choose Ignore (IGNORE)
+     *        to exclude color metadata from this output. If you don't specify a value, the service sets this to Insert
+     *        by default.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see ColorMetadata
      */
@@ -217,7 +365,14 @@ public class VideoDescription implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
+     * Choose Insert (INSERT) for this setting to include color metadata in this output. Choose Ignore (IGNORE) to
+     * exclude color metadata from this output. If you don't specify a value, the service sets this to Insert by
+     * default.
+     * 
      * @param colorMetadata
+     *        Choose Insert (INSERT) for this setting to include color metadata in this output. Choose Ignore (IGNORE)
+     *        to exclude color metadata from this output. If you don't specify a value, the service sets this to Insert
+     *        by default.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see ColorMetadata
      */
@@ -228,16 +383,11 @@ public class VideoDescription implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * Applies only if your input aspect ratio is different from your output aspect ratio. Use Input cropping rectangle
-     * (Crop) to specify the video area the service will include in the output. This will crop the input source, causing
-     * video pixels to be removed on encode. Do not use this setting if you have enabled Stretch to output
-     * (stretchToOutput) in your output settings.
+     * Use Cropping selection (crop) to specify the video area that the service will include in the output video frame.
      * 
      * @param crop
-     *        Applies only if your input aspect ratio is different from your output aspect ratio. Use Input cropping
-     *        rectangle (Crop) to specify the video area the service will include in the output. This will crop the
-     *        input source, causing video pixels to be removed on encode. Do not use this setting if you have enabled
-     *        Stretch to output (stretchToOutput) in your output settings.
+     *        Use Cropping selection (crop) to specify the video area that the service will include in the output video
+     *        frame.
      */
 
     public void setCrop(Rectangle crop) {
@@ -245,15 +395,10 @@ public class VideoDescription implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * Applies only if your input aspect ratio is different from your output aspect ratio. Use Input cropping rectangle
-     * (Crop) to specify the video area the service will include in the output. This will crop the input source, causing
-     * video pixels to be removed on encode. Do not use this setting if you have enabled Stretch to output
-     * (stretchToOutput) in your output settings.
+     * Use Cropping selection (crop) to specify the video area that the service will include in the output video frame.
      * 
-     * @return Applies only if your input aspect ratio is different from your output aspect ratio. Use Input cropping
-     *         rectangle (Crop) to specify the video area the service will include in the output. This will crop the
-     *         input source, causing video pixels to be removed on encode. Do not use this setting if you have enabled
-     *         Stretch to output (stretchToOutput) in your output settings.
+     * @return Use Cropping selection (crop) to specify the video area that the service will include in the output video
+     *         frame.
      */
 
     public Rectangle getCrop() {
@@ -261,16 +406,11 @@ public class VideoDescription implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * Applies only if your input aspect ratio is different from your output aspect ratio. Use Input cropping rectangle
-     * (Crop) to specify the video area the service will include in the output. This will crop the input source, causing
-     * video pixels to be removed on encode. Do not use this setting if you have enabled Stretch to output
-     * (stretchToOutput) in your output settings.
+     * Use Cropping selection (crop) to specify the video area that the service will include in the output video frame.
      * 
      * @param crop
-     *        Applies only if your input aspect ratio is different from your output aspect ratio. Use Input cropping
-     *        rectangle (Crop) to specify the video area the service will include in the output. This will crop the
-     *        input source, causing video pixels to be removed on encode. Do not use this setting if you have enabled
-     *        Stretch to output (stretchToOutput) in your output settings.
+     *        Use Cropping selection (crop) to specify the video area that the service will include in the output video
+     *        frame.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -280,7 +420,14 @@ public class VideoDescription implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
+     * Applies only to 29.97 fps outputs. When this feature is enabled, the service will use drop-frame timecode on
+     * outputs. If it is not possible to use drop-frame timecode, the system will fall back to non-drop-frame. This
+     * setting is enabled by default when Timecode insertion (TimecodeInsertion) is enabled.
+     * 
      * @param dropFrameTimecode
+     *        Applies only to 29.97 fps outputs. When this feature is enabled, the service will use drop-frame timecode
+     *        on outputs. If it is not possible to use drop-frame timecode, the system will fall back to non-drop-frame.
+     *        This setting is enabled by default when Timecode insertion (TimecodeInsertion) is enabled.
      * @see DropFrameTimecode
      */
 
@@ -289,7 +436,14 @@ public class VideoDescription implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * @return
+     * Applies only to 29.97 fps outputs. When this feature is enabled, the service will use drop-frame timecode on
+     * outputs. If it is not possible to use drop-frame timecode, the system will fall back to non-drop-frame. This
+     * setting is enabled by default when Timecode insertion (TimecodeInsertion) is enabled.
+     * 
+     * @return Applies only to 29.97 fps outputs. When this feature is enabled, the service will use drop-frame timecode
+     *         on outputs. If it is not possible to use drop-frame timecode, the system will fall back to
+     *         non-drop-frame. This setting is enabled by default when Timecode insertion (TimecodeInsertion) is
+     *         enabled.
      * @see DropFrameTimecode
      */
 
@@ -298,7 +452,14 @@ public class VideoDescription implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
+     * Applies only to 29.97 fps outputs. When this feature is enabled, the service will use drop-frame timecode on
+     * outputs. If it is not possible to use drop-frame timecode, the system will fall back to non-drop-frame. This
+     * setting is enabled by default when Timecode insertion (TimecodeInsertion) is enabled.
+     * 
      * @param dropFrameTimecode
+     *        Applies only to 29.97 fps outputs. When this feature is enabled, the service will use drop-frame timecode
+     *        on outputs. If it is not possible to use drop-frame timecode, the system will fall back to non-drop-frame.
+     *        This setting is enabled by default when Timecode insertion (TimecodeInsertion) is enabled.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see DropFrameTimecode
      */
@@ -309,7 +470,14 @@ public class VideoDescription implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
+     * Applies only to 29.97 fps outputs. When this feature is enabled, the service will use drop-frame timecode on
+     * outputs. If it is not possible to use drop-frame timecode, the system will fall back to non-drop-frame. This
+     * setting is enabled by default when Timecode insertion (TimecodeInsertion) is enabled.
+     * 
      * @param dropFrameTimecode
+     *        Applies only to 29.97 fps outputs. When this feature is enabled, the service will use drop-frame timecode
+     *        on outputs. If it is not possible to use drop-frame timecode, the system will fall back to non-drop-frame.
+     *        This setting is enabled by default when Timecode insertion (TimecodeInsertion) is enabled.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see DropFrameTimecode
      */
@@ -400,12 +568,12 @@ public class VideoDescription implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * Use Position (Position) to point to a rectangle object to define your position. This setting overrides any other
-     * aspect ratio.
+     * Use Selection placement (position) to define the video area in your output frame. The area outside of the
+     * rectangle that you specify here is black.
      * 
      * @param position
-     *        Use Position (Position) to point to a rectangle object to define your position. This setting overrides any
-     *        other aspect ratio.
+     *        Use Selection placement (position) to define the video area in your output frame. The area outside of the
+     *        rectangle that you specify here is black.
      */
 
     public void setPosition(Rectangle position) {
@@ -413,11 +581,11 @@ public class VideoDescription implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * Use Position (Position) to point to a rectangle object to define your position. This setting overrides any other
-     * aspect ratio.
+     * Use Selection placement (position) to define the video area in your output frame. The area outside of the
+     * rectangle that you specify here is black.
      * 
-     * @return Use Position (Position) to point to a rectangle object to define your position. This setting overrides
-     *         any other aspect ratio.
+     * @return Use Selection placement (position) to define the video area in your output frame. The area outside of the
+     *         rectangle that you specify here is black.
      */
 
     public Rectangle getPosition() {
@@ -425,12 +593,12 @@ public class VideoDescription implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * Use Position (Position) to point to a rectangle object to define your position. This setting overrides any other
-     * aspect ratio.
+     * Use Selection placement (position) to define the video area in your output frame. The area outside of the
+     * rectangle that you specify here is black.
      * 
      * @param position
-     *        Use Position (Position) to point to a rectangle object to define your position. This setting overrides any
-     *        other aspect ratio.
+     *        Use Selection placement (position) to define the video area in your output frame. The area outside of the
+     *        rectangle that you specify here is black.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -440,7 +608,19 @@ public class VideoDescription implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
+     * Use Respond to AFD (RespondToAfd) to specify how the service changes the video itself in response to AFD values
+     * in the input. * Choose Respond to clip the input video frame according to the AFD value, input display aspect
+     * ratio, and output display aspect ratio. * Choose Passthrough to include the input AFD values. Do not choose this
+     * when AfdSignaling is set to (NONE). A preferred implementation of this workflow is to set RespondToAfd to (NONE)
+     * and set AfdSignaling to (AUTO). * Choose None to remove all input AFD values from this output.
+     * 
      * @param respondToAfd
+     *        Use Respond to AFD (RespondToAfd) to specify how the service changes the video itself in response to AFD
+     *        values in the input. * Choose Respond to clip the input video frame according to the AFD value, input
+     *        display aspect ratio, and output display aspect ratio. * Choose Passthrough to include the input AFD
+     *        values. Do not choose this when AfdSignaling is set to (NONE). A preferred implementation of this workflow
+     *        is to set RespondToAfd to (NONE) and set AfdSignaling to (AUTO). * Choose None to remove all input AFD
+     *        values from this output.
      * @see RespondToAfd
      */
 
@@ -449,7 +629,18 @@ public class VideoDescription implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * @return
+     * Use Respond to AFD (RespondToAfd) to specify how the service changes the video itself in response to AFD values
+     * in the input. * Choose Respond to clip the input video frame according to the AFD value, input display aspect
+     * ratio, and output display aspect ratio. * Choose Passthrough to include the input AFD values. Do not choose this
+     * when AfdSignaling is set to (NONE). A preferred implementation of this workflow is to set RespondToAfd to (NONE)
+     * and set AfdSignaling to (AUTO). * Choose None to remove all input AFD values from this output.
+     * 
+     * @return Use Respond to AFD (RespondToAfd) to specify how the service changes the video itself in response to AFD
+     *         values in the input. * Choose Respond to clip the input video frame according to the AFD value, input
+     *         display aspect ratio, and output display aspect ratio. * Choose Passthrough to include the input AFD
+     *         values. Do not choose this when AfdSignaling is set to (NONE). A preferred implementation of this
+     *         workflow is to set RespondToAfd to (NONE) and set AfdSignaling to (AUTO). * Choose None to remove all
+     *         input AFD values from this output.
      * @see RespondToAfd
      */
 
@@ -458,7 +649,19 @@ public class VideoDescription implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
+     * Use Respond to AFD (RespondToAfd) to specify how the service changes the video itself in response to AFD values
+     * in the input. * Choose Respond to clip the input video frame according to the AFD value, input display aspect
+     * ratio, and output display aspect ratio. * Choose Passthrough to include the input AFD values. Do not choose this
+     * when AfdSignaling is set to (NONE). A preferred implementation of this workflow is to set RespondToAfd to (NONE)
+     * and set AfdSignaling to (AUTO). * Choose None to remove all input AFD values from this output.
+     * 
      * @param respondToAfd
+     *        Use Respond to AFD (RespondToAfd) to specify how the service changes the video itself in response to AFD
+     *        values in the input. * Choose Respond to clip the input video frame according to the AFD value, input
+     *        display aspect ratio, and output display aspect ratio. * Choose Passthrough to include the input AFD
+     *        values. Do not choose this when AfdSignaling is set to (NONE). A preferred implementation of this workflow
+     *        is to set RespondToAfd to (NONE) and set AfdSignaling to (AUTO). * Choose None to remove all input AFD
+     *        values from this output.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see RespondToAfd
      */
@@ -469,7 +672,19 @@ public class VideoDescription implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
+     * Use Respond to AFD (RespondToAfd) to specify how the service changes the video itself in response to AFD values
+     * in the input. * Choose Respond to clip the input video frame according to the AFD value, input display aspect
+     * ratio, and output display aspect ratio. * Choose Passthrough to include the input AFD values. Do not choose this
+     * when AfdSignaling is set to (NONE). A preferred implementation of this workflow is to set RespondToAfd to (NONE)
+     * and set AfdSignaling to (AUTO). * Choose None to remove all input AFD values from this output.
+     * 
      * @param respondToAfd
+     *        Use Respond to AFD (RespondToAfd) to specify how the service changes the video itself in response to AFD
+     *        values in the input. * Choose Respond to clip the input video frame according to the AFD value, input
+     *        display aspect ratio, and output display aspect ratio. * Choose Passthrough to include the input AFD
+     *        values. Do not choose this when AfdSignaling is set to (NONE). A preferred implementation of this workflow
+     *        is to set RespondToAfd to (NONE) and set AfdSignaling to (AUTO). * Choose None to remove all input AFD
+     *        values from this output.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see RespondToAfd
      */
@@ -480,7 +695,16 @@ public class VideoDescription implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
+     * Specify how the service handles outputs that have a different aspect ratio from the input aspect ratio. Choose
+     * Stretch to output (STRETCH_TO_OUTPUT) to have the service stretch your video image to fit. Keep the setting
+     * Default (DEFAULT) to have the service letterbox your video instead. This setting overrides any value that you
+     * specify for the setting Selection placement (position) in this output.
+     * 
      * @param scalingBehavior
+     *        Specify how the service handles outputs that have a different aspect ratio from the input aspect ratio.
+     *        Choose Stretch to output (STRETCH_TO_OUTPUT) to have the service stretch your video image to fit. Keep the
+     *        setting Default (DEFAULT) to have the service letterbox your video instead. This setting overrides any
+     *        value that you specify for the setting Selection placement (position) in this output.
      * @see ScalingBehavior
      */
 
@@ -489,7 +713,15 @@ public class VideoDescription implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * @return
+     * Specify how the service handles outputs that have a different aspect ratio from the input aspect ratio. Choose
+     * Stretch to output (STRETCH_TO_OUTPUT) to have the service stretch your video image to fit. Keep the setting
+     * Default (DEFAULT) to have the service letterbox your video instead. This setting overrides any value that you
+     * specify for the setting Selection placement (position) in this output.
+     * 
+     * @return Specify how the service handles outputs that have a different aspect ratio from the input aspect ratio.
+     *         Choose Stretch to output (STRETCH_TO_OUTPUT) to have the service stretch your video image to fit. Keep
+     *         the setting Default (DEFAULT) to have the service letterbox your video instead. This setting overrides
+     *         any value that you specify for the setting Selection placement (position) in this output.
      * @see ScalingBehavior
      */
 
@@ -498,7 +730,16 @@ public class VideoDescription implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
+     * Specify how the service handles outputs that have a different aspect ratio from the input aspect ratio. Choose
+     * Stretch to output (STRETCH_TO_OUTPUT) to have the service stretch your video image to fit. Keep the setting
+     * Default (DEFAULT) to have the service letterbox your video instead. This setting overrides any value that you
+     * specify for the setting Selection placement (position) in this output.
+     * 
      * @param scalingBehavior
+     *        Specify how the service handles outputs that have a different aspect ratio from the input aspect ratio.
+     *        Choose Stretch to output (STRETCH_TO_OUTPUT) to have the service stretch your video image to fit. Keep the
+     *        setting Default (DEFAULT) to have the service letterbox your video instead. This setting overrides any
+     *        value that you specify for the setting Selection placement (position) in this output.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see ScalingBehavior
      */
@@ -509,7 +750,16 @@ public class VideoDescription implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
+     * Specify how the service handles outputs that have a different aspect ratio from the input aspect ratio. Choose
+     * Stretch to output (STRETCH_TO_OUTPUT) to have the service stretch your video image to fit. Keep the setting
+     * Default (DEFAULT) to have the service letterbox your video instead. This setting overrides any value that you
+     * specify for the setting Selection placement (position) in this output.
+     * 
      * @param scalingBehavior
+     *        Specify how the service handles outputs that have a different aspect ratio from the input aspect ratio.
+     *        Choose Stretch to output (STRETCH_TO_OUTPUT) to have the service stretch your video image to fit. Keep the
+     *        setting Default (DEFAULT) to have the service letterbox your video instead. This setting overrides any
+     *        value that you specify for the setting Selection placement (position) in this output.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see ScalingBehavior
      */
@@ -520,16 +770,15 @@ public class VideoDescription implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * Use Sharpness (Sharpness)setting to specify the strength of anti-aliasing. This setting changes the width of the
+     * Use Sharpness (Sharpness) setting to specify the strength of anti-aliasing. This setting changes the width of the
      * anti-alias filter kernel used for scaling. Sharpness only applies if your output resolution is different from
-     * your input resolution, and if you set Anti-alias (AntiAlias) to ENABLED. 0 is the softest setting, 100 the
-     * sharpest, and 50 recommended for most content.
+     * your input resolution. 0 is the softest setting, 100 the sharpest, and 50 recommended for most content.
      * 
      * @param sharpness
-     *        Use Sharpness (Sharpness)setting to specify the strength of anti-aliasing. This setting changes the width
+     *        Use Sharpness (Sharpness) setting to specify the strength of anti-aliasing. This setting changes the width
      *        of the anti-alias filter kernel used for scaling. Sharpness only applies if your output resolution is
-     *        different from your input resolution, and if you set Anti-alias (AntiAlias) to ENABLED. 0 is the softest
-     *        setting, 100 the sharpest, and 50 recommended for most content.
+     *        different from your input resolution. 0 is the softest setting, 100 the sharpest, and 50 recommended for
+     *        most content.
      */
 
     public void setSharpness(Integer sharpness) {
@@ -537,15 +786,14 @@ public class VideoDescription implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * Use Sharpness (Sharpness)setting to specify the strength of anti-aliasing. This setting changes the width of the
+     * Use Sharpness (Sharpness) setting to specify the strength of anti-aliasing. This setting changes the width of the
      * anti-alias filter kernel used for scaling. Sharpness only applies if your output resolution is different from
-     * your input resolution, and if you set Anti-alias (AntiAlias) to ENABLED. 0 is the softest setting, 100 the
-     * sharpest, and 50 recommended for most content.
+     * your input resolution. 0 is the softest setting, 100 the sharpest, and 50 recommended for most content.
      * 
-     * @return Use Sharpness (Sharpness)setting to specify the strength of anti-aliasing. This setting changes the width
-     *         of the anti-alias filter kernel used for scaling. Sharpness only applies if your output resolution is
-     *         different from your input resolution, and if you set Anti-alias (AntiAlias) to ENABLED. 0 is the softest
-     *         setting, 100 the sharpest, and 50 recommended for most content.
+     * @return Use Sharpness (Sharpness) setting to specify the strength of anti-aliasing. This setting changes the
+     *         width of the anti-alias filter kernel used for scaling. Sharpness only applies if your output resolution
+     *         is different from your input resolution. 0 is the softest setting, 100 the sharpest, and 50 recommended
+     *         for most content.
      */
 
     public Integer getSharpness() {
@@ -553,16 +801,15 @@ public class VideoDescription implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * Use Sharpness (Sharpness)setting to specify the strength of anti-aliasing. This setting changes the width of the
+     * Use Sharpness (Sharpness) setting to specify the strength of anti-aliasing. This setting changes the width of the
      * anti-alias filter kernel used for scaling. Sharpness only applies if your output resolution is different from
-     * your input resolution, and if you set Anti-alias (AntiAlias) to ENABLED. 0 is the softest setting, 100 the
-     * sharpest, and 50 recommended for most content.
+     * your input resolution. 0 is the softest setting, 100 the sharpest, and 50 recommended for most content.
      * 
      * @param sharpness
-     *        Use Sharpness (Sharpness)setting to specify the strength of anti-aliasing. This setting changes the width
+     *        Use Sharpness (Sharpness) setting to specify the strength of anti-aliasing. This setting changes the width
      *        of the anti-alias filter kernel used for scaling. Sharpness only applies if your output resolution is
-     *        different from your input resolution, and if you set Anti-alias (AntiAlias) to ENABLED. 0 is the softest
-     *        setting, 100 the sharpest, and 50 recommended for most content.
+     *        different from your input resolution. 0 is the softest setting, 100 the sharpest, and 50 recommended for
+     *        most content.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -572,7 +819,26 @@ public class VideoDescription implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
+     * Applies only to H.264, H.265, MPEG2, and ProRes outputs. Only enable Timecode insertion when the input frame rate
+     * is identical to the output frame rate. To include timecodes in this output, set Timecode insertion
+     * (VideoTimecodeInsertion) to PIC_TIMING_SEI. To leave them out, set it to DISABLED. Default is DISABLED. When the
+     * service inserts timecodes in an output, by default, it uses any embedded timecodes from the input. If none are
+     * present, the service will set the timecode for the first output frame to zero. To change this default behavior,
+     * adjust the settings under Timecode configuration (TimecodeConfig). In the console, these settings are located
+     * under Job > Job settings > Timecode configuration. Note - Timecode source under input settings
+     * (InputTimecodeSource) does not affect the timecodes that are inserted in the output. Source under Job settings >
+     * Timecode configuration (TimecodeSource) does.
+     * 
      * @param timecodeInsertion
+     *        Applies only to H.264, H.265, MPEG2, and ProRes outputs. Only enable Timecode insertion when the input
+     *        frame rate is identical to the output frame rate. To include timecodes in this output, set Timecode
+     *        insertion (VideoTimecodeInsertion) to PIC_TIMING_SEI. To leave them out, set it to DISABLED. Default is
+     *        DISABLED. When the service inserts timecodes in an output, by default, it uses any embedded timecodes from
+     *        the input. If none are present, the service will set the timecode for the first output frame to zero. To
+     *        change this default behavior, adjust the settings under Timecode configuration (TimecodeConfig). In the
+     *        console, these settings are located under Job > Job settings > Timecode configuration. Note - Timecode
+     *        source under input settings (InputTimecodeSource) does not affect the timecodes that are inserted in the
+     *        output. Source under Job settings > Timecode configuration (TimecodeSource) does.
      * @see VideoTimecodeInsertion
      */
 
@@ -581,7 +847,25 @@ public class VideoDescription implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * @return
+     * Applies only to H.264, H.265, MPEG2, and ProRes outputs. Only enable Timecode insertion when the input frame rate
+     * is identical to the output frame rate. To include timecodes in this output, set Timecode insertion
+     * (VideoTimecodeInsertion) to PIC_TIMING_SEI. To leave them out, set it to DISABLED. Default is DISABLED. When the
+     * service inserts timecodes in an output, by default, it uses any embedded timecodes from the input. If none are
+     * present, the service will set the timecode for the first output frame to zero. To change this default behavior,
+     * adjust the settings under Timecode configuration (TimecodeConfig). In the console, these settings are located
+     * under Job > Job settings > Timecode configuration. Note - Timecode source under input settings
+     * (InputTimecodeSource) does not affect the timecodes that are inserted in the output. Source under Job settings >
+     * Timecode configuration (TimecodeSource) does.
+     * 
+     * @return Applies only to H.264, H.265, MPEG2, and ProRes outputs. Only enable Timecode insertion when the input
+     *         frame rate is identical to the output frame rate. To include timecodes in this output, set Timecode
+     *         insertion (VideoTimecodeInsertion) to PIC_TIMING_SEI. To leave them out, set it to DISABLED. Default is
+     *         DISABLED. When the service inserts timecodes in an output, by default, it uses any embedded timecodes
+     *         from the input. If none are present, the service will set the timecode for the first output frame to
+     *         zero. To change this default behavior, adjust the settings under Timecode configuration (TimecodeConfig).
+     *         In the console, these settings are located under Job > Job settings > Timecode configuration. Note -
+     *         Timecode source under input settings (InputTimecodeSource) does not affect the timecodes that are
+     *         inserted in the output. Source under Job settings > Timecode configuration (TimecodeSource) does.
      * @see VideoTimecodeInsertion
      */
 
@@ -590,7 +874,26 @@ public class VideoDescription implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
+     * Applies only to H.264, H.265, MPEG2, and ProRes outputs. Only enable Timecode insertion when the input frame rate
+     * is identical to the output frame rate. To include timecodes in this output, set Timecode insertion
+     * (VideoTimecodeInsertion) to PIC_TIMING_SEI. To leave them out, set it to DISABLED. Default is DISABLED. When the
+     * service inserts timecodes in an output, by default, it uses any embedded timecodes from the input. If none are
+     * present, the service will set the timecode for the first output frame to zero. To change this default behavior,
+     * adjust the settings under Timecode configuration (TimecodeConfig). In the console, these settings are located
+     * under Job > Job settings > Timecode configuration. Note - Timecode source under input settings
+     * (InputTimecodeSource) does not affect the timecodes that are inserted in the output. Source under Job settings >
+     * Timecode configuration (TimecodeSource) does.
+     * 
      * @param timecodeInsertion
+     *        Applies only to H.264, H.265, MPEG2, and ProRes outputs. Only enable Timecode insertion when the input
+     *        frame rate is identical to the output frame rate. To include timecodes in this output, set Timecode
+     *        insertion (VideoTimecodeInsertion) to PIC_TIMING_SEI. To leave them out, set it to DISABLED. Default is
+     *        DISABLED. When the service inserts timecodes in an output, by default, it uses any embedded timecodes from
+     *        the input. If none are present, the service will set the timecode for the first output frame to zero. To
+     *        change this default behavior, adjust the settings under Timecode configuration (TimecodeConfig). In the
+     *        console, these settings are located under Job > Job settings > Timecode configuration. Note - Timecode
+     *        source under input settings (InputTimecodeSource) does not affect the timecodes that are inserted in the
+     *        output. Source under Job settings > Timecode configuration (TimecodeSource) does.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see VideoTimecodeInsertion
      */
@@ -601,7 +904,26 @@ public class VideoDescription implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
+     * Applies only to H.264, H.265, MPEG2, and ProRes outputs. Only enable Timecode insertion when the input frame rate
+     * is identical to the output frame rate. To include timecodes in this output, set Timecode insertion
+     * (VideoTimecodeInsertion) to PIC_TIMING_SEI. To leave them out, set it to DISABLED. Default is DISABLED. When the
+     * service inserts timecodes in an output, by default, it uses any embedded timecodes from the input. If none are
+     * present, the service will set the timecode for the first output frame to zero. To change this default behavior,
+     * adjust the settings under Timecode configuration (TimecodeConfig). In the console, these settings are located
+     * under Job > Job settings > Timecode configuration. Note - Timecode source under input settings
+     * (InputTimecodeSource) does not affect the timecodes that are inserted in the output. Source under Job settings >
+     * Timecode configuration (TimecodeSource) does.
+     * 
      * @param timecodeInsertion
+     *        Applies only to H.264, H.265, MPEG2, and ProRes outputs. Only enable Timecode insertion when the input
+     *        frame rate is identical to the output frame rate. To include timecodes in this output, set Timecode
+     *        insertion (VideoTimecodeInsertion) to PIC_TIMING_SEI. To leave them out, set it to DISABLED. Default is
+     *        DISABLED. When the service inserts timecodes in an output, by default, it uses any embedded timecodes from
+     *        the input. If none are present, the service will set the timecode for the first output frame to zero. To
+     *        change this default behavior, adjust the settings under Timecode configuration (TimecodeConfig). In the
+     *        console, these settings are located under Job > Job settings > Timecode configuration. Note - Timecode
+     *        source under input settings (InputTimecodeSource) does not affect the timecodes that are inserted in the
+     *        output. Source under Job settings > Timecode configuration (TimecodeSource) does.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see VideoTimecodeInsertion
      */
@@ -692,7 +1014,8 @@ public class VideoDescription implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

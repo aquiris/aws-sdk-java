@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -37,6 +37,8 @@ import com.amazonaws.protocol.json.*;
 import com.amazonaws.util.AWSRequestMetrics.Field;
 import com.amazonaws.annotation.ThreadSafe;
 import com.amazonaws.client.AwsSyncClientParams;
+import com.amazonaws.client.builder.AdvancedConfig;
+
 import com.amazonaws.services.codecommit.AWSCodeCommitClientBuilder;
 
 import com.amazonaws.AmazonServiceException;
@@ -134,17 +136,42 @@ import com.amazonaws.services.codecommit.model.transform.*;
  * <ul>
  * <li>
  * <p>
- * <a>PutFile</a>, which adds or modifies a file in a specified repository and branch.
+ * <a>DeleteFile</a>, which deletes the content of a specified file from a specified branch.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>GetBlob</a>, which returns the base-64 encoded content of an individual Git blob object within a repository.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>GetFile</a>, which returns the base-64 encoded content of a specified file.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>GetFolder</a>, which returns the contents of a specified folder or directory.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>PutFile</a>, which adds or modifies a single file in a specified repository and branch.
  * </p>
  * </li>
  * </ul>
  * <p>
- * Information about committed code in a repository, by calling the following:
+ * Commits, by calling the following:
  * </p>
  * <ul>
  * <li>
  * <p>
- * <a>GetBlob</a>, which returns the base-64 encoded content of an individual Git blob object within a repository.
+ * <a>BatchGetCommits</a>, which returns information about one or more commits in a repository
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>CreateCommit</a>, which creates a commit for changes to a repository.
  * </p>
  * </li>
  * <li>
@@ -157,6 +184,61 @@ import com.amazonaws.services.codecommit.model.transform.*;
  * <p>
  * <a>GetDifferences</a>, which returns information about the differences in a valid commit specifier (such as a branch,
  * tag, HEAD, commit ID or other fully qualified reference).
+ * </p>
+ * </li>
+ * </ul>
+ * <p>
+ * Merges, by calling the following:
+ * </p>
+ * <ul>
+ * <li>
+ * <p>
+ * <a>BatchDescribeMergeConflicts</a>, which returns information about conflicts in a merge between commits in a
+ * repository.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>CreateUnreferencedMergeCommit</a>, which creates an unreferenced commit between two branches or commits for the
+ * purpose of comparing them and identifying any potential conflicts.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>DescribeMergeConflicts</a>, which returns information about merge conflicts between the base, source, and
+ * destination versions of a file in a potential merge.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>GetMergeCommit</a>, which returns information about the merge between a source and destination commit.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>GetMergeConflicts</a>, which returns information about merge conflicts between the source and destination branch
+ * in a pull request.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>GetMergeOptions</a>, which returns information about the available merge options between two branches or commit
+ * specifiers.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>MergeBranchesByFastForward</a>, which merges two branches using the fast-forward merge option.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>MergeBranchesBySquash</a>, which merges two branches using the squash merge option.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>MergeBranchesByThreeWay</a>, which merges two branches using the three-way merge option.
  * </p>
  * </li>
  * </ul>
@@ -181,12 +263,6 @@ import com.amazonaws.services.codecommit.model.transform.*;
  * </li>
  * <li>
  * <p>
- * <a>GetMergeConflicts</a>, which returns information about merge conflicts between the source and destination branch
- * in a pull request.
- * </p>
- * </li>
- * <li>
- * <p>
  * <a>GetPullRequest</a>, which returns information about a specified pull request.
  * </p>
  * </li>
@@ -199,6 +275,18 @@ import com.amazonaws.services.codecommit.model.transform.*;
  * <p>
  * <a>MergePullRequestByFastForward</a>, which merges the source destination branch of a pull request into the specified
  * destination branch for that pull request using the fast-forward merge option.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>MergePullRequestBySquash</a>, which merges the source destination branch of a pull request into the specified
+ * destination branch for that pull request using the squash merge option.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>MergePullRequestByThreeWay</a>. which merges the source destination branch of a pull request into the specified
+ * destination branch for that pull request using the three-way merge option.
  * </p>
  * </li>
  * <li>
@@ -223,7 +311,7 @@ import com.amazonaws.services.codecommit.model.transform.*;
  * </li>
  * </ul>
  * <p>
- * Information about comments in a repository, by calling the following:
+ * Comments in a repository, by calling the following:
  * </p>
  * <ul>
  * <li>
@@ -260,6 +348,27 @@ import com.amazonaws.services.codecommit.model.transform.*;
  * </li>
  * </ul>
  * <p>
+ * Tags used to tag resources in AWS CodeCommit (not Git tags), by calling the following:
+ * </p>
+ * <ul>
+ * <li>
+ * <p>
+ * <a>ListTagsForResource</a>, which gets information about AWS tags for a specified Amazon Resource Name (ARN) in AWS
+ * CodeCommit.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>TagResource</a>, which adds or updates tags for a resource in AWS CodeCommit.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>UntagResource</a>, which removes tags for a resource in AWS CodeCommit.
+ * </p>
+ * </li>
+ * </ul>
+ * <p>
  * Triggers, by calling the following:
  * </p>
  * <ul>
@@ -283,12 +392,13 @@ import com.amazonaws.services.codecommit.model.transform.*;
  * </ul>
  * <p>
  * For information about how to use AWS CodeCommit, see the <a
- * href="http://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html">AWS CodeCommit User Guide</a>.
+ * href="https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html">AWS CodeCommit User Guide</a>.
  * </p>
  */
 @ThreadSafe
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCodeCommit {
+
     /** Provider for AWS credentials. */
     private final AWSCredentialsProvider awsCredentialsProvider;
 
@@ -300,342 +410,474 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
     /** Client configuration factory providing ClientConfigurations tailored to this client */
     protected static final ClientConfigurationFactory configFactory = new ClientConfigurationFactory();
 
+    private final AdvancedConfig advancedConfig;
+
     private static final com.amazonaws.protocol.json.SdkJsonProtocolFactory protocolFactory = new com.amazonaws.protocol.json.SdkJsonProtocolFactory(
             new JsonClientMetadata()
                     .withProtocolVersion("1.1")
                     .withSupportsCbor(false)
                     .withSupportsIon(false)
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("TargetsRequiredException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.TargetsRequiredException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("TargetsRequiredException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.TargetsRequiredExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("RepositoryLimitExceededException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.RepositoryLimitExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("RepositoryLimitExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.RepositoryLimitExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("FileContentRequiredException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.FileContentRequiredException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("FileContentRequiredException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.FileContentRequiredExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("BranchNameIsTagNameException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.BranchNameIsTagNameException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("BranchNameIsTagNameException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.BranchNameIsTagNameExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("CommitIdRequiredException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.CommitIdRequiredException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("CommitIdRequiredException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.CommitIdRequiredExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("CommentDeletedException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.CommentDeletedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("CommentDeletedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.CommentDeletedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("TitleRequiredException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.TitleRequiredException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("MaximumItemsToCompareExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.MaximumItemsToCompareExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidBlobIdException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.InvalidBlobIdException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("TitleRequiredException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.TitleRequiredExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidRepositoryDescriptionException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.InvalidRepositoryDescriptionException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidBlobIdException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.InvalidBlobIdExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidTargetsException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.InvalidTargetsException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidRepositoryDescriptionException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.InvalidRepositoryDescriptionExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidRepositoryTriggerDestinationArnException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.InvalidRepositoryTriggerDestinationArnException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidTargetsException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.InvalidTargetsExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("CommentDoesNotExistException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.CommentDoesNotExistException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidRepositoryTriggerDestinationArnException")
+                                    .withExceptionUnmarshaller(
+                                            com.amazonaws.services.codecommit.model.transform.InvalidRepositoryTriggerDestinationArnExceptionUnmarshaller
+                                                    .getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("MaximumRepositoryTriggersExceededException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.MaximumRepositoryTriggersExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("CommentDoesNotExistException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.CommentDoesNotExistExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("BlobIdRequiredException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.BlobIdRequiredException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("MaximumRepositoryTriggersExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.MaximumRepositoryTriggersExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("RepositoryNamesRequiredException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.RepositoryNamesRequiredException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidConflictDetailLevelException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.InvalidConflictDetailLevelExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("AuthorDoesNotExistException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.AuthorDoesNotExistException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("BlobIdRequiredException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.BlobIdRequiredExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidFilePositionException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.InvalidFilePositionException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidReplacementTypeException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.InvalidReplacementTypeExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("FileNameConflictsWithDirectoryNameException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.FileNameConflictsWithDirectoryNameException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("RepositoryNamesRequiredException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.RepositoryNamesRequiredExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("EncryptionKeyAccessDeniedException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.EncryptionKeyAccessDeniedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("AuthorDoesNotExistException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.AuthorDoesNotExistExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("BeforeCommitIdAndAfterCommitIdAreSameException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.BeforeCommitIdAndAfterCommitIdAreSameException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidFilePositionException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.InvalidFilePositionExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("BranchDoesNotExistException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.BranchDoesNotExistException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("FileNameConflictsWithDirectoryNameException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.FileNameConflictsWithDirectoryNameExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("PullRequestDoesNotExistException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.PullRequestDoesNotExistException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidResourceArnException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.InvalidResourceArnExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ReferenceTypeNotSupportedException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.ReferenceTypeNotSupportedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("EncryptionKeyAccessDeniedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.EncryptionKeyAccessDeniedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("RepositoryTriggerEventsListRequiredException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.RepositoryTriggerEventsListRequiredException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("BeforeCommitIdAndAfterCommitIdAreSameException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.BeforeCommitIdAndAfterCommitIdAreSameExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("CommitDoesNotExistException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.CommitDoesNotExistException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("BranchDoesNotExistException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.BranchDoesNotExistExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidRepositoryTriggerCustomDataException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.InvalidRepositoryTriggerCustomDataException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("PullRequestDoesNotExistException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.PullRequestDoesNotExistExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidRepositoryTriggerEventsException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.InvalidRepositoryTriggerEventsException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ReferenceTypeNotSupportedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.ReferenceTypeNotSupportedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("RepositoryNotAssociatedWithPullRequestException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.RepositoryNotAssociatedWithPullRequestException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("FilePathConflictsWithSubmodulePathException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.FilePathConflictsWithSubmodulePathExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("MaximumRepositoryNamesExceededException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.MaximumRepositoryNamesExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("RepositoryTriggerEventsListRequiredException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.RepositoryTriggerEventsListRequiredExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("RepositoryDoesNotExistException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.RepositoryDoesNotExistException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("FileModeRequiredException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.FileModeRequiredExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidFileLocationException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.InvalidFileLocationException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("CommitDoesNotExistException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.CommitDoesNotExistExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("MaximumOpenPullRequestsExceededException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.MaximumOpenPullRequestsExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceArnRequiredException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.ResourceArnRequiredExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("DefaultBranchCannotBeDeletedException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.DefaultBranchCannotBeDeletedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidRepositoryTriggerCustomDataException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.InvalidRepositoryTriggerCustomDataExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("MaximumBranchesExceededException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.MaximumBranchesExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidRepositoryTriggerEventsException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.InvalidRepositoryTriggerEventsExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("EncryptionKeyNotFoundException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.EncryptionKeyNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("RepositoryNotAssociatedWithPullRequestException")
+                                    .withExceptionUnmarshaller(
+                                            com.amazonaws.services.codecommit.model.transform.RepositoryNotAssociatedWithPullRequestExceptionUnmarshaller
+                                                    .getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidPathException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.InvalidPathException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("MaximumRepositoryNamesExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.MaximumRepositoryNamesExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidRelativeFileVersionEnumException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.InvalidRelativeFileVersionEnumException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("RepositoryDoesNotExistException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.RepositoryDoesNotExistExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidClientRequestTokenException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.InvalidClientRequestTokenException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidFileLocationException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.InvalidFileLocationExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("RepositoryNameRequiredException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.RepositoryNameRequiredException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("MaximumOpenPullRequestsExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.MaximumOpenPullRequestsExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidReferenceNameException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.InvalidReferenceNameException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("DefaultBranchCannotBeDeletedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.DefaultBranchCannotBeDeletedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("RepositoryTriggerDestinationArnRequiredException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.RepositoryTriggerDestinationArnRequiredException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("MaximumBranchesExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.MaximumBranchesExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidAuthorArnException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.InvalidAuthorArnException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("EncryptionKeyNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.EncryptionKeyNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("CommentContentRequiredException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.CommentContentRequiredException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidPathException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.InvalidPathExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("PathRequiredException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.PathRequiredException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidRelativeFileVersionEnumException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.InvalidRelativeFileVersionEnumExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("RepositoryTriggerNameRequiredException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.RepositoryTriggerNameRequiredException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("TagKeysListRequiredException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.TagKeysListRequiredExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("CommitIdDoesNotExistException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.CommitIdDoesNotExistException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidConflictResolutionException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.InvalidConflictResolutionExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidPullRequestStatusException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.InvalidPullRequestStatusException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidClientRequestTokenException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.InvalidClientRequestTokenExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidParentCommitIdException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.InvalidParentCommitIdException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("FolderContentSizeLimitExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.FolderContentSizeLimitExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ReferenceNameRequiredException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.ReferenceNameRequiredException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("RepositoryNameRequiredException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.RepositoryNameRequiredExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidPullRequestStatusUpdateException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.InvalidPullRequestStatusUpdateException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidReferenceNameException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.InvalidReferenceNameExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ParentCommitIdRequiredException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.ParentCommitIdRequiredException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("RepositoryTriggerDestinationArnRequiredException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.RepositoryTriggerDestinationArnRequiredExceptionUnmarshaller
+                                            .getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidCommentIdException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.InvalidCommentIdException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidConflictResolutionStrategyException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.InvalidConflictResolutionStrategyExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidPullRequestEventTypeException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.InvalidPullRequestEventTypeException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidAuthorArnException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.InvalidAuthorArnExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidCommitException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.InvalidCommitException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("CommentContentRequiredException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.CommentContentRequiredExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ActorDoesNotExistException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.ActorDoesNotExistException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidTagKeysListException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.InvalidTagKeysListExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("IdempotencyParameterMismatchException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.IdempotencyParameterMismatchException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidTargetBranchException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.InvalidTargetBranchExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidDescriptionException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.InvalidDescriptionException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("TagsMapRequiredException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.TagsMapRequiredExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("MultipleRepositoriesInPullRequestException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.MultipleRepositoriesInPullRequestException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("PathRequiredException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.PathRequiredExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("BlobIdDoesNotExistException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.BlobIdDoesNotExistException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidSystemTagUsageException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.InvalidSystemTagUsageExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("MergeOptionRequiredException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.MergeOptionRequiredException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ReplacementTypeRequiredException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.ReplacementTypeRequiredExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidPullRequestIdException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.InvalidPullRequestIdException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("RepositoryTriggerNameRequiredException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.RepositoryTriggerNameRequiredExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("PullRequestIdRequiredException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.PullRequestIdRequiredException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("CommitIdDoesNotExistException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.CommitIdDoesNotExistExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("RepositoryNameExistsException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.RepositoryNameExistsException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidPullRequestStatusException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.InvalidPullRequestStatusExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("PathDoesNotExistException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.PathDoesNotExistException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidParentCommitIdException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.InvalidParentCommitIdExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("TipOfSourceReferenceIsDifferentException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.TipOfSourceReferenceIsDifferentException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ReferenceNameRequiredException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.ReferenceNameRequiredExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("BranchNameExistsException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.BranchNameExistsException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidPullRequestStatusUpdateException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.InvalidPullRequestStatusUpdateExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("RepositoryTriggersListRequiredException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.RepositoryTriggersListRequiredException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidMaxConflictFilesException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.InvalidMaxConflictFilesExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("EncryptionIntegrityChecksFailedException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.EncryptionIntegrityChecksFailedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ParentCommitIdRequiredException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.ParentCommitIdRequiredExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("CommitMessageLengthExceededException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.CommitMessageLengthExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidCommentIdException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.InvalidCommentIdExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidCommitIdException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.InvalidCommitIdException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidPullRequestEventTypeException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.InvalidPullRequestEventTypeExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidOrderException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.InvalidOrderException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidCommitException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.InvalidCommitExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidEmailException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.InvalidEmailException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ActorDoesNotExistException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.ActorDoesNotExistExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("PullRequestAlreadyClosedException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.PullRequestAlreadyClosedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("IdempotencyParameterMismatchException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.IdempotencyParameterMismatchExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("BranchNameRequiredException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.BranchNameRequiredException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("NoChangeException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.NoChangeExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("CommentIdRequiredException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.CommentIdRequiredException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("MaximumFileContentToLoadExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.MaximumFileContentToLoadExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidRepositoryTriggerNameException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.InvalidRepositoryTriggerNameException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidDescriptionException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.InvalidDescriptionExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidMergeOptionException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.InvalidMergeOptionException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("MultipleRepositoriesInPullRequestException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.MultipleRepositoriesInPullRequestExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ParentCommitIdOutdatedException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.ParentCommitIdOutdatedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("BlobIdDoesNotExistException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.BlobIdDoesNotExistExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidContinuationTokenException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.InvalidContinuationTokenException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("MergeOptionRequiredException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.MergeOptionRequiredExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("CommitRequiredException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.CommitRequiredException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("FolderDoesNotExistException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.FolderDoesNotExistExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ClientRequestTokenRequiredException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.ClientRequestTokenRequiredException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidPullRequestIdException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.InvalidPullRequestIdExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("NameLengthExceededException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.NameLengthExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("PullRequestIdRequiredException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.PullRequestIdRequiredExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("EncryptionKeyDisabledException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.EncryptionKeyDisabledException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("FileDoesNotExistException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.FileDoesNotExistExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("CommentNotCreatedByCallerException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.CommentNotCreatedByCallerException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("RepositoryNameExistsException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.RepositoryNameExistsExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("FileContentSizeLimitExceededException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.FileContentSizeLimitExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("PathDoesNotExistException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.PathDoesNotExistExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("TargetRequiredException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.TargetRequiredException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("TipOfSourceReferenceIsDifferentException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.TipOfSourceReferenceIsDifferentExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("FileTooLargeException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.FileTooLargeException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("BranchNameExistsException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.BranchNameExistsExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ManualMergeRequiredException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.ManualMergeRequiredException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("RepositoryTriggersListRequiredException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.RepositoryTriggersListRequiredExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidRepositoryTriggerBranchNameException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.InvalidRepositoryTriggerBranchNameException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidReplacementContentException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.InvalidReplacementContentExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("PullRequestStatusRequiredException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.PullRequestStatusRequiredException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("EncryptionIntegrityChecksFailedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.EncryptionIntegrityChecksFailedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("TipsDivergenceExceededException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.TipsDivergenceExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("CommitMessageLengthExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.CommitMessageLengthExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidSortByException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.InvalidSortByException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidMaxMergeHunksException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.InvalidMaxMergeHunksExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("SameFileContentException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.SameFileContentException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidCommitIdException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.InvalidCommitIdExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidTargetException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.InvalidTargetException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidOrderException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.InvalidOrderExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidRepositoryTriggerRegionException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.InvalidRepositoryTriggerRegionException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidEmailException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.InvalidEmailExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ReferenceDoesNotExistException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.ReferenceDoesNotExistException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("PullRequestAlreadyClosedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.PullRequestAlreadyClosedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("CommentContentSizeLimitExceededException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.CommentContentSizeLimitExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("BranchNameRequiredException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.BranchNameRequiredExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidMaxResultsException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.InvalidMaxResultsException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidDeletionParameterException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.InvalidDeletionParameterExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ParentCommitDoesNotExistException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.ParentCommitDoesNotExistException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("SourceFileOrContentRequiredException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.SourceFileOrContentRequiredExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidActorArnException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.InvalidActorArnException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("CommentIdRequiredException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.CommentIdRequiredExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidDestinationCommitSpecifierException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.InvalidDestinationCommitSpecifierException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidRepositoryTriggerNameException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.InvalidRepositoryTriggerNameExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("RepositoryTriggerBranchNameListRequiredException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.RepositoryTriggerBranchNameListRequiredException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidMergeOptionException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.InvalidMergeOptionExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidFileModeException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.InvalidFileModeException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ParentCommitIdOutdatedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.ParentCommitIdOutdatedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidSourceCommitSpecifierException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.InvalidSourceCommitSpecifierException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("CommitIdsListRequiredException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.CommitIdsListRequiredExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("DirectoryNameConflictsWithFileNameException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.DirectoryNameConflictsWithFileNameException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidContinuationTokenException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.InvalidContinuationTokenExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("SourceAndDestinationAreSameException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.SourceAndDestinationAreSameException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("CommitRequiredException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.CommitRequiredExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidTitleException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.InvalidTitleException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("MaximumFileEntriesExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.MaximumFileEntriesExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("EncryptionKeyUnavailableException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.EncryptionKeyUnavailableException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ClientRequestTokenRequiredException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.ClientRequestTokenRequiredExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidRepositoryNameException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.InvalidRepositoryNameException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("NameLengthExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.NameLengthExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidBranchNameException").withModeledClass(
-                                    com.amazonaws.services.codecommit.model.InvalidBranchNameException.class))
-                    .withBaseServiceExceptionClass(com.amazonaws.services.codecommit.model.AWSCodeCommitException.class));
+                            new JsonErrorShapeMetadata().withErrorCode("MaximumConflictResolutionEntriesExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.MaximumConflictResolutionEntriesExceededExceptionUnmarshaller
+                                            .getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("EncryptionKeyDisabledException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.EncryptionKeyDisabledExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("MultipleConflictResolutionEntriesException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.MultipleConflictResolutionEntriesExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("TooManyTagsException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.TooManyTagsExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("CommentNotCreatedByCallerException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.CommentNotCreatedByCallerExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("FileContentSizeLimitExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.FileContentSizeLimitExceededExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("TargetRequiredException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.TargetRequiredExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidTagsMapException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.InvalidTagsMapExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("RestrictedSourceFileException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.RestrictedSourceFileExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("FileTooLargeException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.FileTooLargeExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("ManualMergeRequiredException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.ManualMergeRequiredExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("PutFileEntryConflictException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.PutFileEntryConflictExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidRepositoryTriggerBranchNameException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.InvalidRepositoryTriggerBranchNameExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("FileContentAndSourceFileSpecifiedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.FileContentAndSourceFileSpecifiedExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("PullRequestStatusRequiredException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.PullRequestStatusRequiredExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("ConcurrentReferenceUpdateException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.ConcurrentReferenceUpdateExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("SamePathRequestException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.SamePathRequestExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("TipsDivergenceExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.TipsDivergenceExceededExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidSortByException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.InvalidSortByExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("SameFileContentException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.SameFileContentExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidTargetException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.InvalidTargetExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidRepositoryTriggerRegionException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.InvalidRepositoryTriggerRegionExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("ReferenceDoesNotExistException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.ReferenceDoesNotExistExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("CommentContentSizeLimitExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.CommentContentSizeLimitExceededExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidMaxResultsException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.InvalidMaxResultsExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("ParentCommitDoesNotExistException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.ParentCommitDoesNotExistExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("FileEntryRequiredException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.FileEntryRequiredExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidActorArnException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.InvalidActorArnExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("CommitIdsLimitExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.CommitIdsLimitExceededExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidDestinationCommitSpecifierException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.InvalidDestinationCommitSpecifierExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("TagPolicyException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.TagPolicyExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("RepositoryTriggerBranchNameListRequiredException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.RepositoryTriggerBranchNameListRequiredExceptionUnmarshaller
+                                            .getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidFileModeException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.InvalidFileModeExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidSourceCommitSpecifierException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.InvalidSourceCommitSpecifierExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("DirectoryNameConflictsWithFileNameException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.DirectoryNameConflictsWithFileNameExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("SourceAndDestinationAreSameException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.SourceAndDestinationAreSameExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidTitleException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.InvalidTitleExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("EncryptionKeyUnavailableException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.EncryptionKeyUnavailableExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidRepositoryNameException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.InvalidRepositoryNameExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("ReplacementContentRequiredException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.ReplacementContentRequiredExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidBranchNameException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codecommit.model.transform.InvalidBranchNameExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode(null).withExceptionUnmarshaller(
+                                    new JsonBaseExceptionUnmarshaller<com.amazonaws.services.codecommit.model.AWSCodeCommitException>(
+                                            com.amazonaws.services.codecommit.model.AWSCodeCommitException.class))));
 
     /**
      * Constructs a new client to invoke service methods on CodeCommit. A credentials provider chain will be used that
@@ -720,6 +962,7 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
     public AWSCodeCommitClient(AWSCredentials awsCredentials, ClientConfiguration clientConfiguration) {
         super(clientConfiguration);
         this.awsCredentialsProvider = new StaticCredentialsProvider(awsCredentials);
+        this.advancedConfig = AdvancedConfig.EMPTY;
         init();
     }
 
@@ -785,6 +1028,7 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
             RequestMetricCollector requestMetricCollector) {
         super(clientConfiguration, requestMetricCollector);
         this.awsCredentialsProvider = awsCredentialsProvider;
+        this.advancedConfig = AdvancedConfig.EMPTY;
         init();
     }
 
@@ -803,8 +1047,23 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
      *        Object providing client parameters.
      */
     AWSCodeCommitClient(AwsSyncClientParams clientParams) {
+        this(clientParams, false);
+    }
+
+    /**
+     * Constructs a new client to invoke service methods on CodeCommit using the specified parameters.
+     *
+     * <p>
+     * All service calls made using this new client object are blocking, and will not return until the service call
+     * completes.
+     *
+     * @param clientParams
+     *        Object providing client parameters.
+     */
+    AWSCodeCommitClient(AwsSyncClientParams clientParams, boolean endpointDiscoveryEnabled) {
         super(clientParams);
         this.awsCredentialsProvider = clientParams.getCredentialsProvider();
+        this.advancedConfig = clientParams.getAdvancedConfig();
         init();
     }
 
@@ -817,6 +1076,189 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
         requestHandler2s.addAll(chainFactory.newRequestHandlerChain("/com/amazonaws/services/codecommit/request.handlers"));
         requestHandler2s.addAll(chainFactory.newRequestHandler2Chain("/com/amazonaws/services/codecommit/request.handler2s"));
         requestHandler2s.addAll(chainFactory.getGlobalHandlers());
+    }
+
+    /**
+     * <p>
+     * Returns information about one or more merge conflicts in the attempted merge of two commit specifiers using the
+     * squash or three-way merge strategy.
+     * </p>
+     * 
+     * @param batchDescribeMergeConflictsRequest
+     * @return Result of the BatchDescribeMergeConflicts operation returned by the service.
+     * @throws RepositoryNameRequiredException
+     *         A repository name is required but was not specified.
+     * @throws InvalidRepositoryNameException
+     *         At least one specified repository name is not valid.</p> <note>
+     *         <p>
+     *         This exception only occurs when a specified repository name is not valid. Other exceptions occur when a
+     *         required repository parameter is missing, or when a specified repository does not exist.
+     *         </p>
+     * @throws RepositoryDoesNotExistException
+     *         The specified repository does not exist.
+     * @throws MergeOptionRequiredException
+     *         A merge option or stategy is required, and none was provided.
+     * @throws InvalidMergeOptionException
+     *         The specified merge option is not valid for this operation. Not all merge strategies are supported for
+     *         all operations.
+     * @throws InvalidContinuationTokenException
+     *         The specified continuation token is not valid.
+     * @throws CommitRequiredException
+     *         A commit was not specified.
+     * @throws CommitDoesNotExistException
+     *         The specified commit does not exist or no commit was specified, and the specified repository has no
+     *         default branch.
+     * @throws InvalidCommitException
+     *         The specified commit is not valid.
+     * @throws TipsDivergenceExceededException
+     *         The divergence between the tips of the provided commit specifiers is too great to determine whether there
+     *         might be any merge conflicts. Locally compare the specifiers using <code>git diff</code> or a diff tool.
+     * @throws InvalidMaxConflictFilesException
+     *         The specified value for the number of conflict files to return is not valid.
+     * @throws InvalidMaxMergeHunksException
+     *         The specified value for the number of merge hunks to return is not valid.
+     * @throws InvalidConflictDetailLevelException
+     *         The specified conflict detail level is not valid.
+     * @throws InvalidConflictResolutionStrategyException
+     *         The specified conflict resolution strategy is not valid.
+     * @throws MaximumFileContentToLoadExceededException
+     *         The number of files to load exceeds the allowed limit.
+     * @throws MaximumItemsToCompareExceededException
+     *         The maximum number of items to compare between the source or destination branches and the merge base has
+     *         exceeded the maximum allowed.
+     * @throws EncryptionIntegrityChecksFailedException
+     *         An encryption integrity check failed.
+     * @throws EncryptionKeyAccessDeniedException
+     *         An encryption key could not be accessed.
+     * @throws EncryptionKeyDisabledException
+     *         The encryption key is disabled.
+     * @throws EncryptionKeyNotFoundException
+     *         No encryption key was found.
+     * @throws EncryptionKeyUnavailableException
+     *         The encryption key is not available.
+     * @sample AWSCodeCommit.BatchDescribeMergeConflicts
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/BatchDescribeMergeConflicts"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public BatchDescribeMergeConflictsResult batchDescribeMergeConflicts(BatchDescribeMergeConflictsRequest request) {
+        request = beforeClientExecution(request);
+        return executeBatchDescribeMergeConflicts(request);
+    }
+
+    @SdkInternalApi
+    final BatchDescribeMergeConflictsResult executeBatchDescribeMergeConflicts(BatchDescribeMergeConflictsRequest batchDescribeMergeConflictsRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(batchDescribeMergeConflictsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<BatchDescribeMergeConflictsRequest> request = null;
+        Response<BatchDescribeMergeConflictsResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new BatchDescribeMergeConflictsRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(batchDescribeMergeConflictsRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeCommit");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "BatchDescribeMergeConflicts");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<BatchDescribeMergeConflictsResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new BatchDescribeMergeConflictsResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Returns information about the contents of one or more commits in a repository.
+     * </p>
+     * 
+     * @param batchGetCommitsRequest
+     * @return Result of the BatchGetCommits operation returned by the service.
+     * @throws CommitIdsListRequiredException
+     * @throws CommitIdsLimitExceededException
+     *         The maximum number of allowed commit IDs in a batch request is 100. Verify that your batch requests
+     *         contains no more than 100 commit IDs, and then try again.
+     * @throws RepositoryNameRequiredException
+     *         A repository name is required but was not specified.
+     * @throws InvalidRepositoryNameException
+     *         At least one specified repository name is not valid.</p> <note>
+     *         <p>
+     *         This exception only occurs when a specified repository name is not valid. Other exceptions occur when a
+     *         required repository parameter is missing, or when a specified repository does not exist.
+     *         </p>
+     * @throws RepositoryDoesNotExistException
+     *         The specified repository does not exist.
+     * @throws EncryptionIntegrityChecksFailedException
+     *         An encryption integrity check failed.
+     * @throws EncryptionKeyAccessDeniedException
+     *         An encryption key could not be accessed.
+     * @throws EncryptionKeyDisabledException
+     *         The encryption key is disabled.
+     * @throws EncryptionKeyNotFoundException
+     *         No encryption key was found.
+     * @throws EncryptionKeyUnavailableException
+     *         The encryption key is not available.
+     * @sample AWSCodeCommit.BatchGetCommits
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/BatchGetCommits" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public BatchGetCommitsResult batchGetCommits(BatchGetCommitsRequest request) {
+        request = beforeClientExecution(request);
+        return executeBatchGetCommits(request);
+    }
+
+    @SdkInternalApi
+    final BatchGetCommitsResult executeBatchGetCommits(BatchGetCommitsRequest batchGetCommitsRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(batchGetCommitsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<BatchGetCommitsRequest> request = null;
+        Response<BatchGetCommitsResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new BatchGetCommitsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(batchGetCommitsRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeCommit");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "BatchGetCommits");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<BatchGetCommitsResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new BatchGetCommitsResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
     }
 
     /**
@@ -881,6 +1323,10 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeCommit");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "BatchGetRepositories");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -970,12 +1416,173 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeCommit");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateBranch");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
 
             HttpResponseHandler<AmazonWebServiceResponse<CreateBranchResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new CreateBranchResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Creates a commit for a repository on the tip of a specified branch.
+     * </p>
+     * 
+     * @param createCommitRequest
+     * @return Result of the CreateCommit operation returned by the service.
+     * @throws RepositoryNameRequiredException
+     *         A repository name is required but was not specified.
+     * @throws InvalidRepositoryNameException
+     *         At least one specified repository name is not valid.</p> <note>
+     *         <p>
+     *         This exception only occurs when a specified repository name is not valid. Other exceptions occur when a
+     *         required repository parameter is missing, or when a specified repository does not exist.
+     *         </p>
+     * @throws RepositoryDoesNotExistException
+     *         The specified repository does not exist.
+     * @throws ParentCommitIdRequiredException
+     *         A parent commit ID is required. To view the full commit ID of a branch in a repository, use
+     *         <a>GetBranch</a> or a Git command (for example, git pull or git log).
+     * @throws InvalidParentCommitIdException
+     *         The parent commit ID is not valid. The commit ID cannot be empty, and must match the head commit ID for
+     *         the branch of the repository where you want to add or update a file.
+     * @throws ParentCommitDoesNotExistException
+     *         The parent commit ID is not valid because it does not exist. The specified parent commit ID does not
+     *         exist in the specified branch of the repository.
+     * @throws ParentCommitIdOutdatedException
+     *         The file could not be added because the provided parent commit ID is not the current tip of the specified
+     *         branch. To view the full commit ID of the current head of the branch, use <a>GetBranch</a>.
+     * @throws BranchNameRequiredException
+     *         A branch name is required but was not specified.
+     * @throws InvalidBranchNameException
+     *         The specified reference name is not valid.
+     * @throws BranchDoesNotExistException
+     *         The specified branch does not exist.
+     * @throws BranchNameIsTagNameException
+     *         The specified branch name is not valid because it is a tag name. Type the name of a current branch in the
+     *         repository. For a list of valid branch names, use <a>ListBranches</a>.
+     * @throws FileEntryRequiredException
+     *         The commit cannot be created because no files have been specified as added, updated, or changed (PutFile
+     *         or DeleteFile) for the commit.
+     * @throws MaximumFileEntriesExceededException
+     *         The number of specified files to change as part of this commit exceeds the maximum number of files that
+     *         can be changed in a single commit. Consider using a Git client for these changes.
+     * @throws PutFileEntryConflictException
+     *         The commit cannot be created because one or more files specified in the commit reference both a file and
+     *         a folder.
+     * @throws SourceFileOrContentRequiredException
+     *         The commit cannot be created because no source files or file content have been specified for the commit.
+     * @throws FileContentAndSourceFileSpecifiedException
+     *         The commit cannot be created because both a source file and file content have been specified for the same
+     *         file. You cannot provide both. Either specify a source file, or provide the file content directly.
+     * @throws PathRequiredException
+     *         The folderPath for a location cannot be null.
+     * @throws InvalidPathException
+     *         The specified path is not valid.
+     * @throws SamePathRequestException
+     *         The commit cannot be created because one or more changes in this commit duplicate actions in the same
+     *         file path. For example, you cannot make the same delete request to the same file in the same file path
+     *         twice, or make a delete request and a move request to the same file as part of the same commit.
+     * @throws FileDoesNotExistException
+     *         The specified file does not exist. Verify that you have provided the correct name of the file, including
+     *         its full path and extension.
+     * @throws FileContentSizeLimitExceededException
+     *         The file cannot be added because it is too large. The maximum file size that can be added is 6 MB, and
+     *         the combined file content change size is 7 MB. Consider making these changes using a Git client.
+     * @throws FolderContentSizeLimitExceededException
+     *         The commit cannot be created because at least one of the overall changes in the commit results in a
+     *         folder whose contents exceed the limit of 6 MB. Either reduce the number and size of your changes, or
+     *         split the changes across multiple folders.
+     * @throws InvalidDeletionParameterException
+     *         The specified deletion parameter is not valid.
+     * @throws RestrictedSourceFileException
+     *         The commit cannot be created because one of the changes specifies copying or moving a .gitkeep file.
+     * @throws FileModeRequiredException
+     *         The commit cannot be created because a file mode is required to update mode permissions for an existing
+     *         file, but no file mode has been specified.
+     * @throws InvalidFileModeException
+     *         The specified file mode permission is not valid. For a list of valid file mode permissions, see
+     *         <a>PutFile</a>.
+     * @throws NameLengthExceededException
+     *         The user name is not valid because it has exceeded the character limit for author names.
+     * @throws InvalidEmailException
+     *         The specified email address either contains one or more characters that are not allowed, or it exceeds
+     *         the maximum number of characters allowed for an email address.
+     * @throws CommitMessageLengthExceededException
+     *         The commit message is too long. Provide a shorter string.
+     * @throws EncryptionIntegrityChecksFailedException
+     *         An encryption integrity check failed.
+     * @throws EncryptionKeyAccessDeniedException
+     *         An encryption key could not be accessed.
+     * @throws EncryptionKeyDisabledException
+     *         The encryption key is disabled.
+     * @throws EncryptionKeyNotFoundException
+     *         No encryption key was found.
+     * @throws EncryptionKeyUnavailableException
+     *         The encryption key is not available.
+     * @throws NoChangeException
+     *         The commit cannot be created because no changes will be made to the repository as a result of this
+     *         commit. A commit must contain at least one change.
+     * @throws FileNameConflictsWithDirectoryNameException
+     *         A file cannot be added to the repository because the specified file name has the same name as a directory
+     *         in this repository. Either provide another name for the file, or add the file in a directory that does
+     *         not match the file name.
+     * @throws DirectoryNameConflictsWithFileNameException
+     *         A file cannot be added to the repository because the specified path name has the same name as a file that
+     *         already exists in this repository. Either provide a different name for the file, or specify a different
+     *         path for the file.
+     * @throws FilePathConflictsWithSubmodulePathException
+     *         The commit cannot be created because a specified file path points to a submodule. Verify that the
+     *         destination files have valid file paths that do not point to a submodule.
+     * @sample AWSCodeCommit.CreateCommit
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/CreateCommit" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public CreateCommitResult createCommit(CreateCommitRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateCommit(request);
+    }
+
+    @SdkInternalApi
+    final CreateCommitResult executeCreateCommit(CreateCommitRequest createCommitRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(createCommitRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<CreateCommitRequest> request = null;
+        Response<CreateCommitResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new CreateCommitRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createCommitRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeCommit");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateCommit");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<CreateCommitResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new CreateCommitResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -1088,6 +1695,10 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeCommit");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreatePullRequest");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1136,6 +1747,14 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
      *         No encryption key was found.
      * @throws EncryptionKeyUnavailableException
      *         The encryption key is not available.
+     * @throws InvalidTagsMapException
+     *         The map of tags is not valid.
+     * @throws TooManyTagsException
+     *         The maximum number of tags for an AWS CodeCommit resource has been exceeded.
+     * @throws InvalidSystemTagUsageException
+     *         The specified tag is not valid. Key names cannot be prefixed with aws:.
+     * @throws TagPolicyException
+     *         The tag policy is not valid.
      * @sample AWSCodeCommit.CreateRepository
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/CreateRepository" target="_top">AWS
      *      API Documentation</a>
@@ -1162,12 +1781,169 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeCommit");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateRepository");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
 
             HttpResponseHandler<AmazonWebServiceResponse<CreateRepositoryResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new CreateRepositoryResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Creates an unreferenced commit that represents the result of merging two branches using a specified merge
+     * strategy. This can help you determine the outcome of a potential merge. This API cannot be used with the
+     * fast-forward merge strategy, as that strategy does not create a merge commit.
+     * </p>
+     * <note>
+     * <p>
+     * This unreferenced merge commit can only be accessed using the GetCommit API or through git commands such as git
+     * fetch. To retrieve this commit, you must specify its commit ID or otherwise reference it.
+     * </p>
+     * </note>
+     * 
+     * @param createUnreferencedMergeCommitRequest
+     * @return Result of the CreateUnreferencedMergeCommit operation returned by the service.
+     * @throws RepositoryNameRequiredException
+     *         A repository name is required but was not specified.
+     * @throws InvalidRepositoryNameException
+     *         At least one specified repository name is not valid.</p> <note>
+     *         <p>
+     *         This exception only occurs when a specified repository name is not valid. Other exceptions occur when a
+     *         required repository parameter is missing, or when a specified repository does not exist.
+     *         </p>
+     * @throws RepositoryDoesNotExistException
+     *         The specified repository does not exist.
+     * @throws TipsDivergenceExceededException
+     *         The divergence between the tips of the provided commit specifiers is too great to determine whether there
+     *         might be any merge conflicts. Locally compare the specifiers using <code>git diff</code> or a diff tool.
+     * @throws CommitRequiredException
+     *         A commit was not specified.
+     * @throws InvalidCommitException
+     *         The specified commit is not valid.
+     * @throws CommitDoesNotExistException
+     *         The specified commit does not exist or no commit was specified, and the specified repository has no
+     *         default branch.
+     * @throws MergeOptionRequiredException
+     *         A merge option or stategy is required, and none was provided.
+     * @throws InvalidMergeOptionException
+     *         The specified merge option is not valid for this operation. Not all merge strategies are supported for
+     *         all operations.
+     * @throws InvalidConflictDetailLevelException
+     *         The specified conflict detail level is not valid.
+     * @throws InvalidConflictResolutionStrategyException
+     *         The specified conflict resolution strategy is not valid.
+     * @throws InvalidConflictResolutionException
+     *         The specified conflict resolution list is not valid.
+     * @throws ManualMergeRequiredException
+     *         The pull request cannot be merged automatically into the destination branch. You must manually merge the
+     *         branches and resolve any conflicts.
+     * @throws MaximumConflictResolutionEntriesExceededException
+     *         The number of allowed conflict resolution entries was exceeded.
+     * @throws MultipleConflictResolutionEntriesException
+     *         More than one conflict resolution entries exists for the conflict. A conflict can have only one conflict
+     *         resolution entry.
+     * @throws ReplacementTypeRequiredException
+     *         A replacement type is required.
+     * @throws InvalidReplacementTypeException
+     *         Automerge was specified for resolving the conflict, but the specified replacement type is not valid.
+     * @throws ReplacementContentRequiredException
+     *         USE_NEW_CONTENT was specified but no replacement content has been provided.
+     * @throws InvalidReplacementContentException
+     *         Automerge was specified for resolving the conflict, but the replacement type is not valid or content is
+     *         missing.
+     * @throws PathRequiredException
+     *         The folderPath for a location cannot be null.
+     * @throws InvalidPathException
+     *         The specified path is not valid.
+     * @throws FileContentSizeLimitExceededException
+     *         The file cannot be added because it is too large. The maximum file size that can be added is 6 MB, and
+     *         the combined file content change size is 7 MB. Consider making these changes using a Git client.
+     * @throws FolderContentSizeLimitExceededException
+     *         The commit cannot be created because at least one of the overall changes in the commit results in a
+     *         folder whose contents exceed the limit of 6 MB. Either reduce the number and size of your changes, or
+     *         split the changes across multiple folders.
+     * @throws MaximumFileContentToLoadExceededException
+     *         The number of files to load exceeds the allowed limit.
+     * @throws MaximumItemsToCompareExceededException
+     *         The maximum number of items to compare between the source or destination branches and the merge base has
+     *         exceeded the maximum allowed.
+     * @throws ConcurrentReferenceUpdateException
+     *         The merge cannot be completed because the target branch has been modified. Another user might have
+     *         modified the target branch while the merge was in progress. Wait a few minutes, and then try again.
+     * @throws FileModeRequiredException
+     *         The commit cannot be created because a file mode is required to update mode permissions for an existing
+     *         file, but no file mode has been specified.
+     * @throws InvalidFileModeException
+     *         The specified file mode permission is not valid. For a list of valid file mode permissions, see
+     *         <a>PutFile</a>.
+     * @throws NameLengthExceededException
+     *         The user name is not valid because it has exceeded the character limit for author names.
+     * @throws InvalidEmailException
+     *         The specified email address either contains one or more characters that are not allowed, or it exceeds
+     *         the maximum number of characters allowed for an email address.
+     * @throws CommitMessageLengthExceededException
+     *         The commit message is too long. Provide a shorter string.
+     * @throws EncryptionIntegrityChecksFailedException
+     *         An encryption integrity check failed.
+     * @throws EncryptionKeyAccessDeniedException
+     *         An encryption key could not be accessed.
+     * @throws EncryptionKeyDisabledException
+     *         The encryption key is disabled.
+     * @throws EncryptionKeyNotFoundException
+     *         No encryption key was found.
+     * @throws EncryptionKeyUnavailableException
+     *         The encryption key is not available.
+     * @sample AWSCodeCommit.CreateUnreferencedMergeCommit
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/CreateUnreferencedMergeCommit"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public CreateUnreferencedMergeCommitResult createUnreferencedMergeCommit(CreateUnreferencedMergeCommitRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateUnreferencedMergeCommit(request);
+    }
+
+    @SdkInternalApi
+    final CreateUnreferencedMergeCommitResult executeCreateUnreferencedMergeCommit(CreateUnreferencedMergeCommitRequest createUnreferencedMergeCommitRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(createUnreferencedMergeCommitRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<CreateUnreferencedMergeCommitRequest> request = null;
+        Response<CreateUnreferencedMergeCommitResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new CreateUnreferencedMergeCommitRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(createUnreferencedMergeCommitRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeCommit");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateUnreferencedMergeCommit");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<CreateUnreferencedMergeCommitResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new CreateUnreferencedMergeCommitResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -1239,6 +2015,10 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeCommit");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteBranch");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1296,12 +2076,125 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeCommit");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteCommentContent");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
 
             HttpResponseHandler<AmazonWebServiceResponse<DeleteCommentContentResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new DeleteCommentContentResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Deletes a specified file from a specified branch. A commit is created on the branch that contains the revision.
+     * The file will still exist in the commits prior to the commit that contains the deletion.
+     * </p>
+     * 
+     * @param deleteFileRequest
+     * @return Result of the DeleteFile operation returned by the service.
+     * @throws RepositoryNameRequiredException
+     *         A repository name is required but was not specified.
+     * @throws InvalidRepositoryNameException
+     *         At least one specified repository name is not valid.</p> <note>
+     *         <p>
+     *         This exception only occurs when a specified repository name is not valid. Other exceptions occur when a
+     *         required repository parameter is missing, or when a specified repository does not exist.
+     *         </p>
+     * @throws RepositoryDoesNotExistException
+     *         The specified repository does not exist.
+     * @throws ParentCommitIdRequiredException
+     *         A parent commit ID is required. To view the full commit ID of a branch in a repository, use
+     *         <a>GetBranch</a> or a Git command (for example, git pull or git log).
+     * @throws InvalidParentCommitIdException
+     *         The parent commit ID is not valid. The commit ID cannot be empty, and must match the head commit ID for
+     *         the branch of the repository where you want to add or update a file.
+     * @throws ParentCommitDoesNotExistException
+     *         The parent commit ID is not valid because it does not exist. The specified parent commit ID does not
+     *         exist in the specified branch of the repository.
+     * @throws ParentCommitIdOutdatedException
+     *         The file could not be added because the provided parent commit ID is not the current tip of the specified
+     *         branch. To view the full commit ID of the current head of the branch, use <a>GetBranch</a>.
+     * @throws PathRequiredException
+     *         The folderPath for a location cannot be null.
+     * @throws InvalidPathException
+     *         The specified path is not valid.
+     * @throws FileDoesNotExistException
+     *         The specified file does not exist. Verify that you have provided the correct name of the file, including
+     *         its full path and extension.
+     * @throws BranchNameRequiredException
+     *         A branch name is required but was not specified.
+     * @throws InvalidBranchNameException
+     *         The specified reference name is not valid.
+     * @throws BranchDoesNotExistException
+     *         The specified branch does not exist.
+     * @throws BranchNameIsTagNameException
+     *         The specified branch name is not valid because it is a tag name. Type the name of a current branch in the
+     *         repository. For a list of valid branch names, use <a>ListBranches</a>.
+     * @throws NameLengthExceededException
+     *         The user name is not valid because it has exceeded the character limit for author names.
+     * @throws InvalidEmailException
+     *         The specified email address either contains one or more characters that are not allowed, or it exceeds
+     *         the maximum number of characters allowed for an email address.
+     * @throws CommitMessageLengthExceededException
+     *         The commit message is too long. Provide a shorter string.
+     * @throws EncryptionIntegrityChecksFailedException
+     *         An encryption integrity check failed.
+     * @throws EncryptionKeyAccessDeniedException
+     *         An encryption key could not be accessed.
+     * @throws EncryptionKeyDisabledException
+     *         The encryption key is disabled.
+     * @throws EncryptionKeyNotFoundException
+     *         No encryption key was found.
+     * @throws EncryptionKeyUnavailableException
+     *         The encryption key is not available.
+     * @sample AWSCodeCommit.DeleteFile
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/DeleteFile" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public DeleteFileResult deleteFile(DeleteFileRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteFile(request);
+    }
+
+    @SdkInternalApi
+    final DeleteFileResult executeDeleteFile(DeleteFileRequest deleteFileRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(deleteFileRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DeleteFileRequest> request = null;
+        Response<DeleteFileResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DeleteFileRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteFileRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeCommit");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteFile");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<DeleteFileResult>> responseHandler = protocolFactory.createResponseHandler(new JsonOperationMetadata()
+                    .withPayloadJson(true).withHasStreamingSuccessResponse(false), new DeleteFileResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -1370,12 +2263,127 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeCommit");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteRepository");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
 
             HttpResponseHandler<AmazonWebServiceResponse<DeleteRepositoryResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new DeleteRepositoryResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Returns information about one or more merge conflicts in the attempted merge of two commit specifiers using the
+     * squash or three-way merge strategy. If the merge option for the attempted merge is specified as
+     * FAST_FORWARD_MERGE, an exception will be thrown.
+     * </p>
+     * 
+     * @param describeMergeConflictsRequest
+     * @return Result of the DescribeMergeConflicts operation returned by the service.
+     * @throws RepositoryNameRequiredException
+     *         A repository name is required but was not specified.
+     * @throws InvalidRepositoryNameException
+     *         At least one specified repository name is not valid.</p> <note>
+     *         <p>
+     *         This exception only occurs when a specified repository name is not valid. Other exceptions occur when a
+     *         required repository parameter is missing, or when a specified repository does not exist.
+     *         </p>
+     * @throws RepositoryDoesNotExistException
+     *         The specified repository does not exist.
+     * @throws MergeOptionRequiredException
+     *         A merge option or stategy is required, and none was provided.
+     * @throws InvalidMergeOptionException
+     *         The specified merge option is not valid for this operation. Not all merge strategies are supported for
+     *         all operations.
+     * @throws InvalidContinuationTokenException
+     *         The specified continuation token is not valid.
+     * @throws CommitRequiredException
+     *         A commit was not specified.
+     * @throws CommitDoesNotExistException
+     *         The specified commit does not exist or no commit was specified, and the specified repository has no
+     *         default branch.
+     * @throws InvalidCommitException
+     *         The specified commit is not valid.
+     * @throws TipsDivergenceExceededException
+     *         The divergence between the tips of the provided commit specifiers is too great to determine whether there
+     *         might be any merge conflicts. Locally compare the specifiers using <code>git diff</code> or a diff tool.
+     * @throws PathRequiredException
+     *         The folderPath for a location cannot be null.
+     * @throws InvalidPathException
+     *         The specified path is not valid.
+     * @throws FileDoesNotExistException
+     *         The specified file does not exist. Verify that you have provided the correct name of the file, including
+     *         its full path and extension.
+     * @throws InvalidMaxMergeHunksException
+     *         The specified value for the number of merge hunks to return is not valid.
+     * @throws InvalidConflictDetailLevelException
+     *         The specified conflict detail level is not valid.
+     * @throws InvalidConflictResolutionStrategyException
+     *         The specified conflict resolution strategy is not valid.
+     * @throws MaximumFileContentToLoadExceededException
+     *         The number of files to load exceeds the allowed limit.
+     * @throws MaximumItemsToCompareExceededException
+     *         The maximum number of items to compare between the source or destination branches and the merge base has
+     *         exceeded the maximum allowed.
+     * @throws EncryptionIntegrityChecksFailedException
+     *         An encryption integrity check failed.
+     * @throws EncryptionKeyAccessDeniedException
+     *         An encryption key could not be accessed.
+     * @throws EncryptionKeyDisabledException
+     *         The encryption key is disabled.
+     * @throws EncryptionKeyNotFoundException
+     *         No encryption key was found.
+     * @throws EncryptionKeyUnavailableException
+     *         The encryption key is not available.
+     * @sample AWSCodeCommit.DescribeMergeConflicts
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/DescribeMergeConflicts"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public DescribeMergeConflictsResult describeMergeConflicts(DescribeMergeConflictsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeMergeConflicts(request);
+    }
+
+    @SdkInternalApi
+    final DescribeMergeConflictsResult executeDescribeMergeConflicts(DescribeMergeConflictsRequest describeMergeConflictsRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(describeMergeConflictsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DescribeMergeConflictsRequest> request = null;
+        Response<DescribeMergeConflictsResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DescribeMergeConflictsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeMergeConflictsRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeCommit");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeMergeConflicts");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<DescribeMergeConflictsResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new DescribeMergeConflictsResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -1449,6 +2457,10 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeCommit");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribePullRequestEvents");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1502,7 +2514,7 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
      *         The encryption key is not available.
      * @throws FileTooLargeException
      *         The specified file exceeds the file size limit for AWS CodeCommit. For more information about limits in
-     *         AWS CodeCommit, see <a href="http://docs.aws.amazon.com/codecommit/latest/userguide/limits.html">AWS
+     *         AWS CodeCommit, see <a href="https://docs.aws.amazon.com/codecommit/latest/userguide/limits.html">AWS
      *         CodeCommit User Guide</a>.
      * @sample AWSCodeCommit.GetBlob
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/GetBlob" target="_top">AWS API
@@ -1530,6 +2542,10 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeCommit");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetBlob");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1606,6 +2622,10 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeCommit");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetBranch");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1663,6 +2683,10 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeCommit");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetComment");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1744,6 +2768,10 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeCommit");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetCommentsForComparedCommit");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1798,8 +2826,8 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
      * @throws InvalidContinuationTokenException
      *         The specified continuation token is not valid.
      * @throws RepositoryNotAssociatedWithPullRequestException
-     *         The repository does not contain any pull requests with that pull request ID. Check to make sure you have
-     *         provided the correct repository name for the pull request.
+     *         The repository does not contain any pull requests with that pull request ID. Use GetPullRequest to verify
+     *         the correct repository name for the pull request ID.
      * @throws EncryptionIntegrityChecksFailedException
      *         An encryption integrity check failed.
      * @throws EncryptionKeyAccessDeniedException
@@ -1837,6 +2865,10 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeCommit");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetCommentsForPullRequest");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1914,6 +2946,10 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeCommit");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetCommit");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2001,12 +3037,274 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeCommit");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetDifferences");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
 
             HttpResponseHandler<AmazonWebServiceResponse<GetDifferencesResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new GetDifferencesResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Returns the base-64 encoded contents of a specified file and its metadata.
+     * </p>
+     * 
+     * @param getFileRequest
+     * @return Result of the GetFile operation returned by the service.
+     * @throws RepositoryNameRequiredException
+     *         A repository name is required but was not specified.
+     * @throws InvalidRepositoryNameException
+     *         At least one specified repository name is not valid.</p> <note>
+     *         <p>
+     *         This exception only occurs when a specified repository name is not valid. Other exceptions occur when a
+     *         required repository parameter is missing, or when a specified repository does not exist.
+     *         </p>
+     * @throws RepositoryDoesNotExistException
+     *         The specified repository does not exist.
+     * @throws InvalidCommitException
+     *         The specified commit is not valid.
+     * @throws CommitDoesNotExistException
+     *         The specified commit does not exist or no commit was specified, and the specified repository has no
+     *         default branch.
+     * @throws PathRequiredException
+     *         The folderPath for a location cannot be null.
+     * @throws InvalidPathException
+     *         The specified path is not valid.
+     * @throws FileDoesNotExistException
+     *         The specified file does not exist. Verify that you have provided the correct name of the file, including
+     *         its full path and extension.
+     * @throws EncryptionIntegrityChecksFailedException
+     *         An encryption integrity check failed.
+     * @throws EncryptionKeyAccessDeniedException
+     *         An encryption key could not be accessed.
+     * @throws EncryptionKeyDisabledException
+     *         The encryption key is disabled.
+     * @throws EncryptionKeyNotFoundException
+     *         No encryption key was found.
+     * @throws EncryptionKeyUnavailableException
+     *         The encryption key is not available.
+     * @throws FileTooLargeException
+     *         The specified file exceeds the file size limit for AWS CodeCommit. For more information about limits in
+     *         AWS CodeCommit, see <a href="https://docs.aws.amazon.com/codecommit/latest/userguide/limits.html">AWS
+     *         CodeCommit User Guide</a>.
+     * @sample AWSCodeCommit.GetFile
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/GetFile" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public GetFileResult getFile(GetFileRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetFile(request);
+    }
+
+    @SdkInternalApi
+    final GetFileResult executeGetFile(GetFileRequest getFileRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(getFileRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<GetFileRequest> request = null;
+        Response<GetFileResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new GetFileRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getFileRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeCommit");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetFile");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<GetFileResult>> responseHandler = protocolFactory.createResponseHandler(new JsonOperationMetadata()
+                    .withPayloadJson(true).withHasStreamingSuccessResponse(false), new GetFileResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Returns the contents of a specified folder in a repository.
+     * </p>
+     * 
+     * @param getFolderRequest
+     * @return Result of the GetFolder operation returned by the service.
+     * @throws RepositoryNameRequiredException
+     *         A repository name is required but was not specified.
+     * @throws InvalidRepositoryNameException
+     *         At least one specified repository name is not valid.</p> <note>
+     *         <p>
+     *         This exception only occurs when a specified repository name is not valid. Other exceptions occur when a
+     *         required repository parameter is missing, or when a specified repository does not exist.
+     *         </p>
+     * @throws RepositoryDoesNotExistException
+     *         The specified repository does not exist.
+     * @throws InvalidCommitException
+     *         The specified commit is not valid.
+     * @throws CommitDoesNotExistException
+     *         The specified commit does not exist or no commit was specified, and the specified repository has no
+     *         default branch.
+     * @throws PathRequiredException
+     *         The folderPath for a location cannot be null.
+     * @throws InvalidPathException
+     *         The specified path is not valid.
+     * @throws FolderDoesNotExistException
+     *         The specified folder does not exist. Either the folder name is not correct, or you did not provide the
+     *         full path to the folder.
+     * @throws EncryptionIntegrityChecksFailedException
+     *         An encryption integrity check failed.
+     * @throws EncryptionKeyAccessDeniedException
+     *         An encryption key could not be accessed.
+     * @throws EncryptionKeyDisabledException
+     *         The encryption key is disabled.
+     * @throws EncryptionKeyNotFoundException
+     *         No encryption key was found.
+     * @throws EncryptionKeyUnavailableException
+     *         The encryption key is not available.
+     * @sample AWSCodeCommit.GetFolder
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/GetFolder" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public GetFolderResult getFolder(GetFolderRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetFolder(request);
+    }
+
+    @SdkInternalApi
+    final GetFolderResult executeGetFolder(GetFolderRequest getFolderRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(getFolderRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<GetFolderRequest> request = null;
+        Response<GetFolderResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new GetFolderRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getFolderRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeCommit");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetFolder");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<GetFolderResult>> responseHandler = protocolFactory.createResponseHandler(new JsonOperationMetadata()
+                    .withPayloadJson(true).withHasStreamingSuccessResponse(false), new GetFolderResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Returns information about a specified merge commit.
+     * </p>
+     * 
+     * @param getMergeCommitRequest
+     * @return Result of the GetMergeCommit operation returned by the service.
+     * @throws RepositoryNameRequiredException
+     *         A repository name is required but was not specified.
+     * @throws InvalidRepositoryNameException
+     *         At least one specified repository name is not valid.</p> <note>
+     *         <p>
+     *         This exception only occurs when a specified repository name is not valid. Other exceptions occur when a
+     *         required repository parameter is missing, or when a specified repository does not exist.
+     *         </p>
+     * @throws RepositoryDoesNotExistException
+     *         The specified repository does not exist.
+     * @throws CommitRequiredException
+     *         A commit was not specified.
+     * @throws InvalidCommitException
+     *         The specified commit is not valid.
+     * @throws CommitDoesNotExistException
+     *         The specified commit does not exist or no commit was specified, and the specified repository has no
+     *         default branch.
+     * @throws InvalidConflictDetailLevelException
+     *         The specified conflict detail level is not valid.
+     * @throws InvalidConflictResolutionStrategyException
+     *         The specified conflict resolution strategy is not valid.
+     * @throws EncryptionIntegrityChecksFailedException
+     *         An encryption integrity check failed.
+     * @throws EncryptionKeyAccessDeniedException
+     *         An encryption key could not be accessed.
+     * @throws EncryptionKeyDisabledException
+     *         The encryption key is disabled.
+     * @throws EncryptionKeyNotFoundException
+     *         No encryption key was found.
+     * @throws EncryptionKeyUnavailableException
+     *         The encryption key is not available.
+     * @sample AWSCodeCommit.GetMergeCommit
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/GetMergeCommit" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public GetMergeCommitResult getMergeCommit(GetMergeCommitRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetMergeCommit(request);
+    }
+
+    @SdkInternalApi
+    final GetMergeCommitResult executeGetMergeCommit(GetMergeCommitRequest getMergeCommitRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(getMergeCommitRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<GetMergeCommitRequest> request = null;
+        Response<GetMergeCommitResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new GetMergeCommitRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getMergeCommitRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeCommit");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetMergeCommit");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<GetMergeCommitResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new GetMergeCommitResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -2038,12 +3336,10 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
      * @throws MergeOptionRequiredException
      *         A merge option or stategy is required, and none was provided.
      * @throws InvalidMergeOptionException
-     *         The specified merge option is not valid. The only valid value is FAST_FORWARD_MERGE.
-     * @throws InvalidDestinationCommitSpecifierException
-     *         The destination commit specifier is not valid. You must provide a valid branch name, tag, or full commit
-     *         ID.
-     * @throws InvalidSourceCommitSpecifierException
-     *         The source commit specifier is not valid. You must provide a valid branch name, tag, or full commit ID.
+     *         The specified merge option is not valid for this operation. Not all merge strategies are supported for
+     *         all operations.
+     * @throws InvalidContinuationTokenException
+     *         The specified continuation token is not valid.
      * @throws CommitRequiredException
      *         A commit was not specified.
      * @throws CommitDoesNotExistException
@@ -2054,6 +3350,22 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
      * @throws TipsDivergenceExceededException
      *         The divergence between the tips of the provided commit specifiers is too great to determine whether there
      *         might be any merge conflicts. Locally compare the specifiers using <code>git diff</code> or a diff tool.
+     * @throws InvalidMaxConflictFilesException
+     *         The specified value for the number of conflict files to return is not valid.
+     * @throws InvalidConflictDetailLevelException
+     *         The specified conflict detail level is not valid.
+     * @throws InvalidDestinationCommitSpecifierException
+     *         The destination commit specifier is not valid. You must provide a valid branch name, tag, or full commit
+     *         ID.
+     * @throws InvalidSourceCommitSpecifierException
+     *         The source commit specifier is not valid. You must provide a valid branch name, tag, or full commit ID.
+     * @throws InvalidConflictResolutionStrategyException
+     *         The specified conflict resolution strategy is not valid.
+     * @throws MaximumFileContentToLoadExceededException
+     *         The number of files to load exceeds the allowed limit.
+     * @throws MaximumItemsToCompareExceededException
+     *         The maximum number of items to compare between the source or destination branches and the merge base has
+     *         exceeded the maximum allowed.
      * @throws EncryptionIntegrityChecksFailedException
      *         An encryption integrity check failed.
      * @throws EncryptionKeyAccessDeniedException
@@ -2090,12 +3402,109 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeCommit");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetMergeConflicts");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
 
             HttpResponseHandler<AmazonWebServiceResponse<GetMergeConflictsResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new GetMergeConflictsResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Returns information about the merge options available for merging two specified branches. For details about why a
+     * particular merge option is not available, use GetMergeConflicts or DescribeMergeConflicts.
+     * </p>
+     * 
+     * @param getMergeOptionsRequest
+     * @return Result of the GetMergeOptions operation returned by the service.
+     * @throws RepositoryNameRequiredException
+     *         A repository name is required but was not specified.
+     * @throws InvalidRepositoryNameException
+     *         At least one specified repository name is not valid.</p> <note>
+     *         <p>
+     *         This exception only occurs when a specified repository name is not valid. Other exceptions occur when a
+     *         required repository parameter is missing, or when a specified repository does not exist.
+     *         </p>
+     * @throws RepositoryDoesNotExistException
+     *         The specified repository does not exist.
+     * @throws CommitRequiredException
+     *         A commit was not specified.
+     * @throws CommitDoesNotExistException
+     *         The specified commit does not exist or no commit was specified, and the specified repository has no
+     *         default branch.
+     * @throws InvalidCommitException
+     *         The specified commit is not valid.
+     * @throws TipsDivergenceExceededException
+     *         The divergence between the tips of the provided commit specifiers is too great to determine whether there
+     *         might be any merge conflicts. Locally compare the specifiers using <code>git diff</code> or a diff tool.
+     * @throws InvalidConflictDetailLevelException
+     *         The specified conflict detail level is not valid.
+     * @throws InvalidConflictResolutionStrategyException
+     *         The specified conflict resolution strategy is not valid.
+     * @throws MaximumFileContentToLoadExceededException
+     *         The number of files to load exceeds the allowed limit.
+     * @throws MaximumItemsToCompareExceededException
+     *         The maximum number of items to compare between the source or destination branches and the merge base has
+     *         exceeded the maximum allowed.
+     * @throws EncryptionIntegrityChecksFailedException
+     *         An encryption integrity check failed.
+     * @throws EncryptionKeyAccessDeniedException
+     *         An encryption key could not be accessed.
+     * @throws EncryptionKeyDisabledException
+     *         The encryption key is disabled.
+     * @throws EncryptionKeyNotFoundException
+     *         No encryption key was found.
+     * @throws EncryptionKeyUnavailableException
+     *         The encryption key is not available.
+     * @sample AWSCodeCommit.GetMergeOptions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/GetMergeOptions" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public GetMergeOptionsResult getMergeOptions(GetMergeOptionsRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetMergeOptions(request);
+    }
+
+    @SdkInternalApi
+    final GetMergeOptionsResult executeGetMergeOptions(GetMergeOptionsRequest getMergeOptionsRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(getMergeOptionsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<GetMergeOptionsRequest> request = null;
+        Response<GetMergeOptionsResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new GetMergeOptionsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getMergeOptionsRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeCommit");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetMergeOptions");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<GetMergeOptionsResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new GetMergeOptionsResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -2157,6 +3566,10 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeCommit");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetPullRequest");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2235,6 +3648,10 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeCommit");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetRepository");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2305,6 +3722,10 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeCommit");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetRepositoryTriggers");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2378,6 +3799,10 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeCommit");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListBranches");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2460,6 +3885,10 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeCommit");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListPullRequests");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2516,6 +3945,10 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeCommit");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListRepositories");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2534,8 +3967,486 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
 
     /**
      * <p>
-     * Closes a pull request and attempts to merge the source commit of a pull request into the specified destination
-     * branch for that pull request at the specified commit using the fast-forward merge option.
+     * Gets information about AWS tags for a specified Amazon Resource Name (ARN) in AWS CodeCommit. For a list of valid
+     * resources in AWS CodeCommit, see <a href=
+     * "https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-iam-access-control-identity-based.html#arn-formats"
+     * >CodeCommit Resources and Operations</a> in the AWS CodeCommit User Guide.
+     * </p>
+     * 
+     * @param listTagsForResourceRequest
+     * @return Result of the ListTagsForResource operation returned by the service.
+     * @throws RepositoryDoesNotExistException
+     *         The specified repository does not exist.
+     * @throws InvalidRepositoryNameException
+     *         At least one specified repository name is not valid.</p> <note>
+     *         <p>
+     *         This exception only occurs when a specified repository name is not valid. Other exceptions occur when a
+     *         required repository parameter is missing, or when a specified repository does not exist.
+     *         </p>
+     * @throws ResourceArnRequiredException
+     *         A valid Amazon Resource Name (ARN) for an AWS CodeCommit resource is required. For a list of valid
+     *         resources in AWS CodeCommit, see <a href=
+     *         "https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-iam-access-control-identity-based.html#arn-formats"
+     *         >CodeCommit Resources and Operations</a> in the AWS CodeCommit User Guide.
+     * @throws InvalidResourceArnException
+     *         The value for the resource ARN is not valid. For more information about resources in AWS CodeCommit, see
+     *         <a href=
+     *         "https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-iam-access-control-identity-based.html#arn-formats"
+     *         >CodeCommit Resources and Operations</a> in the AWS CodeCommit User Guide.
+     * @sample AWSCodeCommit.ListTagsForResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/ListTagsForResource" target="_top">AWS
+     *      API Documentation</a>
+     */
+    @Override
+    public ListTagsForResourceResult listTagsForResource(ListTagsForResourceRequest request) {
+        request = beforeClientExecution(request);
+        return executeListTagsForResource(request);
+    }
+
+    @SdkInternalApi
+    final ListTagsForResourceResult executeListTagsForResource(ListTagsForResourceRequest listTagsForResourceRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(listTagsForResourceRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<ListTagsForResourceRequest> request = null;
+        Response<ListTagsForResourceResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new ListTagsForResourceRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listTagsForResourceRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeCommit");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListTagsForResource");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<ListTagsForResourceResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new ListTagsForResourceResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Merges two branches using the fast-forward merge strategy.
+     * </p>
+     * 
+     * @param mergeBranchesByFastForwardRequest
+     * @return Result of the MergeBranchesByFastForward operation returned by the service.
+     * @throws RepositoryNameRequiredException
+     *         A repository name is required but was not specified.
+     * @throws InvalidRepositoryNameException
+     *         At least one specified repository name is not valid.</p> <note>
+     *         <p>
+     *         This exception only occurs when a specified repository name is not valid. Other exceptions occur when a
+     *         required repository parameter is missing, or when a specified repository does not exist.
+     *         </p>
+     * @throws RepositoryDoesNotExistException
+     *         The specified repository does not exist.
+     * @throws TipsDivergenceExceededException
+     *         The divergence between the tips of the provided commit specifiers is too great to determine whether there
+     *         might be any merge conflicts. Locally compare the specifiers using <code>git diff</code> or a diff tool.
+     * @throws CommitRequiredException
+     *         A commit was not specified.
+     * @throws InvalidCommitException
+     *         The specified commit is not valid.
+     * @throws CommitDoesNotExistException
+     *         The specified commit does not exist or no commit was specified, and the specified repository has no
+     *         default branch.
+     * @throws InvalidTargetBranchException
+     *         The specified target branch is not valid.
+     * @throws InvalidBranchNameException
+     *         The specified reference name is not valid.
+     * @throws BranchNameRequiredException
+     *         A branch name is required but was not specified.
+     * @throws BranchNameIsTagNameException
+     *         The specified branch name is not valid because it is a tag name. Type the name of a current branch in the
+     *         repository. For a list of valid branch names, use <a>ListBranches</a>.
+     * @throws BranchDoesNotExistException
+     *         The specified branch does not exist.
+     * @throws ManualMergeRequiredException
+     *         The pull request cannot be merged automatically into the destination branch. You must manually merge the
+     *         branches and resolve any conflicts.
+     * @throws ConcurrentReferenceUpdateException
+     *         The merge cannot be completed because the target branch has been modified. Another user might have
+     *         modified the target branch while the merge was in progress. Wait a few minutes, and then try again.
+     * @throws EncryptionIntegrityChecksFailedException
+     *         An encryption integrity check failed.
+     * @throws EncryptionKeyAccessDeniedException
+     *         An encryption key could not be accessed.
+     * @throws EncryptionKeyDisabledException
+     *         The encryption key is disabled.
+     * @throws EncryptionKeyNotFoundException
+     *         No encryption key was found.
+     * @throws EncryptionKeyUnavailableException
+     *         The encryption key is not available.
+     * @sample AWSCodeCommit.MergeBranchesByFastForward
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/MergeBranchesByFastForward"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public MergeBranchesByFastForwardResult mergeBranchesByFastForward(MergeBranchesByFastForwardRequest request) {
+        request = beforeClientExecution(request);
+        return executeMergeBranchesByFastForward(request);
+    }
+
+    @SdkInternalApi
+    final MergeBranchesByFastForwardResult executeMergeBranchesByFastForward(MergeBranchesByFastForwardRequest mergeBranchesByFastForwardRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(mergeBranchesByFastForwardRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<MergeBranchesByFastForwardRequest> request = null;
+        Response<MergeBranchesByFastForwardResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new MergeBranchesByFastForwardRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(mergeBranchesByFastForwardRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeCommit");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "MergeBranchesByFastForward");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<MergeBranchesByFastForwardResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new MergeBranchesByFastForwardResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Merges two branches using the squash merge strategy.
+     * </p>
+     * 
+     * @param mergeBranchesBySquashRequest
+     * @return Result of the MergeBranchesBySquash operation returned by the service.
+     * @throws RepositoryNameRequiredException
+     *         A repository name is required but was not specified.
+     * @throws InvalidRepositoryNameException
+     *         At least one specified repository name is not valid.</p> <note>
+     *         <p>
+     *         This exception only occurs when a specified repository name is not valid. Other exceptions occur when a
+     *         required repository parameter is missing, or when a specified repository does not exist.
+     *         </p>
+     * @throws RepositoryDoesNotExistException
+     *         The specified repository does not exist.
+     * @throws TipsDivergenceExceededException
+     *         The divergence between the tips of the provided commit specifiers is too great to determine whether there
+     *         might be any merge conflicts. Locally compare the specifiers using <code>git diff</code> or a diff tool.
+     * @throws CommitRequiredException
+     *         A commit was not specified.
+     * @throws InvalidCommitException
+     *         The specified commit is not valid.
+     * @throws CommitDoesNotExistException
+     *         The specified commit does not exist or no commit was specified, and the specified repository has no
+     *         default branch.
+     * @throws InvalidTargetBranchException
+     *         The specified target branch is not valid.
+     * @throws InvalidBranchNameException
+     *         The specified reference name is not valid.
+     * @throws BranchNameRequiredException
+     *         A branch name is required but was not specified.
+     * @throws BranchNameIsTagNameException
+     *         The specified branch name is not valid because it is a tag name. Type the name of a current branch in the
+     *         repository. For a list of valid branch names, use <a>ListBranches</a>.
+     * @throws BranchDoesNotExistException
+     *         The specified branch does not exist.
+     * @throws ManualMergeRequiredException
+     *         The pull request cannot be merged automatically into the destination branch. You must manually merge the
+     *         branches and resolve any conflicts.
+     * @throws InvalidConflictDetailLevelException
+     *         The specified conflict detail level is not valid.
+     * @throws InvalidConflictResolutionStrategyException
+     *         The specified conflict resolution strategy is not valid.
+     * @throws InvalidConflictResolutionException
+     *         The specified conflict resolution list is not valid.
+     * @throws MaximumConflictResolutionEntriesExceededException
+     *         The number of allowed conflict resolution entries was exceeded.
+     * @throws MultipleConflictResolutionEntriesException
+     *         More than one conflict resolution entries exists for the conflict. A conflict can have only one conflict
+     *         resolution entry.
+     * @throws ReplacementTypeRequiredException
+     *         A replacement type is required.
+     * @throws InvalidReplacementTypeException
+     *         Automerge was specified for resolving the conflict, but the specified replacement type is not valid.
+     * @throws ReplacementContentRequiredException
+     *         USE_NEW_CONTENT was specified but no replacement content has been provided.
+     * @throws InvalidReplacementContentException
+     *         Automerge was specified for resolving the conflict, but the replacement type is not valid or content is
+     *         missing.
+     * @throws PathRequiredException
+     *         The folderPath for a location cannot be null.
+     * @throws InvalidPathException
+     *         The specified path is not valid.
+     * @throws FileContentSizeLimitExceededException
+     *         The file cannot be added because it is too large. The maximum file size that can be added is 6 MB, and
+     *         the combined file content change size is 7 MB. Consider making these changes using a Git client.
+     * @throws FolderContentSizeLimitExceededException
+     *         The commit cannot be created because at least one of the overall changes in the commit results in a
+     *         folder whose contents exceed the limit of 6 MB. Either reduce the number and size of your changes, or
+     *         split the changes across multiple folders.
+     * @throws MaximumFileContentToLoadExceededException
+     *         The number of files to load exceeds the allowed limit.
+     * @throws MaximumItemsToCompareExceededException
+     *         The maximum number of items to compare between the source or destination branches and the merge base has
+     *         exceeded the maximum allowed.
+     * @throws FileModeRequiredException
+     *         The commit cannot be created because a file mode is required to update mode permissions for an existing
+     *         file, but no file mode has been specified.
+     * @throws InvalidFileModeException
+     *         The specified file mode permission is not valid. For a list of valid file mode permissions, see
+     *         <a>PutFile</a>.
+     * @throws NameLengthExceededException
+     *         The user name is not valid because it has exceeded the character limit for author names.
+     * @throws InvalidEmailException
+     *         The specified email address either contains one or more characters that are not allowed, or it exceeds
+     *         the maximum number of characters allowed for an email address.
+     * @throws CommitMessageLengthExceededException
+     *         The commit message is too long. Provide a shorter string.
+     * @throws ConcurrentReferenceUpdateException
+     *         The merge cannot be completed because the target branch has been modified. Another user might have
+     *         modified the target branch while the merge was in progress. Wait a few minutes, and then try again.
+     * @throws EncryptionIntegrityChecksFailedException
+     *         An encryption integrity check failed.
+     * @throws EncryptionKeyAccessDeniedException
+     *         An encryption key could not be accessed.
+     * @throws EncryptionKeyDisabledException
+     *         The encryption key is disabled.
+     * @throws EncryptionKeyNotFoundException
+     *         No encryption key was found.
+     * @throws EncryptionKeyUnavailableException
+     *         The encryption key is not available.
+     * @sample AWSCodeCommit.MergeBranchesBySquash
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/MergeBranchesBySquash"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public MergeBranchesBySquashResult mergeBranchesBySquash(MergeBranchesBySquashRequest request) {
+        request = beforeClientExecution(request);
+        return executeMergeBranchesBySquash(request);
+    }
+
+    @SdkInternalApi
+    final MergeBranchesBySquashResult executeMergeBranchesBySquash(MergeBranchesBySquashRequest mergeBranchesBySquashRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(mergeBranchesBySquashRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<MergeBranchesBySquashRequest> request = null;
+        Response<MergeBranchesBySquashResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new MergeBranchesBySquashRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(mergeBranchesBySquashRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeCommit");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "MergeBranchesBySquash");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<MergeBranchesBySquashResult>> responseHandler = protocolFactory
+                    .createResponseHandler(new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                            new MergeBranchesBySquashResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Merges two specified branches using the three-way merge strategy.
+     * </p>
+     * 
+     * @param mergeBranchesByThreeWayRequest
+     * @return Result of the MergeBranchesByThreeWay operation returned by the service.
+     * @throws RepositoryNameRequiredException
+     *         A repository name is required but was not specified.
+     * @throws InvalidRepositoryNameException
+     *         At least one specified repository name is not valid.</p> <note>
+     *         <p>
+     *         This exception only occurs when a specified repository name is not valid. Other exceptions occur when a
+     *         required repository parameter is missing, or when a specified repository does not exist.
+     *         </p>
+     * @throws RepositoryDoesNotExistException
+     *         The specified repository does not exist.
+     * @throws TipsDivergenceExceededException
+     *         The divergence between the tips of the provided commit specifiers is too great to determine whether there
+     *         might be any merge conflicts. Locally compare the specifiers using <code>git diff</code> or a diff tool.
+     * @throws CommitRequiredException
+     *         A commit was not specified.
+     * @throws InvalidCommitException
+     *         The specified commit is not valid.
+     * @throws CommitDoesNotExistException
+     *         The specified commit does not exist or no commit was specified, and the specified repository has no
+     *         default branch.
+     * @throws InvalidTargetBranchException
+     *         The specified target branch is not valid.
+     * @throws InvalidBranchNameException
+     *         The specified reference name is not valid.
+     * @throws BranchNameRequiredException
+     *         A branch name is required but was not specified.
+     * @throws BranchNameIsTagNameException
+     *         The specified branch name is not valid because it is a tag name. Type the name of a current branch in the
+     *         repository. For a list of valid branch names, use <a>ListBranches</a>.
+     * @throws BranchDoesNotExistException
+     *         The specified branch does not exist.
+     * @throws ManualMergeRequiredException
+     *         The pull request cannot be merged automatically into the destination branch. You must manually merge the
+     *         branches and resolve any conflicts.
+     * @throws ConcurrentReferenceUpdateException
+     *         The merge cannot be completed because the target branch has been modified. Another user might have
+     *         modified the target branch while the merge was in progress. Wait a few minutes, and then try again.
+     * @throws InvalidConflictDetailLevelException
+     *         The specified conflict detail level is not valid.
+     * @throws InvalidConflictResolutionStrategyException
+     *         The specified conflict resolution strategy is not valid.
+     * @throws InvalidConflictResolutionException
+     *         The specified conflict resolution list is not valid.
+     * @throws MaximumConflictResolutionEntriesExceededException
+     *         The number of allowed conflict resolution entries was exceeded.
+     * @throws MultipleConflictResolutionEntriesException
+     *         More than one conflict resolution entries exists for the conflict. A conflict can have only one conflict
+     *         resolution entry.
+     * @throws ReplacementTypeRequiredException
+     *         A replacement type is required.
+     * @throws InvalidReplacementTypeException
+     *         Automerge was specified for resolving the conflict, but the specified replacement type is not valid.
+     * @throws ReplacementContentRequiredException
+     *         USE_NEW_CONTENT was specified but no replacement content has been provided.
+     * @throws InvalidReplacementContentException
+     *         Automerge was specified for resolving the conflict, but the replacement type is not valid or content is
+     *         missing.
+     * @throws PathRequiredException
+     *         The folderPath for a location cannot be null.
+     * @throws InvalidPathException
+     *         The specified path is not valid.
+     * @throws FileContentSizeLimitExceededException
+     *         The file cannot be added because it is too large. The maximum file size that can be added is 6 MB, and
+     *         the combined file content change size is 7 MB. Consider making these changes using a Git client.
+     * @throws FolderContentSizeLimitExceededException
+     *         The commit cannot be created because at least one of the overall changes in the commit results in a
+     *         folder whose contents exceed the limit of 6 MB. Either reduce the number and size of your changes, or
+     *         split the changes across multiple folders.
+     * @throws MaximumFileContentToLoadExceededException
+     *         The number of files to load exceeds the allowed limit.
+     * @throws MaximumItemsToCompareExceededException
+     *         The maximum number of items to compare between the source or destination branches and the merge base has
+     *         exceeded the maximum allowed.
+     * @throws FileModeRequiredException
+     *         The commit cannot be created because a file mode is required to update mode permissions for an existing
+     *         file, but no file mode has been specified.
+     * @throws InvalidFileModeException
+     *         The specified file mode permission is not valid. For a list of valid file mode permissions, see
+     *         <a>PutFile</a>.
+     * @throws NameLengthExceededException
+     *         The user name is not valid because it has exceeded the character limit for author names.
+     * @throws InvalidEmailException
+     *         The specified email address either contains one or more characters that are not allowed, or it exceeds
+     *         the maximum number of characters allowed for an email address.
+     * @throws CommitMessageLengthExceededException
+     *         The commit message is too long. Provide a shorter string.
+     * @throws EncryptionIntegrityChecksFailedException
+     *         An encryption integrity check failed.
+     * @throws EncryptionKeyAccessDeniedException
+     *         An encryption key could not be accessed.
+     * @throws EncryptionKeyDisabledException
+     *         The encryption key is disabled.
+     * @throws EncryptionKeyNotFoundException
+     *         No encryption key was found.
+     * @throws EncryptionKeyUnavailableException
+     *         The encryption key is not available.
+     * @sample AWSCodeCommit.MergeBranchesByThreeWay
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/MergeBranchesByThreeWay"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public MergeBranchesByThreeWayResult mergeBranchesByThreeWay(MergeBranchesByThreeWayRequest request) {
+        request = beforeClientExecution(request);
+        return executeMergeBranchesByThreeWay(request);
+    }
+
+    @SdkInternalApi
+    final MergeBranchesByThreeWayResult executeMergeBranchesByThreeWay(MergeBranchesByThreeWayRequest mergeBranchesByThreeWayRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(mergeBranchesByThreeWayRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<MergeBranchesByThreeWayRequest> request = null;
+        Response<MergeBranchesByThreeWayResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new MergeBranchesByThreeWayRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(mergeBranchesByThreeWayRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeCommit");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "MergeBranchesByThreeWay");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<MergeBranchesByThreeWayResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new MergeBranchesByThreeWayResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Attempts to merge the source commit of a pull request into the specified destination branch for that pull request
+     * at the specified commit using the fast-forward merge strategy. If the merge is successful, it closes the pull
+     * request.
      * </p>
      * 
      * @param mergePullRequestByFastForwardRequest
@@ -2561,6 +4472,9 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
      *         The specified reference does not exist. You must provide a full commit ID.
      * @throws InvalidCommitIdException
      *         The specified commit ID is not valid.
+     * @throws RepositoryNotAssociatedWithPullRequestException
+     *         The repository does not contain any pull requests with that pull request ID. Use GetPullRequest to verify
+     *         the correct repository name for the pull request ID.
      * @throws RepositoryNameRequiredException
      *         A repository name is required but was not specified.
      * @throws InvalidRepositoryNameException
@@ -2571,6 +4485,9 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
      *         </p>
      * @throws RepositoryDoesNotExistException
      *         The specified repository does not exist.
+     * @throws ConcurrentReferenceUpdateException
+     *         The merge cannot be completed because the target branch has been modified. Another user might have
+     *         modified the target branch while the merge was in progress. Wait a few minutes, and then try again.
      * @throws EncryptionIntegrityChecksFailedException
      *         An encryption integrity check failed.
      * @throws EncryptionKeyAccessDeniedException
@@ -2608,6 +4525,10 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeCommit");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "MergePullRequestByFastForward");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2615,6 +4536,307 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
             HttpResponseHandler<AmazonWebServiceResponse<MergePullRequestByFastForwardResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
                     new MergePullRequestByFastForwardResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Attempts to merge the source commit of a pull request into the specified destination branch for that pull request
+     * at the specified commit using the squash merge strategy. If the merge is successful, it closes the pull request.
+     * </p>
+     * 
+     * @param mergePullRequestBySquashRequest
+     * @return Result of the MergePullRequestBySquash operation returned by the service.
+     * @throws PullRequestAlreadyClosedException
+     *         The pull request status cannot be updated because it is already closed.
+     * @throws PullRequestDoesNotExistException
+     *         The pull request ID could not be found. Make sure that you have specified the correct repository name and
+     *         pull request ID, and then try again.
+     * @throws PullRequestIdRequiredException
+     *         A pull request ID is required, but none was provided.
+     * @throws InvalidPullRequestIdException
+     *         The pull request ID is not valid. Make sure that you have provided the full ID and that the pull request
+     *         is in the specified repository, and then try again.
+     * @throws InvalidCommitIdException
+     *         The specified commit ID is not valid.
+     * @throws ManualMergeRequiredException
+     *         The pull request cannot be merged automatically into the destination branch. You must manually merge the
+     *         branches and resolve any conflicts.
+     * @throws TipOfSourceReferenceIsDifferentException
+     *         The tip of the source branch in the destination repository does not match the tip of the source branch
+     *         specified in your request. The pull request might have been updated. Make sure that you have the latest
+     *         changes.
+     * @throws TipsDivergenceExceededException
+     *         The divergence between the tips of the provided commit specifiers is too great to determine whether there
+     *         might be any merge conflicts. Locally compare the specifiers using <code>git diff</code> or a diff tool.
+     * @throws NameLengthExceededException
+     *         The user name is not valid because it has exceeded the character limit for author names.
+     * @throws InvalidEmailException
+     *         The specified email address either contains one or more characters that are not allowed, or it exceeds
+     *         the maximum number of characters allowed for an email address.
+     * @throws CommitMessageLengthExceededException
+     *         The commit message is too long. Provide a shorter string.
+     * @throws InvalidConflictDetailLevelException
+     *         The specified conflict detail level is not valid.
+     * @throws InvalidConflictResolutionStrategyException
+     *         The specified conflict resolution strategy is not valid.
+     * @throws InvalidConflictResolutionException
+     *         The specified conflict resolution list is not valid.
+     * @throws ReplacementTypeRequiredException
+     *         A replacement type is required.
+     * @throws InvalidReplacementTypeException
+     *         Automerge was specified for resolving the conflict, but the specified replacement type is not valid.
+     * @throws MultipleConflictResolutionEntriesException
+     *         More than one conflict resolution entries exists for the conflict. A conflict can have only one conflict
+     *         resolution entry.
+     * @throws ReplacementContentRequiredException
+     *         USE_NEW_CONTENT was specified but no replacement content has been provided.
+     * @throws MaximumConflictResolutionEntriesExceededException
+     *         The number of allowed conflict resolution entries was exceeded.
+     * @throws ConcurrentReferenceUpdateException
+     *         The merge cannot be completed because the target branch has been modified. Another user might have
+     *         modified the target branch while the merge was in progress. Wait a few minutes, and then try again.
+     * @throws PathRequiredException
+     *         The folderPath for a location cannot be null.
+     * @throws InvalidPathException
+     *         The specified path is not valid.
+     * @throws InvalidFileModeException
+     *         The specified file mode permission is not valid. For a list of valid file mode permissions, see
+     *         <a>PutFile</a>.
+     * @throws InvalidReplacementContentException
+     *         Automerge was specified for resolving the conflict, but the replacement type is not valid or content is
+     *         missing.
+     * @throws FileContentSizeLimitExceededException
+     *         The file cannot be added because it is too large. The maximum file size that can be added is 6 MB, and
+     *         the combined file content change size is 7 MB. Consider making these changes using a Git client.
+     * @throws FolderContentSizeLimitExceededException
+     *         The commit cannot be created because at least one of the overall changes in the commit results in a
+     *         folder whose contents exceed the limit of 6 MB. Either reduce the number and size of your changes, or
+     *         split the changes across multiple folders.
+     * @throws MaximumFileContentToLoadExceededException
+     *         The number of files to load exceeds the allowed limit.
+     * @throws MaximumItemsToCompareExceededException
+     *         The maximum number of items to compare between the source or destination branches and the merge base has
+     *         exceeded the maximum allowed.
+     * @throws RepositoryNameRequiredException
+     *         A repository name is required but was not specified.
+     * @throws InvalidRepositoryNameException
+     *         At least one specified repository name is not valid.</p> <note>
+     *         <p>
+     *         This exception only occurs when a specified repository name is not valid. Other exceptions occur when a
+     *         required repository parameter is missing, or when a specified repository does not exist.
+     *         </p>
+     * @throws RepositoryDoesNotExistException
+     *         The specified repository does not exist.
+     * @throws RepositoryNotAssociatedWithPullRequestException
+     *         The repository does not contain any pull requests with that pull request ID. Use GetPullRequest to verify
+     *         the correct repository name for the pull request ID.
+     * @throws EncryptionIntegrityChecksFailedException
+     *         An encryption integrity check failed.
+     * @throws EncryptionKeyAccessDeniedException
+     *         An encryption key could not be accessed.
+     * @throws EncryptionKeyDisabledException
+     *         The encryption key is disabled.
+     * @throws EncryptionKeyNotFoundException
+     *         No encryption key was found.
+     * @throws EncryptionKeyUnavailableException
+     *         The encryption key is not available.
+     * @sample AWSCodeCommit.MergePullRequestBySquash
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/MergePullRequestBySquash"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public MergePullRequestBySquashResult mergePullRequestBySquash(MergePullRequestBySquashRequest request) {
+        request = beforeClientExecution(request);
+        return executeMergePullRequestBySquash(request);
+    }
+
+    @SdkInternalApi
+    final MergePullRequestBySquashResult executeMergePullRequestBySquash(MergePullRequestBySquashRequest mergePullRequestBySquashRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(mergePullRequestBySquashRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<MergePullRequestBySquashRequest> request = null;
+        Response<MergePullRequestBySquashResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new MergePullRequestBySquashRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(mergePullRequestBySquashRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeCommit");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "MergePullRequestBySquash");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<MergePullRequestBySquashResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new MergePullRequestBySquashResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Attempts to merge the source commit of a pull request into the specified destination branch for that pull request
+     * at the specified commit using the three-way merge strategy. If the merge is successful, it closes the pull
+     * request.
+     * </p>
+     * 
+     * @param mergePullRequestByThreeWayRequest
+     * @return Result of the MergePullRequestByThreeWay operation returned by the service.
+     * @throws PullRequestAlreadyClosedException
+     *         The pull request status cannot be updated because it is already closed.
+     * @throws PullRequestDoesNotExistException
+     *         The pull request ID could not be found. Make sure that you have specified the correct repository name and
+     *         pull request ID, and then try again.
+     * @throws PullRequestIdRequiredException
+     *         A pull request ID is required, but none was provided.
+     * @throws InvalidPullRequestIdException
+     *         The pull request ID is not valid. Make sure that you have provided the full ID and that the pull request
+     *         is in the specified repository, and then try again.
+     * @throws InvalidCommitIdException
+     *         The specified commit ID is not valid.
+     * @throws ManualMergeRequiredException
+     *         The pull request cannot be merged automatically into the destination branch. You must manually merge the
+     *         branches and resolve any conflicts.
+     * @throws TipOfSourceReferenceIsDifferentException
+     *         The tip of the source branch in the destination repository does not match the tip of the source branch
+     *         specified in your request. The pull request might have been updated. Make sure that you have the latest
+     *         changes.
+     * @throws TipsDivergenceExceededException
+     *         The divergence between the tips of the provided commit specifiers is too great to determine whether there
+     *         might be any merge conflicts. Locally compare the specifiers using <code>git diff</code> or a diff tool.
+     * @throws NameLengthExceededException
+     *         The user name is not valid because it has exceeded the character limit for author names.
+     * @throws InvalidEmailException
+     *         The specified email address either contains one or more characters that are not allowed, or it exceeds
+     *         the maximum number of characters allowed for an email address.
+     * @throws CommitMessageLengthExceededException
+     *         The commit message is too long. Provide a shorter string.
+     * @throws InvalidConflictDetailLevelException
+     *         The specified conflict detail level is not valid.
+     * @throws InvalidConflictResolutionStrategyException
+     *         The specified conflict resolution strategy is not valid.
+     * @throws InvalidConflictResolutionException
+     *         The specified conflict resolution list is not valid.
+     * @throws ReplacementTypeRequiredException
+     *         A replacement type is required.
+     * @throws InvalidReplacementTypeException
+     *         Automerge was specified for resolving the conflict, but the specified replacement type is not valid.
+     * @throws MultipleConflictResolutionEntriesException
+     *         More than one conflict resolution entries exists for the conflict. A conflict can have only one conflict
+     *         resolution entry.
+     * @throws ReplacementContentRequiredException
+     *         USE_NEW_CONTENT was specified but no replacement content has been provided.
+     * @throws MaximumConflictResolutionEntriesExceededException
+     *         The number of allowed conflict resolution entries was exceeded.
+     * @throws PathRequiredException
+     *         The folderPath for a location cannot be null.
+     * @throws InvalidPathException
+     *         The specified path is not valid.
+     * @throws InvalidFileModeException
+     *         The specified file mode permission is not valid. For a list of valid file mode permissions, see
+     *         <a>PutFile</a>.
+     * @throws InvalidReplacementContentException
+     *         Automerge was specified for resolving the conflict, but the replacement type is not valid or content is
+     *         missing.
+     * @throws FileContentSizeLimitExceededException
+     *         The file cannot be added because it is too large. The maximum file size that can be added is 6 MB, and
+     *         the combined file content change size is 7 MB. Consider making these changes using a Git client.
+     * @throws FolderContentSizeLimitExceededException
+     *         The commit cannot be created because at least one of the overall changes in the commit results in a
+     *         folder whose contents exceed the limit of 6 MB. Either reduce the number and size of your changes, or
+     *         split the changes across multiple folders.
+     * @throws MaximumFileContentToLoadExceededException
+     *         The number of files to load exceeds the allowed limit.
+     * @throws MaximumItemsToCompareExceededException
+     *         The maximum number of items to compare between the source or destination branches and the merge base has
+     *         exceeded the maximum allowed.
+     * @throws RepositoryNameRequiredException
+     *         A repository name is required but was not specified.
+     * @throws InvalidRepositoryNameException
+     *         At least one specified repository name is not valid.</p> <note>
+     *         <p>
+     *         This exception only occurs when a specified repository name is not valid. Other exceptions occur when a
+     *         required repository parameter is missing, or when a specified repository does not exist.
+     *         </p>
+     * @throws RepositoryDoesNotExistException
+     *         The specified repository does not exist.
+     * @throws RepositoryNotAssociatedWithPullRequestException
+     *         The repository does not contain any pull requests with that pull request ID. Use GetPullRequest to verify
+     *         the correct repository name for the pull request ID.
+     * @throws ConcurrentReferenceUpdateException
+     *         The merge cannot be completed because the target branch has been modified. Another user might have
+     *         modified the target branch while the merge was in progress. Wait a few minutes, and then try again.
+     * @throws EncryptionIntegrityChecksFailedException
+     *         An encryption integrity check failed.
+     * @throws EncryptionKeyAccessDeniedException
+     *         An encryption key could not be accessed.
+     * @throws EncryptionKeyDisabledException
+     *         The encryption key is disabled.
+     * @throws EncryptionKeyNotFoundException
+     *         No encryption key was found.
+     * @throws EncryptionKeyUnavailableException
+     *         The encryption key is not available.
+     * @sample AWSCodeCommit.MergePullRequestByThreeWay
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/MergePullRequestByThreeWay"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public MergePullRequestByThreeWayResult mergePullRequestByThreeWay(MergePullRequestByThreeWayRequest request) {
+        request = beforeClientExecution(request);
+        return executeMergePullRequestByThreeWay(request);
+    }
+
+    @SdkInternalApi
+    final MergePullRequestByThreeWayResult executeMergePullRequestByThreeWay(MergePullRequestByThreeWayRequest mergePullRequestByThreeWayRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(mergePullRequestByThreeWayRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<MergePullRequestByThreeWayRequest> request = null;
+        Response<MergePullRequestByThreeWayResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new MergePullRequestByThreeWayRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(mergePullRequestByThreeWayRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeCommit");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "MergePullRequestByThreeWay");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<MergePullRequestByThreeWayResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new MergePullRequestByThreeWayResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -2663,7 +4885,7 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
      *         Either the enum is not in a valid format, or the specified file version enum is not valid in respect to
      *         the current file version.
      * @throws PathRequiredException
-     *         The filePath for a location cannot be empty or null.
+     *         The folderPath for a location cannot be null.
      * @throws InvalidFilePositionException
      *         The position is not valid. Make sure that the line number exists in the version of the file you want to
      *         comment on.
@@ -2718,6 +4940,10 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeCommit");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "PostCommentForComparedCommit");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2751,8 +4977,8 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
      * @throws PullRequestIdRequiredException
      *         A pull request ID is required, but none was provided.
      * @throws RepositoryNotAssociatedWithPullRequestException
-     *         The repository does not contain any pull requests with that pull request ID. Check to make sure you have
-     *         provided the correct repository name for the pull request.
+     *         The repository does not contain any pull requests with that pull request ID. Use GetPullRequest to verify
+     *         the correct repository name for the pull request ID.
      * @throws RepositoryNameRequiredException
      *         A repository name is required but was not specified.
      * @throws RepositoryDoesNotExistException
@@ -2784,7 +5010,7 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
      *         Either the enum is not in a valid format, or the specified file version enum is not valid in respect to
      *         the current file version.
      * @throws PathRequiredException
-     *         The filePath for a location cannot be empty or null.
+     *         The folderPath for a location cannot be null.
      * @throws InvalidFilePositionException
      *         The position is not valid. Make sure that the line number exists in the version of the file you want to
      *         comment on.
@@ -2810,7 +5036,7 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
      * @throws PathDoesNotExistException
      *         The specified path does not exist.
      * @throws PathRequiredException
-     *         The filePath for a location cannot be empty or null.
+     *         The folderPath for a location cannot be null.
      * @throws BeforeCommitIdAndAfterCommitIdAreSameException
      *         The before commit ID and the after commit ID are the same, which is not valid. The before commit ID and
      *         the after commit ID must be different commit IDs.
@@ -2841,6 +5067,10 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeCommit");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "PostCommentForPullRequest");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2911,6 +5141,10 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeCommit");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "PostCommentReply");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2929,7 +5163,8 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
 
     /**
      * <p>
-     * Adds or updates a file in an AWS CodeCommit repository.
+     * Adds or updates a file in a branch in an AWS CodeCommit repository, and generates a commit for the addition in
+     * the specified branch.
      * </p>
      * 
      * @param putFileRequest
@@ -2951,8 +5186,8 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
      *         The parent commit ID is not valid. The commit ID cannot be empty, and must match the head commit ID for
      *         the branch of the repository where you want to add or update a file.
      * @throws ParentCommitDoesNotExistException
-     *         The parent commit ID is not valid. The specified parent commit ID does not exist in the specified branch
-     *         of the repository.
+     *         The parent commit ID is not valid because it does not exist. The specified parent commit ID does not
+     *         exist in the specified branch of the repository.
      * @throws ParentCommitIdOutdatedException
      *         The file could not be added because the provided parent commit ID is not the current tip of the specified
      *         branch. To view the full commit ID of the current head of the branch, use <a>GetBranch</a>.
@@ -2960,10 +5195,14 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
      *         The file cannot be added because it is empty. Empty files cannot be added to the repository with this
      *         API.
      * @throws FileContentSizeLimitExceededException
-     *         The file cannot be added because it is too large. The maximum file size that can be added using PutFile
-     *         is 6 MB. For files larger than 6 MB but smaller than 2 GB, add them using a Git client.
+     *         The file cannot be added because it is too large. The maximum file size that can be added is 6 MB, and
+     *         the combined file content change size is 7 MB. Consider making these changes using a Git client.
+     * @throws FolderContentSizeLimitExceededException
+     *         The commit cannot be created because at least one of the overall changes in the commit results in a
+     *         folder whose contents exceed the limit of 6 MB. Either reduce the number and size of your changes, or
+     *         split the changes across multiple folders.
      * @throws PathRequiredException
-     *         The filePath for a location cannot be empty or null.
+     *         The folderPath for a location cannot be null.
      * @throws InvalidPathException
      *         The specified path is not valid.
      * @throws BranchNameRequiredException
@@ -2979,13 +5218,14 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
      *         The specified file mode permission is not valid. For a list of valid file mode permissions, see
      *         <a>PutFile</a>.
      * @throws NameLengthExceededException
-     *         The file name is not valid because it has exceeded the character limit for file names. File names,
-     *         including the path to the file, cannot exceed the character limit.
+     *         The user name is not valid because it has exceeded the character limit for author names.
      * @throws InvalidEmailException
      *         The specified email address either contains one or more characters that are not allowed, or it exceeds
      *         the maximum number of characters allowed for an email address.
      * @throws CommitMessageLengthExceededException
      *         The commit message is too long. Provide a shorter string.
+     * @throws InvalidDeletionParameterException
+     *         The specified deletion parameter is not valid.
      * @throws EncryptionIntegrityChecksFailedException
      *         An encryption integrity check failed.
      * @throws EncryptionKeyAccessDeniedException
@@ -3007,6 +5247,9 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
      *         A file cannot be added to the repository because the specified path name has the same name as a file that
      *         already exists in this repository. Either provide a different name for the file, or specify a different
      *         path for the file.
+     * @throws FilePathConflictsWithSubmodulePathException
+     *         The commit cannot be created because a specified file path points to a submodule. Verify that the
+     *         destination files have valid file paths that do not point to a submodule.
      * @sample AWSCodeCommit.PutFile
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/PutFile" target="_top">AWS API
      *      Documentation</a>
@@ -3033,6 +5276,10 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeCommit");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "PutFile");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3132,6 +5379,10 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeCommit");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "PutRepositoryTriggers");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3139,6 +5390,90 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
             HttpResponseHandler<AmazonWebServiceResponse<PutRepositoryTriggersResult>> responseHandler = protocolFactory
                     .createResponseHandler(new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
                             new PutRepositoryTriggersResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Adds or updates tags for a resource in AWS CodeCommit. For a list of valid resources in AWS CodeCommit, see <a
+     * href=
+     * "https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-iam-access-control-identity-based.html#arn-formats"
+     * >CodeCommit Resources and Operations</a> in the AWS CodeCommit User Guide.
+     * </p>
+     * 
+     * @param tagResourceRequest
+     * @return Result of the TagResource operation returned by the service.
+     * @throws RepositoryDoesNotExistException
+     *         The specified repository does not exist.
+     * @throws InvalidRepositoryNameException
+     *         At least one specified repository name is not valid.</p> <note>
+     *         <p>
+     *         This exception only occurs when a specified repository name is not valid. Other exceptions occur when a
+     *         required repository parameter is missing, or when a specified repository does not exist.
+     *         </p>
+     * @throws ResourceArnRequiredException
+     *         A valid Amazon Resource Name (ARN) for an AWS CodeCommit resource is required. For a list of valid
+     *         resources in AWS CodeCommit, see <a href=
+     *         "https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-iam-access-control-identity-based.html#arn-formats"
+     *         >CodeCommit Resources and Operations</a> in the AWS CodeCommit User Guide.
+     * @throws InvalidResourceArnException
+     *         The value for the resource ARN is not valid. For more information about resources in AWS CodeCommit, see
+     *         <a href=
+     *         "https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-iam-access-control-identity-based.html#arn-formats"
+     *         >CodeCommit Resources and Operations</a> in the AWS CodeCommit User Guide.
+     * @throws TagsMapRequiredException
+     *         A map of tags is required.
+     * @throws InvalidTagsMapException
+     *         The map of tags is not valid.
+     * @throws TooManyTagsException
+     *         The maximum number of tags for an AWS CodeCommit resource has been exceeded.
+     * @throws InvalidSystemTagUsageException
+     *         The specified tag is not valid. Key names cannot be prefixed with aws:.
+     * @throws TagPolicyException
+     *         The tag policy is not valid.
+     * @sample AWSCodeCommit.TagResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/TagResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public TagResourceResult tagResource(TagResourceRequest request) {
+        request = beforeClientExecution(request);
+        return executeTagResource(request);
+    }
+
+    @SdkInternalApi
+    final TagResourceResult executeTagResource(TagResourceRequest tagResourceRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(tagResourceRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<TagResourceRequest> request = null;
+        Response<TagResourceResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new TagResourceRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(tagResourceRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeCommit");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "TagResource");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<TagResourceResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new TagResourceResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -3234,6 +5569,10 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeCommit");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "TestRepositoryTriggers");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3241,6 +5580,89 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
             HttpResponseHandler<AmazonWebServiceResponse<TestRepositoryTriggersResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
                     new TestRepositoryTriggersResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Removes tags for a resource in AWS CodeCommit. For a list of valid resources in AWS CodeCommit, see <a href=
+     * "https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-iam-access-control-identity-based.html#arn-formats"
+     * >CodeCommit Resources and Operations</a> in the AWS CodeCommit User Guide.
+     * </p>
+     * 
+     * @param untagResourceRequest
+     * @return Result of the UntagResource operation returned by the service.
+     * @throws RepositoryDoesNotExistException
+     *         The specified repository does not exist.
+     * @throws InvalidRepositoryNameException
+     *         At least one specified repository name is not valid.</p> <note>
+     *         <p>
+     *         This exception only occurs when a specified repository name is not valid. Other exceptions occur when a
+     *         required repository parameter is missing, or when a specified repository does not exist.
+     *         </p>
+     * @throws ResourceArnRequiredException
+     *         A valid Amazon Resource Name (ARN) for an AWS CodeCommit resource is required. For a list of valid
+     *         resources in AWS CodeCommit, see <a href=
+     *         "https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-iam-access-control-identity-based.html#arn-formats"
+     *         >CodeCommit Resources and Operations</a> in the AWS CodeCommit User Guide.
+     * @throws InvalidResourceArnException
+     *         The value for the resource ARN is not valid. For more information about resources in AWS CodeCommit, see
+     *         <a href=
+     *         "https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-iam-access-control-identity-based.html#arn-formats"
+     *         >CodeCommit Resources and Operations</a> in the AWS CodeCommit User Guide.
+     * @throws TagKeysListRequiredException
+     *         A list of tag keys is required. The list cannot be empty or null.
+     * @throws InvalidTagKeysListException
+     *         The list of tags is not valid.
+     * @throws TooManyTagsException
+     *         The maximum number of tags for an AWS CodeCommit resource has been exceeded.
+     * @throws InvalidSystemTagUsageException
+     *         The specified tag is not valid. Key names cannot be prefixed with aws:.
+     * @throws TagPolicyException
+     *         The tag policy is not valid.
+     * @sample AWSCodeCommit.UntagResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/UntagResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public UntagResourceResult untagResource(UntagResourceRequest request) {
+        request = beforeClientExecution(request);
+        return executeUntagResource(request);
+    }
+
+    @SdkInternalApi
+    final UntagResourceResult executeUntagResource(UntagResourceRequest untagResourceRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(untagResourceRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<UntagResourceRequest> request = null;
+        Response<UntagResourceResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new UntagResourceRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(untagResourceRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeCommit");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UntagResource");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<UntagResourceResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new UntagResourceResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -3298,6 +5720,10 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeCommit");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateComment");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3380,6 +5806,10 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeCommit");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateDefaultBranch");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3442,6 +5872,10 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeCommit");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdatePullRequestDescription");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3519,6 +5953,10 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeCommit");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdatePullRequestStatus");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3583,6 +6021,10 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeCommit");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdatePullRequestTitle");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3665,6 +6107,10 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeCommit");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateRepositoryDescription");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3687,7 +6133,7 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
      * Renames a repository. The repository name must be unique across the calling AWS account. In addition, repository
      * names are limited to 100 alphanumeric, dash, and underscore characters, and cannot include certain characters.
      * The suffix ".git" is prohibited. For a full description of the limits on repository names, see <a
-     * href="http://docs.aws.amazon.com/codecommit/latest/userguide/limits.html">Limits</a> in the AWS CodeCommit User
+     * href="https://docs.aws.amazon.com/codecommit/latest/userguide/limits.html">Limits</a> in the AWS CodeCommit User
      * Guide.
      * </p>
      * 
@@ -3732,6 +6178,10 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeCommit");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateRepositoryName");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3772,9 +6222,18 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
     private <X, Y extends AmazonWebServiceRequest> Response<X> invoke(Request<Y> request, HttpResponseHandler<AmazonWebServiceResponse<X>> responseHandler,
             ExecutionContext executionContext) {
 
+        return invoke(request, responseHandler, executionContext, null, null);
+    }
+
+    /**
+     * Normal invoke with authentication. Credentials are required and may be overriden at the request level.
+     **/
+    private <X, Y extends AmazonWebServiceRequest> Response<X> invoke(Request<Y> request, HttpResponseHandler<AmazonWebServiceResponse<X>> responseHandler,
+            ExecutionContext executionContext, URI cachedEndpoint, URI uriFromEndpointTrait) {
+
         executionContext.setCredentialsProvider(CredentialUtils.getCredentialsProvider(request.getOriginalRequest(), awsCredentialsProvider));
 
-        return doInvoke(request, responseHandler, executionContext);
+        return doInvoke(request, responseHandler, executionContext, cachedEndpoint, uriFromEndpointTrait);
     }
 
     /**
@@ -3784,7 +6243,7 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
     private <X, Y extends AmazonWebServiceRequest> Response<X> anonymousInvoke(Request<Y> request,
             HttpResponseHandler<AmazonWebServiceResponse<X>> responseHandler, ExecutionContext executionContext) {
 
-        return doInvoke(request, responseHandler, executionContext);
+        return doInvoke(request, responseHandler, executionContext, null, null);
     }
 
     /**
@@ -3792,8 +6251,17 @@ public class AWSCodeCommitClient extends AmazonWebServiceClient implements AWSCo
      * ExecutionContext beforehand.
      **/
     private <X, Y extends AmazonWebServiceRequest> Response<X> doInvoke(Request<Y> request, HttpResponseHandler<AmazonWebServiceResponse<X>> responseHandler,
-            ExecutionContext executionContext) {
-        request.setEndpoint(endpoint);
+            ExecutionContext executionContext, URI discoveredEndpoint, URI uriFromEndpointTrait) {
+
+        if (discoveredEndpoint != null) {
+            request.setEndpoint(discoveredEndpoint);
+            request.getOriginalRequest().getRequestClientOptions().appendUserAgent("endpoint-discovery");
+        } else if (uriFromEndpointTrait != null) {
+            request.setEndpoint(uriFromEndpointTrait);
+        } else {
+            request.setEndpoint(endpoint);
+        }
+
         request.setTimeOffset(timeOffset);
 
         HttpResponseHandler<AmazonServiceException> errorResponseHandler = protocolFactory.createErrorResponseHandler(new JsonErrorResponseMetadata());

@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -26,6 +26,12 @@ import com.amazonaws.AmazonWebServiceRequest;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CreateChannelRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
+    /**
+     * The class for this channel. STANDARD for a channel with two pipelines or SINGLE_PIPELINE for a channel with one
+     * pipeline.
+     */
+    private String channelClass;
+
     private java.util.List<OutputDestination> destinations;
 
     private EncoderSettings encoderSettings;
@@ -33,6 +39,8 @@ public class CreateChannelRequest extends com.amazonaws.AmazonWebServiceRequest 
     private java.util.List<InputAttachment> inputAttachments;
     /** Specification of input for this channel (max. bitrate, resolution, codec, etc.) */
     private InputSpecification inputSpecification;
+    /** The log level to write to CloudWatch Logs. */
+    private String logLevel;
     /** Name of channel. */
     private String name;
     /**
@@ -44,6 +52,67 @@ public class CreateChannelRequest extends com.amazonaws.AmazonWebServiceRequest 
     private String reserved;
     /** An optional Amazon Resource Name (ARN) of the role to assume when running the Channel. */
     private String roleArn;
+    /** A collection of key-value pairs. */
+    private java.util.Map<String, String> tags;
+
+    /**
+     * The class for this channel. STANDARD for a channel with two pipelines or SINGLE_PIPELINE for a channel with one
+     * pipeline.
+     * 
+     * @param channelClass
+     *        The class for this channel. STANDARD for a channel with two pipelines or SINGLE_PIPELINE for a channel
+     *        with one pipeline.
+     * @see ChannelClass
+     */
+
+    public void setChannelClass(String channelClass) {
+        this.channelClass = channelClass;
+    }
+
+    /**
+     * The class for this channel. STANDARD for a channel with two pipelines or SINGLE_PIPELINE for a channel with one
+     * pipeline.
+     * 
+     * @return The class for this channel. STANDARD for a channel with two pipelines or SINGLE_PIPELINE for a channel
+     *         with one pipeline.
+     * @see ChannelClass
+     */
+
+    public String getChannelClass() {
+        return this.channelClass;
+    }
+
+    /**
+     * The class for this channel. STANDARD for a channel with two pipelines or SINGLE_PIPELINE for a channel with one
+     * pipeline.
+     * 
+     * @param channelClass
+     *        The class for this channel. STANDARD for a channel with two pipelines or SINGLE_PIPELINE for a channel
+     *        with one pipeline.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see ChannelClass
+     */
+
+    public CreateChannelRequest withChannelClass(String channelClass) {
+        setChannelClass(channelClass);
+        return this;
+    }
+
+    /**
+     * The class for this channel. STANDARD for a channel with two pipelines or SINGLE_PIPELINE for a channel with one
+     * pipeline.
+     * 
+     * @param channelClass
+     *        The class for this channel. STANDARD for a channel with two pipelines or SINGLE_PIPELINE for a channel
+     *        with one pipeline.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see ChannelClass
+     */
+
+    public CreateChannelRequest withChannelClass(ChannelClass channelClass) {
+        this.channelClass = channelClass.toString();
+        return this;
+    }
 
     /**
      * @return
@@ -220,6 +289,57 @@ public class CreateChannelRequest extends com.amazonaws.AmazonWebServiceRequest 
     }
 
     /**
+     * The log level to write to CloudWatch Logs.
+     * 
+     * @param logLevel
+     *        The log level to write to CloudWatch Logs.
+     * @see LogLevel
+     */
+
+    public void setLogLevel(String logLevel) {
+        this.logLevel = logLevel;
+    }
+
+    /**
+     * The log level to write to CloudWatch Logs.
+     * 
+     * @return The log level to write to CloudWatch Logs.
+     * @see LogLevel
+     */
+
+    public String getLogLevel() {
+        return this.logLevel;
+    }
+
+    /**
+     * The log level to write to CloudWatch Logs.
+     * 
+     * @param logLevel
+     *        The log level to write to CloudWatch Logs.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see LogLevel
+     */
+
+    public CreateChannelRequest withLogLevel(String logLevel) {
+        setLogLevel(logLevel);
+        return this;
+    }
+
+    /**
+     * The log level to write to CloudWatch Logs.
+     * 
+     * @param logLevel
+     *        The log level to write to CloudWatch Logs.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see LogLevel
+     */
+
+    public CreateChannelRequest withLogLevel(LogLevel logLevel) {
+        this.logLevel = logLevel.toString();
+        return this;
+    }
+
+    /**
      * Name of channel.
      * 
      * @param name
@@ -356,7 +476,63 @@ public class CreateChannelRequest extends com.amazonaws.AmazonWebServiceRequest 
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * A collection of key-value pairs.
+     * 
+     * @return A collection of key-value pairs.
+     */
+
+    public java.util.Map<String, String> getTags() {
+        return tags;
+    }
+
+    /**
+     * A collection of key-value pairs.
+     * 
+     * @param tags
+     *        A collection of key-value pairs.
+     */
+
+    public void setTags(java.util.Map<String, String> tags) {
+        this.tags = tags;
+    }
+
+    /**
+     * A collection of key-value pairs.
+     * 
+     * @param tags
+     *        A collection of key-value pairs.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateChannelRequest withTags(java.util.Map<String, String> tags) {
+        setTags(tags);
+        return this;
+    }
+
+    public CreateChannelRequest addTagsEntry(String key, String value) {
+        if (null == this.tags) {
+            this.tags = new java.util.HashMap<String, String>();
+        }
+        if (this.tags.containsKey(key))
+            throw new IllegalArgumentException("Duplicated keys (" + key.toString() + ") are provided.");
+        this.tags.put(key, value);
+        return this;
+    }
+
+    /**
+     * Removes all the entries added into Tags.
+     *
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateChannelRequest clearTagsEntries() {
+        this.tags = null;
+        return this;
+    }
+
+    /**
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -366,6 +542,8 @@ public class CreateChannelRequest extends com.amazonaws.AmazonWebServiceRequest 
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
+        if (getChannelClass() != null)
+            sb.append("ChannelClass: ").append(getChannelClass()).append(",");
         if (getDestinations() != null)
             sb.append("Destinations: ").append(getDestinations()).append(",");
         if (getEncoderSettings() != null)
@@ -374,6 +552,8 @@ public class CreateChannelRequest extends com.amazonaws.AmazonWebServiceRequest 
             sb.append("InputAttachments: ").append(getInputAttachments()).append(",");
         if (getInputSpecification() != null)
             sb.append("InputSpecification: ").append(getInputSpecification()).append(",");
+        if (getLogLevel() != null)
+            sb.append("LogLevel: ").append(getLogLevel()).append(",");
         if (getName() != null)
             sb.append("Name: ").append(getName()).append(",");
         if (getRequestId() != null)
@@ -381,7 +561,9 @@ public class CreateChannelRequest extends com.amazonaws.AmazonWebServiceRequest 
         if (getReserved() != null)
             sb.append("Reserved: ").append(getReserved()).append(",");
         if (getRoleArn() != null)
-            sb.append("RoleArn: ").append(getRoleArn());
+            sb.append("RoleArn: ").append(getRoleArn()).append(",");
+        if (getTags() != null)
+            sb.append("Tags: ").append(getTags());
         sb.append("}");
         return sb.toString();
     }
@@ -396,6 +578,10 @@ public class CreateChannelRequest extends com.amazonaws.AmazonWebServiceRequest 
         if (obj instanceof CreateChannelRequest == false)
             return false;
         CreateChannelRequest other = (CreateChannelRequest) obj;
+        if (other.getChannelClass() == null ^ this.getChannelClass() == null)
+            return false;
+        if (other.getChannelClass() != null && other.getChannelClass().equals(this.getChannelClass()) == false)
+            return false;
         if (other.getDestinations() == null ^ this.getDestinations() == null)
             return false;
         if (other.getDestinations() != null && other.getDestinations().equals(this.getDestinations()) == false)
@@ -411,6 +597,10 @@ public class CreateChannelRequest extends com.amazonaws.AmazonWebServiceRequest 
         if (other.getInputSpecification() == null ^ this.getInputSpecification() == null)
             return false;
         if (other.getInputSpecification() != null && other.getInputSpecification().equals(this.getInputSpecification()) == false)
+            return false;
+        if (other.getLogLevel() == null ^ this.getLogLevel() == null)
+            return false;
+        if (other.getLogLevel() != null && other.getLogLevel().equals(this.getLogLevel()) == false)
             return false;
         if (other.getName() == null ^ this.getName() == null)
             return false;
@@ -428,6 +618,10 @@ public class CreateChannelRequest extends com.amazonaws.AmazonWebServiceRequest 
             return false;
         if (other.getRoleArn() != null && other.getRoleArn().equals(this.getRoleArn()) == false)
             return false;
+        if (other.getTags() == null ^ this.getTags() == null)
+            return false;
+        if (other.getTags() != null && other.getTags().equals(this.getTags()) == false)
+            return false;
         return true;
     }
 
@@ -436,14 +630,17 @@ public class CreateChannelRequest extends com.amazonaws.AmazonWebServiceRequest 
         final int prime = 31;
         int hashCode = 1;
 
+        hashCode = prime * hashCode + ((getChannelClass() == null) ? 0 : getChannelClass().hashCode());
         hashCode = prime * hashCode + ((getDestinations() == null) ? 0 : getDestinations().hashCode());
         hashCode = prime * hashCode + ((getEncoderSettings() == null) ? 0 : getEncoderSettings().hashCode());
         hashCode = prime * hashCode + ((getInputAttachments() == null) ? 0 : getInputAttachments().hashCode());
         hashCode = prime * hashCode + ((getInputSpecification() == null) ? 0 : getInputSpecification().hashCode());
+        hashCode = prime * hashCode + ((getLogLevel() == null) ? 0 : getLogLevel().hashCode());
         hashCode = prime * hashCode + ((getName() == null) ? 0 : getName().hashCode());
         hashCode = prime * hashCode + ((getRequestId() == null) ? 0 : getRequestId().hashCode());
         hashCode = prime * hashCode + ((getReserved() == null) ? 0 : getReserved().hashCode());
         hashCode = prime * hashCode + ((getRoleArn() == null) ? 0 : getRoleArn().hashCode());
+        hashCode = prime * hashCode + ((getTags() == null) ? 0 : getTags().hashCode());
         return hashCode;
     }
 

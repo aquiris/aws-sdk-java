@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -79,11 +79,19 @@ public class CreateNetworkInterfaceRequest extends AmazonWebServiceRequest imple
      * </p>
      * <p>
      * The number of IP addresses you can assign to a network interface varies by instance type. For more information,
-     * see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI">IP Addresses
+     * see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI">IP Addresses
      * Per ENI Per Instance Type</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
      * </p>
      */
     private Integer secondaryPrivateIpAddressCount;
+    /**
+     * <p>
+     * Indicates the type of network interface. To create an Elastic Fabric Adapter (EFA), specify <code>efa</code>. For
+     * more information, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html"> Elastic Fabric
+     * Adapter</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * </p>
+     */
+    private String interfaceType;
     /**
      * <p>
      * The ID of the subnet to associate with the network interface.
@@ -482,7 +490,7 @@ public class CreateNetworkInterfaceRequest extends AmazonWebServiceRequest imple
      * </p>
      * <p>
      * The number of IP addresses you can assign to a network interface varies by instance type. For more information,
-     * see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI">IP Addresses
+     * see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI">IP Addresses
      * Per ENI Per Instance Type</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
      * </p>
      * 
@@ -494,7 +502,7 @@ public class CreateNetworkInterfaceRequest extends AmazonWebServiceRequest imple
      *        <p>
      *        The number of IP addresses you can assign to a network interface varies by instance type. For more
      *        information, see <a
-     *        href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI">IP Addresses
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI">IP Addresses
      *        Per ENI Per Instance Type</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
      */
 
@@ -510,7 +518,7 @@ public class CreateNetworkInterfaceRequest extends AmazonWebServiceRequest imple
      * </p>
      * <p>
      * The number of IP addresses you can assign to a network interface varies by instance type. For more information,
-     * see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI">IP Addresses
+     * see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI">IP Addresses
      * Per ENI Per Instance Type</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
      * </p>
      * 
@@ -521,7 +529,7 @@ public class CreateNetworkInterfaceRequest extends AmazonWebServiceRequest imple
      *         <p>
      *         The number of IP addresses you can assign to a network interface varies by instance type. For more
      *         information, see <a
-     *         href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI">IP Addresses
+     *         href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI">IP Addresses
      *         Per ENI Per Instance Type</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
      */
 
@@ -537,7 +545,7 @@ public class CreateNetworkInterfaceRequest extends AmazonWebServiceRequest imple
      * </p>
      * <p>
      * The number of IP addresses you can assign to a network interface varies by instance type. For more information,
-     * see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI">IP Addresses
+     * see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI">IP Addresses
      * Per ENI Per Instance Type</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
      * </p>
      * 
@@ -549,13 +557,92 @@ public class CreateNetworkInterfaceRequest extends AmazonWebServiceRequest imple
      *        <p>
      *        The number of IP addresses you can assign to a network interface varies by instance type. For more
      *        information, see <a
-     *        href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI">IP Addresses
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI">IP Addresses
      *        Per ENI Per Instance Type</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateNetworkInterfaceRequest withSecondaryPrivateIpAddressCount(Integer secondaryPrivateIpAddressCount) {
         setSecondaryPrivateIpAddressCount(secondaryPrivateIpAddressCount);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Indicates the type of network interface. To create an Elastic Fabric Adapter (EFA), specify <code>efa</code>. For
+     * more information, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html"> Elastic Fabric
+     * Adapter</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * </p>
+     * 
+     * @param interfaceType
+     *        Indicates the type of network interface. To create an Elastic Fabric Adapter (EFA), specify
+     *        <code>efa</code>. For more information, see <a
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html"> Elastic Fabric Adapter</a> in the
+     *        <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * @see NetworkInterfaceCreationType
+     */
+
+    public void setInterfaceType(String interfaceType) {
+        this.interfaceType = interfaceType;
+    }
+
+    /**
+     * <p>
+     * Indicates the type of network interface. To create an Elastic Fabric Adapter (EFA), specify <code>efa</code>. For
+     * more information, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html"> Elastic Fabric
+     * Adapter</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * </p>
+     * 
+     * @return Indicates the type of network interface. To create an Elastic Fabric Adapter (EFA), specify
+     *         <code>efa</code>. For more information, see <a
+     *         href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html"> Elastic Fabric Adapter</a> in the
+     *         <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * @see NetworkInterfaceCreationType
+     */
+
+    public String getInterfaceType() {
+        return this.interfaceType;
+    }
+
+    /**
+     * <p>
+     * Indicates the type of network interface. To create an Elastic Fabric Adapter (EFA), specify <code>efa</code>. For
+     * more information, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html"> Elastic Fabric
+     * Adapter</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * </p>
+     * 
+     * @param interfaceType
+     *        Indicates the type of network interface. To create an Elastic Fabric Adapter (EFA), specify
+     *        <code>efa</code>. For more information, see <a
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html"> Elastic Fabric Adapter</a> in the
+     *        <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see NetworkInterfaceCreationType
+     */
+
+    public CreateNetworkInterfaceRequest withInterfaceType(String interfaceType) {
+        setInterfaceType(interfaceType);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Indicates the type of network interface. To create an Elastic Fabric Adapter (EFA), specify <code>efa</code>. For
+     * more information, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html"> Elastic Fabric
+     * Adapter</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * </p>
+     * 
+     * @param interfaceType
+     *        Indicates the type of network interface. To create an Elastic Fabric Adapter (EFA), specify
+     *        <code>efa</code>. For more information, see <a
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html"> Elastic Fabric Adapter</a> in the
+     *        <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see NetworkInterfaceCreationType
+     */
+
+    public CreateNetworkInterfaceRequest withInterfaceType(NetworkInterfaceCreationType interfaceType) {
+        this.interfaceType = interfaceType.toString();
         return this;
     }
 
@@ -611,7 +698,8 @@ public class CreateNetworkInterfaceRequest extends AmazonWebServiceRequest imple
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -635,6 +723,8 @@ public class CreateNetworkInterfaceRequest extends AmazonWebServiceRequest imple
             sb.append("PrivateIpAddresses: ").append(getPrivateIpAddresses()).append(",");
         if (getSecondaryPrivateIpAddressCount() != null)
             sb.append("SecondaryPrivateIpAddressCount: ").append(getSecondaryPrivateIpAddressCount()).append(",");
+        if (getInterfaceType() != null)
+            sb.append("InterfaceType: ").append(getInterfaceType()).append(",");
         if (getSubnetId() != null)
             sb.append("SubnetId: ").append(getSubnetId());
         sb.append("}");
@@ -680,6 +770,10 @@ public class CreateNetworkInterfaceRequest extends AmazonWebServiceRequest imple
         if (other.getSecondaryPrivateIpAddressCount() != null
                 && other.getSecondaryPrivateIpAddressCount().equals(this.getSecondaryPrivateIpAddressCount()) == false)
             return false;
+        if (other.getInterfaceType() == null ^ this.getInterfaceType() == null)
+            return false;
+        if (other.getInterfaceType() != null && other.getInterfaceType().equals(this.getInterfaceType()) == false)
+            return false;
         if (other.getSubnetId() == null ^ this.getSubnetId() == null)
             return false;
         if (other.getSubnetId() != null && other.getSubnetId().equals(this.getSubnetId()) == false)
@@ -699,6 +793,7 @@ public class CreateNetworkInterfaceRequest extends AmazonWebServiceRequest imple
         hashCode = prime * hashCode + ((getPrivateIpAddress() == null) ? 0 : getPrivateIpAddress().hashCode());
         hashCode = prime * hashCode + ((getPrivateIpAddresses() == null) ? 0 : getPrivateIpAddresses().hashCode());
         hashCode = prime * hashCode + ((getSecondaryPrivateIpAddressCount() == null) ? 0 : getSecondaryPrivateIpAddressCount().hashCode());
+        hashCode = prime * hashCode + ((getInterfaceType() == null) ? 0 : getInterfaceType().hashCode());
         hashCode = prime * hashCode + ((getSubnetId() == null) ? 0 : getSubnetId().hashCode());
         return hashCode;
     }

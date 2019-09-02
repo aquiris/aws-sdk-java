@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -39,7 +39,7 @@ public class ListGlobalTablesRequest extends com.amazonaws.AmazonWebServiceReque
     private Integer limit;
     /**
      * <p>
-     * Lists the global tables in a specific region.
+     * Lists the global tables in a specific Region.
      * </p>
      */
     private String regionName;
@@ -126,11 +126,11 @@ public class ListGlobalTablesRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * Lists the global tables in a specific region.
+     * Lists the global tables in a specific Region.
      * </p>
      * 
      * @param regionName
-     *        Lists the global tables in a specific region.
+     *        Lists the global tables in a specific Region.
      */
 
     public void setRegionName(String regionName) {
@@ -139,10 +139,10 @@ public class ListGlobalTablesRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * Lists the global tables in a specific region.
+     * Lists the global tables in a specific Region.
      * </p>
      * 
-     * @return Lists the global tables in a specific region.
+     * @return Lists the global tables in a specific Region.
      */
 
     public String getRegionName() {
@@ -151,11 +151,11 @@ public class ListGlobalTablesRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * Lists the global tables in a specific region.
+     * Lists the global tables in a specific Region.
      * </p>
      * 
      * @param regionName
-     *        Lists the global tables in a specific region.
+     *        Lists the global tables in a specific Region.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -165,7 +165,8 @@ public class ListGlobalTablesRequest extends com.amazonaws.AmazonWebServiceReque
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

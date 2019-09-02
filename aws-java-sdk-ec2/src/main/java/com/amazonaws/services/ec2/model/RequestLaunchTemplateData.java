@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -33,7 +33,7 @@ public class RequestLaunchTemplateData implements Serializable, Cloneable {
      * <important>
      * <p>
      * We recommend that you use PV-GRUB instead of kernels and RAM disks. For more information, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedkernels.html">User Provided Kernels</a> in
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedkernels.html">User Provided Kernels</a> in
      * the <i>Amazon Elastic Compute Cloud User Guide</i>.
      * </p>
      * </important>
@@ -70,27 +70,30 @@ public class RequestLaunchTemplateData implements Serializable, Cloneable {
     private com.amazonaws.internal.SdkInternalList<LaunchTemplateBlockDeviceMappingRequest> blockDeviceMappings;
     /**
      * <p>
-     * One or more network interfaces.
+     * One or more network interfaces. If you specify a network interface, you must specify any security groups and
+     * subnets as part of the network interface.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<LaunchTemplateInstanceNetworkInterfaceSpecificationRequest> networkInterfaces;
     /**
      * <p>
-     * The ID of the AMI, which you can get by using <a>DescribeImages</a>.
+     * The ID of the AMI.
      * </p>
      */
     private String imageId;
     /**
      * <p>
      * The instance type. For more information, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Types</a> in the <i>Amazon
-     * Elastic Compute Cloud User Guide</i>.
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Types</a> in the
+     * <i>Amazon Elastic Compute Cloud User Guide</i>.
      * </p>
      */
     private String instanceType;
     /**
      * <p>
-     * The name of the key pair. You can create a key pair using <a>CreateKeyPair</a> or <a>ImportKeyPair</a>.
+     * The name of the key pair. You can create a key pair using <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateKeyPair.html">CreateKeyPair</a> or <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportKeyPair.html">ImportKeyPair</a>.
      * </p>
      * <important>
      * <p>
@@ -119,7 +122,7 @@ public class RequestLaunchTemplateData implements Serializable, Cloneable {
      * <important>
      * <p>
      * We recommend that you use PV-GRUB instead of kernels and RAM disks. For more information, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedkernels.html">User Provided Kernels</a> in
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedkernels.html">User Provided Kernels</a> in
      * the <i>Amazon Elastic Compute Cloud User Guide</i>.
      * </p>
      * </important>
@@ -127,8 +130,11 @@ public class RequestLaunchTemplateData implements Serializable, Cloneable {
     private String ramDiskId;
     /**
      * <p>
-     * If set to <code>true</code>, you can't terminate the instance using the Amazon EC2 console, CLI, or API. To
-     * change this attribute to <code>false</code> after launch, use <a>ModifyInstanceAttribute</a>.
+     * If you set this parameter to <code>true</code>, you can't terminate the instance using the Amazon EC2 console,
+     * CLI, or API; otherwise, you can. To change this attribute after launch, use <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyInstanceAttribute.html"
+     * >ModifyInstanceAttribute</a>. Alternatively, if you set <code>InstanceInitiatedShutdownBehavior</code> to
+     * <code>terminate</code>, you can terminate the instance by running the shutdown command from the instance.
      * </p>
      */
     private Boolean disableApiTermination;
@@ -145,17 +151,18 @@ public class RequestLaunchTemplateData implements Serializable, Cloneable {
     /**
      * <p>
      * The Base64-encoded user data to make available to the instance. For more information, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html">Running Commands on Your Linux Instance
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html">Running Commands on Your Linux Instance
      * at Launch</a> (Linux) and <a href=
-     * "http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-instance-metadata.html#instancedata-add-user-data"
+     * "https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-instance-metadata.html#instancedata-add-user-data"
      * >Adding User Data</a> (Windows).
      * </p>
      */
     private String userData;
     /**
      * <p>
-     * The tags to apply to the resources during launch. You can tag instances and volumes. The specified tags are
-     * applied to all instances or volumes that are created during launch.
+     * The tags to apply to the resources during launch. You can only tag instances and volumes on launch. The specified
+     * tags are applied to all instances or volumes that are created during launch. To tag a resource after it has been
+     * created, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTags.html">CreateTags</a>.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<LaunchTemplateTagSpecificationRequest> tagSpecifications;
@@ -167,8 +174,15 @@ public class RequestLaunchTemplateData implements Serializable, Cloneable {
     private com.amazonaws.internal.SdkInternalList<ElasticGpuSpecification> elasticGpuSpecifications;
     /**
      * <p>
-     * One or more security group IDs. You can create a security group using <a>CreateSecurityGroup</a>. You cannot
-     * specify both a security group ID and security name in the same request.
+     * The elastic inference accelerator for the instance.
+     * </p>
+     */
+    private com.amazonaws.internal.SdkInternalList<LaunchTemplateElasticInferenceAccelerator> elasticInferenceAccelerators;
+    /**
+     * <p>
+     * One or more security group IDs. You can create a security group using <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateSecurityGroup.html"
+     * >CreateSecurityGroup</a>. You cannot specify both a security group ID and security name in the same request.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<String> securityGroupIds;
@@ -187,10 +201,43 @@ public class RequestLaunchTemplateData implements Serializable, Cloneable {
     private LaunchTemplateInstanceMarketOptionsRequest instanceMarketOptions;
     /**
      * <p>
-     * The credit option for CPU usage of the instance. Valid for T2 instances only.
+     * The credit option for CPU usage of the instance. Valid for T2 or T3 instances only.
      * </p>
      */
     private CreditSpecificationRequest creditSpecification;
+    /**
+     * <p>
+     * The CPU options for the instance. For more information, see <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html">Optimizing CPU Options</a>
+     * in the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * </p>
+     */
+    private LaunchTemplateCpuOptionsRequest cpuOptions;
+    /**
+     * <p>
+     * The Capacity Reservation targeting option. If you do not specify this parameter, the instance's Capacity
+     * Reservation preference defaults to <code>open</code>, which enables it to run in any open Capacity Reservation
+     * that has matching attributes (instance type, platform, Availability Zone).
+     * </p>
+     */
+    private LaunchTemplateCapacityReservationSpecificationRequest capacityReservationSpecification;
+    /**
+     * <p>
+     * The license configurations.
+     * </p>
+     */
+    private com.amazonaws.internal.SdkInternalList<LaunchTemplateLicenseConfigurationRequest> licenseSpecifications;
+    /**
+     * <p>
+     * Indicates whether an instance is enabled for hibernation. This parameter is valid only if the instance meets the
+     * <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html#hibernating-prerequisites">hibernation
+     * prerequisites</a>. Hibernation is currently supported only for Amazon Linux. For more information, see <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html">Hibernate Your Instance</a> in the
+     * <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * </p>
+     */
+    private LaunchTemplateHibernationOptionsRequest hibernationOptions;
 
     /**
      * <p>
@@ -199,7 +246,7 @@ public class RequestLaunchTemplateData implements Serializable, Cloneable {
      * <important>
      * <p>
      * We recommend that you use PV-GRUB instead of kernels and RAM disks. For more information, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedkernels.html">User Provided Kernels</a> in
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedkernels.html">User Provided Kernels</a> in
      * the <i>Amazon Elastic Compute Cloud User Guide</i>.
      * </p>
      * </important>
@@ -208,7 +255,7 @@ public class RequestLaunchTemplateData implements Serializable, Cloneable {
      *        The ID of the kernel.</p> <important>
      *        <p>
      *        We recommend that you use PV-GRUB instead of kernels and RAM disks. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedkernels.html">User Provided
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedkernels.html">User Provided
      *        Kernels</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
      *        </p>
      */
@@ -224,7 +271,7 @@ public class RequestLaunchTemplateData implements Serializable, Cloneable {
      * <important>
      * <p>
      * We recommend that you use PV-GRUB instead of kernels and RAM disks. For more information, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedkernels.html">User Provided Kernels</a> in
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedkernels.html">User Provided Kernels</a> in
      * the <i>Amazon Elastic Compute Cloud User Guide</i>.
      * </p>
      * </important>
@@ -232,7 +279,7 @@ public class RequestLaunchTemplateData implements Serializable, Cloneable {
      * @return The ID of the kernel.</p> <important>
      *         <p>
      *         We recommend that you use PV-GRUB instead of kernels and RAM disks. For more information, see <a
-     *         href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedkernels.html">User Provided
+     *         href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedkernels.html">User Provided
      *         Kernels</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
      *         </p>
      */
@@ -248,7 +295,7 @@ public class RequestLaunchTemplateData implements Serializable, Cloneable {
      * <important>
      * <p>
      * We recommend that you use PV-GRUB instead of kernels and RAM disks. For more information, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedkernels.html">User Provided Kernels</a> in
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedkernels.html">User Provided Kernels</a> in
      * the <i>Amazon Elastic Compute Cloud User Guide</i>.
      * </p>
      * </important>
@@ -257,7 +304,7 @@ public class RequestLaunchTemplateData implements Serializable, Cloneable {
      *        The ID of the kernel.</p> <important>
      *        <p>
      *        We recommend that you use PV-GRUB instead of kernels and RAM disks. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedkernels.html">User Provided
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedkernels.html">User Provided
      *        Kernels</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
      *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -515,10 +562,12 @@ public class RequestLaunchTemplateData implements Serializable, Cloneable {
 
     /**
      * <p>
-     * One or more network interfaces.
+     * One or more network interfaces. If you specify a network interface, you must specify any security groups and
+     * subnets as part of the network interface.
      * </p>
      * 
-     * @return One or more network interfaces.
+     * @return One or more network interfaces. If you specify a network interface, you must specify any security groups
+     *         and subnets as part of the network interface.
      */
 
     public java.util.List<LaunchTemplateInstanceNetworkInterfaceSpecificationRequest> getNetworkInterfaces() {
@@ -530,11 +579,13 @@ public class RequestLaunchTemplateData implements Serializable, Cloneable {
 
     /**
      * <p>
-     * One or more network interfaces.
+     * One or more network interfaces. If you specify a network interface, you must specify any security groups and
+     * subnets as part of the network interface.
      * </p>
      * 
      * @param networkInterfaces
-     *        One or more network interfaces.
+     *        One or more network interfaces. If you specify a network interface, you must specify any security groups
+     *        and subnets as part of the network interface.
      */
 
     public void setNetworkInterfaces(java.util.Collection<LaunchTemplateInstanceNetworkInterfaceSpecificationRequest> networkInterfaces) {
@@ -548,7 +599,8 @@ public class RequestLaunchTemplateData implements Serializable, Cloneable {
 
     /**
      * <p>
-     * One or more network interfaces.
+     * One or more network interfaces. If you specify a network interface, you must specify any security groups and
+     * subnets as part of the network interface.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -557,7 +609,8 @@ public class RequestLaunchTemplateData implements Serializable, Cloneable {
      * </p>
      * 
      * @param networkInterfaces
-     *        One or more network interfaces.
+     *        One or more network interfaces. If you specify a network interface, you must specify any security groups
+     *        and subnets as part of the network interface.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -574,11 +627,13 @@ public class RequestLaunchTemplateData implements Serializable, Cloneable {
 
     /**
      * <p>
-     * One or more network interfaces.
+     * One or more network interfaces. If you specify a network interface, you must specify any security groups and
+     * subnets as part of the network interface.
      * </p>
      * 
      * @param networkInterfaces
-     *        One or more network interfaces.
+     *        One or more network interfaces. If you specify a network interface, you must specify any security groups
+     *        and subnets as part of the network interface.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -589,11 +644,11 @@ public class RequestLaunchTemplateData implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The ID of the AMI, which you can get by using <a>DescribeImages</a>.
+     * The ID of the AMI.
      * </p>
      * 
      * @param imageId
-     *        The ID of the AMI, which you can get by using <a>DescribeImages</a>.
+     *        The ID of the AMI.
      */
 
     public void setImageId(String imageId) {
@@ -602,10 +657,10 @@ public class RequestLaunchTemplateData implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The ID of the AMI, which you can get by using <a>DescribeImages</a>.
+     * The ID of the AMI.
      * </p>
      * 
-     * @return The ID of the AMI, which you can get by using <a>DescribeImages</a>.
+     * @return The ID of the AMI.
      */
 
     public String getImageId() {
@@ -614,11 +669,11 @@ public class RequestLaunchTemplateData implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The ID of the AMI, which you can get by using <a>DescribeImages</a>.
+     * The ID of the AMI.
      * </p>
      * 
      * @param imageId
-     *        The ID of the AMI, which you can get by using <a>DescribeImages</a>.
+     *        The ID of the AMI.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -630,13 +685,13 @@ public class RequestLaunchTemplateData implements Serializable, Cloneable {
     /**
      * <p>
      * The instance type. For more information, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Types</a> in the <i>Amazon
-     * Elastic Compute Cloud User Guide</i>.
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Types</a> in the
+     * <i>Amazon Elastic Compute Cloud User Guide</i>.
      * </p>
      * 
      * @param instanceType
      *        The instance type. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Types</a> in the
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Types</a> in the
      *        <i>Amazon Elastic Compute Cloud User Guide</i>.
      * @see InstanceType
      */
@@ -648,12 +703,12 @@ public class RequestLaunchTemplateData implements Serializable, Cloneable {
     /**
      * <p>
      * The instance type. For more information, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Types</a> in the <i>Amazon
-     * Elastic Compute Cloud User Guide</i>.
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Types</a> in the
+     * <i>Amazon Elastic Compute Cloud User Guide</i>.
      * </p>
      * 
      * @return The instance type. For more information, see <a
-     *         href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Types</a> in the
+     *         href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Types</a> in the
      *         <i>Amazon Elastic Compute Cloud User Guide</i>.
      * @see InstanceType
      */
@@ -665,13 +720,13 @@ public class RequestLaunchTemplateData implements Serializable, Cloneable {
     /**
      * <p>
      * The instance type. For more information, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Types</a> in the <i>Amazon
-     * Elastic Compute Cloud User Guide</i>.
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Types</a> in the
+     * <i>Amazon Elastic Compute Cloud User Guide</i>.
      * </p>
      * 
      * @param instanceType
      *        The instance type. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Types</a> in the
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Types</a> in the
      *        <i>Amazon Elastic Compute Cloud User Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see InstanceType
@@ -685,13 +740,13 @@ public class RequestLaunchTemplateData implements Serializable, Cloneable {
     /**
      * <p>
      * The instance type. For more information, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Types</a> in the <i>Amazon
-     * Elastic Compute Cloud User Guide</i>.
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Types</a> in the
+     * <i>Amazon Elastic Compute Cloud User Guide</i>.
      * </p>
      * 
      * @param instanceType
      *        The instance type. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Types</a> in the
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Types</a> in the
      *        <i>Amazon Elastic Compute Cloud User Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see InstanceType
@@ -704,7 +759,9 @@ public class RequestLaunchTemplateData implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the key pair. You can create a key pair using <a>CreateKeyPair</a> or <a>ImportKeyPair</a>.
+     * The name of the key pair. You can create a key pair using <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateKeyPair.html">CreateKeyPair</a> or <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportKeyPair.html">ImportKeyPair</a>.
      * </p>
      * <important>
      * <p>
@@ -714,8 +771,11 @@ public class RequestLaunchTemplateData implements Serializable, Cloneable {
      * </important>
      * 
      * @param keyName
-     *        The name of the key pair. You can create a key pair using <a>CreateKeyPair</a> or
-     *        <a>ImportKeyPair</a>.</p> <important>
+     *        The name of the key pair. You can create a key pair using <a
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateKeyPair.html">CreateKeyPair</a> or
+     *        <a
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportKeyPair.html">ImportKeyPair</a>.<
+     *        /p> <important>
      *        <p>
      *        If you do not specify a key pair, you can't connect to the instance unless you choose an AMI that is
      *        configured to allow users another way to log in.
@@ -728,7 +788,9 @@ public class RequestLaunchTemplateData implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the key pair. You can create a key pair using <a>CreateKeyPair</a> or <a>ImportKeyPair</a>.
+     * The name of the key pair. You can create a key pair using <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateKeyPair.html">CreateKeyPair</a> or <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportKeyPair.html">ImportKeyPair</a>.
      * </p>
      * <important>
      * <p>
@@ -737,8 +799,11 @@ public class RequestLaunchTemplateData implements Serializable, Cloneable {
      * </p>
      * </important>
      * 
-     * @return The name of the key pair. You can create a key pair using <a>CreateKeyPair</a> or
-     *         <a>ImportKeyPair</a>.</p> <important>
+     * @return The name of the key pair. You can create a key pair using <a
+     *         href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateKeyPair.html">CreateKeyPair</a> or
+     *         <a
+     *         href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportKeyPair.html">ImportKeyPair</a>.
+     *         </p> <important>
      *         <p>
      *         If you do not specify a key pair, you can't connect to the instance unless you choose an AMI that is
      *         configured to allow users another way to log in.
@@ -751,7 +816,9 @@ public class RequestLaunchTemplateData implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the key pair. You can create a key pair using <a>CreateKeyPair</a> or <a>ImportKeyPair</a>.
+     * The name of the key pair. You can create a key pair using <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateKeyPair.html">CreateKeyPair</a> or <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportKeyPair.html">ImportKeyPair</a>.
      * </p>
      * <important>
      * <p>
@@ -761,8 +828,11 @@ public class RequestLaunchTemplateData implements Serializable, Cloneable {
      * </important>
      * 
      * @param keyName
-     *        The name of the key pair. You can create a key pair using <a>CreateKeyPair</a> or
-     *        <a>ImportKeyPair</a>.</p> <important>
+     *        The name of the key pair. You can create a key pair using <a
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateKeyPair.html">CreateKeyPair</a> or
+     *        <a
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportKeyPair.html">ImportKeyPair</a>.<
+     *        /p> <important>
      *        <p>
      *        If you do not specify a key pair, you can't connect to the instance unless you choose an AMI that is
      *        configured to allow users another way to log in.
@@ -862,7 +932,7 @@ public class RequestLaunchTemplateData implements Serializable, Cloneable {
      * <important>
      * <p>
      * We recommend that you use PV-GRUB instead of kernels and RAM disks. For more information, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedkernels.html">User Provided Kernels</a> in
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedkernels.html">User Provided Kernels</a> in
      * the <i>Amazon Elastic Compute Cloud User Guide</i>.
      * </p>
      * </important>
@@ -871,7 +941,7 @@ public class RequestLaunchTemplateData implements Serializable, Cloneable {
      *        The ID of the RAM disk.</p> <important>
      *        <p>
      *        We recommend that you use PV-GRUB instead of kernels and RAM disks. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedkernels.html">User Provided
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedkernels.html">User Provided
      *        Kernels</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
      *        </p>
      */
@@ -887,7 +957,7 @@ public class RequestLaunchTemplateData implements Serializable, Cloneable {
      * <important>
      * <p>
      * We recommend that you use PV-GRUB instead of kernels and RAM disks. For more information, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedkernels.html">User Provided Kernels</a> in
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedkernels.html">User Provided Kernels</a> in
      * the <i>Amazon Elastic Compute Cloud User Guide</i>.
      * </p>
      * </important>
@@ -895,7 +965,7 @@ public class RequestLaunchTemplateData implements Serializable, Cloneable {
      * @return The ID of the RAM disk.</p> <important>
      *         <p>
      *         We recommend that you use PV-GRUB instead of kernels and RAM disks. For more information, see <a
-     *         href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedkernels.html">User Provided
+     *         href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedkernels.html">User Provided
      *         Kernels</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
      *         </p>
      */
@@ -911,7 +981,7 @@ public class RequestLaunchTemplateData implements Serializable, Cloneable {
      * <important>
      * <p>
      * We recommend that you use PV-GRUB instead of kernels and RAM disks. For more information, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedkernels.html">User Provided Kernels</a> in
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedkernels.html">User Provided Kernels</a> in
      * the <i>Amazon Elastic Compute Cloud User Guide</i>.
      * </p>
      * </important>
@@ -920,7 +990,7 @@ public class RequestLaunchTemplateData implements Serializable, Cloneable {
      *        The ID of the RAM disk.</p> <important>
      *        <p>
      *        We recommend that you use PV-GRUB instead of kernels and RAM disks. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedkernels.html">User Provided
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedkernels.html">User Provided
      *        Kernels</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
      *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -933,13 +1003,19 @@ public class RequestLaunchTemplateData implements Serializable, Cloneable {
 
     /**
      * <p>
-     * If set to <code>true</code>, you can't terminate the instance using the Amazon EC2 console, CLI, or API. To
-     * change this attribute to <code>false</code> after launch, use <a>ModifyInstanceAttribute</a>.
+     * If you set this parameter to <code>true</code>, you can't terminate the instance using the Amazon EC2 console,
+     * CLI, or API; otherwise, you can. To change this attribute after launch, use <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyInstanceAttribute.html"
+     * >ModifyInstanceAttribute</a>. Alternatively, if you set <code>InstanceInitiatedShutdownBehavior</code> to
+     * <code>terminate</code>, you can terminate the instance by running the shutdown command from the instance.
      * </p>
      * 
      * @param disableApiTermination
-     *        If set to <code>true</code>, you can't terminate the instance using the Amazon EC2 console, CLI, or API.
-     *        To change this attribute to <code>false</code> after launch, use <a>ModifyInstanceAttribute</a>.
+     *        If you set this parameter to <code>true</code>, you can't terminate the instance using the Amazon EC2
+     *        console, CLI, or API; otherwise, you can. To change this attribute after launch, use <a
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyInstanceAttribute.html"
+     *        >ModifyInstanceAttribute</a>. Alternatively, if you set <code>InstanceInitiatedShutdownBehavior</code> to
+     *        <code>terminate</code>, you can terminate the instance by running the shutdown command from the instance.
      */
 
     public void setDisableApiTermination(Boolean disableApiTermination) {
@@ -948,12 +1024,18 @@ public class RequestLaunchTemplateData implements Serializable, Cloneable {
 
     /**
      * <p>
-     * If set to <code>true</code>, you can't terminate the instance using the Amazon EC2 console, CLI, or API. To
-     * change this attribute to <code>false</code> after launch, use <a>ModifyInstanceAttribute</a>.
+     * If you set this parameter to <code>true</code>, you can't terminate the instance using the Amazon EC2 console,
+     * CLI, or API; otherwise, you can. To change this attribute after launch, use <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyInstanceAttribute.html"
+     * >ModifyInstanceAttribute</a>. Alternatively, if you set <code>InstanceInitiatedShutdownBehavior</code> to
+     * <code>terminate</code>, you can terminate the instance by running the shutdown command from the instance.
      * </p>
      * 
-     * @return If set to <code>true</code>, you can't terminate the instance using the Amazon EC2 console, CLI, or API.
-     *         To change this attribute to <code>false</code> after launch, use <a>ModifyInstanceAttribute</a>.
+     * @return If you set this parameter to <code>true</code>, you can't terminate the instance using the Amazon EC2
+     *         console, CLI, or API; otherwise, you can. To change this attribute after launch, use <a
+     *         href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyInstanceAttribute.html"
+     *         >ModifyInstanceAttribute</a>. Alternatively, if you set <code>InstanceInitiatedShutdownBehavior</code> to
+     *         <code>terminate</code>, you can terminate the instance by running the shutdown command from the instance.
      */
 
     public Boolean getDisableApiTermination() {
@@ -962,13 +1044,19 @@ public class RequestLaunchTemplateData implements Serializable, Cloneable {
 
     /**
      * <p>
-     * If set to <code>true</code>, you can't terminate the instance using the Amazon EC2 console, CLI, or API. To
-     * change this attribute to <code>false</code> after launch, use <a>ModifyInstanceAttribute</a>.
+     * If you set this parameter to <code>true</code>, you can't terminate the instance using the Amazon EC2 console,
+     * CLI, or API; otherwise, you can. To change this attribute after launch, use <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyInstanceAttribute.html"
+     * >ModifyInstanceAttribute</a>. Alternatively, if you set <code>InstanceInitiatedShutdownBehavior</code> to
+     * <code>terminate</code>, you can terminate the instance by running the shutdown command from the instance.
      * </p>
      * 
      * @param disableApiTermination
-     *        If set to <code>true</code>, you can't terminate the instance using the Amazon EC2 console, CLI, or API.
-     *        To change this attribute to <code>false</code> after launch, use <a>ModifyInstanceAttribute</a>.
+     *        If you set this parameter to <code>true</code>, you can't terminate the instance using the Amazon EC2
+     *        console, CLI, or API; otherwise, you can. To change this attribute after launch, use <a
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyInstanceAttribute.html"
+     *        >ModifyInstanceAttribute</a>. Alternatively, if you set <code>InstanceInitiatedShutdownBehavior</code> to
+     *        <code>terminate</code>, you can terminate the instance by running the shutdown command from the instance.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -979,12 +1067,18 @@ public class RequestLaunchTemplateData implements Serializable, Cloneable {
 
     /**
      * <p>
-     * If set to <code>true</code>, you can't terminate the instance using the Amazon EC2 console, CLI, or API. To
-     * change this attribute to <code>false</code> after launch, use <a>ModifyInstanceAttribute</a>.
+     * If you set this parameter to <code>true</code>, you can't terminate the instance using the Amazon EC2 console,
+     * CLI, or API; otherwise, you can. To change this attribute after launch, use <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyInstanceAttribute.html"
+     * >ModifyInstanceAttribute</a>. Alternatively, if you set <code>InstanceInitiatedShutdownBehavior</code> to
+     * <code>terminate</code>, you can terminate the instance by running the shutdown command from the instance.
      * </p>
      * 
-     * @return If set to <code>true</code>, you can't terminate the instance using the Amazon EC2 console, CLI, or API.
-     *         To change this attribute to <code>false</code> after launch, use <a>ModifyInstanceAttribute</a>.
+     * @return If you set this parameter to <code>true</code>, you can't terminate the instance using the Amazon EC2
+     *         console, CLI, or API; otherwise, you can. To change this attribute after launch, use <a
+     *         href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyInstanceAttribute.html"
+     *         >ModifyInstanceAttribute</a>. Alternatively, if you set <code>InstanceInitiatedShutdownBehavior</code> to
+     *         <code>terminate</code>, you can terminate the instance by running the shutdown command from the instance.
      */
 
     public Boolean isDisableApiTermination() {
@@ -1081,17 +1175,17 @@ public class RequestLaunchTemplateData implements Serializable, Cloneable {
     /**
      * <p>
      * The Base64-encoded user data to make available to the instance. For more information, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html">Running Commands on Your Linux Instance
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html">Running Commands on Your Linux Instance
      * at Launch</a> (Linux) and <a href=
-     * "http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-instance-metadata.html#instancedata-add-user-data"
+     * "https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-instance-metadata.html#instancedata-add-user-data"
      * >Adding User Data</a> (Windows).
      * </p>
      * 
      * @param userData
      *        The Base64-encoded user data to make available to the instance. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html">Running Commands on Your Linux
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html">Running Commands on Your Linux
      *        Instance at Launch</a> (Linux) and <a href=
-     *        "http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-instance-metadata.html#instancedata-add-user-data"
+     *        "https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-instance-metadata.html#instancedata-add-user-data"
      *        >Adding User Data</a> (Windows).
      */
 
@@ -1102,16 +1196,16 @@ public class RequestLaunchTemplateData implements Serializable, Cloneable {
     /**
      * <p>
      * The Base64-encoded user data to make available to the instance. For more information, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html">Running Commands on Your Linux Instance
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html">Running Commands on Your Linux Instance
      * at Launch</a> (Linux) and <a href=
-     * "http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-instance-metadata.html#instancedata-add-user-data"
+     * "https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-instance-metadata.html#instancedata-add-user-data"
      * >Adding User Data</a> (Windows).
      * </p>
      * 
      * @return The Base64-encoded user data to make available to the instance. For more information, see <a
-     *         href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html">Running Commands on Your Linux
+     *         href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html">Running Commands on Your Linux
      *         Instance at Launch</a> (Linux) and <a href=
-     *         "http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-instance-metadata.html#instancedata-add-user-data"
+     *         "https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-instance-metadata.html#instancedata-add-user-data"
      *         >Adding User Data</a> (Windows).
      */
 
@@ -1122,17 +1216,17 @@ public class RequestLaunchTemplateData implements Serializable, Cloneable {
     /**
      * <p>
      * The Base64-encoded user data to make available to the instance. For more information, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html">Running Commands on Your Linux Instance
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html">Running Commands on Your Linux Instance
      * at Launch</a> (Linux) and <a href=
-     * "http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-instance-metadata.html#instancedata-add-user-data"
+     * "https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-instance-metadata.html#instancedata-add-user-data"
      * >Adding User Data</a> (Windows).
      * </p>
      * 
      * @param userData
      *        The Base64-encoded user data to make available to the instance. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html">Running Commands on Your Linux
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html">Running Commands on Your Linux
      *        Instance at Launch</a> (Linux) and <a href=
-     *        "http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-instance-metadata.html#instancedata-add-user-data"
+     *        "https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-instance-metadata.html#instancedata-add-user-data"
      *        >Adding User Data</a> (Windows).
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -1144,12 +1238,15 @@ public class RequestLaunchTemplateData implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The tags to apply to the resources during launch. You can tag instances and volumes. The specified tags are
-     * applied to all instances or volumes that are created during launch.
+     * The tags to apply to the resources during launch. You can only tag instances and volumes on launch. The specified
+     * tags are applied to all instances or volumes that are created during launch. To tag a resource after it has been
+     * created, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTags.html">CreateTags</a>.
      * </p>
      * 
-     * @return The tags to apply to the resources during launch. You can tag instances and volumes. The specified tags
-     *         are applied to all instances or volumes that are created during launch.
+     * @return The tags to apply to the resources during launch. You can only tag instances and volumes on launch. The
+     *         specified tags are applied to all instances or volumes that are created during launch. To tag a resource
+     *         after it has been created, see <a
+     *         href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTags.html">CreateTags</a>.
      */
 
     public java.util.List<LaunchTemplateTagSpecificationRequest> getTagSpecifications() {
@@ -1161,13 +1258,16 @@ public class RequestLaunchTemplateData implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The tags to apply to the resources during launch. You can tag instances and volumes. The specified tags are
-     * applied to all instances or volumes that are created during launch.
+     * The tags to apply to the resources during launch. You can only tag instances and volumes on launch. The specified
+     * tags are applied to all instances or volumes that are created during launch. To tag a resource after it has been
+     * created, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTags.html">CreateTags</a>.
      * </p>
      * 
      * @param tagSpecifications
-     *        The tags to apply to the resources during launch. You can tag instances and volumes. The specified tags
-     *        are applied to all instances or volumes that are created during launch.
+     *        The tags to apply to the resources during launch. You can only tag instances and volumes on launch. The
+     *        specified tags are applied to all instances or volumes that are created during launch. To tag a resource
+     *        after it has been created, see <a
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTags.html">CreateTags</a>.
      */
 
     public void setTagSpecifications(java.util.Collection<LaunchTemplateTagSpecificationRequest> tagSpecifications) {
@@ -1181,8 +1281,9 @@ public class RequestLaunchTemplateData implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The tags to apply to the resources during launch. You can tag instances and volumes. The specified tags are
-     * applied to all instances or volumes that are created during launch.
+     * The tags to apply to the resources during launch. You can only tag instances and volumes on launch. The specified
+     * tags are applied to all instances or volumes that are created during launch. To tag a resource after it has been
+     * created, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTags.html">CreateTags</a>.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -1191,8 +1292,10 @@ public class RequestLaunchTemplateData implements Serializable, Cloneable {
      * </p>
      * 
      * @param tagSpecifications
-     *        The tags to apply to the resources during launch. You can tag instances and volumes. The specified tags
-     *        are applied to all instances or volumes that are created during launch.
+     *        The tags to apply to the resources during launch. You can only tag instances and volumes on launch. The
+     *        specified tags are applied to all instances or volumes that are created during launch. To tag a resource
+     *        after it has been created, see <a
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTags.html">CreateTags</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1208,13 +1311,16 @@ public class RequestLaunchTemplateData implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The tags to apply to the resources during launch. You can tag instances and volumes. The specified tags are
-     * applied to all instances or volumes that are created during launch.
+     * The tags to apply to the resources during launch. You can only tag instances and volumes on launch. The specified
+     * tags are applied to all instances or volumes that are created during launch. To tag a resource after it has been
+     * created, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTags.html">CreateTags</a>.
      * </p>
      * 
      * @param tagSpecifications
-     *        The tags to apply to the resources during launch. You can tag instances and volumes. The specified tags
-     *        are applied to all instances or volumes that are created during launch.
+     *        The tags to apply to the resources during launch. You can only tag instances and volumes on launch. The
+     *        specified tags are applied to all instances or volumes that are created during launch. To tag a resource
+     *        after it has been created, see <a
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTags.html">CreateTags</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1298,12 +1404,90 @@ public class RequestLaunchTemplateData implements Serializable, Cloneable {
 
     /**
      * <p>
-     * One or more security group IDs. You can create a security group using <a>CreateSecurityGroup</a>. You cannot
-     * specify both a security group ID and security name in the same request.
+     * The elastic inference accelerator for the instance.
      * </p>
      * 
-     * @return One or more security group IDs. You can create a security group using <a>CreateSecurityGroup</a>. You
-     *         cannot specify both a security group ID and security name in the same request.
+     * @return The elastic inference accelerator for the instance.
+     */
+
+    public java.util.List<LaunchTemplateElasticInferenceAccelerator> getElasticInferenceAccelerators() {
+        if (elasticInferenceAccelerators == null) {
+            elasticInferenceAccelerators = new com.amazonaws.internal.SdkInternalList<LaunchTemplateElasticInferenceAccelerator>();
+        }
+        return elasticInferenceAccelerators;
+    }
+
+    /**
+     * <p>
+     * The elastic inference accelerator for the instance.
+     * </p>
+     * 
+     * @param elasticInferenceAccelerators
+     *        The elastic inference accelerator for the instance.
+     */
+
+    public void setElasticInferenceAccelerators(java.util.Collection<LaunchTemplateElasticInferenceAccelerator> elasticInferenceAccelerators) {
+        if (elasticInferenceAccelerators == null) {
+            this.elasticInferenceAccelerators = null;
+            return;
+        }
+
+        this.elasticInferenceAccelerators = new com.amazonaws.internal.SdkInternalList<LaunchTemplateElasticInferenceAccelerator>(elasticInferenceAccelerators);
+    }
+
+    /**
+     * <p>
+     * The elastic inference accelerator for the instance.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setElasticInferenceAccelerators(java.util.Collection)} or
+     * {@link #withElasticInferenceAccelerators(java.util.Collection)} if you want to override the existing values.
+     * </p>
+     * 
+     * @param elasticInferenceAccelerators
+     *        The elastic inference accelerator for the instance.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public RequestLaunchTemplateData withElasticInferenceAccelerators(LaunchTemplateElasticInferenceAccelerator... elasticInferenceAccelerators) {
+        if (this.elasticInferenceAccelerators == null) {
+            setElasticInferenceAccelerators(new com.amazonaws.internal.SdkInternalList<LaunchTemplateElasticInferenceAccelerator>(
+                    elasticInferenceAccelerators.length));
+        }
+        for (LaunchTemplateElasticInferenceAccelerator ele : elasticInferenceAccelerators) {
+            this.elasticInferenceAccelerators.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * The elastic inference accelerator for the instance.
+     * </p>
+     * 
+     * @param elasticInferenceAccelerators
+     *        The elastic inference accelerator for the instance.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public RequestLaunchTemplateData withElasticInferenceAccelerators(
+            java.util.Collection<LaunchTemplateElasticInferenceAccelerator> elasticInferenceAccelerators) {
+        setElasticInferenceAccelerators(elasticInferenceAccelerators);
+        return this;
+    }
+
+    /**
+     * <p>
+     * One or more security group IDs. You can create a security group using <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateSecurityGroup.html"
+     * >CreateSecurityGroup</a>. You cannot specify both a security group ID and security name in the same request.
+     * </p>
+     * 
+     * @return One or more security group IDs. You can create a security group using <a
+     *         href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateSecurityGroup.html"
+     *         >CreateSecurityGroup</a>. You cannot specify both a security group ID and security name in the same
+     *         request.
      */
 
     public java.util.List<String> getSecurityGroupIds() {
@@ -1315,13 +1499,16 @@ public class RequestLaunchTemplateData implements Serializable, Cloneable {
 
     /**
      * <p>
-     * One or more security group IDs. You can create a security group using <a>CreateSecurityGroup</a>. You cannot
-     * specify both a security group ID and security name in the same request.
+     * One or more security group IDs. You can create a security group using <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateSecurityGroup.html"
+     * >CreateSecurityGroup</a>. You cannot specify both a security group ID and security name in the same request.
      * </p>
      * 
      * @param securityGroupIds
-     *        One or more security group IDs. You can create a security group using <a>CreateSecurityGroup</a>. You
-     *        cannot specify both a security group ID and security name in the same request.
+     *        One or more security group IDs. You can create a security group using <a
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateSecurityGroup.html"
+     *        >CreateSecurityGroup</a>. You cannot specify both a security group ID and security name in the same
+     *        request.
      */
 
     public void setSecurityGroupIds(java.util.Collection<String> securityGroupIds) {
@@ -1335,8 +1522,9 @@ public class RequestLaunchTemplateData implements Serializable, Cloneable {
 
     /**
      * <p>
-     * One or more security group IDs. You can create a security group using <a>CreateSecurityGroup</a>. You cannot
-     * specify both a security group ID and security name in the same request.
+     * One or more security group IDs. You can create a security group using <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateSecurityGroup.html"
+     * >CreateSecurityGroup</a>. You cannot specify both a security group ID and security name in the same request.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -1345,8 +1533,10 @@ public class RequestLaunchTemplateData implements Serializable, Cloneable {
      * </p>
      * 
      * @param securityGroupIds
-     *        One or more security group IDs. You can create a security group using <a>CreateSecurityGroup</a>. You
-     *        cannot specify both a security group ID and security name in the same request.
+     *        One or more security group IDs. You can create a security group using <a
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateSecurityGroup.html"
+     *        >CreateSecurityGroup</a>. You cannot specify both a security group ID and security name in the same
+     *        request.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1362,13 +1552,16 @@ public class RequestLaunchTemplateData implements Serializable, Cloneable {
 
     /**
      * <p>
-     * One or more security group IDs. You can create a security group using <a>CreateSecurityGroup</a>. You cannot
-     * specify both a security group ID and security name in the same request.
+     * One or more security group IDs. You can create a security group using <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateSecurityGroup.html"
+     * >CreateSecurityGroup</a>. You cannot specify both a security group ID and security name in the same request.
      * </p>
      * 
      * @param securityGroupIds
-     *        One or more security group IDs. You can create a security group using <a>CreateSecurityGroup</a>. You
-     *        cannot specify both a security group ID and security name in the same request.
+     *        One or more security group IDs. You can create a security group using <a
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateSecurityGroup.html"
+     *        >CreateSecurityGroup</a>. You cannot specify both a security group ID and security name in the same
+     *        request.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1500,11 +1693,11 @@ public class RequestLaunchTemplateData implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The credit option for CPU usage of the instance. Valid for T2 instances only.
+     * The credit option for CPU usage of the instance. Valid for T2 or T3 instances only.
      * </p>
      * 
      * @param creditSpecification
-     *        The credit option for CPU usage of the instance. Valid for T2 instances only.
+     *        The credit option for CPU usage of the instance. Valid for T2 or T3 instances only.
      */
 
     public void setCreditSpecification(CreditSpecificationRequest creditSpecification) {
@@ -1513,10 +1706,10 @@ public class RequestLaunchTemplateData implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The credit option for CPU usage of the instance. Valid for T2 instances only.
+     * The credit option for CPU usage of the instance. Valid for T2 or T3 instances only.
      * </p>
      * 
-     * @return The credit option for CPU usage of the instance. Valid for T2 instances only.
+     * @return The credit option for CPU usage of the instance. Valid for T2 or T3 instances only.
      */
 
     public CreditSpecificationRequest getCreditSpecification() {
@@ -1525,11 +1718,11 @@ public class RequestLaunchTemplateData implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The credit option for CPU usage of the instance. Valid for T2 instances only.
+     * The credit option for CPU usage of the instance. Valid for T2 or T3 instances only.
      * </p>
      * 
      * @param creditSpecification
-     *        The credit option for CPU usage of the instance. Valid for T2 instances only.
+     *        The credit option for CPU usage of the instance. Valid for T2 or T3 instances only.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1539,7 +1732,255 @@ public class RequestLaunchTemplateData implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * <p>
+     * The CPU options for the instance. For more information, see <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html">Optimizing CPU Options</a>
+     * in the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * </p>
+     * 
+     * @param cpuOptions
+     *        The CPU options for the instance. For more information, see <a
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html">Optimizing CPU
+     *        Options</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     */
+
+    public void setCpuOptions(LaunchTemplateCpuOptionsRequest cpuOptions) {
+        this.cpuOptions = cpuOptions;
+    }
+
+    /**
+     * <p>
+     * The CPU options for the instance. For more information, see <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html">Optimizing CPU Options</a>
+     * in the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * </p>
+     * 
+     * @return The CPU options for the instance. For more information, see <a
+     *         href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html">Optimizing CPU
+     *         Options</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     */
+
+    public LaunchTemplateCpuOptionsRequest getCpuOptions() {
+        return this.cpuOptions;
+    }
+
+    /**
+     * <p>
+     * The CPU options for the instance. For more information, see <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html">Optimizing CPU Options</a>
+     * in the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * </p>
+     * 
+     * @param cpuOptions
+     *        The CPU options for the instance. For more information, see <a
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html">Optimizing CPU
+     *        Options</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public RequestLaunchTemplateData withCpuOptions(LaunchTemplateCpuOptionsRequest cpuOptions) {
+        setCpuOptions(cpuOptions);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The Capacity Reservation targeting option. If you do not specify this parameter, the instance's Capacity
+     * Reservation preference defaults to <code>open</code>, which enables it to run in any open Capacity Reservation
+     * that has matching attributes (instance type, platform, Availability Zone).
+     * </p>
+     * 
+     * @param capacityReservationSpecification
+     *        The Capacity Reservation targeting option. If you do not specify this parameter, the instance's Capacity
+     *        Reservation preference defaults to <code>open</code>, which enables it to run in any open Capacity
+     *        Reservation that has matching attributes (instance type, platform, Availability Zone).
+     */
+
+    public void setCapacityReservationSpecification(LaunchTemplateCapacityReservationSpecificationRequest capacityReservationSpecification) {
+        this.capacityReservationSpecification = capacityReservationSpecification;
+    }
+
+    /**
+     * <p>
+     * The Capacity Reservation targeting option. If you do not specify this parameter, the instance's Capacity
+     * Reservation preference defaults to <code>open</code>, which enables it to run in any open Capacity Reservation
+     * that has matching attributes (instance type, platform, Availability Zone).
+     * </p>
+     * 
+     * @return The Capacity Reservation targeting option. If you do not specify this parameter, the instance's Capacity
+     *         Reservation preference defaults to <code>open</code>, which enables it to run in any open Capacity
+     *         Reservation that has matching attributes (instance type, platform, Availability Zone).
+     */
+
+    public LaunchTemplateCapacityReservationSpecificationRequest getCapacityReservationSpecification() {
+        return this.capacityReservationSpecification;
+    }
+
+    /**
+     * <p>
+     * The Capacity Reservation targeting option. If you do not specify this parameter, the instance's Capacity
+     * Reservation preference defaults to <code>open</code>, which enables it to run in any open Capacity Reservation
+     * that has matching attributes (instance type, platform, Availability Zone).
+     * </p>
+     * 
+     * @param capacityReservationSpecification
+     *        The Capacity Reservation targeting option. If you do not specify this parameter, the instance's Capacity
+     *        Reservation preference defaults to <code>open</code>, which enables it to run in any open Capacity
+     *        Reservation that has matching attributes (instance type, platform, Availability Zone).
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public RequestLaunchTemplateData withCapacityReservationSpecification(LaunchTemplateCapacityReservationSpecificationRequest capacityReservationSpecification) {
+        setCapacityReservationSpecification(capacityReservationSpecification);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The license configurations.
+     * </p>
+     * 
+     * @return The license configurations.
+     */
+
+    public java.util.List<LaunchTemplateLicenseConfigurationRequest> getLicenseSpecifications() {
+        if (licenseSpecifications == null) {
+            licenseSpecifications = new com.amazonaws.internal.SdkInternalList<LaunchTemplateLicenseConfigurationRequest>();
+        }
+        return licenseSpecifications;
+    }
+
+    /**
+     * <p>
+     * The license configurations.
+     * </p>
+     * 
+     * @param licenseSpecifications
+     *        The license configurations.
+     */
+
+    public void setLicenseSpecifications(java.util.Collection<LaunchTemplateLicenseConfigurationRequest> licenseSpecifications) {
+        if (licenseSpecifications == null) {
+            this.licenseSpecifications = null;
+            return;
+        }
+
+        this.licenseSpecifications = new com.amazonaws.internal.SdkInternalList<LaunchTemplateLicenseConfigurationRequest>(licenseSpecifications);
+    }
+
+    /**
+     * <p>
+     * The license configurations.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setLicenseSpecifications(java.util.Collection)} or
+     * {@link #withLicenseSpecifications(java.util.Collection)} if you want to override the existing values.
+     * </p>
+     * 
+     * @param licenseSpecifications
+     *        The license configurations.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public RequestLaunchTemplateData withLicenseSpecifications(LaunchTemplateLicenseConfigurationRequest... licenseSpecifications) {
+        if (this.licenseSpecifications == null) {
+            setLicenseSpecifications(new com.amazonaws.internal.SdkInternalList<LaunchTemplateLicenseConfigurationRequest>(licenseSpecifications.length));
+        }
+        for (LaunchTemplateLicenseConfigurationRequest ele : licenseSpecifications) {
+            this.licenseSpecifications.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * The license configurations.
+     * </p>
+     * 
+     * @param licenseSpecifications
+     *        The license configurations.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public RequestLaunchTemplateData withLicenseSpecifications(java.util.Collection<LaunchTemplateLicenseConfigurationRequest> licenseSpecifications) {
+        setLicenseSpecifications(licenseSpecifications);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Indicates whether an instance is enabled for hibernation. This parameter is valid only if the instance meets the
+     * <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html#hibernating-prerequisites">hibernation
+     * prerequisites</a>. Hibernation is currently supported only for Amazon Linux. For more information, see <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html">Hibernate Your Instance</a> in the
+     * <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * </p>
+     * 
+     * @param hibernationOptions
+     *        Indicates whether an instance is enabled for hibernation. This parameter is valid only if the instance
+     *        meets the <a
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html#hibernating-prerequisites"
+     *        >hibernation prerequisites</a>. Hibernation is currently supported only for Amazon Linux. For more
+     *        information, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html">Hibernate
+     *        Your Instance</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     */
+
+    public void setHibernationOptions(LaunchTemplateHibernationOptionsRequest hibernationOptions) {
+        this.hibernationOptions = hibernationOptions;
+    }
+
+    /**
+     * <p>
+     * Indicates whether an instance is enabled for hibernation. This parameter is valid only if the instance meets the
+     * <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html#hibernating-prerequisites">hibernation
+     * prerequisites</a>. Hibernation is currently supported only for Amazon Linux. For more information, see <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html">Hibernate Your Instance</a> in the
+     * <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * </p>
+     * 
+     * @return Indicates whether an instance is enabled for hibernation. This parameter is valid only if the instance
+     *         meets the <a
+     *         href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html#hibernating-prerequisites"
+     *         >hibernation prerequisites</a>. Hibernation is currently supported only for Amazon Linux. For more
+     *         information, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html">Hibernate
+     *         Your Instance</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     */
+
+    public LaunchTemplateHibernationOptionsRequest getHibernationOptions() {
+        return this.hibernationOptions;
+    }
+
+    /**
+     * <p>
+     * Indicates whether an instance is enabled for hibernation. This parameter is valid only if the instance meets the
+     * <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html#hibernating-prerequisites">hibernation
+     * prerequisites</a>. Hibernation is currently supported only for Amazon Linux. For more information, see <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html">Hibernate Your Instance</a> in the
+     * <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * </p>
+     * 
+     * @param hibernationOptions
+     *        Indicates whether an instance is enabled for hibernation. This parameter is valid only if the instance
+     *        meets the <a
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html#hibernating-prerequisites"
+     *        >hibernation prerequisites</a>. Hibernation is currently supported only for Amazon Linux. For more
+     *        information, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html">Hibernate
+     *        Your Instance</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public RequestLaunchTemplateData withHibernationOptions(LaunchTemplateHibernationOptionsRequest hibernationOptions) {
+        setHibernationOptions(hibernationOptions);
+        return this;
+    }
+
+    /**
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -1581,6 +2022,8 @@ public class RequestLaunchTemplateData implements Serializable, Cloneable {
             sb.append("TagSpecifications: ").append(getTagSpecifications()).append(",");
         if (getElasticGpuSpecifications() != null)
             sb.append("ElasticGpuSpecifications: ").append(getElasticGpuSpecifications()).append(",");
+        if (getElasticInferenceAccelerators() != null)
+            sb.append("ElasticInferenceAccelerators: ").append(getElasticInferenceAccelerators()).append(",");
         if (getSecurityGroupIds() != null)
             sb.append("SecurityGroupIds: ").append(getSecurityGroupIds()).append(",");
         if (getSecurityGroups() != null)
@@ -1588,7 +2031,15 @@ public class RequestLaunchTemplateData implements Serializable, Cloneable {
         if (getInstanceMarketOptions() != null)
             sb.append("InstanceMarketOptions: ").append(getInstanceMarketOptions()).append(",");
         if (getCreditSpecification() != null)
-            sb.append("CreditSpecification: ").append(getCreditSpecification());
+            sb.append("CreditSpecification: ").append(getCreditSpecification()).append(",");
+        if (getCpuOptions() != null)
+            sb.append("CpuOptions: ").append(getCpuOptions()).append(",");
+        if (getCapacityReservationSpecification() != null)
+            sb.append("CapacityReservationSpecification: ").append(getCapacityReservationSpecification()).append(",");
+        if (getLicenseSpecifications() != null)
+            sb.append("LicenseSpecifications: ").append(getLicenseSpecifications()).append(",");
+        if (getHibernationOptions() != null)
+            sb.append("HibernationOptions: ").append(getHibernationOptions());
         sb.append("}");
         return sb.toString();
     }
@@ -1668,6 +2119,10 @@ public class RequestLaunchTemplateData implements Serializable, Cloneable {
             return false;
         if (other.getElasticGpuSpecifications() != null && other.getElasticGpuSpecifications().equals(this.getElasticGpuSpecifications()) == false)
             return false;
+        if (other.getElasticInferenceAccelerators() == null ^ this.getElasticInferenceAccelerators() == null)
+            return false;
+        if (other.getElasticInferenceAccelerators() != null && other.getElasticInferenceAccelerators().equals(this.getElasticInferenceAccelerators()) == false)
+            return false;
         if (other.getSecurityGroupIds() == null ^ this.getSecurityGroupIds() == null)
             return false;
         if (other.getSecurityGroupIds() != null && other.getSecurityGroupIds().equals(this.getSecurityGroupIds()) == false)
@@ -1683,6 +2138,23 @@ public class RequestLaunchTemplateData implements Serializable, Cloneable {
         if (other.getCreditSpecification() == null ^ this.getCreditSpecification() == null)
             return false;
         if (other.getCreditSpecification() != null && other.getCreditSpecification().equals(this.getCreditSpecification()) == false)
+            return false;
+        if (other.getCpuOptions() == null ^ this.getCpuOptions() == null)
+            return false;
+        if (other.getCpuOptions() != null && other.getCpuOptions().equals(this.getCpuOptions()) == false)
+            return false;
+        if (other.getCapacityReservationSpecification() == null ^ this.getCapacityReservationSpecification() == null)
+            return false;
+        if (other.getCapacityReservationSpecification() != null
+                && other.getCapacityReservationSpecification().equals(this.getCapacityReservationSpecification()) == false)
+            return false;
+        if (other.getLicenseSpecifications() == null ^ this.getLicenseSpecifications() == null)
+            return false;
+        if (other.getLicenseSpecifications() != null && other.getLicenseSpecifications().equals(this.getLicenseSpecifications()) == false)
+            return false;
+        if (other.getHibernationOptions() == null ^ this.getHibernationOptions() == null)
+            return false;
+        if (other.getHibernationOptions() != null && other.getHibernationOptions().equals(this.getHibernationOptions()) == false)
             return false;
         return true;
     }
@@ -1708,10 +2180,15 @@ public class RequestLaunchTemplateData implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getUserData() == null) ? 0 : getUserData().hashCode());
         hashCode = prime * hashCode + ((getTagSpecifications() == null) ? 0 : getTagSpecifications().hashCode());
         hashCode = prime * hashCode + ((getElasticGpuSpecifications() == null) ? 0 : getElasticGpuSpecifications().hashCode());
+        hashCode = prime * hashCode + ((getElasticInferenceAccelerators() == null) ? 0 : getElasticInferenceAccelerators().hashCode());
         hashCode = prime * hashCode + ((getSecurityGroupIds() == null) ? 0 : getSecurityGroupIds().hashCode());
         hashCode = prime * hashCode + ((getSecurityGroups() == null) ? 0 : getSecurityGroups().hashCode());
         hashCode = prime * hashCode + ((getInstanceMarketOptions() == null) ? 0 : getInstanceMarketOptions().hashCode());
         hashCode = prime * hashCode + ((getCreditSpecification() == null) ? 0 : getCreditSpecification().hashCode());
+        hashCode = prime * hashCode + ((getCpuOptions() == null) ? 0 : getCpuOptions().hashCode());
+        hashCode = prime * hashCode + ((getCapacityReservationSpecification() == null) ? 0 : getCapacityReservationSpecification().hashCode());
+        hashCode = prime * hashCode + ((getLicenseSpecifications() == null) ? 0 : getLicenseSpecifications().hashCode());
+        hashCode = prime * hashCode + ((getHibernationOptions() == null) ? 0 : getHibernationOptions().hashCode());
         return hashCode;
     }
 

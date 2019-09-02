@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -20,9 +20,7 @@ import com.amazonaws.Request;
 import com.amazonaws.services.ec2.model.transform.CreateVpcPeeringConnectionRequestMarshaller;
 
 /**
- * <p>
- * Contains the parameters for CreateVpcPeeringConnection.
- * </p>
+ * 
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CreateVpcPeeringConnectionRequest extends AmazonWebServiceRequest implements Serializable, Cloneable,
@@ -52,11 +50,11 @@ public class CreateVpcPeeringConnectionRequest extends AmazonWebServiceRequest i
     private String vpcId;
     /**
      * <p>
-     * The region code for the accepter VPC, if the accepter VPC is located in a region other than the region in which
+     * The Region code for the accepter VPC, if the accepter VPC is located in a Region other than the Region in which
      * you make the request.
      * </p>
      * <p>
-     * Default: The region in which you make the request.
+     * Default: The Region in which you make the request.
      * </p>
      */
     private String peerRegion;
@@ -204,18 +202,18 @@ public class CreateVpcPeeringConnectionRequest extends AmazonWebServiceRequest i
 
     /**
      * <p>
-     * The region code for the accepter VPC, if the accepter VPC is located in a region other than the region in which
+     * The Region code for the accepter VPC, if the accepter VPC is located in a Region other than the Region in which
      * you make the request.
      * </p>
      * <p>
-     * Default: The region in which you make the request.
+     * Default: The Region in which you make the request.
      * </p>
      * 
      * @param peerRegion
-     *        The region code for the accepter VPC, if the accepter VPC is located in a region other than the region in
+     *        The Region code for the accepter VPC, if the accepter VPC is located in a Region other than the Region in
      *        which you make the request.</p>
      *        <p>
-     *        Default: The region in which you make the request.
+     *        Default: The Region in which you make the request.
      */
 
     public void setPeerRegion(String peerRegion) {
@@ -224,17 +222,17 @@ public class CreateVpcPeeringConnectionRequest extends AmazonWebServiceRequest i
 
     /**
      * <p>
-     * The region code for the accepter VPC, if the accepter VPC is located in a region other than the region in which
+     * The Region code for the accepter VPC, if the accepter VPC is located in a Region other than the Region in which
      * you make the request.
      * </p>
      * <p>
-     * Default: The region in which you make the request.
+     * Default: The Region in which you make the request.
      * </p>
      * 
-     * @return The region code for the accepter VPC, if the accepter VPC is located in a region other than the region in
+     * @return The Region code for the accepter VPC, if the accepter VPC is located in a Region other than the Region in
      *         which you make the request.</p>
      *         <p>
-     *         Default: The region in which you make the request.
+     *         Default: The Region in which you make the request.
      */
 
     public String getPeerRegion() {
@@ -243,18 +241,18 @@ public class CreateVpcPeeringConnectionRequest extends AmazonWebServiceRequest i
 
     /**
      * <p>
-     * The region code for the accepter VPC, if the accepter VPC is located in a region other than the region in which
+     * The Region code for the accepter VPC, if the accepter VPC is located in a Region other than the Region in which
      * you make the request.
      * </p>
      * <p>
-     * Default: The region in which you make the request.
+     * Default: The Region in which you make the request.
      * </p>
      * 
      * @param peerRegion
-     *        The region code for the accepter VPC, if the accepter VPC is located in a region other than the region in
+     *        The Region code for the accepter VPC, if the accepter VPC is located in a Region other than the Region in
      *        which you make the request.</p>
      *        <p>
-     *        Default: The region in which you make the request.
+     *        Default: The Region in which you make the request.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -275,7 +273,8 @@ public class CreateVpcPeeringConnectionRequest extends AmazonWebServiceRequest i
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

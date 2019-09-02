@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -20,16 +20,14 @@ import com.amazonaws.Request;
 import com.amazonaws.services.ec2.model.transform.DescribeHostsRequestMarshaller;
 
 /**
- * <p>
- * Contains the parameters for DescribeHosts.
- * </p>
+ * 
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DescribeHostsRequest extends AmazonWebServiceRequest implements Serializable, Cloneable, DryRunSupportedRequest<DescribeHostsRequest> {
 
     /**
      * <p>
-     * One or more filters.
+     * The filters.
      * </p>
      * <ul>
      * <li>
@@ -44,7 +42,7 @@ public class DescribeHostsRequest extends AmazonWebServiceRequest implements Ser
      * </li>
      * <li>
      * <p>
-     * <code>client-token</code> - The idempotency token you provided when you allocated the host.
+     * <code>client-token</code> - The idempotency token that you provided when you allocated the host.
      * </p>
      * </li>
      * <li>
@@ -62,6 +60,12 @@ public class DescribeHostsRequest extends AmazonWebServiceRequest implements Ser
      * <code>state</code> - The allocation state of the Dedicated Host (<code>available</code> |
      * <code>under-assessment</code> | <code>permanent-failure</code> | <code>released</code> |
      * <code>released-permanent-failure</code>).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>tag-key</code> - The key of a tag assigned to the resource. Use this filter to find all resources assigned
+     * a tag with a specific key, regardless of the tag value.
      * </p>
      * </li>
      * </ul>
@@ -76,22 +80,24 @@ public class DescribeHostsRequest extends AmazonWebServiceRequest implements Ser
     /**
      * <p>
      * The maximum number of results to return for the request in a single page. The remaining results can be seen by
-     * sending another request with the returned <code>nextToken</code> value. This value can be between 5 and 500; if
-     * <code>maxResults</code> is given a larger value than 500, you will receive an error. You cannot specify this
-     * parameter and the host IDs parameter in the same request.
+     * sending another request with the returned <code>nextToken</code> value. This value can be between 5 and 500. If
+     * <code>maxResults</code> is given a larger value than 500, you receive an error.
+     * </p>
+     * <p>
+     * You cannot specify this parameter and the host IDs parameter in the same request.
      * </p>
      */
     private Integer maxResults;
     /**
      * <p>
-     * The token to retrieve the next page of results.
+     * The token to use to retrieve the next page of results.
      * </p>
      */
     private String nextToken;
 
     /**
      * <p>
-     * One or more filters.
+     * The filters.
      * </p>
      * <ul>
      * <li>
@@ -106,7 +112,7 @@ public class DescribeHostsRequest extends AmazonWebServiceRequest implements Ser
      * </li>
      * <li>
      * <p>
-     * <code>client-token</code> - The idempotency token you provided when you allocated the host.
+     * <code>client-token</code> - The idempotency token that you provided when you allocated the host.
      * </p>
      * </li>
      * <li>
@@ -126,9 +132,15 @@ public class DescribeHostsRequest extends AmazonWebServiceRequest implements Ser
      * <code>released-permanent-failure</code>).
      * </p>
      * </li>
+     * <li>
+     * <p>
+     * <code>tag-key</code> - The key of a tag assigned to the resource. Use this filter to find all resources assigned
+     * a tag with a specific key, regardless of the tag value.
+     * </p>
+     * </li>
      * </ul>
      * 
-     * @return One or more filters.</p>
+     * @return The filters.</p>
      *         <ul>
      *         <li>
      *         <p>
@@ -143,7 +155,7 @@ public class DescribeHostsRequest extends AmazonWebServiceRequest implements Ser
      *         </li>
      *         <li>
      *         <p>
-     *         <code>client-token</code> - The idempotency token you provided when you allocated the host.
+     *         <code>client-token</code> - The idempotency token that you provided when you allocated the host.
      *         </p>
      *         </li>
      *         <li>
@@ -163,6 +175,12 @@ public class DescribeHostsRequest extends AmazonWebServiceRequest implements Ser
      *         <code>released-permanent-failure</code>).
      *         </p>
      *         </li>
+     *         <li>
+     *         <p>
+     *         <code>tag-key</code> - The key of a tag assigned to the resource. Use this filter to find all resources
+     *         assigned a tag with a specific key, regardless of the tag value.
+     *         </p>
+     *         </li>
      */
 
     public java.util.List<Filter> getFilter() {
@@ -174,7 +192,7 @@ public class DescribeHostsRequest extends AmazonWebServiceRequest implements Ser
 
     /**
      * <p>
-     * One or more filters.
+     * The filters.
      * </p>
      * <ul>
      * <li>
@@ -189,7 +207,7 @@ public class DescribeHostsRequest extends AmazonWebServiceRequest implements Ser
      * </li>
      * <li>
      * <p>
-     * <code>client-token</code> - The idempotency token you provided when you allocated the host.
+     * <code>client-token</code> - The idempotency token that you provided when you allocated the host.
      * </p>
      * </li>
      * <li>
@@ -209,10 +227,16 @@ public class DescribeHostsRequest extends AmazonWebServiceRequest implements Ser
      * <code>released-permanent-failure</code>).
      * </p>
      * </li>
+     * <li>
+     * <p>
+     * <code>tag-key</code> - The key of a tag assigned to the resource. Use this filter to find all resources assigned
+     * a tag with a specific key, regardless of the tag value.
+     * </p>
+     * </li>
      * </ul>
      * 
      * @param filter
-     *        One or more filters.</p>
+     *        The filters.</p>
      *        <ul>
      *        <li>
      *        <p>
@@ -227,7 +251,7 @@ public class DescribeHostsRequest extends AmazonWebServiceRequest implements Ser
      *        </li>
      *        <li>
      *        <p>
-     *        <code>client-token</code> - The idempotency token you provided when you allocated the host.
+     *        <code>client-token</code> - The idempotency token that you provided when you allocated the host.
      *        </p>
      *        </li>
      *        <li>
@@ -245,6 +269,12 @@ public class DescribeHostsRequest extends AmazonWebServiceRequest implements Ser
      *        <code>state</code> - The allocation state of the Dedicated Host (<code>available</code> |
      *        <code>under-assessment</code> | <code>permanent-failure</code> | <code>released</code> |
      *        <code>released-permanent-failure</code>).
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>tag-key</code> - The key of a tag assigned to the resource. Use this filter to find all resources
+     *        assigned a tag with a specific key, regardless of the tag value.
      *        </p>
      *        </li>
      */
@@ -260,7 +290,7 @@ public class DescribeHostsRequest extends AmazonWebServiceRequest implements Ser
 
     /**
      * <p>
-     * One or more filters.
+     * The filters.
      * </p>
      * <ul>
      * <li>
@@ -275,7 +305,7 @@ public class DescribeHostsRequest extends AmazonWebServiceRequest implements Ser
      * </li>
      * <li>
      * <p>
-     * <code>client-token</code> - The idempotency token you provided when you allocated the host.
+     * <code>client-token</code> - The idempotency token that you provided when you allocated the host.
      * </p>
      * </li>
      * <li>
@@ -295,6 +325,12 @@ public class DescribeHostsRequest extends AmazonWebServiceRequest implements Ser
      * <code>released-permanent-failure</code>).
      * </p>
      * </li>
+     * <li>
+     * <p>
+     * <code>tag-key</code> - The key of a tag assigned to the resource. Use this filter to find all resources assigned
+     * a tag with a specific key, regardless of the tag value.
+     * </p>
+     * </li>
      * </ul>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -303,7 +339,7 @@ public class DescribeHostsRequest extends AmazonWebServiceRequest implements Ser
      * </p>
      * 
      * @param filter
-     *        One or more filters.</p>
+     *        The filters.</p>
      *        <ul>
      *        <li>
      *        <p>
@@ -318,7 +354,7 @@ public class DescribeHostsRequest extends AmazonWebServiceRequest implements Ser
      *        </li>
      *        <li>
      *        <p>
-     *        <code>client-token</code> - The idempotency token you provided when you allocated the host.
+     *        <code>client-token</code> - The idempotency token that you provided when you allocated the host.
      *        </p>
      *        </li>
      *        <li>
@@ -336,6 +372,12 @@ public class DescribeHostsRequest extends AmazonWebServiceRequest implements Ser
      *        <code>state</code> - The allocation state of the Dedicated Host (<code>available</code> |
      *        <code>under-assessment</code> | <code>permanent-failure</code> | <code>released</code> |
      *        <code>released-permanent-failure</code>).
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>tag-key</code> - The key of a tag assigned to the resource. Use this filter to find all resources
+     *        assigned a tag with a specific key, regardless of the tag value.
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -353,7 +395,7 @@ public class DescribeHostsRequest extends AmazonWebServiceRequest implements Ser
 
     /**
      * <p>
-     * One or more filters.
+     * The filters.
      * </p>
      * <ul>
      * <li>
@@ -368,7 +410,7 @@ public class DescribeHostsRequest extends AmazonWebServiceRequest implements Ser
      * </li>
      * <li>
      * <p>
-     * <code>client-token</code> - The idempotency token you provided when you allocated the host.
+     * <code>client-token</code> - The idempotency token that you provided when you allocated the host.
      * </p>
      * </li>
      * <li>
@@ -388,10 +430,16 @@ public class DescribeHostsRequest extends AmazonWebServiceRequest implements Ser
      * <code>released-permanent-failure</code>).
      * </p>
      * </li>
+     * <li>
+     * <p>
+     * <code>tag-key</code> - The key of a tag assigned to the resource. Use this filter to find all resources assigned
+     * a tag with a specific key, regardless of the tag value.
+     * </p>
+     * </li>
      * </ul>
      * 
      * @param filter
-     *        One or more filters.</p>
+     *        The filters.</p>
      *        <ul>
      *        <li>
      *        <p>
@@ -406,7 +454,7 @@ public class DescribeHostsRequest extends AmazonWebServiceRequest implements Ser
      *        </li>
      *        <li>
      *        <p>
-     *        <code>client-token</code> - The idempotency token you provided when you allocated the host.
+     *        <code>client-token</code> - The idempotency token that you provided when you allocated the host.
      *        </p>
      *        </li>
      *        <li>
@@ -424,6 +472,12 @@ public class DescribeHostsRequest extends AmazonWebServiceRequest implements Ser
      *        <code>state</code> - The allocation state of the Dedicated Host (<code>available</code> |
      *        <code>under-assessment</code> | <code>permanent-failure</code> | <code>released</code> |
      *        <code>released-permanent-failure</code>).
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>tag-key</code> - The key of a tag assigned to the resource. Use this filter to find all resources
+     *        assigned a tag with a specific key, regardless of the tag value.
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -510,16 +564,19 @@ public class DescribeHostsRequest extends AmazonWebServiceRequest implements Ser
     /**
      * <p>
      * The maximum number of results to return for the request in a single page. The remaining results can be seen by
-     * sending another request with the returned <code>nextToken</code> value. This value can be between 5 and 500; if
-     * <code>maxResults</code> is given a larger value than 500, you will receive an error. You cannot specify this
-     * parameter and the host IDs parameter in the same request.
+     * sending another request with the returned <code>nextToken</code> value. This value can be between 5 and 500. If
+     * <code>maxResults</code> is given a larger value than 500, you receive an error.
+     * </p>
+     * <p>
+     * You cannot specify this parameter and the host IDs parameter in the same request.
      * </p>
      * 
      * @param maxResults
      *        The maximum number of results to return for the request in a single page. The remaining results can be
      *        seen by sending another request with the returned <code>nextToken</code> value. This value can be between
-     *        5 and 500; if <code>maxResults</code> is given a larger value than 500, you will receive an error. You
-     *        cannot specify this parameter and the host IDs parameter in the same request.
+     *        5 and 500. If <code>maxResults</code> is given a larger value than 500, you receive an error.</p>
+     *        <p>
+     *        You cannot specify this parameter and the host IDs parameter in the same request.
      */
 
     public void setMaxResults(Integer maxResults) {
@@ -529,15 +586,18 @@ public class DescribeHostsRequest extends AmazonWebServiceRequest implements Ser
     /**
      * <p>
      * The maximum number of results to return for the request in a single page. The remaining results can be seen by
-     * sending another request with the returned <code>nextToken</code> value. This value can be between 5 and 500; if
-     * <code>maxResults</code> is given a larger value than 500, you will receive an error. You cannot specify this
-     * parameter and the host IDs parameter in the same request.
+     * sending another request with the returned <code>nextToken</code> value. This value can be between 5 and 500. If
+     * <code>maxResults</code> is given a larger value than 500, you receive an error.
+     * </p>
+     * <p>
+     * You cannot specify this parameter and the host IDs parameter in the same request.
      * </p>
      * 
      * @return The maximum number of results to return for the request in a single page. The remaining results can be
      *         seen by sending another request with the returned <code>nextToken</code> value. This value can be between
-     *         5 and 500; if <code>maxResults</code> is given a larger value than 500, you will receive an error. You
-     *         cannot specify this parameter and the host IDs parameter in the same request.
+     *         5 and 500. If <code>maxResults</code> is given a larger value than 500, you receive an error.</p>
+     *         <p>
+     *         You cannot specify this parameter and the host IDs parameter in the same request.
      */
 
     public Integer getMaxResults() {
@@ -547,16 +607,19 @@ public class DescribeHostsRequest extends AmazonWebServiceRequest implements Ser
     /**
      * <p>
      * The maximum number of results to return for the request in a single page. The remaining results can be seen by
-     * sending another request with the returned <code>nextToken</code> value. This value can be between 5 and 500; if
-     * <code>maxResults</code> is given a larger value than 500, you will receive an error. You cannot specify this
-     * parameter and the host IDs parameter in the same request.
+     * sending another request with the returned <code>nextToken</code> value. This value can be between 5 and 500. If
+     * <code>maxResults</code> is given a larger value than 500, you receive an error.
+     * </p>
+     * <p>
+     * You cannot specify this parameter and the host IDs parameter in the same request.
      * </p>
      * 
      * @param maxResults
      *        The maximum number of results to return for the request in a single page. The remaining results can be
      *        seen by sending another request with the returned <code>nextToken</code> value. This value can be between
-     *        5 and 500; if <code>maxResults</code> is given a larger value than 500, you will receive an error. You
-     *        cannot specify this parameter and the host IDs parameter in the same request.
+     *        5 and 500. If <code>maxResults</code> is given a larger value than 500, you receive an error.</p>
+     *        <p>
+     *        You cannot specify this parameter and the host IDs parameter in the same request.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -567,11 +630,11 @@ public class DescribeHostsRequest extends AmazonWebServiceRequest implements Ser
 
     /**
      * <p>
-     * The token to retrieve the next page of results.
+     * The token to use to retrieve the next page of results.
      * </p>
      * 
      * @param nextToken
-     *        The token to retrieve the next page of results.
+     *        The token to use to retrieve the next page of results.
      */
 
     public void setNextToken(String nextToken) {
@@ -580,10 +643,10 @@ public class DescribeHostsRequest extends AmazonWebServiceRequest implements Ser
 
     /**
      * <p>
-     * The token to retrieve the next page of results.
+     * The token to use to retrieve the next page of results.
      * </p>
      * 
-     * @return The token to retrieve the next page of results.
+     * @return The token to use to retrieve the next page of results.
      */
 
     public String getNextToken() {
@@ -592,11 +655,11 @@ public class DescribeHostsRequest extends AmazonWebServiceRequest implements Ser
 
     /**
      * <p>
-     * The token to retrieve the next page of results.
+     * The token to use to retrieve the next page of results.
      * </p>
      * 
      * @param nextToken
-     *        The token to retrieve the next page of results.
+     *        The token to use to retrieve the next page of results.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -617,7 +680,8 @@ public class DescribeHostsRequest extends AmazonWebServiceRequest implements Ser
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

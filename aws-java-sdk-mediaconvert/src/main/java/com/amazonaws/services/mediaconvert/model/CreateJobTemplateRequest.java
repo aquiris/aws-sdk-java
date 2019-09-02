@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -25,6 +25,12 @@ import com.amazonaws.AmazonWebServiceRequest;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CreateJobTemplateRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
+    /**
+     * Accelerated transcoding can significantly speed up jobs with long, visually complex content. Outputs that use
+     * this feature incur pro-tier pricing. For information about feature limitations, see the AWS Elemental
+     * MediaConvert User Guide.
+     */
+    private AccelerationSettings accelerationSettings;
     /** Optional. A category for the job template you are creating */
     private String category;
     /** Optional. A description of the job template you are creating. */
@@ -32,12 +38,75 @@ public class CreateJobTemplateRequest extends com.amazonaws.AmazonWebServiceRequ
     /** The name of the job template you are creating. */
     private String name;
     /**
+     * Specify the relative priority for this job. In any given queue, the service begins processing the job with the
+     * highest value first. When more than one job has the same priority, the service begins processing the job that you
+     * submitted first. If you don't specify a priority, the service uses the default value 0.
+     */
+    private Integer priority;
+    /**
      * Optional. The queue that jobs created from this template are assigned to. If you don't specify this, jobs will go
      * to the default queue.
      */
     private String queue;
-
+    /**
+     * JobTemplateSettings contains all the transcode settings saved in the template that will be applied to jobs
+     * created from it.
+     */
     private JobTemplateSettings settings;
+    /**
+     * Specify how often MediaConvert sends STATUS_UPDATE events to Amazon CloudWatch Events. Set the interval, in
+     * seconds, between status updates. MediaConvert sends an update at this interval from the time the service begins
+     * processing your job to the time it completes the transcode or encounters an error.
+     */
+    private String statusUpdateInterval;
+    /** The tags that you want to add to the resource. You can tag resources with a key-value pair or with only a key. */
+    private java.util.Map<String, String> tags;
+
+    /**
+     * Accelerated transcoding can significantly speed up jobs with long, visually complex content. Outputs that use
+     * this feature incur pro-tier pricing. For information about feature limitations, see the AWS Elemental
+     * MediaConvert User Guide.
+     * 
+     * @param accelerationSettings
+     *        Accelerated transcoding can significantly speed up jobs with long, visually complex content. Outputs that
+     *        use this feature incur pro-tier pricing. For information about feature limitations, see the AWS Elemental
+     *        MediaConvert User Guide.
+     */
+
+    public void setAccelerationSettings(AccelerationSettings accelerationSettings) {
+        this.accelerationSettings = accelerationSettings;
+    }
+
+    /**
+     * Accelerated transcoding can significantly speed up jobs with long, visually complex content. Outputs that use
+     * this feature incur pro-tier pricing. For information about feature limitations, see the AWS Elemental
+     * MediaConvert User Guide.
+     * 
+     * @return Accelerated transcoding can significantly speed up jobs with long, visually complex content. Outputs that
+     *         use this feature incur pro-tier pricing. For information about feature limitations, see the AWS Elemental
+     *         MediaConvert User Guide.
+     */
+
+    public AccelerationSettings getAccelerationSettings() {
+        return this.accelerationSettings;
+    }
+
+    /**
+     * Accelerated transcoding can significantly speed up jobs with long, visually complex content. Outputs that use
+     * this feature incur pro-tier pricing. For information about feature limitations, see the AWS Elemental
+     * MediaConvert User Guide.
+     * 
+     * @param accelerationSettings
+     *        Accelerated transcoding can significantly speed up jobs with long, visually complex content. Outputs that
+     *        use this feature incur pro-tier pricing. For information about feature limitations, see the AWS Elemental
+     *        MediaConvert User Guide.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateJobTemplateRequest withAccelerationSettings(AccelerationSettings accelerationSettings) {
+        setAccelerationSettings(accelerationSettings);
+        return this;
+    }
 
     /**
      * Optional. A category for the job template you are creating
@@ -142,6 +211,52 @@ public class CreateJobTemplateRequest extends com.amazonaws.AmazonWebServiceRequ
     }
 
     /**
+     * Specify the relative priority for this job. In any given queue, the service begins processing the job with the
+     * highest value first. When more than one job has the same priority, the service begins processing the job that you
+     * submitted first. If you don't specify a priority, the service uses the default value 0.
+     * 
+     * @param priority
+     *        Specify the relative priority for this job. In any given queue, the service begins processing the job with
+     *        the highest value first. When more than one job has the same priority, the service begins processing the
+     *        job that you submitted first. If you don't specify a priority, the service uses the default value 0.
+     */
+
+    public void setPriority(Integer priority) {
+        this.priority = priority;
+    }
+
+    /**
+     * Specify the relative priority for this job. In any given queue, the service begins processing the job with the
+     * highest value first. When more than one job has the same priority, the service begins processing the job that you
+     * submitted first. If you don't specify a priority, the service uses the default value 0.
+     * 
+     * @return Specify the relative priority for this job. In any given queue, the service begins processing the job
+     *         with the highest value first. When more than one job has the same priority, the service begins processing
+     *         the job that you submitted first. If you don't specify a priority, the service uses the default value 0.
+     */
+
+    public Integer getPriority() {
+        return this.priority;
+    }
+
+    /**
+     * Specify the relative priority for this job. In any given queue, the service begins processing the job with the
+     * highest value first. When more than one job has the same priority, the service begins processing the job that you
+     * submitted first. If you don't specify a priority, the service uses the default value 0.
+     * 
+     * @param priority
+     *        Specify the relative priority for this job. In any given queue, the service begins processing the job with
+     *        the highest value first. When more than one job has the same priority, the service begins processing the
+     *        job that you submitted first. If you don't specify a priority, the service uses the default value 0.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateJobTemplateRequest withPriority(Integer priority) {
+        setPriority(priority);
+        return this;
+    }
+
+    /**
      * Optional. The queue that jobs created from this template are assigned to. If you don't specify this, jobs will go
      * to the default queue.
      * 
@@ -182,7 +297,12 @@ public class CreateJobTemplateRequest extends com.amazonaws.AmazonWebServiceRequ
     }
 
     /**
+     * JobTemplateSettings contains all the transcode settings saved in the template that will be applied to jobs
+     * created from it.
+     * 
      * @param settings
+     *        JobTemplateSettings contains all the transcode settings saved in the template that will be applied to jobs
+     *        created from it.
      */
 
     public void setSettings(JobTemplateSettings settings) {
@@ -190,7 +310,11 @@ public class CreateJobTemplateRequest extends com.amazonaws.AmazonWebServiceRequ
     }
 
     /**
-     * @return
+     * JobTemplateSettings contains all the transcode settings saved in the template that will be applied to jobs
+     * created from it.
+     * 
+     * @return JobTemplateSettings contains all the transcode settings saved in the template that will be applied to
+     *         jobs created from it.
      */
 
     public JobTemplateSettings getSettings() {
@@ -198,7 +322,12 @@ public class CreateJobTemplateRequest extends com.amazonaws.AmazonWebServiceRequ
     }
 
     /**
+     * JobTemplateSettings contains all the transcode settings saved in the template that will be applied to jobs
+     * created from it.
+     * 
      * @param settings
+     *        JobTemplateSettings contains all the transcode settings saved in the template that will be applied to jobs
+     *        created from it.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -208,7 +337,133 @@ public class CreateJobTemplateRequest extends com.amazonaws.AmazonWebServiceRequ
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Specify how often MediaConvert sends STATUS_UPDATE events to Amazon CloudWatch Events. Set the interval, in
+     * seconds, between status updates. MediaConvert sends an update at this interval from the time the service begins
+     * processing your job to the time it completes the transcode or encounters an error.
+     * 
+     * @param statusUpdateInterval
+     *        Specify how often MediaConvert sends STATUS_UPDATE events to Amazon CloudWatch Events. Set the interval,
+     *        in seconds, between status updates. MediaConvert sends an update at this interval from the time the
+     *        service begins processing your job to the time it completes the transcode or encounters an error.
+     * @see StatusUpdateInterval
+     */
+
+    public void setStatusUpdateInterval(String statusUpdateInterval) {
+        this.statusUpdateInterval = statusUpdateInterval;
+    }
+
+    /**
+     * Specify how often MediaConvert sends STATUS_UPDATE events to Amazon CloudWatch Events. Set the interval, in
+     * seconds, between status updates. MediaConvert sends an update at this interval from the time the service begins
+     * processing your job to the time it completes the transcode or encounters an error.
+     * 
+     * @return Specify how often MediaConvert sends STATUS_UPDATE events to Amazon CloudWatch Events. Set the interval,
+     *         in seconds, between status updates. MediaConvert sends an update at this interval from the time the
+     *         service begins processing your job to the time it completes the transcode or encounters an error.
+     * @see StatusUpdateInterval
+     */
+
+    public String getStatusUpdateInterval() {
+        return this.statusUpdateInterval;
+    }
+
+    /**
+     * Specify how often MediaConvert sends STATUS_UPDATE events to Amazon CloudWatch Events. Set the interval, in
+     * seconds, between status updates. MediaConvert sends an update at this interval from the time the service begins
+     * processing your job to the time it completes the transcode or encounters an error.
+     * 
+     * @param statusUpdateInterval
+     *        Specify how often MediaConvert sends STATUS_UPDATE events to Amazon CloudWatch Events. Set the interval,
+     *        in seconds, between status updates. MediaConvert sends an update at this interval from the time the
+     *        service begins processing your job to the time it completes the transcode or encounters an error.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see StatusUpdateInterval
+     */
+
+    public CreateJobTemplateRequest withStatusUpdateInterval(String statusUpdateInterval) {
+        setStatusUpdateInterval(statusUpdateInterval);
+        return this;
+    }
+
+    /**
+     * Specify how often MediaConvert sends STATUS_UPDATE events to Amazon CloudWatch Events. Set the interval, in
+     * seconds, between status updates. MediaConvert sends an update at this interval from the time the service begins
+     * processing your job to the time it completes the transcode or encounters an error.
+     * 
+     * @param statusUpdateInterval
+     *        Specify how often MediaConvert sends STATUS_UPDATE events to Amazon CloudWatch Events. Set the interval,
+     *        in seconds, between status updates. MediaConvert sends an update at this interval from the time the
+     *        service begins processing your job to the time it completes the transcode or encounters an error.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see StatusUpdateInterval
+     */
+
+    public CreateJobTemplateRequest withStatusUpdateInterval(StatusUpdateInterval statusUpdateInterval) {
+        this.statusUpdateInterval = statusUpdateInterval.toString();
+        return this;
+    }
+
+    /**
+     * The tags that you want to add to the resource. You can tag resources with a key-value pair or with only a key.
+     * 
+     * @return The tags that you want to add to the resource. You can tag resources with a key-value pair or with only a
+     *         key.
+     */
+
+    public java.util.Map<String, String> getTags() {
+        return tags;
+    }
+
+    /**
+     * The tags that you want to add to the resource. You can tag resources with a key-value pair or with only a key.
+     * 
+     * @param tags
+     *        The tags that you want to add to the resource. You can tag resources with a key-value pair or with only a
+     *        key.
+     */
+
+    public void setTags(java.util.Map<String, String> tags) {
+        this.tags = tags;
+    }
+
+    /**
+     * The tags that you want to add to the resource. You can tag resources with a key-value pair or with only a key.
+     * 
+     * @param tags
+     *        The tags that you want to add to the resource. You can tag resources with a key-value pair or with only a
+     *        key.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateJobTemplateRequest withTags(java.util.Map<String, String> tags) {
+        setTags(tags);
+        return this;
+    }
+
+    public CreateJobTemplateRequest addTagsEntry(String key, String value) {
+        if (null == this.tags) {
+            this.tags = new java.util.HashMap<String, String>();
+        }
+        if (this.tags.containsKey(key))
+            throw new IllegalArgumentException("Duplicated keys (" + key.toString() + ") are provided.");
+        this.tags.put(key, value);
+        return this;
+    }
+
+    /**
+     * Removes all the entries added into Tags.
+     *
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateJobTemplateRequest clearTagsEntries() {
+        this.tags = null;
+        return this;
+    }
+
+    /**
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -218,16 +473,24 @@ public class CreateJobTemplateRequest extends com.amazonaws.AmazonWebServiceRequ
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
+        if (getAccelerationSettings() != null)
+            sb.append("AccelerationSettings: ").append(getAccelerationSettings()).append(",");
         if (getCategory() != null)
             sb.append("Category: ").append(getCategory()).append(",");
         if (getDescription() != null)
             sb.append("Description: ").append(getDescription()).append(",");
         if (getName() != null)
             sb.append("Name: ").append(getName()).append(",");
+        if (getPriority() != null)
+            sb.append("Priority: ").append(getPriority()).append(",");
         if (getQueue() != null)
             sb.append("Queue: ").append(getQueue()).append(",");
         if (getSettings() != null)
-            sb.append("Settings: ").append(getSettings());
+            sb.append("Settings: ").append(getSettings()).append(",");
+        if (getStatusUpdateInterval() != null)
+            sb.append("StatusUpdateInterval: ").append(getStatusUpdateInterval()).append(",");
+        if (getTags() != null)
+            sb.append("Tags: ").append(getTags());
         sb.append("}");
         return sb.toString();
     }
@@ -242,6 +505,10 @@ public class CreateJobTemplateRequest extends com.amazonaws.AmazonWebServiceRequ
         if (obj instanceof CreateJobTemplateRequest == false)
             return false;
         CreateJobTemplateRequest other = (CreateJobTemplateRequest) obj;
+        if (other.getAccelerationSettings() == null ^ this.getAccelerationSettings() == null)
+            return false;
+        if (other.getAccelerationSettings() != null && other.getAccelerationSettings().equals(this.getAccelerationSettings()) == false)
+            return false;
         if (other.getCategory() == null ^ this.getCategory() == null)
             return false;
         if (other.getCategory() != null && other.getCategory().equals(this.getCategory()) == false)
@@ -254,6 +521,10 @@ public class CreateJobTemplateRequest extends com.amazonaws.AmazonWebServiceRequ
             return false;
         if (other.getName() != null && other.getName().equals(this.getName()) == false)
             return false;
+        if (other.getPriority() == null ^ this.getPriority() == null)
+            return false;
+        if (other.getPriority() != null && other.getPriority().equals(this.getPriority()) == false)
+            return false;
         if (other.getQueue() == null ^ this.getQueue() == null)
             return false;
         if (other.getQueue() != null && other.getQueue().equals(this.getQueue()) == false)
@@ -261,6 +532,14 @@ public class CreateJobTemplateRequest extends com.amazonaws.AmazonWebServiceRequ
         if (other.getSettings() == null ^ this.getSettings() == null)
             return false;
         if (other.getSettings() != null && other.getSettings().equals(this.getSettings()) == false)
+            return false;
+        if (other.getStatusUpdateInterval() == null ^ this.getStatusUpdateInterval() == null)
+            return false;
+        if (other.getStatusUpdateInterval() != null && other.getStatusUpdateInterval().equals(this.getStatusUpdateInterval()) == false)
+            return false;
+        if (other.getTags() == null ^ this.getTags() == null)
+            return false;
+        if (other.getTags() != null && other.getTags().equals(this.getTags()) == false)
             return false;
         return true;
     }
@@ -270,11 +549,15 @@ public class CreateJobTemplateRequest extends com.amazonaws.AmazonWebServiceRequ
         final int prime = 31;
         int hashCode = 1;
 
+        hashCode = prime * hashCode + ((getAccelerationSettings() == null) ? 0 : getAccelerationSettings().hashCode());
         hashCode = prime * hashCode + ((getCategory() == null) ? 0 : getCategory().hashCode());
         hashCode = prime * hashCode + ((getDescription() == null) ? 0 : getDescription().hashCode());
         hashCode = prime * hashCode + ((getName() == null) ? 0 : getName().hashCode());
+        hashCode = prime * hashCode + ((getPriority() == null) ? 0 : getPriority().hashCode());
         hashCode = prime * hashCode + ((getQueue() == null) ? 0 : getQueue().hashCode());
         hashCode = prime * hashCode + ((getSettings() == null) ? 0 : getSettings().hashCode());
+        hashCode = prime * hashCode + ((getStatusUpdateInterval() == null) ? 0 : getStatusUpdateInterval().hashCode());
+        hashCode = prime * hashCode + ((getTags() == null) ? 0 : getTags().hashCode());
         return hashCode;
     }
 

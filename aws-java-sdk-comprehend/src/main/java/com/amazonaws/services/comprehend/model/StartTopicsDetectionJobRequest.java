@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -33,14 +33,19 @@ public class StartTopicsDetectionJobRequest extends com.amazonaws.AmazonWebServi
     private InputDataConfig inputDataConfig;
     /**
      * <p>
-     * Specifies where to send the output files.
+     * Specifies where to send the output files. The output is a compressed archive with two files,
+     * <code>topic-terms.csv</code> that lists the terms associated with each topic, and <code>doc-topics.csv</code>
+     * that lists the documents associated with each topic
      * </p>
      */
     private OutputDataConfig outputDataConfig;
     /**
      * <p>
      * The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that grants Amazon Comprehend
-     * read access to your input data.
+     * read access to your input data. For more information, see <a href=
+     * "https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions"
+     * >https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions<
+     * /a>.
      * </p>
      */
     private String dataAccessRoleArn;
@@ -62,6 +67,35 @@ public class StartTopicsDetectionJobRequest extends com.amazonaws.AmazonWebServi
      * </p>
      */
     private String clientRequestToken;
+    /**
+     * <p>
+     * ID for the AWS Key Management Service (KMS) key that Amazon Comprehend uses to encrypt data on the storage volume
+     * attached to the ML compute instance(s) that process the analysis job. The VolumeKmsKeyId can be either of the
+     * following formats:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * KMS Key ID: <code>"1234abcd-12ab-34cd-56ef-1234567890ab"</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Amazon Resource Name (ARN) of a KMS Key:
+     * <code>"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"</code>
+     * </p>
+     * </li>
+     * </ul>
+     */
+    private String volumeKmsKeyId;
+    /**
+     * <p>
+     * Configuration parameters for an optional private Virtual Private Cloud (VPC) containing the resources you are
+     * using for your topic detection job. For more information, see <a
+     * href="https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html">Amazon VPC</a>.
+     * </p>
+     */
+    private VpcConfig vpcConfig;
 
     /**
      * <p>
@@ -105,11 +139,15 @@ public class StartTopicsDetectionJobRequest extends com.amazonaws.AmazonWebServi
 
     /**
      * <p>
-     * Specifies where to send the output files.
+     * Specifies where to send the output files. The output is a compressed archive with two files,
+     * <code>topic-terms.csv</code> that lists the terms associated with each topic, and <code>doc-topics.csv</code>
+     * that lists the documents associated with each topic
      * </p>
      * 
      * @param outputDataConfig
-     *        Specifies where to send the output files.
+     *        Specifies where to send the output files. The output is a compressed archive with two files,
+     *        <code>topic-terms.csv</code> that lists the terms associated with each topic, and
+     *        <code>doc-topics.csv</code> that lists the documents associated with each topic
      */
 
     public void setOutputDataConfig(OutputDataConfig outputDataConfig) {
@@ -118,10 +156,14 @@ public class StartTopicsDetectionJobRequest extends com.amazonaws.AmazonWebServi
 
     /**
      * <p>
-     * Specifies where to send the output files.
+     * Specifies where to send the output files. The output is a compressed archive with two files,
+     * <code>topic-terms.csv</code> that lists the terms associated with each topic, and <code>doc-topics.csv</code>
+     * that lists the documents associated with each topic
      * </p>
      * 
-     * @return Specifies where to send the output files.
+     * @return Specifies where to send the output files. The output is a compressed archive with two files,
+     *         <code>topic-terms.csv</code> that lists the terms associated with each topic, and
+     *         <code>doc-topics.csv</code> that lists the documents associated with each topic
      */
 
     public OutputDataConfig getOutputDataConfig() {
@@ -130,11 +172,15 @@ public class StartTopicsDetectionJobRequest extends com.amazonaws.AmazonWebServi
 
     /**
      * <p>
-     * Specifies where to send the output files.
+     * Specifies where to send the output files. The output is a compressed archive with two files,
+     * <code>topic-terms.csv</code> that lists the terms associated with each topic, and <code>doc-topics.csv</code>
+     * that lists the documents associated with each topic
      * </p>
      * 
      * @param outputDataConfig
-     *        Specifies where to send the output files.
+     *        Specifies where to send the output files. The output is a compressed archive with two files,
+     *        <code>topic-terms.csv</code> that lists the terms associated with each topic, and
+     *        <code>doc-topics.csv</code> that lists the documents associated with each topic
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -146,12 +192,18 @@ public class StartTopicsDetectionJobRequest extends com.amazonaws.AmazonWebServi
     /**
      * <p>
      * The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that grants Amazon Comprehend
-     * read access to your input data.
+     * read access to your input data. For more information, see <a href=
+     * "https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions"
+     * >https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions<
+     * /a>.
      * </p>
      * 
      * @param dataAccessRoleArn
      *        The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that grants Amazon
-     *        Comprehend read access to your input data.
+     *        Comprehend read access to your input data. For more information, see <a href=
+     *        "https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions"
+     *        >https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-
+     *        permissions</a>.
      */
 
     public void setDataAccessRoleArn(String dataAccessRoleArn) {
@@ -161,11 +213,17 @@ public class StartTopicsDetectionJobRequest extends com.amazonaws.AmazonWebServi
     /**
      * <p>
      * The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that grants Amazon Comprehend
-     * read access to your input data.
+     * read access to your input data. For more information, see <a href=
+     * "https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions"
+     * >https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions<
+     * /a>.
      * </p>
      * 
      * @return The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that grants Amazon
-     *         Comprehend read access to your input data.
+     *         Comprehend read access to your input data. For more information, see <a href=
+     *         "https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions"
+     *         >https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-
+     *         permissions</a>.
      */
 
     public String getDataAccessRoleArn() {
@@ -175,12 +233,18 @@ public class StartTopicsDetectionJobRequest extends com.amazonaws.AmazonWebServi
     /**
      * <p>
      * The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that grants Amazon Comprehend
-     * read access to your input data.
+     * read access to your input data. For more information, see <a href=
+     * "https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions"
+     * >https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions<
+     * /a>.
      * </p>
      * 
      * @param dataAccessRoleArn
      *        The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that grants Amazon
-     *        Comprehend read access to your input data.
+     *        Comprehend read access to your input data. For more information, see <a href=
+     *        "https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions"
+     *        >https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-
+     *        permissions</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -313,7 +377,187 @@ public class StartTopicsDetectionJobRequest extends com.amazonaws.AmazonWebServi
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * <p>
+     * ID for the AWS Key Management Service (KMS) key that Amazon Comprehend uses to encrypt data on the storage volume
+     * attached to the ML compute instance(s) that process the analysis job. The VolumeKmsKeyId can be either of the
+     * following formats:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * KMS Key ID: <code>"1234abcd-12ab-34cd-56ef-1234567890ab"</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Amazon Resource Name (ARN) of a KMS Key:
+     * <code>"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"</code>
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param volumeKmsKeyId
+     *        ID for the AWS Key Management Service (KMS) key that Amazon Comprehend uses to encrypt data on the storage
+     *        volume attached to the ML compute instance(s) that process the analysis job. The VolumeKmsKeyId can be
+     *        either of the following formats:</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        KMS Key ID: <code>"1234abcd-12ab-34cd-56ef-1234567890ab"</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Amazon Resource Name (ARN) of a KMS Key:
+     *        <code>"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"</code>
+     *        </p>
+     *        </li>
+     */
+
+    public void setVolumeKmsKeyId(String volumeKmsKeyId) {
+        this.volumeKmsKeyId = volumeKmsKeyId;
+    }
+
+    /**
+     * <p>
+     * ID for the AWS Key Management Service (KMS) key that Amazon Comprehend uses to encrypt data on the storage volume
+     * attached to the ML compute instance(s) that process the analysis job. The VolumeKmsKeyId can be either of the
+     * following formats:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * KMS Key ID: <code>"1234abcd-12ab-34cd-56ef-1234567890ab"</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Amazon Resource Name (ARN) of a KMS Key:
+     * <code>"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"</code>
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @return ID for the AWS Key Management Service (KMS) key that Amazon Comprehend uses to encrypt data on the
+     *         storage volume attached to the ML compute instance(s) that process the analysis job. The VolumeKmsKeyId
+     *         can be either of the following formats:</p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         KMS Key ID: <code>"1234abcd-12ab-34cd-56ef-1234567890ab"</code>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Amazon Resource Name (ARN) of a KMS Key:
+     *         <code>"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"</code>
+     *         </p>
+     *         </li>
+     */
+
+    public String getVolumeKmsKeyId() {
+        return this.volumeKmsKeyId;
+    }
+
+    /**
+     * <p>
+     * ID for the AWS Key Management Service (KMS) key that Amazon Comprehend uses to encrypt data on the storage volume
+     * attached to the ML compute instance(s) that process the analysis job. The VolumeKmsKeyId can be either of the
+     * following formats:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * KMS Key ID: <code>"1234abcd-12ab-34cd-56ef-1234567890ab"</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Amazon Resource Name (ARN) of a KMS Key:
+     * <code>"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"</code>
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param volumeKmsKeyId
+     *        ID for the AWS Key Management Service (KMS) key that Amazon Comprehend uses to encrypt data on the storage
+     *        volume attached to the ML compute instance(s) that process the analysis job. The VolumeKmsKeyId can be
+     *        either of the following formats:</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        KMS Key ID: <code>"1234abcd-12ab-34cd-56ef-1234567890ab"</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Amazon Resource Name (ARN) of a KMS Key:
+     *        <code>"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"</code>
+     *        </p>
+     *        </li>
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public StartTopicsDetectionJobRequest withVolumeKmsKeyId(String volumeKmsKeyId) {
+        setVolumeKmsKeyId(volumeKmsKeyId);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Configuration parameters for an optional private Virtual Private Cloud (VPC) containing the resources you are
+     * using for your topic detection job. For more information, see <a
+     * href="https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html">Amazon VPC</a>.
+     * </p>
+     * 
+     * @param vpcConfig
+     *        Configuration parameters for an optional private Virtual Private Cloud (VPC) containing the resources you
+     *        are using for your topic detection job. For more information, see <a
+     *        href="https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html">Amazon VPC</a>.
+     */
+
+    public void setVpcConfig(VpcConfig vpcConfig) {
+        this.vpcConfig = vpcConfig;
+    }
+
+    /**
+     * <p>
+     * Configuration parameters for an optional private Virtual Private Cloud (VPC) containing the resources you are
+     * using for your topic detection job. For more information, see <a
+     * href="https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html">Amazon VPC</a>.
+     * </p>
+     * 
+     * @return Configuration parameters for an optional private Virtual Private Cloud (VPC) containing the resources you
+     *         are using for your topic detection job. For more information, see <a
+     *         href="https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html">Amazon VPC</a>.
+     */
+
+    public VpcConfig getVpcConfig() {
+        return this.vpcConfig;
+    }
+
+    /**
+     * <p>
+     * Configuration parameters for an optional private Virtual Private Cloud (VPC) containing the resources you are
+     * using for your topic detection job. For more information, see <a
+     * href="https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html">Amazon VPC</a>.
+     * </p>
+     * 
+     * @param vpcConfig
+     *        Configuration parameters for an optional private Virtual Private Cloud (VPC) containing the resources you
+     *        are using for your topic detection job. For more information, see <a
+     *        href="https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html">Amazon VPC</a>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public StartTopicsDetectionJobRequest withVpcConfig(VpcConfig vpcConfig) {
+        setVpcConfig(vpcConfig);
+        return this;
+    }
+
+    /**
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -334,7 +578,11 @@ public class StartTopicsDetectionJobRequest extends com.amazonaws.AmazonWebServi
         if (getNumberOfTopics() != null)
             sb.append("NumberOfTopics: ").append(getNumberOfTopics()).append(",");
         if (getClientRequestToken() != null)
-            sb.append("ClientRequestToken: ").append(getClientRequestToken());
+            sb.append("ClientRequestToken: ").append(getClientRequestToken()).append(",");
+        if (getVolumeKmsKeyId() != null)
+            sb.append("VolumeKmsKeyId: ").append(getVolumeKmsKeyId()).append(",");
+        if (getVpcConfig() != null)
+            sb.append("VpcConfig: ").append(getVpcConfig());
         sb.append("}");
         return sb.toString();
     }
@@ -373,6 +621,14 @@ public class StartTopicsDetectionJobRequest extends com.amazonaws.AmazonWebServi
             return false;
         if (other.getClientRequestToken() != null && other.getClientRequestToken().equals(this.getClientRequestToken()) == false)
             return false;
+        if (other.getVolumeKmsKeyId() == null ^ this.getVolumeKmsKeyId() == null)
+            return false;
+        if (other.getVolumeKmsKeyId() != null && other.getVolumeKmsKeyId().equals(this.getVolumeKmsKeyId()) == false)
+            return false;
+        if (other.getVpcConfig() == null ^ this.getVpcConfig() == null)
+            return false;
+        if (other.getVpcConfig() != null && other.getVpcConfig().equals(this.getVpcConfig()) == false)
+            return false;
         return true;
     }
 
@@ -387,6 +643,8 @@ public class StartTopicsDetectionJobRequest extends com.amazonaws.AmazonWebServi
         hashCode = prime * hashCode + ((getJobName() == null) ? 0 : getJobName().hashCode());
         hashCode = prime * hashCode + ((getNumberOfTopics() == null) ? 0 : getNumberOfTopics().hashCode());
         hashCode = prime * hashCode + ((getClientRequestToken() == null) ? 0 : getClientRequestToken().hashCode());
+        hashCode = prime * hashCode + ((getVolumeKmsKeyId() == null) ? 0 : getVolumeKmsKeyId().hashCode());
+        hashCode = prime * hashCode + ((getVpcConfig() == null) ? 0 : getVpcConfig().hashCode());
         return hashCode;
     }
 

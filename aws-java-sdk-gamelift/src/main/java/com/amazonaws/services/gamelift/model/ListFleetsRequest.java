@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -35,6 +35,13 @@ public class ListFleetsRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * </p>
      */
     private String buildId;
+    /**
+     * <p>
+     * Unique identifier for a Realtime script to return fleets for. Use this parameter to return only fleets using the
+     * specified script. To retrieve all fleets, leave this parameter empty.
+     * </p>
+     */
+    private String scriptId;
     /**
      * <p>
      * Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of
@@ -93,6 +100,52 @@ public class ListFleetsRequest extends com.amazonaws.AmazonWebServiceRequest imp
 
     public ListFleetsRequest withBuildId(String buildId) {
         setBuildId(buildId);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Unique identifier for a Realtime script to return fleets for. Use this parameter to return only fleets using the
+     * specified script. To retrieve all fleets, leave this parameter empty.
+     * </p>
+     * 
+     * @param scriptId
+     *        Unique identifier for a Realtime script to return fleets for. Use this parameter to return only fleets
+     *        using the specified script. To retrieve all fleets, leave this parameter empty.
+     */
+
+    public void setScriptId(String scriptId) {
+        this.scriptId = scriptId;
+    }
+
+    /**
+     * <p>
+     * Unique identifier for a Realtime script to return fleets for. Use this parameter to return only fleets using the
+     * specified script. To retrieve all fleets, leave this parameter empty.
+     * </p>
+     * 
+     * @return Unique identifier for a Realtime script to return fleets for. Use this parameter to return only fleets
+     *         using the specified script. To retrieve all fleets, leave this parameter empty.
+     */
+
+    public String getScriptId() {
+        return this.scriptId;
+    }
+
+    /**
+     * <p>
+     * Unique identifier for a Realtime script to return fleets for. Use this parameter to return only fleets using the
+     * specified script. To retrieve all fleets, leave this parameter empty.
+     * </p>
+     * 
+     * @param scriptId
+     *        Unique identifier for a Realtime script to return fleets for. Use this parameter to return only fleets
+     *        using the specified script. To retrieve all fleets, leave this parameter empty.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ListFleetsRequest withScriptId(String scriptId) {
+        setScriptId(scriptId);
         return this;
     }
 
@@ -189,7 +242,8 @@ public class ListFleetsRequest extends com.amazonaws.AmazonWebServiceRequest imp
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -201,6 +255,8 @@ public class ListFleetsRequest extends com.amazonaws.AmazonWebServiceRequest imp
         sb.append("{");
         if (getBuildId() != null)
             sb.append("BuildId: ").append(getBuildId()).append(",");
+        if (getScriptId() != null)
+            sb.append("ScriptId: ").append(getScriptId()).append(",");
         if (getLimit() != null)
             sb.append("Limit: ").append(getLimit()).append(",");
         if (getNextToken() != null)
@@ -223,6 +279,10 @@ public class ListFleetsRequest extends com.amazonaws.AmazonWebServiceRequest imp
             return false;
         if (other.getBuildId() != null && other.getBuildId().equals(this.getBuildId()) == false)
             return false;
+        if (other.getScriptId() == null ^ this.getScriptId() == null)
+            return false;
+        if (other.getScriptId() != null && other.getScriptId().equals(this.getScriptId()) == false)
+            return false;
         if (other.getLimit() == null ^ this.getLimit() == null)
             return false;
         if (other.getLimit() != null && other.getLimit().equals(this.getLimit()) == false)
@@ -240,6 +300,7 @@ public class ListFleetsRequest extends com.amazonaws.AmazonWebServiceRequest imp
         int hashCode = 1;
 
         hashCode = prime * hashCode + ((getBuildId() == null) ? 0 : getBuildId().hashCode());
+        hashCode = prime * hashCode + ((getScriptId() == null) ? 0 : getScriptId().hashCode());
         hashCode = prime * hashCode + ((getLimit() == null) ? 0 : getLimit().hashCode());
         hashCode = prime * hashCode + ((getNextToken() == null) ? 0 : getNextToken().hashCode());
         return hashCode;

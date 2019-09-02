@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -31,15 +31,32 @@ public class HlsEncryptionSettings implements Serializable, Cloneable, Structure
      * the Initialization Vector will follow the segment number by default.
      */
     private String constantInitializationVector;
-
+    /**
+     * Encrypts the segments with the given encryption scheme. Leave blank to disable. Selecting 'Disabled' in the web
+     * interface also disables encryption.
+     */
     private String encryptionMethod;
-
+    /**
+     * The Initialization Vector is a 128-bit number used in conjunction with the key for encrypting blocks. If set to
+     * INCLUDE, Initialization Vector is listed in the manifest. Otherwise Initialization Vector is not in the manifest.
+     */
     private String initializationVectorInManifest;
-
+    /**
+     * Enable this setting to insert the EXT-X-SESSION-KEY element into the master playlist. This allows for offline
+     * Apple HLS FairPlay content protection.
+     */
+    private String offlineEncrypted;
+    /**
+     * Use these settings when doing DRM encryption with a SPEKE-compliant key provider, if your output group type is
+     * HLS, MS Smooth, or DASH. If your output group type is CMAF, use the SpekeKeyProviderCmaf settings instead.
+     */
     private SpekeKeyProvider spekeKeyProvider;
-
+    /** Use these settings to set up encryption with a static key provider. */
     private StaticKeyProvider staticKeyProvider;
-
+    /**
+     * Specify whether your DRM encryption key is static or from a key provider that follows the SPEKE standard. For
+     * more information about SPEKE, see https://docs.aws.amazon.com/speke/latest/documentation/what-is-speke.html.
+     */
     private String type;
 
     /**
@@ -83,7 +100,12 @@ public class HlsEncryptionSettings implements Serializable, Cloneable, Structure
     }
 
     /**
+     * Encrypts the segments with the given encryption scheme. Leave blank to disable. Selecting 'Disabled' in the web
+     * interface also disables encryption.
+     * 
      * @param encryptionMethod
+     *        Encrypts the segments with the given encryption scheme. Leave blank to disable. Selecting 'Disabled' in
+     *        the web interface also disables encryption.
      * @see HlsEncryptionType
      */
 
@@ -92,7 +114,11 @@ public class HlsEncryptionSettings implements Serializable, Cloneable, Structure
     }
 
     /**
-     * @return
+     * Encrypts the segments with the given encryption scheme. Leave blank to disable. Selecting 'Disabled' in the web
+     * interface also disables encryption.
+     * 
+     * @return Encrypts the segments with the given encryption scheme. Leave blank to disable. Selecting 'Disabled' in
+     *         the web interface also disables encryption.
      * @see HlsEncryptionType
      */
 
@@ -101,7 +127,12 @@ public class HlsEncryptionSettings implements Serializable, Cloneable, Structure
     }
 
     /**
+     * Encrypts the segments with the given encryption scheme. Leave blank to disable. Selecting 'Disabled' in the web
+     * interface also disables encryption.
+     * 
      * @param encryptionMethod
+     *        Encrypts the segments with the given encryption scheme. Leave blank to disable. Selecting 'Disabled' in
+     *        the web interface also disables encryption.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see HlsEncryptionType
      */
@@ -112,7 +143,12 @@ public class HlsEncryptionSettings implements Serializable, Cloneable, Structure
     }
 
     /**
+     * Encrypts the segments with the given encryption scheme. Leave blank to disable. Selecting 'Disabled' in the web
+     * interface also disables encryption.
+     * 
      * @param encryptionMethod
+     *        Encrypts the segments with the given encryption scheme. Leave blank to disable. Selecting 'Disabled' in
+     *        the web interface also disables encryption.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see HlsEncryptionType
      */
@@ -123,7 +159,13 @@ public class HlsEncryptionSettings implements Serializable, Cloneable, Structure
     }
 
     /**
+     * The Initialization Vector is a 128-bit number used in conjunction with the key for encrypting blocks. If set to
+     * INCLUDE, Initialization Vector is listed in the manifest. Otherwise Initialization Vector is not in the manifest.
+     * 
      * @param initializationVectorInManifest
+     *        The Initialization Vector is a 128-bit number used in conjunction with the key for encrypting blocks. If
+     *        set to INCLUDE, Initialization Vector is listed in the manifest. Otherwise Initialization Vector is not in
+     *        the manifest.
      * @see HlsInitializationVectorInManifest
      */
 
@@ -132,7 +174,12 @@ public class HlsEncryptionSettings implements Serializable, Cloneable, Structure
     }
 
     /**
-     * @return
+     * The Initialization Vector is a 128-bit number used in conjunction with the key for encrypting blocks. If set to
+     * INCLUDE, Initialization Vector is listed in the manifest. Otherwise Initialization Vector is not in the manifest.
+     * 
+     * @return The Initialization Vector is a 128-bit number used in conjunction with the key for encrypting blocks. If
+     *         set to INCLUDE, Initialization Vector is listed in the manifest. Otherwise Initialization Vector is not
+     *         in the manifest.
      * @see HlsInitializationVectorInManifest
      */
 
@@ -141,7 +188,13 @@ public class HlsEncryptionSettings implements Serializable, Cloneable, Structure
     }
 
     /**
+     * The Initialization Vector is a 128-bit number used in conjunction with the key for encrypting blocks. If set to
+     * INCLUDE, Initialization Vector is listed in the manifest. Otherwise Initialization Vector is not in the manifest.
+     * 
      * @param initializationVectorInManifest
+     *        The Initialization Vector is a 128-bit number used in conjunction with the key for encrypting blocks. If
+     *        set to INCLUDE, Initialization Vector is listed in the manifest. Otherwise Initialization Vector is not in
+     *        the manifest.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see HlsInitializationVectorInManifest
      */
@@ -152,7 +205,13 @@ public class HlsEncryptionSettings implements Serializable, Cloneable, Structure
     }
 
     /**
+     * The Initialization Vector is a 128-bit number used in conjunction with the key for encrypting blocks. If set to
+     * INCLUDE, Initialization Vector is listed in the manifest. Otherwise Initialization Vector is not in the manifest.
+     * 
      * @param initializationVectorInManifest
+     *        The Initialization Vector is a 128-bit number used in conjunction with the key for encrypting blocks. If
+     *        set to INCLUDE, Initialization Vector is listed in the manifest. Otherwise Initialization Vector is not in
+     *        the manifest.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see HlsInitializationVectorInManifest
      */
@@ -163,7 +222,72 @@ public class HlsEncryptionSettings implements Serializable, Cloneable, Structure
     }
 
     /**
+     * Enable this setting to insert the EXT-X-SESSION-KEY element into the master playlist. This allows for offline
+     * Apple HLS FairPlay content protection.
+     * 
+     * @param offlineEncrypted
+     *        Enable this setting to insert the EXT-X-SESSION-KEY element into the master playlist. This allows for
+     *        offline Apple HLS FairPlay content protection.
+     * @see HlsOfflineEncrypted
+     */
+
+    public void setOfflineEncrypted(String offlineEncrypted) {
+        this.offlineEncrypted = offlineEncrypted;
+    }
+
+    /**
+     * Enable this setting to insert the EXT-X-SESSION-KEY element into the master playlist. This allows for offline
+     * Apple HLS FairPlay content protection.
+     * 
+     * @return Enable this setting to insert the EXT-X-SESSION-KEY element into the master playlist. This allows for
+     *         offline Apple HLS FairPlay content protection.
+     * @see HlsOfflineEncrypted
+     */
+
+    public String getOfflineEncrypted() {
+        return this.offlineEncrypted;
+    }
+
+    /**
+     * Enable this setting to insert the EXT-X-SESSION-KEY element into the master playlist. This allows for offline
+     * Apple HLS FairPlay content protection.
+     * 
+     * @param offlineEncrypted
+     *        Enable this setting to insert the EXT-X-SESSION-KEY element into the master playlist. This allows for
+     *        offline Apple HLS FairPlay content protection.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see HlsOfflineEncrypted
+     */
+
+    public HlsEncryptionSettings withOfflineEncrypted(String offlineEncrypted) {
+        setOfflineEncrypted(offlineEncrypted);
+        return this;
+    }
+
+    /**
+     * Enable this setting to insert the EXT-X-SESSION-KEY element into the master playlist. This allows for offline
+     * Apple HLS FairPlay content protection.
+     * 
+     * @param offlineEncrypted
+     *        Enable this setting to insert the EXT-X-SESSION-KEY element into the master playlist. This allows for
+     *        offline Apple HLS FairPlay content protection.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see HlsOfflineEncrypted
+     */
+
+    public HlsEncryptionSettings withOfflineEncrypted(HlsOfflineEncrypted offlineEncrypted) {
+        this.offlineEncrypted = offlineEncrypted.toString();
+        return this;
+    }
+
+    /**
+     * Use these settings when doing DRM encryption with a SPEKE-compliant key provider, if your output group type is
+     * HLS, MS Smooth, or DASH. If your output group type is CMAF, use the SpekeKeyProviderCmaf settings instead.
+     * 
      * @param spekeKeyProvider
+     *        Use these settings when doing DRM encryption with a SPEKE-compliant key provider, if your output group
+     *        type is HLS, MS Smooth, or DASH. If your output group type is CMAF, use the SpekeKeyProviderCmaf settings
+     *        instead.
      */
 
     public void setSpekeKeyProvider(SpekeKeyProvider spekeKeyProvider) {
@@ -171,7 +295,12 @@ public class HlsEncryptionSettings implements Serializable, Cloneable, Structure
     }
 
     /**
-     * @return
+     * Use these settings when doing DRM encryption with a SPEKE-compliant key provider, if your output group type is
+     * HLS, MS Smooth, or DASH. If your output group type is CMAF, use the SpekeKeyProviderCmaf settings instead.
+     * 
+     * @return Use these settings when doing DRM encryption with a SPEKE-compliant key provider, if your output group
+     *         type is HLS, MS Smooth, or DASH. If your output group type is CMAF, use the SpekeKeyProviderCmaf settings
+     *         instead.
      */
 
     public SpekeKeyProvider getSpekeKeyProvider() {
@@ -179,7 +308,13 @@ public class HlsEncryptionSettings implements Serializable, Cloneable, Structure
     }
 
     /**
+     * Use these settings when doing DRM encryption with a SPEKE-compliant key provider, if your output group type is
+     * HLS, MS Smooth, or DASH. If your output group type is CMAF, use the SpekeKeyProviderCmaf settings instead.
+     * 
      * @param spekeKeyProvider
+     *        Use these settings when doing DRM encryption with a SPEKE-compliant key provider, if your output group
+     *        type is HLS, MS Smooth, or DASH. If your output group type is CMAF, use the SpekeKeyProviderCmaf settings
+     *        instead.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -189,7 +324,10 @@ public class HlsEncryptionSettings implements Serializable, Cloneable, Structure
     }
 
     /**
+     * Use these settings to set up encryption with a static key provider.
+     * 
      * @param staticKeyProvider
+     *        Use these settings to set up encryption with a static key provider.
      */
 
     public void setStaticKeyProvider(StaticKeyProvider staticKeyProvider) {
@@ -197,7 +335,9 @@ public class HlsEncryptionSettings implements Serializable, Cloneable, Structure
     }
 
     /**
-     * @return
+     * Use these settings to set up encryption with a static key provider.
+     * 
+     * @return Use these settings to set up encryption with a static key provider.
      */
 
     public StaticKeyProvider getStaticKeyProvider() {
@@ -205,7 +345,10 @@ public class HlsEncryptionSettings implements Serializable, Cloneable, Structure
     }
 
     /**
+     * Use these settings to set up encryption with a static key provider.
+     * 
      * @param staticKeyProvider
+     *        Use these settings to set up encryption with a static key provider.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -215,7 +358,13 @@ public class HlsEncryptionSettings implements Serializable, Cloneable, Structure
     }
 
     /**
+     * Specify whether your DRM encryption key is static or from a key provider that follows the SPEKE standard. For
+     * more information about SPEKE, see https://docs.aws.amazon.com/speke/latest/documentation/what-is-speke.html.
+     * 
      * @param type
+     *        Specify whether your DRM encryption key is static or from a key provider that follows the SPEKE standard.
+     *        For more information about SPEKE, see
+     *        https://docs.aws.amazon.com/speke/latest/documentation/what-is-speke.html.
      * @see HlsKeyProviderType
      */
 
@@ -224,7 +373,12 @@ public class HlsEncryptionSettings implements Serializable, Cloneable, Structure
     }
 
     /**
-     * @return
+     * Specify whether your DRM encryption key is static or from a key provider that follows the SPEKE standard. For
+     * more information about SPEKE, see https://docs.aws.amazon.com/speke/latest/documentation/what-is-speke.html.
+     * 
+     * @return Specify whether your DRM encryption key is static or from a key provider that follows the SPEKE standard.
+     *         For more information about SPEKE, see
+     *         https://docs.aws.amazon.com/speke/latest/documentation/what-is-speke.html.
      * @see HlsKeyProviderType
      */
 
@@ -233,7 +387,13 @@ public class HlsEncryptionSettings implements Serializable, Cloneable, Structure
     }
 
     /**
+     * Specify whether your DRM encryption key is static or from a key provider that follows the SPEKE standard. For
+     * more information about SPEKE, see https://docs.aws.amazon.com/speke/latest/documentation/what-is-speke.html.
+     * 
      * @param type
+     *        Specify whether your DRM encryption key is static or from a key provider that follows the SPEKE standard.
+     *        For more information about SPEKE, see
+     *        https://docs.aws.amazon.com/speke/latest/documentation/what-is-speke.html.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see HlsKeyProviderType
      */
@@ -244,7 +404,13 @@ public class HlsEncryptionSettings implements Serializable, Cloneable, Structure
     }
 
     /**
+     * Specify whether your DRM encryption key is static or from a key provider that follows the SPEKE standard. For
+     * more information about SPEKE, see https://docs.aws.amazon.com/speke/latest/documentation/what-is-speke.html.
+     * 
      * @param type
+     *        Specify whether your DRM encryption key is static or from a key provider that follows the SPEKE standard.
+     *        For more information about SPEKE, see
+     *        https://docs.aws.amazon.com/speke/latest/documentation/what-is-speke.html.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see HlsKeyProviderType
      */
@@ -255,7 +421,8 @@ public class HlsEncryptionSettings implements Serializable, Cloneable, Structure
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -271,6 +438,8 @@ public class HlsEncryptionSettings implements Serializable, Cloneable, Structure
             sb.append("EncryptionMethod: ").append(getEncryptionMethod()).append(",");
         if (getInitializationVectorInManifest() != null)
             sb.append("InitializationVectorInManifest: ").append(getInitializationVectorInManifest()).append(",");
+        if (getOfflineEncrypted() != null)
+            sb.append("OfflineEncrypted: ").append(getOfflineEncrypted()).append(",");
         if (getSpekeKeyProvider() != null)
             sb.append("SpekeKeyProvider: ").append(getSpekeKeyProvider()).append(",");
         if (getStaticKeyProvider() != null)
@@ -304,6 +473,10 @@ public class HlsEncryptionSettings implements Serializable, Cloneable, Structure
         if (other.getInitializationVectorInManifest() != null
                 && other.getInitializationVectorInManifest().equals(this.getInitializationVectorInManifest()) == false)
             return false;
+        if (other.getOfflineEncrypted() == null ^ this.getOfflineEncrypted() == null)
+            return false;
+        if (other.getOfflineEncrypted() != null && other.getOfflineEncrypted().equals(this.getOfflineEncrypted()) == false)
+            return false;
         if (other.getSpekeKeyProvider() == null ^ this.getSpekeKeyProvider() == null)
             return false;
         if (other.getSpekeKeyProvider() != null && other.getSpekeKeyProvider().equals(this.getSpekeKeyProvider()) == false)
@@ -327,6 +500,7 @@ public class HlsEncryptionSettings implements Serializable, Cloneable, Structure
         hashCode = prime * hashCode + ((getConstantInitializationVector() == null) ? 0 : getConstantInitializationVector().hashCode());
         hashCode = prime * hashCode + ((getEncryptionMethod() == null) ? 0 : getEncryptionMethod().hashCode());
         hashCode = prime * hashCode + ((getInitializationVectorInManifest() == null) ? 0 : getInitializationVectorInManifest().hashCode());
+        hashCode = prime * hashCode + ((getOfflineEncrypted() == null) ? 0 : getOfflineEncrypted().hashCode());
         hashCode = prime * hashCode + ((getSpekeKeyProvider() == null) ? 0 : getSpekeKeyProvider().hashCode());
         hashCode = prime * hashCode + ((getStaticKeyProvider() == null) ? 0 : getStaticKeyProvider().hashCode());
         hashCode = prime * hashCode + ((getType() == null) ? 0 : getType().hashCode());

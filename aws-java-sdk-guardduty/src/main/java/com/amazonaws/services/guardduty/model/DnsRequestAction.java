@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -18,7 +18,9 @@ import com.amazonaws.protocol.StructuredPojo;
 import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
- * Information about the DNS_REQUEST action described in this finding.
+ * <p>
+ * Contains information about the DNS request.
+ * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/DnsRequestAction" target="_top">AWS API
  *      Documentation</a>
@@ -26,11 +28,17 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DnsRequestAction implements Serializable, Cloneable, StructuredPojo {
 
-    /** Domain information for the DNS request. */
+    /**
+     * <p>
+     * Domain information for the DNS request.
+     * </p>
+     */
     private String domain;
 
     /**
+     * <p>
      * Domain information for the DNS request.
+     * </p>
      * 
      * @param domain
      *        Domain information for the DNS request.
@@ -41,7 +49,9 @@ public class DnsRequestAction implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
+     * <p>
      * Domain information for the DNS request.
+     * </p>
      * 
      * @return Domain information for the DNS request.
      */
@@ -51,7 +61,9 @@ public class DnsRequestAction implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
+     * <p>
      * Domain information for the DNS request.
+     * </p>
      * 
      * @param domain
      *        Domain information for the DNS request.
@@ -64,7 +76,8 @@ public class DnsRequestAction implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

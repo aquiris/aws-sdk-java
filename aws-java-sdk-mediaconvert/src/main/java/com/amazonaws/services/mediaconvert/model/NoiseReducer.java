@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -28,14 +28,34 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class NoiseReducer implements Serializable, Cloneable, StructuredPojo {
 
+    /**
+     * Use Noise reducer filter (NoiseReducerFilter) to select one of the following spatial image filtering functions.
+     * To use this setting, you must also enable Noise reducer (NoiseReducer). * Bilateral preserves edges while
+     * reducing noise. * Mean (softest), Gaussian, Lanczos, and Sharpen (sharpest) do convolution filtering. * Conserve
+     * does min/max noise reduction. * Spatial does frequency-domain filtering based on JND principles. * Temporal
+     * optimizes video quality for complex motion.
+     */
     private String filter;
-
+    /** Settings for a noise reducer filter */
     private NoiseReducerFilterSettings filterSettings;
-
+    /** Noise reducer filter settings for spatial filter. */
     private NoiseReducerSpatialFilterSettings spatialFilterSettings;
+    /** Noise reducer filter settings for temporal filter. */
+    private NoiseReducerTemporalFilterSettings temporalFilterSettings;
 
     /**
+     * Use Noise reducer filter (NoiseReducerFilter) to select one of the following spatial image filtering functions.
+     * To use this setting, you must also enable Noise reducer (NoiseReducer). * Bilateral preserves edges while
+     * reducing noise. * Mean (softest), Gaussian, Lanczos, and Sharpen (sharpest) do convolution filtering. * Conserve
+     * does min/max noise reduction. * Spatial does frequency-domain filtering based on JND principles. * Temporal
+     * optimizes video quality for complex motion.
+     * 
      * @param filter
+     *        Use Noise reducer filter (NoiseReducerFilter) to select one of the following spatial image filtering
+     *        functions. To use this setting, you must also enable Noise reducer (NoiseReducer). * Bilateral preserves
+     *        edges while reducing noise. * Mean (softest), Gaussian, Lanczos, and Sharpen (sharpest) do convolution
+     *        filtering. * Conserve does min/max noise reduction. * Spatial does frequency-domain filtering based on JND
+     *        principles. * Temporal optimizes video quality for complex motion.
      * @see NoiseReducerFilter
      */
 
@@ -44,7 +64,17 @@ public class NoiseReducer implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * @return
+     * Use Noise reducer filter (NoiseReducerFilter) to select one of the following spatial image filtering functions.
+     * To use this setting, you must also enable Noise reducer (NoiseReducer). * Bilateral preserves edges while
+     * reducing noise. * Mean (softest), Gaussian, Lanczos, and Sharpen (sharpest) do convolution filtering. * Conserve
+     * does min/max noise reduction. * Spatial does frequency-domain filtering based on JND principles. * Temporal
+     * optimizes video quality for complex motion.
+     * 
+     * @return Use Noise reducer filter (NoiseReducerFilter) to select one of the following spatial image filtering
+     *         functions. To use this setting, you must also enable Noise reducer (NoiseReducer). * Bilateral preserves
+     *         edges while reducing noise. * Mean (softest), Gaussian, Lanczos, and Sharpen (sharpest) do convolution
+     *         filtering. * Conserve does min/max noise reduction. * Spatial does frequency-domain filtering based on
+     *         JND principles. * Temporal optimizes video quality for complex motion.
      * @see NoiseReducerFilter
      */
 
@@ -53,7 +83,18 @@ public class NoiseReducer implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Use Noise reducer filter (NoiseReducerFilter) to select one of the following spatial image filtering functions.
+     * To use this setting, you must also enable Noise reducer (NoiseReducer). * Bilateral preserves edges while
+     * reducing noise. * Mean (softest), Gaussian, Lanczos, and Sharpen (sharpest) do convolution filtering. * Conserve
+     * does min/max noise reduction. * Spatial does frequency-domain filtering based on JND principles. * Temporal
+     * optimizes video quality for complex motion.
+     * 
      * @param filter
+     *        Use Noise reducer filter (NoiseReducerFilter) to select one of the following spatial image filtering
+     *        functions. To use this setting, you must also enable Noise reducer (NoiseReducer). * Bilateral preserves
+     *        edges while reducing noise. * Mean (softest), Gaussian, Lanczos, and Sharpen (sharpest) do convolution
+     *        filtering. * Conserve does min/max noise reduction. * Spatial does frequency-domain filtering based on JND
+     *        principles. * Temporal optimizes video quality for complex motion.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see NoiseReducerFilter
      */
@@ -64,7 +105,18 @@ public class NoiseReducer implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Use Noise reducer filter (NoiseReducerFilter) to select one of the following spatial image filtering functions.
+     * To use this setting, you must also enable Noise reducer (NoiseReducer). * Bilateral preserves edges while
+     * reducing noise. * Mean (softest), Gaussian, Lanczos, and Sharpen (sharpest) do convolution filtering. * Conserve
+     * does min/max noise reduction. * Spatial does frequency-domain filtering based on JND principles. * Temporal
+     * optimizes video quality for complex motion.
+     * 
      * @param filter
+     *        Use Noise reducer filter (NoiseReducerFilter) to select one of the following spatial image filtering
+     *        functions. To use this setting, you must also enable Noise reducer (NoiseReducer). * Bilateral preserves
+     *        edges while reducing noise. * Mean (softest), Gaussian, Lanczos, and Sharpen (sharpest) do convolution
+     *        filtering. * Conserve does min/max noise reduction. * Spatial does frequency-domain filtering based on JND
+     *        principles. * Temporal optimizes video quality for complex motion.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see NoiseReducerFilter
      */
@@ -75,7 +127,10 @@ public class NoiseReducer implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Settings for a noise reducer filter
+     * 
      * @param filterSettings
+     *        Settings for a noise reducer filter
      */
 
     public void setFilterSettings(NoiseReducerFilterSettings filterSettings) {
@@ -83,7 +138,9 @@ public class NoiseReducer implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * @return
+     * Settings for a noise reducer filter
+     * 
+     * @return Settings for a noise reducer filter
      */
 
     public NoiseReducerFilterSettings getFilterSettings() {
@@ -91,7 +148,10 @@ public class NoiseReducer implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Settings for a noise reducer filter
+     * 
      * @param filterSettings
+     *        Settings for a noise reducer filter
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -101,7 +161,10 @@ public class NoiseReducer implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Noise reducer filter settings for spatial filter.
+     * 
      * @param spatialFilterSettings
+     *        Noise reducer filter settings for spatial filter.
      */
 
     public void setSpatialFilterSettings(NoiseReducerSpatialFilterSettings spatialFilterSettings) {
@@ -109,7 +172,9 @@ public class NoiseReducer implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * @return
+     * Noise reducer filter settings for spatial filter.
+     * 
+     * @return Noise reducer filter settings for spatial filter.
      */
 
     public NoiseReducerSpatialFilterSettings getSpatialFilterSettings() {
@@ -117,7 +182,10 @@ public class NoiseReducer implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Noise reducer filter settings for spatial filter.
+     * 
      * @param spatialFilterSettings
+     *        Noise reducer filter settings for spatial filter.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -127,7 +195,42 @@ public class NoiseReducer implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Noise reducer filter settings for temporal filter.
+     * 
+     * @param temporalFilterSettings
+     *        Noise reducer filter settings for temporal filter.
+     */
+
+    public void setTemporalFilterSettings(NoiseReducerTemporalFilterSettings temporalFilterSettings) {
+        this.temporalFilterSettings = temporalFilterSettings;
+    }
+
+    /**
+     * Noise reducer filter settings for temporal filter.
+     * 
+     * @return Noise reducer filter settings for temporal filter.
+     */
+
+    public NoiseReducerTemporalFilterSettings getTemporalFilterSettings() {
+        return this.temporalFilterSettings;
+    }
+
+    /**
+     * Noise reducer filter settings for temporal filter.
+     * 
+     * @param temporalFilterSettings
+     *        Noise reducer filter settings for temporal filter.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public NoiseReducer withTemporalFilterSettings(NoiseReducerTemporalFilterSettings temporalFilterSettings) {
+        setTemporalFilterSettings(temporalFilterSettings);
+        return this;
+    }
+
+    /**
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -142,7 +245,9 @@ public class NoiseReducer implements Serializable, Cloneable, StructuredPojo {
         if (getFilterSettings() != null)
             sb.append("FilterSettings: ").append(getFilterSettings()).append(",");
         if (getSpatialFilterSettings() != null)
-            sb.append("SpatialFilterSettings: ").append(getSpatialFilterSettings());
+            sb.append("SpatialFilterSettings: ").append(getSpatialFilterSettings()).append(",");
+        if (getTemporalFilterSettings() != null)
+            sb.append("TemporalFilterSettings: ").append(getTemporalFilterSettings());
         sb.append("}");
         return sb.toString();
     }
@@ -169,6 +274,10 @@ public class NoiseReducer implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getSpatialFilterSettings() != null && other.getSpatialFilterSettings().equals(this.getSpatialFilterSettings()) == false)
             return false;
+        if (other.getTemporalFilterSettings() == null ^ this.getTemporalFilterSettings() == null)
+            return false;
+        if (other.getTemporalFilterSettings() != null && other.getTemporalFilterSettings().equals(this.getTemporalFilterSettings()) == false)
+            return false;
         return true;
     }
 
@@ -180,6 +289,7 @@ public class NoiseReducer implements Serializable, Cloneable, StructuredPojo {
         hashCode = prime * hashCode + ((getFilter() == null) ? 0 : getFilter().hashCode());
         hashCode = prime * hashCode + ((getFilterSettings() == null) ? 0 : getFilterSettings().hashCode());
         hashCode = prime * hashCode + ((getSpatialFilterSettings() == null) ? 0 : getSpatialFilterSettings().hashCode());
+        hashCode = prime * hashCode + ((getTemporalFilterSettings() == null) ? 0 : getTemporalFilterSettings().hashCode());
         return hashCode;
     }
 

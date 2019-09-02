@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2011-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -52,11 +52,15 @@ public final class StateMachine {
     @JsonProperty(PropertyNames.STATES)
     private final Map<String, State> states;
 
+    @JsonProperty(PropertyNames.VERSION)
+    private final String version;
+
     private StateMachine(Builder builder) {
         this.comment = builder.comment;
         this.startAt = builder.startAt;
         this.timeoutSeconds = builder.timeoutSeconds;
         this.states = Buildable.Utils.build(builder.states);
+        this.version = builder.version;
     }
 
     /**
@@ -86,6 +90,13 @@ public final class StateMachine {
      */
     public Map<String, State> getStates() {
         return states;
+    }
+
+    /**
+     * @return The version for this state machine, if explicitly declared.
+     */
+    public String getVersion() {
+        return version;
     }
 
     /**
@@ -151,6 +162,9 @@ public final class StateMachine {
         @JsonProperty(PropertyNames.STATES)
         private final Map<String, State.Builder> states = new LinkedHashMap<String, State.Builder>();
 
+        @JsonProperty(PropertyNames.VERSION)
+        private String version;
+
         private Builder() {
         }
 
@@ -201,6 +215,17 @@ public final class StateMachine {
          */
         public Builder state(String stateName, State.Builder stateBuilder) {
             this.states.put(stateName, stateBuilder);
+            return this;
+        }
+
+        /**
+         * OPTIONAL. Version of the states language, if specified.
+         *
+         * @param version Version value.
+         * @return This object for method chaining.
+         */
+        public Builder version(String version) {
+            this.version = version;
             return this;
         }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -37,6 +37,8 @@ import com.amazonaws.protocol.json.*;
 import com.amazonaws.util.AWSRequestMetrics.Field;
 import com.amazonaws.annotation.ThreadSafe;
 import com.amazonaws.client.AwsSyncClientParams;
+import com.amazonaws.client.builder.AdvancedConfig;
+
 import com.amazonaws.services.costandusagereport.AWSCostAndUsageReportClientBuilder;
 
 import com.amazonaws.AmazonServiceException;
@@ -48,11 +50,34 @@ import com.amazonaws.services.costandusagereport.model.transform.*;
  * Client for accessing AWS Cost and Usage Report Service. All service calls made using this client are blocking, and
  * will not return until the service call completes.
  * <p>
- * All public APIs for AWS Cost and Usage Report service
+ * <p>
+ * The AWS Cost and Usage Report API enables you to programmatically create, query, and delete AWS Cost and Usage report
+ * definitions.
+ * </p>
+ * <p>
+ * AWS Cost and Usage reports track the monthly AWS costs and usage associated with your AWS account. The report
+ * contains line items for each unique combination of AWS product, usage type, and operation that your AWS account uses.
+ * You can configure the AWS Cost and Usage report to show only the data that you want, using the AWS Cost and Usage
+ * API.
+ * </p>
+ * <p>
+ * Service Endpoint
+ * </p>
+ * <p>
+ * The AWS Cost and Usage Report API provides the following endpoint:
+ * </p>
+ * <ul>
+ * <li>
+ * <p>
+ * cur.us-east-1.amazonaws.com
+ * </p>
+ * </li>
+ * </ul>
  */
 @ThreadSafe
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AWSCostAndUsageReportClient extends AmazonWebServiceClient implements AWSCostAndUsageReport {
+
     /** Provider for AWS credentials. */
     private final AWSCredentialsProvider awsCredentialsProvider;
 
@@ -64,24 +89,29 @@ public class AWSCostAndUsageReportClient extends AmazonWebServiceClient implemen
     /** Client configuration factory providing ClientConfigurations tailored to this client */
     protected static final ClientConfigurationFactory configFactory = new ClientConfigurationFactory();
 
+    private final AdvancedConfig advancedConfig;
+
     private static final com.amazonaws.protocol.json.SdkJsonProtocolFactory protocolFactory = new com.amazonaws.protocol.json.SdkJsonProtocolFactory(
             new JsonClientMetadata()
                     .withProtocolVersion("1.1")
                     .withSupportsCbor(false)
                     .withSupportsIon(false)
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ValidationException").withModeledClass(
-                                    com.amazonaws.services.costandusagereport.model.ValidationException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ValidationException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.costandusagereport.model.transform.ValidationExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ReportLimitReachedException").withModeledClass(
-                                    com.amazonaws.services.costandusagereport.model.ReportLimitReachedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ReportLimitReachedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.costandusagereport.model.transform.ReportLimitReachedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InternalErrorException").withModeledClass(
-                                    com.amazonaws.services.costandusagereport.model.InternalErrorException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InternalErrorException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.costandusagereport.model.transform.InternalErrorExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("DuplicateReportNameException").withModeledClass(
-                                    com.amazonaws.services.costandusagereport.model.DuplicateReportNameException.class))
-                    .withBaseServiceExceptionClass(com.amazonaws.services.costandusagereport.model.AWSCostAndUsageReportException.class));
+                            new JsonErrorShapeMetadata().withErrorCode("DuplicateReportNameException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.costandusagereport.model.transform.DuplicateReportNameExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode(null).withExceptionUnmarshaller(
+                                    new JsonBaseExceptionUnmarshaller<com.amazonaws.services.costandusagereport.model.AWSCostAndUsageReportException>(
+                                            com.amazonaws.services.costandusagereport.model.AWSCostAndUsageReportException.class))));
 
     /**
      * Constructs a new client to invoke service methods on AWS Cost and Usage Report Service. A credentials provider
@@ -167,6 +197,7 @@ public class AWSCostAndUsageReportClient extends AmazonWebServiceClient implemen
     public AWSCostAndUsageReportClient(AWSCredentials awsCredentials, ClientConfiguration clientConfiguration) {
         super(clientConfiguration);
         this.awsCredentialsProvider = new StaticCredentialsProvider(awsCredentials);
+        this.advancedConfig = AdvancedConfig.EMPTY;
         init();
     }
 
@@ -232,6 +263,7 @@ public class AWSCostAndUsageReportClient extends AmazonWebServiceClient implemen
             RequestMetricCollector requestMetricCollector) {
         super(clientConfiguration, requestMetricCollector);
         this.awsCredentialsProvider = awsCredentialsProvider;
+        this.advancedConfig = AdvancedConfig.EMPTY;
         init();
     }
 
@@ -251,8 +283,24 @@ public class AWSCostAndUsageReportClient extends AmazonWebServiceClient implemen
      *        Object providing client parameters.
      */
     AWSCostAndUsageReportClient(AwsSyncClientParams clientParams) {
+        this(clientParams, false);
+    }
+
+    /**
+     * Constructs a new client to invoke service methods on AWS Cost and Usage Report Service using the specified
+     * parameters.
+     *
+     * <p>
+     * All service calls made using this new client object are blocking, and will not return until the service call
+     * completes.
+     *
+     * @param clientParams
+     *        Object providing client parameters.
+     */
+    AWSCostAndUsageReportClient(AwsSyncClientParams clientParams, boolean endpointDiscoveryEnabled) {
         super(clientParams);
         this.awsCredentialsProvider = clientParams.getCredentialsProvider();
+        this.advancedConfig = clientParams.getAdvancedConfig();
         init();
     }
 
@@ -268,16 +316,17 @@ public class AWSCostAndUsageReportClient extends AmazonWebServiceClient implemen
     }
 
     /**
-     * Delete a specified report definition
+     * <p>
+     * Deletes the specified report.
+     * </p>
      * 
      * @param deleteReportDefinitionRequest
-     *        Request of DeleteReportDefinition
+     *        Deletes the specified report.
      * @return Result of the DeleteReportDefinition operation returned by the service.
      * @throws InternalErrorException
-     *         This exception is thrown on a known dependency failure.
+     *         An error on the server occurred during the processing of your request. Try again later.
      * @throws ValidationException
-     *         This exception is thrown when providing an invalid input. eg. Put a report preference with an invalid
-     *         report name, or Delete a report preference with an empty report name.
+     *         The input fails to satisfy the constraints specified by an AWS service.
      * @sample AWSCostAndUsageReport.DeleteReportDefinition
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cur-2017-01-06/DeleteReportDefinition" target="_top">AWS API
      *      Documentation</a>
@@ -304,6 +353,10 @@ public class AWSCostAndUsageReportClient extends AmazonWebServiceClient implemen
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Cost and Usage Report Service");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteReportDefinition");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -322,13 +375,15 @@ public class AWSCostAndUsageReportClient extends AmazonWebServiceClient implemen
     }
 
     /**
-     * Describe a list of report definitions owned by the account
+     * <p>
+     * Lists the AWS Cost and Usage reports available to this account.
+     * </p>
      * 
      * @param describeReportDefinitionsRequest
-     *        Request of DescribeReportDefinitions
+     *        Requests a list of AWS Cost and Usage reports owned by the account.
      * @return Result of the DescribeReportDefinitions operation returned by the service.
      * @throws InternalErrorException
-     *         This exception is thrown on a known dependency failure.
+     *         An error on the server occurred during the processing of your request. Try again later.
      * @sample AWSCostAndUsageReport.DescribeReportDefinitions
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cur-2017-01-06/DescribeReportDefinitions" target="_top">AWS
      *      API Documentation</a>
@@ -356,6 +411,10 @@ public class AWSCostAndUsageReportClient extends AmazonWebServiceClient implemen
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Cost and Usage Report Service");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeReportDefinitions");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -374,20 +433,80 @@ public class AWSCostAndUsageReportClient extends AmazonWebServiceClient implemen
     }
 
     /**
-     * Create a new report definition
+     * <p>
+     * Allows you to programatically update your report preferences.
+     * </p>
+     * 
+     * @param modifyReportDefinitionRequest
+     * @return Result of the ModifyReportDefinition operation returned by the service.
+     * @throws InternalErrorException
+     *         An error on the server occurred during the processing of your request. Try again later.
+     * @throws ValidationException
+     *         The input fails to satisfy the constraints specified by an AWS service.
+     * @sample AWSCostAndUsageReport.ModifyReportDefinition
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cur-2017-01-06/ModifyReportDefinition" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public ModifyReportDefinitionResult modifyReportDefinition(ModifyReportDefinitionRequest request) {
+        request = beforeClientExecution(request);
+        return executeModifyReportDefinition(request);
+    }
+
+    @SdkInternalApi
+    final ModifyReportDefinitionResult executeModifyReportDefinition(ModifyReportDefinitionRequest modifyReportDefinitionRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(modifyReportDefinitionRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<ModifyReportDefinitionRequest> request = null;
+        Response<ModifyReportDefinitionResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new ModifyReportDefinitionRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(modifyReportDefinitionRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Cost and Usage Report Service");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ModifyReportDefinition");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<ModifyReportDefinitionResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new ModifyReportDefinitionResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Creates a new report using the description that you provide.
+     * </p>
      * 
      * @param putReportDefinitionRequest
-     *        Request of PutReportDefinition
+     *        Creates a Cost and Usage Report.
      * @return Result of the PutReportDefinition operation returned by the service.
      * @throws DuplicateReportNameException
-     *         This exception is thrown when putting a report preference with a name that already exists.
+     *         A report with the specified name already exists in the account. Specify a different report name.
      * @throws ReportLimitReachedException
-     *         This exception is thrown when the number of report preference reaches max limit. The max number is 5.
+     *         This account already has five reports defined. To define a new report, you must delete an existing
+     *         report.
      * @throws InternalErrorException
-     *         This exception is thrown on a known dependency failure.
+     *         An error on the server occurred during the processing of your request. Try again later.
      * @throws ValidationException
-     *         This exception is thrown when providing an invalid input. eg. Put a report preference with an invalid
-     *         report name, or Delete a report preference with an empty report name.
+     *         The input fails to satisfy the constraints specified by an AWS service.
      * @sample AWSCostAndUsageReport.PutReportDefinition
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cur-2017-01-06/PutReportDefinition" target="_top">AWS API
      *      Documentation</a>
@@ -414,6 +533,10 @@ public class AWSCostAndUsageReportClient extends AmazonWebServiceClient implemen
                 // Binds the request metrics to the current request.
                 request.setAWSRequestMetrics(awsRequestMetrics);
                 request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Cost and Usage Report Service");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "PutReportDefinition");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -454,9 +577,18 @@ public class AWSCostAndUsageReportClient extends AmazonWebServiceClient implemen
     private <X, Y extends AmazonWebServiceRequest> Response<X> invoke(Request<Y> request, HttpResponseHandler<AmazonWebServiceResponse<X>> responseHandler,
             ExecutionContext executionContext) {
 
+        return invoke(request, responseHandler, executionContext, null, null);
+    }
+
+    /**
+     * Normal invoke with authentication. Credentials are required and may be overriden at the request level.
+     **/
+    private <X, Y extends AmazonWebServiceRequest> Response<X> invoke(Request<Y> request, HttpResponseHandler<AmazonWebServiceResponse<X>> responseHandler,
+            ExecutionContext executionContext, URI cachedEndpoint, URI uriFromEndpointTrait) {
+
         executionContext.setCredentialsProvider(CredentialUtils.getCredentialsProvider(request.getOriginalRequest(), awsCredentialsProvider));
 
-        return doInvoke(request, responseHandler, executionContext);
+        return doInvoke(request, responseHandler, executionContext, cachedEndpoint, uriFromEndpointTrait);
     }
 
     /**
@@ -466,7 +598,7 @@ public class AWSCostAndUsageReportClient extends AmazonWebServiceClient implemen
     private <X, Y extends AmazonWebServiceRequest> Response<X> anonymousInvoke(Request<Y> request,
             HttpResponseHandler<AmazonWebServiceResponse<X>> responseHandler, ExecutionContext executionContext) {
 
-        return doInvoke(request, responseHandler, executionContext);
+        return doInvoke(request, responseHandler, executionContext, null, null);
     }
 
     /**
@@ -474,8 +606,17 @@ public class AWSCostAndUsageReportClient extends AmazonWebServiceClient implemen
      * ExecutionContext beforehand.
      **/
     private <X, Y extends AmazonWebServiceRequest> Response<X> doInvoke(Request<Y> request, HttpResponseHandler<AmazonWebServiceResponse<X>> responseHandler,
-            ExecutionContext executionContext) {
-        request.setEndpoint(endpoint);
+            ExecutionContext executionContext, URI discoveredEndpoint, URI uriFromEndpointTrait) {
+
+        if (discoveredEndpoint != null) {
+            request.setEndpoint(discoveredEndpoint);
+            request.getOriginalRequest().getRequestClientOptions().appendUserAgent("endpoint-discovery");
+        } else if (uriFromEndpointTrait != null) {
+            request.setEndpoint(uriFromEndpointTrait);
+        } else {
+            request.setEndpoint(endpoint);
+        }
+
         request.setTimeOffset(timeOffset);
 
         HttpResponseHandler<AmazonServiceException> errorResponseHandler = protocolFactory.createErrorResponseHandler(new JsonErrorResponseMetadata());

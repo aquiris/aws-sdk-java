@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -85,7 +85,7 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      * <note>
      * <p>
      * The partition key of an item is also known as its <i>hash attribute</i>. The term "hash attribute" derives from
-     * DynamoDB' usage of an internal hash function to evenly distribute data items across partitions, based on their
+     * DynamoDB's usage of an internal hash function to evenly distribute data items across partitions, based on their
      * partition key values.
      * </p>
      * <p>
@@ -97,8 +97,8 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      * </ul>
      * <p>
      * For more information about primary keys, see <a
-     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html#DataModelPrimaryKey">Primary
-     * Key</a> in the <i>Amazon DynamoDB Developer Guide</i>.
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html#DataModelPrimaryKey"
+     * >Primary Key</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      * </p>
      */
     private java.util.List<KeySchemaElement> keySchema;
@@ -170,6 +170,12 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      * </p>
      */
     private String tableId;
+    /**
+     * <p>
+     * Contains the details for the read/write capacity mode.
+     * </p>
+     */
+    private BillingModeSummary billingModeSummary;
     /**
      * <p>
      * Represents one or more local secondary indexes on the table. Each index is scoped to a given partition key value.
@@ -678,7 +684,7 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      * <note>
      * <p>
      * The partition key of an item is also known as its <i>hash attribute</i>. The term "hash attribute" derives from
-     * DynamoDB' usage of an internal hash function to evenly distribute data items across partitions, based on their
+     * DynamoDB's usage of an internal hash function to evenly distribute data items across partitions, based on their
      * partition key values.
      * </p>
      * <p>
@@ -690,8 +696,8 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      * </ul>
      * <p>
      * For more information about primary keys, see <a
-     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html#DataModelPrimaryKey">Primary
-     * Key</a> in the <i>Amazon DynamoDB Developer Guide</i>.
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html#DataModelPrimaryKey"
+     * >Primary Key</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      * </p>
      * 
      * @return The primary key structure for the table. Each <code>KeySchemaElement</code> consists of:</p>
@@ -720,7 +726,7 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      *         <note>
      *         <p>
      *         The partition key of an item is also known as its <i>hash attribute</i>. The term "hash attribute"
-     *         derives from DynamoDB' usage of an internal hash function to evenly distribute data items across
+     *         derives from DynamoDB's usage of an internal hash function to evenly distribute data items across
      *         partitions, based on their partition key values.
      *         </p>
      *         <p>
@@ -732,7 +738,7 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      *         </ul>
      *         <p>
      *         For more information about primary keys, see <a href=
-     *         "http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html#DataModelPrimaryKey"
+     *         "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html#DataModelPrimaryKey"
      *         >Primary Key</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      */
 
@@ -769,7 +775,7 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      * <note>
      * <p>
      * The partition key of an item is also known as its <i>hash attribute</i>. The term "hash attribute" derives from
-     * DynamoDB' usage of an internal hash function to evenly distribute data items across partitions, based on their
+     * DynamoDB's usage of an internal hash function to evenly distribute data items across partitions, based on their
      * partition key values.
      * </p>
      * <p>
@@ -781,8 +787,8 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      * </ul>
      * <p>
      * For more information about primary keys, see <a
-     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html#DataModelPrimaryKey">Primary
-     * Key</a> in the <i>Amazon DynamoDB Developer Guide</i>.
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html#DataModelPrimaryKey"
+     * >Primary Key</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      * </p>
      * 
      * @param keySchema
@@ -812,8 +818,8 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      *        <note>
      *        <p>
      *        The partition key of an item is also known as its <i>hash attribute</i>. The term "hash attribute" derives
-     *        from DynamoDB' usage of an internal hash function to evenly distribute data items across partitions, based
-     *        on their partition key values.
+     *        from DynamoDB's usage of an internal hash function to evenly distribute data items across partitions,
+     *        based on their partition key values.
      *        </p>
      *        <p>
      *        The sort key of an item is also known as its <i>range attribute</i>. The term "range attribute" derives
@@ -824,7 +830,7 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      *        </ul>
      *        <p>
      *        For more information about primary keys, see <a href=
-     *        "http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html#DataModelPrimaryKey"
+     *        "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html#DataModelPrimaryKey"
      *        >Primary Key</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      */
 
@@ -866,7 +872,7 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      * <note>
      * <p>
      * The partition key of an item is also known as its <i>hash attribute</i>. The term "hash attribute" derives from
-     * DynamoDB' usage of an internal hash function to evenly distribute data items across partitions, based on their
+     * DynamoDB's usage of an internal hash function to evenly distribute data items across partitions, based on their
      * partition key values.
      * </p>
      * <p>
@@ -878,8 +884,8 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      * </ul>
      * <p>
      * For more information about primary keys, see <a
-     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html#DataModelPrimaryKey">Primary
-     * Key</a> in the <i>Amazon DynamoDB Developer Guide</i>.
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html#DataModelPrimaryKey"
+     * >Primary Key</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -914,8 +920,8 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      *        <note>
      *        <p>
      *        The partition key of an item is also known as its <i>hash attribute</i>. The term "hash attribute" derives
-     *        from DynamoDB' usage of an internal hash function to evenly distribute data items across partitions, based
-     *        on their partition key values.
+     *        from DynamoDB's usage of an internal hash function to evenly distribute data items across partitions,
+     *        based on their partition key values.
      *        </p>
      *        <p>
      *        The sort key of an item is also known as its <i>range attribute</i>. The term "range attribute" derives
@@ -926,7 +932,7 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      *        </ul>
      *        <p>
      *        For more information about primary keys, see <a href=
-     *        "http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html#DataModelPrimaryKey"
+     *        "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html#DataModelPrimaryKey"
      *        >Primary Key</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -970,7 +976,7 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      * <note>
      * <p>
      * The partition key of an item is also known as its <i>hash attribute</i>. The term "hash attribute" derives from
-     * DynamoDB' usage of an internal hash function to evenly distribute data items across partitions, based on their
+     * DynamoDB's usage of an internal hash function to evenly distribute data items across partitions, based on their
      * partition key values.
      * </p>
      * <p>
@@ -982,8 +988,8 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      * </ul>
      * <p>
      * For more information about primary keys, see <a
-     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html#DataModelPrimaryKey">Primary
-     * Key</a> in the <i>Amazon DynamoDB Developer Guide</i>.
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html#DataModelPrimaryKey"
+     * >Primary Key</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      * </p>
      * 
      * @param keySchema
@@ -1013,8 +1019,8 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      *        <note>
      *        <p>
      *        The partition key of an item is also known as its <i>hash attribute</i>. The term "hash attribute" derives
-     *        from DynamoDB' usage of an internal hash function to evenly distribute data items across partitions, based
-     *        on their partition key values.
+     *        from DynamoDB's usage of an internal hash function to evenly distribute data items across partitions,
+     *        based on their partition key values.
      *        </p>
      *        <p>
      *        The sort key of an item is also known as its <i>range attribute</i>. The term "range attribute" derives
@@ -1025,7 +1031,7 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      *        </ul>
      *        <p>
      *        For more information about primary keys, see <a href=
-     *        "http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html#DataModelPrimaryKey"
+     *        "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html#DataModelPrimaryKey"
      *        >Primary Key</a> in the <i>Amazon DynamoDB Developer Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -1584,6 +1590,46 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
 
     public TableDescription withTableId(String tableId) {
         setTableId(tableId);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Contains the details for the read/write capacity mode.
+     * </p>
+     * 
+     * @param billingModeSummary
+     *        Contains the details for the read/write capacity mode.
+     */
+
+    public void setBillingModeSummary(BillingModeSummary billingModeSummary) {
+        this.billingModeSummary = billingModeSummary;
+    }
+
+    /**
+     * <p>
+     * Contains the details for the read/write capacity mode.
+     * </p>
+     * 
+     * @return Contains the details for the read/write capacity mode.
+     */
+
+    public BillingModeSummary getBillingModeSummary() {
+        return this.billingModeSummary;
+    }
+
+    /**
+     * <p>
+     * Contains the details for the read/write capacity mode.
+     * </p>
+     * 
+     * @param billingModeSummary
+     *        Contains the details for the read/write capacity mode.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public TableDescription withBillingModeSummary(BillingModeSummary billingModeSummary) {
+        setBillingModeSummary(billingModeSummary);
         return this;
     }
 
@@ -3498,7 +3544,8 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -3528,6 +3575,8 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
             sb.append("TableArn: ").append(getTableArn()).append(",");
         if (getTableId() != null)
             sb.append("TableId: ").append(getTableId()).append(",");
+        if (getBillingModeSummary() != null)
+            sb.append("BillingModeSummary: ").append(getBillingModeSummary()).append(",");
         if (getLocalSecondaryIndexes() != null)
             sb.append("LocalSecondaryIndexes: ").append(getLocalSecondaryIndexes()).append(",");
         if (getGlobalSecondaryIndexes() != null)
@@ -3596,6 +3645,10 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
             return false;
         if (other.getTableId() != null && other.getTableId().equals(this.getTableId()) == false)
             return false;
+        if (other.getBillingModeSummary() == null ^ this.getBillingModeSummary() == null)
+            return false;
+        if (other.getBillingModeSummary() != null && other.getBillingModeSummary().equals(this.getBillingModeSummary()) == false)
+            return false;
         if (other.getLocalSecondaryIndexes() == null ^ this.getLocalSecondaryIndexes() == null)
             return false;
         if (other.getLocalSecondaryIndexes() != null && other.getLocalSecondaryIndexes().equals(this.getLocalSecondaryIndexes()) == false)
@@ -3642,6 +3695,7 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
         hashCode = prime * hashCode + ((getItemCount() == null) ? 0 : getItemCount().hashCode());
         hashCode = prime * hashCode + ((getTableArn() == null) ? 0 : getTableArn().hashCode());
         hashCode = prime * hashCode + ((getTableId() == null) ? 0 : getTableId().hashCode());
+        hashCode = prime * hashCode + ((getBillingModeSummary() == null) ? 0 : getBillingModeSummary().hashCode());
         hashCode = prime * hashCode + ((getLocalSecondaryIndexes() == null) ? 0 : getLocalSecondaryIndexes().hashCode());
         hashCode = prime * hashCode + ((getGlobalSecondaryIndexes() == null) ? 0 : getGlobalSecondaryIndexes().hashCode());
         hashCode = prime * hashCode + ((getStreamSpecification() == null) ? 0 : getStreamSpecification().hashCode());

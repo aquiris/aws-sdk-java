@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -26,6 +26,7 @@ public enum FleetErrorCode {
     NETWORK_INTERFACE_LIMIT_EXCEEDED("NETWORK_INTERFACE_LIMIT_EXCEEDED"),
     INTERNAL_SERVICE_ERROR("INTERNAL_SERVICE_ERROR"),
     IAM_SERVICE_ROLE_IS_MISSING("IAM_SERVICE_ROLE_IS_MISSING"),
+    STS_DISABLED_IN_REGION("STS_DISABLED_IN_REGION"),
     SUBNET_HAS_INSUFFICIENT_IP_ADDRESSES("SUBNET_HAS_INSUFFICIENT_IP_ADDRESSES"),
     IAM_SERVICE_ROLE_MISSING_DESCRIBE_SUBNET_ACTION("IAM_SERVICE_ROLE_MISSING_DESCRIBE_SUBNET_ACTION"),
     SUBNET_NOT_FOUND("SUBNET_NOT_FOUND"),

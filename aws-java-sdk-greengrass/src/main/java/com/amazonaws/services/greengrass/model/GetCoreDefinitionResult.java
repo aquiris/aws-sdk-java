@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -31,12 +31,14 @@ public class GetCoreDefinitionResult extends com.amazonaws.AmazonWebServiceResul
     private String id;
     /** The time, in milliseconds since the epoch, when the definition was last updated. */
     private String lastUpdatedTimestamp;
-    /** The latest version of the definition. */
+    /** The ID of the latest version associated with the definition. */
     private String latestVersion;
-    /** The ARN of the latest version of the definition. */
+    /** The ARN of the latest version associated with the definition. */
     private String latestVersionArn;
     /** The name of the definition. */
     private String name;
+    /** Tag(s) attached to the resource arn. */
+    private java.util.Map<String, String> tags;
 
     /**
      * The ARN of the definition.
@@ -175,10 +177,10 @@ public class GetCoreDefinitionResult extends com.amazonaws.AmazonWebServiceResul
     }
 
     /**
-     * The latest version of the definition.
+     * The ID of the latest version associated with the definition.
      * 
      * @param latestVersion
-     *        The latest version of the definition.
+     *        The ID of the latest version associated with the definition.
      */
 
     public void setLatestVersion(String latestVersion) {
@@ -186,9 +188,9 @@ public class GetCoreDefinitionResult extends com.amazonaws.AmazonWebServiceResul
     }
 
     /**
-     * The latest version of the definition.
+     * The ID of the latest version associated with the definition.
      * 
-     * @return The latest version of the definition.
+     * @return The ID of the latest version associated with the definition.
      */
 
     public String getLatestVersion() {
@@ -196,10 +198,10 @@ public class GetCoreDefinitionResult extends com.amazonaws.AmazonWebServiceResul
     }
 
     /**
-     * The latest version of the definition.
+     * The ID of the latest version associated with the definition.
      * 
      * @param latestVersion
-     *        The latest version of the definition.
+     *        The ID of the latest version associated with the definition.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -209,10 +211,10 @@ public class GetCoreDefinitionResult extends com.amazonaws.AmazonWebServiceResul
     }
 
     /**
-     * The ARN of the latest version of the definition.
+     * The ARN of the latest version associated with the definition.
      * 
      * @param latestVersionArn
-     *        The ARN of the latest version of the definition.
+     *        The ARN of the latest version associated with the definition.
      */
 
     public void setLatestVersionArn(String latestVersionArn) {
@@ -220,9 +222,9 @@ public class GetCoreDefinitionResult extends com.amazonaws.AmazonWebServiceResul
     }
 
     /**
-     * The ARN of the latest version of the definition.
+     * The ARN of the latest version associated with the definition.
      * 
-     * @return The ARN of the latest version of the definition.
+     * @return The ARN of the latest version associated with the definition.
      */
 
     public String getLatestVersionArn() {
@@ -230,10 +232,10 @@ public class GetCoreDefinitionResult extends com.amazonaws.AmazonWebServiceResul
     }
 
     /**
-     * The ARN of the latest version of the definition.
+     * The ARN of the latest version associated with the definition.
      * 
      * @param latestVersionArn
-     *        The ARN of the latest version of the definition.
+     *        The ARN of the latest version associated with the definition.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -277,7 +279,63 @@ public class GetCoreDefinitionResult extends com.amazonaws.AmazonWebServiceResul
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Tag(s) attached to the resource arn.
+     * 
+     * @return Tag(s) attached to the resource arn.
+     */
+
+    public java.util.Map<String, String> getTags() {
+        return tags;
+    }
+
+    /**
+     * Tag(s) attached to the resource arn.
+     * 
+     * @param tags
+     *        Tag(s) attached to the resource arn.
+     */
+
+    public void setTags(java.util.Map<String, String> tags) {
+        this.tags = tags;
+    }
+
+    /**
+     * Tag(s) attached to the resource arn.
+     * 
+     * @param tags
+     *        Tag(s) attached to the resource arn.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public GetCoreDefinitionResult withTags(java.util.Map<String, String> tags) {
+        setTags(tags);
+        return this;
+    }
+
+    public GetCoreDefinitionResult addTagsEntry(String key, String value) {
+        if (null == this.tags) {
+            this.tags = new java.util.HashMap<String, String>();
+        }
+        if (this.tags.containsKey(key))
+            throw new IllegalArgumentException("Duplicated keys (" + key.toString() + ") are provided.");
+        this.tags.put(key, value);
+        return this;
+    }
+
+    /**
+     * Removes all the entries added into Tags.
+     *
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public GetCoreDefinitionResult clearTagsEntries() {
+        this.tags = null;
+        return this;
+    }
+
+    /**
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -300,7 +358,9 @@ public class GetCoreDefinitionResult extends com.amazonaws.AmazonWebServiceResul
         if (getLatestVersionArn() != null)
             sb.append("LatestVersionArn: ").append(getLatestVersionArn()).append(",");
         if (getName() != null)
-            sb.append("Name: ").append(getName());
+            sb.append("Name: ").append(getName()).append(",");
+        if (getTags() != null)
+            sb.append("Tags: ").append(getTags());
         sb.append("}");
         return sb.toString();
     }
@@ -343,6 +403,10 @@ public class GetCoreDefinitionResult extends com.amazonaws.AmazonWebServiceResul
             return false;
         if (other.getName() != null && other.getName().equals(this.getName()) == false)
             return false;
+        if (other.getTags() == null ^ this.getTags() == null)
+            return false;
+        if (other.getTags() != null && other.getTags().equals(this.getTags()) == false)
+            return false;
         return true;
     }
 
@@ -358,6 +422,7 @@ public class GetCoreDefinitionResult extends com.amazonaws.AmazonWebServiceResul
         hashCode = prime * hashCode + ((getLatestVersion() == null) ? 0 : getLatestVersion().hashCode());
         hashCode = prime * hashCode + ((getLatestVersionArn() == null) ? 0 : getLatestVersionArn().hashCode());
         hashCode = prime * hashCode + ((getName() == null) ? 0 : getName().hashCode());
+        hashCode = prime * hashCode + ((getTags() == null) ? 0 : getTags().hashCode());
         return hashCode;
     }
 

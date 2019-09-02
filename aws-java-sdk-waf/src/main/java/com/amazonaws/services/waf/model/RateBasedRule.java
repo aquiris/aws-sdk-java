@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -70,8 +70,9 @@ public class RateBasedRule implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * A friendly name or description for the metrics for a <code>RateBasedRule</code>. The name can contain only
-     * alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change the name of the
-     * metric after you create the <code>RateBasedRule</code>.
+     * alphanumeric characters (A-Z, a-z, 0-9), with maximum length 128 and minimum length one. It can't contain
+     * whitespace or metric names reserved for AWS WAF, including "All" and "Default_Action." You can't change the name
+     * of the metric after you create the <code>RateBasedRule</code>.
      * </p>
      */
     private String metricName;
@@ -213,14 +214,16 @@ public class RateBasedRule implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * A friendly name or description for the metrics for a <code>RateBasedRule</code>. The name can contain only
-     * alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change the name of the
-     * metric after you create the <code>RateBasedRule</code>.
+     * alphanumeric characters (A-Z, a-z, 0-9), with maximum length 128 and minimum length one. It can't contain
+     * whitespace or metric names reserved for AWS WAF, including "All" and "Default_Action." You can't change the name
+     * of the metric after you create the <code>RateBasedRule</code>.
      * </p>
      * 
      * @param metricName
      *        A friendly name or description for the metrics for a <code>RateBasedRule</code>. The name can contain only
-     *        alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change the name of
-     *        the metric after you create the <code>RateBasedRule</code>.
+     *        alphanumeric characters (A-Z, a-z, 0-9), with maximum length 128 and minimum length one. It can't contain
+     *        whitespace or metric names reserved for AWS WAF, including "All" and "Default_Action." You can't change
+     *        the name of the metric after you create the <code>RateBasedRule</code>.
      */
 
     public void setMetricName(String metricName) {
@@ -230,13 +233,15 @@ public class RateBasedRule implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * A friendly name or description for the metrics for a <code>RateBasedRule</code>. The name can contain only
-     * alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change the name of the
-     * metric after you create the <code>RateBasedRule</code>.
+     * alphanumeric characters (A-Z, a-z, 0-9), with maximum length 128 and minimum length one. It can't contain
+     * whitespace or metric names reserved for AWS WAF, including "All" and "Default_Action." You can't change the name
+     * of the metric after you create the <code>RateBasedRule</code>.
      * </p>
      * 
      * @return A friendly name or description for the metrics for a <code>RateBasedRule</code>. The name can contain
-     *         only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change the
-     *         name of the metric after you create the <code>RateBasedRule</code>.
+     *         only alphanumeric characters (A-Z, a-z, 0-9), with maximum length 128 and minimum length one. It can't
+     *         contain whitespace or metric names reserved for AWS WAF, including "All" and "Default_Action." You can't
+     *         change the name of the metric after you create the <code>RateBasedRule</code>.
      */
 
     public String getMetricName() {
@@ -246,14 +251,16 @@ public class RateBasedRule implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * A friendly name or description for the metrics for a <code>RateBasedRule</code>. The name can contain only
-     * alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change the name of the
-     * metric after you create the <code>RateBasedRule</code>.
+     * alphanumeric characters (A-Z, a-z, 0-9), with maximum length 128 and minimum length one. It can't contain
+     * whitespace or metric names reserved for AWS WAF, including "All" and "Default_Action." You can't change the name
+     * of the metric after you create the <code>RateBasedRule</code>.
      * </p>
      * 
      * @param metricName
      *        A friendly name or description for the metrics for a <code>RateBasedRule</code>. The name can contain only
-     *        alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change the name of
-     *        the metric after you create the <code>RateBasedRule</code>.
+     *        alphanumeric characters (A-Z, a-z, 0-9), with maximum length 128 and minimum length one. It can't contain
+     *        whitespace or metric names reserved for AWS WAF, including "All" and "Default_Action." You can't change
+     *        the name of the metric after you create the <code>RateBasedRule</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -503,7 +510,8 @@ public class RateBasedRule implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

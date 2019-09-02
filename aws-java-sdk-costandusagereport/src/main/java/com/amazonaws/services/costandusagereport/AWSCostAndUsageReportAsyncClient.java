@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -30,7 +30,29 @@ import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
  * Future object representing the asynchronous operation; overloads which accept an {@code AsyncHandler} can be used to
  * receive notification when an asynchronous operation completes.
  * <p>
- * All public APIs for AWS Cost and Usage Report service
+ * <p>
+ * The AWS Cost and Usage Report API enables you to programmatically create, query, and delete AWS Cost and Usage report
+ * definitions.
+ * </p>
+ * <p>
+ * AWS Cost and Usage reports track the monthly AWS costs and usage associated with your AWS account. The report
+ * contains line items for each unique combination of AWS product, usage type, and operation that your AWS account uses.
+ * You can configure the AWS Cost and Usage report to show only the data that you want, using the AWS Cost and Usage
+ * API.
+ * </p>
+ * <p>
+ * Service Endpoint
+ * </p>
+ * <p>
+ * The AWS Cost and Usage Report API provides the following endpoint:
+ * </p>
+ * <ul>
+ * <li>
+ * <p>
+ * cur.us-east-1.amazonaws.com
+ * </p>
+ * </li>
+ * </ul>
  */
 @ThreadSafe
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
@@ -294,6 +316,39 @@ public class AWSCostAndUsageReportAsyncClient extends AWSCostAndUsageReportClien
 
                 try {
                     result = executeDescribeReportDefinitions(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<ModifyReportDefinitionResult> modifyReportDefinitionAsync(ModifyReportDefinitionRequest request) {
+
+        return modifyReportDefinitionAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<ModifyReportDefinitionResult> modifyReportDefinitionAsync(final ModifyReportDefinitionRequest request,
+            final com.amazonaws.handlers.AsyncHandler<ModifyReportDefinitionRequest, ModifyReportDefinitionResult> asyncHandler) {
+        final ModifyReportDefinitionRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<ModifyReportDefinitionResult>() {
+            @Override
+            public ModifyReportDefinitionResult call() throws Exception {
+                ModifyReportDefinitionResult result = null;
+
+                try {
+                    result = executeModifyReportDefinition(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);

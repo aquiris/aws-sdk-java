@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -25,13 +25,14 @@ public class DescribeAccountLimitsResult extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * The maximum number of groups allowed for your AWS account. The default limit is 20 per region.
+     * The maximum number of groups allowed for your AWS account. The default limit is 200 per AWS Region.
      * </p>
      */
     private Integer maxNumberOfAutoScalingGroups;
     /**
      * <p>
-     * The maximum number of launch configurations allowed for your AWS account. The default limit is 100 per region.
+     * The maximum number of launch configurations allowed for your AWS account. The default limit is 200 per AWS
+     * Region.
      * </p>
      */
     private Integer maxNumberOfLaunchConfigurations;
@@ -50,11 +51,11 @@ public class DescribeAccountLimitsResult extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * The maximum number of groups allowed for your AWS account. The default limit is 20 per region.
+     * The maximum number of groups allowed for your AWS account. The default limit is 200 per AWS Region.
      * </p>
      * 
      * @param maxNumberOfAutoScalingGroups
-     *        The maximum number of groups allowed for your AWS account. The default limit is 20 per region.
+     *        The maximum number of groups allowed for your AWS account. The default limit is 200 per AWS Region.
      */
 
     public void setMaxNumberOfAutoScalingGroups(Integer maxNumberOfAutoScalingGroups) {
@@ -63,10 +64,10 @@ public class DescribeAccountLimitsResult extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * The maximum number of groups allowed for your AWS account. The default limit is 20 per region.
+     * The maximum number of groups allowed for your AWS account. The default limit is 200 per AWS Region.
      * </p>
      * 
-     * @return The maximum number of groups allowed for your AWS account. The default limit is 20 per region.
+     * @return The maximum number of groups allowed for your AWS account. The default limit is 200 per AWS Region.
      */
 
     public Integer getMaxNumberOfAutoScalingGroups() {
@@ -75,11 +76,11 @@ public class DescribeAccountLimitsResult extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * The maximum number of groups allowed for your AWS account. The default limit is 20 per region.
+     * The maximum number of groups allowed for your AWS account. The default limit is 200 per AWS Region.
      * </p>
      * 
      * @param maxNumberOfAutoScalingGroups
-     *        The maximum number of groups allowed for your AWS account. The default limit is 20 per region.
+     *        The maximum number of groups allowed for your AWS account. The default limit is 200 per AWS Region.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -90,12 +91,13 @@ public class DescribeAccountLimitsResult extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * The maximum number of launch configurations allowed for your AWS account. The default limit is 100 per region.
+     * The maximum number of launch configurations allowed for your AWS account. The default limit is 200 per AWS
+     * Region.
      * </p>
      * 
      * @param maxNumberOfLaunchConfigurations
-     *        The maximum number of launch configurations allowed for your AWS account. The default limit is 100 per
-     *        region.
+     *        The maximum number of launch configurations allowed for your AWS account. The default limit is 200 per AWS
+     *        Region.
      */
 
     public void setMaxNumberOfLaunchConfigurations(Integer maxNumberOfLaunchConfigurations) {
@@ -104,11 +106,12 @@ public class DescribeAccountLimitsResult extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * The maximum number of launch configurations allowed for your AWS account. The default limit is 100 per region.
+     * The maximum number of launch configurations allowed for your AWS account. The default limit is 200 per AWS
+     * Region.
      * </p>
      * 
-     * @return The maximum number of launch configurations allowed for your AWS account. The default limit is 100 per
-     *         region.
+     * @return The maximum number of launch configurations allowed for your AWS account. The default limit is 200 per
+     *         AWS Region.
      */
 
     public Integer getMaxNumberOfLaunchConfigurations() {
@@ -117,12 +120,13 @@ public class DescribeAccountLimitsResult extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * The maximum number of launch configurations allowed for your AWS account. The default limit is 100 per region.
+     * The maximum number of launch configurations allowed for your AWS account. The default limit is 200 per AWS
+     * Region.
      * </p>
      * 
      * @param maxNumberOfLaunchConfigurations
-     *        The maximum number of launch configurations allowed for your AWS account. The default limit is 100 per
-     *        region.
+     *        The maximum number of launch configurations allowed for your AWS account. The default limit is 200 per AWS
+     *        Region.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -212,7 +216,8 @@ public class DescribeAccountLimitsResult extends com.amazonaws.AmazonWebServiceR
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

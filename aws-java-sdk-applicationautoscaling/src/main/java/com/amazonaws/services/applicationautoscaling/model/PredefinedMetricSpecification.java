@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -19,7 +19,7 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * Configures a predefined metric for a target tracking policy.
+ * Represents a predefined metric for a target tracking scaling policy to use with Application Auto Scaling.
  * </p>
  * 
  * @see <a
@@ -31,7 +31,7 @@ public class PredefinedMetricSpecification implements Serializable, Cloneable, S
 
     /**
      * <p>
-     * The metric type. The <code>ALBRequestCountPerTarget</code> metric type applies only to Spot fleet requests and
+     * The metric type. The <code>ALBRequestCountPerTarget</code> metric type applies only to Spot Fleet requests and
      * ECS services.
      * </p>
      */
@@ -39,7 +39,7 @@ public class PredefinedMetricSpecification implements Serializable, Cloneable, S
     /**
      * <p>
      * Identifies the resource associated with the metric type. You can't specify a resource label unless the metric
-     * type is <code>ALBRequestCountPerTarget</code> and there is a target group attached to the Spot fleet request or
+     * type is <code>ALBRequestCountPerTarget</code> and there is a target group attached to the Spot Fleet request or
      * ECS service.
      * </p>
      * <p>
@@ -64,12 +64,12 @@ public class PredefinedMetricSpecification implements Serializable, Cloneable, S
 
     /**
      * <p>
-     * The metric type. The <code>ALBRequestCountPerTarget</code> metric type applies only to Spot fleet requests and
+     * The metric type. The <code>ALBRequestCountPerTarget</code> metric type applies only to Spot Fleet requests and
      * ECS services.
      * </p>
      * 
      * @param predefinedMetricType
-     *        The metric type. The <code>ALBRequestCountPerTarget</code> metric type applies only to Spot fleet requests
+     *        The metric type. The <code>ALBRequestCountPerTarget</code> metric type applies only to Spot Fleet requests
      *        and ECS services.
      * @see MetricType
      */
@@ -80,11 +80,11 @@ public class PredefinedMetricSpecification implements Serializable, Cloneable, S
 
     /**
      * <p>
-     * The metric type. The <code>ALBRequestCountPerTarget</code> metric type applies only to Spot fleet requests and
+     * The metric type. The <code>ALBRequestCountPerTarget</code> metric type applies only to Spot Fleet requests and
      * ECS services.
      * </p>
      * 
-     * @return The metric type. The <code>ALBRequestCountPerTarget</code> metric type applies only to Spot fleet
+     * @return The metric type. The <code>ALBRequestCountPerTarget</code> metric type applies only to Spot Fleet
      *         requests and ECS services.
      * @see MetricType
      */
@@ -95,12 +95,12 @@ public class PredefinedMetricSpecification implements Serializable, Cloneable, S
 
     /**
      * <p>
-     * The metric type. The <code>ALBRequestCountPerTarget</code> metric type applies only to Spot fleet requests and
+     * The metric type. The <code>ALBRequestCountPerTarget</code> metric type applies only to Spot Fleet requests and
      * ECS services.
      * </p>
      * 
      * @param predefinedMetricType
-     *        The metric type. The <code>ALBRequestCountPerTarget</code> metric type applies only to Spot fleet requests
+     *        The metric type. The <code>ALBRequestCountPerTarget</code> metric type applies only to Spot Fleet requests
      *        and ECS services.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see MetricType
@@ -113,12 +113,12 @@ public class PredefinedMetricSpecification implements Serializable, Cloneable, S
 
     /**
      * <p>
-     * The metric type. The <code>ALBRequestCountPerTarget</code> metric type applies only to Spot fleet requests and
+     * The metric type. The <code>ALBRequestCountPerTarget</code> metric type applies only to Spot Fleet requests and
      * ECS services.
      * </p>
      * 
      * @param predefinedMetricType
-     *        The metric type. The <code>ALBRequestCountPerTarget</code> metric type applies only to Spot fleet requests
+     *        The metric type. The <code>ALBRequestCountPerTarget</code> metric type applies only to Spot Fleet requests
      *        and ECS services.
      * @see MetricType
      */
@@ -129,12 +129,12 @@ public class PredefinedMetricSpecification implements Serializable, Cloneable, S
 
     /**
      * <p>
-     * The metric type. The <code>ALBRequestCountPerTarget</code> metric type applies only to Spot fleet requests and
+     * The metric type. The <code>ALBRequestCountPerTarget</code> metric type applies only to Spot Fleet requests and
      * ECS services.
      * </p>
      * 
      * @param predefinedMetricType
-     *        The metric type. The <code>ALBRequestCountPerTarget</code> metric type applies only to Spot fleet requests
+     *        The metric type. The <code>ALBRequestCountPerTarget</code> metric type applies only to Spot Fleet requests
      *        and ECS services.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see MetricType
@@ -148,7 +148,7 @@ public class PredefinedMetricSpecification implements Serializable, Cloneable, S
     /**
      * <p>
      * Identifies the resource associated with the metric type. You can't specify a resource label unless the metric
-     * type is <code>ALBRequestCountPerTarget</code> and there is a target group attached to the Spot fleet request or
+     * type is <code>ALBRequestCountPerTarget</code> and there is a target group attached to the Spot Fleet request or
      * ECS service.
      * </p>
      * <p>
@@ -172,7 +172,7 @@ public class PredefinedMetricSpecification implements Serializable, Cloneable, S
      * @param resourceLabel
      *        Identifies the resource associated with the metric type. You can't specify a resource label unless the
      *        metric type is <code>ALBRequestCountPerTarget</code> and there is a target group attached to the Spot
-     *        fleet request or ECS service.</p>
+     *        Fleet request or ECS service.</p>
      *        <p>
      *        The format is
      *        app/&lt;load-balancer-name&gt;/&lt;load-balancer-id&gt;/targetgroup/&lt;target-group-name&gt;
@@ -199,7 +199,7 @@ public class PredefinedMetricSpecification implements Serializable, Cloneable, S
     /**
      * <p>
      * Identifies the resource associated with the metric type. You can't specify a resource label unless the metric
-     * type is <code>ALBRequestCountPerTarget</code> and there is a target group attached to the Spot fleet request or
+     * type is <code>ALBRequestCountPerTarget</code> and there is a target group attached to the Spot Fleet request or
      * ECS service.
      * </p>
      * <p>
@@ -222,7 +222,7 @@ public class PredefinedMetricSpecification implements Serializable, Cloneable, S
      * 
      * @return Identifies the resource associated with the metric type. You can't specify a resource label unless the
      *         metric type is <code>ALBRequestCountPerTarget</code> and there is a target group attached to the Spot
-     *         fleet request or ECS service.</p>
+     *         Fleet request or ECS service.</p>
      *         <p>
      *         The format is
      *         app/&lt;load-balancer-name&gt;/&lt;load-balancer-id&gt;/targetgroup/&lt;target-group-name&gt
@@ -249,7 +249,7 @@ public class PredefinedMetricSpecification implements Serializable, Cloneable, S
     /**
      * <p>
      * Identifies the resource associated with the metric type. You can't specify a resource label unless the metric
-     * type is <code>ALBRequestCountPerTarget</code> and there is a target group attached to the Spot fleet request or
+     * type is <code>ALBRequestCountPerTarget</code> and there is a target group attached to the Spot Fleet request or
      * ECS service.
      * </p>
      * <p>
@@ -273,7 +273,7 @@ public class PredefinedMetricSpecification implements Serializable, Cloneable, S
      * @param resourceLabel
      *        Identifies the resource associated with the metric type. You can't specify a resource label unless the
      *        metric type is <code>ALBRequestCountPerTarget</code> and there is a target group attached to the Spot
-     *        fleet request or ECS service.</p>
+     *        Fleet request or ECS service.</p>
      *        <p>
      *        The format is
      *        app/&lt;load-balancer-name&gt;/&lt;load-balancer-id&gt;/targetgroup/&lt;target-group-name&gt;
@@ -300,7 +300,8 @@ public class PredefinedMetricSpecification implements Serializable, Cloneable, S
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -42,7 +42,7 @@ public class UpdateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      * The instance type, such as <code>t2.micro</code>. For a list of supported instance types, open the stack in the
      * console, choose <b>Instances</b>, and choose <b>+ Instance</b>. The <b>Size</b> list contains the currently
      * supported types. For more information, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Families and Types</a>.
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Families and Types</a>.
      * The parameter values that you use to specify the various types are in the <b>API Name</b> column of the
      * <b>Available Instance Types</b> table.
      * </p>
@@ -68,9 +68,9 @@ public class UpdateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      * <ul>
      * <li>
      * <p>
-     * A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2017.09</code>,
-     * <code>Amazon Linux 2017.03</code>, <code>Amazon Linux 2016.09</code>, <code>Amazon Linux 2016.03</code>,
-     * <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>.
+     * A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2018.03</code>,
+     * <code>Amazon Linux 2017.09</code>, <code>Amazon Linux 2017.03</code>, <code>Amazon Linux 2016.09</code>,
+     * <code>Amazon Linux 2016.03</code>, <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>.
      * </p>
      * </li>
      * <li>
@@ -99,17 +99,17 @@ public class UpdateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      * </li>
      * </ul>
      * <p>
-     * For more information on the supported operating systems, see <a
-     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS OpsWorks Stacks
+     * For more information about supported operating systems, see <a
+     * href="https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS OpsWorks Stacks
      * Operating Systems</a>.
      * </p>
      * <p>
      * The default option is the current Amazon Linux version. If you set this parameter to <code>Custom</code>, you
-     * must use the AmiId parameter to specify the custom AMI that you want to use. For more information on the
-     * supported operating systems, see <a
-     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">Operating Systems</a>. For
-     * more information on how to use custom AMIs with OpsWorks, see <a
-     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html">Using Custom
+     * must use the AmiId parameter to specify the custom AMI that you want to use. For more information about supported
+     * operating systems, see <a
+     * href="https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">Operating Systems</a>. For
+     * more information about how to use custom AMIs with OpsWorks, see <a
+     * href="https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html">Using Custom
      * AMIs</a>.
      * </p>
      * <note>
@@ -138,7 +138,7 @@ public class UpdateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      * <p>
      * The instance architecture. Instance types do not necessarily support both architectures. For a list of the
      * architectures that are supported by the different instance types, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Families and Types</a>.
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Families and Types</a>.
      * </p>
      */
     private String architecture;
@@ -310,7 +310,7 @@ public class UpdateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      * The instance type, such as <code>t2.micro</code>. For a list of supported instance types, open the stack in the
      * console, choose <b>Instances</b>, and choose <b>+ Instance</b>. The <b>Size</b> list contains the currently
      * supported types. For more information, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Families and Types</a>.
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Families and Types</a>.
      * The parameter values that you use to specify the various types are in the <b>API Name</b> column of the
      * <b>Available Instance Types</b> table.
      * </p>
@@ -319,7 +319,7 @@ public class UpdateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      *        The instance type, such as <code>t2.micro</code>. For a list of supported instance types, open the stack
      *        in the console, choose <b>Instances</b>, and choose <b>+ Instance</b>. The <b>Size</b> list contains the
      *        currently supported types. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Families and
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Families and
      *        Types</a>. The parameter values that you use to specify the various types are in the <b>API Name</b>
      *        column of the <b>Available Instance Types</b> table.
      */
@@ -333,7 +333,7 @@ public class UpdateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      * The instance type, such as <code>t2.micro</code>. For a list of supported instance types, open the stack in the
      * console, choose <b>Instances</b>, and choose <b>+ Instance</b>. The <b>Size</b> list contains the currently
      * supported types. For more information, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Families and Types</a>.
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Families and Types</a>.
      * The parameter values that you use to specify the various types are in the <b>API Name</b> column of the
      * <b>Available Instance Types</b> table.
      * </p>
@@ -341,7 +341,7 @@ public class UpdateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      * @return The instance type, such as <code>t2.micro</code>. For a list of supported instance types, open the stack
      *         in the console, choose <b>Instances</b>, and choose <b>+ Instance</b>. The <b>Size</b> list contains the
      *         currently supported types. For more information, see <a
-     *         href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Families and
+     *         href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Families and
      *         Types</a>. The parameter values that you use to specify the various types are in the <b>API Name</b>
      *         column of the <b>Available Instance Types</b> table.
      */
@@ -355,7 +355,7 @@ public class UpdateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      * The instance type, such as <code>t2.micro</code>. For a list of supported instance types, open the stack in the
      * console, choose <b>Instances</b>, and choose <b>+ Instance</b>. The <b>Size</b> list contains the currently
      * supported types. For more information, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Families and Types</a>.
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Families and Types</a>.
      * The parameter values that you use to specify the various types are in the <b>API Name</b> column of the
      * <b>Available Instance Types</b> table.
      * </p>
@@ -364,7 +364,7 @@ public class UpdateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      *        The instance type, such as <code>t2.micro</code>. For a list of supported instance types, open the stack
      *        in the console, choose <b>Instances</b>, and choose <b>+ Instance</b>. The <b>Size</b> list contains the
      *        currently supported types. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Families and
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Families and
      *        Types</a>. The parameter values that you use to specify the various types are in the <b>API Name</b>
      *        column of the <b>Available Instance Types</b> table.
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -496,9 +496,9 @@ public class UpdateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      * <ul>
      * <li>
      * <p>
-     * A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2017.09</code>,
-     * <code>Amazon Linux 2017.03</code>, <code>Amazon Linux 2016.09</code>, <code>Amazon Linux 2016.03</code>,
-     * <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>.
+     * A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2018.03</code>,
+     * <code>Amazon Linux 2017.09</code>, <code>Amazon Linux 2017.03</code>, <code>Amazon Linux 2016.09</code>,
+     * <code>Amazon Linux 2016.03</code>, <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>.
      * </p>
      * </li>
      * <li>
@@ -527,17 +527,17 @@ public class UpdateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      * </li>
      * </ul>
      * <p>
-     * For more information on the supported operating systems, see <a
-     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS OpsWorks Stacks
+     * For more information about supported operating systems, see <a
+     * href="https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS OpsWorks Stacks
      * Operating Systems</a>.
      * </p>
      * <p>
      * The default option is the current Amazon Linux version. If you set this parameter to <code>Custom</code>, you
-     * must use the AmiId parameter to specify the custom AMI that you want to use. For more information on the
-     * supported operating systems, see <a
-     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">Operating Systems</a>. For
-     * more information on how to use custom AMIs with OpsWorks, see <a
-     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html">Using Custom
+     * must use the AmiId parameter to specify the custom AMI that you want to use. For more information about supported
+     * operating systems, see <a
+     * href="https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">Operating Systems</a>. For
+     * more information about how to use custom AMIs with OpsWorks, see <a
+     * href="https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html">Using Custom
      * AMIs</a>.
      * </p>
      * <note>
@@ -553,9 +553,10 @@ public class UpdateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      *        <ul>
      *        <li>
      *        <p>
-     *        A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2017.09</code>,
-     *        <code>Amazon Linux 2017.03</code>, <code>Amazon Linux 2016.09</code>, <code>Amazon Linux 2016.03</code>,
-     *        <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>.
+     *        A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2018.03</code>,
+     *        <code>Amazon Linux 2017.09</code>, <code>Amazon Linux 2017.03</code>, <code>Amazon Linux 2016.09</code>,
+     *        <code>Amazon Linux 2016.03</code>, <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>
+     *        .
      *        </p>
      *        </li>
      *        <li>
@@ -584,17 +585,17 @@ public class UpdateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      *        </li>
      *        </ul>
      *        <p>
-     *        For more information on the supported operating systems, see <a
-     *        href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS OpsWorks Stacks
+     *        For more information about supported operating systems, see <a
+     *        href="https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS OpsWorks Stacks
      *        Operating Systems</a>.
      *        </p>
      *        <p>
      *        The default option is the current Amazon Linux version. If you set this parameter to <code>Custom</code>,
-     *        you must use the AmiId parameter to specify the custom AMI that you want to use. For more information on
-     *        the supported operating systems, see <a
-     *        href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">Operating
-     *        Systems</a>. For more information on how to use custom AMIs with OpsWorks, see <a
-     *        href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html">Using Custom
+     *        you must use the AmiId parameter to specify the custom AMI that you want to use. For more information
+     *        about supported operating systems, see <a
+     *        href="https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">Operating
+     *        Systems</a>. For more information about how to use custom AMIs with OpsWorks, see <a
+     *        href="https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html">Using Custom
      *        AMIs</a>.
      *        </p>
      *        <note>
@@ -616,9 +617,9 @@ public class UpdateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      * <ul>
      * <li>
      * <p>
-     * A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2017.09</code>,
-     * <code>Amazon Linux 2017.03</code>, <code>Amazon Linux 2016.09</code>, <code>Amazon Linux 2016.03</code>,
-     * <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>.
+     * A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2018.03</code>,
+     * <code>Amazon Linux 2017.09</code>, <code>Amazon Linux 2017.03</code>, <code>Amazon Linux 2016.09</code>,
+     * <code>Amazon Linux 2016.03</code>, <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>.
      * </p>
      * </li>
      * <li>
@@ -647,17 +648,17 @@ public class UpdateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      * </li>
      * </ul>
      * <p>
-     * For more information on the supported operating systems, see <a
-     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS OpsWorks Stacks
+     * For more information about supported operating systems, see <a
+     * href="https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS OpsWorks Stacks
      * Operating Systems</a>.
      * </p>
      * <p>
      * The default option is the current Amazon Linux version. If you set this parameter to <code>Custom</code>, you
-     * must use the AmiId parameter to specify the custom AMI that you want to use. For more information on the
-     * supported operating systems, see <a
-     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">Operating Systems</a>. For
-     * more information on how to use custom AMIs with OpsWorks, see <a
-     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html">Using Custom
+     * must use the AmiId parameter to specify the custom AMI that you want to use. For more information about supported
+     * operating systems, see <a
+     * href="https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">Operating Systems</a>. For
+     * more information about how to use custom AMIs with OpsWorks, see <a
+     * href="https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html">Using Custom
      * AMIs</a>.
      * </p>
      * <note>
@@ -672,9 +673,10 @@ public class UpdateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      *         <ul>
      *         <li>
      *         <p>
-     *         A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2017.09</code>,
-     *         <code>Amazon Linux 2017.03</code>, <code>Amazon Linux 2016.09</code>, <code>Amazon Linux 2016.03</code>,
-     *         <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>.
+     *         A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2018.03</code>,
+     *         <code>Amazon Linux 2017.09</code>, <code>Amazon Linux 2017.03</code>, <code>Amazon Linux 2016.09</code>,
+     *         <code>Amazon Linux 2016.03</code>, <code>Amazon Linux 2015.09</code>, or
+     *         <code>Amazon Linux 2015.03</code>.
      *         </p>
      *         </li>
      *         <li>
@@ -703,18 +705,18 @@ public class UpdateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      *         </li>
      *         </ul>
      *         <p>
-     *         For more information on the supported operating systems, see <a
-     *         href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS OpsWorks Stacks
+     *         For more information about supported operating systems, see <a
+     *         href="https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS OpsWorks Stacks
      *         Operating Systems</a>.
      *         </p>
      *         <p>
      *         The default option is the current Amazon Linux version. If you set this parameter to <code>Custom</code>,
-     *         you must use the AmiId parameter to specify the custom AMI that you want to use. For more information on
-     *         the supported operating systems, see <a
-     *         href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">Operating
-     *         Systems</a>. For more information on how to use custom AMIs with OpsWorks, see <a
-     *         href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html">Using Custom
-     *         AMIs</a>.
+     *         you must use the AmiId parameter to specify the custom AMI that you want to use. For more information
+     *         about supported operating systems, see <a
+     *         href="https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">Operating
+     *         Systems</a>. For more information about how to use custom AMIs with OpsWorks, see <a
+     *         href="https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html">Using
+     *         Custom AMIs</a>.
      *         </p>
      *         <note>
      *         <p>
@@ -735,9 +737,9 @@ public class UpdateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      * <ul>
      * <li>
      * <p>
-     * A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2017.09</code>,
-     * <code>Amazon Linux 2017.03</code>, <code>Amazon Linux 2016.09</code>, <code>Amazon Linux 2016.03</code>,
-     * <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>.
+     * A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2018.03</code>,
+     * <code>Amazon Linux 2017.09</code>, <code>Amazon Linux 2017.03</code>, <code>Amazon Linux 2016.09</code>,
+     * <code>Amazon Linux 2016.03</code>, <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>.
      * </p>
      * </li>
      * <li>
@@ -766,17 +768,17 @@ public class UpdateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      * </li>
      * </ul>
      * <p>
-     * For more information on the supported operating systems, see <a
-     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS OpsWorks Stacks
+     * For more information about supported operating systems, see <a
+     * href="https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS OpsWorks Stacks
      * Operating Systems</a>.
      * </p>
      * <p>
      * The default option is the current Amazon Linux version. If you set this parameter to <code>Custom</code>, you
-     * must use the AmiId parameter to specify the custom AMI that you want to use. For more information on the
-     * supported operating systems, see <a
-     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">Operating Systems</a>. For
-     * more information on how to use custom AMIs with OpsWorks, see <a
-     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html">Using Custom
+     * must use the AmiId parameter to specify the custom AMI that you want to use. For more information about supported
+     * operating systems, see <a
+     * href="https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">Operating Systems</a>. For
+     * more information about how to use custom AMIs with OpsWorks, see <a
+     * href="https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html">Using Custom
      * AMIs</a>.
      * </p>
      * <note>
@@ -792,9 +794,10 @@ public class UpdateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      *        <ul>
      *        <li>
      *        <p>
-     *        A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2017.09</code>,
-     *        <code>Amazon Linux 2017.03</code>, <code>Amazon Linux 2016.09</code>, <code>Amazon Linux 2016.03</code>,
-     *        <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>.
+     *        A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2018.03</code>,
+     *        <code>Amazon Linux 2017.09</code>, <code>Amazon Linux 2017.03</code>, <code>Amazon Linux 2016.09</code>,
+     *        <code>Amazon Linux 2016.03</code>, <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>
+     *        .
      *        </p>
      *        </li>
      *        <li>
@@ -823,17 +826,17 @@ public class UpdateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      *        </li>
      *        </ul>
      *        <p>
-     *        For more information on the supported operating systems, see <a
-     *        href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS OpsWorks Stacks
+     *        For more information about supported operating systems, see <a
+     *        href="https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS OpsWorks Stacks
      *        Operating Systems</a>.
      *        </p>
      *        <p>
      *        The default option is the current Amazon Linux version. If you set this parameter to <code>Custom</code>,
-     *        you must use the AmiId parameter to specify the custom AMI that you want to use. For more information on
-     *        the supported operating systems, see <a
-     *        href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">Operating
-     *        Systems</a>. For more information on how to use custom AMIs with OpsWorks, see <a
-     *        href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html">Using Custom
+     *        you must use the AmiId parameter to specify the custom AMI that you want to use. For more information
+     *        about supported operating systems, see <a
+     *        href="https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">Operating
+     *        Systems</a>. For more information about how to use custom AMIs with OpsWorks, see <a
+     *        href="https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html">Using Custom
      *        AMIs</a>.
      *        </p>
      *        <note>
@@ -945,13 +948,13 @@ public class UpdateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      * <p>
      * The instance architecture. Instance types do not necessarily support both architectures. For a list of the
      * architectures that are supported by the different instance types, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Families and Types</a>.
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Families and Types</a>.
      * </p>
      * 
      * @param architecture
      *        The instance architecture. Instance types do not necessarily support both architectures. For a list of the
      *        architectures that are supported by the different instance types, see <a
-     *        href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Families and
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Families and
      *        Types</a>.
      * @see Architecture
      */
@@ -964,12 +967,12 @@ public class UpdateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      * <p>
      * The instance architecture. Instance types do not necessarily support both architectures. For a list of the
      * architectures that are supported by the different instance types, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Families and Types</a>.
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Families and Types</a>.
      * </p>
      * 
      * @return The instance architecture. Instance types do not necessarily support both architectures. For a list of
      *         the architectures that are supported by the different instance types, see <a
-     *         href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Families and
+     *         href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Families and
      *         Types</a>.
      * @see Architecture
      */
@@ -982,13 +985,13 @@ public class UpdateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      * <p>
      * The instance architecture. Instance types do not necessarily support both architectures. For a list of the
      * architectures that are supported by the different instance types, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Families and Types</a>.
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Families and Types</a>.
      * </p>
      * 
      * @param architecture
      *        The instance architecture. Instance types do not necessarily support both architectures. For a list of the
      *        architectures that are supported by the different instance types, see <a
-     *        href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Families and
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Families and
      *        Types</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Architecture
@@ -1003,13 +1006,13 @@ public class UpdateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      * <p>
      * The instance architecture. Instance types do not necessarily support both architectures. For a list of the
      * architectures that are supported by the different instance types, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Families and Types</a>.
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Families and Types</a>.
      * </p>
      * 
      * @param architecture
      *        The instance architecture. Instance types do not necessarily support both architectures. For a list of the
      *        architectures that are supported by the different instance types, see <a
-     *        href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Families and
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Families and
      *        Types</a>.
      * @see Architecture
      */
@@ -1022,13 +1025,13 @@ public class UpdateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
      * <p>
      * The instance architecture. Instance types do not necessarily support both architectures. For a list of the
      * architectures that are supported by the different instance types, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Families and Types</a>.
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Families and Types</a>.
      * </p>
      * 
      * @param architecture
      *        The instance architecture. Instance types do not necessarily support both architectures. For a list of the
      *        architectures that are supported by the different instance types, see <a
-     *        href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Families and
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Families and
      *        Types</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Architecture
@@ -1381,7 +1384,8 @@ public class UpdateInstanceRequest extends com.amazonaws.AmazonWebServiceRequest
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

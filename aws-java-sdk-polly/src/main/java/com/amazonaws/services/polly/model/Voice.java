@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -59,6 +59,23 @@ public class Voice implements Serializable, Cloneable, StructuredPojo {
      * </p>
      */
     private String name;
+    /**
+     * <p>
+     * Additional codes for languages available for the specified voice in addition to its default language.
+     * </p>
+     * <p>
+     * For example, the default language for Aditi is Indian English (en-IN) because it was first used for that
+     * language. Since Aditi is bilingual and fluent in both Indian English and Hindi, this parameter would show the
+     * code <code>hi-IN</code>.
+     * </p>
+     */
+    private java.util.List<String> additionalLanguageCodes;
+    /**
+     * <p>
+     * Specifies which engines (<code>standard</code> or <code>neural</code>) that are supported by a given voice.
+     * </p>
+     */
+    private java.util.List<String> supportedEngines;
 
     /**
      * <p>
@@ -376,7 +393,255 @@ public class Voice implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * <p>
+     * Additional codes for languages available for the specified voice in addition to its default language.
+     * </p>
+     * <p>
+     * For example, the default language for Aditi is Indian English (en-IN) because it was first used for that
+     * language. Since Aditi is bilingual and fluent in both Indian English and Hindi, this parameter would show the
+     * code <code>hi-IN</code>.
+     * </p>
+     * 
+     * @return Additional codes for languages available for the specified voice in addition to its default language.
+     *         </p>
+     *         <p>
+     *         For example, the default language for Aditi is Indian English (en-IN) because it was first used for that
+     *         language. Since Aditi is bilingual and fluent in both Indian English and Hindi, this parameter would show
+     *         the code <code>hi-IN</code>.
+     * @see LanguageCode
+     */
+
+    public java.util.List<String> getAdditionalLanguageCodes() {
+        return additionalLanguageCodes;
+    }
+
+    /**
+     * <p>
+     * Additional codes for languages available for the specified voice in addition to its default language.
+     * </p>
+     * <p>
+     * For example, the default language for Aditi is Indian English (en-IN) because it was first used for that
+     * language. Since Aditi is bilingual and fluent in both Indian English and Hindi, this parameter would show the
+     * code <code>hi-IN</code>.
+     * </p>
+     * 
+     * @param additionalLanguageCodes
+     *        Additional codes for languages available for the specified voice in addition to its default language. </p>
+     *        <p>
+     *        For example, the default language for Aditi is Indian English (en-IN) because it was first used for that
+     *        language. Since Aditi is bilingual and fluent in both Indian English and Hindi, this parameter would show
+     *        the code <code>hi-IN</code>.
+     * @see LanguageCode
+     */
+
+    public void setAdditionalLanguageCodes(java.util.Collection<String> additionalLanguageCodes) {
+        if (additionalLanguageCodes == null) {
+            this.additionalLanguageCodes = null;
+            return;
+        }
+
+        this.additionalLanguageCodes = new java.util.ArrayList<String>(additionalLanguageCodes);
+    }
+
+    /**
+     * <p>
+     * Additional codes for languages available for the specified voice in addition to its default language.
+     * </p>
+     * <p>
+     * For example, the default language for Aditi is Indian English (en-IN) because it was first used for that
+     * language. Since Aditi is bilingual and fluent in both Indian English and Hindi, this parameter would show the
+     * code <code>hi-IN</code>.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setAdditionalLanguageCodes(java.util.Collection)} or
+     * {@link #withAdditionalLanguageCodes(java.util.Collection)} if you want to override the existing values.
+     * </p>
+     * 
+     * @param additionalLanguageCodes
+     *        Additional codes for languages available for the specified voice in addition to its default language. </p>
+     *        <p>
+     *        For example, the default language for Aditi is Indian English (en-IN) because it was first used for that
+     *        language. Since Aditi is bilingual and fluent in both Indian English and Hindi, this parameter would show
+     *        the code <code>hi-IN</code>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see LanguageCode
+     */
+
+    public Voice withAdditionalLanguageCodes(String... additionalLanguageCodes) {
+        if (this.additionalLanguageCodes == null) {
+            setAdditionalLanguageCodes(new java.util.ArrayList<String>(additionalLanguageCodes.length));
+        }
+        for (String ele : additionalLanguageCodes) {
+            this.additionalLanguageCodes.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * Additional codes for languages available for the specified voice in addition to its default language.
+     * </p>
+     * <p>
+     * For example, the default language for Aditi is Indian English (en-IN) because it was first used for that
+     * language. Since Aditi is bilingual and fluent in both Indian English and Hindi, this parameter would show the
+     * code <code>hi-IN</code>.
+     * </p>
+     * 
+     * @param additionalLanguageCodes
+     *        Additional codes for languages available for the specified voice in addition to its default language. </p>
+     *        <p>
+     *        For example, the default language for Aditi is Indian English (en-IN) because it was first used for that
+     *        language. Since Aditi is bilingual and fluent in both Indian English and Hindi, this parameter would show
+     *        the code <code>hi-IN</code>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see LanguageCode
+     */
+
+    public Voice withAdditionalLanguageCodes(java.util.Collection<String> additionalLanguageCodes) {
+        setAdditionalLanguageCodes(additionalLanguageCodes);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Additional codes for languages available for the specified voice in addition to its default language.
+     * </p>
+     * <p>
+     * For example, the default language for Aditi is Indian English (en-IN) because it was first used for that
+     * language. Since Aditi is bilingual and fluent in both Indian English and Hindi, this parameter would show the
+     * code <code>hi-IN</code>.
+     * </p>
+     * 
+     * @param additionalLanguageCodes
+     *        Additional codes for languages available for the specified voice in addition to its default language. </p>
+     *        <p>
+     *        For example, the default language for Aditi is Indian English (en-IN) because it was first used for that
+     *        language. Since Aditi is bilingual and fluent in both Indian English and Hindi, this parameter would show
+     *        the code <code>hi-IN</code>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see LanguageCode
+     */
+
+    public Voice withAdditionalLanguageCodes(LanguageCode... additionalLanguageCodes) {
+        java.util.ArrayList<String> additionalLanguageCodesCopy = new java.util.ArrayList<String>(additionalLanguageCodes.length);
+        for (LanguageCode value : additionalLanguageCodes) {
+            additionalLanguageCodesCopy.add(value.toString());
+        }
+        if (getAdditionalLanguageCodes() == null) {
+            setAdditionalLanguageCodes(additionalLanguageCodesCopy);
+        } else {
+            getAdditionalLanguageCodes().addAll(additionalLanguageCodesCopy);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * Specifies which engines (<code>standard</code> or <code>neural</code>) that are supported by a given voice.
+     * </p>
+     * 
+     * @return Specifies which engines (<code>standard</code> or <code>neural</code>) that are supported by a given
+     *         voice.
+     * @see Engine
+     */
+
+    public java.util.List<String> getSupportedEngines() {
+        return supportedEngines;
+    }
+
+    /**
+     * <p>
+     * Specifies which engines (<code>standard</code> or <code>neural</code>) that are supported by a given voice.
+     * </p>
+     * 
+     * @param supportedEngines
+     *        Specifies which engines (<code>standard</code> or <code>neural</code>) that are supported by a given
+     *        voice.
+     * @see Engine
+     */
+
+    public void setSupportedEngines(java.util.Collection<String> supportedEngines) {
+        if (supportedEngines == null) {
+            this.supportedEngines = null;
+            return;
+        }
+
+        this.supportedEngines = new java.util.ArrayList<String>(supportedEngines);
+    }
+
+    /**
+     * <p>
+     * Specifies which engines (<code>standard</code> or <code>neural</code>) that are supported by a given voice.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setSupportedEngines(java.util.Collection)} or {@link #withSupportedEngines(java.util.Collection)} if you
+     * want to override the existing values.
+     * </p>
+     * 
+     * @param supportedEngines
+     *        Specifies which engines (<code>standard</code> or <code>neural</code>) that are supported by a given
+     *        voice.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see Engine
+     */
+
+    public Voice withSupportedEngines(String... supportedEngines) {
+        if (this.supportedEngines == null) {
+            setSupportedEngines(new java.util.ArrayList<String>(supportedEngines.length));
+        }
+        for (String ele : supportedEngines) {
+            this.supportedEngines.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * Specifies which engines (<code>standard</code> or <code>neural</code>) that are supported by a given voice.
+     * </p>
+     * 
+     * @param supportedEngines
+     *        Specifies which engines (<code>standard</code> or <code>neural</code>) that are supported by a given
+     *        voice.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see Engine
+     */
+
+    public Voice withSupportedEngines(java.util.Collection<String> supportedEngines) {
+        setSupportedEngines(supportedEngines);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Specifies which engines (<code>standard</code> or <code>neural</code>) that are supported by a given voice.
+     * </p>
+     * 
+     * @param supportedEngines
+     *        Specifies which engines (<code>standard</code> or <code>neural</code>) that are supported by a given
+     *        voice.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see Engine
+     */
+
+    public Voice withSupportedEngines(Engine... supportedEngines) {
+        java.util.ArrayList<String> supportedEnginesCopy = new java.util.ArrayList<String>(supportedEngines.length);
+        for (Engine value : supportedEngines) {
+            supportedEnginesCopy.add(value.toString());
+        }
+        if (getSupportedEngines() == null) {
+            setSupportedEngines(supportedEnginesCopy);
+        } else {
+            getSupportedEngines().addAll(supportedEnginesCopy);
+        }
+        return this;
+    }
+
+    /**
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -395,7 +660,11 @@ public class Voice implements Serializable, Cloneable, StructuredPojo {
         if (getLanguageName() != null)
             sb.append("LanguageName: ").append(getLanguageName()).append(",");
         if (getName() != null)
-            sb.append("Name: ").append(getName());
+            sb.append("Name: ").append(getName()).append(",");
+        if (getAdditionalLanguageCodes() != null)
+            sb.append("AdditionalLanguageCodes: ").append(getAdditionalLanguageCodes()).append(",");
+        if (getSupportedEngines() != null)
+            sb.append("SupportedEngines: ").append(getSupportedEngines());
         sb.append("}");
         return sb.toString();
     }
@@ -430,6 +699,14 @@ public class Voice implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getName() != null && other.getName().equals(this.getName()) == false)
             return false;
+        if (other.getAdditionalLanguageCodes() == null ^ this.getAdditionalLanguageCodes() == null)
+            return false;
+        if (other.getAdditionalLanguageCodes() != null && other.getAdditionalLanguageCodes().equals(this.getAdditionalLanguageCodes()) == false)
+            return false;
+        if (other.getSupportedEngines() == null ^ this.getSupportedEngines() == null)
+            return false;
+        if (other.getSupportedEngines() != null && other.getSupportedEngines().equals(this.getSupportedEngines()) == false)
+            return false;
         return true;
     }
 
@@ -443,6 +720,8 @@ public class Voice implements Serializable, Cloneable, StructuredPojo {
         hashCode = prime * hashCode + ((getLanguageCode() == null) ? 0 : getLanguageCode().hashCode());
         hashCode = prime * hashCode + ((getLanguageName() == null) ? 0 : getLanguageName().hashCode());
         hashCode = prime * hashCode + ((getName() == null) ? 0 : getName().hashCode());
+        hashCode = prime * hashCode + ((getAdditionalLanguageCodes() == null) ? 0 : getAdditionalLanguageCodes().hashCode());
+        hashCode = prime * hashCode + ((getSupportedEngines() == null) ? 0 : getSupportedEngines().hashCode());
         return hashCode;
     }
 

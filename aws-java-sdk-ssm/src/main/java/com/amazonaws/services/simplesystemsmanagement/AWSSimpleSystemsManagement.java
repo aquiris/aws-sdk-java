@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -40,8 +40,8 @@ import com.amazonaws.services.simplesystemsmanagement.model.*;
  * </p>
  * <p>
  * To get started, verify prerequisites and configure managed instances. For more information, see <a
- * href="http://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up.html">Systems Manager
- * Prerequisites</a>.
+ * href="http://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up.html">Setting Up AWS
+ * Systems Manager</a> in the <i>AWS Systems Manager User Guide</i>.
  * </p>
  * <p>
  * For information about other API actions you can perform on Amazon EC2 instances, see the <a
@@ -70,9 +70,10 @@ public interface AWSSimpleSystemsManagement {
      * this client's {@link ClientConfiguration} will be used, which by default is HTTPS.
      * <p>
      * For more information on using AWS regions with the AWS SDK for Java, and a complete list of all available
-     * endpoints for all AWS services, see: <a
-     * href="http://developer.amazonwebservices.com/connect/entry.jspa?externalID=3912">
-     * http://developer.amazonwebservices.com/connect/entry.jspa?externalID=3912</a>
+     * endpoints for all AWS services, see: <a href=
+     * "https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/java-dg-region-selection.html#region-selection-choose-endpoint"
+     * > https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/java-dg-region-selection.html#region-selection-
+     * choose-endpoint</a>
      * <p>
      * <b>This method is not threadsafe. An endpoint should be configured when the client is created and before any
      * service requests are made. Changing it afterwards creates inevitable race conditions for any service requests in
@@ -115,7 +116,7 @@ public interface AWSSimpleSystemsManagement {
     /**
      * <p>
      * Adds or overwrites one or more tags for the specified resource. Tags are metadata that you can assign to your
-     * documents, managed instances, Maintenance Windows, Parameter Store parameters, and patch baselines. Tags enable
+     * documents, managed instances, maintenance windows, Parameter Store parameters, and patch baselines. Tags enable
      * you to categorize your resources in different ways, for example, by purpose, owner, or environment. Each tag
      * consists of a key and an optional value, both of which you define. For example, you could define a set of tags
      * for your account's managed instances that helps you track each instance's owner and stack level. For example:
@@ -146,7 +147,8 @@ public interface AWSSimpleSystemsManagement {
      * @throws InternalServerErrorException
      *         An error occurred on the server side.
      * @throws TooManyTagsErrorException
-     *         The Targets parameter includes too many tags. Remove one or more tags and try the command again.
+     *         The <code>Targets</code> parameter includes too many tags. Remove one or more tags and try the command
+     *         again.
      * @throws TooManyUpdatesException
      *         There are concurrent updates for a resource that supports one update at a time.
      * @sample AWSSimpleSystemsManagement.AddTagsToResource
@@ -172,12 +174,10 @@ public interface AWSSimpleSystemsManagement {
      *         You do not have permission to access the instance.
      *         </p>
      *         <p>
-     *         The SSM Agent is not running. On managed instances and Linux instances, verify that the SSM Agent is
-     *         running. On EC2 Windows instances, verify that the EC2Config service is running.
+     *         SSM Agent is not running. Verify that SSM Agent is running.
      *         </p>
      *         <p>
-     *         The SSM Agent or EC2Config service is not registered to the SSM endpoint. Try reinstalling the SSM Agent
-     *         or EC2Config service.
+     *         SSM Agent is not registered with the SSM endpoint. Try reinstalling SSM Agent.
      *         </p>
      *         <p>
      *         The instance is not in valid state. Valid states are: Running, Pending, Stopped, Stopping. Invalid states
@@ -192,11 +192,34 @@ public interface AWSSimpleSystemsManagement {
 
     /**
      * <p>
+     * Stops a maintenance window execution that is already in progress and cancels any tasks in the window that have
+     * not already starting running. (Tasks already in progress will continue to completion.)
+     * </p>
+     * 
+     * @param cancelMaintenanceWindowExecutionRequest
+     * @return Result of the CancelMaintenanceWindowExecution operation returned by the service.
+     * @throws InternalServerErrorException
+     *         An error occurred on the server side.
+     * @throws DoesNotExistException
+     *         Error returned when the ID specified for a resource, such as a maintenance window or Patch baseline,
+     *         doesn't exist.</p>
+     *         <p>
+     *         For information about resource limits in Systems Manager, see <a
+     *         href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_ssm">AWS Systems
+     *         Manager Limits</a>.
+     * @sample AWSSimpleSystemsManagement.CancelMaintenanceWindowExecution
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/CancelMaintenanceWindowExecution"
+     *      target="_top">AWS API Documentation</a>
+     */
+    CancelMaintenanceWindowExecutionResult cancelMaintenanceWindowExecution(CancelMaintenanceWindowExecutionRequest cancelMaintenanceWindowExecutionRequest);
+
+    /**
+     * <p>
      * Registers your on-premises server or virtual machine with Amazon EC2 so that you can manage these resources using
      * Run Command. An on-premises server or virtual machine that has been registered with EC2 is called a managed
      * instance. For more information about activations, see <a
      * href="http://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-managedinstances.html">Setting
-     * Up Systems Manager in Hybrid Environments</a>.
+     * Up AWS Systems Manager for Hybrid Environments</a>.
      * </p>
      * 
      * @param createActivationRequest
@@ -214,11 +237,11 @@ public interface AWSSimpleSystemsManagement {
      * Associates the specified Systems Manager document with the specified instances or targets.
      * </p>
      * <p>
-     * When you associate a document with one or more instances using instance IDs or tags, the SSM Agent running on the
+     * When you associate a document with one or more instances using instance IDs or tags, SSM Agent running on the
      * instance processes the document and configures the instance as specified.
      * </p>
      * <p>
-     * If you associate a document with an instance that already has an associated document, the system throws the
+     * If you associate a document with an instance that already has an associated document, the system returns the
      * AssociationAlreadyExists exception.
      * </p>
      * 
@@ -240,12 +263,10 @@ public interface AWSSimpleSystemsManagement {
      *         You do not have permission to access the instance.
      *         </p>
      *         <p>
-     *         The SSM Agent is not running. On managed instances and Linux instances, verify that the SSM Agent is
-     *         running. On EC2 Windows instances, verify that the EC2Config service is running.
+     *         SSM Agent is not running. Verify that SSM Agent is running.
      *         </p>
      *         <p>
-     *         The SSM Agent or EC2Config service is not registered to the SSM endpoint. Try reinstalling the SSM Agent
-     *         or EC2Config service.
+     *         SSM Agent is not registered with the SSM endpoint. Try reinstalling SSM Agent.
      *         </p>
      *         <p>
      *         The instance is not in valid state. Valid states are: Running, Pending, Stopped, Stopping. Invalid states
@@ -274,11 +295,11 @@ public interface AWSSimpleSystemsManagement {
      * Associates the specified Systems Manager document with the specified instances or targets.
      * </p>
      * <p>
-     * When you associate a document with one or more instances using instance IDs or tags, the SSM Agent running on the
+     * When you associate a document with one or more instances using instance IDs or tags, SSM Agent running on the
      * instance processes the document and configures the instance as specified.
      * </p>
      * <p>
-     * If you associate a document with an instance that already has an associated document, the system throws the
+     * If you associate a document with an instance that already has an associated document, the system returns the
      * AssociationAlreadyExists exception.
      * </p>
      * 
@@ -296,12 +317,10 @@ public interface AWSSimpleSystemsManagement {
      *         You do not have permission to access the instance.
      *         </p>
      *         <p>
-     *         The SSM Agent is not running. On managed instances and Linux instances, verify that the SSM Agent is
-     *         running. On EC2 Windows instances, verify that the EC2Config service is running.
+     *         SSM Agent is not running. Verify that SSM Agent is running.
      *         </p>
      *         <p>
-     *         The SSM Agent or EC2Config service is not registered to the SSM endpoint. Try reinstalling the SSM Agent
-     *         or EC2Config service.
+     *         SSM Agent is not registered with the SSM endpoint. Try reinstalling SSM Agent.
      *         </p>
      *         <p>
      *         The instance is not in valid state. Valid states are: Running, Pending, Stopped, Stopping. Invalid states
@@ -348,7 +367,7 @@ public interface AWSSimpleSystemsManagement {
      * @throws InvalidDocumentContentException
      *         The content for the document is not valid.
      * @throws DocumentLimitExceededException
-     *         You can have at most 200 active Systems Manager documents.
+     *         You can have at most 500 active Systems Manager documents.
      * @throws InvalidDocumentSchemaVersionException
      *         The version of the document schema is not supported.
      * @sample AWSSimpleSystemsManagement.CreateDocument
@@ -359,7 +378,7 @@ public interface AWSSimpleSystemsManagement {
 
     /**
      * <p>
-     * Creates a new Maintenance Window.
+     * Creates a new maintenance window.
      * </p>
      * 
      * @param createMaintenanceWindowRequest
@@ -369,7 +388,7 @@ public interface AWSSimpleSystemsManagement {
      *         to the API with the same idempotency token.
      * @throws ResourceLimitExceededException
      *         Error returned when the caller has exceeded the default resource limits. For example, too many
-     *         Maintenance Windows or Patch baselines have been created.</p>
+     *         maintenance windows or patch baselines have been created.</p>
      *         <p>
      *         For information about resource limits in Systems Manager, see <a
      *         href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_ssm">AWS Systems
@@ -381,6 +400,39 @@ public interface AWSSimpleSystemsManagement {
      *      API Documentation</a>
      */
     CreateMaintenanceWindowResult createMaintenanceWindow(CreateMaintenanceWindowRequest createMaintenanceWindowRequest);
+
+    /**
+     * <p>
+     * Creates a new OpsItem. You must have permission in AWS Identity and Access Management (IAM) to create a new
+     * OpsItem. For more information, see <a
+     * href="http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html">Getting Started
+     * with OpsCenter</a> in the <i>AWS Systems Manager User Guide</i>.
+     * </p>
+     * <p>
+     * Operations engineers and IT professionals use OpsCenter to view, investigate, and remediate operational issues
+     * impacting the performance and health of their AWS resources. For more information, see <a
+     * href="http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html">AWS Systems Manager
+     * OpsCenter</a> in the <i>AWS Systems Manager User Guide</i>.
+     * </p>
+     * 
+     * @param createOpsItemRequest
+     * @return Result of the CreateOpsItem operation returned by the service.
+     * @throws InternalServerErrorException
+     *         An error occurred on the server side.
+     * @throws OpsItemAlreadyExistsException
+     *         The OpsItem already exists.
+     * @throws OpsItemLimitExceededException
+     *         The request caused OpsItems to exceed one or more limits. For information about OpsItem limits, see <a
+     *         href=
+     *         "http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-learn-more.html#OpsCenter-learn-more-limits"
+     *         >What are the resource limits for OpsCenter?</a>.
+     * @throws OpsItemInvalidParameterException
+     *         A specified parameter argument isn't valid. Verify the available arguments and try again.
+     * @sample AWSSimpleSystemsManagement.CreateOpsItem
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/CreateOpsItem" target="_top">AWS API
+     *      Documentation</a>
+     */
+    CreateOpsItemResult createOpsItem(CreateOpsItemRequest createOpsItemRequest);
 
     /**
      * <p>
@@ -401,7 +453,7 @@ public interface AWSSimpleSystemsManagement {
      *         to the API with the same idempotency token.
      * @throws ResourceLimitExceededException
      *         Error returned when the caller has exceeded the default resource limits. For example, too many
-     *         Maintenance Windows or Patch baselines have been created.</p>
+     *         maintenance windows or patch baselines have been created.</p>
      *         <p>
      *         For information about resource limits in Systems Manager, see <a
      *         href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_ssm">AWS Systems
@@ -423,10 +475,9 @@ public interface AWSSimpleSystemsManagement {
      * <p>
      * By default, data is not encrypted in Amazon S3. We strongly recommend that you enable encryption in Amazon S3 to
      * ensure secure data storage. We also recommend that you secure access to the Amazon S3 bucket by creating a
-     * restrictive bucket policy. To view an example of a restrictive Amazon S3 bucket policy for Resource Data Sync,
-     * see <a href=
-     * "http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-inventory-configuring.html#sysman-inventory-datasync"
-     * >Configuring Resource Data Sync for Inventory</a>.
+     * restrictive bucket policy. For more information, see <a
+     * href="http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-inventory-datasync.html">Configuring
+     * Resource Data Sync for Inventory</a> in the <i>AWS Systems Manager User Guide</i>.
      * </p>
      * 
      * @param createResourceDataSyncRequest
@@ -494,12 +545,10 @@ public interface AWSSimpleSystemsManagement {
      *         You do not have permission to access the instance.
      *         </p>
      *         <p>
-     *         The SSM Agent is not running. On managed instances and Linux instances, verify that the SSM Agent is
-     *         running. On EC2 Windows instances, verify that the EC2Config service is running.
+     *         SSM Agent is not running. Verify that SSM Agent is running.
      *         </p>
      *         <p>
-     *         The SSM Agent or EC2Config service is not registered to the SSM endpoint. Try reinstalling the SSM Agent
-     *         or EC2Config service.
+     *         SSM Agent is not registered with the SSM endpoint. Try reinstalling SSM Agent.
      *         </p>
      *         <p>
      *         The instance is not in valid state. Valid states are: Running, Pending, Stopped, Stopping. Invalid states
@@ -565,7 +614,7 @@ public interface AWSSimpleSystemsManagement {
 
     /**
      * <p>
-     * Deletes a Maintenance Window.
+     * Deletes a maintenance window.
      * </p>
      * 
      * @param deleteMaintenanceWindowRequest
@@ -597,7 +646,7 @@ public interface AWSSimpleSystemsManagement {
 
     /**
      * <p>
-     * Delete a list of parameters. This API is used to delete parameters by using the Amazon EC2 console.
+     * Delete a list of parameters.
      * </p>
      * 
      * @param deleteParametersRequest
@@ -649,7 +698,7 @@ public interface AWSSimpleSystemsManagement {
     /**
      * <p>
      * Removes the server or virtual machine from the list of registered servers. You can reregister the instance again
-     * at any time. If you don't plan to use Run Command on the server, we suggest uninstalling the SSM Agent first.
+     * at any time. If you don't plan to use Run Command on the server, we suggest uninstalling SSM Agent first.
      * </p>
      * 
      * @param deregisterManagedInstanceRequest
@@ -660,12 +709,10 @@ public interface AWSSimpleSystemsManagement {
      *         You do not have permission to access the instance.
      *         </p>
      *         <p>
-     *         The SSM Agent is not running. On managed instances and Linux instances, verify that the SSM Agent is
-     *         running. On EC2 Windows instances, verify that the EC2Config service is running.
+     *         SSM Agent is not running. Verify that SSM Agent is running.
      *         </p>
      *         <p>
-     *         The SSM Agent or EC2Config service is not registered to the SSM endpoint. Try reinstalling the SSM Agent
-     *         or EC2Config service.
+     *         SSM Agent is not registered with the SSM endpoint. Try reinstalling SSM Agent.
      *         </p>
      *         <p>
      *         The instance is not in valid state. Valid states are: Running, Pending, Stopped, Stopping. Invalid states
@@ -698,13 +745,13 @@ public interface AWSSimpleSystemsManagement {
 
     /**
      * <p>
-     * Removes a target from a Maintenance Window.
+     * Removes a target from a maintenance window.
      * </p>
      * 
      * @param deregisterTargetFromMaintenanceWindowRequest
      * @return Result of the DeregisterTargetFromMaintenanceWindow operation returned by the service.
      * @throws DoesNotExistException
-     *         Error returned when the ID specified for a resource, such as a Maintenance Window or Patch baseline,
+     *         Error returned when the ID specified for a resource, such as a maintenance window or Patch baseline,
      *         doesn't exist.</p>
      *         <p>
      *         For information about resource limits in Systems Manager, see <a
@@ -724,13 +771,13 @@ public interface AWSSimpleSystemsManagement {
 
     /**
      * <p>
-     * Removes a task from a Maintenance Window.
+     * Removes a task from a maintenance window.
      * </p>
      * 
      * @param deregisterTaskFromMaintenanceWindowRequest
      * @return Result of the DeregisterTaskFromMaintenanceWindow operation returned by the service.
      * @throws DoesNotExistException
-     *         Error returned when the ID specified for a resource, such as a Maintenance Window or Patch baseline,
+     *         Error returned when the ID specified for a resource, such as a maintenance window or Patch baseline,
      *         doesn't exist.</p>
      *         <p>
      *         For information about resource limits in Systems Manager, see <a
@@ -747,8 +794,9 @@ public interface AWSSimpleSystemsManagement {
 
     /**
      * <p>
-     * Details about the activation, including: the date and time the activation was created, the expiration date, the
-     * IAM role assigned to the instances in the activation, and the number of instances activated by this registration.
+     * Describes details about the activation, such as the date and time the activation was created, its expiration
+     * date, the IAM role assigned to the instances in the activation, and the number of instances registered by using
+     * this activation.
      * </p>
      * 
      * @param describeActivationsRequest
@@ -791,12 +839,10 @@ public interface AWSSimpleSystemsManagement {
      *         You do not have permission to access the instance.
      *         </p>
      *         <p>
-     *         The SSM Agent is not running. On managed instances and Linux instances, verify that the SSM Agent is
-     *         running. On EC2 Windows instances, verify that the EC2Config service is running.
+     *         SSM Agent is not running. Verify that SSM Agent is running.
      *         </p>
      *         <p>
-     *         The SSM Agent or EC2Config service is not registered to the SSM endpoint. Try reinstalling the SSM Agent
-     *         or EC2Config service.
+     *         SSM Agent is not registered with the SSM endpoint. Try reinstalling SSM Agent.
      *         </p>
      *         <p>
      *         The instance is not in valid state. Valid states are: Running, Pending, Stopped, Stopping. Invalid states
@@ -806,6 +852,47 @@ public interface AWSSimpleSystemsManagement {
      *      Documentation</a>
      */
     DescribeAssociationResult describeAssociation(DescribeAssociationRequest describeAssociationRequest);
+
+    /**
+     * <p>
+     * Use this API action to view information about a specific execution of a specific association.
+     * </p>
+     * 
+     * @param describeAssociationExecutionTargetsRequest
+     * @return Result of the DescribeAssociationExecutionTargets operation returned by the service.
+     * @throws InternalServerErrorException
+     *         An error occurred on the server side.
+     * @throws AssociationDoesNotExistException
+     *         The specified association does not exist.
+     * @throws InvalidNextTokenException
+     *         The specified token is not valid.
+     * @throws AssociationExecutionDoesNotExistException
+     *         The specified execution ID does not exist. Verify the ID number and try again.
+     * @sample AWSSimpleSystemsManagement.DescribeAssociationExecutionTargets
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DescribeAssociationExecutionTargets"
+     *      target="_top">AWS API Documentation</a>
+     */
+    DescribeAssociationExecutionTargetsResult describeAssociationExecutionTargets(
+            DescribeAssociationExecutionTargetsRequest describeAssociationExecutionTargetsRequest);
+
+    /**
+     * <p>
+     * Use this API action to view all executions for a specific association ID.
+     * </p>
+     * 
+     * @param describeAssociationExecutionsRequest
+     * @return Result of the DescribeAssociationExecutions operation returned by the service.
+     * @throws InternalServerErrorException
+     *         An error occurred on the server side.
+     * @throws AssociationDoesNotExistException
+     *         The specified association does not exist.
+     * @throws InvalidNextTokenException
+     *         The specified token is not valid.
+     * @sample AWSSimpleSystemsManagement.DescribeAssociationExecutions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DescribeAssociationExecutions"
+     *      target="_top">AWS API Documentation</a>
+     */
+    DescribeAssociationExecutionsResult describeAssociationExecutions(DescribeAssociationExecutionsRequest describeAssociationExecutionsRequest);
 
     /**
      * <p>
@@ -853,7 +940,7 @@ public interface AWSSimpleSystemsManagement {
 
     /**
      * <p>
-     * Lists all patches that could possibly be included in a patch baseline.
+     * Lists all patches eligible to be included in a patch baseline.
      * </p>
      * 
      * @param describeAvailablePatchesRequest
@@ -921,12 +1008,10 @@ public interface AWSSimpleSystemsManagement {
      *         You do not have permission to access the instance.
      *         </p>
      *         <p>
-     *         The SSM Agent is not running. On managed instances and Linux instances, verify that the SSM Agent is
-     *         running. On EC2 Windows instances, verify that the EC2Config service is running.
+     *         SSM Agent is not running. Verify that SSM Agent is running.
      *         </p>
      *         <p>
-     *         The SSM Agent or EC2Config service is not registered to the SSM endpoint. Try reinstalling the SSM Agent
-     *         or EC2Config service.
+     *         SSM Agent is not registered with the SSM endpoint. Try reinstalling SSM Agent.
      *         </p>
      *         <p>
      *         The instance is not in valid state. Valid states are: Running, Pending, Stopped, Stopping. Invalid states
@@ -951,7 +1036,7 @@ public interface AWSSimpleSystemsManagement {
      * @throws InvalidResourceIdException
      *         The resource ID is not valid. Verify that you entered the correct ID and try again.
      * @throws DoesNotExistException
-     *         Error returned when the ID specified for a resource, such as a Maintenance Window or Patch baseline,
+     *         Error returned when the ID specified for a resource, such as a maintenance window or Patch baseline,
      *         doesn't exist.</p>
      *         <p>
      *         For information about resource limits in Systems Manager, see <a
@@ -984,12 +1069,10 @@ public interface AWSSimpleSystemsManagement {
      *         You do not have permission to access the instance.
      *         </p>
      *         <p>
-     *         The SSM Agent is not running. On managed instances and Linux instances, verify that the SSM Agent is
-     *         running. On EC2 Windows instances, verify that the EC2Config service is running.
+     *         SSM Agent is not running. Verify that SSM Agent is running.
      *         </p>
      *         <p>
-     *         The SSM Agent or EC2Config service is not registered to the SSM endpoint. Try reinstalling the SSM Agent
-     *         or EC2Config service.
+     *         SSM Agent is not registered with the SSM endpoint. Try reinstalling SSM Agent.
      *         </p>
      *         <p>
      *         The instance is not in valid state. Valid states are: Running, Pending, Stopped, Stopping. Invalid states
@@ -1011,6 +1094,12 @@ public interface AWSSimpleSystemsManagement {
      * instances. If you specify an instance ID that is not valid or an instance that you do not own, you receive an
      * error.
      * </p>
+     * <note>
+     * <p>
+     * The IamRole field for this API action is the Amazon Identity and Access Management (IAM) role assigned to
+     * on-premises instances. This call does not return the IAM role for Amazon EC2 instances.
+     * </p>
+     * </note>
      * 
      * @param describeInstanceInformationRequest
      * @return Result of the DescribeInstanceInformation operation returned by the service.
@@ -1022,12 +1111,10 @@ public interface AWSSimpleSystemsManagement {
      *         You do not have permission to access the instance.
      *         </p>
      *         <p>
-     *         The SSM Agent is not running. On managed instances and Linux instances, verify that the SSM Agent is
-     *         running. On EC2 Windows instances, verify that the EC2Config service is running.
+     *         SSM Agent is not running. Verify that SSM Agent is running.
      *         </p>
      *         <p>
-     *         The SSM Agent or EC2Config service is not registered to the SSM endpoint. Try reinstalling the SSM Agent
-     *         or EC2Config service.
+     *         SSM Agent is not registered with the SSM endpoint. Try reinstalling SSM Agent.
      *         </p>
      *         <p>
      *         The instance is not in valid state. Valid states are: Running, Pending, Stopped, Stopping. Invalid states
@@ -1097,12 +1184,10 @@ public interface AWSSimpleSystemsManagement {
      *         You do not have permission to access the instance.
      *         </p>
      *         <p>
-     *         The SSM Agent is not running. On managed instances and Linux instances, verify that the SSM Agent is
-     *         running. On EC2 Windows instances, verify that the EC2Config service is running.
+     *         SSM Agent is not running. Verify that SSM Agent is running.
      *         </p>
      *         <p>
-     *         The SSM Agent or EC2Config service is not registered to the SSM endpoint. Try reinstalling the SSM Agent
-     *         or EC2Config service.
+     *         SSM Agent is not registered with the SSM endpoint. Try reinstalling SSM Agent.
      *         </p>
      *         <p>
      *         The instance is not in valid state. Valid states are: Running, Pending, Stopped, Stopping. Invalid states
@@ -1127,7 +1212,7 @@ public interface AWSSimpleSystemsManagement {
      * @throws InternalServerErrorException
      *         An error occurred on the server side.
      * @throws InvalidDeletionIdException
-     *         The ID specified for the delete operation does not exist or is not valide. Verify the ID and try again.
+     *         The ID specified for the delete operation does not exist or is not valid. Verify the ID and try again.
      * @throws InvalidNextTokenException
      *         The specified token is not valid.
      * @sample AWSSimpleSystemsManagement.DescribeInventoryDeletions
@@ -1138,14 +1223,14 @@ public interface AWSSimpleSystemsManagement {
 
     /**
      * <p>
-     * Retrieves the individual task executions (one per target) for a particular task executed as part of a Maintenance
-     * Window execution.
+     * Retrieves the individual task executions (one per target) for a particular task run as part of a maintenance
+     * window execution.
      * </p>
      * 
      * @param describeMaintenanceWindowExecutionTaskInvocationsRequest
      * @return Result of the DescribeMaintenanceWindowExecutionTaskInvocations operation returned by the service.
      * @throws DoesNotExistException
-     *         Error returned when the ID specified for a resource, such as a Maintenance Window or Patch baseline,
+     *         Error returned when the ID specified for a resource, such as a maintenance window or Patch baseline,
      *         doesn't exist.</p>
      *         <p>
      *         For information about resource limits in Systems Manager, see <a
@@ -1163,13 +1248,13 @@ public interface AWSSimpleSystemsManagement {
 
     /**
      * <p>
-     * For a given Maintenance Window execution, lists the tasks that were executed.
+     * For a given maintenance window execution, lists the tasks that were run.
      * </p>
      * 
      * @param describeMaintenanceWindowExecutionTasksRequest
      * @return Result of the DescribeMaintenanceWindowExecutionTasks operation returned by the service.
      * @throws DoesNotExistException
-     *         Error returned when the ID specified for a resource, such as a Maintenance Window or Patch baseline,
+     *         Error returned when the ID specified for a resource, such as a maintenance window or Patch baseline,
      *         doesn't exist.</p>
      *         <p>
      *         For information about resource limits in Systems Manager, see <a
@@ -1186,8 +1271,8 @@ public interface AWSSimpleSystemsManagement {
 
     /**
      * <p>
-     * Lists the executions of a Maintenance Window. This includes information about when the Maintenance Window was
-     * scheduled to be active, and information about tasks registered and run with the Maintenance Window.
+     * Lists the executions of a maintenance window. This includes information about when the maintenance window was
+     * scheduled to be active, and information about tasks registered and run with the maintenance window.
      * </p>
      * 
      * @param describeMaintenanceWindowExecutionsRequest
@@ -1203,13 +1288,35 @@ public interface AWSSimpleSystemsManagement {
 
     /**
      * <p>
-     * Lists the targets registered with the Maintenance Window.
+     * Retrieves information about upcoming executions of a maintenance window.
+     * </p>
+     * 
+     * @param describeMaintenanceWindowScheduleRequest
+     * @return Result of the DescribeMaintenanceWindowSchedule operation returned by the service.
+     * @throws InternalServerErrorException
+     *         An error occurred on the server side.
+     * @throws DoesNotExistException
+     *         Error returned when the ID specified for a resource, such as a maintenance window or Patch baseline,
+     *         doesn't exist.</p>
+     *         <p>
+     *         For information about resource limits in Systems Manager, see <a
+     *         href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_ssm">AWS Systems
+     *         Manager Limits</a>.
+     * @sample AWSSimpleSystemsManagement.DescribeMaintenanceWindowSchedule
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DescribeMaintenanceWindowSchedule"
+     *      target="_top">AWS API Documentation</a>
+     */
+    DescribeMaintenanceWindowScheduleResult describeMaintenanceWindowSchedule(DescribeMaintenanceWindowScheduleRequest describeMaintenanceWindowScheduleRequest);
+
+    /**
+     * <p>
+     * Lists the targets registered with the maintenance window.
      * </p>
      * 
      * @param describeMaintenanceWindowTargetsRequest
      * @return Result of the DescribeMaintenanceWindowTargets operation returned by the service.
      * @throws DoesNotExistException
-     *         Error returned when the ID specified for a resource, such as a Maintenance Window or Patch baseline,
+     *         Error returned when the ID specified for a resource, such as a maintenance window or Patch baseline,
      *         doesn't exist.</p>
      *         <p>
      *         For information about resource limits in Systems Manager, see <a
@@ -1225,13 +1332,13 @@ public interface AWSSimpleSystemsManagement {
 
     /**
      * <p>
-     * Lists the tasks in a Maintenance Window.
+     * Lists the tasks in a maintenance window.
      * </p>
      * 
      * @param describeMaintenanceWindowTasksRequest
      * @return Result of the DescribeMaintenanceWindowTasks operation returned by the service.
      * @throws DoesNotExistException
-     *         Error returned when the ID specified for a resource, such as a Maintenance Window or Patch baseline,
+     *         Error returned when the ID specified for a resource, such as a maintenance window or Patch baseline,
      *         doesn't exist.</p>
      *         <p>
      *         For information about resource limits in Systems Manager, see <a
@@ -1247,7 +1354,7 @@ public interface AWSSimpleSystemsManagement {
 
     /**
      * <p>
-     * Retrieves the Maintenance Windows in an AWS account.
+     * Retrieves the maintenance windows in an AWS account.
      * </p>
      * 
      * @param describeMaintenanceWindowsRequest
@@ -1259,6 +1366,46 @@ public interface AWSSimpleSystemsManagement {
      *      API Documentation</a>
      */
     DescribeMaintenanceWindowsResult describeMaintenanceWindows(DescribeMaintenanceWindowsRequest describeMaintenanceWindowsRequest);
+
+    /**
+     * <p>
+     * Retrieves information about the maintenance window targets or tasks that an instance is associated with.
+     * </p>
+     * 
+     * @param describeMaintenanceWindowsForTargetRequest
+     * @return Result of the DescribeMaintenanceWindowsForTarget operation returned by the service.
+     * @throws InternalServerErrorException
+     *         An error occurred on the server side.
+     * @sample AWSSimpleSystemsManagement.DescribeMaintenanceWindowsForTarget
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DescribeMaintenanceWindowsForTarget"
+     *      target="_top">AWS API Documentation</a>
+     */
+    DescribeMaintenanceWindowsForTargetResult describeMaintenanceWindowsForTarget(
+            DescribeMaintenanceWindowsForTargetRequest describeMaintenanceWindowsForTargetRequest);
+
+    /**
+     * <p>
+     * Query a set of OpsItems. You must have permission in AWS Identity and Access Management (IAM) to query a list of
+     * OpsItems. For more information, see <a
+     * href="http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html">Getting Started
+     * with OpsCenter</a> in the <i>AWS Systems Manager User Guide</i>.
+     * </p>
+     * <p>
+     * Operations engineers and IT professionals use OpsCenter to view, investigate, and remediate operational issues
+     * impacting the performance and health of their AWS resources. For more information, see <a
+     * href="http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html">AWS Systems Manager
+     * OpsCenter</a> in the <i>AWS Systems Manager User Guide</i>.
+     * </p>
+     * 
+     * @param describeOpsItemsRequest
+     * @return Result of the DescribeOpsItems operation returned by the service.
+     * @throws InternalServerErrorException
+     *         An error occurred on the server side.
+     * @sample AWSSimpleSystemsManagement.DescribeOpsItems
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DescribeOpsItems" target="_top">AWS API
+     *      Documentation</a>
+     */
+    DescribeOpsItemsResult describeOpsItems(DescribeOpsItemsRequest describeOpsItemsRequest);
 
     /**
      * <p>
@@ -1340,6 +1487,91 @@ public interface AWSSimpleSystemsManagement {
 
     /**
      * <p>
+     * Lists the properties of available patches organized by product, product family, classification, severity, and
+     * other properties of available patches. You can use the reported properties in the filters you specify in requests
+     * for actions such as <a>CreatePatchBaseline</a>, <a>UpdatePatchBaseline</a>, <a>DescribeAvailablePatches</a>, and
+     * <a>DescribePatchBaselines</a>.
+     * </p>
+     * <p>
+     * The following section lists the properties that can be used in filters for each major operating system type:
+     * </p>
+     * <dl>
+     * <dt>WINDOWS</dt>
+     * <dd>
+     * <p>
+     * Valid properties: PRODUCT, PRODUCT_FAMILY, CLASSIFICATION, MSRC_SEVERITY
+     * </p>
+     * </dd>
+     * <dt>AMAZON_LINUX</dt>
+     * <dd>
+     * <p>
+     * Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
+     * </p>
+     * </dd>
+     * <dt>AMAZON_LINUX_2</dt>
+     * <dd>
+     * <p>
+     * Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
+     * </p>
+     * </dd>
+     * <dt>UBUNTU</dt>
+     * <dd>
+     * <p>
+     * Valid properties: PRODUCT, PRIORITY
+     * </p>
+     * </dd>
+     * <dt>REDHAT_ENTERPRISE_LINUX</dt>
+     * <dd>
+     * <p>
+     * Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
+     * </p>
+     * </dd>
+     * <dt>SUSE</dt>
+     * <dd>
+     * <p>
+     * Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
+     * </p>
+     * </dd>
+     * <dt>CENTOS</dt>
+     * <dd>
+     * <p>
+     * Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
+     * </p>
+     * </dd>
+     * </dl>
+     * 
+     * @param describePatchPropertiesRequest
+     * @return Result of the DescribePatchProperties operation returned by the service.
+     * @throws InternalServerErrorException
+     *         An error occurred on the server side.
+     * @sample AWSSimpleSystemsManagement.DescribePatchProperties
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DescribePatchProperties" target="_top">AWS
+     *      API Documentation</a>
+     */
+    DescribePatchPropertiesResult describePatchProperties(DescribePatchPropertiesRequest describePatchPropertiesRequest);
+
+    /**
+     * <p>
+     * Retrieves a list of all active sessions (both connected and disconnected) or terminated sessions from the past 30
+     * days.
+     * </p>
+     * 
+     * @param describeSessionsRequest
+     * @return Result of the DescribeSessions operation returned by the service.
+     * @throws InternalServerErrorException
+     *         An error occurred on the server side.
+     * @throws InvalidFilterKeyException
+     *         The specified key is not valid.
+     * @throws InvalidNextTokenException
+     *         The specified token is not valid.
+     * @sample AWSSimpleSystemsManagement.DescribeSessions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DescribeSessions" target="_top">AWS API
+     *      Documentation</a>
+     */
+    DescribeSessionsResult describeSessions(DescribeSessionsRequest describeSessionsRequest);
+
+    /**
+     * <p>
      * Get detailed information about a particular Automation execution.
      * </p>
      * 
@@ -1371,12 +1603,10 @@ public interface AWSSimpleSystemsManagement {
      *         You do not have permission to access the instance.
      *         </p>
      *         <p>
-     *         The SSM Agent is not running. On managed instances and Linux instances, verify that the SSM Agent is
-     *         running. On EC2 Windows instances, verify that the EC2Config service is running.
+     *         SSM Agent is not running. Verify that SSM Agent is running.
      *         </p>
      *         <p>
-     *         The SSM Agent or EC2Config service is not registered to the SSM endpoint. Try reinstalling the SSM Agent
-     *         or EC2Config service.
+     *         SSM Agent is not registered with the SSM endpoint. Try reinstalling SSM Agent.
      *         </p>
      *         <p>
      *         The instance is not in valid state. Valid states are: Running, Pending, Stopped, Stopping. Invalid states
@@ -1384,13 +1614,29 @@ public interface AWSSimpleSystemsManagement {
      * @throws InvalidPluginNameException
      *         The plugin name is not valid.
      * @throws InvocationDoesNotExistException
-     *         The command ID and instance ID you specified did not match any invocations. Verify the command ID adn the
+     *         The command ID and instance ID you specified did not match any invocations. Verify the command ID and the
      *         instance ID and try again.
      * @sample AWSSimpleSystemsManagement.GetCommandInvocation
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/GetCommandInvocation" target="_top">AWS API
      *      Documentation</a>
      */
     GetCommandInvocationResult getCommandInvocation(GetCommandInvocationRequest getCommandInvocationRequest);
+
+    /**
+     * <p>
+     * Retrieves the Session Manager connection status for an instance to determine whether it is connected and ready to
+     * receive Session Manager connections.
+     * </p>
+     * 
+     * @param getConnectionStatusRequest
+     * @return Result of the GetConnectionStatus operation returned by the service.
+     * @throws InternalServerErrorException
+     *         An error occurred on the server side.
+     * @sample AWSSimpleSystemsManagement.GetConnectionStatus
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/GetConnectionStatus" target="_top">AWS API
+     *      Documentation</a>
+     */
+    GetConnectionStatusResult getConnectionStatus(GetConnectionStatusRequest getConnectionStatusRequest);
 
     /**
      * <p>
@@ -1424,6 +1670,12 @@ public interface AWSSimpleSystemsManagement {
      * @throws UnsupportedOperatingSystemException
      *         The operating systems you specified is not supported, or the operation is not supported for the operating
      *         system. Valid operating systems include: Windows, AmazonLinux, RedhatEnterpriseLinux, and Ubuntu.
+     * @throws UnsupportedFeatureRequiredException
+     *         Microsoft application patching is only available on EC2 instances and Advanced Instances. To patch
+     *         Microsoft applications on on-premises servers and VMs, you must enable Advanced Instances. For more
+     *         information, see <a href=
+     *         "http://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-managedinstances-advanced.html"
+     *         >Using the Advanced-Instances Tier</a> in the <i>AWS Systems Manager User Guide</i>.
      * @sample AWSSimpleSystemsManagement.GetDeployablePatchSnapshotForInstance
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/GetDeployablePatchSnapshotForInstance"
      *      target="_top">AWS API Documentation</a>
@@ -1461,10 +1713,15 @@ public interface AWSSimpleSystemsManagement {
      *         An error occurred on the server side.
      * @throws InvalidFilterException
      *         The filter name is not valid. Verify the you entered the correct name and try again.
+     * @throws InvalidInventoryGroupException
+     *         The specified inventory group is not valid.
      * @throws InvalidNextTokenException
      *         The specified token is not valid.
      * @throws InvalidTypeNameException
      *         The parameter type name is not valid.
+     * @throws InvalidAggregatorException
+     *         The specified aggregator is not valid for inventory groups. Verify that the aggregator uses a valid
+     *         inventory type such as <code>AWS:Application</code> or <code>AWS:InstanceInformation</code>.
      * @throws InvalidResultAttributeException
      *         The specified inventory item result attribute is not valid.
      * @sample AWSSimpleSystemsManagement.GetInventory
@@ -1495,13 +1752,13 @@ public interface AWSSimpleSystemsManagement {
 
     /**
      * <p>
-     * Retrieves a Maintenance Window.
+     * Retrieves a maintenance window.
      * </p>
      * 
      * @param getMaintenanceWindowRequest
      * @return Result of the GetMaintenanceWindow operation returned by the service.
      * @throws DoesNotExistException
-     *         Error returned when the ID specified for a resource, such as a Maintenance Window or Patch baseline,
+     *         Error returned when the ID specified for a resource, such as a maintenance window or Patch baseline,
      *         doesn't exist.</p>
      *         <p>
      *         For information about resource limits in Systems Manager, see <a
@@ -1517,13 +1774,13 @@ public interface AWSSimpleSystemsManagement {
 
     /**
      * <p>
-     * Retrieves details about a specific task executed as part of a Maintenance Window execution.
+     * Retrieves details about a specific a maintenance window execution.
      * </p>
      * 
      * @param getMaintenanceWindowExecutionRequest
      * @return Result of the GetMaintenanceWindowExecution operation returned by the service.
      * @throws DoesNotExistException
-     *         Error returned when the ID specified for a resource, such as a Maintenance Window or Patch baseline,
+     *         Error returned when the ID specified for a resource, such as a maintenance window or Patch baseline,
      *         doesn't exist.</p>
      *         <p>
      *         For information about resource limits in Systems Manager, see <a
@@ -1539,13 +1796,13 @@ public interface AWSSimpleSystemsManagement {
 
     /**
      * <p>
-     * Retrieves the details about a specific task executed as part of a Maintenance Window execution.
+     * Retrieves the details about a specific task run as part of a maintenance window execution.
      * </p>
      * 
      * @param getMaintenanceWindowExecutionTaskRequest
      * @return Result of the GetMaintenanceWindowExecutionTask operation returned by the service.
      * @throws DoesNotExistException
-     *         Error returned when the ID specified for a resource, such as a Maintenance Window or Patch baseline,
+     *         Error returned when the ID specified for a resource, such as a maintenance window or Patch baseline,
      *         doesn't exist.</p>
      *         <p>
      *         For information about resource limits in Systems Manager, see <a
@@ -1561,14 +1818,13 @@ public interface AWSSimpleSystemsManagement {
 
     /**
      * <p>
-     * Retrieves a task invocation. A task invocation is a specific task executing on a specific target. Maintenance
-     * Windows report status for all invocations.
+     * Retrieves information about a specific task running on a specific target.
      * </p>
      * 
      * @param getMaintenanceWindowExecutionTaskInvocationRequest
      * @return Result of the GetMaintenanceWindowExecutionTaskInvocation operation returned by the service.
      * @throws DoesNotExistException
-     *         Error returned when the ID specified for a resource, such as a Maintenance Window or Patch baseline,
+     *         Error returned when the ID specified for a resource, such as a maintenance window or Patch baseline,
      *         doesn't exist.</p>
      *         <p>
      *         For information about resource limits in Systems Manager, see <a
@@ -1585,13 +1841,13 @@ public interface AWSSimpleSystemsManagement {
 
     /**
      * <p>
-     * Lists the tasks in a Maintenance Window.
+     * Lists the tasks in a maintenance window.
      * </p>
      * 
      * @param getMaintenanceWindowTaskRequest
      * @return Result of the GetMaintenanceWindowTask operation returned by the service.
      * @throws DoesNotExistException
-     *         Error returned when the ID specified for a resource, such as a Maintenance Window or Patch baseline,
+     *         Error returned when the ID specified for a resource, such as a maintenance window or Patch baseline,
      *         doesn't exist.</p>
      *         <p>
      *         For information about resource limits in Systems Manager, see <a
@@ -1607,7 +1863,58 @@ public interface AWSSimpleSystemsManagement {
 
     /**
      * <p>
-     * Get information about a parameter by using the parameter name.
+     * Get information about an OpsItem by using the ID. You must have permission in AWS Identity and Access Management
+     * (IAM) to view information about an OpsItem. For more information, see <a
+     * href="http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html">Getting Started
+     * with OpsCenter</a> in the <i>AWS Systems Manager User Guide</i>.
+     * </p>
+     * <p>
+     * Operations engineers and IT professionals use OpsCenter to view, investigate, and remediate operational issues
+     * impacting the performance and health of their AWS resources. For more information, see <a
+     * href="http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html">AWS Systems Manager
+     * OpsCenter</a> in the <i>AWS Systems Manager User Guide</i>.
+     * </p>
+     * 
+     * @param getOpsItemRequest
+     * @return Result of the GetOpsItem operation returned by the service.
+     * @throws InternalServerErrorException
+     *         An error occurred on the server side.
+     * @throws OpsItemNotFoundException
+     *         The specified OpsItem ID doesn't exist. Verify the ID and try again.
+     * @sample AWSSimpleSystemsManagement.GetOpsItem
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/GetOpsItem" target="_top">AWS API
+     *      Documentation</a>
+     */
+    GetOpsItemResult getOpsItem(GetOpsItemRequest getOpsItemRequest);
+
+    /**
+     * <p>
+     * View a summary of OpsItems based on specified filters and aggregators.
+     * </p>
+     * 
+     * @param getOpsSummaryRequest
+     * @return Result of the GetOpsSummary operation returned by the service.
+     * @throws InternalServerErrorException
+     *         An error occurred on the server side.
+     * @throws InvalidFilterException
+     *         The filter name is not valid. Verify the you entered the correct name and try again.
+     * @throws InvalidNextTokenException
+     *         The specified token is not valid.
+     * @throws InvalidTypeNameException
+     *         The parameter type name is not valid.
+     * @throws InvalidAggregatorException
+     *         The specified aggregator is not valid for inventory groups. Verify that the aggregator uses a valid
+     *         inventory type such as <code>AWS:Application</code> or <code>AWS:InstanceInformation</code>.
+     * @sample AWSSimpleSystemsManagement.GetOpsSummary
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/GetOpsSummary" target="_top">AWS API
+     *      Documentation</a>
+     */
+    GetOpsSummaryResult getOpsSummary(GetOpsSummaryRequest getOpsSummaryRequest);
+
+    /**
+     * <p>
+     * Get information about a parameter by using the parameter name. Don't confuse this API action with the
+     * <a>GetParameters</a> API action.
      * </p>
      * 
      * @param getParameterRequest
@@ -1649,7 +1956,7 @@ public interface AWSSimpleSystemsManagement {
 
     /**
      * <p>
-     * Get details of a parameter.
+     * Get details of a parameter. Don't confuse this API action with the <a>GetParameter</a> API action.
      * </p>
      * 
      * @param getParametersRequest
@@ -1668,7 +1975,7 @@ public interface AWSSimpleSystemsManagement {
      * <p>
      * Retrieve parameters in a specific hierarchy. For more information, see <a
      * href="http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-working.html">Working with
-     * Systems Manager Parameters</a>.
+     * Systems Manager Parameters</a> in the <i>AWS Systems Manager User Guide</i>.
      * </p>
      * <p>
      * Request results are returned on a best-effort basis. If you specify <code>MaxResults</code> in the request, the
@@ -1712,7 +2019,7 @@ public interface AWSSimpleSystemsManagement {
      * @param getPatchBaselineRequest
      * @return Result of the GetPatchBaseline operation returned by the service.
      * @throws DoesNotExistException
-     *         Error returned when the ID specified for a resource, such as a Maintenance Window or Patch baseline,
+     *         Error returned when the ID specified for a resource, such as a maintenance window or Patch baseline,
      *         doesn't exist.</p>
      *         <p>
      *         For information about resource limits in Systems Manager, see <a
@@ -1742,6 +2049,114 @@ public interface AWSSimpleSystemsManagement {
      *      target="_top">AWS API Documentation</a>
      */
     GetPatchBaselineForPatchGroupResult getPatchBaselineForPatchGroup(GetPatchBaselineForPatchGroupRequest getPatchBaselineForPatchGroupRequest);
+
+    /**
+     * <p>
+     * <code>ServiceSetting</code> is an account-level setting for an AWS service. This setting defines how a user
+     * interacts with or uses a service or a feature of a service. For example, if an AWS service charges money to the
+     * account based on feature or service usage, then the AWS service team might create a default setting of "false".
+     * This means the user can't use this feature unless they change the setting to "true" and intentionally opt in for
+     * a paid feature.
+     * </p>
+     * <p>
+     * Services map a <code>SettingId</code> object to a setting value. AWS services teams define the default value for
+     * a <code>SettingId</code>. You can't create a new <code>SettingId</code>, but you can overwrite the default value
+     * if you have the <code>ssm:UpdateServiceSetting</code> permission for the setting. Use the
+     * <a>UpdateServiceSetting</a> API action to change the default setting. Or use the <a>ResetServiceSetting</a> to
+     * change the value back to the original value defined by the AWS service team.
+     * </p>
+     * <p>
+     * Query the current service setting for the account.
+     * </p>
+     * 
+     * @param getServiceSettingRequest
+     *        The request body of the GetServiceSetting API action.
+     * @return Result of the GetServiceSetting operation returned by the service.
+     * @throws InternalServerErrorException
+     *         An error occurred on the server side.
+     * @throws ServiceSettingNotFoundException
+     *         The specified service setting was not found. Either the service name or the setting has not been
+     *         provisioned by the AWS service team.
+     * @sample AWSSimpleSystemsManagement.GetServiceSetting
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/GetServiceSetting" target="_top">AWS API
+     *      Documentation</a>
+     */
+    GetServiceSettingResult getServiceSetting(GetServiceSettingRequest getServiceSettingRequest);
+
+    /**
+     * <p>
+     * A parameter label is a user-defined alias to help you manage different versions of a parameter. When you modify a
+     * parameter, Systems Manager automatically saves a new version and increments the version number by one. A label
+     * can help you remember the purpose of a parameter when there are multiple versions.
+     * </p>
+     * <p>
+     * Parameter labels have the following requirements and restrictions.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * A version of a parameter can have a maximum of 10 labels.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * You can't attach the same label to different versions of the same parameter. For example, if version 1 has the
+     * label Production, then you can't attach Production to version 2.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * You can move a label from one version of a parameter to another.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * You can't create a label when you create a new parameter. You must attach a label to a specific version of a
+     * parameter.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * You can't delete a parameter label. If you no longer want to use a parameter label, then you must move it to a
+     * different version of a parameter.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * A label can have a maximum of 100 characters.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Labels can contain letters (case sensitive), numbers, periods (.), hyphens (-), or underscores (_).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Labels can't begin with a number, "aws," or "ssm" (not case sensitive). If a label fails to meet these
+     * requirements, then the label is not associated with a parameter and the system displays it in the list of
+     * InvalidLabels.
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param labelParameterVersionRequest
+     * @return Result of the LabelParameterVersion operation returned by the service.
+     * @throws InternalServerErrorException
+     *         An error occurred on the server side.
+     * @throws TooManyUpdatesException
+     *         There are concurrent updates for a resource that supports one update at a time.
+     * @throws ParameterNotFoundException
+     *         The parameter could not be found. Verify the name and try again.
+     * @throws ParameterVersionNotFoundException
+     *         The specified parameter version was not found. Verify the parameter name and version, and try again.
+     * @throws ParameterVersionLabelLimitExceededException
+     *         A parameter version can have a maximum of ten labels.
+     * @sample AWSSimpleSystemsManagement.LabelParameterVersion
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/LabelParameterVersion" target="_top">AWS API
+     *      Documentation</a>
+     */
+    LabelParameterVersionResult labelParameterVersion(LabelParameterVersionRequest labelParameterVersionRequest);
 
     /**
      * <p>
@@ -1782,8 +2197,8 @@ public interface AWSSimpleSystemsManagement {
     /**
      * <p>
      * An invocation is copy of a command sent to a specific instance. A command can apply to one or more instances. A
-     * command invocation applies to one instance. For example, if a user executes SendCommand against three instances,
-     * then a command invocation is created for each requested instance ID. ListCommandInvocations provide status about
+     * command invocation applies to one instance. For example, if a user runs SendCommand against three instances, then
+     * a command invocation is created for each requested instance ID. ListCommandInvocations provide status about
      * command execution.
      * </p>
      * 
@@ -1798,12 +2213,10 @@ public interface AWSSimpleSystemsManagement {
      *         You do not have permission to access the instance.
      *         </p>
      *         <p>
-     *         The SSM Agent is not running. On managed instances and Linux instances, verify that the SSM Agent is
-     *         running. On EC2 Windows instances, verify that the EC2Config service is running.
+     *         SSM Agent is not running. Verify that SSM Agent is running.
      *         </p>
      *         <p>
-     *         The SSM Agent or EC2Config service is not registered to the SSM endpoint. Try reinstalling the SSM Agent
-     *         or EC2Config service.
+     *         SSM Agent is not registered with the SSM endpoint. Try reinstalling SSM Agent.
      *         </p>
      *         <p>
      *         The instance is not in valid state. Valid states are: Running, Pending, Stopped, Stopping. Invalid states
@@ -1834,12 +2247,10 @@ public interface AWSSimpleSystemsManagement {
      *         You do not have permission to access the instance.
      *         </p>
      *         <p>
-     *         The SSM Agent is not running. On managed instances and Linux instances, verify that the SSM Agent is
-     *         running. On EC2 Windows instances, verify that the EC2Config service is running.
+     *         SSM Agent is not running. Verify that SSM Agent is running.
      *         </p>
      *         <p>
-     *         The SSM Agent or EC2Config service is not registered to the SSM endpoint. Try reinstalling the SSM Agent
-     *         or EC2Config service.
+     *         SSM Agent is not registered with the SSM endpoint. Try reinstalling SSM Agent.
      *         </p>
      *         <p>
      *         The instance is not in valid state. Valid states are: Running, Pending, Stopped, Stopping. Invalid states
@@ -1961,12 +2372,10 @@ public interface AWSSimpleSystemsManagement {
      *         You do not have permission to access the instance.
      *         </p>
      *         <p>
-     *         The SSM Agent is not running. On managed instances and Linux instances, verify that the SSM Agent is
-     *         running. On EC2 Windows instances, verify that the EC2Config service is running.
+     *         SSM Agent is not running. Verify that SSM Agent is running.
      *         </p>
      *         <p>
-     *         The SSM Agent or EC2Config service is not registered to the SSM endpoint. Try reinstalling the SSM Agent
-     *         or EC2Config service.
+     *         SSM Agent is not registered with the SSM endpoint. Try reinstalling SSM Agent.
      *         </p>
      *         <p>
      *         The instance is not in valid state. Valid states are: Running, Pending, Stopped, Stopping. Invalid states
@@ -2068,7 +2477,7 @@ public interface AWSSimpleSystemsManagement {
      *         accounts. You can publicly share up to five documents. If you need to increase this limit, contact AWS
      *         Support.
      * @throws DocumentLimitExceededException
-     *         You can have at most 200 active Systems Manager documents.
+     *         You can have at most 500 active Systems Manager documents.
      * @sample AWSSimpleSystemsManagement.ModifyDocumentPermission
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/ModifyDocumentPermission" target="_top">AWS
      *      API Documentation</a>
@@ -2203,12 +2612,10 @@ public interface AWSSimpleSystemsManagement {
      *         You do not have permission to access the instance.
      *         </p>
      *         <p>
-     *         The SSM Agent is not running. On managed instances and Linux instances, verify that the SSM Agent is
-     *         running. On EC2 Windows instances, verify that the EC2Config service is running.
+     *         SSM Agent is not running. Verify that SSM Agent is running.
      *         </p>
      *         <p>
-     *         The SSM Agent or EC2Config service is not registered to the SSM endpoint. Try reinstalling the SSM Agent
-     *         or EC2Config service.
+     *         SSM Agent is not registered with the SSM endpoint. Try reinstalling SSM Agent.
      *         </p>
      *         <p>
      *         The instance is not in valid state. Valid states are: Running, Pending, Stopped, Stopping. Invalid states
@@ -2262,9 +2669,9 @@ public interface AWSSimpleSystemsManagement {
      * @throws ParameterAlreadyExistsException
      *         The parameter already exists. You can't create duplicate parameters.
      * @throws HierarchyLevelLimitExceededException
-     *         A hierarchy can have a maximum of 15 levels. For more information, see <a
-     *         href="http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-working.html">Working
-     *         with Systems Manager Parameters</a>.
+     *         A hierarchy can have a maximum of 15 levels. For more information, see <a href=
+     *         "http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-parameter-name-constraints.html"
+     *         >Requirements and Constraints for Parameter Names</a> in the <i>AWS Systems Manager User Guide</i>.
      * @throws HierarchyTypeMismatchException
      *         Parameter Store does not support changing a parameter type in a hierarchy. For example, you can't change
      *         a parameter from a String type to a SecureString type. You must create a new, unique parameter.
@@ -2276,6 +2683,16 @@ public interface AWSSimpleSystemsManagement {
      *         The parameter name is not valid.
      * @throws UnsupportedParameterTypeException
      *         The parameter type is not supported.
+     * @throws PoliciesLimitExceededException
+     *         You specified more than the maximum number of allowed policies for the parameter. The maximum is 10.
+     * @throws InvalidPolicyTypeException
+     *         The policy type is not supported. Parameter Store supports the following policy types: Expiration,
+     *         ExpirationNotification, and NoChangeNotification.
+     * @throws InvalidPolicyAttributeException
+     *         A policy attribute or its value is invalid.
+     * @throws IncompatiblePolicyException
+     *         There is a conflict in the policies specified for this parameter. You can't, for example, specify two
+     *         Expiration policies for a parameter. Review your policies, and try again.
      * @sample AWSSimpleSystemsManagement.PutParameter
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/PutParameter" target="_top">AWS API
      *      Documentation</a>
@@ -2284,7 +2701,13 @@ public interface AWSSimpleSystemsManagement {
 
     /**
      * <p>
-     * Defines the default patch baseline.
+     * Defines the default patch baseline for the relevant operating system.
+     * </p>
+     * <p>
+     * To reset the AWS predefined patch baseline as the default, specify the full patch baseline ARN as the baseline ID
+     * value. For example, for CentOS, specify
+     * <code>arn:aws:ssm:us-east-2:733109147000:patchbaseline/pb-0574b43a65ea646ed</code> instead of
+     * <code>pb-0574b43a65ea646ed</code>.
      * </p>
      * 
      * @param registerDefaultPatchBaselineRequest
@@ -2292,7 +2715,7 @@ public interface AWSSimpleSystemsManagement {
      * @throws InvalidResourceIdException
      *         The resource ID is not valid. Verify that you entered the correct ID and try again.
      * @throws DoesNotExistException
-     *         Error returned when the ID specified for a resource, such as a Maintenance Window or Patch baseline,
+     *         Error returned when the ID specified for a resource, such as a maintenance window or Patch baseline,
      *         doesn't exist.</p>
      *         <p>
      *         For information about resource limits in Systems Manager, see <a
@@ -2317,7 +2740,7 @@ public interface AWSSimpleSystemsManagement {
      *         Error returned if an attempt is made to register a patch group with a patch baseline that is already
      *         registered with a different patch baseline.
      * @throws DoesNotExistException
-     *         Error returned when the ID specified for a resource, such as a Maintenance Window or Patch baseline,
+     *         Error returned when the ID specified for a resource, such as a maintenance window or Patch baseline,
      *         doesn't exist.</p>
      *         <p>
      *         For information about resource limits in Systems Manager, see <a
@@ -2327,7 +2750,7 @@ public interface AWSSimpleSystemsManagement {
      *         The resource ID is not valid. Verify that you entered the correct ID and try again.
      * @throws ResourceLimitExceededException
      *         Error returned when the caller has exceeded the default resource limits. For example, too many
-     *         Maintenance Windows or Patch baselines have been created.
+     *         maintenance windows or patch baselines have been created.
      *         </p>
      *         <p>
      *         For information about resource limits in Systems Manager, see <a
@@ -2344,7 +2767,7 @@ public interface AWSSimpleSystemsManagement {
 
     /**
      * <p>
-     * Registers a target with a Maintenance Window.
+     * Registers a target with a maintenance window.
      * </p>
      * 
      * @param registerTargetWithMaintenanceWindowRequest
@@ -2353,7 +2776,7 @@ public interface AWSSimpleSystemsManagement {
      *         Error returned when an idempotent operation is retried and the parameters don't match the original call
      *         to the API with the same idempotency token.
      * @throws DoesNotExistException
-     *         Error returned when the ID specified for a resource, such as a Maintenance Window or Patch baseline,
+     *         Error returned when the ID specified for a resource, such as a maintenance window or Patch baseline,
      *         doesn't exist.</p>
      *         <p>
      *         For information about resource limits in Systems Manager, see <a
@@ -2361,7 +2784,7 @@ public interface AWSSimpleSystemsManagement {
      *         Manager Limits</a>.
      * @throws ResourceLimitExceededException
      *         Error returned when the caller has exceeded the default resource limits. For example, too many
-     *         Maintenance Windows or Patch baselines have been created.
+     *         maintenance windows or patch baselines have been created.
      *         </p>
      *         <p>
      *         For information about resource limits in Systems Manager, see <a
@@ -2378,7 +2801,7 @@ public interface AWSSimpleSystemsManagement {
 
     /**
      * <p>
-     * Adds a new task to a Maintenance Window.
+     * Adds a new task to a maintenance window.
      * </p>
      * 
      * @param registerTaskWithMaintenanceWindowRequest
@@ -2387,7 +2810,7 @@ public interface AWSSimpleSystemsManagement {
      *         Error returned when an idempotent operation is retried and the parameters don't match the original call
      *         to the API with the same idempotency token.
      * @throws DoesNotExistException
-     *         Error returned when the ID specified for a resource, such as a Maintenance Window or Patch baseline,
+     *         Error returned when the ID specified for a resource, such as a maintenance window or Patch baseline,
      *         doesn't exist.</p>
      *         <p>
      *         For information about resource limits in Systems Manager, see <a
@@ -2395,14 +2818,14 @@ public interface AWSSimpleSystemsManagement {
      *         Manager Limits</a>.
      * @throws ResourceLimitExceededException
      *         Error returned when the caller has exceeded the default resource limits. For example, too many
-     *         Maintenance Windows or Patch baselines have been created.
+     *         maintenance windows or patch baselines have been created.
      *         </p>
      *         <p>
      *         For information about resource limits in Systems Manager, see <a
      *         href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_ssm">AWS Systems
      *         Manager Limits</a>.
      * @throws FeatureNotAvailableException
-     *         You attempted to register a LAMBDA or STEP_FUNCTION task in a region where the corresponding service is
+     *         You attempted to register a LAMBDA or STEP_FUNCTIONS task in a region where the corresponding service is
      *         not available.
      * @throws InternalServerErrorException
      *         An error occurred on the server side.
@@ -2414,7 +2837,7 @@ public interface AWSSimpleSystemsManagement {
 
     /**
      * <p>
-     * Removes all tags from the specified resource.
+     * Removes tag keys from the specified resource.
      * </p>
      * 
      * @param removeTagsFromResourceRequest
@@ -2433,6 +2856,70 @@ public interface AWSSimpleSystemsManagement {
      *      Documentation</a>
      */
     RemoveTagsFromResourceResult removeTagsFromResource(RemoveTagsFromResourceRequest removeTagsFromResourceRequest);
+
+    /**
+     * <p>
+     * <code>ServiceSetting</code> is an account-level setting for an AWS service. This setting defines how a user
+     * interacts with or uses a service or a feature of a service. For example, if an AWS service charges money to the
+     * account based on feature or service usage, then the AWS service team might create a default setting of "false".
+     * This means the user can't use this feature unless they change the setting to "true" and intentionally opt in for
+     * a paid feature.
+     * </p>
+     * <p>
+     * Services map a <code>SettingId</code> object to a setting value. AWS services teams define the default value for
+     * a <code>SettingId</code>. You can't create a new <code>SettingId</code>, but you can overwrite the default value
+     * if you have the <code>ssm:UpdateServiceSetting</code> permission for the setting. Use the
+     * <a>GetServiceSetting</a> API action to view the current value. Use the <a>UpdateServiceSetting</a> API action to
+     * change the default setting.
+     * </p>
+     * <p>
+     * Reset the service setting for the account to the default value as provisioned by the AWS service team.
+     * </p>
+     * 
+     * @param resetServiceSettingRequest
+     *        The request body of the ResetServiceSetting API action.
+     * @return Result of the ResetServiceSetting operation returned by the service.
+     * @throws InternalServerErrorException
+     *         An error occurred on the server side.
+     * @throws ServiceSettingNotFoundException
+     *         The specified service setting was not found. Either the service name or the setting has not been
+     *         provisioned by the AWS service team.
+     * @throws TooManyUpdatesException
+     *         There are concurrent updates for a resource that supports one update at a time.
+     * @sample AWSSimpleSystemsManagement.ResetServiceSetting
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/ResetServiceSetting" target="_top">AWS API
+     *      Documentation</a>
+     */
+    ResetServiceSettingResult resetServiceSetting(ResetServiceSettingRequest resetServiceSettingRequest);
+
+    /**
+     * <p>
+     * Reconnects a session to an instance after it has been disconnected. Connections can be resumed for disconnected
+     * sessions, but not terminated sessions.
+     * </p>
+     * <note>
+     * <p>
+     * This command is primarily for use by client machines to automatically reconnect during intermittent network
+     * issues. It is not intended for any other use.
+     * </p>
+     * </note>
+     * 
+     * @param resumeSessionRequest
+     * @return Result of the ResumeSession operation returned by the service.
+     * @throws DoesNotExistException
+     *         Error returned when the ID specified for a resource, such as a maintenance window or Patch baseline,
+     *         doesn't exist.</p>
+     *         <p>
+     *         For information about resource limits in Systems Manager, see <a
+     *         href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_ssm">AWS Systems
+     *         Manager Limits</a>.
+     * @throws InternalServerErrorException
+     *         An error occurred on the server side.
+     * @sample AWSSimpleSystemsManagement.ResumeSession
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/ResumeSession" target="_top">AWS API
+     *      Documentation</a>
+     */
+    ResumeSessionResult resumeSession(ResumeSessionRequest resumeSessionRequest);
 
     /**
      * <p>
@@ -2457,7 +2944,7 @@ public interface AWSSimpleSystemsManagement {
 
     /**
      * <p>
-     * Executes commands on one or more managed instances.
+     * Runs commands on one or more managed instances.
      * </p>
      * 
      * @param sendCommandRequest
@@ -2472,12 +2959,10 @@ public interface AWSSimpleSystemsManagement {
      *         You do not have permission to access the instance.
      *         </p>
      *         <p>
-     *         The SSM Agent is not running. On managed instances and Linux instances, verify that the SSM Agent is
-     *         running. On EC2 Windows instances, verify that the EC2Config service is running.
+     *         SSM Agent is not running. Verify that SSM Agent is running.
      *         </p>
      *         <p>
-     *         The SSM Agent or EC2Config service is not registered to the SSM endpoint. Try reinstalling the SSM Agent
-     *         or EC2Config service.
+     *         SSM Agent is not registered with the SSM endpoint. Try reinstalling SSM Agent.
      *         </p>
      *         <p>
      *         The instance is not in valid state. Valid states are: Running, Pending, Stopped, Stopping. Invalid states
@@ -2513,6 +2998,24 @@ public interface AWSSimpleSystemsManagement {
 
     /**
      * <p>
+     * Use this API action to run an association immediately and only one time. This action can be helpful when
+     * troubleshooting associations.
+     * </p>
+     * 
+     * @param startAssociationsOnceRequest
+     * @return Result of the StartAssociationsOnce operation returned by the service.
+     * @throws InvalidAssociationException
+     *         The association is not valid or does not exist.
+     * @throws AssociationDoesNotExistException
+     *         The specified association does not exist.
+     * @sample AWSSimpleSystemsManagement.StartAssociationsOnce
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/StartAssociationsOnce" target="_top">AWS API
+     *      Documentation</a>
+     */
+    StartAssociationsOnceResult startAssociationsOnce(StartAssociationsOnceRequest startAssociationsOnceRequest);
+
+    /**
+     * <p>
      * Initiates execution of an Automation document.
      * </p>
      * 
@@ -2543,7 +3046,38 @@ public interface AWSSimpleSystemsManagement {
 
     /**
      * <p>
-     * Stop an Automation that is currently executing.
+     * Initiates a connection to a target (for example, an instance) for a Session Manager session. Returns a URL and
+     * token that can be used to open a WebSocket connection for sending input and receiving outputs.
+     * </p>
+     * <note>
+     * <p>
+     * AWS CLI usage: <code>start-session</code> is an interactive command that requires the Session Manager plugin to
+     * be installed on the client machine making the call. For information, see <a href=
+     * "http://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html">
+     * Install the Session Manager Plugin for the AWS CLI</a> in the <i>AWS Systems Manager User Guide</i>.
+     * </p>
+     * </note>
+     * 
+     * @param startSessionRequest
+     * @return Result of the StartSession operation returned by the service.
+     * @throws InvalidDocumentException
+     *         The specified document does not exist.
+     * @throws TargetNotConnectedException
+     *         The specified target instance for the session is not fully configured for use with Session Manager. For
+     *         more information, see <a
+     *         href="http://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-getting-started.html"
+     *         >Getting Started with Session Manager</a> in the <i>AWS Systems Manager User Guide</i>.
+     * @throws InternalServerErrorException
+     *         An error occurred on the server side.
+     * @sample AWSSimpleSystemsManagement.StartSession
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/StartSession" target="_top">AWS API
+     *      Documentation</a>
+     */
+    StartSessionResult startSession(StartSessionRequest startSessionRequest);
+
+    /**
+     * <p>
+     * Stop an Automation that is currently running.
      * </p>
      * 
      * @param stopAutomationExecutionRequest
@@ -2562,9 +3096,37 @@ public interface AWSSimpleSystemsManagement {
 
     /**
      * <p>
+     * Permanently ends a session and closes the data connection between the Session Manager client and SSM Agent on the
+     * instance. A terminated session cannot be resumed.
+     * </p>
+     * 
+     * @param terminateSessionRequest
+     * @return Result of the TerminateSession operation returned by the service.
+     * @throws DoesNotExistException
+     *         Error returned when the ID specified for a resource, such as a maintenance window or Patch baseline,
+     *         doesn't exist.</p>
+     *         <p>
+     *         For information about resource limits in Systems Manager, see <a
+     *         href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_ssm">AWS Systems
+     *         Manager Limits</a>.
+     * @throws InternalServerErrorException
+     *         An error occurred on the server side.
+     * @sample AWSSimpleSystemsManagement.TerminateSession
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/TerminateSession" target="_top">AWS API
+     *      Documentation</a>
+     */
+    TerminateSessionResult terminateSession(TerminateSessionRequest terminateSessionRequest);
+
+    /**
+     * <p>
      * Updates an association. You can update the association name and version, the document version, schedule,
      * parameters, and Amazon S3 output.
      * </p>
+     * <important>
+     * <p>
+     * When you update an association, the association immediately runs against the specified targets.
+     * </p>
+     * </important>
      * 
      * @param updateAssociationRequest
      * @return Result of the UpdateAssociation operation returned by the service.
@@ -2618,12 +3180,10 @@ public interface AWSSimpleSystemsManagement {
      *         You do not have permission to access the instance.
      *         </p>
      *         <p>
-     *         The SSM Agent is not running. On managed instances and Linux instances, verify that the SSM Agent is
-     *         running. On EC2 Windows instances, verify that the EC2Config service is running.
+     *         SSM Agent is not running. Verify that SSM Agent is running.
      *         </p>
      *         <p>
-     *         The SSM Agent or EC2Config service is not registered to the SSM endpoint. Try reinstalling the SSM Agent
-     *         or EC2Config service.
+     *         SSM Agent is not registered with the SSM endpoint. Try reinstalling SSM Agent.
      *         </p>
      *         <p>
      *         The instance is not in valid state. Valid states are: Running, Pending, Stopped, Stopping. Invalid states
@@ -2644,7 +3204,7 @@ public interface AWSSimpleSystemsManagement {
 
     /**
      * <p>
-     * The document you want to update.
+     * Updates one or more values for an SSM document.
      * </p>
      * 
      * @param updateDocumentRequest
@@ -2658,6 +3218,9 @@ public interface AWSSimpleSystemsManagement {
      * @throws DuplicateDocumentContentException
      *         The content of the association document matches another document. Change the content of the document and
      *         try again.
+     * @throws DuplicateDocumentVersionNameException
+     *         The version name has already been used in this document. Specify a different version name, and then try
+     *         again.
      * @throws InvalidDocumentContentException
      *         The content for the document is not valid.
      * @throws InvalidDocumentVersionException
@@ -2666,6 +3229,9 @@ public interface AWSSimpleSystemsManagement {
      *         The version of the document schema is not supported.
      * @throws InvalidDocumentException
      *         The specified document does not exist.
+     * @throws InvalidDocumentOperationException
+     *         You attempted to delete a document while it is still shared. You must stop sharing the document before
+     *         you can delete it.
      * @sample AWSSimpleSystemsManagement.UpdateDocument
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/UpdateDocument" target="_top">AWS API
      *      Documentation</a>
@@ -2695,13 +3261,13 @@ public interface AWSSimpleSystemsManagement {
 
     /**
      * <p>
-     * Updates an existing Maintenance Window. Only specified parameters are modified.
+     * Updates an existing maintenance window. Only specified parameters are modified.
      * </p>
      * 
      * @param updateMaintenanceWindowRequest
      * @return Result of the UpdateMaintenanceWindow operation returned by the service.
      * @throws DoesNotExistException
-     *         Error returned when the ID specified for a resource, such as a Maintenance Window or Patch baseline,
+     *         Error returned when the ID specified for a resource, such as a maintenance window or Patch baseline,
      *         doesn't exist.</p>
      *         <p>
      *         For information about resource limits in Systems Manager, see <a
@@ -2717,35 +3283,51 @@ public interface AWSSimpleSystemsManagement {
 
     /**
      * <p>
-     * Modifies the target of an existing Maintenance Window. You can't change the target type, but you can change the
-     * following:
+     * Modifies the target of an existing maintenance window. You can change the following:
      * </p>
+     * <ul>
+     * <li>
      * <p>
-     * The target from being an ID target to a Tag target, or a Tag target to an ID target.
+     * Name
      * </p>
+     * </li>
+     * <li>
      * <p>
-     * IDs for an ID target.
+     * Description
      * </p>
+     * </li>
+     * <li>
      * <p>
-     * Tags for a Tag target.
+     * Owner
      * </p>
+     * </li>
+     * <li>
      * <p>
-     * Owner.
+     * IDs for an ID target
      * </p>
+     * </li>
+     * <li>
      * <p>
-     * Name.
+     * Tags for a Tag target
      * </p>
+     * </li>
+     * <li>
      * <p>
-     * Description.
+     * From any supported tag type to another. The three supported tag types are ID target, Tag target, and resource
+     * group. For more information, see <a>Target</a>.
      * </p>
+     * </li>
+     * </ul>
+     * <note>
      * <p>
      * If a parameter is null, then the corresponding field is not modified.
      * </p>
+     * </note>
      * 
      * @param updateMaintenanceWindowTargetRequest
      * @return Result of the UpdateMaintenanceWindowTarget operation returned by the service.
      * @throws DoesNotExistException
-     *         Error returned when the ID specified for a resource, such as a Maintenance Window or Patch baseline,
+     *         Error returned when the ID specified for a resource, such as a maintenance window or Patch baseline,
      *         doesn't exist.</p>
      *         <p>
      *         For information about resource limits in Systems Manager, see <a
@@ -2761,7 +3343,7 @@ public interface AWSSimpleSystemsManagement {
 
     /**
      * <p>
-     * Modifies a task assigned to a Maintenance Window. You can't change the task type, but you can change the
+     * Modifies a task assigned to a maintenance window. You can't change the task type, but you can change the
      * following values:
      * </p>
      * <ul>
@@ -2805,7 +3387,7 @@ public interface AWSSimpleSystemsManagement {
      * @param updateMaintenanceWindowTaskRequest
      * @return Result of the UpdateMaintenanceWindowTask operation returned by the service.
      * @throws DoesNotExistException
-     *         Error returned when the ID specified for a resource, such as a Maintenance Window or Patch baseline,
+     *         Error returned when the ID specified for a resource, such as a maintenance window or Patch baseline,
      *         doesn't exist.</p>
      *         <p>
      *         For information about resource limits in Systems Manager, see <a
@@ -2821,7 +3403,7 @@ public interface AWSSimpleSystemsManagement {
 
     /**
      * <p>
-     * Assigns or changes an Amazon Identity and Access Management (IAM) role to the managed instance.
+     * Assigns or changes an Amazon Identity and Access Management (IAM) role for the managed instance.
      * </p>
      * 
      * @param updateManagedInstanceRoleRequest
@@ -2832,12 +3414,10 @@ public interface AWSSimpleSystemsManagement {
      *         You do not have permission to access the instance.
      *         </p>
      *         <p>
-     *         The SSM Agent is not running. On managed instances and Linux instances, verify that the SSM Agent is
-     *         running. On EC2 Windows instances, verify that the EC2Config service is running.
+     *         SSM Agent is not running. Verify that SSM Agent is running.
      *         </p>
      *         <p>
-     *         The SSM Agent or EC2Config service is not registered to the SSM endpoint. Try reinstalling the SSM Agent
-     *         or EC2Config service.
+     *         SSM Agent is not registered with the SSM endpoint. Try reinstalling SSM Agent.
      *         </p>
      *         <p>
      *         The instance is not in valid state. Valid states are: Running, Pending, Stopped, Stopping. Invalid states
@@ -2849,6 +3429,41 @@ public interface AWSSimpleSystemsManagement {
      *      API Documentation</a>
      */
     UpdateManagedInstanceRoleResult updateManagedInstanceRole(UpdateManagedInstanceRoleRequest updateManagedInstanceRoleRequest);
+
+    /**
+     * <p>
+     * Edit or change an OpsItem. You must have permission in AWS Identity and Access Management (IAM) to update an
+     * OpsItem. For more information, see <a
+     * href="http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html">Getting Started
+     * with OpsCenter</a> in the <i>AWS Systems Manager User Guide</i>.
+     * </p>
+     * <p>
+     * Operations engineers and IT professionals use OpsCenter to view, investigate, and remediate operational issues
+     * impacting the performance and health of their AWS resources. For more information, see <a
+     * href="http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html">AWS Systems Manager
+     * OpsCenter</a> in the <i>AWS Systems Manager User Guide</i>.
+     * </p>
+     * 
+     * @param updateOpsItemRequest
+     * @return Result of the UpdateOpsItem operation returned by the service.
+     * @throws InternalServerErrorException
+     *         An error occurred on the server side.
+     * @throws OpsItemNotFoundException
+     *         The specified OpsItem ID doesn't exist. Verify the ID and try again.
+     * @throws OpsItemAlreadyExistsException
+     *         The OpsItem already exists.
+     * @throws OpsItemLimitExceededException
+     *         The request caused OpsItems to exceed one or more limits. For information about OpsItem limits, see <a
+     *         href=
+     *         "http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-learn-more.html#OpsCenter-learn-more-limits"
+     *         >What are the resource limits for OpsCenter?</a>.
+     * @throws OpsItemInvalidParameterException
+     *         A specified parameter argument isn't valid. Verify the available arguments and try again.
+     * @sample AWSSimpleSystemsManagement.UpdateOpsItem
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/UpdateOpsItem" target="_top">AWS API
+     *      Documentation</a>
+     */
+    UpdateOpsItemResult updateOpsItem(UpdateOpsItemRequest updateOpsItemRequest);
 
     /**
      * <p>
@@ -2865,7 +3480,7 @@ public interface AWSSimpleSystemsManagement {
      * @param updatePatchBaselineRequest
      * @return Result of the UpdatePatchBaseline operation returned by the service.
      * @throws DoesNotExistException
-     *         Error returned when the ID specified for a resource, such as a Maintenance Window or Patch baseline,
+     *         Error returned when the ID specified for a resource, such as a maintenance window or Patch baseline,
      *         doesn't exist.</p>
      *         <p>
      *         For information about resource limits in Systems Manager, see <a
@@ -2878,6 +3493,41 @@ public interface AWSSimpleSystemsManagement {
      *      Documentation</a>
      */
     UpdatePatchBaselineResult updatePatchBaseline(UpdatePatchBaselineRequest updatePatchBaselineRequest);
+
+    /**
+     * <p>
+     * <code>ServiceSetting</code> is an account-level setting for an AWS service. This setting defines how a user
+     * interacts with or uses a service or a feature of a service. For example, if an AWS service charges money to the
+     * account based on feature or service usage, then the AWS service team might create a default setting of "false".
+     * This means the user can't use this feature unless they change the setting to "true" and intentionally opt in for
+     * a paid feature.
+     * </p>
+     * <p>
+     * Services map a <code>SettingId</code> object to a setting value. AWS services teams define the default value for
+     * a <code>SettingId</code>. You can't create a new <code>SettingId</code>, but you can overwrite the default value
+     * if you have the <code>ssm:UpdateServiceSetting</code> permission for the setting. Use the
+     * <a>GetServiceSetting</a> API action to view the current value. Or, use the <a>ResetServiceSetting</a> to change
+     * the value back to the original value defined by the AWS service team.
+     * </p>
+     * <p>
+     * Update the service setting for the account.
+     * </p>
+     * 
+     * @param updateServiceSettingRequest
+     *        The request body of the UpdateServiceSetting API action.
+     * @return Result of the UpdateServiceSetting operation returned by the service.
+     * @throws InternalServerErrorException
+     *         An error occurred on the server side.
+     * @throws ServiceSettingNotFoundException
+     *         The specified service setting was not found. Either the service name or the setting has not been
+     *         provisioned by the AWS service team.
+     * @throws TooManyUpdatesException
+     *         There are concurrent updates for a resource that supports one update at a time.
+     * @sample AWSSimpleSystemsManagement.UpdateServiceSetting
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/UpdateServiceSetting" target="_top">AWS API
+     *      Documentation</a>
+     */
+    UpdateServiceSettingResult updateServiceSetting(UpdateServiceSettingRequest updateServiceSettingRequest);
 
     /**
      * Shuts down this client object, releasing any resources that might be held open. This is an optional method, and

@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -82,7 +82,8 @@ public interface AWSMediaStoreData {
 
     /**
      * <p>
-     * Downloads the object at the specified path.
+     * Downloads the object at the specified path. If the object’s upload availability is set to <code>streaming</code>,
+     * AWS Elemental MediaStore downloads the object even if it’s still uploading the object.
      * </p>
      * 
      * @param getObjectRequest
@@ -120,7 +121,8 @@ public interface AWSMediaStoreData {
 
     /**
      * <p>
-     * Uploads an object to the specified path. Object sizes are limited to 10 MB.
+     * Uploads an object to the specified path. Object sizes are limited to 25 MB for standard upload availability and
+     * 10 MB for streaming upload availability.
      * </p>
      * 
      * @param putObjectRequest

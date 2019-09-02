@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -116,7 +116,7 @@ public class ReservedInstancesOffering implements Serializable, Cloneable {
     private com.amazonaws.internal.SdkInternalList<RecurringCharge> recurringCharges;
     /**
      * <p>
-     * Whether the Reserved Instance is applied to instances in a region or an Availability Zone.
+     * Whether the Reserved Instance is applied to instances in a Region or an Availability Zone.
      * </p>
      */
     private String scope;
@@ -994,11 +994,11 @@ public class ReservedInstancesOffering implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Whether the Reserved Instance is applied to instances in a region or an Availability Zone.
+     * Whether the Reserved Instance is applied to instances in a Region or an Availability Zone.
      * </p>
      * 
      * @param scope
-     *        Whether the Reserved Instance is applied to instances in a region or an Availability Zone.
+     *        Whether the Reserved Instance is applied to instances in a Region or an Availability Zone.
      * @see Scope
      */
 
@@ -1008,10 +1008,10 @@ public class ReservedInstancesOffering implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Whether the Reserved Instance is applied to instances in a region or an Availability Zone.
+     * Whether the Reserved Instance is applied to instances in a Region or an Availability Zone.
      * </p>
      * 
-     * @return Whether the Reserved Instance is applied to instances in a region or an Availability Zone.
+     * @return Whether the Reserved Instance is applied to instances in a Region or an Availability Zone.
      * @see Scope
      */
 
@@ -1021,11 +1021,11 @@ public class ReservedInstancesOffering implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Whether the Reserved Instance is applied to instances in a region or an Availability Zone.
+     * Whether the Reserved Instance is applied to instances in a Region or an Availability Zone.
      * </p>
      * 
      * @param scope
-     *        Whether the Reserved Instance is applied to instances in a region or an Availability Zone.
+     *        Whether the Reserved Instance is applied to instances in a Region or an Availability Zone.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Scope
      */
@@ -1037,11 +1037,11 @@ public class ReservedInstancesOffering implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Whether the Reserved Instance is applied to instances in a region or an Availability Zone.
+     * Whether the Reserved Instance is applied to instances in a Region or an Availability Zone.
      * </p>
      * 
      * @param scope
-     *        Whether the Reserved Instance is applied to instances in a region or an Availability Zone.
+     *        Whether the Reserved Instance is applied to instances in a Region or an Availability Zone.
      * @see Scope
      */
 
@@ -1051,11 +1051,11 @@ public class ReservedInstancesOffering implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Whether the Reserved Instance is applied to instances in a region or an Availability Zone.
+     * Whether the Reserved Instance is applied to instances in a Region or an Availability Zone.
      * </p>
      * 
      * @param scope
-     *        Whether the Reserved Instance is applied to instances in a region or an Availability Zone.
+     *        Whether the Reserved Instance is applied to instances in a Region or an Availability Zone.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Scope
      */
@@ -1066,7 +1066,8 @@ public class ReservedInstancesOffering implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

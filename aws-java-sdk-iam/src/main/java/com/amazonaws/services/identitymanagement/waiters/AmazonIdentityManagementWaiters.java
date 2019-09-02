@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -20,7 +20,6 @@ import com.amazonaws.services.identitymanagement.model.*;
 import com.amazonaws.waiters.*;
 
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AmazonIdentityManagementWaiters {
@@ -30,7 +29,7 @@ public class AmazonIdentityManagementWaiters {
      */
     private final AmazonIdentityManagement client;
 
-    private final ExecutorService executorService = Executors.newFixedThreadPool(50);
+    private final ExecutorService executorService = WaiterExecutorServiceFactory.buildExecutorServiceForWaiter("AmazonIdentityManagementWaiters");
 
     /**
      * Constructs a new AmazonIdentityManagementWaiters with the given client
@@ -44,6 +43,19 @@ public class AmazonIdentityManagementWaiters {
     }
 
     /**
+     * Builds a RoleExists waiter by using custom parameters waiterParameters and other parameters defined in the
+     * waiters specification, and then polls until it determines whether the resource entered the desired state or not,
+     * where polling criteria is bound by either default polling strategy or custom polling strategy.
+     */
+    public Waiter<GetRoleRequest> roleExists() {
+
+        return new WaiterBuilder<GetRoleRequest, GetRoleResult>().withSdkFunction(new GetRoleFunction(client))
+                .withAcceptors(new HttpSuccessStatusAcceptor(WaiterState.SUCCESS), new RoleExists.IsNoSuchEntityMatcher())
+                .withDefaultPollingStrategy(new PollingStrategy(new MaxAttemptsRetryStrategy(20), new FixedDelayStrategy(1)))
+                .withExecutorService(executorService).build();
+    }
+
+    /**
      * Builds a InstanceProfileExists waiter by using custom parameters waiterParameters and other parameters defined in
      * the waiters specification, and then polls until it determines whether the resource entered the desired state or
      * not, where polling criteria is bound by either default polling strategy or custom polling strategy.
@@ -53,6 +65,19 @@ public class AmazonIdentityManagementWaiters {
         return new WaiterBuilder<GetInstanceProfileRequest, GetInstanceProfileResult>().withSdkFunction(new GetInstanceProfileFunction(client))
                 .withAcceptors(new HttpSuccessStatusAcceptor(WaiterState.SUCCESS), new HttpFailureStatusAcceptor(404, WaiterState.RETRY))
                 .withDefaultPollingStrategy(new PollingStrategy(new MaxAttemptsRetryStrategy(40), new FixedDelayStrategy(1)))
+                .withExecutorService(executorService).build();
+    }
+
+    /**
+     * Builds a PolicyExists waiter by using custom parameters waiterParameters and other parameters defined in the
+     * waiters specification, and then polls until it determines whether the resource entered the desired state or not,
+     * where polling criteria is bound by either default polling strategy or custom polling strategy.
+     */
+    public Waiter<GetPolicyRequest> policyExists() {
+
+        return new WaiterBuilder<GetPolicyRequest, GetPolicyResult>().withSdkFunction(new GetPolicyFunction(client))
+                .withAcceptors(new HttpSuccessStatusAcceptor(WaiterState.SUCCESS), new PolicyExists.IsNoSuchEntityMatcher())
+                .withDefaultPollingStrategy(new PollingStrategy(new MaxAttemptsRetryStrategy(20), new FixedDelayStrategy(1)))
                 .withExecutorService(executorService).build();
     }
 

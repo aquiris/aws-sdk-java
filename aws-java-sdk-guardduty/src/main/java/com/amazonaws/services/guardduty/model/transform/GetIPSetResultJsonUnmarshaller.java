@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -48,6 +48,10 @@ public class GetIPSetResultJsonUnmarshaller implements Unmarshaller<GetIPSetResu
                 break;
 
             if (token == FIELD_NAME || token == START_OBJECT) {
+                if (context.testExpression("name", targetDepth)) {
+                    context.nextToken();
+                    getIPSetResult.setName(context.getUnmarshaller(String.class).unmarshall(context));
+                }
                 if (context.testExpression("format", targetDepth)) {
                     context.nextToken();
                     getIPSetResult.setFormat(context.getUnmarshaller(String.class).unmarshall(context));
@@ -56,13 +60,14 @@ public class GetIPSetResultJsonUnmarshaller implements Unmarshaller<GetIPSetResu
                     context.nextToken();
                     getIPSetResult.setLocation(context.getUnmarshaller(String.class).unmarshall(context));
                 }
-                if (context.testExpression("name", targetDepth)) {
-                    context.nextToken();
-                    getIPSetResult.setName(context.getUnmarshaller(String.class).unmarshall(context));
-                }
                 if (context.testExpression("status", targetDepth)) {
                     context.nextToken();
                     getIPSetResult.setStatus(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("tags", targetDepth)) {
+                    context.nextToken();
+                    getIPSetResult.setTags(new MapUnmarshaller<String, String>(context.getUnmarshaller(String.class), context.getUnmarshaller(String.class))
+                            .unmarshall(context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null || context.getLastParsedParentElement().equals(currentParentElement)) {

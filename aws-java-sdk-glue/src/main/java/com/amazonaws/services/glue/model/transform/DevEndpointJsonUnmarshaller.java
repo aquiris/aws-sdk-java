@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -84,6 +84,14 @@ public class DevEndpointJsonUnmarshaller implements Unmarshaller<DevEndpoint, Js
                     context.nextToken();
                     devEndpoint.setStatus(context.getUnmarshaller(String.class).unmarshall(context));
                 }
+                if (context.testExpression("WorkerType", targetDepth)) {
+                    context.nextToken();
+                    devEndpoint.setWorkerType(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("NumberOfWorkers", targetDepth)) {
+                    context.nextToken();
+                    devEndpoint.setNumberOfWorkers(context.getUnmarshaller(Integer.class).unmarshall(context));
+                }
                 if (context.testExpression("NumberOfNodes", targetDepth)) {
                     context.nextToken();
                     devEndpoint.setNumberOfNodes(context.getUnmarshaller(Integer.class).unmarshall(context));
@@ -114,15 +122,28 @@ public class DevEndpointJsonUnmarshaller implements Unmarshaller<DevEndpoint, Js
                 }
                 if (context.testExpression("CreatedTimestamp", targetDepth)) {
                     context.nextToken();
-                    devEndpoint.setCreatedTimestamp(context.getUnmarshaller(java.util.Date.class).unmarshall(context));
+                    devEndpoint.setCreatedTimestamp(DateJsonUnmarshallerFactory.getInstance("unixTimestamp").unmarshall(context));
                 }
                 if (context.testExpression("LastModifiedTimestamp", targetDepth)) {
                     context.nextToken();
-                    devEndpoint.setLastModifiedTimestamp(context.getUnmarshaller(java.util.Date.class).unmarshall(context));
+                    devEndpoint.setLastModifiedTimestamp(DateJsonUnmarshallerFactory.getInstance("unixTimestamp").unmarshall(context));
                 }
                 if (context.testExpression("PublicKey", targetDepth)) {
                     context.nextToken();
                     devEndpoint.setPublicKey(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("PublicKeys", targetDepth)) {
+                    context.nextToken();
+                    devEndpoint.setPublicKeys(new ListUnmarshaller<String>(context.getUnmarshaller(String.class)).unmarshall(context));
+                }
+                if (context.testExpression("SecurityConfiguration", targetDepth)) {
+                    context.nextToken();
+                    devEndpoint.setSecurityConfiguration(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("Arguments", targetDepth)) {
+                    context.nextToken();
+                    devEndpoint.setArguments(new MapUnmarshaller<String, String>(context.getUnmarshaller(String.class), context.getUnmarshaller(String.class))
+                            .unmarshall(context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null || context.getLastParsedParentElement().equals(currentParentElement)) {

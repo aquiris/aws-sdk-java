@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,7 @@
  */
 package com.amazonaws.services.directconnect.model.transform;
 
+import java.util.List;
 import javax.annotation.Generated;
 
 import com.amazonaws.SdkClientException;
@@ -33,6 +34,8 @@ public class NewPrivateVirtualInterfaceAllocationMarshaller {
             .marshallLocationName("vlan").build();
     private static final MarshallingInfo<Integer> ASN_BINDING = MarshallingInfo.builder(MarshallingType.INTEGER).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("asn").build();
+    private static final MarshallingInfo<Integer> MTU_BINDING = MarshallingInfo.builder(MarshallingType.INTEGER).marshallLocation(MarshallLocation.PAYLOAD)
+            .marshallLocationName("mtu").build();
     private static final MarshallingInfo<String> AUTHKEY_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("authKey").build();
     private static final MarshallingInfo<String> AMAZONADDRESS_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
@@ -41,6 +44,8 @@ public class NewPrivateVirtualInterfaceAllocationMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("addressFamily").build();
     private static final MarshallingInfo<String> CUSTOMERADDRESS_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("customerAddress").build();
+    private static final MarshallingInfo<List> TAGS_BINDING = MarshallingInfo.builder(MarshallingType.LIST).marshallLocation(MarshallLocation.PAYLOAD)
+            .marshallLocationName("tags").build();
 
     private static final NewPrivateVirtualInterfaceAllocationMarshaller instance = new NewPrivateVirtualInterfaceAllocationMarshaller();
 
@@ -61,10 +66,12 @@ public class NewPrivateVirtualInterfaceAllocationMarshaller {
             protocolMarshaller.marshall(newPrivateVirtualInterfaceAllocation.getVirtualInterfaceName(), VIRTUALINTERFACENAME_BINDING);
             protocolMarshaller.marshall(newPrivateVirtualInterfaceAllocation.getVlan(), VLAN_BINDING);
             protocolMarshaller.marshall(newPrivateVirtualInterfaceAllocation.getAsn(), ASN_BINDING);
+            protocolMarshaller.marshall(newPrivateVirtualInterfaceAllocation.getMtu(), MTU_BINDING);
             protocolMarshaller.marshall(newPrivateVirtualInterfaceAllocation.getAuthKey(), AUTHKEY_BINDING);
             protocolMarshaller.marshall(newPrivateVirtualInterfaceAllocation.getAmazonAddress(), AMAZONADDRESS_BINDING);
             protocolMarshaller.marshall(newPrivateVirtualInterfaceAllocation.getAddressFamily(), ADDRESSFAMILY_BINDING);
             protocolMarshaller.marshall(newPrivateVirtualInterfaceAllocation.getCustomerAddress(), CUSTOMERADDRESS_BINDING);
+            protocolMarshaller.marshall(newPrivateVirtualInterfaceAllocation.getTags(), TAGS_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

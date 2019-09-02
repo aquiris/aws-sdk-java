@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -205,6 +205,43 @@ public class SDKGlobalConfiguration {
     public static final String PROFILING_SYSTEM_PROPERTY =
         "com.amazonaws.sdk.enableRuntimeProfiling";
 
+    /**
+     * The default host used by client side monitoring.
+     */
+    public static final String DEFAULT_AWS_CSM_HOST = "127.0.0.1";
+
+    /**
+     * The default port used by client side monitoring.
+     */
+    public static final int DEFAULT_AWS_CSM_PORT = 31000;
+
+    /**
+     * The default client Id used by client side monitoring.
+     */
+    public static final String DEFAULT_AWS_CSM_CLIENT_ID = "";
+
+    /**
+     * System property to enable/disable client side monitoring.
+     */
+    public static final String AWS_CSM_ENABLED_SYSTEM_PROPERTY = "com.amazonaws.sdk.csm.enabled";
+
+    /**
+     * System property to set the host that will receive the client side monitoring events.
+     */
+    public static final String AWS_CSM_HOST_SYSTEM_PROPERTY = "com.amazonaws.sdk.csm.host";
+
+    /**
+     * System property to set the port of the out of process client side
+     * monitoring agent.
+     */
+    public static final String AWS_CSM_PORT_SYSTEM_PROPERTY = "com.amazonaws.sdk.csm.port";
+
+    /**
+     * System property to set the client ID to use for client side monitoring
+     * events.
+     */
+    public static final String AWS_CSM_CLIENT_ID_SYSTEM_PROPERTY = "com.amazonaws.sdk.csm.clientId";
+
     /////////////////////// Environment Variables ///////////////////////
     /** Environment variable name for the AWS access key ID */
     public static final String ACCESS_KEY_ENV_VAR = "AWS_ACCESS_KEY_ID";
@@ -220,6 +257,15 @@ public class SDKGlobalConfiguration {
 
     /** Environment variable name for the AWS session token */
     public static final String AWS_SESSION_TOKEN_ENV_VAR = "AWS_SESSION_TOKEN";
+
+    /** Environment variable name for the AWS Web Identity Token File Path */
+    public static final String AWS_WEB_IDENTITY_ENV_VAR = "AWS_WEB_IDENTITY_TOKEN_FILE";
+
+    /** Environment variable name for the AWS role arn */
+    public static final String AWS_ROLE_ARN_ENV_VAR = "AWS_ROLE_ARN";
+
+    /** Environment variable name for the AWS role arn */
+    public static final String AWS_ROLE_SESSION_NAME_ENV_VAR = "AWS_ROLE_SESSION_NAME";
 
     /**
      * Environment variable containing region used to configure clients.
@@ -266,6 +312,27 @@ public class SDKGlobalConfiguration {
      */
     public static final String AWS_EC2_METADATA_DISABLED_SYSTEM_PROPERTY = "com.amazonaws.sdk.disableEc2Metadata";
 
+    /**
+     * Environment variable to enable/disable client side monitoring.
+     */
+    public static final String AWS_CSM_ENABLED_ENV_VAR = "AWS_CSM_ENABLED";
+
+    /**
+     * Environment variable to set the host to send client side monitor events to.
+     */
+    public static final String AWS_CSM_HOST_ENV_VAR = "AWS_CSM_HOST";
+
+    /**
+     * Environment varaible to set the port of the out of process client side
+     * monitoring agent.
+     */
+    public static final String AWS_CSM_PORT_ENV_VAR = "AWS_CSM_PORT";
+
+    /**
+     * Environment variable to set the client ID to use for client side
+     * monitoring events.
+     */
+    public static final String AWS_CSM_CLIENT_ID_ENV_VAR = "AWS_CSM_CLIENT_ID";
 
     /**
      * @deprecated by {@link SDKGlobalTime#setGlobalTimeOffset(int)}

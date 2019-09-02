@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -11,6 +11,8 @@
  * and limitations under the License.
  */
 package com.amazonaws.services.ec2.model.transform;
+
+import java.util.ArrayList;
 
 import javax.xml.stream.events.XMLEvent;
 import javax.annotation.Generated;
@@ -64,9 +66,30 @@ public class VpcEndpointConnectionStaxUnmarshaller implements Unmarshaller<VpcEn
                 }
 
                 if (context.testExpression("creationTimestamp", targetDepth)) {
-                    vpcEndpointConnection.setCreationTimestamp(DateStaxUnmarshaller.getInstance().unmarshall(context));
+                    vpcEndpointConnection.setCreationTimestamp(DateStaxUnmarshallerFactory.getInstance("iso8601").unmarshall(context));
                     continue;
                 }
+
+                if (context.testExpression("dnsEntrySet", targetDepth)) {
+                    vpcEndpointConnection.withDnsEntries(new ArrayList<DnsEntry>());
+                    continue;
+                }
+
+                if (context.testExpression("dnsEntrySet/item", targetDepth)) {
+                    vpcEndpointConnection.withDnsEntries(DnsEntryStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("networkLoadBalancerArnSet", targetDepth)) {
+                    vpcEndpointConnection.withNetworkLoadBalancerArns(new ArrayList<String>());
+                    continue;
+                }
+
+                if (context.testExpression("networkLoadBalancerArnSet/item", targetDepth)) {
+                    vpcEndpointConnection.withNetworkLoadBalancerArns(StringStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
             } else if (xmlEvent.isEndElement()) {
                 if (context.getCurrentDepth() < originalDepth) {
                     return vpcEndpointConnection;

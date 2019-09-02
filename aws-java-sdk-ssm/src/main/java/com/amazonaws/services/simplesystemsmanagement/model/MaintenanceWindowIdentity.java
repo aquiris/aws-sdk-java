@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -19,7 +19,7 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * Information about the Maintenance Window.
+ * Information about the maintenance window.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/MaintenanceWindowIdentity" target="_top">AWS API
@@ -30,49 +30,81 @@ public class MaintenanceWindowIdentity implements Serializable, Cloneable, Struc
 
     /**
      * <p>
-     * The ID of the Maintenance Window.
+     * The ID of the maintenance window.
      * </p>
      */
     private String windowId;
     /**
      * <p>
-     * The name of the Maintenance Window.
+     * The name of the maintenance window.
      * </p>
      */
     private String name;
     /**
      * <p>
-     * A description of the Maintenance Window.
+     * A description of the maintenance window.
      * </p>
      */
     private String description;
     /**
      * <p>
-     * Whether the Maintenance Window is enabled.
+     * Indicates whether the maintenance window is enabled.
      * </p>
      */
     private Boolean enabled;
     /**
      * <p>
-     * The duration of the Maintenance Window in hours.
+     * The duration of the maintenance window in hours.
      * </p>
      */
     private Integer duration;
     /**
      * <p>
-     * The number of hours before the end of the Maintenance Window that Systems Manager stops scheduling new tasks for
+     * The number of hours before the end of the maintenance window that Systems Manager stops scheduling new tasks for
      * execution.
      * </p>
      */
     private Integer cutoff;
+    /**
+     * <p>
+     * The schedule of the maintenance window in the form of a cron or rate expression.
+     * </p>
+     */
+    private String schedule;
+    /**
+     * <p>
+     * The time zone that the scheduled maintenance window executions are based on, in Internet Assigned Numbers
+     * Authority (IANA) format.
+     * </p>
+     */
+    private String scheduleTimezone;
+    /**
+     * <p>
+     * The date and time, in ISO-8601 Extended format, for when the maintenance window is scheduled to become inactive.
+     * </p>
+     */
+    private String endDate;
+    /**
+     * <p>
+     * The date and time, in ISO-8601 Extended format, for when the maintenance window is scheduled to become active.
+     * </p>
+     */
+    private String startDate;
+    /**
+     * <p>
+     * The next time the maintenance window will actually run, taking into account any specified times for the
+     * maintenance window to become active or inactive.
+     * </p>
+     */
+    private String nextExecutionTime;
 
     /**
      * <p>
-     * The ID of the Maintenance Window.
+     * The ID of the maintenance window.
      * </p>
      * 
      * @param windowId
-     *        The ID of the Maintenance Window.
+     *        The ID of the maintenance window.
      */
 
     public void setWindowId(String windowId) {
@@ -81,10 +113,10 @@ public class MaintenanceWindowIdentity implements Serializable, Cloneable, Struc
 
     /**
      * <p>
-     * The ID of the Maintenance Window.
+     * The ID of the maintenance window.
      * </p>
      * 
-     * @return The ID of the Maintenance Window.
+     * @return The ID of the maintenance window.
      */
 
     public String getWindowId() {
@@ -93,11 +125,11 @@ public class MaintenanceWindowIdentity implements Serializable, Cloneable, Struc
 
     /**
      * <p>
-     * The ID of the Maintenance Window.
+     * The ID of the maintenance window.
      * </p>
      * 
      * @param windowId
-     *        The ID of the Maintenance Window.
+     *        The ID of the maintenance window.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -108,11 +140,11 @@ public class MaintenanceWindowIdentity implements Serializable, Cloneable, Struc
 
     /**
      * <p>
-     * The name of the Maintenance Window.
+     * The name of the maintenance window.
      * </p>
      * 
      * @param name
-     *        The name of the Maintenance Window.
+     *        The name of the maintenance window.
      */
 
     public void setName(String name) {
@@ -121,10 +153,10 @@ public class MaintenanceWindowIdentity implements Serializable, Cloneable, Struc
 
     /**
      * <p>
-     * The name of the Maintenance Window.
+     * The name of the maintenance window.
      * </p>
      * 
-     * @return The name of the Maintenance Window.
+     * @return The name of the maintenance window.
      */
 
     public String getName() {
@@ -133,11 +165,11 @@ public class MaintenanceWindowIdentity implements Serializable, Cloneable, Struc
 
     /**
      * <p>
-     * The name of the Maintenance Window.
+     * The name of the maintenance window.
      * </p>
      * 
      * @param name
-     *        The name of the Maintenance Window.
+     *        The name of the maintenance window.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -148,11 +180,11 @@ public class MaintenanceWindowIdentity implements Serializable, Cloneable, Struc
 
     /**
      * <p>
-     * A description of the Maintenance Window.
+     * A description of the maintenance window.
      * </p>
      * 
      * @param description
-     *        A description of the Maintenance Window.
+     *        A description of the maintenance window.
      */
 
     public void setDescription(String description) {
@@ -161,10 +193,10 @@ public class MaintenanceWindowIdentity implements Serializable, Cloneable, Struc
 
     /**
      * <p>
-     * A description of the Maintenance Window.
+     * A description of the maintenance window.
      * </p>
      * 
-     * @return A description of the Maintenance Window.
+     * @return A description of the maintenance window.
      */
 
     public String getDescription() {
@@ -173,11 +205,11 @@ public class MaintenanceWindowIdentity implements Serializable, Cloneable, Struc
 
     /**
      * <p>
-     * A description of the Maintenance Window.
+     * A description of the maintenance window.
      * </p>
      * 
      * @param description
-     *        A description of the Maintenance Window.
+     *        A description of the maintenance window.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -188,11 +220,11 @@ public class MaintenanceWindowIdentity implements Serializable, Cloneable, Struc
 
     /**
      * <p>
-     * Whether the Maintenance Window is enabled.
+     * Indicates whether the maintenance window is enabled.
      * </p>
      * 
      * @param enabled
-     *        Whether the Maintenance Window is enabled.
+     *        Indicates whether the maintenance window is enabled.
      */
 
     public void setEnabled(Boolean enabled) {
@@ -201,10 +233,10 @@ public class MaintenanceWindowIdentity implements Serializable, Cloneable, Struc
 
     /**
      * <p>
-     * Whether the Maintenance Window is enabled.
+     * Indicates whether the maintenance window is enabled.
      * </p>
      * 
-     * @return Whether the Maintenance Window is enabled.
+     * @return Indicates whether the maintenance window is enabled.
      */
 
     public Boolean getEnabled() {
@@ -213,11 +245,11 @@ public class MaintenanceWindowIdentity implements Serializable, Cloneable, Struc
 
     /**
      * <p>
-     * Whether the Maintenance Window is enabled.
+     * Indicates whether the maintenance window is enabled.
      * </p>
      * 
      * @param enabled
-     *        Whether the Maintenance Window is enabled.
+     *        Indicates whether the maintenance window is enabled.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -228,10 +260,10 @@ public class MaintenanceWindowIdentity implements Serializable, Cloneable, Struc
 
     /**
      * <p>
-     * Whether the Maintenance Window is enabled.
+     * Indicates whether the maintenance window is enabled.
      * </p>
      * 
-     * @return Whether the Maintenance Window is enabled.
+     * @return Indicates whether the maintenance window is enabled.
      */
 
     public Boolean isEnabled() {
@@ -240,11 +272,11 @@ public class MaintenanceWindowIdentity implements Serializable, Cloneable, Struc
 
     /**
      * <p>
-     * The duration of the Maintenance Window in hours.
+     * The duration of the maintenance window in hours.
      * </p>
      * 
      * @param duration
-     *        The duration of the Maintenance Window in hours.
+     *        The duration of the maintenance window in hours.
      */
 
     public void setDuration(Integer duration) {
@@ -253,10 +285,10 @@ public class MaintenanceWindowIdentity implements Serializable, Cloneable, Struc
 
     /**
      * <p>
-     * The duration of the Maintenance Window in hours.
+     * The duration of the maintenance window in hours.
      * </p>
      * 
-     * @return The duration of the Maintenance Window in hours.
+     * @return The duration of the maintenance window in hours.
      */
 
     public Integer getDuration() {
@@ -265,11 +297,11 @@ public class MaintenanceWindowIdentity implements Serializable, Cloneable, Struc
 
     /**
      * <p>
-     * The duration of the Maintenance Window in hours.
+     * The duration of the maintenance window in hours.
      * </p>
      * 
      * @param duration
-     *        The duration of the Maintenance Window in hours.
+     *        The duration of the maintenance window in hours.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -280,12 +312,12 @@ public class MaintenanceWindowIdentity implements Serializable, Cloneable, Struc
 
     /**
      * <p>
-     * The number of hours before the end of the Maintenance Window that Systems Manager stops scheduling new tasks for
+     * The number of hours before the end of the maintenance window that Systems Manager stops scheduling new tasks for
      * execution.
      * </p>
      * 
      * @param cutoff
-     *        The number of hours before the end of the Maintenance Window that Systems Manager stops scheduling new
+     *        The number of hours before the end of the maintenance window that Systems Manager stops scheduling new
      *        tasks for execution.
      */
 
@@ -295,11 +327,11 @@ public class MaintenanceWindowIdentity implements Serializable, Cloneable, Struc
 
     /**
      * <p>
-     * The number of hours before the end of the Maintenance Window that Systems Manager stops scheduling new tasks for
+     * The number of hours before the end of the maintenance window that Systems Manager stops scheduling new tasks for
      * execution.
      * </p>
      * 
-     * @return The number of hours before the end of the Maintenance Window that Systems Manager stops scheduling new
+     * @return The number of hours before the end of the maintenance window that Systems Manager stops scheduling new
      *         tasks for execution.
      */
 
@@ -309,12 +341,12 @@ public class MaintenanceWindowIdentity implements Serializable, Cloneable, Struc
 
     /**
      * <p>
-     * The number of hours before the end of the Maintenance Window that Systems Manager stops scheduling new tasks for
+     * The number of hours before the end of the maintenance window that Systems Manager stops scheduling new tasks for
      * execution.
      * </p>
      * 
      * @param cutoff
-     *        The number of hours before the end of the Maintenance Window that Systems Manager stops scheduling new
+     *        The number of hours before the end of the maintenance window that Systems Manager stops scheduling new
      *        tasks for execution.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -325,7 +357,226 @@ public class MaintenanceWindowIdentity implements Serializable, Cloneable, Struc
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * <p>
+     * The schedule of the maintenance window in the form of a cron or rate expression.
+     * </p>
+     * 
+     * @param schedule
+     *        The schedule of the maintenance window in the form of a cron or rate expression.
+     */
+
+    public void setSchedule(String schedule) {
+        this.schedule = schedule;
+    }
+
+    /**
+     * <p>
+     * The schedule of the maintenance window in the form of a cron or rate expression.
+     * </p>
+     * 
+     * @return The schedule of the maintenance window in the form of a cron or rate expression.
+     */
+
+    public String getSchedule() {
+        return this.schedule;
+    }
+
+    /**
+     * <p>
+     * The schedule of the maintenance window in the form of a cron or rate expression.
+     * </p>
+     * 
+     * @param schedule
+     *        The schedule of the maintenance window in the form of a cron or rate expression.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public MaintenanceWindowIdentity withSchedule(String schedule) {
+        setSchedule(schedule);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The time zone that the scheduled maintenance window executions are based on, in Internet Assigned Numbers
+     * Authority (IANA) format.
+     * </p>
+     * 
+     * @param scheduleTimezone
+     *        The time zone that the scheduled maintenance window executions are based on, in Internet Assigned Numbers
+     *        Authority (IANA) format.
+     */
+
+    public void setScheduleTimezone(String scheduleTimezone) {
+        this.scheduleTimezone = scheduleTimezone;
+    }
+
+    /**
+     * <p>
+     * The time zone that the scheduled maintenance window executions are based on, in Internet Assigned Numbers
+     * Authority (IANA) format.
+     * </p>
+     * 
+     * @return The time zone that the scheduled maintenance window executions are based on, in Internet Assigned Numbers
+     *         Authority (IANA) format.
+     */
+
+    public String getScheduleTimezone() {
+        return this.scheduleTimezone;
+    }
+
+    /**
+     * <p>
+     * The time zone that the scheduled maintenance window executions are based on, in Internet Assigned Numbers
+     * Authority (IANA) format.
+     * </p>
+     * 
+     * @param scheduleTimezone
+     *        The time zone that the scheduled maintenance window executions are based on, in Internet Assigned Numbers
+     *        Authority (IANA) format.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public MaintenanceWindowIdentity withScheduleTimezone(String scheduleTimezone) {
+        setScheduleTimezone(scheduleTimezone);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The date and time, in ISO-8601 Extended format, for when the maintenance window is scheduled to become inactive.
+     * </p>
+     * 
+     * @param endDate
+     *        The date and time, in ISO-8601 Extended format, for when the maintenance window is scheduled to become
+     *        inactive.
+     */
+
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
+    }
+
+    /**
+     * <p>
+     * The date and time, in ISO-8601 Extended format, for when the maintenance window is scheduled to become inactive.
+     * </p>
+     * 
+     * @return The date and time, in ISO-8601 Extended format, for when the maintenance window is scheduled to become
+     *         inactive.
+     */
+
+    public String getEndDate() {
+        return this.endDate;
+    }
+
+    /**
+     * <p>
+     * The date and time, in ISO-8601 Extended format, for when the maintenance window is scheduled to become inactive.
+     * </p>
+     * 
+     * @param endDate
+     *        The date and time, in ISO-8601 Extended format, for when the maintenance window is scheduled to become
+     *        inactive.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public MaintenanceWindowIdentity withEndDate(String endDate) {
+        setEndDate(endDate);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The date and time, in ISO-8601 Extended format, for when the maintenance window is scheduled to become active.
+     * </p>
+     * 
+     * @param startDate
+     *        The date and time, in ISO-8601 Extended format, for when the maintenance window is scheduled to become
+     *        active.
+     */
+
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
+    }
+
+    /**
+     * <p>
+     * The date and time, in ISO-8601 Extended format, for when the maintenance window is scheduled to become active.
+     * </p>
+     * 
+     * @return The date and time, in ISO-8601 Extended format, for when the maintenance window is scheduled to become
+     *         active.
+     */
+
+    public String getStartDate() {
+        return this.startDate;
+    }
+
+    /**
+     * <p>
+     * The date and time, in ISO-8601 Extended format, for when the maintenance window is scheduled to become active.
+     * </p>
+     * 
+     * @param startDate
+     *        The date and time, in ISO-8601 Extended format, for when the maintenance window is scheduled to become
+     *        active.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public MaintenanceWindowIdentity withStartDate(String startDate) {
+        setStartDate(startDate);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The next time the maintenance window will actually run, taking into account any specified times for the
+     * maintenance window to become active or inactive.
+     * </p>
+     * 
+     * @param nextExecutionTime
+     *        The next time the maintenance window will actually run, taking into account any specified times for the
+     *        maintenance window to become active or inactive.
+     */
+
+    public void setNextExecutionTime(String nextExecutionTime) {
+        this.nextExecutionTime = nextExecutionTime;
+    }
+
+    /**
+     * <p>
+     * The next time the maintenance window will actually run, taking into account any specified times for the
+     * maintenance window to become active or inactive.
+     * </p>
+     * 
+     * @return The next time the maintenance window will actually run, taking into account any specified times for the
+     *         maintenance window to become active or inactive.
+     */
+
+    public String getNextExecutionTime() {
+        return this.nextExecutionTime;
+    }
+
+    /**
+     * <p>
+     * The next time the maintenance window will actually run, taking into account any specified times for the
+     * maintenance window to become active or inactive.
+     * </p>
+     * 
+     * @param nextExecutionTime
+     *        The next time the maintenance window will actually run, taking into account any specified times for the
+     *        maintenance window to become active or inactive.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public MaintenanceWindowIdentity withNextExecutionTime(String nextExecutionTime) {
+        setNextExecutionTime(nextExecutionTime);
+        return this;
+    }
+
+    /**
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -340,13 +591,23 @@ public class MaintenanceWindowIdentity implements Serializable, Cloneable, Struc
         if (getName() != null)
             sb.append("Name: ").append(getName()).append(",");
         if (getDescription() != null)
-            sb.append("Description: ").append(getDescription()).append(",");
+            sb.append("Description: ").append("***Sensitive Data Redacted***").append(",");
         if (getEnabled() != null)
             sb.append("Enabled: ").append(getEnabled()).append(",");
         if (getDuration() != null)
             sb.append("Duration: ").append(getDuration()).append(",");
         if (getCutoff() != null)
-            sb.append("Cutoff: ").append(getCutoff());
+            sb.append("Cutoff: ").append(getCutoff()).append(",");
+        if (getSchedule() != null)
+            sb.append("Schedule: ").append(getSchedule()).append(",");
+        if (getScheduleTimezone() != null)
+            sb.append("ScheduleTimezone: ").append(getScheduleTimezone()).append(",");
+        if (getEndDate() != null)
+            sb.append("EndDate: ").append(getEndDate()).append(",");
+        if (getStartDate() != null)
+            sb.append("StartDate: ").append(getStartDate()).append(",");
+        if (getNextExecutionTime() != null)
+            sb.append("NextExecutionTime: ").append(getNextExecutionTime());
         sb.append("}");
         return sb.toString();
     }
@@ -385,6 +646,26 @@ public class MaintenanceWindowIdentity implements Serializable, Cloneable, Struc
             return false;
         if (other.getCutoff() != null && other.getCutoff().equals(this.getCutoff()) == false)
             return false;
+        if (other.getSchedule() == null ^ this.getSchedule() == null)
+            return false;
+        if (other.getSchedule() != null && other.getSchedule().equals(this.getSchedule()) == false)
+            return false;
+        if (other.getScheduleTimezone() == null ^ this.getScheduleTimezone() == null)
+            return false;
+        if (other.getScheduleTimezone() != null && other.getScheduleTimezone().equals(this.getScheduleTimezone()) == false)
+            return false;
+        if (other.getEndDate() == null ^ this.getEndDate() == null)
+            return false;
+        if (other.getEndDate() != null && other.getEndDate().equals(this.getEndDate()) == false)
+            return false;
+        if (other.getStartDate() == null ^ this.getStartDate() == null)
+            return false;
+        if (other.getStartDate() != null && other.getStartDate().equals(this.getStartDate()) == false)
+            return false;
+        if (other.getNextExecutionTime() == null ^ this.getNextExecutionTime() == null)
+            return false;
+        if (other.getNextExecutionTime() != null && other.getNextExecutionTime().equals(this.getNextExecutionTime()) == false)
+            return false;
         return true;
     }
 
@@ -399,6 +680,11 @@ public class MaintenanceWindowIdentity implements Serializable, Cloneable, Struc
         hashCode = prime * hashCode + ((getEnabled() == null) ? 0 : getEnabled().hashCode());
         hashCode = prime * hashCode + ((getDuration() == null) ? 0 : getDuration().hashCode());
         hashCode = prime * hashCode + ((getCutoff() == null) ? 0 : getCutoff().hashCode());
+        hashCode = prime * hashCode + ((getSchedule() == null) ? 0 : getSchedule().hashCode());
+        hashCode = prime * hashCode + ((getScheduleTimezone() == null) ? 0 : getScheduleTimezone().hashCode());
+        hashCode = prime * hashCode + ((getEndDate() == null) ? 0 : getEndDate().hashCode());
+        hashCode = prime * hashCode + ((getStartDate() == null) ? 0 : getStartDate().hashCode());
+        hashCode = prime * hashCode + ((getNextExecutionTime() == null) ? 0 : getNextExecutionTime().hashCode());
         return hashCode;
     }
 

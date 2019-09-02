@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -25,20 +25,31 @@ import com.amazonaws.AmazonWebServiceRequest;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ListDetectorsRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
-    /** You can use this parameter to indicate the maximum number of detectors that you want in the response. */
+    /**
+     * <p>
+     * You can use this parameter to indicate the maximum number of items you want in the response. The default value is
+     * 50. The maximum value is 50.
+     * </p>
+     */
     private Integer maxResults;
     /**
+     * <p>
      * You can use this parameter when paginating results. Set the value of this parameter to null on your first call to
-     * the ListDetectors action. For subsequent calls to the action fill nextToken in the request with the value of
-     * nextToken from the previous response to continue listing data.
+     * the list action. For subsequent calls to the action fill nextToken in the request with the value of NextToken
+     * from the previous response to continue listing data.
+     * </p>
      */
     private String nextToken;
 
     /**
-     * You can use this parameter to indicate the maximum number of detectors that you want in the response.
+     * <p>
+     * You can use this parameter to indicate the maximum number of items you want in the response. The default value is
+     * 50. The maximum value is 50.
+     * </p>
      * 
      * @param maxResults
-     *        You can use this parameter to indicate the maximum number of detectors that you want in the response.
+     *        You can use this parameter to indicate the maximum number of items you want in the response. The default
+     *        value is 50. The maximum value is 50.
      */
 
     public void setMaxResults(Integer maxResults) {
@@ -46,9 +57,13 @@ public class ListDetectorsRequest extends com.amazonaws.AmazonWebServiceRequest 
     }
 
     /**
-     * You can use this parameter to indicate the maximum number of detectors that you want in the response.
+     * <p>
+     * You can use this parameter to indicate the maximum number of items you want in the response. The default value is
+     * 50. The maximum value is 50.
+     * </p>
      * 
-     * @return You can use this parameter to indicate the maximum number of detectors that you want in the response.
+     * @return You can use this parameter to indicate the maximum number of items you want in the response. The default
+     *         value is 50. The maximum value is 50.
      */
 
     public Integer getMaxResults() {
@@ -56,10 +71,14 @@ public class ListDetectorsRequest extends com.amazonaws.AmazonWebServiceRequest 
     }
 
     /**
-     * You can use this parameter to indicate the maximum number of detectors that you want in the response.
+     * <p>
+     * You can use this parameter to indicate the maximum number of items you want in the response. The default value is
+     * 50. The maximum value is 50.
+     * </p>
      * 
      * @param maxResults
-     *        You can use this parameter to indicate the maximum number of detectors that you want in the response.
+     *        You can use this parameter to indicate the maximum number of items you want in the response. The default
+     *        value is 50. The maximum value is 50.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -69,14 +88,16 @@ public class ListDetectorsRequest extends com.amazonaws.AmazonWebServiceRequest 
     }
 
     /**
+     * <p>
      * You can use this parameter when paginating results. Set the value of this parameter to null on your first call to
-     * the ListDetectors action. For subsequent calls to the action fill nextToken in the request with the value of
-     * nextToken from the previous response to continue listing data.
+     * the list action. For subsequent calls to the action fill nextToken in the request with the value of NextToken
+     * from the previous response to continue listing data.
+     * </p>
      * 
      * @param nextToken
      *        You can use this parameter when paginating results. Set the value of this parameter to null on your first
-     *        call to the ListDetectors action. For subsequent calls to the action fill nextToken in the request with
-     *        the value of nextToken from the previous response to continue listing data.
+     *        call to the list action. For subsequent calls to the action fill nextToken in the request with the value
+     *        of NextToken from the previous response to continue listing data.
      */
 
     public void setNextToken(String nextToken) {
@@ -84,13 +105,15 @@ public class ListDetectorsRequest extends com.amazonaws.AmazonWebServiceRequest 
     }
 
     /**
+     * <p>
      * You can use this parameter when paginating results. Set the value of this parameter to null on your first call to
-     * the ListDetectors action. For subsequent calls to the action fill nextToken in the request with the value of
-     * nextToken from the previous response to continue listing data.
+     * the list action. For subsequent calls to the action fill nextToken in the request with the value of NextToken
+     * from the previous response to continue listing data.
+     * </p>
      * 
      * @return You can use this parameter when paginating results. Set the value of this parameter to null on your first
-     *         call to the ListDetectors action. For subsequent calls to the action fill nextToken in the request with
-     *         the value of nextToken from the previous response to continue listing data.
+     *         call to the list action. For subsequent calls to the action fill nextToken in the request with the value
+     *         of NextToken from the previous response to continue listing data.
      */
 
     public String getNextToken() {
@@ -98,14 +121,16 @@ public class ListDetectorsRequest extends com.amazonaws.AmazonWebServiceRequest 
     }
 
     /**
+     * <p>
      * You can use this parameter when paginating results. Set the value of this parameter to null on your first call to
-     * the ListDetectors action. For subsequent calls to the action fill nextToken in the request with the value of
-     * nextToken from the previous response to continue listing data.
+     * the list action. For subsequent calls to the action fill nextToken in the request with the value of NextToken
+     * from the previous response to continue listing data.
+     * </p>
      * 
      * @param nextToken
      *        You can use this parameter when paginating results. Set the value of this parameter to null on your first
-     *        call to the ListDetectors action. For subsequent calls to the action fill nextToken in the request with
-     *        the value of nextToken from the previous response to continue listing data.
+     *        call to the list action. For subsequent calls to the action fill nextToken in the request with the value
+     *        of NextToken from the previous response to continue listing data.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -115,7 +140,8 @@ public class ListDetectorsRequest extends com.amazonaws.AmazonWebServiceRequest 
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

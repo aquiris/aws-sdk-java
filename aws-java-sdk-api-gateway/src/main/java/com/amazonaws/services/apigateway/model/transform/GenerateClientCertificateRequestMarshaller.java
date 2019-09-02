@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -11,6 +11,8 @@
  * and limitations under the License.
  */
 package com.amazonaws.services.apigateway.model.transform;
+
+import java.util.Map;
 
 import javax.annotation.Generated;
 
@@ -29,6 +31,8 @@ public class GenerateClientCertificateRequestMarshaller {
 
     private static final MarshallingInfo<String> DESCRIPTION_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("description").build();
+    private static final MarshallingInfo<Map> TAGS_BINDING = MarshallingInfo.builder(MarshallingType.MAP).marshallLocation(MarshallLocation.PAYLOAD)
+            .marshallLocationName("tags").build();
 
     private static final GenerateClientCertificateRequestMarshaller instance = new GenerateClientCertificateRequestMarshaller();
 
@@ -47,6 +51,7 @@ public class GenerateClientCertificateRequestMarshaller {
 
         try {
             protocolMarshaller.marshall(generateClientCertificateRequest.getDescription(), DESCRIPTION_BINDING);
+            protocolMarshaller.marshall(generateClientCertificateRequest.getTags(), TAGS_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

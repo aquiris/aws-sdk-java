@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -26,10 +26,106 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DashIsoEncryptionSettings implements Serializable, Cloneable, StructuredPojo {
 
+    /**
+     * This setting can improve the compatibility of your output with video players on obsolete devices. It applies only
+     * to DASH H.264 outputs with DRM encryption. Choose Unencrypted SEI (UNENCRYPTED_SEI) only to correct problems with
+     * playback on older devices. Otherwise, keep the default setting CENC v1 (CENC_V1). If you choose Unencrypted SEI,
+     * for that output, the service will exclude the access unit delimiter and will leave the SEI NAL units unencrypted.
+     */
+    private String playbackDeviceCompatibility;
+    /**
+     * Use these settings when doing DRM encryption with a SPEKE-compliant key provider, if your output group type is
+     * HLS, MS Smooth, or DASH. If your output group type is CMAF, use the SpekeKeyProviderCmaf settings instead.
+     */
     private SpekeKeyProvider spekeKeyProvider;
 
     /**
+     * This setting can improve the compatibility of your output with video players on obsolete devices. It applies only
+     * to DASH H.264 outputs with DRM encryption. Choose Unencrypted SEI (UNENCRYPTED_SEI) only to correct problems with
+     * playback on older devices. Otherwise, keep the default setting CENC v1 (CENC_V1). If you choose Unencrypted SEI,
+     * for that output, the service will exclude the access unit delimiter and will leave the SEI NAL units unencrypted.
+     * 
+     * @param playbackDeviceCompatibility
+     *        This setting can improve the compatibility of your output with video players on obsolete devices. It
+     *        applies only to DASH H.264 outputs with DRM encryption. Choose Unencrypted SEI (UNENCRYPTED_SEI) only to
+     *        correct problems with playback on older devices. Otherwise, keep the default setting CENC v1 (CENC_V1). If
+     *        you choose Unencrypted SEI, for that output, the service will exclude the access unit delimiter and will
+     *        leave the SEI NAL units unencrypted.
+     * @see DashIsoPlaybackDeviceCompatibility
+     */
+
+    public void setPlaybackDeviceCompatibility(String playbackDeviceCompatibility) {
+        this.playbackDeviceCompatibility = playbackDeviceCompatibility;
+    }
+
+    /**
+     * This setting can improve the compatibility of your output with video players on obsolete devices. It applies only
+     * to DASH H.264 outputs with DRM encryption. Choose Unencrypted SEI (UNENCRYPTED_SEI) only to correct problems with
+     * playback on older devices. Otherwise, keep the default setting CENC v1 (CENC_V1). If you choose Unencrypted SEI,
+     * for that output, the service will exclude the access unit delimiter and will leave the SEI NAL units unencrypted.
+     * 
+     * @return This setting can improve the compatibility of your output with video players on obsolete devices. It
+     *         applies only to DASH H.264 outputs with DRM encryption. Choose Unencrypted SEI (UNENCRYPTED_SEI) only to
+     *         correct problems with playback on older devices. Otherwise, keep the default setting CENC v1 (CENC_V1).
+     *         If you choose Unencrypted SEI, for that output, the service will exclude the access unit delimiter and
+     *         will leave the SEI NAL units unencrypted.
+     * @see DashIsoPlaybackDeviceCompatibility
+     */
+
+    public String getPlaybackDeviceCompatibility() {
+        return this.playbackDeviceCompatibility;
+    }
+
+    /**
+     * This setting can improve the compatibility of your output with video players on obsolete devices. It applies only
+     * to DASH H.264 outputs with DRM encryption. Choose Unencrypted SEI (UNENCRYPTED_SEI) only to correct problems with
+     * playback on older devices. Otherwise, keep the default setting CENC v1 (CENC_V1). If you choose Unencrypted SEI,
+     * for that output, the service will exclude the access unit delimiter and will leave the SEI NAL units unencrypted.
+     * 
+     * @param playbackDeviceCompatibility
+     *        This setting can improve the compatibility of your output with video players on obsolete devices. It
+     *        applies only to DASH H.264 outputs with DRM encryption. Choose Unencrypted SEI (UNENCRYPTED_SEI) only to
+     *        correct problems with playback on older devices. Otherwise, keep the default setting CENC v1 (CENC_V1). If
+     *        you choose Unencrypted SEI, for that output, the service will exclude the access unit delimiter and will
+     *        leave the SEI NAL units unencrypted.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see DashIsoPlaybackDeviceCompatibility
+     */
+
+    public DashIsoEncryptionSettings withPlaybackDeviceCompatibility(String playbackDeviceCompatibility) {
+        setPlaybackDeviceCompatibility(playbackDeviceCompatibility);
+        return this;
+    }
+
+    /**
+     * This setting can improve the compatibility of your output with video players on obsolete devices. It applies only
+     * to DASH H.264 outputs with DRM encryption. Choose Unencrypted SEI (UNENCRYPTED_SEI) only to correct problems with
+     * playback on older devices. Otherwise, keep the default setting CENC v1 (CENC_V1). If you choose Unencrypted SEI,
+     * for that output, the service will exclude the access unit delimiter and will leave the SEI NAL units unencrypted.
+     * 
+     * @param playbackDeviceCompatibility
+     *        This setting can improve the compatibility of your output with video players on obsolete devices. It
+     *        applies only to DASH H.264 outputs with DRM encryption. Choose Unencrypted SEI (UNENCRYPTED_SEI) only to
+     *        correct problems with playback on older devices. Otherwise, keep the default setting CENC v1 (CENC_V1). If
+     *        you choose Unencrypted SEI, for that output, the service will exclude the access unit delimiter and will
+     *        leave the SEI NAL units unencrypted.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see DashIsoPlaybackDeviceCompatibility
+     */
+
+    public DashIsoEncryptionSettings withPlaybackDeviceCompatibility(DashIsoPlaybackDeviceCompatibility playbackDeviceCompatibility) {
+        this.playbackDeviceCompatibility = playbackDeviceCompatibility.toString();
+        return this;
+    }
+
+    /**
+     * Use these settings when doing DRM encryption with a SPEKE-compliant key provider, if your output group type is
+     * HLS, MS Smooth, or DASH. If your output group type is CMAF, use the SpekeKeyProviderCmaf settings instead.
+     * 
      * @param spekeKeyProvider
+     *        Use these settings when doing DRM encryption with a SPEKE-compliant key provider, if your output group
+     *        type is HLS, MS Smooth, or DASH. If your output group type is CMAF, use the SpekeKeyProviderCmaf settings
+     *        instead.
      */
 
     public void setSpekeKeyProvider(SpekeKeyProvider spekeKeyProvider) {
@@ -37,7 +133,12 @@ public class DashIsoEncryptionSettings implements Serializable, Cloneable, Struc
     }
 
     /**
-     * @return
+     * Use these settings when doing DRM encryption with a SPEKE-compliant key provider, if your output group type is
+     * HLS, MS Smooth, or DASH. If your output group type is CMAF, use the SpekeKeyProviderCmaf settings instead.
+     * 
+     * @return Use these settings when doing DRM encryption with a SPEKE-compliant key provider, if your output group
+     *         type is HLS, MS Smooth, or DASH. If your output group type is CMAF, use the SpekeKeyProviderCmaf settings
+     *         instead.
      */
 
     public SpekeKeyProvider getSpekeKeyProvider() {
@@ -45,7 +146,13 @@ public class DashIsoEncryptionSettings implements Serializable, Cloneable, Struc
     }
 
     /**
+     * Use these settings when doing DRM encryption with a SPEKE-compliant key provider, if your output group type is
+     * HLS, MS Smooth, or DASH. If your output group type is CMAF, use the SpekeKeyProviderCmaf settings instead.
+     * 
      * @param spekeKeyProvider
+     *        Use these settings when doing DRM encryption with a SPEKE-compliant key provider, if your output group
+     *        type is HLS, MS Smooth, or DASH. If your output group type is CMAF, use the SpekeKeyProviderCmaf settings
+     *        instead.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -55,7 +162,8 @@ public class DashIsoEncryptionSettings implements Serializable, Cloneable, Struc
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -65,6 +173,8 @@ public class DashIsoEncryptionSettings implements Serializable, Cloneable, Struc
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
+        if (getPlaybackDeviceCompatibility() != null)
+            sb.append("PlaybackDeviceCompatibility: ").append(getPlaybackDeviceCompatibility()).append(",");
         if (getSpekeKeyProvider() != null)
             sb.append("SpekeKeyProvider: ").append(getSpekeKeyProvider());
         sb.append("}");
@@ -81,6 +191,10 @@ public class DashIsoEncryptionSettings implements Serializable, Cloneable, Struc
         if (obj instanceof DashIsoEncryptionSettings == false)
             return false;
         DashIsoEncryptionSettings other = (DashIsoEncryptionSettings) obj;
+        if (other.getPlaybackDeviceCompatibility() == null ^ this.getPlaybackDeviceCompatibility() == null)
+            return false;
+        if (other.getPlaybackDeviceCompatibility() != null && other.getPlaybackDeviceCompatibility().equals(this.getPlaybackDeviceCompatibility()) == false)
+            return false;
         if (other.getSpekeKeyProvider() == null ^ this.getSpekeKeyProvider() == null)
             return false;
         if (other.getSpekeKeyProvider() != null && other.getSpekeKeyProvider().equals(this.getSpekeKeyProvider()) == false)
@@ -93,6 +207,7 @@ public class DashIsoEncryptionSettings implements Serializable, Cloneable, Struc
         final int prime = 31;
         int hashCode = 1;
 
+        hashCode = prime * hashCode + ((getPlaybackDeviceCompatibility() == null) ? 0 : getPlaybackDeviceCompatibility().hashCode());
         hashCode = prime * hashCode + ((getSpekeKeyProvider() == null) ? 0 : getSpekeKeyProvider().hashCode());
         return hashCode;
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -18,7 +18,9 @@ import com.amazonaws.protocol.StructuredPojo;
 import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
- * Email Channel Request
+ * <p>
+ * Specifies the status and settings of the email channel for an application.
+ * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/EmailChannelRequest" target="_top">AWS API
  *      Documentation</a>
@@ -26,20 +28,93 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class EmailChannelRequest implements Serializable, Cloneable, StructuredPojo {
 
-    /** If the channel is enabled for sending messages. */
+    /**
+     * <p>
+     * The configuration set that you want to apply to email that you send through the channel by using the <a
+     * href="emailAPIreference.html">Amazon Pinpoint Email API</a>.
+     * </p>
+     */
+    private String configurationSet;
+    /**
+     * <p>
+     * Specifies whether to enable the email channel for the application.
+     * </p>
+     */
     private Boolean enabled;
-    /** The email address used to send emails from. */
+    /**
+     * <p>
+     * The verified email address that you want to send email from when you send email through the channel.
+     * </p>
+     */
     private String fromAddress;
-    /** The ARN of an identity verified with SES. */
+    /**
+     * <p>
+     * The Amazon Resource Name (ARN) of the identity, verified with Amazon Simple Email Service (Amazon SES), that you
+     * want to use when you send email through the channel.
+     * </p>
+     */
     private String identity;
-    /** The ARN of an IAM Role used to submit events to Mobile Analytics' event ingestion service */
+    /**
+     * <p>
+     * The ARN of the AWS Identity and Access Management (IAM) role that you want Amazon Pinpoint to use when it submits
+     * email-related event data for the channel.
+     * </p>
+     */
     private String roleArn;
 
     /**
-     * If the channel is enabled for sending messages.
+     * <p>
+     * The configuration set that you want to apply to email that you send through the channel by using the <a
+     * href="emailAPIreference.html">Amazon Pinpoint Email API</a>.
+     * </p>
+     * 
+     * @param configurationSet
+     *        The configuration set that you want to apply to email that you send through the channel by using the <a
+     *        href="emailAPIreference.html">Amazon Pinpoint Email API</a>.
+     */
+
+    public void setConfigurationSet(String configurationSet) {
+        this.configurationSet = configurationSet;
+    }
+
+    /**
+     * <p>
+     * The configuration set that you want to apply to email that you send through the channel by using the <a
+     * href="emailAPIreference.html">Amazon Pinpoint Email API</a>.
+     * </p>
+     * 
+     * @return The configuration set that you want to apply to email that you send through the channel by using the <a
+     *         href="emailAPIreference.html">Amazon Pinpoint Email API</a>.
+     */
+
+    public String getConfigurationSet() {
+        return this.configurationSet;
+    }
+
+    /**
+     * <p>
+     * The configuration set that you want to apply to email that you send through the channel by using the <a
+     * href="emailAPIreference.html">Amazon Pinpoint Email API</a>.
+     * </p>
+     * 
+     * @param configurationSet
+     *        The configuration set that you want to apply to email that you send through the channel by using the <a
+     *        href="emailAPIreference.html">Amazon Pinpoint Email API</a>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public EmailChannelRequest withConfigurationSet(String configurationSet) {
+        setConfigurationSet(configurationSet);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Specifies whether to enable the email channel for the application.
+     * </p>
      * 
      * @param enabled
-     *        If the channel is enabled for sending messages.
+     *        Specifies whether to enable the email channel for the application.
      */
 
     public void setEnabled(Boolean enabled) {
@@ -47,9 +122,11 @@ public class EmailChannelRequest implements Serializable, Cloneable, StructuredP
     }
 
     /**
-     * If the channel is enabled for sending messages.
+     * <p>
+     * Specifies whether to enable the email channel for the application.
+     * </p>
      * 
-     * @return If the channel is enabled for sending messages.
+     * @return Specifies whether to enable the email channel for the application.
      */
 
     public Boolean getEnabled() {
@@ -57,10 +134,12 @@ public class EmailChannelRequest implements Serializable, Cloneable, StructuredP
     }
 
     /**
-     * If the channel is enabled for sending messages.
+     * <p>
+     * Specifies whether to enable the email channel for the application.
+     * </p>
      * 
      * @param enabled
-     *        If the channel is enabled for sending messages.
+     *        Specifies whether to enable the email channel for the application.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -70,9 +149,11 @@ public class EmailChannelRequest implements Serializable, Cloneable, StructuredP
     }
 
     /**
-     * If the channel is enabled for sending messages.
+     * <p>
+     * Specifies whether to enable the email channel for the application.
+     * </p>
      * 
-     * @return If the channel is enabled for sending messages.
+     * @return Specifies whether to enable the email channel for the application.
      */
 
     public Boolean isEnabled() {
@@ -80,10 +161,14 @@ public class EmailChannelRequest implements Serializable, Cloneable, StructuredP
     }
 
     /**
-     * The email address used to send emails from.
+     * <p>
+     * The verified email address that you want to send email from when you send email through the channel.
+     * </p>
      * 
      * @param fromAddress
-     *        The email address used to send emails from.
+     *        <p>
+     *        The verified email address that you want to send email from when you send email through the channel.
+     *        </p>
      */
 
     public void setFromAddress(String fromAddress) {
@@ -91,9 +176,13 @@ public class EmailChannelRequest implements Serializable, Cloneable, StructuredP
     }
 
     /**
-     * The email address used to send emails from.
+     * <p>
+     * The verified email address that you want to send email from when you send email through the channel.
+     * </p>
      * 
-     * @return The email address used to send emails from.
+     * @return <p>
+     *         The verified email address that you want to send email from when you send email through the channel.
+     *         </p>
      */
 
     public String getFromAddress() {
@@ -101,10 +190,14 @@ public class EmailChannelRequest implements Serializable, Cloneable, StructuredP
     }
 
     /**
-     * The email address used to send emails from.
+     * <p>
+     * The verified email address that you want to send email from when you send email through the channel.
+     * </p>
      * 
      * @param fromAddress
-     *        The email address used to send emails from.
+     *        <p>
+     *        The verified email address that you want to send email from when you send email through the channel.
+     *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -114,10 +207,16 @@ public class EmailChannelRequest implements Serializable, Cloneable, StructuredP
     }
 
     /**
-     * The ARN of an identity verified with SES.
+     * <p>
+     * The Amazon Resource Name (ARN) of the identity, verified with Amazon Simple Email Service (Amazon SES), that you
+     * want to use when you send email through the channel.
+     * </p>
      * 
      * @param identity
-     *        The ARN of an identity verified with SES.
+     *        <p>
+     *        The Amazon Resource Name (ARN) of the identity, verified with Amazon Simple Email Service (Amazon SES),
+     *        that you want to use when you send email through the channel.
+     *        </p>
      */
 
     public void setIdentity(String identity) {
@@ -125,9 +224,15 @@ public class EmailChannelRequest implements Serializable, Cloneable, StructuredP
     }
 
     /**
-     * The ARN of an identity verified with SES.
+     * <p>
+     * The Amazon Resource Name (ARN) of the identity, verified with Amazon Simple Email Service (Amazon SES), that you
+     * want to use when you send email through the channel.
+     * </p>
      * 
-     * @return The ARN of an identity verified with SES.
+     * @return <p>
+     *         The Amazon Resource Name (ARN) of the identity, verified with Amazon Simple Email Service (Amazon SES),
+     *         that you want to use when you send email through the channel.
+     *         </p>
      */
 
     public String getIdentity() {
@@ -135,10 +240,16 @@ public class EmailChannelRequest implements Serializable, Cloneable, StructuredP
     }
 
     /**
-     * The ARN of an identity verified with SES.
+     * <p>
+     * The Amazon Resource Name (ARN) of the identity, verified with Amazon Simple Email Service (Amazon SES), that you
+     * want to use when you send email through the channel.
+     * </p>
      * 
      * @param identity
-     *        The ARN of an identity verified with SES.
+     *        <p>
+     *        The Amazon Resource Name (ARN) of the identity, verified with Amazon Simple Email Service (Amazon SES),
+     *        that you want to use when you send email through the channel.
+     *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -148,10 +259,16 @@ public class EmailChannelRequest implements Serializable, Cloneable, StructuredP
     }
 
     /**
-     * The ARN of an IAM Role used to submit events to Mobile Analytics' event ingestion service
+     * <p>
+     * The ARN of the AWS Identity and Access Management (IAM) role that you want Amazon Pinpoint to use when it submits
+     * email-related event data for the channel.
+     * </p>
      * 
      * @param roleArn
-     *        The ARN of an IAM Role used to submit events to Mobile Analytics' event ingestion service
+     *        <p>
+     *        The ARN of the AWS Identity and Access Management (IAM) role that you want Amazon Pinpoint to use when it
+     *        submits email-related event data for the channel.
+     *        </p>
      */
 
     public void setRoleArn(String roleArn) {
@@ -159,9 +276,15 @@ public class EmailChannelRequest implements Serializable, Cloneable, StructuredP
     }
 
     /**
-     * The ARN of an IAM Role used to submit events to Mobile Analytics' event ingestion service
+     * <p>
+     * The ARN of the AWS Identity and Access Management (IAM) role that you want Amazon Pinpoint to use when it submits
+     * email-related event data for the channel.
+     * </p>
      * 
-     * @return The ARN of an IAM Role used to submit events to Mobile Analytics' event ingestion service
+     * @return <p>
+     *         The ARN of the AWS Identity and Access Management (IAM) role that you want Amazon Pinpoint to use when it
+     *         submits email-related event data for the channel.
+     *         </p>
      */
 
     public String getRoleArn() {
@@ -169,10 +292,16 @@ public class EmailChannelRequest implements Serializable, Cloneable, StructuredP
     }
 
     /**
-     * The ARN of an IAM Role used to submit events to Mobile Analytics' event ingestion service
+     * <p>
+     * The ARN of the AWS Identity and Access Management (IAM) role that you want Amazon Pinpoint to use when it submits
+     * email-related event data for the channel.
+     * </p>
      * 
      * @param roleArn
-     *        The ARN of an IAM Role used to submit events to Mobile Analytics' event ingestion service
+     *        <p>
+     *        The ARN of the AWS Identity and Access Management (IAM) role that you want Amazon Pinpoint to use when it
+     *        submits email-related event data for the channel.
+     *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -182,7 +311,8 @@ public class EmailChannelRequest implements Serializable, Cloneable, StructuredP
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -192,6 +322,8 @@ public class EmailChannelRequest implements Serializable, Cloneable, StructuredP
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
+        if (getConfigurationSet() != null)
+            sb.append("ConfigurationSet: ").append(getConfigurationSet()).append(",");
         if (getEnabled() != null)
             sb.append("Enabled: ").append(getEnabled()).append(",");
         if (getFromAddress() != null)
@@ -214,6 +346,10 @@ public class EmailChannelRequest implements Serializable, Cloneable, StructuredP
         if (obj instanceof EmailChannelRequest == false)
             return false;
         EmailChannelRequest other = (EmailChannelRequest) obj;
+        if (other.getConfigurationSet() == null ^ this.getConfigurationSet() == null)
+            return false;
+        if (other.getConfigurationSet() != null && other.getConfigurationSet().equals(this.getConfigurationSet()) == false)
+            return false;
         if (other.getEnabled() == null ^ this.getEnabled() == null)
             return false;
         if (other.getEnabled() != null && other.getEnabled().equals(this.getEnabled()) == false)
@@ -238,6 +374,7 @@ public class EmailChannelRequest implements Serializable, Cloneable, StructuredP
         final int prime = 31;
         int hashCode = 1;
 
+        hashCode = prime * hashCode + ((getConfigurationSet() == null) ? 0 : getConfigurationSet().hashCode());
         hashCode = prime * hashCode + ((getEnabled() == null) ? 0 : getEnabled().hashCode());
         hashCode = prime * hashCode + ((getFromAddress() == null) ? 0 : getFromAddress().hashCode());
         hashCode = prime * hashCode + ((getIdentity() == null) ? 0 : getIdentity().hashCode());

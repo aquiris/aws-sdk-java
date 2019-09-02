@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -48,7 +48,7 @@ public class DeploymentInfo implements Serializable, Cloneable, StructuredPojo {
     private String deploymentConfigName;
     /**
      * <p>
-     * The deployment ID.
+     * The unique ID of a deployment.
      * </p>
      */
     private String deploymentId;
@@ -79,23 +79,23 @@ public class DeploymentInfo implements Serializable, Cloneable, StructuredPojo {
     private ErrorInformation errorInformation;
     /**
      * <p>
-     * A timestamp indicating when the deployment was created.
+     * A timestamp that indicates when the deployment was created.
      * </p>
      */
     private java.util.Date createTime;
     /**
      * <p>
-     * A timestamp indicating when the deployment was deployed to the deployment group.
+     * A timestamp that indicates when the deployment was deployed to the deployment group.
      * </p>
      * <p>
-     * In some cases, the reported value of the start time may be later than the complete time. This is due to
-     * differences in the clock settings of back-end servers that participate in the deployment process.
+     * In some cases, the reported value of the start time might be later than the complete time. This is due to
+     * differences in the clock settings of backend servers that participate in the deployment process.
      * </p>
      */
     private java.util.Date startTime;
     /**
      * <p>
-     * A timestamp indicating when the deployment was complete.
+     * A timestamp that indicates when the deployment was complete.
      * </p>
      */
     private java.util.Date completeTime;
@@ -123,7 +123,7 @@ public class DeploymentInfo implements Serializable, Cloneable, StructuredPojo {
      * </li>
      * <li>
      * <p>
-     * autoscaling: Auto Scaling created the deployment.
+     * autoscaling: Amazon EC2 Auto Scaling created the deployment.
      * </p>
      * </li>
      * <li>
@@ -136,14 +136,29 @@ public class DeploymentInfo implements Serializable, Cloneable, StructuredPojo {
     private String creator;
     /**
      * <p>
-     * If true, then if the deployment causes the ApplicationStop deployment lifecycle event to an instance to fail, the
-     * deployment to that instance will not be considered to have failed at that point and will continue on to the
-     * BeforeInstall deployment lifecycle event.
+     * If true, then if an <code>ApplicationStop</code>, <code>BeforeBlockTraffic</code>, or
+     * <code>AfterBlockTraffic</code> deployment lifecycle event to an instance fails, then the deployment continues to
+     * the next deployment lifecycle event. For example, if <code>ApplicationStop</code> fails, the deployment continues
+     * with DownloadBundle. If <code>BeforeBlockTraffic</code> fails, the deployment continues with
+     * <code>BlockTraffic</code>. If <code>AfterBlockTraffic</code> fails, the deployment continues with
+     * <code>ApplicationStop</code>.
      * </p>
      * <p>
-     * If false or not specified, then if the deployment causes the ApplicationStop deployment lifecycle event to an
-     * instance to fail, the deployment to that instance will stop, and the deployment to that instance will be
-     * considered to have failed.
+     * If false or not specified, then if a lifecycle event fails during a deployment to an instance, that deployment
+     * fails. If deployment to that instance is part of an overall deployment and the number of healthy hosts is not
+     * less than the minimum number of healthy hosts, then a deployment to the next instance is attempted.
+     * </p>
+     * <p>
+     * During a deployment, the AWS CodeDeploy agent runs the scripts specified for <code>ApplicationStop</code>,
+     * <code>BeforeBlockTraffic</code>, and <code>AfterBlockTraffic</code> in the AppSpec file from the previous
+     * successful deployment. (All other scripts are run from the AppSpec file in the current deployment.) If one of
+     * these scripts contains an error and does not run successfully, the deployment can fail.
+     * </p>
+     * <p>
+     * If the cause of the failure is a script from the last successful deployment that will never run successfully,
+     * create a new deployment and use <code>ignoreApplicationStopFailures</code> to specify that the
+     * <code>ApplicationStop</code>, <code>BeforeBlockTraffic</code>, and <code>AfterBlockTraffic</code> failures should
+     * be ignored.
      * </p>
      */
     private Boolean ignoreApplicationStopFailures;
@@ -181,7 +196,7 @@ public class DeploymentInfo implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * Indicates whether the wait period set for the termination of instances in the original environment has started.
-     * Status is 'false' if the KEEP_ALIVE option is specified; otherwise, 'true' as soon as the termination wait period
+     * Status is 'false' if the KEEP_ALIVE option is specified. Otherwise, 'true' as soon as the termination wait period
      * starts.
      * </p>
      */
@@ -238,7 +253,7 @@ public class DeploymentInfo implements Serializable, Cloneable, StructuredPojo {
     private com.amazonaws.internal.SdkInternalList<String> deploymentStatusMessages;
     /**
      * <p>
-     * The destination platform type for the deployment (<code>Lambda</code> or <code>Server</code>).
+     * The destination platform type for the deployment (<code>Lambda</code>, <code>Server</code>, or <code>ECS</code>).
      * </p>
      */
     private String computePlatform;
@@ -365,11 +380,11 @@ public class DeploymentInfo implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The deployment ID.
+     * The unique ID of a deployment.
      * </p>
      * 
      * @param deploymentId
-     *        The deployment ID.
+     *        The unique ID of a deployment.
      */
 
     public void setDeploymentId(String deploymentId) {
@@ -378,10 +393,10 @@ public class DeploymentInfo implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The deployment ID.
+     * The unique ID of a deployment.
      * </p>
      * 
-     * @return The deployment ID.
+     * @return The unique ID of a deployment.
      */
 
     public String getDeploymentId() {
@@ -390,11 +405,11 @@ public class DeploymentInfo implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The deployment ID.
+     * The unique ID of a deployment.
      * </p>
      * 
      * @param deploymentId
-     *        The deployment ID.
+     *        The unique ID of a deployment.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -607,11 +622,11 @@ public class DeploymentInfo implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * A timestamp indicating when the deployment was created.
+     * A timestamp that indicates when the deployment was created.
      * </p>
      * 
      * @param createTime
-     *        A timestamp indicating when the deployment was created.
+     *        A timestamp that indicates when the deployment was created.
      */
 
     public void setCreateTime(java.util.Date createTime) {
@@ -620,10 +635,10 @@ public class DeploymentInfo implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * A timestamp indicating when the deployment was created.
+     * A timestamp that indicates when the deployment was created.
      * </p>
      * 
-     * @return A timestamp indicating when the deployment was created.
+     * @return A timestamp that indicates when the deployment was created.
      */
 
     public java.util.Date getCreateTime() {
@@ -632,11 +647,11 @@ public class DeploymentInfo implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * A timestamp indicating when the deployment was created.
+     * A timestamp that indicates when the deployment was created.
      * </p>
      * 
      * @param createTime
-     *        A timestamp indicating when the deployment was created.
+     *        A timestamp that indicates when the deployment was created.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -647,18 +662,18 @@ public class DeploymentInfo implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * A timestamp indicating when the deployment was deployed to the deployment group.
+     * A timestamp that indicates when the deployment was deployed to the deployment group.
      * </p>
      * <p>
-     * In some cases, the reported value of the start time may be later than the complete time. This is due to
-     * differences in the clock settings of back-end servers that participate in the deployment process.
+     * In some cases, the reported value of the start time might be later than the complete time. This is due to
+     * differences in the clock settings of backend servers that participate in the deployment process.
      * </p>
      * 
      * @param startTime
-     *        A timestamp indicating when the deployment was deployed to the deployment group.</p>
+     *        A timestamp that indicates when the deployment was deployed to the deployment group.</p>
      *        <p>
-     *        In some cases, the reported value of the start time may be later than the complete time. This is due to
-     *        differences in the clock settings of back-end servers that participate in the deployment process.
+     *        In some cases, the reported value of the start time might be later than the complete time. This is due to
+     *        differences in the clock settings of backend servers that participate in the deployment process.
      */
 
     public void setStartTime(java.util.Date startTime) {
@@ -667,17 +682,17 @@ public class DeploymentInfo implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * A timestamp indicating when the deployment was deployed to the deployment group.
+     * A timestamp that indicates when the deployment was deployed to the deployment group.
      * </p>
      * <p>
-     * In some cases, the reported value of the start time may be later than the complete time. This is due to
-     * differences in the clock settings of back-end servers that participate in the deployment process.
+     * In some cases, the reported value of the start time might be later than the complete time. This is due to
+     * differences in the clock settings of backend servers that participate in the deployment process.
      * </p>
      * 
-     * @return A timestamp indicating when the deployment was deployed to the deployment group.</p>
+     * @return A timestamp that indicates when the deployment was deployed to the deployment group.</p>
      *         <p>
-     *         In some cases, the reported value of the start time may be later than the complete time. This is due to
-     *         differences in the clock settings of back-end servers that participate in the deployment process.
+     *         In some cases, the reported value of the start time might be later than the complete time. This is due to
+     *         differences in the clock settings of backend servers that participate in the deployment process.
      */
 
     public java.util.Date getStartTime() {
@@ -686,18 +701,18 @@ public class DeploymentInfo implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * A timestamp indicating when the deployment was deployed to the deployment group.
+     * A timestamp that indicates when the deployment was deployed to the deployment group.
      * </p>
      * <p>
-     * In some cases, the reported value of the start time may be later than the complete time. This is due to
-     * differences in the clock settings of back-end servers that participate in the deployment process.
+     * In some cases, the reported value of the start time might be later than the complete time. This is due to
+     * differences in the clock settings of backend servers that participate in the deployment process.
      * </p>
      * 
      * @param startTime
-     *        A timestamp indicating when the deployment was deployed to the deployment group.</p>
+     *        A timestamp that indicates when the deployment was deployed to the deployment group.</p>
      *        <p>
-     *        In some cases, the reported value of the start time may be later than the complete time. This is due to
-     *        differences in the clock settings of back-end servers that participate in the deployment process.
+     *        In some cases, the reported value of the start time might be later than the complete time. This is due to
+     *        differences in the clock settings of backend servers that participate in the deployment process.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -708,11 +723,11 @@ public class DeploymentInfo implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * A timestamp indicating when the deployment was complete.
+     * A timestamp that indicates when the deployment was complete.
      * </p>
      * 
      * @param completeTime
-     *        A timestamp indicating when the deployment was complete.
+     *        A timestamp that indicates when the deployment was complete.
      */
 
     public void setCompleteTime(java.util.Date completeTime) {
@@ -721,10 +736,10 @@ public class DeploymentInfo implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * A timestamp indicating when the deployment was complete.
+     * A timestamp that indicates when the deployment was complete.
      * </p>
      * 
-     * @return A timestamp indicating when the deployment was complete.
+     * @return A timestamp that indicates when the deployment was complete.
      */
 
     public java.util.Date getCompleteTime() {
@@ -733,11 +748,11 @@ public class DeploymentInfo implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * A timestamp indicating when the deployment was complete.
+     * A timestamp that indicates when the deployment was complete.
      * </p>
      * 
      * @param completeTime
-     *        A timestamp indicating when the deployment was complete.
+     *        A timestamp that indicates when the deployment was complete.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -838,7 +853,7 @@ public class DeploymentInfo implements Serializable, Cloneable, StructuredPojo {
      * </li>
      * <li>
      * <p>
-     * autoscaling: Auto Scaling created the deployment.
+     * autoscaling: Amazon EC2 Auto Scaling created the deployment.
      * </p>
      * </li>
      * <li>
@@ -858,7 +873,7 @@ public class DeploymentInfo implements Serializable, Cloneable, StructuredPojo {
      *        </li>
      *        <li>
      *        <p>
-     *        autoscaling: Auto Scaling created the deployment.
+     *        autoscaling: Amazon EC2 Auto Scaling created the deployment.
      *        </p>
      *        </li>
      *        <li>
@@ -885,7 +900,7 @@ public class DeploymentInfo implements Serializable, Cloneable, StructuredPojo {
      * </li>
      * <li>
      * <p>
-     * autoscaling: Auto Scaling created the deployment.
+     * autoscaling: Amazon EC2 Auto Scaling created the deployment.
      * </p>
      * </li>
      * <li>
@@ -904,7 +919,7 @@ public class DeploymentInfo implements Serializable, Cloneable, StructuredPojo {
      *         </li>
      *         <li>
      *         <p>
-     *         autoscaling: Auto Scaling created the deployment.
+     *         autoscaling: Amazon EC2 Auto Scaling created the deployment.
      *         </p>
      *         </li>
      *         <li>
@@ -931,7 +946,7 @@ public class DeploymentInfo implements Serializable, Cloneable, StructuredPojo {
      * </li>
      * <li>
      * <p>
-     * autoscaling: Auto Scaling created the deployment.
+     * autoscaling: Amazon EC2 Auto Scaling created the deployment.
      * </p>
      * </li>
      * <li>
@@ -951,7 +966,7 @@ public class DeploymentInfo implements Serializable, Cloneable, StructuredPojo {
      *        </li>
      *        <li>
      *        <p>
-     *        autoscaling: Auto Scaling created the deployment.
+     *        autoscaling: Amazon EC2 Auto Scaling created the deployment.
      *        </p>
      *        </li>
      *        <li>
@@ -980,7 +995,7 @@ public class DeploymentInfo implements Serializable, Cloneable, StructuredPojo {
      * </li>
      * <li>
      * <p>
-     * autoscaling: Auto Scaling created the deployment.
+     * autoscaling: Amazon EC2 Auto Scaling created the deployment.
      * </p>
      * </li>
      * <li>
@@ -1000,7 +1015,7 @@ public class DeploymentInfo implements Serializable, Cloneable, StructuredPojo {
      *        </li>
      *        <li>
      *        <p>
-     *        autoscaling: Auto Scaling created the deployment.
+     *        autoscaling: Amazon EC2 Auto Scaling created the deployment.
      *        </p>
      *        </li>
      *        <li>
@@ -1027,7 +1042,7 @@ public class DeploymentInfo implements Serializable, Cloneable, StructuredPojo {
      * </li>
      * <li>
      * <p>
-     * autoscaling: Auto Scaling created the deployment.
+     * autoscaling: Amazon EC2 Auto Scaling created the deployment.
      * </p>
      * </li>
      * <li>
@@ -1047,7 +1062,7 @@ public class DeploymentInfo implements Serializable, Cloneable, StructuredPojo {
      *        </li>
      *        <li>
      *        <p>
-     *        autoscaling: Auto Scaling created the deployment.
+     *        autoscaling: Amazon EC2 Auto Scaling created the deployment.
      *        </p>
      *        </li>
      *        <li>
@@ -1066,24 +1081,55 @@ public class DeploymentInfo implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * If true, then if the deployment causes the ApplicationStop deployment lifecycle event to an instance to fail, the
-     * deployment to that instance will not be considered to have failed at that point and will continue on to the
-     * BeforeInstall deployment lifecycle event.
+     * If true, then if an <code>ApplicationStop</code>, <code>BeforeBlockTraffic</code>, or
+     * <code>AfterBlockTraffic</code> deployment lifecycle event to an instance fails, then the deployment continues to
+     * the next deployment lifecycle event. For example, if <code>ApplicationStop</code> fails, the deployment continues
+     * with DownloadBundle. If <code>BeforeBlockTraffic</code> fails, the deployment continues with
+     * <code>BlockTraffic</code>. If <code>AfterBlockTraffic</code> fails, the deployment continues with
+     * <code>ApplicationStop</code>.
      * </p>
      * <p>
-     * If false or not specified, then if the deployment causes the ApplicationStop deployment lifecycle event to an
-     * instance to fail, the deployment to that instance will stop, and the deployment to that instance will be
-     * considered to have failed.
+     * If false or not specified, then if a lifecycle event fails during a deployment to an instance, that deployment
+     * fails. If deployment to that instance is part of an overall deployment and the number of healthy hosts is not
+     * less than the minimum number of healthy hosts, then a deployment to the next instance is attempted.
+     * </p>
+     * <p>
+     * During a deployment, the AWS CodeDeploy agent runs the scripts specified for <code>ApplicationStop</code>,
+     * <code>BeforeBlockTraffic</code>, and <code>AfterBlockTraffic</code> in the AppSpec file from the previous
+     * successful deployment. (All other scripts are run from the AppSpec file in the current deployment.) If one of
+     * these scripts contains an error and does not run successfully, the deployment can fail.
+     * </p>
+     * <p>
+     * If the cause of the failure is a script from the last successful deployment that will never run successfully,
+     * create a new deployment and use <code>ignoreApplicationStopFailures</code> to specify that the
+     * <code>ApplicationStop</code>, <code>BeforeBlockTraffic</code>, and <code>AfterBlockTraffic</code> failures should
+     * be ignored.
      * </p>
      * 
      * @param ignoreApplicationStopFailures
-     *        If true, then if the deployment causes the ApplicationStop deployment lifecycle event to an instance to
-     *        fail, the deployment to that instance will not be considered to have failed at that point and will
-     *        continue on to the BeforeInstall deployment lifecycle event.</p>
+     *        If true, then if an <code>ApplicationStop</code>, <code>BeforeBlockTraffic</code>, or
+     *        <code>AfterBlockTraffic</code> deployment lifecycle event to an instance fails, then the deployment
+     *        continues to the next deployment lifecycle event. For example, if <code>ApplicationStop</code> fails, the
+     *        deployment continues with DownloadBundle. If <code>BeforeBlockTraffic</code> fails, the deployment
+     *        continues with <code>BlockTraffic</code>. If <code>AfterBlockTraffic</code> fails, the deployment
+     *        continues with <code>ApplicationStop</code>. </p>
      *        <p>
-     *        If false or not specified, then if the deployment causes the ApplicationStop deployment lifecycle event to
-     *        an instance to fail, the deployment to that instance will stop, and the deployment to that instance will
-     *        be considered to have failed.
+     *        If false or not specified, then if a lifecycle event fails during a deployment to an instance, that
+     *        deployment fails. If deployment to that instance is part of an overall deployment and the number of
+     *        healthy hosts is not less than the minimum number of healthy hosts, then a deployment to the next instance
+     *        is attempted.
+     *        </p>
+     *        <p>
+     *        During a deployment, the AWS CodeDeploy agent runs the scripts specified for <code>ApplicationStop</code>,
+     *        <code>BeforeBlockTraffic</code>, and <code>AfterBlockTraffic</code> in the AppSpec file from the previous
+     *        successful deployment. (All other scripts are run from the AppSpec file in the current deployment.) If one
+     *        of these scripts contains an error and does not run successfully, the deployment can fail.
+     *        </p>
+     *        <p>
+     *        If the cause of the failure is a script from the last successful deployment that will never run
+     *        successfully, create a new deployment and use <code>ignoreApplicationStopFailures</code> to specify that
+     *        the <code>ApplicationStop</code>, <code>BeforeBlockTraffic</code>, and <code>AfterBlockTraffic</code>
+     *        failures should be ignored.
      */
 
     public void setIgnoreApplicationStopFailures(Boolean ignoreApplicationStopFailures) {
@@ -1092,23 +1138,54 @@ public class DeploymentInfo implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * If true, then if the deployment causes the ApplicationStop deployment lifecycle event to an instance to fail, the
-     * deployment to that instance will not be considered to have failed at that point and will continue on to the
-     * BeforeInstall deployment lifecycle event.
+     * If true, then if an <code>ApplicationStop</code>, <code>BeforeBlockTraffic</code>, or
+     * <code>AfterBlockTraffic</code> deployment lifecycle event to an instance fails, then the deployment continues to
+     * the next deployment lifecycle event. For example, if <code>ApplicationStop</code> fails, the deployment continues
+     * with DownloadBundle. If <code>BeforeBlockTraffic</code> fails, the deployment continues with
+     * <code>BlockTraffic</code>. If <code>AfterBlockTraffic</code> fails, the deployment continues with
+     * <code>ApplicationStop</code>.
      * </p>
      * <p>
-     * If false or not specified, then if the deployment causes the ApplicationStop deployment lifecycle event to an
-     * instance to fail, the deployment to that instance will stop, and the deployment to that instance will be
-     * considered to have failed.
+     * If false or not specified, then if a lifecycle event fails during a deployment to an instance, that deployment
+     * fails. If deployment to that instance is part of an overall deployment and the number of healthy hosts is not
+     * less than the minimum number of healthy hosts, then a deployment to the next instance is attempted.
+     * </p>
+     * <p>
+     * During a deployment, the AWS CodeDeploy agent runs the scripts specified for <code>ApplicationStop</code>,
+     * <code>BeforeBlockTraffic</code>, and <code>AfterBlockTraffic</code> in the AppSpec file from the previous
+     * successful deployment. (All other scripts are run from the AppSpec file in the current deployment.) If one of
+     * these scripts contains an error and does not run successfully, the deployment can fail.
+     * </p>
+     * <p>
+     * If the cause of the failure is a script from the last successful deployment that will never run successfully,
+     * create a new deployment and use <code>ignoreApplicationStopFailures</code> to specify that the
+     * <code>ApplicationStop</code>, <code>BeforeBlockTraffic</code>, and <code>AfterBlockTraffic</code> failures should
+     * be ignored.
      * </p>
      * 
-     * @return If true, then if the deployment causes the ApplicationStop deployment lifecycle event to an instance to
-     *         fail, the deployment to that instance will not be considered to have failed at that point and will
-     *         continue on to the BeforeInstall deployment lifecycle event.</p>
+     * @return If true, then if an <code>ApplicationStop</code>, <code>BeforeBlockTraffic</code>, or
+     *         <code>AfterBlockTraffic</code> deployment lifecycle event to an instance fails, then the deployment
+     *         continues to the next deployment lifecycle event. For example, if <code>ApplicationStop</code> fails, the
+     *         deployment continues with DownloadBundle. If <code>BeforeBlockTraffic</code> fails, the deployment
+     *         continues with <code>BlockTraffic</code>. If <code>AfterBlockTraffic</code> fails, the deployment
+     *         continues with <code>ApplicationStop</code>. </p>
      *         <p>
-     *         If false or not specified, then if the deployment causes the ApplicationStop deployment lifecycle event
-     *         to an instance to fail, the deployment to that instance will stop, and the deployment to that instance
-     *         will be considered to have failed.
+     *         If false or not specified, then if a lifecycle event fails during a deployment to an instance, that
+     *         deployment fails. If deployment to that instance is part of an overall deployment and the number of
+     *         healthy hosts is not less than the minimum number of healthy hosts, then a deployment to the next
+     *         instance is attempted.
+     *         </p>
+     *         <p>
+     *         During a deployment, the AWS CodeDeploy agent runs the scripts specified for <code>ApplicationStop</code>, <code>BeforeBlockTraffic</code>, and <code>AfterBlockTraffic</code> in the AppSpec file from the
+     *         previous successful deployment. (All other scripts are run from the AppSpec file in the current
+     *         deployment.) If one of these scripts contains an error and does not run successfully, the deployment can
+     *         fail.
+     *         </p>
+     *         <p>
+     *         If the cause of the failure is a script from the last successful deployment that will never run
+     *         successfully, create a new deployment and use <code>ignoreApplicationStopFailures</code> to specify that
+     *         the <code>ApplicationStop</code>, <code>BeforeBlockTraffic</code>, and <code>AfterBlockTraffic</code>
+     *         failures should be ignored.
      */
 
     public Boolean getIgnoreApplicationStopFailures() {
@@ -1117,24 +1194,55 @@ public class DeploymentInfo implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * If true, then if the deployment causes the ApplicationStop deployment lifecycle event to an instance to fail, the
-     * deployment to that instance will not be considered to have failed at that point and will continue on to the
-     * BeforeInstall deployment lifecycle event.
+     * If true, then if an <code>ApplicationStop</code>, <code>BeforeBlockTraffic</code>, or
+     * <code>AfterBlockTraffic</code> deployment lifecycle event to an instance fails, then the deployment continues to
+     * the next deployment lifecycle event. For example, if <code>ApplicationStop</code> fails, the deployment continues
+     * with DownloadBundle. If <code>BeforeBlockTraffic</code> fails, the deployment continues with
+     * <code>BlockTraffic</code>. If <code>AfterBlockTraffic</code> fails, the deployment continues with
+     * <code>ApplicationStop</code>.
      * </p>
      * <p>
-     * If false or not specified, then if the deployment causes the ApplicationStop deployment lifecycle event to an
-     * instance to fail, the deployment to that instance will stop, and the deployment to that instance will be
-     * considered to have failed.
+     * If false or not specified, then if a lifecycle event fails during a deployment to an instance, that deployment
+     * fails. If deployment to that instance is part of an overall deployment and the number of healthy hosts is not
+     * less than the minimum number of healthy hosts, then a deployment to the next instance is attempted.
+     * </p>
+     * <p>
+     * During a deployment, the AWS CodeDeploy agent runs the scripts specified for <code>ApplicationStop</code>,
+     * <code>BeforeBlockTraffic</code>, and <code>AfterBlockTraffic</code> in the AppSpec file from the previous
+     * successful deployment. (All other scripts are run from the AppSpec file in the current deployment.) If one of
+     * these scripts contains an error and does not run successfully, the deployment can fail.
+     * </p>
+     * <p>
+     * If the cause of the failure is a script from the last successful deployment that will never run successfully,
+     * create a new deployment and use <code>ignoreApplicationStopFailures</code> to specify that the
+     * <code>ApplicationStop</code>, <code>BeforeBlockTraffic</code>, and <code>AfterBlockTraffic</code> failures should
+     * be ignored.
      * </p>
      * 
      * @param ignoreApplicationStopFailures
-     *        If true, then if the deployment causes the ApplicationStop deployment lifecycle event to an instance to
-     *        fail, the deployment to that instance will not be considered to have failed at that point and will
-     *        continue on to the BeforeInstall deployment lifecycle event.</p>
+     *        If true, then if an <code>ApplicationStop</code>, <code>BeforeBlockTraffic</code>, or
+     *        <code>AfterBlockTraffic</code> deployment lifecycle event to an instance fails, then the deployment
+     *        continues to the next deployment lifecycle event. For example, if <code>ApplicationStop</code> fails, the
+     *        deployment continues with DownloadBundle. If <code>BeforeBlockTraffic</code> fails, the deployment
+     *        continues with <code>BlockTraffic</code>. If <code>AfterBlockTraffic</code> fails, the deployment
+     *        continues with <code>ApplicationStop</code>. </p>
      *        <p>
-     *        If false or not specified, then if the deployment causes the ApplicationStop deployment lifecycle event to
-     *        an instance to fail, the deployment to that instance will stop, and the deployment to that instance will
-     *        be considered to have failed.
+     *        If false or not specified, then if a lifecycle event fails during a deployment to an instance, that
+     *        deployment fails. If deployment to that instance is part of an overall deployment and the number of
+     *        healthy hosts is not less than the minimum number of healthy hosts, then a deployment to the next instance
+     *        is attempted.
+     *        </p>
+     *        <p>
+     *        During a deployment, the AWS CodeDeploy agent runs the scripts specified for <code>ApplicationStop</code>,
+     *        <code>BeforeBlockTraffic</code>, and <code>AfterBlockTraffic</code> in the AppSpec file from the previous
+     *        successful deployment. (All other scripts are run from the AppSpec file in the current deployment.) If one
+     *        of these scripts contains an error and does not run successfully, the deployment can fail.
+     *        </p>
+     *        <p>
+     *        If the cause of the failure is a script from the last successful deployment that will never run
+     *        successfully, create a new deployment and use <code>ignoreApplicationStopFailures</code> to specify that
+     *        the <code>ApplicationStop</code>, <code>BeforeBlockTraffic</code>, and <code>AfterBlockTraffic</code>
+     *        failures should be ignored.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1145,23 +1253,54 @@ public class DeploymentInfo implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * If true, then if the deployment causes the ApplicationStop deployment lifecycle event to an instance to fail, the
-     * deployment to that instance will not be considered to have failed at that point and will continue on to the
-     * BeforeInstall deployment lifecycle event.
+     * If true, then if an <code>ApplicationStop</code>, <code>BeforeBlockTraffic</code>, or
+     * <code>AfterBlockTraffic</code> deployment lifecycle event to an instance fails, then the deployment continues to
+     * the next deployment lifecycle event. For example, if <code>ApplicationStop</code> fails, the deployment continues
+     * with DownloadBundle. If <code>BeforeBlockTraffic</code> fails, the deployment continues with
+     * <code>BlockTraffic</code>. If <code>AfterBlockTraffic</code> fails, the deployment continues with
+     * <code>ApplicationStop</code>.
      * </p>
      * <p>
-     * If false or not specified, then if the deployment causes the ApplicationStop deployment lifecycle event to an
-     * instance to fail, the deployment to that instance will stop, and the deployment to that instance will be
-     * considered to have failed.
+     * If false or not specified, then if a lifecycle event fails during a deployment to an instance, that deployment
+     * fails. If deployment to that instance is part of an overall deployment and the number of healthy hosts is not
+     * less than the minimum number of healthy hosts, then a deployment to the next instance is attempted.
+     * </p>
+     * <p>
+     * During a deployment, the AWS CodeDeploy agent runs the scripts specified for <code>ApplicationStop</code>,
+     * <code>BeforeBlockTraffic</code>, and <code>AfterBlockTraffic</code> in the AppSpec file from the previous
+     * successful deployment. (All other scripts are run from the AppSpec file in the current deployment.) If one of
+     * these scripts contains an error and does not run successfully, the deployment can fail.
+     * </p>
+     * <p>
+     * If the cause of the failure is a script from the last successful deployment that will never run successfully,
+     * create a new deployment and use <code>ignoreApplicationStopFailures</code> to specify that the
+     * <code>ApplicationStop</code>, <code>BeforeBlockTraffic</code>, and <code>AfterBlockTraffic</code> failures should
+     * be ignored.
      * </p>
      * 
-     * @return If true, then if the deployment causes the ApplicationStop deployment lifecycle event to an instance to
-     *         fail, the deployment to that instance will not be considered to have failed at that point and will
-     *         continue on to the BeforeInstall deployment lifecycle event.</p>
+     * @return If true, then if an <code>ApplicationStop</code>, <code>BeforeBlockTraffic</code>, or
+     *         <code>AfterBlockTraffic</code> deployment lifecycle event to an instance fails, then the deployment
+     *         continues to the next deployment lifecycle event. For example, if <code>ApplicationStop</code> fails, the
+     *         deployment continues with DownloadBundle. If <code>BeforeBlockTraffic</code> fails, the deployment
+     *         continues with <code>BlockTraffic</code>. If <code>AfterBlockTraffic</code> fails, the deployment
+     *         continues with <code>ApplicationStop</code>. </p>
      *         <p>
-     *         If false or not specified, then if the deployment causes the ApplicationStop deployment lifecycle event
-     *         to an instance to fail, the deployment to that instance will stop, and the deployment to that instance
-     *         will be considered to have failed.
+     *         If false or not specified, then if a lifecycle event fails during a deployment to an instance, that
+     *         deployment fails. If deployment to that instance is part of an overall deployment and the number of
+     *         healthy hosts is not less than the minimum number of healthy hosts, then a deployment to the next
+     *         instance is attempted.
+     *         </p>
+     *         <p>
+     *         During a deployment, the AWS CodeDeploy agent runs the scripts specified for <code>ApplicationStop</code>, <code>BeforeBlockTraffic</code>, and <code>AfterBlockTraffic</code> in the AppSpec file from the
+     *         previous successful deployment. (All other scripts are run from the AppSpec file in the current
+     *         deployment.) If one of these scripts contains an error and does not run successfully, the deployment can
+     *         fail.
+     *         </p>
+     *         <p>
+     *         If the cause of the failure is a script from the last successful deployment that will never run
+     *         successfully, create a new deployment and use <code>ignoreApplicationStopFailures</code> to specify that
+     *         the <code>ApplicationStop</code>, <code>BeforeBlockTraffic</code>, and <code>AfterBlockTraffic</code>
+     *         failures should be ignored.
      */
 
     public Boolean isIgnoreApplicationStopFailures() {
@@ -1393,13 +1532,13 @@ public class DeploymentInfo implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * Indicates whether the wait period set for the termination of instances in the original environment has started.
-     * Status is 'false' if the KEEP_ALIVE option is specified; otherwise, 'true' as soon as the termination wait period
+     * Status is 'false' if the KEEP_ALIVE option is specified. Otherwise, 'true' as soon as the termination wait period
      * starts.
      * </p>
      * 
      * @param instanceTerminationWaitTimeStarted
      *        Indicates whether the wait period set for the termination of instances in the original environment has
-     *        started. Status is 'false' if the KEEP_ALIVE option is specified; otherwise, 'true' as soon as the
+     *        started. Status is 'false' if the KEEP_ALIVE option is specified. Otherwise, 'true' as soon as the
      *        termination wait period starts.
      */
 
@@ -1410,12 +1549,12 @@ public class DeploymentInfo implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * Indicates whether the wait period set for the termination of instances in the original environment has started.
-     * Status is 'false' if the KEEP_ALIVE option is specified; otherwise, 'true' as soon as the termination wait period
+     * Status is 'false' if the KEEP_ALIVE option is specified. Otherwise, 'true' as soon as the termination wait period
      * starts.
      * </p>
      * 
      * @return Indicates whether the wait period set for the termination of instances in the original environment has
-     *         started. Status is 'false' if the KEEP_ALIVE option is specified; otherwise, 'true' as soon as the
+     *         started. Status is 'false' if the KEEP_ALIVE option is specified. Otherwise, 'true' as soon as the
      *         termination wait period starts.
      */
 
@@ -1426,13 +1565,13 @@ public class DeploymentInfo implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * Indicates whether the wait period set for the termination of instances in the original environment has started.
-     * Status is 'false' if the KEEP_ALIVE option is specified; otherwise, 'true' as soon as the termination wait period
+     * Status is 'false' if the KEEP_ALIVE option is specified. Otherwise, 'true' as soon as the termination wait period
      * starts.
      * </p>
      * 
      * @param instanceTerminationWaitTimeStarted
      *        Indicates whether the wait period set for the termination of instances in the original environment has
-     *        started. Status is 'false' if the KEEP_ALIVE option is specified; otherwise, 'true' as soon as the
+     *        started. Status is 'false' if the KEEP_ALIVE option is specified. Otherwise, 'true' as soon as the
      *        termination wait period starts.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -1445,12 +1584,12 @@ public class DeploymentInfo implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * Indicates whether the wait period set for the termination of instances in the original environment has started.
-     * Status is 'false' if the KEEP_ALIVE option is specified; otherwise, 'true' as soon as the termination wait period
+     * Status is 'false' if the KEEP_ALIVE option is specified. Otherwise, 'true' as soon as the termination wait period
      * starts.
      * </p>
      * 
      * @return Indicates whether the wait period set for the termination of instances in the original environment has
-     *         started. Status is 'false' if the KEEP_ALIVE option is specified; otherwise, 'true' as soon as the
+     *         started. Status is 'false' if the KEEP_ALIVE option is specified. Otherwise, 'true' as soon as the
      *         termination wait period starts.
      */
 
@@ -1917,11 +2056,12 @@ public class DeploymentInfo implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The destination platform type for the deployment (<code>Lambda</code> or <code>Server</code>).
+     * The destination platform type for the deployment (<code>Lambda</code>, <code>Server</code>, or <code>ECS</code>).
      * </p>
      * 
      * @param computePlatform
-     *        The destination platform type for the deployment (<code>Lambda</code> or <code>Server</code>).
+     *        The destination platform type for the deployment (<code>Lambda</code>, <code>Server</code>, or
+     *        <code>ECS</code>).
      * @see ComputePlatform
      */
 
@@ -1931,10 +2071,11 @@ public class DeploymentInfo implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The destination platform type for the deployment (<code>Lambda</code> or <code>Server</code>).
+     * The destination platform type for the deployment (<code>Lambda</code>, <code>Server</code>, or <code>ECS</code>).
      * </p>
      * 
-     * @return The destination platform type for the deployment (<code>Lambda</code> or <code>Server</code>).
+     * @return The destination platform type for the deployment (<code>Lambda</code>, <code>Server</code>, or
+     *         <code>ECS</code>).
      * @see ComputePlatform
      */
 
@@ -1944,11 +2085,12 @@ public class DeploymentInfo implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The destination platform type for the deployment (<code>Lambda</code> or <code>Server</code>).
+     * The destination platform type for the deployment (<code>Lambda</code>, <code>Server</code>, or <code>ECS</code>).
      * </p>
      * 
      * @param computePlatform
-     *        The destination platform type for the deployment (<code>Lambda</code> or <code>Server</code>).
+     *        The destination platform type for the deployment (<code>Lambda</code>, <code>Server</code>, or
+     *        <code>ECS</code>).
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see ComputePlatform
      */
@@ -1960,11 +2102,12 @@ public class DeploymentInfo implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The destination platform type for the deployment (<code>Lambda</code> or <code>Server</code>).
+     * The destination platform type for the deployment (<code>Lambda</code>, <code>Server</code>, or <code>ECS</code>).
      * </p>
      * 
      * @param computePlatform
-     *        The destination platform type for the deployment (<code>Lambda</code> or <code>Server</code>).
+     *        The destination platform type for the deployment (<code>Lambda</code>, <code>Server</code>, or
+     *        <code>ECS</code>).
      * @see ComputePlatform
      */
 
@@ -1974,11 +2117,12 @@ public class DeploymentInfo implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The destination platform type for the deployment (<code>Lambda</code> or <code>Server</code>).
+     * The destination platform type for the deployment (<code>Lambda</code>, <code>Server</code>, or <code>ECS</code>).
      * </p>
      * 
      * @param computePlatform
-     *        The destination platform type for the deployment (<code>Lambda</code> or <code>Server</code>).
+     *        The destination platform type for the deployment (<code>Lambda</code>, <code>Server</code>, or
+     *        <code>ECS</code>).
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see ComputePlatform
      */
@@ -1989,7 +2133,8 @@ public class DeploymentInfo implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

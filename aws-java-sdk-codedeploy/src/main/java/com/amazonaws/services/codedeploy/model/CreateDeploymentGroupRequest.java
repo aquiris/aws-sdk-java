@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -30,7 +30,7 @@ public class CreateDeploymentGroupRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.
+     * The name of an AWS CodeDeploy application associated with the IAM user or AWS account.
      * </p>
      */
     private String applicationName;
@@ -48,32 +48,32 @@ public class CreateDeploymentGroupRequest extends com.amazonaws.AmazonWebService
      * </p>
      * <p>
      * CodeDeployDefault.OneAtATime is the default deployment configuration. It is used if a configuration isn't
-     * specified for the deployment or the deployment group.
+     * specified for the deployment or deployment group.
      * </p>
      * <p>
      * For more information about the predefined deployment configurations in AWS CodeDeploy, see <a
-     * href="http://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-configurations.html">Working with
+     * href="https://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-configurations.html">Working with
      * Deployment Groups in AWS CodeDeploy</a> in the AWS CodeDeploy User Guide.
      * </p>
      */
     private String deploymentConfigName;
     /**
      * <p>
-     * The Amazon EC2 tags on which to filter. The deployment group will include EC2 instances with any of the specified
+     * The Amazon EC2 tags on which to filter. The deployment group includes EC2 instances with any of the specified
      * tags. Cannot be used in the same call as ec2TagSet.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<EC2TagFilter> ec2TagFilters;
     /**
      * <p>
-     * The on-premises instance tags on which to filter. The deployment group will include on-premises instances with
-     * any of the specified tags. Cannot be used in the same call as OnPremisesTagSet.
+     * The on-premises instance tags on which to filter. The deployment group includes on-premises instances with any of
+     * the specified tags. Cannot be used in the same call as OnPremisesTagSet.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<TagFilter> onPremisesInstanceTagFilters;
     /**
      * <p>
-     * A list of associated Auto Scaling groups.
+     * A list of associated Amazon EC2 Auto Scaling groups.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<String> autoScalingGroups;
@@ -86,7 +86,7 @@ public class CreateDeploymentGroupRequest extends com.amazonaws.AmazonWebService
     /**
      * <p>
      * Information about triggers to create when the deployment group is created. For examples, see <a
-     * href="http://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-sns.html">Create a Trigger for an AWS
+     * href="https://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-sns.html">Create a Trigger for an AWS
      * CodeDeploy Event</a> in the AWS CodeDeploy User Guide.
      * </p>
      */
@@ -124,27 +124,41 @@ public class CreateDeploymentGroupRequest extends com.amazonaws.AmazonWebService
     private LoadBalancerInfo loadBalancerInfo;
     /**
      * <p>
-     * Information about groups of tags applied to EC2 instances. The deployment group will include only EC2 instances
+     * Information about groups of tags applied to EC2 instances. The deployment group includes only EC2 instances
      * identified by all the tag groups. Cannot be used in the same call as ec2TagFilters.
      * </p>
      */
     private EC2TagSet ec2TagSet;
     /**
      * <p>
-     * Information about groups of tags applied to on-premises instances. The deployment group will include only
-     * on-premises instances identified by all the tag groups. Cannot be used in the same call as
-     * onPremisesInstanceTagFilters.
+     * The target Amazon ECS services in the deployment group. This applies only to deployment groups that use the
+     * Amazon ECS compute platform. A target Amazon ECS service is specified as an Amazon ECS cluster and service name
+     * pair using the format <code>&lt;clustername&gt;:&lt;servicename&gt;</code>.
+     * </p>
+     */
+    private com.amazonaws.internal.SdkInternalList<ECSService> ecsServices;
+    /**
+     * <p>
+     * Information about groups of tags applied to on-premises instances. The deployment group includes only on-premises
+     * instances identified by all of the tag groups. Cannot be used in the same call as onPremisesInstanceTagFilters.
      * </p>
      */
     private OnPremisesTagSet onPremisesTagSet;
+    /**
+     * <p>
+     * The metadata that you apply to CodeDeploy deployment groups to help you organize and categorize them. Each tag
+     * consists of a key and an optional value, both of which you define.
+     * </p>
+     */
+    private com.amazonaws.internal.SdkInternalList<Tag> tags;
 
     /**
      * <p>
-     * The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.
+     * The name of an AWS CodeDeploy application associated with the IAM user or AWS account.
      * </p>
      * 
      * @param applicationName
-     *        The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.
+     *        The name of an AWS CodeDeploy application associated with the IAM user or AWS account.
      */
 
     public void setApplicationName(String applicationName) {
@@ -153,10 +167,10 @@ public class CreateDeploymentGroupRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.
+     * The name of an AWS CodeDeploy application associated with the IAM user or AWS account.
      * </p>
      * 
-     * @return The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.
+     * @return The name of an AWS CodeDeploy application associated with the IAM user or AWS account.
      */
 
     public String getApplicationName() {
@@ -165,11 +179,11 @@ public class CreateDeploymentGroupRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.
+     * The name of an AWS CodeDeploy application associated with the IAM user or AWS account.
      * </p>
      * 
      * @param applicationName
-     *        The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.
+     *        The name of an AWS CodeDeploy application associated with the IAM user or AWS account.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -226,11 +240,11 @@ public class CreateDeploymentGroupRequest extends com.amazonaws.AmazonWebService
      * </p>
      * <p>
      * CodeDeployDefault.OneAtATime is the default deployment configuration. It is used if a configuration isn't
-     * specified for the deployment or the deployment group.
+     * specified for the deployment or deployment group.
      * </p>
      * <p>
      * For more information about the predefined deployment configurations in AWS CodeDeploy, see <a
-     * href="http://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-configurations.html">Working with
+     * href="https://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-configurations.html">Working with
      * Deployment Groups in AWS CodeDeploy</a> in the AWS CodeDeploy User Guide.
      * </p>
      * 
@@ -240,11 +254,11 @@ public class CreateDeploymentGroupRequest extends com.amazonaws.AmazonWebService
      *        deployment configuration operation.</p>
      *        <p>
      *        CodeDeployDefault.OneAtATime is the default deployment configuration. It is used if a configuration isn't
-     *        specified for the deployment or the deployment group.
+     *        specified for the deployment or deployment group.
      *        </p>
      *        <p>
      *        For more information about the predefined deployment configurations in AWS CodeDeploy, see <a
-     *        href="http://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-configurations.html">Working with
+     *        href="https://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-configurations.html">Working with
      *        Deployment Groups in AWS CodeDeploy</a> in the AWS CodeDeploy User Guide.
      */
 
@@ -260,11 +274,11 @@ public class CreateDeploymentGroupRequest extends com.amazonaws.AmazonWebService
      * </p>
      * <p>
      * CodeDeployDefault.OneAtATime is the default deployment configuration. It is used if a configuration isn't
-     * specified for the deployment or the deployment group.
+     * specified for the deployment or deployment group.
      * </p>
      * <p>
      * For more information about the predefined deployment configurations in AWS CodeDeploy, see <a
-     * href="http://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-configurations.html">Working with
+     * href="https://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-configurations.html">Working with
      * Deployment Groups in AWS CodeDeploy</a> in the AWS CodeDeploy User Guide.
      * </p>
      * 
@@ -273,12 +287,12 @@ public class CreateDeploymentGroupRequest extends com.amazonaws.AmazonWebService
      *         deployment configuration operation.</p>
      *         <p>
      *         CodeDeployDefault.OneAtATime is the default deployment configuration. It is used if a configuration isn't
-     *         specified for the deployment or the deployment group.
+     *         specified for the deployment or deployment group.
      *         </p>
      *         <p>
      *         For more information about the predefined deployment configurations in AWS CodeDeploy, see <a
-     *         href="http://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-configurations.html">Working with
-     *         Deployment Groups in AWS CodeDeploy</a> in the AWS CodeDeploy User Guide.
+     *         href="https://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-configurations.html">Working
+     *         with Deployment Groups in AWS CodeDeploy</a> in the AWS CodeDeploy User Guide.
      */
 
     public String getDeploymentConfigName() {
@@ -293,11 +307,11 @@ public class CreateDeploymentGroupRequest extends com.amazonaws.AmazonWebService
      * </p>
      * <p>
      * CodeDeployDefault.OneAtATime is the default deployment configuration. It is used if a configuration isn't
-     * specified for the deployment or the deployment group.
+     * specified for the deployment or deployment group.
      * </p>
      * <p>
      * For more information about the predefined deployment configurations in AWS CodeDeploy, see <a
-     * href="http://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-configurations.html">Working with
+     * href="https://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-configurations.html">Working with
      * Deployment Groups in AWS CodeDeploy</a> in the AWS CodeDeploy User Guide.
      * </p>
      * 
@@ -307,11 +321,11 @@ public class CreateDeploymentGroupRequest extends com.amazonaws.AmazonWebService
      *        deployment configuration operation.</p>
      *        <p>
      *        CodeDeployDefault.OneAtATime is the default deployment configuration. It is used if a configuration isn't
-     *        specified for the deployment or the deployment group.
+     *        specified for the deployment or deployment group.
      *        </p>
      *        <p>
      *        For more information about the predefined deployment configurations in AWS CodeDeploy, see <a
-     *        href="http://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-configurations.html">Working with
+     *        href="https://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-configurations.html">Working with
      *        Deployment Groups in AWS CodeDeploy</a> in the AWS CodeDeploy User Guide.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -323,11 +337,11 @@ public class CreateDeploymentGroupRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * The Amazon EC2 tags on which to filter. The deployment group will include EC2 instances with any of the specified
+     * The Amazon EC2 tags on which to filter. The deployment group includes EC2 instances with any of the specified
      * tags. Cannot be used in the same call as ec2TagSet.
      * </p>
      * 
-     * @return The Amazon EC2 tags on which to filter. The deployment group will include EC2 instances with any of the
+     * @return The Amazon EC2 tags on which to filter. The deployment group includes EC2 instances with any of the
      *         specified tags. Cannot be used in the same call as ec2TagSet.
      */
 
@@ -340,12 +354,12 @@ public class CreateDeploymentGroupRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * The Amazon EC2 tags on which to filter. The deployment group will include EC2 instances with any of the specified
+     * The Amazon EC2 tags on which to filter. The deployment group includes EC2 instances with any of the specified
      * tags. Cannot be used in the same call as ec2TagSet.
      * </p>
      * 
      * @param ec2TagFilters
-     *        The Amazon EC2 tags on which to filter. The deployment group will include EC2 instances with any of the
+     *        The Amazon EC2 tags on which to filter. The deployment group includes EC2 instances with any of the
      *        specified tags. Cannot be used in the same call as ec2TagSet.
      */
 
@@ -360,7 +374,7 @@ public class CreateDeploymentGroupRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * The Amazon EC2 tags on which to filter. The deployment group will include EC2 instances with any of the specified
+     * The Amazon EC2 tags on which to filter. The deployment group includes EC2 instances with any of the specified
      * tags. Cannot be used in the same call as ec2TagSet.
      * </p>
      * <p>
@@ -370,7 +384,7 @@ public class CreateDeploymentGroupRequest extends com.amazonaws.AmazonWebService
      * </p>
      * 
      * @param ec2TagFilters
-     *        The Amazon EC2 tags on which to filter. The deployment group will include EC2 instances with any of the
+     *        The Amazon EC2 tags on which to filter. The deployment group includes EC2 instances with any of the
      *        specified tags. Cannot be used in the same call as ec2TagSet.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -387,12 +401,12 @@ public class CreateDeploymentGroupRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * The Amazon EC2 tags on which to filter. The deployment group will include EC2 instances with any of the specified
+     * The Amazon EC2 tags on which to filter. The deployment group includes EC2 instances with any of the specified
      * tags. Cannot be used in the same call as ec2TagSet.
      * </p>
      * 
      * @param ec2TagFilters
-     *        The Amazon EC2 tags on which to filter. The deployment group will include EC2 instances with any of the
+     *        The Amazon EC2 tags on which to filter. The deployment group includes EC2 instances with any of the
      *        specified tags. Cannot be used in the same call as ec2TagSet.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -404,11 +418,11 @@ public class CreateDeploymentGroupRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * The on-premises instance tags on which to filter. The deployment group will include on-premises instances with
-     * any of the specified tags. Cannot be used in the same call as OnPremisesTagSet.
+     * The on-premises instance tags on which to filter. The deployment group includes on-premises instances with any of
+     * the specified tags. Cannot be used in the same call as OnPremisesTagSet.
      * </p>
      * 
-     * @return The on-premises instance tags on which to filter. The deployment group will include on-premises instances
+     * @return The on-premises instance tags on which to filter. The deployment group includes on-premises instances
      *         with any of the specified tags. Cannot be used in the same call as OnPremisesTagSet.
      */
 
@@ -421,13 +435,13 @@ public class CreateDeploymentGroupRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * The on-premises instance tags on which to filter. The deployment group will include on-premises instances with
-     * any of the specified tags. Cannot be used in the same call as OnPremisesTagSet.
+     * The on-premises instance tags on which to filter. The deployment group includes on-premises instances with any of
+     * the specified tags. Cannot be used in the same call as OnPremisesTagSet.
      * </p>
      * 
      * @param onPremisesInstanceTagFilters
-     *        The on-premises instance tags on which to filter. The deployment group will include on-premises instances
-     *        with any of the specified tags. Cannot be used in the same call as OnPremisesTagSet.
+     *        The on-premises instance tags on which to filter. The deployment group includes on-premises instances with
+     *        any of the specified tags. Cannot be used in the same call as OnPremisesTagSet.
      */
 
     public void setOnPremisesInstanceTagFilters(java.util.Collection<TagFilter> onPremisesInstanceTagFilters) {
@@ -441,8 +455,8 @@ public class CreateDeploymentGroupRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * The on-premises instance tags on which to filter. The deployment group will include on-premises instances with
-     * any of the specified tags. Cannot be used in the same call as OnPremisesTagSet.
+     * The on-premises instance tags on which to filter. The deployment group includes on-premises instances with any of
+     * the specified tags. Cannot be used in the same call as OnPremisesTagSet.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -451,8 +465,8 @@ public class CreateDeploymentGroupRequest extends com.amazonaws.AmazonWebService
      * </p>
      * 
      * @param onPremisesInstanceTagFilters
-     *        The on-premises instance tags on which to filter. The deployment group will include on-premises instances
-     *        with any of the specified tags. Cannot be used in the same call as OnPremisesTagSet.
+     *        The on-premises instance tags on which to filter. The deployment group includes on-premises instances with
+     *        any of the specified tags. Cannot be used in the same call as OnPremisesTagSet.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -468,13 +482,13 @@ public class CreateDeploymentGroupRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * The on-premises instance tags on which to filter. The deployment group will include on-premises instances with
-     * any of the specified tags. Cannot be used in the same call as OnPremisesTagSet.
+     * The on-premises instance tags on which to filter. The deployment group includes on-premises instances with any of
+     * the specified tags. Cannot be used in the same call as OnPremisesTagSet.
      * </p>
      * 
      * @param onPremisesInstanceTagFilters
-     *        The on-premises instance tags on which to filter. The deployment group will include on-premises instances
-     *        with any of the specified tags. Cannot be used in the same call as OnPremisesTagSet.
+     *        The on-premises instance tags on which to filter. The deployment group includes on-premises instances with
+     *        any of the specified tags. Cannot be used in the same call as OnPremisesTagSet.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -485,10 +499,10 @@ public class CreateDeploymentGroupRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * A list of associated Auto Scaling groups.
+     * A list of associated Amazon EC2 Auto Scaling groups.
      * </p>
      * 
-     * @return A list of associated Auto Scaling groups.
+     * @return A list of associated Amazon EC2 Auto Scaling groups.
      */
 
     public java.util.List<String> getAutoScalingGroups() {
@@ -500,11 +514,11 @@ public class CreateDeploymentGroupRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * A list of associated Auto Scaling groups.
+     * A list of associated Amazon EC2 Auto Scaling groups.
      * </p>
      * 
      * @param autoScalingGroups
-     *        A list of associated Auto Scaling groups.
+     *        A list of associated Amazon EC2 Auto Scaling groups.
      */
 
     public void setAutoScalingGroups(java.util.Collection<String> autoScalingGroups) {
@@ -518,7 +532,7 @@ public class CreateDeploymentGroupRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * A list of associated Auto Scaling groups.
+     * A list of associated Amazon EC2 Auto Scaling groups.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -527,7 +541,7 @@ public class CreateDeploymentGroupRequest extends com.amazonaws.AmazonWebService
      * </p>
      * 
      * @param autoScalingGroups
-     *        A list of associated Auto Scaling groups.
+     *        A list of associated Amazon EC2 Auto Scaling groups.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -543,11 +557,11 @@ public class CreateDeploymentGroupRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * A list of associated Auto Scaling groups.
+     * A list of associated Amazon EC2 Auto Scaling groups.
      * </p>
      * 
      * @param autoScalingGroups
-     *        A list of associated Auto Scaling groups.
+     *        A list of associated Amazon EC2 Auto Scaling groups.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -602,13 +616,13 @@ public class CreateDeploymentGroupRequest extends com.amazonaws.AmazonWebService
     /**
      * <p>
      * Information about triggers to create when the deployment group is created. For examples, see <a
-     * href="http://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-sns.html">Create a Trigger for an AWS
+     * href="https://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-sns.html">Create a Trigger for an AWS
      * CodeDeploy Event</a> in the AWS CodeDeploy User Guide.
      * </p>
      * 
      * @return Information about triggers to create when the deployment group is created. For examples, see <a
-     *         href="http://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-sns.html">Create a Trigger for
-     *         an AWS CodeDeploy Event</a> in the AWS CodeDeploy User Guide.
+     *         href="https://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-sns.html">Create a Trigger
+     *         for an AWS CodeDeploy Event</a> in the AWS CodeDeploy User Guide.
      */
 
     public java.util.List<TriggerConfig> getTriggerConfigurations() {
@@ -621,13 +635,13 @@ public class CreateDeploymentGroupRequest extends com.amazonaws.AmazonWebService
     /**
      * <p>
      * Information about triggers to create when the deployment group is created. For examples, see <a
-     * href="http://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-sns.html">Create a Trigger for an AWS
+     * href="https://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-sns.html">Create a Trigger for an AWS
      * CodeDeploy Event</a> in the AWS CodeDeploy User Guide.
      * </p>
      * 
      * @param triggerConfigurations
      *        Information about triggers to create when the deployment group is created. For examples, see <a
-     *        href="http://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-sns.html">Create a Trigger for
+     *        href="https://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-sns.html">Create a Trigger for
      *        an AWS CodeDeploy Event</a> in the AWS CodeDeploy User Guide.
      */
 
@@ -643,7 +657,7 @@ public class CreateDeploymentGroupRequest extends com.amazonaws.AmazonWebService
     /**
      * <p>
      * Information about triggers to create when the deployment group is created. For examples, see <a
-     * href="http://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-sns.html">Create a Trigger for an AWS
+     * href="https://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-sns.html">Create a Trigger for an AWS
      * CodeDeploy Event</a> in the AWS CodeDeploy User Guide.
      * </p>
      * <p>
@@ -654,7 +668,7 @@ public class CreateDeploymentGroupRequest extends com.amazonaws.AmazonWebService
      * 
      * @param triggerConfigurations
      *        Information about triggers to create when the deployment group is created. For examples, see <a
-     *        href="http://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-sns.html">Create a Trigger for
+     *        href="https://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-sns.html">Create a Trigger for
      *        an AWS CodeDeploy Event</a> in the AWS CodeDeploy User Guide.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -672,13 +686,13 @@ public class CreateDeploymentGroupRequest extends com.amazonaws.AmazonWebService
     /**
      * <p>
      * Information about triggers to create when the deployment group is created. For examples, see <a
-     * href="http://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-sns.html">Create a Trigger for an AWS
+     * href="https://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-sns.html">Create a Trigger for an AWS
      * CodeDeploy Event</a> in the AWS CodeDeploy User Guide.
      * </p>
      * 
      * @param triggerConfigurations
      *        Information about triggers to create when the deployment group is created. For examples, see <a
-     *        href="http://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-sns.html">Create a Trigger for
+     *        href="https://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-sns.html">Create a Trigger for
      *        an AWS CodeDeploy Event</a> in the AWS CodeDeploy User Guide.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -896,12 +910,12 @@ public class CreateDeploymentGroupRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * Information about groups of tags applied to EC2 instances. The deployment group will include only EC2 instances
+     * Information about groups of tags applied to EC2 instances. The deployment group includes only EC2 instances
      * identified by all the tag groups. Cannot be used in the same call as ec2TagFilters.
      * </p>
      * 
      * @param ec2TagSet
-     *        Information about groups of tags applied to EC2 instances. The deployment group will include only EC2
+     *        Information about groups of tags applied to EC2 instances. The deployment group includes only EC2
      *        instances identified by all the tag groups. Cannot be used in the same call as ec2TagFilters.
      */
 
@@ -911,11 +925,11 @@ public class CreateDeploymentGroupRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * Information about groups of tags applied to EC2 instances. The deployment group will include only EC2 instances
+     * Information about groups of tags applied to EC2 instances. The deployment group includes only EC2 instances
      * identified by all the tag groups. Cannot be used in the same call as ec2TagFilters.
      * </p>
      * 
-     * @return Information about groups of tags applied to EC2 instances. The deployment group will include only EC2
+     * @return Information about groups of tags applied to EC2 instances. The deployment group includes only EC2
      *         instances identified by all the tag groups. Cannot be used in the same call as ec2TagFilters.
      */
 
@@ -925,12 +939,12 @@ public class CreateDeploymentGroupRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * Information about groups of tags applied to EC2 instances. The deployment group will include only EC2 instances
+     * Information about groups of tags applied to EC2 instances. The deployment group includes only EC2 instances
      * identified by all the tag groups. Cannot be used in the same call as ec2TagFilters.
      * </p>
      * 
      * @param ec2TagSet
-     *        Information about groups of tags applied to EC2 instances. The deployment group will include only EC2
+     *        Information about groups of tags applied to EC2 instances. The deployment group includes only EC2
      *        instances identified by all the tag groups. Cannot be used in the same call as ec2TagFilters.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -942,14 +956,102 @@ public class CreateDeploymentGroupRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * Information about groups of tags applied to on-premises instances. The deployment group will include only
-     * on-premises instances identified by all the tag groups. Cannot be used in the same call as
-     * onPremisesInstanceTagFilters.
+     * The target Amazon ECS services in the deployment group. This applies only to deployment groups that use the
+     * Amazon ECS compute platform. A target Amazon ECS service is specified as an Amazon ECS cluster and service name
+     * pair using the format <code>&lt;clustername&gt;:&lt;servicename&gt;</code>.
+     * </p>
+     * 
+     * @return The target Amazon ECS services in the deployment group. This applies only to deployment groups that use
+     *         the Amazon ECS compute platform. A target Amazon ECS service is specified as an Amazon ECS cluster and
+     *         service name pair using the format <code>&lt;clustername&gt;:&lt;servicename&gt;</code>.
+     */
+
+    public java.util.List<ECSService> getEcsServices() {
+        if (ecsServices == null) {
+            ecsServices = new com.amazonaws.internal.SdkInternalList<ECSService>();
+        }
+        return ecsServices;
+    }
+
+    /**
+     * <p>
+     * The target Amazon ECS services in the deployment group. This applies only to deployment groups that use the
+     * Amazon ECS compute platform. A target Amazon ECS service is specified as an Amazon ECS cluster and service name
+     * pair using the format <code>&lt;clustername&gt;:&lt;servicename&gt;</code>.
+     * </p>
+     * 
+     * @param ecsServices
+     *        The target Amazon ECS services in the deployment group. This applies only to deployment groups that use
+     *        the Amazon ECS compute platform. A target Amazon ECS service is specified as an Amazon ECS cluster and
+     *        service name pair using the format <code>&lt;clustername&gt;:&lt;servicename&gt;</code>.
+     */
+
+    public void setEcsServices(java.util.Collection<ECSService> ecsServices) {
+        if (ecsServices == null) {
+            this.ecsServices = null;
+            return;
+        }
+
+        this.ecsServices = new com.amazonaws.internal.SdkInternalList<ECSService>(ecsServices);
+    }
+
+    /**
+     * <p>
+     * The target Amazon ECS services in the deployment group. This applies only to deployment groups that use the
+     * Amazon ECS compute platform. A target Amazon ECS service is specified as an Amazon ECS cluster and service name
+     * pair using the format <code>&lt;clustername&gt;:&lt;servicename&gt;</code>.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setEcsServices(java.util.Collection)} or {@link #withEcsServices(java.util.Collection)} if you want to
+     * override the existing values.
+     * </p>
+     * 
+     * @param ecsServices
+     *        The target Amazon ECS services in the deployment group. This applies only to deployment groups that use
+     *        the Amazon ECS compute platform. A target Amazon ECS service is specified as an Amazon ECS cluster and
+     *        service name pair using the format <code>&lt;clustername&gt;:&lt;servicename&gt;</code>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateDeploymentGroupRequest withEcsServices(ECSService... ecsServices) {
+        if (this.ecsServices == null) {
+            setEcsServices(new com.amazonaws.internal.SdkInternalList<ECSService>(ecsServices.length));
+        }
+        for (ECSService ele : ecsServices) {
+            this.ecsServices.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * The target Amazon ECS services in the deployment group. This applies only to deployment groups that use the
+     * Amazon ECS compute platform. A target Amazon ECS service is specified as an Amazon ECS cluster and service name
+     * pair using the format <code>&lt;clustername&gt;:&lt;servicename&gt;</code>.
+     * </p>
+     * 
+     * @param ecsServices
+     *        The target Amazon ECS services in the deployment group. This applies only to deployment groups that use
+     *        the Amazon ECS compute platform. A target Amazon ECS service is specified as an Amazon ECS cluster and
+     *        service name pair using the format <code>&lt;clustername&gt;:&lt;servicename&gt;</code>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateDeploymentGroupRequest withEcsServices(java.util.Collection<ECSService> ecsServices) {
+        setEcsServices(ecsServices);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Information about groups of tags applied to on-premises instances. The deployment group includes only on-premises
+     * instances identified by all of the tag groups. Cannot be used in the same call as onPremisesInstanceTagFilters.
      * </p>
      * 
      * @param onPremisesTagSet
-     *        Information about groups of tags applied to on-premises instances. The deployment group will include only
-     *        on-premises instances identified by all the tag groups. Cannot be used in the same call as
+     *        Information about groups of tags applied to on-premises instances. The deployment group includes only
+     *        on-premises instances identified by all of the tag groups. Cannot be used in the same call as
      *        onPremisesInstanceTagFilters.
      */
 
@@ -959,13 +1061,12 @@ public class CreateDeploymentGroupRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * Information about groups of tags applied to on-premises instances. The deployment group will include only
-     * on-premises instances identified by all the tag groups. Cannot be used in the same call as
-     * onPremisesInstanceTagFilters.
+     * Information about groups of tags applied to on-premises instances. The deployment group includes only on-premises
+     * instances identified by all of the tag groups. Cannot be used in the same call as onPremisesInstanceTagFilters.
      * </p>
      * 
-     * @return Information about groups of tags applied to on-premises instances. The deployment group will include only
-     *         on-premises instances identified by all the tag groups. Cannot be used in the same call as
+     * @return Information about groups of tags applied to on-premises instances. The deployment group includes only
+     *         on-premises instances identified by all of the tag groups. Cannot be used in the same call as
      *         onPremisesInstanceTagFilters.
      */
 
@@ -975,14 +1076,13 @@ public class CreateDeploymentGroupRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * Information about groups of tags applied to on-premises instances. The deployment group will include only
-     * on-premises instances identified by all the tag groups. Cannot be used in the same call as
-     * onPremisesInstanceTagFilters.
+     * Information about groups of tags applied to on-premises instances. The deployment group includes only on-premises
+     * instances identified by all of the tag groups. Cannot be used in the same call as onPremisesInstanceTagFilters.
      * </p>
      * 
      * @param onPremisesTagSet
-     *        Information about groups of tags applied to on-premises instances. The deployment group will include only
-     *        on-premises instances identified by all the tag groups. Cannot be used in the same call as
+     *        Information about groups of tags applied to on-premises instances. The deployment group includes only
+     *        on-premises instances identified by all of the tag groups. Cannot be used in the same call as
      *        onPremisesInstanceTagFilters.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -993,7 +1093,89 @@ public class CreateDeploymentGroupRequest extends com.amazonaws.AmazonWebService
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * <p>
+     * The metadata that you apply to CodeDeploy deployment groups to help you organize and categorize them. Each tag
+     * consists of a key and an optional value, both of which you define.
+     * </p>
+     * 
+     * @return The metadata that you apply to CodeDeploy deployment groups to help you organize and categorize them.
+     *         Each tag consists of a key and an optional value, both of which you define.
+     */
+
+    public java.util.List<Tag> getTags() {
+        if (tags == null) {
+            tags = new com.amazonaws.internal.SdkInternalList<Tag>();
+        }
+        return tags;
+    }
+
+    /**
+     * <p>
+     * The metadata that you apply to CodeDeploy deployment groups to help you organize and categorize them. Each tag
+     * consists of a key and an optional value, both of which you define.
+     * </p>
+     * 
+     * @param tags
+     *        The metadata that you apply to CodeDeploy deployment groups to help you organize and categorize them. Each
+     *        tag consists of a key and an optional value, both of which you define.
+     */
+
+    public void setTags(java.util.Collection<Tag> tags) {
+        if (tags == null) {
+            this.tags = null;
+            return;
+        }
+
+        this.tags = new com.amazonaws.internal.SdkInternalList<Tag>(tags);
+    }
+
+    /**
+     * <p>
+     * The metadata that you apply to CodeDeploy deployment groups to help you organize and categorize them. Each tag
+     * consists of a key and an optional value, both of which you define.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setTags(java.util.Collection)} or {@link #withTags(java.util.Collection)} if you want to override the
+     * existing values.
+     * </p>
+     * 
+     * @param tags
+     *        The metadata that you apply to CodeDeploy deployment groups to help you organize and categorize them. Each
+     *        tag consists of a key and an optional value, both of which you define.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateDeploymentGroupRequest withTags(Tag... tags) {
+        if (this.tags == null) {
+            setTags(new com.amazonaws.internal.SdkInternalList<Tag>(tags.length));
+        }
+        for (Tag ele : tags) {
+            this.tags.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * The metadata that you apply to CodeDeploy deployment groups to help you organize and categorize them. Each tag
+     * consists of a key and an optional value, both of which you define.
+     * </p>
+     * 
+     * @param tags
+     *        The metadata that you apply to CodeDeploy deployment groups to help you organize and categorize them. Each
+     *        tag consists of a key and an optional value, both of which you define.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateDeploymentGroupRequest withTags(java.util.Collection<Tag> tags) {
+        setTags(tags);
+        return this;
+    }
+
+    /**
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -1031,8 +1213,12 @@ public class CreateDeploymentGroupRequest extends com.amazonaws.AmazonWebService
             sb.append("LoadBalancerInfo: ").append(getLoadBalancerInfo()).append(",");
         if (getEc2TagSet() != null)
             sb.append("Ec2TagSet: ").append(getEc2TagSet()).append(",");
+        if (getEcsServices() != null)
+            sb.append("EcsServices: ").append(getEcsServices()).append(",");
         if (getOnPremisesTagSet() != null)
-            sb.append("OnPremisesTagSet: ").append(getOnPremisesTagSet());
+            sb.append("OnPremisesTagSet: ").append(getOnPremisesTagSet()).append(",");
+        if (getTags() != null)
+            sb.append("Tags: ").append(getTags());
         sb.append("}");
         return sb.toString();
     }
@@ -1104,9 +1290,17 @@ public class CreateDeploymentGroupRequest extends com.amazonaws.AmazonWebService
             return false;
         if (other.getEc2TagSet() != null && other.getEc2TagSet().equals(this.getEc2TagSet()) == false)
             return false;
+        if (other.getEcsServices() == null ^ this.getEcsServices() == null)
+            return false;
+        if (other.getEcsServices() != null && other.getEcsServices().equals(this.getEcsServices()) == false)
+            return false;
         if (other.getOnPremisesTagSet() == null ^ this.getOnPremisesTagSet() == null)
             return false;
         if (other.getOnPremisesTagSet() != null && other.getOnPremisesTagSet().equals(this.getOnPremisesTagSet()) == false)
+            return false;
+        if (other.getTags() == null ^ this.getTags() == null)
+            return false;
+        if (other.getTags() != null && other.getTags().equals(this.getTags()) == false)
             return false;
         return true;
     }
@@ -1130,7 +1324,9 @@ public class CreateDeploymentGroupRequest extends com.amazonaws.AmazonWebService
         hashCode = prime * hashCode + ((getBlueGreenDeploymentConfiguration() == null) ? 0 : getBlueGreenDeploymentConfiguration().hashCode());
         hashCode = prime * hashCode + ((getLoadBalancerInfo() == null) ? 0 : getLoadBalancerInfo().hashCode());
         hashCode = prime * hashCode + ((getEc2TagSet() == null) ? 0 : getEc2TagSet().hashCode());
+        hashCode = prime * hashCode + ((getEcsServices() == null) ? 0 : getEcsServices().hashCode());
         hashCode = prime * hashCode + ((getOnPremisesTagSet() == null) ? 0 : getOnPremisesTagSet().hashCode());
+        hashCode = prime * hashCode + ((getTags() == null) ? 0 : getTags().hashCode());
         return hashCode;
     }
 

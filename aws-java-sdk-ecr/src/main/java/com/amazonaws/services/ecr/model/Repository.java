@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -60,6 +60,12 @@ public class Repository implements Serializable, Cloneable, StructuredPojo {
      * </p>
      */
     private java.util.Date createdAt;
+    /**
+     * <p>
+     * The tag mutability setting for the repository.
+     * </p>
+     */
+    private String imageTagMutability;
 
     /**
      * <p>
@@ -280,7 +286,67 @@ public class Repository implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * <p>
+     * The tag mutability setting for the repository.
+     * </p>
+     * 
+     * @param imageTagMutability
+     *        The tag mutability setting for the repository.
+     * @see ImageTagMutability
+     */
+
+    public void setImageTagMutability(String imageTagMutability) {
+        this.imageTagMutability = imageTagMutability;
+    }
+
+    /**
+     * <p>
+     * The tag mutability setting for the repository.
+     * </p>
+     * 
+     * @return The tag mutability setting for the repository.
+     * @see ImageTagMutability
+     */
+
+    public String getImageTagMutability() {
+        return this.imageTagMutability;
+    }
+
+    /**
+     * <p>
+     * The tag mutability setting for the repository.
+     * </p>
+     * 
+     * @param imageTagMutability
+     *        The tag mutability setting for the repository.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see ImageTagMutability
+     */
+
+    public Repository withImageTagMutability(String imageTagMutability) {
+        setImageTagMutability(imageTagMutability);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The tag mutability setting for the repository.
+     * </p>
+     * 
+     * @param imageTagMutability
+     *        The tag mutability setting for the repository.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see ImageTagMutability
+     */
+
+    public Repository withImageTagMutability(ImageTagMutability imageTagMutability) {
+        this.imageTagMutability = imageTagMutability.toString();
+        return this;
+    }
+
+    /**
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -299,7 +365,9 @@ public class Repository implements Serializable, Cloneable, StructuredPojo {
         if (getRepositoryUri() != null)
             sb.append("RepositoryUri: ").append(getRepositoryUri()).append(",");
         if (getCreatedAt() != null)
-            sb.append("CreatedAt: ").append(getCreatedAt());
+            sb.append("CreatedAt: ").append(getCreatedAt()).append(",");
+        if (getImageTagMutability() != null)
+            sb.append("ImageTagMutability: ").append(getImageTagMutability());
         sb.append("}");
         return sb.toString();
     }
@@ -334,6 +402,10 @@ public class Repository implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getCreatedAt() != null && other.getCreatedAt().equals(this.getCreatedAt()) == false)
             return false;
+        if (other.getImageTagMutability() == null ^ this.getImageTagMutability() == null)
+            return false;
+        if (other.getImageTagMutability() != null && other.getImageTagMutability().equals(this.getImageTagMutability()) == false)
+            return false;
         return true;
     }
 
@@ -347,6 +419,7 @@ public class Repository implements Serializable, Cloneable, StructuredPojo {
         hashCode = prime * hashCode + ((getRepositoryName() == null) ? 0 : getRepositoryName().hashCode());
         hashCode = prime * hashCode + ((getRepositoryUri() == null) ? 0 : getRepositoryUri().hashCode());
         hashCode = prime * hashCode + ((getCreatedAt() == null) ? 0 : getCreatedAt().hashCode());
+        hashCode = prime * hashCode + ((getImageTagMutability() == null) ? 0 : getImageTagMutability().hashCode());
         return hashCode;
     }
 

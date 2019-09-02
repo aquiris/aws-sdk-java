@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -39,7 +39,7 @@ public class CreateDirectoryConfigRequest extends com.amazonaws.AmazonWebService
     private java.util.List<String> organizationalUnitDistinguishedNames;
     /**
      * <p>
-     * The credentials for the service account used by the streaming instance to connect to the directory.
+     * The credentials for the service account used by the fleet or image builder to connect to the directory.
      * </p>
      */
     private ServiceAccountCredentials serviceAccountCredentials;
@@ -157,11 +157,11 @@ public class CreateDirectoryConfigRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * The credentials for the service account used by the streaming instance to connect to the directory.
+     * The credentials for the service account used by the fleet or image builder to connect to the directory.
      * </p>
      * 
      * @param serviceAccountCredentials
-     *        The credentials for the service account used by the streaming instance to connect to the directory.
+     *        The credentials for the service account used by the fleet or image builder to connect to the directory.
      */
 
     public void setServiceAccountCredentials(ServiceAccountCredentials serviceAccountCredentials) {
@@ -170,10 +170,10 @@ public class CreateDirectoryConfigRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * The credentials for the service account used by the streaming instance to connect to the directory.
+     * The credentials for the service account used by the fleet or image builder to connect to the directory.
      * </p>
      * 
-     * @return The credentials for the service account used by the streaming instance to connect to the directory.
+     * @return The credentials for the service account used by the fleet or image builder to connect to the directory.
      */
 
     public ServiceAccountCredentials getServiceAccountCredentials() {
@@ -182,11 +182,11 @@ public class CreateDirectoryConfigRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * The credentials for the service account used by the streaming instance to connect to the directory.
+     * The credentials for the service account used by the fleet or image builder to connect to the directory.
      * </p>
      * 
      * @param serviceAccountCredentials
-     *        The credentials for the service account used by the streaming instance to connect to the directory.
+     *        The credentials for the service account used by the fleet or image builder to connect to the directory.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -196,7 +196,8 @@ public class CreateDirectoryConfigRequest extends com.amazonaws.AmazonWebService
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

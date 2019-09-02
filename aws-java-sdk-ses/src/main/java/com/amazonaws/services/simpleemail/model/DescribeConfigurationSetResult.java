@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -19,7 +19,7 @@ import javax.annotation.Generated;
  * <p>
  * Represents the details of a configuration set. Configuration sets enable you to publish email sending events. For
  * information about using configuration sets, see the <a
- * href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html">Amazon SES Developer
+ * href="https://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html">Amazon SES Developer
  * Guide</a>.
  * </p>
  * 
@@ -47,6 +47,8 @@ public class DescribeConfigurationSetResult extends com.amazonaws.AmazonWebServi
      * </p>
      */
     private TrackingOptions trackingOptions;
+
+    private DeliveryOptions deliveryOptions;
     /**
      * <p>
      * An object that represents the reputation settings for the configuration set.
@@ -208,6 +210,32 @@ public class DescribeConfigurationSetResult extends com.amazonaws.AmazonWebServi
     }
 
     /**
+     * @param deliveryOptions
+     */
+
+    public void setDeliveryOptions(DeliveryOptions deliveryOptions) {
+        this.deliveryOptions = deliveryOptions;
+    }
+
+    /**
+     * @return
+     */
+
+    public DeliveryOptions getDeliveryOptions() {
+        return this.deliveryOptions;
+    }
+
+    /**
+     * @param deliveryOptions
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DescribeConfigurationSetResult withDeliveryOptions(DeliveryOptions deliveryOptions) {
+        setDeliveryOptions(deliveryOptions);
+        return this;
+    }
+
+    /**
      * <p>
      * An object that represents the reputation settings for the configuration set.
      * </p>
@@ -248,7 +276,8 @@ public class DescribeConfigurationSetResult extends com.amazonaws.AmazonWebServi
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -264,6 +293,8 @@ public class DescribeConfigurationSetResult extends com.amazonaws.AmazonWebServi
             sb.append("EventDestinations: ").append(getEventDestinations()).append(",");
         if (getTrackingOptions() != null)
             sb.append("TrackingOptions: ").append(getTrackingOptions()).append(",");
+        if (getDeliveryOptions() != null)
+            sb.append("DeliveryOptions: ").append(getDeliveryOptions()).append(",");
         if (getReputationOptions() != null)
             sb.append("ReputationOptions: ").append(getReputationOptions());
         sb.append("}");
@@ -292,6 +323,10 @@ public class DescribeConfigurationSetResult extends com.amazonaws.AmazonWebServi
             return false;
         if (other.getTrackingOptions() != null && other.getTrackingOptions().equals(this.getTrackingOptions()) == false)
             return false;
+        if (other.getDeliveryOptions() == null ^ this.getDeliveryOptions() == null)
+            return false;
+        if (other.getDeliveryOptions() != null && other.getDeliveryOptions().equals(this.getDeliveryOptions()) == false)
+            return false;
         if (other.getReputationOptions() == null ^ this.getReputationOptions() == null)
             return false;
         if (other.getReputationOptions() != null && other.getReputationOptions().equals(this.getReputationOptions()) == false)
@@ -307,6 +342,7 @@ public class DescribeConfigurationSetResult extends com.amazonaws.AmazonWebServi
         hashCode = prime * hashCode + ((getConfigurationSet() == null) ? 0 : getConfigurationSet().hashCode());
         hashCode = prime * hashCode + ((getEventDestinations() == null) ? 0 : getEventDestinations().hashCode());
         hashCode = prime * hashCode + ((getTrackingOptions() == null) ? 0 : getTrackingOptions().hashCode());
+        hashCode = prime * hashCode + ((getDeliveryOptions() == null) ? 0 : getDeliveryOptions().hashCode());
         hashCode = prime * hashCode + ((getReputationOptions() == null) ? 0 : getReputationOptions().hashCode());
         return hashCode;
     }

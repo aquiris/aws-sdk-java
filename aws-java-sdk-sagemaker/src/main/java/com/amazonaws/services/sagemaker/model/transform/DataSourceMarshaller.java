@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -29,6 +29,8 @@ public class DataSourceMarshaller {
 
     private static final MarshallingInfo<StructuredPojo> S3DATASOURCE_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("S3DataSource").build();
+    private static final MarshallingInfo<StructuredPojo> FILESYSTEMDATASOURCE_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("FileSystemDataSource").build();
 
     private static final DataSourceMarshaller instance = new DataSourceMarshaller();
 
@@ -47,6 +49,7 @@ public class DataSourceMarshaller {
 
         try {
             protocolMarshaller.marshall(dataSource.getS3DataSource(), S3DATASOURCE_BINDING);
+            protocolMarshaller.marshall(dataSource.getFileSystemDataSource(), FILESYSTEMDATASOURCE_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

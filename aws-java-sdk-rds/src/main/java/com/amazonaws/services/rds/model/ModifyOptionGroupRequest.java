@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -51,7 +51,7 @@ public class ModifyOptionGroupRequest extends com.amazonaws.AmazonWebServiceRequ
     private com.amazonaws.internal.SdkInternalList<String> optionsToRemove;
     /**
      * <p>
-     * Indicates whether the changes should be applied immediately, or during the next maintenance window for each
+     * A value that indicates whether to apply the change immediately or during the next maintenance window for each
      * instance associated with the option group.
      * </p>
      */
@@ -277,12 +277,12 @@ public class ModifyOptionGroupRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * Indicates whether the changes should be applied immediately, or during the next maintenance window for each
+     * A value that indicates whether to apply the change immediately or during the next maintenance window for each
      * instance associated with the option group.
      * </p>
      * 
      * @param applyImmediately
-     *        Indicates whether the changes should be applied immediately, or during the next maintenance window for
+     *        A value that indicates whether to apply the change immediately or during the next maintenance window for
      *        each instance associated with the option group.
      */
 
@@ -292,11 +292,11 @@ public class ModifyOptionGroupRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * Indicates whether the changes should be applied immediately, or during the next maintenance window for each
+     * A value that indicates whether to apply the change immediately or during the next maintenance window for each
      * instance associated with the option group.
      * </p>
      * 
-     * @return Indicates whether the changes should be applied immediately, or during the next maintenance window for
+     * @return A value that indicates whether to apply the change immediately or during the next maintenance window for
      *         each instance associated with the option group.
      */
 
@@ -306,12 +306,12 @@ public class ModifyOptionGroupRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * Indicates whether the changes should be applied immediately, or during the next maintenance window for each
+     * A value that indicates whether to apply the change immediately or during the next maintenance window for each
      * instance associated with the option group.
      * </p>
      * 
      * @param applyImmediately
-     *        Indicates whether the changes should be applied immediately, or during the next maintenance window for
+     *        A value that indicates whether to apply the change immediately or during the next maintenance window for
      *        each instance associated with the option group.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -323,11 +323,11 @@ public class ModifyOptionGroupRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * Indicates whether the changes should be applied immediately, or during the next maintenance window for each
+     * A value that indicates whether to apply the change immediately or during the next maintenance window for each
      * instance associated with the option group.
      * </p>
      * 
-     * @return Indicates whether the changes should be applied immediately, or during the next maintenance window for
+     * @return A value that indicates whether to apply the change immediately or during the next maintenance window for
      *         each instance associated with the option group.
      */
 
@@ -336,7 +336,8 @@ public class ModifyOptionGroupRequest extends com.amazonaws.AmazonWebServiceRequ
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

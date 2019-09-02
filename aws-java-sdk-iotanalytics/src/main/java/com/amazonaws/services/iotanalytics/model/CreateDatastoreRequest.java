@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -33,10 +33,22 @@ public class CreateDatastoreRequest extends com.amazonaws.AmazonWebServiceReques
     private String datastoreName;
     /**
      * <p>
+     * Where data store data is stored.
+     * </p>
+     */
+    private DatastoreStorage datastoreStorage;
+    /**
+     * <p>
      * How long, in days, message data is kept for the data store.
      * </p>
      */
     private RetentionPeriod retentionPeriod;
+    /**
+     * <p>
+     * Metadata which can be used to manage the data store.
+     * </p>
+     */
+    private java.util.List<Tag> tags;
 
     /**
      * <p>
@@ -75,6 +87,46 @@ public class CreateDatastoreRequest extends com.amazonaws.AmazonWebServiceReques
 
     public CreateDatastoreRequest withDatastoreName(String datastoreName) {
         setDatastoreName(datastoreName);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Where data store data is stored.
+     * </p>
+     * 
+     * @param datastoreStorage
+     *        Where data store data is stored.
+     */
+
+    public void setDatastoreStorage(DatastoreStorage datastoreStorage) {
+        this.datastoreStorage = datastoreStorage;
+    }
+
+    /**
+     * <p>
+     * Where data store data is stored.
+     * </p>
+     * 
+     * @return Where data store data is stored.
+     */
+
+    public DatastoreStorage getDatastoreStorage() {
+        return this.datastoreStorage;
+    }
+
+    /**
+     * <p>
+     * Where data store data is stored.
+     * </p>
+     * 
+     * @param datastoreStorage
+     *        Where data store data is stored.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateDatastoreRequest withDatastoreStorage(DatastoreStorage datastoreStorage) {
+        setDatastoreStorage(datastoreStorage);
         return this;
     }
 
@@ -119,7 +171,78 @@ public class CreateDatastoreRequest extends com.amazonaws.AmazonWebServiceReques
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * <p>
+     * Metadata which can be used to manage the data store.
+     * </p>
+     * 
+     * @return Metadata which can be used to manage the data store.
+     */
+
+    public java.util.List<Tag> getTags() {
+        return tags;
+    }
+
+    /**
+     * <p>
+     * Metadata which can be used to manage the data store.
+     * </p>
+     * 
+     * @param tags
+     *        Metadata which can be used to manage the data store.
+     */
+
+    public void setTags(java.util.Collection<Tag> tags) {
+        if (tags == null) {
+            this.tags = null;
+            return;
+        }
+
+        this.tags = new java.util.ArrayList<Tag>(tags);
+    }
+
+    /**
+     * <p>
+     * Metadata which can be used to manage the data store.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setTags(java.util.Collection)} or {@link #withTags(java.util.Collection)} if you want to override the
+     * existing values.
+     * </p>
+     * 
+     * @param tags
+     *        Metadata which can be used to manage the data store.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateDatastoreRequest withTags(Tag... tags) {
+        if (this.tags == null) {
+            setTags(new java.util.ArrayList<Tag>(tags.length));
+        }
+        for (Tag ele : tags) {
+            this.tags.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * Metadata which can be used to manage the data store.
+     * </p>
+     * 
+     * @param tags
+     *        Metadata which can be used to manage the data store.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateDatastoreRequest withTags(java.util.Collection<Tag> tags) {
+        setTags(tags);
+        return this;
+    }
+
+    /**
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -131,8 +254,12 @@ public class CreateDatastoreRequest extends com.amazonaws.AmazonWebServiceReques
         sb.append("{");
         if (getDatastoreName() != null)
             sb.append("DatastoreName: ").append(getDatastoreName()).append(",");
+        if (getDatastoreStorage() != null)
+            sb.append("DatastoreStorage: ").append(getDatastoreStorage()).append(",");
         if (getRetentionPeriod() != null)
-            sb.append("RetentionPeriod: ").append(getRetentionPeriod());
+            sb.append("RetentionPeriod: ").append(getRetentionPeriod()).append(",");
+        if (getTags() != null)
+            sb.append("Tags: ").append(getTags());
         sb.append("}");
         return sb.toString();
     }
@@ -151,9 +278,17 @@ public class CreateDatastoreRequest extends com.amazonaws.AmazonWebServiceReques
             return false;
         if (other.getDatastoreName() != null && other.getDatastoreName().equals(this.getDatastoreName()) == false)
             return false;
+        if (other.getDatastoreStorage() == null ^ this.getDatastoreStorage() == null)
+            return false;
+        if (other.getDatastoreStorage() != null && other.getDatastoreStorage().equals(this.getDatastoreStorage()) == false)
+            return false;
         if (other.getRetentionPeriod() == null ^ this.getRetentionPeriod() == null)
             return false;
         if (other.getRetentionPeriod() != null && other.getRetentionPeriod().equals(this.getRetentionPeriod()) == false)
+            return false;
+        if (other.getTags() == null ^ this.getTags() == null)
+            return false;
+        if (other.getTags() != null && other.getTags().equals(this.getTags()) == false)
             return false;
         return true;
     }
@@ -164,7 +299,9 @@ public class CreateDatastoreRequest extends com.amazonaws.AmazonWebServiceReques
         int hashCode = 1;
 
         hashCode = prime * hashCode + ((getDatastoreName() == null) ? 0 : getDatastoreName().hashCode());
+        hashCode = prime * hashCode + ((getDatastoreStorage() == null) ? 0 : getDatastoreStorage().hashCode());
         hashCode = prime * hashCode + ((getRetentionPeriod() == null) ? 0 : getRetentionPeriod().hashCode());
+        hashCode = prime * hashCode + ((getTags() == null) ? 0 : getTags().hashCode());
         return hashCode;
     }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -18,7 +18,9 @@ import com.amazonaws.protocol.StructuredPojo;
 import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
- * Baidu Cloud Messaging channel definition
+ * <p>
+ * Provides information about the status and settings of the Baidu (Baidu Cloud Push) channel for an application.
+ * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/BaiduChannelResponse" target="_top">AWS API
  *      Documentation</a>
@@ -26,38 +28,80 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class BaiduChannelResponse implements Serializable, Cloneable, StructuredPojo {
 
-    /** Application id */
+    /**
+     * <p>
+     * The unique identifier for the application that the Baidu channel applies to.
+     * </p>
+     */
     private String applicationId;
-    /** When was this segment created */
+    /**
+     * <p>
+     * The date and time when the Baidu channel was enabled.
+     * </p>
+     */
     private String creationDate;
-    /** The Baidu API key from Baidu. */
+    /**
+     * <p>
+     * The API key that you received from the Baidu Cloud Push service to communicate with the service.
+     * </p>
+     */
     private String credential;
-    /** If the channel is enabled for sending messages. */
+    /**
+     * <p>
+     * Specifies whether the Baidu channel is enabled for the application.
+     * </p>
+     */
     private Boolean enabled;
     /**
-     * Indicates whether the channel is configured with Baidu Cloud Push credentials. Amazon Pinpoint uses your
-     * credentials to authenticate push notifications with Baidu Cloud Push. Provide your credentials by setting the
-     * ApiKey and SecretKey attributes.
+     * <p>
+     * (Not used) This property is retained only for backward compatibility.
+     * </p>
      */
     private Boolean hasCredential;
-    /** Channel ID. Not used, only for backwards compatibility. */
+    /**
+     * <p>
+     * (Deprecated) An identifier for the Baidu channel. This property is retained only for backward compatibility.
+     * </p>
+     */
     private String id;
-    /** Is this channel archived */
+    /**
+     * <p>
+     * Specifies whether the Baidu channel is archived.
+     * </p>
+     */
     private Boolean isArchived;
-    /** Who made the last change */
+    /**
+     * <p>
+     * The user who last modified the Baidu channel.
+     * </p>
+     */
     private String lastModifiedBy;
-    /** Last date this was updated */
+    /**
+     * <p>
+     * The date and time when the Baidu channel was last modified.
+     * </p>
+     */
     private String lastModifiedDate;
-    /** The platform type. Will be BAIDU */
+    /**
+     * <p>
+     * The type of messaging or notification platform for the channel. For the Baidu channel, this value is BAIDU.
+     * </p>
+     */
     private String platform;
-    /** Version of channel */
+    /**
+     * <p>
+     * The current version of the Baidu channel.
+     * </p>
+     */
     private Integer version;
 
     /**
-     * Application id
+     * <p>
+     * The unique identifier for the application that the Baidu channel applies to.
+     * </p>
      * 
      * @param applicationId
-     *        Application id
+     *        The unique identifier for the application that the Baidu channel applies to.
      */
 
     public void setApplicationId(String applicationId) {
@@ -65,9 +109,11 @@ public class BaiduChannelResponse implements Serializable, Cloneable, Structured
     }
 
     /**
-     * Application id
+     * <p>
+     * The unique identifier for the application that the Baidu channel applies to.
+     * </p>
      * 
-     * @return Application id
+     * @return The unique identifier for the application that the Baidu channel applies to.
      */
 
     public String getApplicationId() {
@@ -75,10 +121,12 @@ public class BaiduChannelResponse implements Serializable, Cloneable, Structured
     }
 
     /**
-     * Application id
+     * <p>
+     * The unique identifier for the application that the Baidu channel applies to.
+     * </p>
      * 
      * @param applicationId
-     *        Application id
+     *        The unique identifier for the application that the Baidu channel applies to.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -88,10 +136,12 @@ public class BaiduChannelResponse implements Serializable, Cloneable, Structured
     }
 
     /**
-     * When was this segment created
+     * <p>
+     * The date and time when the Baidu channel was enabled.
+     * </p>
      * 
      * @param creationDate
-     *        When was this segment created
+     *        The date and time when the Baidu channel was enabled.
      */
 
     public void setCreationDate(String creationDate) {
@@ -99,9 +149,11 @@ public class BaiduChannelResponse implements Serializable, Cloneable, Structured
     }
 
     /**
-     * When was this segment created
+     * <p>
+     * The date and time when the Baidu channel was enabled.
+     * </p>
      * 
-     * @return When was this segment created
+     * @return The date and time when the Baidu channel was enabled.
      */
 
     public String getCreationDate() {
@@ -109,10 +161,12 @@ public class BaiduChannelResponse implements Serializable, Cloneable, Structured
     }
 
     /**
-     * When was this segment created
+     * <p>
+     * The date and time when the Baidu channel was enabled.
+     * </p>
      * 
      * @param creationDate
-     *        When was this segment created
+     *        The date and time when the Baidu channel was enabled.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -122,10 +176,12 @@ public class BaiduChannelResponse implements Serializable, Cloneable, Structured
     }
 
     /**
-     * The Baidu API key from Baidu.
+     * <p>
+     * The API key that you received from the Baidu Cloud Push service to communicate with the service.
+     * </p>
      * 
      * @param credential
-     *        The Baidu API key from Baidu.
+     *        The API key that you received from the Baidu Cloud Push service to communicate with the service.
      */
 
     public void setCredential(String credential) {
@@ -133,9 +189,11 @@ public class BaiduChannelResponse implements Serializable, Cloneable, Structured
     }
 
     /**
-     * The Baidu API key from Baidu.
+     * <p>
+     * The API key that you received from the Baidu Cloud Push service to communicate with the service.
+     * </p>
      * 
-     * @return The Baidu API key from Baidu.
+     * @return The API key that you received from the Baidu Cloud Push service to communicate with the service.
      */
 
     public String getCredential() {
@@ -143,10 +201,12 @@ public class BaiduChannelResponse implements Serializable, Cloneable, Structured
     }
 
     /**
-     * The Baidu API key from Baidu.
+     * <p>
+     * The API key that you received from the Baidu Cloud Push service to communicate with the service.
+     * </p>
      * 
      * @param credential
-     *        The Baidu API key from Baidu.
+     *        The API key that you received from the Baidu Cloud Push service to communicate with the service.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -156,10 +216,12 @@ public class BaiduChannelResponse implements Serializable, Cloneable, Structured
     }
 
     /**
-     * If the channel is enabled for sending messages.
+     * <p>
+     * Specifies whether the Baidu channel is enabled for the application.
+     * </p>
      * 
      * @param enabled
-     *        If the channel is enabled for sending messages.
+     *        Specifies whether the Baidu channel is enabled for the application.
      */
 
     public void setEnabled(Boolean enabled) {
@@ -167,9 +229,11 @@ public class BaiduChannelResponse implements Serializable, Cloneable, Structured
     }
 
     /**
-     * If the channel is enabled for sending messages.
+     * <p>
+     * Specifies whether the Baidu channel is enabled for the application.
+     * </p>
      * 
-     * @return If the channel is enabled for sending messages.
+     * @return Specifies whether the Baidu channel is enabled for the application.
      */
 
     public Boolean getEnabled() {
@@ -177,10 +241,12 @@ public class BaiduChannelResponse implements Serializable, Cloneable, Structured
     }
 
     /**
-     * If the channel is enabled for sending messages.
+     * <p>
+     * Specifies whether the Baidu channel is enabled for the application.
+     * </p>
      * 
      * @param enabled
-     *        If the channel is enabled for sending messages.
+     *        Specifies whether the Baidu channel is enabled for the application.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -190,9 +256,11 @@ public class BaiduChannelResponse implements Serializable, Cloneable, Structured
     }
 
     /**
-     * If the channel is enabled for sending messages.
+     * <p>
+     * Specifies whether the Baidu channel is enabled for the application.
+     * </p>
      * 
-     * @return If the channel is enabled for sending messages.
+     * @return Specifies whether the Baidu channel is enabled for the application.
      */
 
     public Boolean isEnabled() {
@@ -200,14 +268,12 @@ public class BaiduChannelResponse implements Serializable, Cloneable, Structured
     }
 
     /**
-     * Indicates whether the channel is configured with Baidu Cloud Push credentials. Amazon Pinpoint uses your
-     * credentials to authenticate push notifications with Baidu Cloud Push. Provide your credentials by setting the
-     * ApiKey and SecretKey attributes.
+     * <p>
+     * (Not used) This property is retained only for backward compatibility.
+     * </p>
      * 
      * @param hasCredential
-     *        Indicates whether the channel is configured with Baidu Cloud Push credentials. Amazon Pinpoint uses your
-     *        credentials to authenticate push notifications with Baidu Cloud Push. Provide your credentials by setting
-     *        the ApiKey and SecretKey attributes.
+     *        (Not used) This property is retained only for backward compatibility.
      */
 
     public void setHasCredential(Boolean hasCredential) {
@@ -215,13 +281,11 @@ public class BaiduChannelResponse implements Serializable, Cloneable, Structured
     }
 
     /**
-     * Indicates whether the channel is configured with Baidu Cloud Push credentials. Amazon Pinpoint uses your
-     * credentials to authenticate push notifications with Baidu Cloud Push. Provide your credentials by setting the
-     * ApiKey and SecretKey attributes.
+     * <p>
+     * (Not used) This property is retained only for backward compatibility.
+     * </p>
      * 
-     * @return Indicates whether the channel is configured with Baidu Cloud Push credentials. Amazon Pinpoint uses your
-     *         credentials to authenticate push notifications with Baidu Cloud Push. Provide your credentials by setting
-     *         the ApiKey and SecretKey attributes.
+     * @return (Not used) This property is retained only for backward compatibility.
      */
 
     public Boolean getHasCredential() {
@@ -229,14 +293,12 @@ public class BaiduChannelResponse implements Serializable, Cloneable, Structured
     }
 
     /**
-     * Indicates whether the channel is configured with Baidu Cloud Push credentials. Amazon Pinpoint uses your
-     * credentials to authenticate push notifications with Baidu Cloud Push. Provide your credentials by setting the
-     * ApiKey and SecretKey attributes.
+     * <p>
+     * (Not used) This property is retained only for backward compatibility.
+     * </p>
      * 
      * @param hasCredential
-     *        Indicates whether the channel is configured with Baidu Cloud Push credentials. Amazon Pinpoint uses your
-     *        credentials to authenticate push notifications with Baidu Cloud Push. Provide your credentials by setting
-     *        the ApiKey and SecretKey attributes.
+     *        (Not used) This property is retained only for backward compatibility.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -246,13 +308,11 @@ public class BaiduChannelResponse implements Serializable, Cloneable, Structured
     }
 
     /**
-     * Indicates whether the channel is configured with Baidu Cloud Push credentials. Amazon Pinpoint uses your
-     * credentials to authenticate push notifications with Baidu Cloud Push. Provide your credentials by setting the
-     * ApiKey and SecretKey attributes.
+     * <p>
+     * (Not used) This property is retained only for backward compatibility.
+     * </p>
      * 
-     * @return Indicates whether the channel is configured with Baidu Cloud Push credentials. Amazon Pinpoint uses your
-     *         credentials to authenticate push notifications with Baidu Cloud Push. Provide your credentials by setting
-     *         the ApiKey and SecretKey attributes.
+     * @return (Not used) This property is retained only for backward compatibility.
      */
 
     public Boolean isHasCredential() {
@@ -260,10 +320,13 @@ public class BaiduChannelResponse implements Serializable, Cloneable, Structured
     }
 
     /**
-     * Channel ID. Not used, only for backwards compatibility.
+     * <p>
+     * (Deprecated) An identifier for the Baidu channel. This property is retained only for backward compatibility.
+     * </p>
      * 
      * @param id
-     *        Channel ID. Not used, only for backwards compatibility.
+     *        (Deprecated) An identifier for the Baidu channel. This property is retained only for backward
+     *        compatibility.
      */
 
     public void setId(String id) {
@@ -271,9 +334,12 @@ public class BaiduChannelResponse implements Serializable, Cloneable, Structured
     }
 
     /**
-     * Channel ID. Not used, only for backwards compatibility.
+     * <p>
+     * (Deprecated) An identifier for the Baidu channel. This property is retained only for backward compatibility.
+     * </p>
      * 
-     * @return Channel ID. Not used, only for backwards compatibility.
+     * @return (Deprecated) An identifier for the Baidu channel. This property is retained only for backward
+     *         compatibility.
      */
 
     public String getId() {
@@ -281,10 +347,13 @@ public class BaiduChannelResponse implements Serializable, Cloneable, Structured
     }
 
     /**
-     * Channel ID. Not used, only for backwards compatibility.
+     * <p>
+     * (Deprecated) An identifier for the Baidu channel. This property is retained only for backward compatibility.
+     * </p>
      * 
      * @param id
-     *        Channel ID. Not used, only for backwards compatibility.
+     *        (Deprecated) An identifier for the Baidu channel. This property is retained only for backward
+     *        compatibility.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -294,10 +363,12 @@ public class BaiduChannelResponse implements Serializable, Cloneable, Structured
     }
 
     /**
-     * Is this channel archived
+     * <p>
+     * Specifies whether the Baidu channel is archived.
+     * </p>
      * 
      * @param isArchived
-     *        Is this channel archived
+     *        Specifies whether the Baidu channel is archived.
      */
 
     public void setIsArchived(Boolean isArchived) {
@@ -305,9 +376,11 @@ public class BaiduChannelResponse implements Serializable, Cloneable, Structured
     }
 
     /**
-     * Is this channel archived
+     * <p>
+     * Specifies whether the Baidu channel is archived.
+     * </p>
      * 
-     * @return Is this channel archived
+     * @return Specifies whether the Baidu channel is archived.
      */
 
     public Boolean getIsArchived() {
@@ -315,10 +388,12 @@ public class BaiduChannelResponse implements Serializable, Cloneable, Structured
     }
 
     /**
-     * Is this channel archived
+     * <p>
+     * Specifies whether the Baidu channel is archived.
+     * </p>
      * 
      * @param isArchived
-     *        Is this channel archived
+     *        Specifies whether the Baidu channel is archived.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -328,9 +403,11 @@ public class BaiduChannelResponse implements Serializable, Cloneable, Structured
     }
 
     /**
-     * Is this channel archived
+     * <p>
+     * Specifies whether the Baidu channel is archived.
+     * </p>
      * 
-     * @return Is this channel archived
+     * @return Specifies whether the Baidu channel is archived.
      */
 
     public Boolean isArchived() {
@@ -338,10 +415,12 @@ public class BaiduChannelResponse implements Serializable, Cloneable, Structured
     }
 
     /**
-     * Who made the last change
+     * <p>
+     * The user who last modified the Baidu channel.
+     * </p>
      * 
      * @param lastModifiedBy
-     *        Who made the last change
+     *        The user who last modified the Baidu channel.
      */
 
     public void setLastModifiedBy(String lastModifiedBy) {
@@ -349,9 +428,11 @@ public class BaiduChannelResponse implements Serializable, Cloneable, Structured
     }
 
     /**
-     * Who made the last change
+     * <p>
+     * The user who last modified the Baidu channel.
+     * </p>
      * 
-     * @return Who made the last change
+     * @return The user who last modified the Baidu channel.
      */
 
     public String getLastModifiedBy() {
@@ -359,10 +440,12 @@ public class BaiduChannelResponse implements Serializable, Cloneable, Structured
     }
 
     /**
-     * Who made the last change
+     * <p>
+     * The user who last modified the Baidu channel.
+     * </p>
      * 
      * @param lastModifiedBy
-     *        Who made the last change
+     *        The user who last modified the Baidu channel.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -372,10 +455,12 @@ public class BaiduChannelResponse implements Serializable, Cloneable, Structured
     }
 
     /**
-     * Last date this was updated
+     * <p>
+     * The date and time when the Baidu channel was last modified.
+     * </p>
      * 
      * @param lastModifiedDate
-     *        Last date this was updated
+     *        The date and time when the Baidu channel was last modified.
      */
 
     public void setLastModifiedDate(String lastModifiedDate) {
@@ -383,9 +468,11 @@ public class BaiduChannelResponse implements Serializable, Cloneable, Structured
     }
 
     /**
-     * Last date this was updated
+     * <p>
+     * The date and time when the Baidu channel was last modified.
+     * </p>
      * 
-     * @return Last date this was updated
+     * @return The date and time when the Baidu channel was last modified.
      */
 
     public String getLastModifiedDate() {
@@ -393,10 +480,12 @@ public class BaiduChannelResponse implements Serializable, Cloneable, Structured
     }
 
     /**
-     * Last date this was updated
+     * <p>
+     * The date and time when the Baidu channel was last modified.
+     * </p>
      * 
      * @param lastModifiedDate
-     *        Last date this was updated
+     *        The date and time when the Baidu channel was last modified.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -406,10 +495,13 @@ public class BaiduChannelResponse implements Serializable, Cloneable, Structured
     }
 
     /**
-     * The platform type. Will be BAIDU
+     * <p>
+     * The type of messaging or notification platform for the channel. For the Baidu channel, this value is BAIDU.
+     * </p>
      * 
      * @param platform
-     *        The platform type. Will be BAIDU
+     *        The type of messaging or notification platform for the channel. For the Baidu channel, this value is
+     *        BAIDU.
      */
 
     public void setPlatform(String platform) {
@@ -417,9 +509,12 @@ public class BaiduChannelResponse implements Serializable, Cloneable, Structured
     }
 
     /**
-     * The platform type. Will be BAIDU
+     * <p>
+     * The type of messaging or notification platform for the channel. For the Baidu channel, this value is BAIDU.
+     * </p>
      * 
-     * @return The platform type. Will be BAIDU
+     * @return The type of messaging or notification platform for the channel. For the Baidu channel, this value is
+     *         BAIDU.
      */
 
     public String getPlatform() {
@@ -427,10 +522,13 @@ public class BaiduChannelResponse implements Serializable, Cloneable, Structured
     }
 
     /**
-     * The platform type. Will be BAIDU
+     * <p>
+     * The type of messaging or notification platform for the channel. For the Baidu channel, this value is BAIDU.
+     * </p>
      * 
      * @param platform
-     *        The platform type. Will be BAIDU
+     *        The type of messaging or notification platform for the channel. For the Baidu channel, this value is
+     *        BAIDU.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -440,10 +538,12 @@ public class BaiduChannelResponse implements Serializable, Cloneable, Structured
     }
 
     /**
-     * Version of channel
+     * <p>
+     * The current version of the Baidu channel.
+     * </p>
      * 
      * @param version
-     *        Version of channel
+     *        The current version of the Baidu channel.
      */
 
     public void setVersion(Integer version) {
@@ -451,9 +551,11 @@ public class BaiduChannelResponse implements Serializable, Cloneable, Structured
     }
 
     /**
-     * Version of channel
+     * <p>
+     * The current version of the Baidu channel.
+     * </p>
      * 
-     * @return Version of channel
+     * @return The current version of the Baidu channel.
      */
 
     public Integer getVersion() {
@@ -461,10 +563,12 @@ public class BaiduChannelResponse implements Serializable, Cloneable, Structured
     }
 
     /**
-     * Version of channel
+     * <p>
+     * The current version of the Baidu channel.
+     * </p>
      * 
      * @param version
-     *        Version of channel
+     *        The current version of the Baidu channel.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -474,7 +578,8 @@ public class BaiduChannelResponse implements Serializable, Cloneable, Structured
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

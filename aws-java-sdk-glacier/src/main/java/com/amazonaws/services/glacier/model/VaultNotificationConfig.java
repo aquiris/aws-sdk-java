@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -33,7 +33,8 @@ public class VaultNotificationConfig implements Serializable, Cloneable, Structu
     private String sNSTopic;
     /**
      * <p>
-     * A list of one or more events for which Amazon Glacier will send a notification to the specified Amazon SNS topic.
+     * A list of one or more events for which Amazon S3 Glacier will send a notification to the specified Amazon SNS
+     * topic.
      * </p>
      */
     private java.util.List<String> events;
@@ -52,8 +53,8 @@ public class VaultNotificationConfig implements Serializable, Cloneable, Structu
      * @param sNSTopic
      *        The Amazon Simple Notification Service (Amazon SNS) topic Amazon Resource Name (ARN).
      * @param events
-     *        A list of one or more events for which Amazon Glacier will send a notification to the specified Amazon SNS
-     *        topic.
+     *        A list of one or more events for which Amazon S3 Glacier will send a notification to the specified Amazon
+     *        SNS topic.
      */
     public VaultNotificationConfig(String sNSTopic, java.util.List<String> events) {
         setSNSTopic(sNSTopic);
@@ -102,10 +103,11 @@ public class VaultNotificationConfig implements Serializable, Cloneable, Structu
 
     /**
      * <p>
-     * A list of one or more events for which Amazon Glacier will send a notification to the specified Amazon SNS topic.
+     * A list of one or more events for which Amazon S3 Glacier will send a notification to the specified Amazon SNS
+     * topic.
      * </p>
      * 
-     * @return A list of one or more events for which Amazon Glacier will send a notification to the specified Amazon
+     * @return A list of one or more events for which Amazon S3 Glacier will send a notification to the specified Amazon
      *         SNS topic.
      */
 
@@ -115,12 +117,13 @@ public class VaultNotificationConfig implements Serializable, Cloneable, Structu
 
     /**
      * <p>
-     * A list of one or more events for which Amazon Glacier will send a notification to the specified Amazon SNS topic.
+     * A list of one or more events for which Amazon S3 Glacier will send a notification to the specified Amazon SNS
+     * topic.
      * </p>
      * 
      * @param events
-     *        A list of one or more events for which Amazon Glacier will send a notification to the specified Amazon SNS
-     *        topic.
+     *        A list of one or more events for which Amazon S3 Glacier will send a notification to the specified Amazon
+     *        SNS topic.
      */
 
     public void setEvents(java.util.Collection<String> events) {
@@ -134,7 +137,8 @@ public class VaultNotificationConfig implements Serializable, Cloneable, Structu
 
     /**
      * <p>
-     * A list of one or more events for which Amazon Glacier will send a notification to the specified Amazon SNS topic.
+     * A list of one or more events for which Amazon S3 Glacier will send a notification to the specified Amazon SNS
+     * topic.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -143,8 +147,8 @@ public class VaultNotificationConfig implements Serializable, Cloneable, Structu
      * </p>
      * 
      * @param events
-     *        A list of one or more events for which Amazon Glacier will send a notification to the specified Amazon SNS
-     *        topic.
+     *        A list of one or more events for which Amazon S3 Glacier will send a notification to the specified Amazon
+     *        SNS topic.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -160,12 +164,13 @@ public class VaultNotificationConfig implements Serializable, Cloneable, Structu
 
     /**
      * <p>
-     * A list of one or more events for which Amazon Glacier will send a notification to the specified Amazon SNS topic.
+     * A list of one or more events for which Amazon S3 Glacier will send a notification to the specified Amazon SNS
+     * topic.
      * </p>
      * 
      * @param events
-     *        A list of one or more events for which Amazon Glacier will send a notification to the specified Amazon SNS
-     *        topic.
+     *        A list of one or more events for which Amazon S3 Glacier will send a notification to the specified Amazon
+     *        SNS topic.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -175,7 +180,8 @@ public class VaultNotificationConfig implements Serializable, Cloneable, Structu
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

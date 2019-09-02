@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -19,7 +19,7 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * Structure used to create or update the table.
+ * A structure used to define a table.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/TableInput" target="_top">AWS API
@@ -30,37 +30,37 @@ public class TableInput implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Name of the table. For Hive compatibility, this is folded to lowercase when it is stored.
+     * The table name. For Hive compatibility, this is folded to lowercase when it is stored.
      * </p>
      */
     private String name;
     /**
      * <p>
-     * Description of the table.
+     * A description of the table.
      * </p>
      */
     private String description;
     /**
      * <p>
-     * Owner of the table.
+     * The table owner.
      * </p>
      */
     private String owner;
     /**
      * <p>
-     * Last time the table was accessed.
+     * The last time that the table was accessed.
      * </p>
      */
     private java.util.Date lastAccessTime;
     /**
      * <p>
-     * Last time column statistics were computed for this table.
+     * The last time that column statistics were computed for this table.
      * </p>
      */
     private java.util.Date lastAnalyzedTime;
     /**
      * <p>
-     * Retention time for this table.
+     * The retention time for this table.
      * </p>
      */
     private Integer retention;
@@ -73,6 +73,13 @@ public class TableInput implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * A list of columns by which the table is partitioned. Only primitive types are supported as partition keys.
+     * </p>
+     * <p>
+     * When you create a table used by Amazon Athena, and you do not specify any <code>partitionKeys</code>, you must at
+     * least set the value of <code>partitionKeys</code> to an empty list. For example:
+     * </p>
+     * <p>
+     * <code>"PartitionKeys": []</code>
      * </p>
      */
     private java.util.List<Column> partitionKeys;
@@ -96,18 +103,18 @@ public class TableInput implements Serializable, Cloneable, StructuredPojo {
     private String tableType;
     /**
      * <p>
-     * Properties associated with this table, as a list of key-value pairs.
+     * These key-value pairs define properties associated with the table.
      * </p>
      */
     private java.util.Map<String, String> parameters;
 
     /**
      * <p>
-     * Name of the table. For Hive compatibility, this is folded to lowercase when it is stored.
+     * The table name. For Hive compatibility, this is folded to lowercase when it is stored.
      * </p>
      * 
      * @param name
-     *        Name of the table. For Hive compatibility, this is folded to lowercase when it is stored.
+     *        The table name. For Hive compatibility, this is folded to lowercase when it is stored.
      */
 
     public void setName(String name) {
@@ -116,10 +123,10 @@ public class TableInput implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Name of the table. For Hive compatibility, this is folded to lowercase when it is stored.
+     * The table name. For Hive compatibility, this is folded to lowercase when it is stored.
      * </p>
      * 
-     * @return Name of the table. For Hive compatibility, this is folded to lowercase when it is stored.
+     * @return The table name. For Hive compatibility, this is folded to lowercase when it is stored.
      */
 
     public String getName() {
@@ -128,11 +135,11 @@ public class TableInput implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Name of the table. For Hive compatibility, this is folded to lowercase when it is stored.
+     * The table name. For Hive compatibility, this is folded to lowercase when it is stored.
      * </p>
      * 
      * @param name
-     *        Name of the table. For Hive compatibility, this is folded to lowercase when it is stored.
+     *        The table name. For Hive compatibility, this is folded to lowercase when it is stored.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -143,11 +150,11 @@ public class TableInput implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Description of the table.
+     * A description of the table.
      * </p>
      * 
      * @param description
-     *        Description of the table.
+     *        A description of the table.
      */
 
     public void setDescription(String description) {
@@ -156,10 +163,10 @@ public class TableInput implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Description of the table.
+     * A description of the table.
      * </p>
      * 
-     * @return Description of the table.
+     * @return A description of the table.
      */
 
     public String getDescription() {
@@ -168,11 +175,11 @@ public class TableInput implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Description of the table.
+     * A description of the table.
      * </p>
      * 
      * @param description
-     *        Description of the table.
+     *        A description of the table.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -183,11 +190,11 @@ public class TableInput implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Owner of the table.
+     * The table owner.
      * </p>
      * 
      * @param owner
-     *        Owner of the table.
+     *        The table owner.
      */
 
     public void setOwner(String owner) {
@@ -196,10 +203,10 @@ public class TableInput implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Owner of the table.
+     * The table owner.
      * </p>
      * 
-     * @return Owner of the table.
+     * @return The table owner.
      */
 
     public String getOwner() {
@@ -208,11 +215,11 @@ public class TableInput implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Owner of the table.
+     * The table owner.
      * </p>
      * 
      * @param owner
-     *        Owner of the table.
+     *        The table owner.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -223,11 +230,11 @@ public class TableInput implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Last time the table was accessed.
+     * The last time that the table was accessed.
      * </p>
      * 
      * @param lastAccessTime
-     *        Last time the table was accessed.
+     *        The last time that the table was accessed.
      */
 
     public void setLastAccessTime(java.util.Date lastAccessTime) {
@@ -236,10 +243,10 @@ public class TableInput implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Last time the table was accessed.
+     * The last time that the table was accessed.
      * </p>
      * 
-     * @return Last time the table was accessed.
+     * @return The last time that the table was accessed.
      */
 
     public java.util.Date getLastAccessTime() {
@@ -248,11 +255,11 @@ public class TableInput implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Last time the table was accessed.
+     * The last time that the table was accessed.
      * </p>
      * 
      * @param lastAccessTime
-     *        Last time the table was accessed.
+     *        The last time that the table was accessed.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -263,11 +270,11 @@ public class TableInput implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Last time column statistics were computed for this table.
+     * The last time that column statistics were computed for this table.
      * </p>
      * 
      * @param lastAnalyzedTime
-     *        Last time column statistics were computed for this table.
+     *        The last time that column statistics were computed for this table.
      */
 
     public void setLastAnalyzedTime(java.util.Date lastAnalyzedTime) {
@@ -276,10 +283,10 @@ public class TableInput implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Last time column statistics were computed for this table.
+     * The last time that column statistics were computed for this table.
      * </p>
      * 
-     * @return Last time column statistics were computed for this table.
+     * @return The last time that column statistics were computed for this table.
      */
 
     public java.util.Date getLastAnalyzedTime() {
@@ -288,11 +295,11 @@ public class TableInput implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Last time column statistics were computed for this table.
+     * The last time that column statistics were computed for this table.
      * </p>
      * 
      * @param lastAnalyzedTime
-     *        Last time column statistics were computed for this table.
+     *        The last time that column statistics were computed for this table.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -303,11 +310,11 @@ public class TableInput implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Retention time for this table.
+     * The retention time for this table.
      * </p>
      * 
      * @param retention
-     *        Retention time for this table.
+     *        The retention time for this table.
      */
 
     public void setRetention(Integer retention) {
@@ -316,10 +323,10 @@ public class TableInput implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Retention time for this table.
+     * The retention time for this table.
      * </p>
      * 
-     * @return Retention time for this table.
+     * @return The retention time for this table.
      */
 
     public Integer getRetention() {
@@ -328,11 +335,11 @@ public class TableInput implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Retention time for this table.
+     * The retention time for this table.
      * </p>
      * 
      * @param retention
-     *        Retention time for this table.
+     *        The retention time for this table.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -385,9 +392,22 @@ public class TableInput implements Serializable, Cloneable, StructuredPojo {
      * <p>
      * A list of columns by which the table is partitioned. Only primitive types are supported as partition keys.
      * </p>
+     * <p>
+     * When you create a table used by Amazon Athena, and you do not specify any <code>partitionKeys</code>, you must at
+     * least set the value of <code>partitionKeys</code> to an empty list. For example:
+     * </p>
+     * <p>
+     * <code>"PartitionKeys": []</code>
+     * </p>
      * 
      * @return A list of columns by which the table is partitioned. Only primitive types are supported as partition
-     *         keys.
+     *         keys.</p>
+     *         <p>
+     *         When you create a table used by Amazon Athena, and you do not specify any <code>partitionKeys</code>, you
+     *         must at least set the value of <code>partitionKeys</code> to an empty list. For example:
+     *         </p>
+     *         <p>
+     *         <code>"PartitionKeys": []</code>
      */
 
     public java.util.List<Column> getPartitionKeys() {
@@ -398,9 +418,23 @@ public class TableInput implements Serializable, Cloneable, StructuredPojo {
      * <p>
      * A list of columns by which the table is partitioned. Only primitive types are supported as partition keys.
      * </p>
+     * <p>
+     * When you create a table used by Amazon Athena, and you do not specify any <code>partitionKeys</code>, you must at
+     * least set the value of <code>partitionKeys</code> to an empty list. For example:
+     * </p>
+     * <p>
+     * <code>"PartitionKeys": []</code>
+     * </p>
      * 
      * @param partitionKeys
-     *        A list of columns by which the table is partitioned. Only primitive types are supported as partition keys.
+     *        A list of columns by which the table is partitioned. Only primitive types are supported as partition
+     *        keys.</p>
+     *        <p>
+     *        When you create a table used by Amazon Athena, and you do not specify any <code>partitionKeys</code>, you
+     *        must at least set the value of <code>partitionKeys</code> to an empty list. For example:
+     *        </p>
+     *        <p>
+     *        <code>"PartitionKeys": []</code>
      */
 
     public void setPartitionKeys(java.util.Collection<Column> partitionKeys) {
@@ -417,13 +451,27 @@ public class TableInput implements Serializable, Cloneable, StructuredPojo {
      * A list of columns by which the table is partitioned. Only primitive types are supported as partition keys.
      * </p>
      * <p>
+     * When you create a table used by Amazon Athena, and you do not specify any <code>partitionKeys</code>, you must at
+     * least set the value of <code>partitionKeys</code> to an empty list. For example:
+     * </p>
+     * <p>
+     * <code>"PartitionKeys": []</code>
+     * </p>
+     * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
      * {@link #setPartitionKeys(java.util.Collection)} or {@link #withPartitionKeys(java.util.Collection)} if you want
      * to override the existing values.
      * </p>
      * 
      * @param partitionKeys
-     *        A list of columns by which the table is partitioned. Only primitive types are supported as partition keys.
+     *        A list of columns by which the table is partitioned. Only primitive types are supported as partition
+     *        keys.</p>
+     *        <p>
+     *        When you create a table used by Amazon Athena, and you do not specify any <code>partitionKeys</code>, you
+     *        must at least set the value of <code>partitionKeys</code> to an empty list. For example:
+     *        </p>
+     *        <p>
+     *        <code>"PartitionKeys": []</code>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -441,9 +489,23 @@ public class TableInput implements Serializable, Cloneable, StructuredPojo {
      * <p>
      * A list of columns by which the table is partitioned. Only primitive types are supported as partition keys.
      * </p>
+     * <p>
+     * When you create a table used by Amazon Athena, and you do not specify any <code>partitionKeys</code>, you must at
+     * least set the value of <code>partitionKeys</code> to an empty list. For example:
+     * </p>
+     * <p>
+     * <code>"PartitionKeys": []</code>
+     * </p>
      * 
      * @param partitionKeys
-     *        A list of columns by which the table is partitioned. Only primitive types are supported as partition keys.
+     *        A list of columns by which the table is partitioned. Only primitive types are supported as partition
+     *        keys.</p>
+     *        <p>
+     *        When you create a table used by Amazon Athena, and you do not specify any <code>partitionKeys</code>, you
+     *        must at least set the value of <code>partitionKeys</code> to an empty list. For example:
+     *        </p>
+     *        <p>
+     *        <code>"PartitionKeys": []</code>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -574,10 +636,10 @@ public class TableInput implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Properties associated with this table, as a list of key-value pairs.
+     * These key-value pairs define properties associated with the table.
      * </p>
      * 
-     * @return Properties associated with this table, as a list of key-value pairs.
+     * @return These key-value pairs define properties associated with the table.
      */
 
     public java.util.Map<String, String> getParameters() {
@@ -586,11 +648,11 @@ public class TableInput implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Properties associated with this table, as a list of key-value pairs.
+     * These key-value pairs define properties associated with the table.
      * </p>
      * 
      * @param parameters
-     *        Properties associated with this table, as a list of key-value pairs.
+     *        These key-value pairs define properties associated with the table.
      */
 
     public void setParameters(java.util.Map<String, String> parameters) {
@@ -599,11 +661,11 @@ public class TableInput implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Properties associated with this table, as a list of key-value pairs.
+     * These key-value pairs define properties associated with the table.
      * </p>
      * 
      * @param parameters
-     *        Properties associated with this table, as a list of key-value pairs.
+     *        These key-value pairs define properties associated with the table.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -634,7 +696,8 @@ public class TableInput implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

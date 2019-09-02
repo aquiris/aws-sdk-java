@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -31,6 +31,12 @@ public class ListRulesRequest extends com.amazonaws.AmazonWebServiceRequest impl
      * </p>
      */
     private String namePrefix;
+    /**
+     * <p>
+     * Limits the results to show only the rules associated with the specified event bus.
+     * </p>
+     */
+    private String eventBusName;
     /**
      * <p>
      * The token returned by a previous call to retrieve the next set of results.
@@ -81,6 +87,46 @@ public class ListRulesRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     public ListRulesRequest withNamePrefix(String namePrefix) {
         setNamePrefix(namePrefix);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Limits the results to show only the rules associated with the specified event bus.
+     * </p>
+     * 
+     * @param eventBusName
+     *        Limits the results to show only the rules associated with the specified event bus.
+     */
+
+    public void setEventBusName(String eventBusName) {
+        this.eventBusName = eventBusName;
+    }
+
+    /**
+     * <p>
+     * Limits the results to show only the rules associated with the specified event bus.
+     * </p>
+     * 
+     * @return Limits the results to show only the rules associated with the specified event bus.
+     */
+
+    public String getEventBusName() {
+        return this.eventBusName;
+    }
+
+    /**
+     * <p>
+     * Limits the results to show only the rules associated with the specified event bus.
+     * </p>
+     * 
+     * @param eventBusName
+     *        Limits the results to show only the rules associated with the specified event bus.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ListRulesRequest withEventBusName(String eventBusName) {
+        setEventBusName(eventBusName);
         return this;
     }
 
@@ -165,7 +211,8 @@ public class ListRulesRequest extends com.amazonaws.AmazonWebServiceRequest impl
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -177,6 +224,8 @@ public class ListRulesRequest extends com.amazonaws.AmazonWebServiceRequest impl
         sb.append("{");
         if (getNamePrefix() != null)
             sb.append("NamePrefix: ").append(getNamePrefix()).append(",");
+        if (getEventBusName() != null)
+            sb.append("EventBusName: ").append(getEventBusName()).append(",");
         if (getNextToken() != null)
             sb.append("NextToken: ").append(getNextToken()).append(",");
         if (getLimit() != null)
@@ -199,6 +248,10 @@ public class ListRulesRequest extends com.amazonaws.AmazonWebServiceRequest impl
             return false;
         if (other.getNamePrefix() != null && other.getNamePrefix().equals(this.getNamePrefix()) == false)
             return false;
+        if (other.getEventBusName() == null ^ this.getEventBusName() == null)
+            return false;
+        if (other.getEventBusName() != null && other.getEventBusName().equals(this.getEventBusName()) == false)
+            return false;
         if (other.getNextToken() == null ^ this.getNextToken() == null)
             return false;
         if (other.getNextToken() != null && other.getNextToken().equals(this.getNextToken()) == false)
@@ -216,6 +269,7 @@ public class ListRulesRequest extends com.amazonaws.AmazonWebServiceRequest impl
         int hashCode = 1;
 
         hashCode = prime * hashCode + ((getNamePrefix() == null) ? 0 : getNamePrefix().hashCode());
+        hashCode = prime * hashCode + ((getEventBusName() == null) ? 0 : getEventBusName().hashCode());
         hashCode = prime * hashCode + ((getNextToken() == null) ? 0 : getNextToken().hashCode());
         hashCode = prime * hashCode + ((getLimit() == null) ? 0 : getLimit().hashCode());
         return hashCode;

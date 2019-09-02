@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -44,6 +44,11 @@ public class ThirdPartyJobData implements Serializable, Cloneable, StructuredPoj
      * <p>
      * Represents information about a pipeline to a job worker.
      * </p>
+     * <note>
+     * <p>
+     * Does not include <code>pipelineArn</code> and <code>pipelineExecutionId</code> for ThirdParty jobs.
+     * </p>
+     * </note>
      */
     private PipelineContext pipelineContext;
     /**
@@ -168,9 +173,17 @@ public class ThirdPartyJobData implements Serializable, Cloneable, StructuredPoj
      * <p>
      * Represents information about a pipeline to a job worker.
      * </p>
+     * <note>
+     * <p>
+     * Does not include <code>pipelineArn</code> and <code>pipelineExecutionId</code> for ThirdParty jobs.
+     * </p>
+     * </note>
      * 
      * @param pipelineContext
-     *        Represents information about a pipeline to a job worker.
+     *        Represents information about a pipeline to a job worker.</p> <note>
+     *        <p>
+     *        Does not include <code>pipelineArn</code> and <code>pipelineExecutionId</code> for ThirdParty jobs.
+     *        </p>
      */
 
     public void setPipelineContext(PipelineContext pipelineContext) {
@@ -181,8 +194,16 @@ public class ThirdPartyJobData implements Serializable, Cloneable, StructuredPoj
      * <p>
      * Represents information about a pipeline to a job worker.
      * </p>
+     * <note>
+     * <p>
+     * Does not include <code>pipelineArn</code> and <code>pipelineExecutionId</code> for ThirdParty jobs.
+     * </p>
+     * </note>
      * 
-     * @return Represents information about a pipeline to a job worker.
+     * @return Represents information about a pipeline to a job worker.</p> <note>
+     *         <p>
+     *         Does not include <code>pipelineArn</code> and <code>pipelineExecutionId</code> for ThirdParty jobs.
+     *         </p>
      */
 
     public PipelineContext getPipelineContext() {
@@ -193,9 +214,17 @@ public class ThirdPartyJobData implements Serializable, Cloneable, StructuredPoj
      * <p>
      * Represents information about a pipeline to a job worker.
      * </p>
+     * <note>
+     * <p>
+     * Does not include <code>pipelineArn</code> and <code>pipelineExecutionId</code> for ThirdParty jobs.
+     * </p>
+     * </note>
      * 
      * @param pipelineContext
-     *        Represents information about a pipeline to a job worker.
+     *        Represents information about a pipeline to a job worker.</p> <note>
+     *        <p>
+     *        Does not include <code>pipelineArn</code> and <code>pipelineExecutionId</code> for ThirdParty jobs.
+     *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -517,7 +546,8 @@ public class ThirdPartyJobData implements Serializable, Cloneable, StructuredPoj
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -538,7 +568,7 @@ public class ThirdPartyJobData implements Serializable, Cloneable, StructuredPoj
         if (getOutputArtifacts() != null)
             sb.append("OutputArtifacts: ").append(getOutputArtifacts()).append(",");
         if (getArtifactCredentials() != null)
-            sb.append("ArtifactCredentials: ").append(getArtifactCredentials()).append(",");
+            sb.append("ArtifactCredentials: ").append("***Sensitive Data Redacted***").append(",");
         if (getContinuationToken() != null)
             sb.append("ContinuationToken: ").append(getContinuationToken()).append(",");
         if (getEncryptionKey() != null)

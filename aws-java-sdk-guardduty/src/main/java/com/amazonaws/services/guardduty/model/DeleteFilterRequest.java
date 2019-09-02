@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -25,16 +25,26 @@ import com.amazonaws.AmazonWebServiceRequest;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DeleteFilterRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
-    /** The unique ID that specifies the detector where you want to delete a filter. */
+    /**
+     * <p>
+     * The unique ID of the detector the filter is associated with.
+     * </p>
+     */
     private String detectorId;
-    /** The name of the filter. */
+    /**
+     * <p>
+     * The name of the filter you want to delete.
+     * </p>
+     */
     private String filterName;
 
     /**
-     * The unique ID that specifies the detector where you want to delete a filter.
+     * <p>
+     * The unique ID of the detector the filter is associated with.
+     * </p>
      * 
      * @param detectorId
-     *        The unique ID that specifies the detector where you want to delete a filter.
+     *        The unique ID of the detector the filter is associated with.
      */
 
     public void setDetectorId(String detectorId) {
@@ -42,9 +52,11 @@ public class DeleteFilterRequest extends com.amazonaws.AmazonWebServiceRequest i
     }
 
     /**
-     * The unique ID that specifies the detector where you want to delete a filter.
+     * <p>
+     * The unique ID of the detector the filter is associated with.
+     * </p>
      * 
-     * @return The unique ID that specifies the detector where you want to delete a filter.
+     * @return The unique ID of the detector the filter is associated with.
      */
 
     public String getDetectorId() {
@@ -52,10 +64,12 @@ public class DeleteFilterRequest extends com.amazonaws.AmazonWebServiceRequest i
     }
 
     /**
-     * The unique ID that specifies the detector where you want to delete a filter.
+     * <p>
+     * The unique ID of the detector the filter is associated with.
+     * </p>
      * 
      * @param detectorId
-     *        The unique ID that specifies the detector where you want to delete a filter.
+     *        The unique ID of the detector the filter is associated with.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -65,10 +79,12 @@ public class DeleteFilterRequest extends com.amazonaws.AmazonWebServiceRequest i
     }
 
     /**
-     * The name of the filter.
+     * <p>
+     * The name of the filter you want to delete.
+     * </p>
      * 
      * @param filterName
-     *        The name of the filter.
+     *        The name of the filter you want to delete.
      */
 
     public void setFilterName(String filterName) {
@@ -76,9 +92,11 @@ public class DeleteFilterRequest extends com.amazonaws.AmazonWebServiceRequest i
     }
 
     /**
-     * The name of the filter.
+     * <p>
+     * The name of the filter you want to delete.
+     * </p>
      * 
-     * @return The name of the filter.
+     * @return The name of the filter you want to delete.
      */
 
     public String getFilterName() {
@@ -86,10 +104,12 @@ public class DeleteFilterRequest extends com.amazonaws.AmazonWebServiceRequest i
     }
 
     /**
-     * The name of the filter.
+     * <p>
+     * The name of the filter you want to delete.
+     * </p>
      * 
      * @param filterName
-     *        The name of the filter.
+     *        The name of the filter you want to delete.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -99,7 +119,8 @@ public class DeleteFilterRequest extends com.amazonaws.AmazonWebServiceRequest i
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

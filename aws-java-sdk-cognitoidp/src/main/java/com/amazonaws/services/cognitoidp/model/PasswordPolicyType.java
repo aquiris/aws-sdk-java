@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -62,6 +62,8 @@ public class PasswordPolicyType implements Serializable, Cloneable, StructuredPo
      * </p>
      */
     private Boolean requireSymbols;
+
+    private Integer temporaryPasswordValidityDays;
 
     /**
      * <p>
@@ -344,7 +346,34 @@ public class PasswordPolicyType implements Serializable, Cloneable, StructuredPo
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * @param temporaryPasswordValidityDays
+     */
+
+    public void setTemporaryPasswordValidityDays(Integer temporaryPasswordValidityDays) {
+        this.temporaryPasswordValidityDays = temporaryPasswordValidityDays;
+    }
+
+    /**
+     * @return
+     */
+
+    public Integer getTemporaryPasswordValidityDays() {
+        return this.temporaryPasswordValidityDays;
+    }
+
+    /**
+     * @param temporaryPasswordValidityDays
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public PasswordPolicyType withTemporaryPasswordValidityDays(Integer temporaryPasswordValidityDays) {
+        setTemporaryPasswordValidityDays(temporaryPasswordValidityDays);
+        return this;
+    }
+
+    /**
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -363,7 +392,9 @@ public class PasswordPolicyType implements Serializable, Cloneable, StructuredPo
         if (getRequireNumbers() != null)
             sb.append("RequireNumbers: ").append(getRequireNumbers()).append(",");
         if (getRequireSymbols() != null)
-            sb.append("RequireSymbols: ").append(getRequireSymbols());
+            sb.append("RequireSymbols: ").append(getRequireSymbols()).append(",");
+        if (getTemporaryPasswordValidityDays() != null)
+            sb.append("TemporaryPasswordValidityDays: ").append(getTemporaryPasswordValidityDays());
         sb.append("}");
         return sb.toString();
     }
@@ -398,6 +429,11 @@ public class PasswordPolicyType implements Serializable, Cloneable, StructuredPo
             return false;
         if (other.getRequireSymbols() != null && other.getRequireSymbols().equals(this.getRequireSymbols()) == false)
             return false;
+        if (other.getTemporaryPasswordValidityDays() == null ^ this.getTemporaryPasswordValidityDays() == null)
+            return false;
+        if (other.getTemporaryPasswordValidityDays() != null
+                && other.getTemporaryPasswordValidityDays().equals(this.getTemporaryPasswordValidityDays()) == false)
+            return false;
         return true;
     }
 
@@ -411,6 +447,7 @@ public class PasswordPolicyType implements Serializable, Cloneable, StructuredPo
         hashCode = prime * hashCode + ((getRequireLowercase() == null) ? 0 : getRequireLowercase().hashCode());
         hashCode = prime * hashCode + ((getRequireNumbers() == null) ? 0 : getRequireNumbers().hashCode());
         hashCode = prime * hashCode + ((getRequireSymbols() == null) ? 0 : getRequireSymbols().hashCode());
+        hashCode = prime * hashCode + ((getTemporaryPasswordValidityDays() == null) ? 0 : getTemporaryPasswordValidityDays().hashCode());
         return hashCode;
     }
 

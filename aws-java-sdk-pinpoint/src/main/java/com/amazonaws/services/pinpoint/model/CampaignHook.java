@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -18,6 +18,9 @@ import com.amazonaws.protocol.StructuredPojo;
 import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
+ * <p>
+ * Specifies the AWS Lambda function to use as a code hook for a campaign.
+ * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/CampaignHook" target="_top">AWS API
  *      Documentation</a>
@@ -25,21 +28,35 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CampaignHook implements Serializable, Cloneable, StructuredPojo {
 
-    /** Lambda function name or arn to be called for delivery */
+    /**
+     * <p>
+     * The name or Amazon Resource Name (ARN) of the AWS Lambda function that Amazon Pinpoint invokes to send messages
+     * for a campaign.
+     * </p>
+     */
     private String lambdaFunctionName;
-    /** What mode Lambda should be invoked in. */
+    /**
+     * <p>
+     * Specifies which Lambda mode to use when invoking the AWS Lambda function.
+     * </p>
+     */
     private String mode;
     /**
-     * Web URL to call for hook. If the URL has authentication specified it will be added as authentication to the
-     * request
+     * <p>
+     * The web URL that Amazon Pinpoint calls to invoke the AWS Lambda function over HTTPS.
+     * </p>
      */
     private String webUrl;
 
     /**
-     * Lambda function name or arn to be called for delivery
+     * <p>
+     * The name or Amazon Resource Name (ARN) of the AWS Lambda function that Amazon Pinpoint invokes to send messages
+     * for a campaign.
+     * </p>
      * 
      * @param lambdaFunctionName
-     *        Lambda function name or arn to be called for delivery
+     *        The name or Amazon Resource Name (ARN) of the AWS Lambda function that Amazon Pinpoint invokes to send
+     *        messages for a campaign.
      */
 
     public void setLambdaFunctionName(String lambdaFunctionName) {
@@ -47,9 +64,13 @@ public class CampaignHook implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Lambda function name or arn to be called for delivery
+     * <p>
+     * The name or Amazon Resource Name (ARN) of the AWS Lambda function that Amazon Pinpoint invokes to send messages
+     * for a campaign.
+     * </p>
      * 
-     * @return Lambda function name or arn to be called for delivery
+     * @return The name or Amazon Resource Name (ARN) of the AWS Lambda function that Amazon Pinpoint invokes to send
+     *         messages for a campaign.
      */
 
     public String getLambdaFunctionName() {
@@ -57,10 +78,14 @@ public class CampaignHook implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Lambda function name or arn to be called for delivery
+     * <p>
+     * The name or Amazon Resource Name (ARN) of the AWS Lambda function that Amazon Pinpoint invokes to send messages
+     * for a campaign.
+     * </p>
      * 
      * @param lambdaFunctionName
-     *        Lambda function name or arn to be called for delivery
+     *        The name or Amazon Resource Name (ARN) of the AWS Lambda function that Amazon Pinpoint invokes to send
+     *        messages for a campaign.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -70,10 +95,12 @@ public class CampaignHook implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * What mode Lambda should be invoked in.
+     * <p>
+     * Specifies which Lambda mode to use when invoking the AWS Lambda function.
+     * </p>
      * 
      * @param mode
-     *        What mode Lambda should be invoked in.
+     *        Specifies which Lambda mode to use when invoking the AWS Lambda function.
      * @see Mode
      */
 
@@ -82,9 +109,11 @@ public class CampaignHook implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * What mode Lambda should be invoked in.
+     * <p>
+     * Specifies which Lambda mode to use when invoking the AWS Lambda function.
+     * </p>
      * 
-     * @return What mode Lambda should be invoked in.
+     * @return Specifies which Lambda mode to use when invoking the AWS Lambda function.
      * @see Mode
      */
 
@@ -93,10 +122,12 @@ public class CampaignHook implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * What mode Lambda should be invoked in.
+     * <p>
+     * Specifies which Lambda mode to use when invoking the AWS Lambda function.
+     * </p>
      * 
      * @param mode
-     *        What mode Lambda should be invoked in.
+     *        Specifies which Lambda mode to use when invoking the AWS Lambda function.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Mode
      */
@@ -107,10 +138,12 @@ public class CampaignHook implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * What mode Lambda should be invoked in.
+     * <p>
+     * Specifies which Lambda mode to use when invoking the AWS Lambda function.
+     * </p>
      * 
      * @param mode
-     *        What mode Lambda should be invoked in.
+     *        Specifies which Lambda mode to use when invoking the AWS Lambda function.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Mode
      */
@@ -121,12 +154,14 @@ public class CampaignHook implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Web URL to call for hook. If the URL has authentication specified it will be added as authentication to the
-     * request
+     * <p>
+     * The web URL that Amazon Pinpoint calls to invoke the AWS Lambda function over HTTPS.
+     * </p>
      * 
      * @param webUrl
-     *        Web URL to call for hook. If the URL has authentication specified it will be added as authentication to
-     *        the request
+     *        <p>
+     *        The web URL that Amazon Pinpoint calls to invoke the AWS Lambda function over HTTPS.
+     *        </p>
      */
 
     public void setWebUrl(String webUrl) {
@@ -134,11 +169,13 @@ public class CampaignHook implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Web URL to call for hook. If the URL has authentication specified it will be added as authentication to the
-     * request
+     * <p>
+     * The web URL that Amazon Pinpoint calls to invoke the AWS Lambda function over HTTPS.
+     * </p>
      * 
-     * @return Web URL to call for hook. If the URL has authentication specified it will be added as authentication to
-     *         the request
+     * @return <p>
+     *         The web URL that Amazon Pinpoint calls to invoke the AWS Lambda function over HTTPS.
+     *         </p>
      */
 
     public String getWebUrl() {
@@ -146,12 +183,14 @@ public class CampaignHook implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Web URL to call for hook. If the URL has authentication specified it will be added as authentication to the
-     * request
+     * <p>
+     * The web URL that Amazon Pinpoint calls to invoke the AWS Lambda function over HTTPS.
+     * </p>
      * 
      * @param webUrl
-     *        Web URL to call for hook. If the URL has authentication specified it will be added as authentication to
-     *        the request
+     *        <p>
+     *        The web URL that Amazon Pinpoint calls to invoke the AWS Lambda function over HTTPS.
+     *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -161,7 +200,8 @@ public class CampaignHook implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

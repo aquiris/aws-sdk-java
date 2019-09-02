@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -29,10 +29,16 @@ public class Trigger implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Name of the trigger.
+     * The name of the trigger.
      * </p>
      */
     private String name;
+    /**
+     * <p>
+     * The name of the workflow associated with the trigger.
+     * </p>
+     */
+    private String workflowName;
     /**
      * <p>
      * Reserved for future use.
@@ -60,7 +66,7 @@ public class Trigger implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * A <code>cron</code> expression used to specify the schedule (see <a
-     * href="http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html">Time-Based Schedules for
+     * href="https://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html">Time-Based Schedules for
      * Jobs and Crawlers</a>. For example, to run something every day at 12:15 UTC, you would specify:
      * <code>cron(15 12 * * ? *)</code>.
      * </p>
@@ -81,11 +87,11 @@ public class Trigger implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Name of the trigger.
+     * The name of the trigger.
      * </p>
      * 
      * @param name
-     *        Name of the trigger.
+     *        The name of the trigger.
      */
 
     public void setName(String name) {
@@ -94,10 +100,10 @@ public class Trigger implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Name of the trigger.
+     * The name of the trigger.
      * </p>
      * 
-     * @return Name of the trigger.
+     * @return The name of the trigger.
      */
 
     public String getName() {
@@ -106,16 +112,56 @@ public class Trigger implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Name of the trigger.
+     * The name of the trigger.
      * </p>
      * 
      * @param name
-     *        Name of the trigger.
+     *        The name of the trigger.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public Trigger withName(String name) {
         setName(name);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The name of the workflow associated with the trigger.
+     * </p>
+     * 
+     * @param workflowName
+     *        The name of the workflow associated with the trigger.
+     */
+
+    public void setWorkflowName(String workflowName) {
+        this.workflowName = workflowName;
+    }
+
+    /**
+     * <p>
+     * The name of the workflow associated with the trigger.
+     * </p>
+     * 
+     * @return The name of the workflow associated with the trigger.
+     */
+
+    public String getWorkflowName() {
+        return this.workflowName;
+    }
+
+    /**
+     * <p>
+     * The name of the workflow associated with the trigger.
+     * </p>
+     * 
+     * @param workflowName
+     *        The name of the workflow associated with the trigger.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Trigger withWorkflowName(String workflowName) {
+        setWorkflowName(workflowName);
         return this;
     }
 
@@ -320,16 +366,16 @@ public class Trigger implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * A <code>cron</code> expression used to specify the schedule (see <a
-     * href="http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html">Time-Based Schedules for
+     * href="https://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html">Time-Based Schedules for
      * Jobs and Crawlers</a>. For example, to run something every day at 12:15 UTC, you would specify:
      * <code>cron(15 12 * * ? *)</code>.
      * </p>
      * 
      * @param schedule
      *        A <code>cron</code> expression used to specify the schedule (see <a
-     *        href="http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html">Time-Based Schedules
-     *        for Jobs and Crawlers</a>. For example, to run something every day at 12:15 UTC, you would specify:
-     *        <code>cron(15 12 * * ? *)</code>.
+     *        href="https://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html">Time-Based
+     *        Schedules for Jobs and Crawlers</a>. For example, to run something every day at 12:15 UTC, you would
+     *        specify: <code>cron(15 12 * * ? *)</code>.
      */
 
     public void setSchedule(String schedule) {
@@ -339,13 +385,13 @@ public class Trigger implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * A <code>cron</code> expression used to specify the schedule (see <a
-     * href="http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html">Time-Based Schedules for
+     * href="https://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html">Time-Based Schedules for
      * Jobs and Crawlers</a>. For example, to run something every day at 12:15 UTC, you would specify:
      * <code>cron(15 12 * * ? *)</code>.
      * </p>
      * 
      * @return A <code>cron</code> expression used to specify the schedule (see <a
-     *         href="http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html">Time-Based
+     *         href="https://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html">Time-Based
      *         Schedules for Jobs and Crawlers</a>. For example, to run something every day at 12:15 UTC, you would
      *         specify: <code>cron(15 12 * * ? *)</code>.
      */
@@ -357,16 +403,16 @@ public class Trigger implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * A <code>cron</code> expression used to specify the schedule (see <a
-     * href="http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html">Time-Based Schedules for
+     * href="https://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html">Time-Based Schedules for
      * Jobs and Crawlers</a>. For example, to run something every day at 12:15 UTC, you would specify:
      * <code>cron(15 12 * * ? *)</code>.
      * </p>
      * 
      * @param schedule
      *        A <code>cron</code> expression used to specify the schedule (see <a
-     *        href="http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html">Time-Based Schedules
-     *        for Jobs and Crawlers</a>. For example, to run something every day at 12:15 UTC, you would specify:
-     *        <code>cron(15 12 * * ? *)</code>.
+     *        href="https://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html">Time-Based
+     *        Schedules for Jobs and Crawlers</a>. For example, to run something every day at 12:15 UTC, you would
+     *        specify: <code>cron(15 12 * * ? *)</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -486,7 +532,8 @@ public class Trigger implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -498,6 +545,8 @@ public class Trigger implements Serializable, Cloneable, StructuredPojo {
         sb.append("{");
         if (getName() != null)
             sb.append("Name: ").append(getName()).append(",");
+        if (getWorkflowName() != null)
+            sb.append("WorkflowName: ").append(getWorkflowName()).append(",");
         if (getId() != null)
             sb.append("Id: ").append(getId()).append(",");
         if (getType() != null)
@@ -529,6 +578,10 @@ public class Trigger implements Serializable, Cloneable, StructuredPojo {
         if (other.getName() == null ^ this.getName() == null)
             return false;
         if (other.getName() != null && other.getName().equals(this.getName()) == false)
+            return false;
+        if (other.getWorkflowName() == null ^ this.getWorkflowName() == null)
+            return false;
+        if (other.getWorkflowName() != null && other.getWorkflowName().equals(this.getWorkflowName()) == false)
             return false;
         if (other.getId() == null ^ this.getId() == null)
             return false;
@@ -567,6 +620,7 @@ public class Trigger implements Serializable, Cloneable, StructuredPojo {
         int hashCode = 1;
 
         hashCode = prime * hashCode + ((getName() == null) ? 0 : getName().hashCode());
+        hashCode = prime * hashCode + ((getWorkflowName() == null) ? 0 : getWorkflowName().hashCode());
         hashCode = prime * hashCode + ((getId() == null) ? 0 : getId().hashCode());
         hashCode = prime * hashCode + ((getType() == null) ? 0 : getType().hashCode());
         hashCode = prime * hashCode + ((getState() == null) ? 0 : getState().hashCode());

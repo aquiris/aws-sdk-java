@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -59,7 +59,7 @@ public class InventoryRetrievalJobDescription implements Serializable, Cloneable
      * An opaque string that represents where to continue pagination of the vault inventory retrieval results. You use
      * the marker in a new <b>InitiateJob</b> request to obtain additional inventory items. If there are no more
      * inventory items, this value is <code>null</code>. For more information, see <a href=
-     * "http://docs.aws.amazon.com/amazonglacier/latest/dev/api-initiate-job-post.html#api-initiate-job-post-vault-inventory-list-filtering"
+     * "https://docs.aws.amazon.com/amazonglacier/latest/dev/api-initiate-job-post.html#api-initiate-job-post-vault-inventory-list-filtering"
      * > Range Inventory Retrieval</a>.
      * </p>
      */
@@ -263,7 +263,7 @@ public class InventoryRetrievalJobDescription implements Serializable, Cloneable
      * An opaque string that represents where to continue pagination of the vault inventory retrieval results. You use
      * the marker in a new <b>InitiateJob</b> request to obtain additional inventory items. If there are no more
      * inventory items, this value is <code>null</code>. For more information, see <a href=
-     * "http://docs.aws.amazon.com/amazonglacier/latest/dev/api-initiate-job-post.html#api-initiate-job-post-vault-inventory-list-filtering"
+     * "https://docs.aws.amazon.com/amazonglacier/latest/dev/api-initiate-job-post.html#api-initiate-job-post-vault-inventory-list-filtering"
      * > Range Inventory Retrieval</a>.
      * </p>
      * 
@@ -271,7 +271,7 @@ public class InventoryRetrievalJobDescription implements Serializable, Cloneable
      *        An opaque string that represents where to continue pagination of the vault inventory retrieval results.
      *        You use the marker in a new <b>InitiateJob</b> request to obtain additional inventory items. If there are
      *        no more inventory items, this value is <code>null</code>. For more information, see <a href=
-     *        "http://docs.aws.amazon.com/amazonglacier/latest/dev/api-initiate-job-post.html#api-initiate-job-post-vault-inventory-list-filtering"
+     *        "https://docs.aws.amazon.com/amazonglacier/latest/dev/api-initiate-job-post.html#api-initiate-job-post-vault-inventory-list-filtering"
      *        > Range Inventory Retrieval</a>.
      */
 
@@ -284,14 +284,14 @@ public class InventoryRetrievalJobDescription implements Serializable, Cloneable
      * An opaque string that represents where to continue pagination of the vault inventory retrieval results. You use
      * the marker in a new <b>InitiateJob</b> request to obtain additional inventory items. If there are no more
      * inventory items, this value is <code>null</code>. For more information, see <a href=
-     * "http://docs.aws.amazon.com/amazonglacier/latest/dev/api-initiate-job-post.html#api-initiate-job-post-vault-inventory-list-filtering"
+     * "https://docs.aws.amazon.com/amazonglacier/latest/dev/api-initiate-job-post.html#api-initiate-job-post-vault-inventory-list-filtering"
      * > Range Inventory Retrieval</a>.
      * </p>
      * 
      * @return An opaque string that represents where to continue pagination of the vault inventory retrieval results.
      *         You use the marker in a new <b>InitiateJob</b> request to obtain additional inventory items. If there are
      *         no more inventory items, this value is <code>null</code>. For more information, see <a href=
-     *         "http://docs.aws.amazon.com/amazonglacier/latest/dev/api-initiate-job-post.html#api-initiate-job-post-vault-inventory-list-filtering"
+     *         "https://docs.aws.amazon.com/amazonglacier/latest/dev/api-initiate-job-post.html#api-initiate-job-post-vault-inventory-list-filtering"
      *         > Range Inventory Retrieval</a>.
      */
 
@@ -304,7 +304,7 @@ public class InventoryRetrievalJobDescription implements Serializable, Cloneable
      * An opaque string that represents where to continue pagination of the vault inventory retrieval results. You use
      * the marker in a new <b>InitiateJob</b> request to obtain additional inventory items. If there are no more
      * inventory items, this value is <code>null</code>. For more information, see <a href=
-     * "http://docs.aws.amazon.com/amazonglacier/latest/dev/api-initiate-job-post.html#api-initiate-job-post-vault-inventory-list-filtering"
+     * "https://docs.aws.amazon.com/amazonglacier/latest/dev/api-initiate-job-post.html#api-initiate-job-post-vault-inventory-list-filtering"
      * > Range Inventory Retrieval</a>.
      * </p>
      * 
@@ -312,7 +312,7 @@ public class InventoryRetrievalJobDescription implements Serializable, Cloneable
      *        An opaque string that represents where to continue pagination of the vault inventory retrieval results.
      *        You use the marker in a new <b>InitiateJob</b> request to obtain additional inventory items. If there are
      *        no more inventory items, this value is <code>null</code>. For more information, see <a href=
-     *        "http://docs.aws.amazon.com/amazonglacier/latest/dev/api-initiate-job-post.html#api-initiate-job-post-vault-inventory-list-filtering"
+     *        "https://docs.aws.amazon.com/amazonglacier/latest/dev/api-initiate-job-post.html#api-initiate-job-post-vault-inventory-list-filtering"
      *        > Range Inventory Retrieval</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -323,7 +323,8 @@ public class InventoryRetrievalJobDescription implements Serializable, Cloneable
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -30,23 +30,24 @@ public class CopyImageRequest extends AmazonWebServiceRequest implements Seriali
     /**
      * <p>
      * Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html">How to Ensure
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html">How to Ensure
      * Idempotency</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
      * </p>
      */
     private String clientToken;
     /**
      * <p>
-     * A description for the new AMI in the destination region.
+     * A description for the new AMI in the destination Region.
      * </p>
      */
     private String description;
     /**
      * <p>
-     * Specifies whether the destination snapshots of the copied image should be encrypted. The default CMK for EBS is
-     * used unless a non-default AWS Key Management Service (AWS KMS) CMK is specified with <code>KmsKeyId</code>. For
-     * more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html">Amazon EBS
-     * Encryption</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * Specifies whether the destination snapshots of the copied image should be encrypted. You can encrypt a copy of an
+     * unencrypted snapshot, but you cannot create an unencrypted copy of an encrypted snapshot. The default CMK for EBS
+     * is used unless you specify a non-default AWS Key Management Service (AWS KMS) CMK using <code>KmsKeyId</code>.
+     * For more information, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html">Amazon
+     * EBS Encryption</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
      * </p>
      */
     private Boolean encrypted;
@@ -58,31 +59,28 @@ public class CopyImageRequest extends AmazonWebServiceRequest implements Seriali
      * flag must also be set.
      * </p>
      * <p>
-     * The CMK identifier may be provided in any of the following formats:
+     * To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. When using an alias name,
+     * prefix it with "alias/". For example:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * Key ID
+     * Key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code>
      * </p>
      * </li>
      * <li>
      * <p>
-     * Key alias, in the form <code>alias/<i>ExampleAlias</i> </code>
+     * Key ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code>
      * </p>
      * </li>
      * <li>
      * <p>
-     * ARN using key ID. The ID ARN contains the <code>arn:aws:kms</code> namespace, followed by the region of the CMK,
-     * the AWS account ID of the CMK owner, the <code>key</code> namespace, and then the CMK ID. For example,
-     * arn:aws:kms:<i>us-east-1</i>:<i>012345678910</i>:key/<i>abcd1234-a123-456a-a12b-a123b4cd56ef</i>.
+     * Alias name: <code>alias/ExampleAlias</code>
      * </p>
      * </li>
      * <li>
      * <p>
-     * ARN using key alias. The alias ARN contains the <code>arn:aws:kms</code> namespace, followed by the region of the
-     * CMK, the AWS account ID of the CMK owner, the <code>alias</code> namespace, and then the CMK alias. For example,
-     * arn:aws:kms:<i>us-east-1</i>:<i>012345678910</i>:alias/<i>ExampleAlias</i>.
+     * Alias ARN: <code>arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias</code>
      * </p>
      * </li>
      * </ul>
@@ -91,13 +89,13 @@ public class CopyImageRequest extends AmazonWebServiceRequest implements Seriali
      * though you provided an invalid identifier. This action will eventually report failure.
      * </p>
      * <p>
-     * The specified CMK must exist in the region that the snapshot is being copied to.
+     * The specified CMK must exist in the Region that the snapshot is being copied to.
      * </p>
      */
     private String kmsKeyId;
     /**
      * <p>
-     * The name of the new AMI in the destination region.
+     * The name of the new AMI in the destination Region.
      * </p>
      */
     private String name;
@@ -109,7 +107,7 @@ public class CopyImageRequest extends AmazonWebServiceRequest implements Seriali
     private String sourceImageId;
     /**
      * <p>
-     * The name of the region that contains the AMI to copy.
+     * The name of the Region that contains the AMI to copy.
      * </p>
      */
     private String sourceRegion;
@@ -117,13 +115,13 @@ public class CopyImageRequest extends AmazonWebServiceRequest implements Seriali
     /**
      * <p>
      * Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html">How to Ensure
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html">How to Ensure
      * Idempotency</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
      * </p>
      * 
      * @param clientToken
      *        Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information,
-     *        see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html">How to
+     *        see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html">How to
      *        Ensure Idempotency</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
      */
 
@@ -134,12 +132,12 @@ public class CopyImageRequest extends AmazonWebServiceRequest implements Seriali
     /**
      * <p>
      * Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html">How to Ensure
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html">How to Ensure
      * Idempotency</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
      * </p>
      * 
      * @return Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information,
-     *         see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html">How to
+     *         see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html">How to
      *         Ensure Idempotency</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
      */
 
@@ -150,13 +148,13 @@ public class CopyImageRequest extends AmazonWebServiceRequest implements Seriali
     /**
      * <p>
      * Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html">How to Ensure
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html">How to Ensure
      * Idempotency</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
      * </p>
      * 
      * @param clientToken
      *        Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information,
-     *        see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html">How to
+     *        see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html">How to
      *        Ensure Idempotency</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -168,11 +166,11 @@ public class CopyImageRequest extends AmazonWebServiceRequest implements Seriali
 
     /**
      * <p>
-     * A description for the new AMI in the destination region.
+     * A description for the new AMI in the destination Region.
      * </p>
      * 
      * @param description
-     *        A description for the new AMI in the destination region.
+     *        A description for the new AMI in the destination Region.
      */
 
     public void setDescription(String description) {
@@ -181,10 +179,10 @@ public class CopyImageRequest extends AmazonWebServiceRequest implements Seriali
 
     /**
      * <p>
-     * A description for the new AMI in the destination region.
+     * A description for the new AMI in the destination Region.
      * </p>
      * 
-     * @return A description for the new AMI in the destination region.
+     * @return A description for the new AMI in the destination Region.
      */
 
     public String getDescription() {
@@ -193,11 +191,11 @@ public class CopyImageRequest extends AmazonWebServiceRequest implements Seriali
 
     /**
      * <p>
-     * A description for the new AMI in the destination region.
+     * A description for the new AMI in the destination Region.
      * </p>
      * 
      * @param description
-     *        A description for the new AMI in the destination region.
+     *        A description for the new AMI in the destination Region.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -208,17 +206,19 @@ public class CopyImageRequest extends AmazonWebServiceRequest implements Seriali
 
     /**
      * <p>
-     * Specifies whether the destination snapshots of the copied image should be encrypted. The default CMK for EBS is
-     * used unless a non-default AWS Key Management Service (AWS KMS) CMK is specified with <code>KmsKeyId</code>. For
-     * more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html">Amazon EBS
-     * Encryption</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * Specifies whether the destination snapshots of the copied image should be encrypted. You can encrypt a copy of an
+     * unencrypted snapshot, but you cannot create an unencrypted copy of an encrypted snapshot. The default CMK for EBS
+     * is used unless you specify a non-default AWS Key Management Service (AWS KMS) CMK using <code>KmsKeyId</code>.
+     * For more information, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html">Amazon
+     * EBS Encryption</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
      * </p>
      * 
      * @param encrypted
-     *        Specifies whether the destination snapshots of the copied image should be encrypted. The default CMK for
-     *        EBS is used unless a non-default AWS Key Management Service (AWS KMS) CMK is specified with
-     *        <code>KmsKeyId</code>. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html">Amazon EBS Encryption</a> in
+     *        Specifies whether the destination snapshots of the copied image should be encrypted. You can encrypt a
+     *        copy of an unencrypted snapshot, but you cannot create an unencrypted copy of an encrypted snapshot. The
+     *        default CMK for EBS is used unless you specify a non-default AWS Key Management Service (AWS KMS) CMK
+     *        using <code>KmsKeyId</code>. For more information, see <a
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html">Amazon EBS Encryption</a> in
      *        the <i>Amazon Elastic Compute Cloud User Guide</i>.
      */
 
@@ -228,17 +228,19 @@ public class CopyImageRequest extends AmazonWebServiceRequest implements Seriali
 
     /**
      * <p>
-     * Specifies whether the destination snapshots of the copied image should be encrypted. The default CMK for EBS is
-     * used unless a non-default AWS Key Management Service (AWS KMS) CMK is specified with <code>KmsKeyId</code>. For
-     * more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html">Amazon EBS
-     * Encryption</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * Specifies whether the destination snapshots of the copied image should be encrypted. You can encrypt a copy of an
+     * unencrypted snapshot, but you cannot create an unencrypted copy of an encrypted snapshot. The default CMK for EBS
+     * is used unless you specify a non-default AWS Key Management Service (AWS KMS) CMK using <code>KmsKeyId</code>.
+     * For more information, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html">Amazon
+     * EBS Encryption</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
      * </p>
      * 
-     * @return Specifies whether the destination snapshots of the copied image should be encrypted. The default CMK for
-     *         EBS is used unless a non-default AWS Key Management Service (AWS KMS) CMK is specified with
-     *         <code>KmsKeyId</code>. For more information, see <a
-     *         href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html">Amazon EBS Encryption</a> in
-     *         the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * @return Specifies whether the destination snapshots of the copied image should be encrypted. You can encrypt a
+     *         copy of an unencrypted snapshot, but you cannot create an unencrypted copy of an encrypted snapshot. The
+     *         default CMK for EBS is used unless you specify a non-default AWS Key Management Service (AWS KMS) CMK
+     *         using <code>KmsKeyId</code>. For more information, see <a
+     *         href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html">Amazon EBS Encryption</a>
+     *         in the <i>Amazon Elastic Compute Cloud User Guide</i>.
      */
 
     public Boolean getEncrypted() {
@@ -247,17 +249,19 @@ public class CopyImageRequest extends AmazonWebServiceRequest implements Seriali
 
     /**
      * <p>
-     * Specifies whether the destination snapshots of the copied image should be encrypted. The default CMK for EBS is
-     * used unless a non-default AWS Key Management Service (AWS KMS) CMK is specified with <code>KmsKeyId</code>. For
-     * more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html">Amazon EBS
-     * Encryption</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * Specifies whether the destination snapshots of the copied image should be encrypted. You can encrypt a copy of an
+     * unencrypted snapshot, but you cannot create an unencrypted copy of an encrypted snapshot. The default CMK for EBS
+     * is used unless you specify a non-default AWS Key Management Service (AWS KMS) CMK using <code>KmsKeyId</code>.
+     * For more information, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html">Amazon
+     * EBS Encryption</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
      * </p>
      * 
      * @param encrypted
-     *        Specifies whether the destination snapshots of the copied image should be encrypted. The default CMK for
-     *        EBS is used unless a non-default AWS Key Management Service (AWS KMS) CMK is specified with
-     *        <code>KmsKeyId</code>. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html">Amazon EBS Encryption</a> in
+     *        Specifies whether the destination snapshots of the copied image should be encrypted. You can encrypt a
+     *        copy of an unencrypted snapshot, but you cannot create an unencrypted copy of an encrypted snapshot. The
+     *        default CMK for EBS is used unless you specify a non-default AWS Key Management Service (AWS KMS) CMK
+     *        using <code>KmsKeyId</code>. For more information, see <a
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html">Amazon EBS Encryption</a> in
      *        the <i>Amazon Elastic Compute Cloud User Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -269,17 +273,19 @@ public class CopyImageRequest extends AmazonWebServiceRequest implements Seriali
 
     /**
      * <p>
-     * Specifies whether the destination snapshots of the copied image should be encrypted. The default CMK for EBS is
-     * used unless a non-default AWS Key Management Service (AWS KMS) CMK is specified with <code>KmsKeyId</code>. For
-     * more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html">Amazon EBS
-     * Encryption</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * Specifies whether the destination snapshots of the copied image should be encrypted. You can encrypt a copy of an
+     * unencrypted snapshot, but you cannot create an unencrypted copy of an encrypted snapshot. The default CMK for EBS
+     * is used unless you specify a non-default AWS Key Management Service (AWS KMS) CMK using <code>KmsKeyId</code>.
+     * For more information, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html">Amazon
+     * EBS Encryption</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
      * </p>
      * 
-     * @return Specifies whether the destination snapshots of the copied image should be encrypted. The default CMK for
-     *         EBS is used unless a non-default AWS Key Management Service (AWS KMS) CMK is specified with
-     *         <code>KmsKeyId</code>. For more information, see <a
-     *         href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html">Amazon EBS Encryption</a> in
-     *         the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * @return Specifies whether the destination snapshots of the copied image should be encrypted. You can encrypt a
+     *         copy of an unencrypted snapshot, but you cannot create an unencrypted copy of an encrypted snapshot. The
+     *         default CMK for EBS is used unless you specify a non-default AWS Key Management Service (AWS KMS) CMK
+     *         using <code>KmsKeyId</code>. For more information, see <a
+     *         href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html">Amazon EBS Encryption</a>
+     *         in the <i>Amazon Elastic Compute Cloud User Guide</i>.
      */
 
     public Boolean isEncrypted() {
@@ -294,31 +300,28 @@ public class CopyImageRequest extends AmazonWebServiceRequest implements Seriali
      * flag must also be set.
      * </p>
      * <p>
-     * The CMK identifier may be provided in any of the following formats:
+     * To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. When using an alias name,
+     * prefix it with "alias/". For example:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * Key ID
+     * Key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code>
      * </p>
      * </li>
      * <li>
      * <p>
-     * Key alias, in the form <code>alias/<i>ExampleAlias</i> </code>
+     * Key ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code>
      * </p>
      * </li>
      * <li>
      * <p>
-     * ARN using key ID. The ID ARN contains the <code>arn:aws:kms</code> namespace, followed by the region of the CMK,
-     * the AWS account ID of the CMK owner, the <code>key</code> namespace, and then the CMK ID. For example,
-     * arn:aws:kms:<i>us-east-1</i>:<i>012345678910</i>:key/<i>abcd1234-a123-456a-a12b-a123b4cd56ef</i>.
+     * Alias name: <code>alias/ExampleAlias</code>
      * </p>
      * </li>
      * <li>
      * <p>
-     * ARN using key alias. The alias ARN contains the <code>arn:aws:kms</code> namespace, followed by the region of the
-     * CMK, the AWS account ID of the CMK owner, the <code>alias</code> namespace, and then the CMK alias. For example,
-     * arn:aws:kms:<i>us-east-1</i>:<i>012345678910</i>:alias/<i>ExampleAlias</i>.
+     * Alias ARN: <code>arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias</code>
      * </p>
      * </li>
      * </ul>
@@ -327,7 +330,7 @@ public class CopyImageRequest extends AmazonWebServiceRequest implements Seriali
      * though you provided an invalid identifier. This action will eventually report failure.
      * </p>
      * <p>
-     * The specified CMK must exist in the region that the snapshot is being copied to.
+     * The specified CMK must exist in the Region that the snapshot is being copied to.
      * </p>
      * 
      * @param kmsKeyId
@@ -336,31 +339,28 @@ public class CopyImageRequest extends AmazonWebServiceRequest implements Seriali
      *        parameter is not specified, the default CMK for EBS is used. If a <code>KmsKeyId</code> is specified, the
      *        <code>Encrypted</code> flag must also be set. </p>
      *        <p>
-     *        The CMK identifier may be provided in any of the following formats:
+     *        To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. When using an
+     *        alias name, prefix it with "alias/". For example:
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        Key ID
+     *        Key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code>
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Key alias, in the form <code>alias/<i>ExampleAlias</i> </code>
+     *        Key ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code>
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        ARN using key ID. The ID ARN contains the <code>arn:aws:kms</code> namespace, followed by the region of
-     *        the CMK, the AWS account ID of the CMK owner, the <code>key</code> namespace, and then the CMK ID. For
-     *        example, arn:aws:kms:<i>us-east-1</i>:<i>012345678910</i>:key/<i>abcd1234-a123-456a-a12b-a123b4cd56ef</i>.
+     *        Alias name: <code>alias/ExampleAlias</code>
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        ARN using key alias. The alias ARN contains the <code>arn:aws:kms</code> namespace, followed by the region
-     *        of the CMK, the AWS account ID of the CMK owner, the <code>alias</code> namespace, and then the CMK alias.
-     *        For example, arn:aws:kms:<i>us-east-1</i>:<i>012345678910</i>:alias/<i>ExampleAlias</i>.
+     *        Alias ARN: <code>arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias</code>
      *        </p>
      *        </li>
      *        </ul>
@@ -369,7 +369,7 @@ public class CopyImageRequest extends AmazonWebServiceRequest implements Seriali
      *        even though you provided an invalid identifier. This action will eventually report failure.
      *        </p>
      *        <p>
-     *        The specified CMK must exist in the region that the snapshot is being copied to.
+     *        The specified CMK must exist in the Region that the snapshot is being copied to.
      */
 
     public void setKmsKeyId(String kmsKeyId) {
@@ -384,31 +384,28 @@ public class CopyImageRequest extends AmazonWebServiceRequest implements Seriali
      * flag must also be set.
      * </p>
      * <p>
-     * The CMK identifier may be provided in any of the following formats:
+     * To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. When using an alias name,
+     * prefix it with "alias/". For example:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * Key ID
+     * Key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code>
      * </p>
      * </li>
      * <li>
      * <p>
-     * Key alias, in the form <code>alias/<i>ExampleAlias</i> </code>
+     * Key ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code>
      * </p>
      * </li>
      * <li>
      * <p>
-     * ARN using key ID. The ID ARN contains the <code>arn:aws:kms</code> namespace, followed by the region of the CMK,
-     * the AWS account ID of the CMK owner, the <code>key</code> namespace, and then the CMK ID. For example,
-     * arn:aws:kms:<i>us-east-1</i>:<i>012345678910</i>:key/<i>abcd1234-a123-456a-a12b-a123b4cd56ef</i>.
+     * Alias name: <code>alias/ExampleAlias</code>
      * </p>
      * </li>
      * <li>
      * <p>
-     * ARN using key alias. The alias ARN contains the <code>arn:aws:kms</code> namespace, followed by the region of the
-     * CMK, the AWS account ID of the CMK owner, the <code>alias</code> namespace, and then the CMK alias. For example,
-     * arn:aws:kms:<i>us-east-1</i>:<i>012345678910</i>:alias/<i>ExampleAlias</i>.
+     * Alias ARN: <code>arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias</code>
      * </p>
      * </li>
      * </ul>
@@ -417,7 +414,7 @@ public class CopyImageRequest extends AmazonWebServiceRequest implements Seriali
      * though you provided an invalid identifier. This action will eventually report failure.
      * </p>
      * <p>
-     * The specified CMK must exist in the region that the snapshot is being copied to.
+     * The specified CMK must exist in the Region that the snapshot is being copied to.
      * </p>
      * 
      * @return An identifier for the AWS Key Management Service (AWS KMS) customer master key (CMK) to use when creating
@@ -425,32 +422,28 @@ public class CopyImageRequest extends AmazonWebServiceRequest implements Seriali
      *         parameter is not specified, the default CMK for EBS is used. If a <code>KmsKeyId</code> is specified, the
      *         <code>Encrypted</code> flag must also be set. </p>
      *         <p>
-     *         The CMK identifier may be provided in any of the following formats:
+     *         To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. When using an
+     *         alias name, prefix it with "alias/". For example:
      *         </p>
      *         <ul>
      *         <li>
      *         <p>
-     *         Key ID
+     *         Key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code>
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         Key alias, in the form <code>alias/<i>ExampleAlias</i> </code>
+     *         Key ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code>
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         ARN using key ID. The ID ARN contains the <code>arn:aws:kms</code> namespace, followed by the region of
-     *         the CMK, the AWS account ID of the CMK owner, the <code>key</code> namespace, and then the CMK ID. For
-     *         example,
-     *         arn:aws:kms:<i>us-east-1</i>:<i>012345678910</i>:key/<i>abcd1234-a123-456a-a12b-a123b4cd56ef</i>.
+     *         Alias name: <code>alias/ExampleAlias</code>
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         ARN using key alias. The alias ARN contains the <code>arn:aws:kms</code> namespace, followed by the
-     *         region of the CMK, the AWS account ID of the CMK owner, the <code>alias</code> namespace, and then the
-     *         CMK alias. For example, arn:aws:kms:<i>us-east-1</i>:<i>012345678910</i>:alias/<i>ExampleAlias</i>.
+     *         Alias ARN: <code>arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias</code>
      *         </p>
      *         </li>
      *         </ul>
@@ -459,7 +452,7 @@ public class CopyImageRequest extends AmazonWebServiceRequest implements Seriali
      *         even though you provided an invalid identifier. This action will eventually report failure.
      *         </p>
      *         <p>
-     *         The specified CMK must exist in the region that the snapshot is being copied to.
+     *         The specified CMK must exist in the Region that the snapshot is being copied to.
      */
 
     public String getKmsKeyId() {
@@ -474,31 +467,28 @@ public class CopyImageRequest extends AmazonWebServiceRequest implements Seriali
      * flag must also be set.
      * </p>
      * <p>
-     * The CMK identifier may be provided in any of the following formats:
+     * To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. When using an alias name,
+     * prefix it with "alias/". For example:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * Key ID
+     * Key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code>
      * </p>
      * </li>
      * <li>
      * <p>
-     * Key alias, in the form <code>alias/<i>ExampleAlias</i> </code>
+     * Key ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code>
      * </p>
      * </li>
      * <li>
      * <p>
-     * ARN using key ID. The ID ARN contains the <code>arn:aws:kms</code> namespace, followed by the region of the CMK,
-     * the AWS account ID of the CMK owner, the <code>key</code> namespace, and then the CMK ID. For example,
-     * arn:aws:kms:<i>us-east-1</i>:<i>012345678910</i>:key/<i>abcd1234-a123-456a-a12b-a123b4cd56ef</i>.
+     * Alias name: <code>alias/ExampleAlias</code>
      * </p>
      * </li>
      * <li>
      * <p>
-     * ARN using key alias. The alias ARN contains the <code>arn:aws:kms</code> namespace, followed by the region of the
-     * CMK, the AWS account ID of the CMK owner, the <code>alias</code> namespace, and then the CMK alias. For example,
-     * arn:aws:kms:<i>us-east-1</i>:<i>012345678910</i>:alias/<i>ExampleAlias</i>.
+     * Alias ARN: <code>arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias</code>
      * </p>
      * </li>
      * </ul>
@@ -507,7 +497,7 @@ public class CopyImageRequest extends AmazonWebServiceRequest implements Seriali
      * though you provided an invalid identifier. This action will eventually report failure.
      * </p>
      * <p>
-     * The specified CMK must exist in the region that the snapshot is being copied to.
+     * The specified CMK must exist in the Region that the snapshot is being copied to.
      * </p>
      * 
      * @param kmsKeyId
@@ -516,31 +506,28 @@ public class CopyImageRequest extends AmazonWebServiceRequest implements Seriali
      *        parameter is not specified, the default CMK for EBS is used. If a <code>KmsKeyId</code> is specified, the
      *        <code>Encrypted</code> flag must also be set. </p>
      *        <p>
-     *        The CMK identifier may be provided in any of the following formats:
+     *        To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. When using an
+     *        alias name, prefix it with "alias/". For example:
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        Key ID
+     *        Key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code>
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Key alias, in the form <code>alias/<i>ExampleAlias</i> </code>
+     *        Key ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code>
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        ARN using key ID. The ID ARN contains the <code>arn:aws:kms</code> namespace, followed by the region of
-     *        the CMK, the AWS account ID of the CMK owner, the <code>key</code> namespace, and then the CMK ID. For
-     *        example, arn:aws:kms:<i>us-east-1</i>:<i>012345678910</i>:key/<i>abcd1234-a123-456a-a12b-a123b4cd56ef</i>.
+     *        Alias name: <code>alias/ExampleAlias</code>
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        ARN using key alias. The alias ARN contains the <code>arn:aws:kms</code> namespace, followed by the region
-     *        of the CMK, the AWS account ID of the CMK owner, the <code>alias</code> namespace, and then the CMK alias.
-     *        For example, arn:aws:kms:<i>us-east-1</i>:<i>012345678910</i>:alias/<i>ExampleAlias</i>.
+     *        Alias ARN: <code>arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias</code>
      *        </p>
      *        </li>
      *        </ul>
@@ -549,7 +536,7 @@ public class CopyImageRequest extends AmazonWebServiceRequest implements Seriali
      *        even though you provided an invalid identifier. This action will eventually report failure.
      *        </p>
      *        <p>
-     *        The specified CMK must exist in the region that the snapshot is being copied to.
+     *        The specified CMK must exist in the Region that the snapshot is being copied to.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -560,11 +547,11 @@ public class CopyImageRequest extends AmazonWebServiceRequest implements Seriali
 
     /**
      * <p>
-     * The name of the new AMI in the destination region.
+     * The name of the new AMI in the destination Region.
      * </p>
      * 
      * @param name
-     *        The name of the new AMI in the destination region.
+     *        The name of the new AMI in the destination Region.
      */
 
     public void setName(String name) {
@@ -573,10 +560,10 @@ public class CopyImageRequest extends AmazonWebServiceRequest implements Seriali
 
     /**
      * <p>
-     * The name of the new AMI in the destination region.
+     * The name of the new AMI in the destination Region.
      * </p>
      * 
-     * @return The name of the new AMI in the destination region.
+     * @return The name of the new AMI in the destination Region.
      */
 
     public String getName() {
@@ -585,11 +572,11 @@ public class CopyImageRequest extends AmazonWebServiceRequest implements Seriali
 
     /**
      * <p>
-     * The name of the new AMI in the destination region.
+     * The name of the new AMI in the destination Region.
      * </p>
      * 
      * @param name
-     *        The name of the new AMI in the destination region.
+     *        The name of the new AMI in the destination Region.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -640,11 +627,11 @@ public class CopyImageRequest extends AmazonWebServiceRequest implements Seriali
 
     /**
      * <p>
-     * The name of the region that contains the AMI to copy.
+     * The name of the Region that contains the AMI to copy.
      * </p>
      * 
      * @param sourceRegion
-     *        The name of the region that contains the AMI to copy.
+     *        The name of the Region that contains the AMI to copy.
      */
 
     public void setSourceRegion(String sourceRegion) {
@@ -653,10 +640,10 @@ public class CopyImageRequest extends AmazonWebServiceRequest implements Seriali
 
     /**
      * <p>
-     * The name of the region that contains the AMI to copy.
+     * The name of the Region that contains the AMI to copy.
      * </p>
      * 
-     * @return The name of the region that contains the AMI to copy.
+     * @return The name of the Region that contains the AMI to copy.
      */
 
     public String getSourceRegion() {
@@ -665,11 +652,11 @@ public class CopyImageRequest extends AmazonWebServiceRequest implements Seriali
 
     /**
      * <p>
-     * The name of the region that contains the AMI to copy.
+     * The name of the Region that contains the AMI to copy.
      * </p>
      * 
      * @param sourceRegion
-     *        The name of the region that contains the AMI to copy.
+     *        The name of the Region that contains the AMI to copy.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -690,7 +677,8 @@ public class CopyImageRequest extends AmazonWebServiceRequest implements Seriali
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

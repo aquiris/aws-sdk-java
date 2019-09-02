@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -19,19 +19,27 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * Specifies how long model training can run. When model training reaches the limit, Amazon SageMaker ends the training
- * job. Use this API to cap model training cost.
+ * Specifies a limit to how long a model training or compilation job can run. It also specifies how long you are willing
+ * to wait for a managed spot training job to complete. When the job reaches the time limit, Amazon SageMaker ends the
+ * training or compilation job. Use this API to cap model training costs.
  * </p>
  * <p>
- * To stop a job, Amazon SageMaker sends the algorithm the <code>SIGTERM</code> signal, which delays job termination
- * for120 seconds. Algorithms might use this 120-second window to save the model artifacts, so the results of training
- * is not lost.
+ * To stop a job, Amazon SageMaker sends the algorithm the <code>SIGTERM</code> signal, which delays job termination for
+ * 120 seconds. Algorithms can use this 120-second window to save the model artifacts, so the results of training are
+ * not lost.
  * </p>
  * <p>
- * Training algorithms provided by Amazon SageMaker automatically saves the intermediate results of a model training job
- * (it is best effort case, as model might not be ready to save as some stages, for example training just started). This
- * intermediate data is a valid model artifact. You can use it to create a model (<code>CreateModel</code>).
+ * The training algorithms provided by Amazon SageMaker automatically save the intermediate results of a model training
+ * job when possible. This attempt to save artifacts is only a best effort case as model might not be in a state from
+ * which it can be saved. For example, if training has just started, the model might not be ready to save. When saved,
+ * this intermediate data is a valid model artifact. You can use it to create a model with <code>CreateModel</code>.
  * </p>
+ * <note>
+ * <p>
+ * The Neural Topic Model (NTM) currently does not support saving intermediate model artifacts. When training NTMs, make
+ * sure that the maximum runtime is sufficient for the training job to complete.
+ * </p>
+ * </note>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/StoppingCondition" target="_top">AWS API
  *      Documentation</a>
@@ -41,24 +49,32 @@ public class StoppingCondition implements Serializable, Cloneable, StructuredPoj
 
     /**
      * <p>
-     * The maximum length of time, in seconds, that the training job can run. If model training does not complete during
-     * this time, Amazon SageMaker ends the job. If value is not specified, default value is 1 day. Maximum value is 5
-     * days.
+     * The maximum length of time, in seconds, that the training or compilation job can run. If job does not complete
+     * during this time, Amazon SageMaker ends the job. If value is not specified, default value is 1 day. The maximum
+     * value is 28 days.
      * </p>
      */
     private Integer maxRuntimeInSeconds;
+    /**
+     * <p>
+     * The maximum length of time, in seconds, how long you are willing to wait for a managed spot training job to
+     * complete. It is the amount of time spent waiting for Spot capacity plus the amount of time the training job runs.
+     * It must be equal to or greater than <code>MaxRuntimeInSeconds</code>.
+     * </p>
+     */
+    private Integer maxWaitTimeInSeconds;
 
     /**
      * <p>
-     * The maximum length of time, in seconds, that the training job can run. If model training does not complete during
-     * this time, Amazon SageMaker ends the job. If value is not specified, default value is 1 day. Maximum value is 5
-     * days.
+     * The maximum length of time, in seconds, that the training or compilation job can run. If job does not complete
+     * during this time, Amazon SageMaker ends the job. If value is not specified, default value is 1 day. The maximum
+     * value is 28 days.
      * </p>
      * 
      * @param maxRuntimeInSeconds
-     *        The maximum length of time, in seconds, that the training job can run. If model training does not complete
-     *        during this time, Amazon SageMaker ends the job. If value is not specified, default value is 1 day.
-     *        Maximum value is 5 days.
+     *        The maximum length of time, in seconds, that the training or compilation job can run. If job does not
+     *        complete during this time, Amazon SageMaker ends the job. If value is not specified, default value is 1
+     *        day. The maximum value is 28 days.
      */
 
     public void setMaxRuntimeInSeconds(Integer maxRuntimeInSeconds) {
@@ -67,14 +83,14 @@ public class StoppingCondition implements Serializable, Cloneable, StructuredPoj
 
     /**
      * <p>
-     * The maximum length of time, in seconds, that the training job can run. If model training does not complete during
-     * this time, Amazon SageMaker ends the job. If value is not specified, default value is 1 day. Maximum value is 5
-     * days.
+     * The maximum length of time, in seconds, that the training or compilation job can run. If job does not complete
+     * during this time, Amazon SageMaker ends the job. If value is not specified, default value is 1 day. The maximum
+     * value is 28 days.
      * </p>
      * 
-     * @return The maximum length of time, in seconds, that the training job can run. If model training does not
+     * @return The maximum length of time, in seconds, that the training or compilation job can run. If job does not
      *         complete during this time, Amazon SageMaker ends the job. If value is not specified, default value is 1
-     *         day. Maximum value is 5 days.
+     *         day. The maximum value is 28 days.
      */
 
     public Integer getMaxRuntimeInSeconds() {
@@ -83,15 +99,15 @@ public class StoppingCondition implements Serializable, Cloneable, StructuredPoj
 
     /**
      * <p>
-     * The maximum length of time, in seconds, that the training job can run. If model training does not complete during
-     * this time, Amazon SageMaker ends the job. If value is not specified, default value is 1 day. Maximum value is 5
-     * days.
+     * The maximum length of time, in seconds, that the training or compilation job can run. If job does not complete
+     * during this time, Amazon SageMaker ends the job. If value is not specified, default value is 1 day. The maximum
+     * value is 28 days.
      * </p>
      * 
      * @param maxRuntimeInSeconds
-     *        The maximum length of time, in seconds, that the training job can run. If model training does not complete
-     *        during this time, Amazon SageMaker ends the job. If value is not specified, default value is 1 day.
-     *        Maximum value is 5 days.
+     *        The maximum length of time, in seconds, that the training or compilation job can run. If job does not
+     *        complete during this time, Amazon SageMaker ends the job. If value is not specified, default value is 1
+     *        day. The maximum value is 28 days.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -101,7 +117,60 @@ public class StoppingCondition implements Serializable, Cloneable, StructuredPoj
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * <p>
+     * The maximum length of time, in seconds, how long you are willing to wait for a managed spot training job to
+     * complete. It is the amount of time spent waiting for Spot capacity plus the amount of time the training job runs.
+     * It must be equal to or greater than <code>MaxRuntimeInSeconds</code>.
+     * </p>
+     * 
+     * @param maxWaitTimeInSeconds
+     *        The maximum length of time, in seconds, how long you are willing to wait for a managed spot training job
+     *        to complete. It is the amount of time spent waiting for Spot capacity plus the amount of time the training
+     *        job runs. It must be equal to or greater than <code>MaxRuntimeInSeconds</code>.
+     */
+
+    public void setMaxWaitTimeInSeconds(Integer maxWaitTimeInSeconds) {
+        this.maxWaitTimeInSeconds = maxWaitTimeInSeconds;
+    }
+
+    /**
+     * <p>
+     * The maximum length of time, in seconds, how long you are willing to wait for a managed spot training job to
+     * complete. It is the amount of time spent waiting for Spot capacity plus the amount of time the training job runs.
+     * It must be equal to or greater than <code>MaxRuntimeInSeconds</code>.
+     * </p>
+     * 
+     * @return The maximum length of time, in seconds, how long you are willing to wait for a managed spot training job
+     *         to complete. It is the amount of time spent waiting for Spot capacity plus the amount of time the
+     *         training job runs. It must be equal to or greater than <code>MaxRuntimeInSeconds</code>.
+     */
+
+    public Integer getMaxWaitTimeInSeconds() {
+        return this.maxWaitTimeInSeconds;
+    }
+
+    /**
+     * <p>
+     * The maximum length of time, in seconds, how long you are willing to wait for a managed spot training job to
+     * complete. It is the amount of time spent waiting for Spot capacity plus the amount of time the training job runs.
+     * It must be equal to or greater than <code>MaxRuntimeInSeconds</code>.
+     * </p>
+     * 
+     * @param maxWaitTimeInSeconds
+     *        The maximum length of time, in seconds, how long you are willing to wait for a managed spot training job
+     *        to complete. It is the amount of time spent waiting for Spot capacity plus the amount of time the training
+     *        job runs. It must be equal to or greater than <code>MaxRuntimeInSeconds</code>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public StoppingCondition withMaxWaitTimeInSeconds(Integer maxWaitTimeInSeconds) {
+        setMaxWaitTimeInSeconds(maxWaitTimeInSeconds);
+        return this;
+    }
+
+    /**
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -112,7 +181,9 @@ public class StoppingCondition implements Serializable, Cloneable, StructuredPoj
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getMaxRuntimeInSeconds() != null)
-            sb.append("MaxRuntimeInSeconds: ").append(getMaxRuntimeInSeconds());
+            sb.append("MaxRuntimeInSeconds: ").append(getMaxRuntimeInSeconds()).append(",");
+        if (getMaxWaitTimeInSeconds() != null)
+            sb.append("MaxWaitTimeInSeconds: ").append(getMaxWaitTimeInSeconds());
         sb.append("}");
         return sb.toString();
     }
@@ -131,6 +202,10 @@ public class StoppingCondition implements Serializable, Cloneable, StructuredPoj
             return false;
         if (other.getMaxRuntimeInSeconds() != null && other.getMaxRuntimeInSeconds().equals(this.getMaxRuntimeInSeconds()) == false)
             return false;
+        if (other.getMaxWaitTimeInSeconds() == null ^ this.getMaxWaitTimeInSeconds() == null)
+            return false;
+        if (other.getMaxWaitTimeInSeconds() != null && other.getMaxWaitTimeInSeconds().equals(this.getMaxWaitTimeInSeconds()) == false)
+            return false;
         return true;
     }
 
@@ -140,6 +215,7 @@ public class StoppingCondition implements Serializable, Cloneable, StructuredPoj
         int hashCode = 1;
 
         hashCode = prime * hashCode + ((getMaxRuntimeInSeconds() == null) ? 0 : getMaxRuntimeInSeconds().hashCode());
+        hashCode = prime * hashCode + ((getMaxWaitTimeInSeconds() == null) ? 0 : getMaxWaitTimeInSeconds().hashCode());
         return hashCode;
     }
 

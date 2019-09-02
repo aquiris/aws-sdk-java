@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -33,6 +33,12 @@ public class CreateTriggerRequest extends com.amazonaws.AmazonWebServiceRequest 
     private String name;
     /**
      * <p>
+     * The name of the workflow associated with the trigger.
+     * </p>
+     */
+    private String workflowName;
+    /**
+     * <p>
      * The type of the new trigger.
      * </p>
      */
@@ -40,7 +46,7 @@ public class CreateTriggerRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * A <code>cron</code> expression used to specify the schedule (see <a
-     * href="http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html">Time-Based Schedules for
+     * href="https://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html">Time-Based Schedules for
      * Jobs and Crawlers</a>. For example, to run something every day at 12:15 UTC, you would specify:
      * <code>cron(15 12 * * ? *)</code>.
      * </p>
@@ -54,7 +60,7 @@ public class CreateTriggerRequest extends com.amazonaws.AmazonWebServiceRequest 
      * A predicate to specify when the new trigger should fire.
      * </p>
      * <p>
-     * This field is required when the trigger type is CONDITIONAL.
+     * This field is required when the trigger type is <code>CONDITIONAL</code>.
      * </p>
      */
     private Predicate predicate;
@@ -72,10 +78,19 @@ public class CreateTriggerRequest extends com.amazonaws.AmazonWebServiceRequest 
     private String description;
     /**
      * <p>
-     * Set to true to start SCHEDULED and CONDITIONAL triggers when created. True not supported for ON_DEMAND triggers.
+     * Set to <code>true</code> to start <code>SCHEDULED</code> and <code>CONDITIONAL</code> triggers when created. True
+     * is not supported for <code>ON_DEMAND</code> triggers.
      * </p>
      */
     private Boolean startOnCreation;
+    /**
+     * <p>
+     * The tags to use with this trigger. You may use tags to limit access to the trigger. For more information about
+     * tags in AWS Glue, see <a href="https://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html">AWS Tags in AWS
+     * Glue</a> in the developer guide.
+     * </p>
+     */
+    private java.util.Map<String, String> tags;
 
     /**
      * <p>
@@ -114,6 +129,46 @@ public class CreateTriggerRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     public CreateTriggerRequest withName(String name) {
         setName(name);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The name of the workflow associated with the trigger.
+     * </p>
+     * 
+     * @param workflowName
+     *        The name of the workflow associated with the trigger.
+     */
+
+    public void setWorkflowName(String workflowName) {
+        this.workflowName = workflowName;
+    }
+
+    /**
+     * <p>
+     * The name of the workflow associated with the trigger.
+     * </p>
+     * 
+     * @return The name of the workflow associated with the trigger.
+     */
+
+    public String getWorkflowName() {
+        return this.workflowName;
+    }
+
+    /**
+     * <p>
+     * The name of the workflow associated with the trigger.
+     * </p>
+     * 
+     * @param workflowName
+     *        The name of the workflow associated with the trigger.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateTriggerRequest withWorkflowName(String workflowName) {
+        setWorkflowName(workflowName);
         return this;
     }
 
@@ -179,7 +234,7 @@ public class CreateTriggerRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * A <code>cron</code> expression used to specify the schedule (see <a
-     * href="http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html">Time-Based Schedules for
+     * href="https://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html">Time-Based Schedules for
      * Jobs and Crawlers</a>. For example, to run something every day at 12:15 UTC, you would specify:
      * <code>cron(15 12 * * ? *)</code>.
      * </p>
@@ -189,9 +244,9 @@ public class CreateTriggerRequest extends com.amazonaws.AmazonWebServiceRequest 
      * 
      * @param schedule
      *        A <code>cron</code> expression used to specify the schedule (see <a
-     *        href="http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html">Time-Based Schedules
-     *        for Jobs and Crawlers</a>. For example, to run something every day at 12:15 UTC, you would specify:
-     *        <code>cron(15 12 * * ? *)</code>.</p>
+     *        href="https://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html">Time-Based
+     *        Schedules for Jobs and Crawlers</a>. For example, to run something every day at 12:15 UTC, you would
+     *        specify: <code>cron(15 12 * * ? *)</code>.</p>
      *        <p>
      *        This field is required when the trigger type is SCHEDULED.
      */
@@ -203,7 +258,7 @@ public class CreateTriggerRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * A <code>cron</code> expression used to specify the schedule (see <a
-     * href="http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html">Time-Based Schedules for
+     * href="https://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html">Time-Based Schedules for
      * Jobs and Crawlers</a>. For example, to run something every day at 12:15 UTC, you would specify:
      * <code>cron(15 12 * * ? *)</code>.
      * </p>
@@ -212,7 +267,7 @@ public class CreateTriggerRequest extends com.amazonaws.AmazonWebServiceRequest 
      * </p>
      * 
      * @return A <code>cron</code> expression used to specify the schedule (see <a
-     *         href="http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html">Time-Based
+     *         href="https://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html">Time-Based
      *         Schedules for Jobs and Crawlers</a>. For example, to run something every day at 12:15 UTC, you would
      *         specify: <code>cron(15 12 * * ? *)</code>.</p>
      *         <p>
@@ -226,7 +281,7 @@ public class CreateTriggerRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * A <code>cron</code> expression used to specify the schedule (see <a
-     * href="http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html">Time-Based Schedules for
+     * href="https://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html">Time-Based Schedules for
      * Jobs and Crawlers</a>. For example, to run something every day at 12:15 UTC, you would specify:
      * <code>cron(15 12 * * ? *)</code>.
      * </p>
@@ -236,9 +291,9 @@ public class CreateTriggerRequest extends com.amazonaws.AmazonWebServiceRequest 
      * 
      * @param schedule
      *        A <code>cron</code> expression used to specify the schedule (see <a
-     *        href="http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html">Time-Based Schedules
-     *        for Jobs and Crawlers</a>. For example, to run something every day at 12:15 UTC, you would specify:
-     *        <code>cron(15 12 * * ? *)</code>.</p>
+     *        href="https://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html">Time-Based
+     *        Schedules for Jobs and Crawlers</a>. For example, to run something every day at 12:15 UTC, you would
+     *        specify: <code>cron(15 12 * * ? *)</code>.</p>
      *        <p>
      *        This field is required when the trigger type is SCHEDULED.
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -254,13 +309,13 @@ public class CreateTriggerRequest extends com.amazonaws.AmazonWebServiceRequest 
      * A predicate to specify when the new trigger should fire.
      * </p>
      * <p>
-     * This field is required when the trigger type is CONDITIONAL.
+     * This field is required when the trigger type is <code>CONDITIONAL</code>.
      * </p>
      * 
      * @param predicate
      *        A predicate to specify when the new trigger should fire.</p>
      *        <p>
-     *        This field is required when the trigger type is CONDITIONAL.
+     *        This field is required when the trigger type is <code>CONDITIONAL</code>.
      */
 
     public void setPredicate(Predicate predicate) {
@@ -272,12 +327,12 @@ public class CreateTriggerRequest extends com.amazonaws.AmazonWebServiceRequest 
      * A predicate to specify when the new trigger should fire.
      * </p>
      * <p>
-     * This field is required when the trigger type is CONDITIONAL.
+     * This field is required when the trigger type is <code>CONDITIONAL</code>.
      * </p>
      * 
      * @return A predicate to specify when the new trigger should fire.</p>
      *         <p>
-     *         This field is required when the trigger type is CONDITIONAL.
+     *         This field is required when the trigger type is <code>CONDITIONAL</code>.
      */
 
     public Predicate getPredicate() {
@@ -289,13 +344,13 @@ public class CreateTriggerRequest extends com.amazonaws.AmazonWebServiceRequest 
      * A predicate to specify when the new trigger should fire.
      * </p>
      * <p>
-     * This field is required when the trigger type is CONDITIONAL.
+     * This field is required when the trigger type is <code>CONDITIONAL</code>.
      * </p>
      * 
      * @param predicate
      *        A predicate to specify when the new trigger should fire.</p>
      *        <p>
-     *        This field is required when the trigger type is CONDITIONAL.
+     *        This field is required when the trigger type is <code>CONDITIONAL</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -416,12 +471,13 @@ public class CreateTriggerRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * Set to true to start SCHEDULED and CONDITIONAL triggers when created. True not supported for ON_DEMAND triggers.
+     * Set to <code>true</code> to start <code>SCHEDULED</code> and <code>CONDITIONAL</code> triggers when created. True
+     * is not supported for <code>ON_DEMAND</code> triggers.
      * </p>
      * 
      * @param startOnCreation
-     *        Set to true to start SCHEDULED and CONDITIONAL triggers when created. True not supported for ON_DEMAND
-     *        triggers.
+     *        Set to <code>true</code> to start <code>SCHEDULED</code> and <code>CONDITIONAL</code> triggers when
+     *        created. True is not supported for <code>ON_DEMAND</code> triggers.
      */
 
     public void setStartOnCreation(Boolean startOnCreation) {
@@ -430,11 +486,12 @@ public class CreateTriggerRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * Set to true to start SCHEDULED and CONDITIONAL triggers when created. True not supported for ON_DEMAND triggers.
+     * Set to <code>true</code> to start <code>SCHEDULED</code> and <code>CONDITIONAL</code> triggers when created. True
+     * is not supported for <code>ON_DEMAND</code> triggers.
      * </p>
      * 
-     * @return Set to true to start SCHEDULED and CONDITIONAL triggers when created. True not supported for ON_DEMAND
-     *         triggers.
+     * @return Set to <code>true</code> to start <code>SCHEDULED</code> and <code>CONDITIONAL</code> triggers when
+     *         created. True is not supported for <code>ON_DEMAND</code> triggers.
      */
 
     public Boolean getStartOnCreation() {
@@ -443,12 +500,13 @@ public class CreateTriggerRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * Set to true to start SCHEDULED and CONDITIONAL triggers when created. True not supported for ON_DEMAND triggers.
+     * Set to <code>true</code> to start <code>SCHEDULED</code> and <code>CONDITIONAL</code> triggers when created. True
+     * is not supported for <code>ON_DEMAND</code> triggers.
      * </p>
      * 
      * @param startOnCreation
-     *        Set to true to start SCHEDULED and CONDITIONAL triggers when created. True not supported for ON_DEMAND
-     *        triggers.
+     *        Set to <code>true</code> to start <code>SCHEDULED</code> and <code>CONDITIONAL</code> triggers when
+     *        created. True is not supported for <code>ON_DEMAND</code> triggers.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -459,11 +517,12 @@ public class CreateTriggerRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * Set to true to start SCHEDULED and CONDITIONAL triggers when created. True not supported for ON_DEMAND triggers.
+     * Set to <code>true</code> to start <code>SCHEDULED</code> and <code>CONDITIONAL</code> triggers when created. True
+     * is not supported for <code>ON_DEMAND</code> triggers.
      * </p>
      * 
-     * @return Set to true to start SCHEDULED and CONDITIONAL triggers when created. True not supported for ON_DEMAND
-     *         triggers.
+     * @return Set to <code>true</code> to start <code>SCHEDULED</code> and <code>CONDITIONAL</code> triggers when
+     *         created. True is not supported for <code>ON_DEMAND</code> triggers.
      */
 
     public Boolean isStartOnCreation() {
@@ -471,7 +530,81 @@ public class CreateTriggerRequest extends com.amazonaws.AmazonWebServiceRequest 
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * <p>
+     * The tags to use with this trigger. You may use tags to limit access to the trigger. For more information about
+     * tags in AWS Glue, see <a href="https://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html">AWS Tags in AWS
+     * Glue</a> in the developer guide.
+     * </p>
+     * 
+     * @return The tags to use with this trigger. You may use tags to limit access to the trigger. For more information
+     *         about tags in AWS Glue, see <a href="https://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html">AWS
+     *         Tags in AWS Glue</a> in the developer guide.
+     */
+
+    public java.util.Map<String, String> getTags() {
+        return tags;
+    }
+
+    /**
+     * <p>
+     * The tags to use with this trigger. You may use tags to limit access to the trigger. For more information about
+     * tags in AWS Glue, see <a href="https://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html">AWS Tags in AWS
+     * Glue</a> in the developer guide.
+     * </p>
+     * 
+     * @param tags
+     *        The tags to use with this trigger. You may use tags to limit access to the trigger. For more information
+     *        about tags in AWS Glue, see <a href="https://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html">AWS
+     *        Tags in AWS Glue</a> in the developer guide.
+     */
+
+    public void setTags(java.util.Map<String, String> tags) {
+        this.tags = tags;
+    }
+
+    /**
+     * <p>
+     * The tags to use with this trigger. You may use tags to limit access to the trigger. For more information about
+     * tags in AWS Glue, see <a href="https://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html">AWS Tags in AWS
+     * Glue</a> in the developer guide.
+     * </p>
+     * 
+     * @param tags
+     *        The tags to use with this trigger. You may use tags to limit access to the trigger. For more information
+     *        about tags in AWS Glue, see <a href="https://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html">AWS
+     *        Tags in AWS Glue</a> in the developer guide.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateTriggerRequest withTags(java.util.Map<String, String> tags) {
+        setTags(tags);
+        return this;
+    }
+
+    public CreateTriggerRequest addTagsEntry(String key, String value) {
+        if (null == this.tags) {
+            this.tags = new java.util.HashMap<String, String>();
+        }
+        if (this.tags.containsKey(key))
+            throw new IllegalArgumentException("Duplicated keys (" + key.toString() + ") are provided.");
+        this.tags.put(key, value);
+        return this;
+    }
+
+    /**
+     * Removes all the entries added into Tags.
+     *
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateTriggerRequest clearTagsEntries() {
+        this.tags = null;
+        return this;
+    }
+
+    /**
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -483,6 +616,8 @@ public class CreateTriggerRequest extends com.amazonaws.AmazonWebServiceRequest 
         sb.append("{");
         if (getName() != null)
             sb.append("Name: ").append(getName()).append(",");
+        if (getWorkflowName() != null)
+            sb.append("WorkflowName: ").append(getWorkflowName()).append(",");
         if (getType() != null)
             sb.append("Type: ").append(getType()).append(",");
         if (getSchedule() != null)
@@ -494,7 +629,9 @@ public class CreateTriggerRequest extends com.amazonaws.AmazonWebServiceRequest 
         if (getDescription() != null)
             sb.append("Description: ").append(getDescription()).append(",");
         if (getStartOnCreation() != null)
-            sb.append("StartOnCreation: ").append(getStartOnCreation());
+            sb.append("StartOnCreation: ").append(getStartOnCreation()).append(",");
+        if (getTags() != null)
+            sb.append("Tags: ").append(getTags());
         sb.append("}");
         return sb.toString();
     }
@@ -512,6 +649,10 @@ public class CreateTriggerRequest extends com.amazonaws.AmazonWebServiceRequest 
         if (other.getName() == null ^ this.getName() == null)
             return false;
         if (other.getName() != null && other.getName().equals(this.getName()) == false)
+            return false;
+        if (other.getWorkflowName() == null ^ this.getWorkflowName() == null)
+            return false;
+        if (other.getWorkflowName() != null && other.getWorkflowName().equals(this.getWorkflowName()) == false)
             return false;
         if (other.getType() == null ^ this.getType() == null)
             return false;
@@ -537,6 +678,10 @@ public class CreateTriggerRequest extends com.amazonaws.AmazonWebServiceRequest 
             return false;
         if (other.getStartOnCreation() != null && other.getStartOnCreation().equals(this.getStartOnCreation()) == false)
             return false;
+        if (other.getTags() == null ^ this.getTags() == null)
+            return false;
+        if (other.getTags() != null && other.getTags().equals(this.getTags()) == false)
+            return false;
         return true;
     }
 
@@ -546,12 +691,14 @@ public class CreateTriggerRequest extends com.amazonaws.AmazonWebServiceRequest 
         int hashCode = 1;
 
         hashCode = prime * hashCode + ((getName() == null) ? 0 : getName().hashCode());
+        hashCode = prime * hashCode + ((getWorkflowName() == null) ? 0 : getWorkflowName().hashCode());
         hashCode = prime * hashCode + ((getType() == null) ? 0 : getType().hashCode());
         hashCode = prime * hashCode + ((getSchedule() == null) ? 0 : getSchedule().hashCode());
         hashCode = prime * hashCode + ((getPredicate() == null) ? 0 : getPredicate().hashCode());
         hashCode = prime * hashCode + ((getActions() == null) ? 0 : getActions().hashCode());
         hashCode = prime * hashCode + ((getDescription() == null) ? 0 : getDescription().hashCode());
         hashCode = prime * hashCode + ((getStartOnCreation() == null) ? 0 : getStartOnCreation().hashCode());
+        hashCode = prime * hashCode + ((getTags() == null) ? 0 : getTags().hashCode());
         return hashCode;
     }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -39,7 +39,7 @@ public class UpdateGraphqlApiRequest extends com.amazonaws.AmazonWebServiceReque
     private String name;
     /**
      * <p>
-     * The Amazon CloudWatch logs configuration for the <code>GraphqlApi</code> object.
+     * The Amazon CloudWatch Logs configuration for the <code>GraphqlApi</code> object.
      * </p>
      */
     private LogConfig logConfig;
@@ -51,16 +51,22 @@ public class UpdateGraphqlApiRequest extends com.amazonaws.AmazonWebServiceReque
     private String authenticationType;
     /**
      * <p>
-     * The new Amazon Cognito User Pool configuration for the <code>GraphqlApi</code> object.
+     * The new Amazon Cognito user pool configuration for the <code>GraphqlApi</code> object.
      * </p>
      */
     private UserPoolConfig userPoolConfig;
     /**
      * <p>
-     * The Open Id Connect configuration configuration for the <code>GraphqlApi</code> object.
+     * The OpenID Connect configuration for the <code>GraphqlApi</code> object.
      * </p>
      */
     private OpenIDConnectConfig openIDConnectConfig;
+    /**
+     * <p>
+     * A list of additional authentication providers for the <code>GraphqlApi</code> API.
+     * </p>
+     */
+    private java.util.List<AdditionalAuthenticationProvider> additionalAuthenticationProviders;
 
     /**
      * <p>
@@ -144,11 +150,11 @@ public class UpdateGraphqlApiRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The Amazon CloudWatch logs configuration for the <code>GraphqlApi</code> object.
+     * The Amazon CloudWatch Logs configuration for the <code>GraphqlApi</code> object.
      * </p>
      * 
      * @param logConfig
-     *        The Amazon CloudWatch logs configuration for the <code>GraphqlApi</code> object.
+     *        The Amazon CloudWatch Logs configuration for the <code>GraphqlApi</code> object.
      */
 
     public void setLogConfig(LogConfig logConfig) {
@@ -157,10 +163,10 @@ public class UpdateGraphqlApiRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The Amazon CloudWatch logs configuration for the <code>GraphqlApi</code> object.
+     * The Amazon CloudWatch Logs configuration for the <code>GraphqlApi</code> object.
      * </p>
      * 
-     * @return The Amazon CloudWatch logs configuration for the <code>GraphqlApi</code> object.
+     * @return The Amazon CloudWatch Logs configuration for the <code>GraphqlApi</code> object.
      */
 
     public LogConfig getLogConfig() {
@@ -169,11 +175,11 @@ public class UpdateGraphqlApiRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The Amazon CloudWatch logs configuration for the <code>GraphqlApi</code> object.
+     * The Amazon CloudWatch Logs configuration for the <code>GraphqlApi</code> object.
      * </p>
      * 
      * @param logConfig
-     *        The Amazon CloudWatch logs configuration for the <code>GraphqlApi</code> object.
+     *        The Amazon CloudWatch Logs configuration for the <code>GraphqlApi</code> object.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -243,11 +249,11 @@ public class UpdateGraphqlApiRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The new Amazon Cognito User Pool configuration for the <code>GraphqlApi</code> object.
+     * The new Amazon Cognito user pool configuration for the <code>GraphqlApi</code> object.
      * </p>
      * 
      * @param userPoolConfig
-     *        The new Amazon Cognito User Pool configuration for the <code>GraphqlApi</code> object.
+     *        The new Amazon Cognito user pool configuration for the <code>GraphqlApi</code> object.
      */
 
     public void setUserPoolConfig(UserPoolConfig userPoolConfig) {
@@ -256,10 +262,10 @@ public class UpdateGraphqlApiRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The new Amazon Cognito User Pool configuration for the <code>GraphqlApi</code> object.
+     * The new Amazon Cognito user pool configuration for the <code>GraphqlApi</code> object.
      * </p>
      * 
-     * @return The new Amazon Cognito User Pool configuration for the <code>GraphqlApi</code> object.
+     * @return The new Amazon Cognito user pool configuration for the <code>GraphqlApi</code> object.
      */
 
     public UserPoolConfig getUserPoolConfig() {
@@ -268,11 +274,11 @@ public class UpdateGraphqlApiRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The new Amazon Cognito User Pool configuration for the <code>GraphqlApi</code> object.
+     * The new Amazon Cognito user pool configuration for the <code>GraphqlApi</code> object.
      * </p>
      * 
      * @param userPoolConfig
-     *        The new Amazon Cognito User Pool configuration for the <code>GraphqlApi</code> object.
+     *        The new Amazon Cognito user pool configuration for the <code>GraphqlApi</code> object.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -283,11 +289,11 @@ public class UpdateGraphqlApiRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The Open Id Connect configuration configuration for the <code>GraphqlApi</code> object.
+     * The OpenID Connect configuration for the <code>GraphqlApi</code> object.
      * </p>
      * 
      * @param openIDConnectConfig
-     *        The Open Id Connect configuration configuration for the <code>GraphqlApi</code> object.
+     *        The OpenID Connect configuration for the <code>GraphqlApi</code> object.
      */
 
     public void setOpenIDConnectConfig(OpenIDConnectConfig openIDConnectConfig) {
@@ -296,10 +302,10 @@ public class UpdateGraphqlApiRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The Open Id Connect configuration configuration for the <code>GraphqlApi</code> object.
+     * The OpenID Connect configuration for the <code>GraphqlApi</code> object.
      * </p>
      * 
-     * @return The Open Id Connect configuration configuration for the <code>GraphqlApi</code> object.
+     * @return The OpenID Connect configuration for the <code>GraphqlApi</code> object.
      */
 
     public OpenIDConnectConfig getOpenIDConnectConfig() {
@@ -308,11 +314,11 @@ public class UpdateGraphqlApiRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The Open Id Connect configuration configuration for the <code>GraphqlApi</code> object.
+     * The OpenID Connect configuration for the <code>GraphqlApi</code> object.
      * </p>
      * 
      * @param openIDConnectConfig
-     *        The Open Id Connect configuration configuration for the <code>GraphqlApi</code> object.
+     *        The OpenID Connect configuration for the <code>GraphqlApi</code> object.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -322,7 +328,79 @@ public class UpdateGraphqlApiRequest extends com.amazonaws.AmazonWebServiceReque
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * <p>
+     * A list of additional authentication providers for the <code>GraphqlApi</code> API.
+     * </p>
+     * 
+     * @return A list of additional authentication providers for the <code>GraphqlApi</code> API.
+     */
+
+    public java.util.List<AdditionalAuthenticationProvider> getAdditionalAuthenticationProviders() {
+        return additionalAuthenticationProviders;
+    }
+
+    /**
+     * <p>
+     * A list of additional authentication providers for the <code>GraphqlApi</code> API.
+     * </p>
+     * 
+     * @param additionalAuthenticationProviders
+     *        A list of additional authentication providers for the <code>GraphqlApi</code> API.
+     */
+
+    public void setAdditionalAuthenticationProviders(java.util.Collection<AdditionalAuthenticationProvider> additionalAuthenticationProviders) {
+        if (additionalAuthenticationProviders == null) {
+            this.additionalAuthenticationProviders = null;
+            return;
+        }
+
+        this.additionalAuthenticationProviders = new java.util.ArrayList<AdditionalAuthenticationProvider>(additionalAuthenticationProviders);
+    }
+
+    /**
+     * <p>
+     * A list of additional authentication providers for the <code>GraphqlApi</code> API.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setAdditionalAuthenticationProviders(java.util.Collection)} or
+     * {@link #withAdditionalAuthenticationProviders(java.util.Collection)} if you want to override the existing values.
+     * </p>
+     * 
+     * @param additionalAuthenticationProviders
+     *        A list of additional authentication providers for the <code>GraphqlApi</code> API.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public UpdateGraphqlApiRequest withAdditionalAuthenticationProviders(AdditionalAuthenticationProvider... additionalAuthenticationProviders) {
+        if (this.additionalAuthenticationProviders == null) {
+            setAdditionalAuthenticationProviders(new java.util.ArrayList<AdditionalAuthenticationProvider>(additionalAuthenticationProviders.length));
+        }
+        for (AdditionalAuthenticationProvider ele : additionalAuthenticationProviders) {
+            this.additionalAuthenticationProviders.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * A list of additional authentication providers for the <code>GraphqlApi</code> API.
+     * </p>
+     * 
+     * @param additionalAuthenticationProviders
+     *        A list of additional authentication providers for the <code>GraphqlApi</code> API.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public UpdateGraphqlApiRequest withAdditionalAuthenticationProviders(
+            java.util.Collection<AdditionalAuthenticationProvider> additionalAuthenticationProviders) {
+        setAdditionalAuthenticationProviders(additionalAuthenticationProviders);
+        return this;
+    }
+
+    /**
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -343,7 +421,9 @@ public class UpdateGraphqlApiRequest extends com.amazonaws.AmazonWebServiceReque
         if (getUserPoolConfig() != null)
             sb.append("UserPoolConfig: ").append(getUserPoolConfig()).append(",");
         if (getOpenIDConnectConfig() != null)
-            sb.append("OpenIDConnectConfig: ").append(getOpenIDConnectConfig());
+            sb.append("OpenIDConnectConfig: ").append(getOpenIDConnectConfig()).append(",");
+        if (getAdditionalAuthenticationProviders() != null)
+            sb.append("AdditionalAuthenticationProviders: ").append(getAdditionalAuthenticationProviders());
         sb.append("}");
         return sb.toString();
     }
@@ -382,6 +462,11 @@ public class UpdateGraphqlApiRequest extends com.amazonaws.AmazonWebServiceReque
             return false;
         if (other.getOpenIDConnectConfig() != null && other.getOpenIDConnectConfig().equals(this.getOpenIDConnectConfig()) == false)
             return false;
+        if (other.getAdditionalAuthenticationProviders() == null ^ this.getAdditionalAuthenticationProviders() == null)
+            return false;
+        if (other.getAdditionalAuthenticationProviders() != null
+                && other.getAdditionalAuthenticationProviders().equals(this.getAdditionalAuthenticationProviders()) == false)
+            return false;
         return true;
     }
 
@@ -396,6 +481,7 @@ public class UpdateGraphqlApiRequest extends com.amazonaws.AmazonWebServiceReque
         hashCode = prime * hashCode + ((getAuthenticationType() == null) ? 0 : getAuthenticationType().hashCode());
         hashCode = prime * hashCode + ((getUserPoolConfig() == null) ? 0 : getUserPoolConfig().hashCode());
         hashCode = prime * hashCode + ((getOpenIDConnectConfig() == null) ? 0 : getOpenIDConnectConfig().hashCode());
+        hashCode = prime * hashCode + ((getAdditionalAuthenticationProviders() == null) ? 0 : getAdditionalAuthenticationProviders().hashCode());
         return hashCode;
     }
 

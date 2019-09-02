@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -18,7 +18,9 @@ import com.amazonaws.protocol.StructuredPojo;
 import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
- * Represents the criteria used for querying findings.
+ * <p>
+ * Contains finding criteria information.
+ * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/FindingCriteria" target="_top">AWS API
  *      Documentation</a>
@@ -26,11 +28,17 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class FindingCriteria implements Serializable, Cloneable, StructuredPojo {
 
-    /** Represents a map of finding properties that match specified conditions and values when querying findings. */
+    /**
+     * <p>
+     * Represents a map of finding properties that match specified conditions and values when querying findings.
+     * </p>
+     */
     private java.util.Map<String, Condition> criterion;
 
     /**
+     * <p>
      * Represents a map of finding properties that match specified conditions and values when querying findings.
+     * </p>
      * 
      * @return Represents a map of finding properties that match specified conditions and values when querying findings.
      */
@@ -40,7 +48,9 @@ public class FindingCriteria implements Serializable, Cloneable, StructuredPojo 
     }
 
     /**
+     * <p>
      * Represents a map of finding properties that match specified conditions and values when querying findings.
+     * </p>
      * 
      * @param criterion
      *        Represents a map of finding properties that match specified conditions and values when querying findings.
@@ -51,7 +61,9 @@ public class FindingCriteria implements Serializable, Cloneable, StructuredPojo 
     }
 
     /**
+     * <p>
      * Represents a map of finding properties that match specified conditions and values when querying findings.
+     * </p>
      * 
      * @param criterion
      *        Represents a map of finding properties that match specified conditions and values when querying findings.
@@ -85,7 +97,8 @@ public class FindingCriteria implements Serializable, Cloneable, StructuredPojo 
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

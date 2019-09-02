@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,7 +27,7 @@ public class UpdateMaintenanceWindowTaskRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * The Maintenance Window ID that contains the task to modify.
+     * The maintenance window ID that contains the task to modify.
      * </p>
      */
     private String windowId;
@@ -52,8 +52,30 @@ public class UpdateMaintenanceWindowTaskRequest extends com.amazonaws.AmazonWebS
     private String taskArn;
     /**
      * <p>
-     * The IAM service role ARN to modify. The system assumes this role during task execution.
+     * The ARN of the IAM service role for Systems Manager to assume when running a maintenance window task. If you do
+     * not specify a service role ARN, Systems Manager uses your account's service-linked role. If no service-linked
+     * role for Systems Manager exists in your account, it is created when you run
+     * <code>RegisterTaskWithMaintenanceWindow</code>.
      * </p>
+     * <p>
+     * For more information, see the following topics in the in the <i>AWS Systems Manager User Guide</i>:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a href=
+     * "http://docs.aws.amazon.com/systems-manager/latest/userguide/using-service-linked-roles.html#slr-permissions"
+     * >Service-Linked Role Permissions for Systems Manager</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a href=
+     * "http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-maintenance-permissions.html#maintenance-window-tasks-service-role"
+     * >Should I Use a Service-Linked Role or a Custom Service Role to Run Maintenance Window Tasks? </a>
+     * </p>
+     * </li>
+     * </ul>
      */
     private String serviceRoleArn;
     /**
@@ -64,7 +86,7 @@ public class UpdateMaintenanceWindowTaskRequest extends com.amazonaws.AmazonWebS
      * <p>
      * <code>TaskParameters</code> has been deprecated. To specify parameters to pass to a task when it runs, instead
      * use the <code>Parameters</code> option in the <code>TaskInvocationParameters</code> structure. For information
-     * about how Systems Manager handles these options for the supported Maintenance Window task types, see
+     * about how Systems Manager handles these options for the supported maintenance window task types, see
      * <a>MaintenanceWindowTaskInvocationParameters</a>.
      * </p>
      * </note>
@@ -116,7 +138,7 @@ public class UpdateMaintenanceWindowTaskRequest extends com.amazonaws.AmazonWebS
      * <code>LoggingInfo</code> has been deprecated. To specify an S3 bucket to contain logs, instead use the
      * <code>OutputS3BucketName</code> and <code>OutputS3KeyPrefix</code> options in the
      * <code>TaskInvocationParameters</code> structure. For information about how Systems Manager handles these options
-     * for the supported Maintenance Window task types, see <a>MaintenanceWindowTaskInvocationParameters</a>.
+     * for the supported maintenance window task types, see <a>MaintenanceWindowTaskInvocationParameters</a>.
      * </p>
      * </note>
      */
@@ -143,11 +165,11 @@ public class UpdateMaintenanceWindowTaskRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * The Maintenance Window ID that contains the task to modify.
+     * The maintenance window ID that contains the task to modify.
      * </p>
      * 
      * @param windowId
-     *        The Maintenance Window ID that contains the task to modify.
+     *        The maintenance window ID that contains the task to modify.
      */
 
     public void setWindowId(String windowId) {
@@ -156,10 +178,10 @@ public class UpdateMaintenanceWindowTaskRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * The Maintenance Window ID that contains the task to modify.
+     * The maintenance window ID that contains the task to modify.
      * </p>
      * 
-     * @return The Maintenance Window ID that contains the task to modify.
+     * @return The maintenance window ID that contains the task to modify.
      */
 
     public String getWindowId() {
@@ -168,11 +190,11 @@ public class UpdateMaintenanceWindowTaskRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * The Maintenance Window ID that contains the task to modify.
+     * The maintenance window ID that contains the task to modify.
      * </p>
      * 
      * @param windowId
-     *        The Maintenance Window ID that contains the task to modify.
+     *        The maintenance window ID that contains the task to modify.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -344,11 +366,54 @@ public class UpdateMaintenanceWindowTaskRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * The IAM service role ARN to modify. The system assumes this role during task execution.
+     * The ARN of the IAM service role for Systems Manager to assume when running a maintenance window task. If you do
+     * not specify a service role ARN, Systems Manager uses your account's service-linked role. If no service-linked
+     * role for Systems Manager exists in your account, it is created when you run
+     * <code>RegisterTaskWithMaintenanceWindow</code>.
      * </p>
+     * <p>
+     * For more information, see the following topics in the in the <i>AWS Systems Manager User Guide</i>:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a href=
+     * "http://docs.aws.amazon.com/systems-manager/latest/userguide/using-service-linked-roles.html#slr-permissions"
+     * >Service-Linked Role Permissions for Systems Manager</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a href=
+     * "http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-maintenance-permissions.html#maintenance-window-tasks-service-role"
+     * >Should I Use a Service-Linked Role or a Custom Service Role to Run Maintenance Window Tasks? </a>
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param serviceRoleArn
-     *        The IAM service role ARN to modify. The system assumes this role during task execution.
+     *        The ARN of the IAM service role for Systems Manager to assume when running a maintenance window task. If
+     *        you do not specify a service role ARN, Systems Manager uses your account's service-linked role. If no
+     *        service-linked role for Systems Manager exists in your account, it is created when you run
+     *        <code>RegisterTaskWithMaintenanceWindow</code>.</p>
+     *        <p>
+     *        For more information, see the following topics in the in the <i>AWS Systems Manager User Guide</i>:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <a href=
+     *        "http://docs.aws.amazon.com/systems-manager/latest/userguide/using-service-linked-roles.html#slr-permissions"
+     *        >Service-Linked Role Permissions for Systems Manager</a>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <a href=
+     *        "http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-maintenance-permissions.html#maintenance-window-tasks-service-role"
+     *        >Should I Use a Service-Linked Role or a Custom Service Role to Run Maintenance Window Tasks? </a>
+     *        </p>
+     *        </li>
      */
 
     public void setServiceRoleArn(String serviceRoleArn) {
@@ -357,10 +422,53 @@ public class UpdateMaintenanceWindowTaskRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * The IAM service role ARN to modify. The system assumes this role during task execution.
+     * The ARN of the IAM service role for Systems Manager to assume when running a maintenance window task. If you do
+     * not specify a service role ARN, Systems Manager uses your account's service-linked role. If no service-linked
+     * role for Systems Manager exists in your account, it is created when you run
+     * <code>RegisterTaskWithMaintenanceWindow</code>.
      * </p>
+     * <p>
+     * For more information, see the following topics in the in the <i>AWS Systems Manager User Guide</i>:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a href=
+     * "http://docs.aws.amazon.com/systems-manager/latest/userguide/using-service-linked-roles.html#slr-permissions"
+     * >Service-Linked Role Permissions for Systems Manager</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a href=
+     * "http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-maintenance-permissions.html#maintenance-window-tasks-service-role"
+     * >Should I Use a Service-Linked Role or a Custom Service Role to Run Maintenance Window Tasks? </a>
+     * </p>
+     * </li>
+     * </ul>
      * 
-     * @return The IAM service role ARN to modify. The system assumes this role during task execution.
+     * @return The ARN of the IAM service role for Systems Manager to assume when running a maintenance window task. If
+     *         you do not specify a service role ARN, Systems Manager uses your account's service-linked role. If no
+     *         service-linked role for Systems Manager exists in your account, it is created when you run
+     *         <code>RegisterTaskWithMaintenanceWindow</code>.</p>
+     *         <p>
+     *         For more information, see the following topics in the in the <i>AWS Systems Manager User Guide</i>:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         <a href=
+     *         "http://docs.aws.amazon.com/systems-manager/latest/userguide/using-service-linked-roles.html#slr-permissions"
+     *         >Service-Linked Role Permissions for Systems Manager</a>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <a href=
+     *         "http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-maintenance-permissions.html#maintenance-window-tasks-service-role"
+     *         >Should I Use a Service-Linked Role or a Custom Service Role to Run Maintenance Window Tasks? </a>
+     *         </p>
+     *         </li>
      */
 
     public String getServiceRoleArn() {
@@ -369,11 +477,54 @@ public class UpdateMaintenanceWindowTaskRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * The IAM service role ARN to modify. The system assumes this role during task execution.
+     * The ARN of the IAM service role for Systems Manager to assume when running a maintenance window task. If you do
+     * not specify a service role ARN, Systems Manager uses your account's service-linked role. If no service-linked
+     * role for Systems Manager exists in your account, it is created when you run
+     * <code>RegisterTaskWithMaintenanceWindow</code>.
      * </p>
+     * <p>
+     * For more information, see the following topics in the in the <i>AWS Systems Manager User Guide</i>:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a href=
+     * "http://docs.aws.amazon.com/systems-manager/latest/userguide/using-service-linked-roles.html#slr-permissions"
+     * >Service-Linked Role Permissions for Systems Manager</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <a href=
+     * "http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-maintenance-permissions.html#maintenance-window-tasks-service-role"
+     * >Should I Use a Service-Linked Role or a Custom Service Role to Run Maintenance Window Tasks? </a>
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param serviceRoleArn
-     *        The IAM service role ARN to modify. The system assumes this role during task execution.
+     *        The ARN of the IAM service role for Systems Manager to assume when running a maintenance window task. If
+     *        you do not specify a service role ARN, Systems Manager uses your account's service-linked role. If no
+     *        service-linked role for Systems Manager exists in your account, it is created when you run
+     *        <code>RegisterTaskWithMaintenanceWindow</code>.</p>
+     *        <p>
+     *        For more information, see the following topics in the in the <i>AWS Systems Manager User Guide</i>:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <a href=
+     *        "http://docs.aws.amazon.com/systems-manager/latest/userguide/using-service-linked-roles.html#slr-permissions"
+     *        >Service-Linked Role Permissions for Systems Manager</a>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <a href=
+     *        "http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-maintenance-permissions.html#maintenance-window-tasks-service-role"
+     *        >Should I Use a Service-Linked Role or a Custom Service Role to Run Maintenance Window Tasks? </a>
+     *        </p>
+     *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -390,7 +541,7 @@ public class UpdateMaintenanceWindowTaskRequest extends com.amazonaws.AmazonWebS
      * <p>
      * <code>TaskParameters</code> has been deprecated. To specify parameters to pass to a task when it runs, instead
      * use the <code>Parameters</code> option in the <code>TaskInvocationParameters</code> structure. For information
-     * about how Systems Manager handles these options for the supported Maintenance Window task types, see
+     * about how Systems Manager handles these options for the supported maintenance window task types, see
      * <a>MaintenanceWindowTaskInvocationParameters</a>.
      * </p>
      * </note>
@@ -408,7 +559,7 @@ public class UpdateMaintenanceWindowTaskRequest extends com.amazonaws.AmazonWebS
      *         <p>
      *         <code>TaskParameters</code> has been deprecated. To specify parameters to pass to a task when it runs,
      *         instead use the <code>Parameters</code> option in the <code>TaskInvocationParameters</code> structure.
-     *         For information about how Systems Manager handles these options for the supported Maintenance Window task
+     *         For information about how Systems Manager handles these options for the supported maintenance window task
      *         types, see <a>MaintenanceWindowTaskInvocationParameters</a>.
      *         </p>
      *         </note>
@@ -434,7 +585,7 @@ public class UpdateMaintenanceWindowTaskRequest extends com.amazonaws.AmazonWebS
      * <p>
      * <code>TaskParameters</code> has been deprecated. To specify parameters to pass to a task when it runs, instead
      * use the <code>Parameters</code> option in the <code>TaskInvocationParameters</code> structure. For information
-     * about how Systems Manager handles these options for the supported Maintenance Window task types, see
+     * about how Systems Manager handles these options for the supported maintenance window task types, see
      * <a>MaintenanceWindowTaskInvocationParameters</a>.
      * </p>
      * </note>
@@ -453,7 +604,7 @@ public class UpdateMaintenanceWindowTaskRequest extends com.amazonaws.AmazonWebS
      *        <p>
      *        <code>TaskParameters</code> has been deprecated. To specify parameters to pass to a task when it runs,
      *        instead use the <code>Parameters</code> option in the <code>TaskInvocationParameters</code> structure. For
-     *        information about how Systems Manager handles these options for the supported Maintenance Window task
+     *        information about how Systems Manager handles these options for the supported maintenance window task
      *        types, see <a>MaintenanceWindowTaskInvocationParameters</a>.
      *        </p>
      *        </note>
@@ -479,7 +630,7 @@ public class UpdateMaintenanceWindowTaskRequest extends com.amazonaws.AmazonWebS
      * <p>
      * <code>TaskParameters</code> has been deprecated. To specify parameters to pass to a task when it runs, instead
      * use the <code>Parameters</code> option in the <code>TaskInvocationParameters</code> structure. For information
-     * about how Systems Manager handles these options for the supported Maintenance Window task types, see
+     * about how Systems Manager handles these options for the supported maintenance window task types, see
      * <a>MaintenanceWindowTaskInvocationParameters</a>.
      * </p>
      * </note>
@@ -498,7 +649,7 @@ public class UpdateMaintenanceWindowTaskRequest extends com.amazonaws.AmazonWebS
      *        <p>
      *        <code>TaskParameters</code> has been deprecated. To specify parameters to pass to a task when it runs,
      *        instead use the <code>Parameters</code> option in the <code>TaskInvocationParameters</code> structure. For
-     *        information about how Systems Manager handles these options for the supported Maintenance Window task
+     *        information about how Systems Manager handles these options for the supported maintenance window task
      *        types, see <a>MaintenanceWindowTaskInvocationParameters</a>.
      *        </p>
      *        </note>
@@ -732,7 +883,7 @@ public class UpdateMaintenanceWindowTaskRequest extends com.amazonaws.AmazonWebS
      * <code>LoggingInfo</code> has been deprecated. To specify an S3 bucket to contain logs, instead use the
      * <code>OutputS3BucketName</code> and <code>OutputS3KeyPrefix</code> options in the
      * <code>TaskInvocationParameters</code> structure. For information about how Systems Manager handles these options
-     * for the supported Maintenance Window task types, see <a>MaintenanceWindowTaskInvocationParameters</a>.
+     * for the supported maintenance window task types, see <a>MaintenanceWindowTaskInvocationParameters</a>.
      * </p>
      * </note>
      * 
@@ -742,7 +893,7 @@ public class UpdateMaintenanceWindowTaskRequest extends com.amazonaws.AmazonWebS
      *        <code>LoggingInfo</code> has been deprecated. To specify an S3 bucket to contain logs, instead use the
      *        <code>OutputS3BucketName</code> and <code>OutputS3KeyPrefix</code> options in the
      *        <code>TaskInvocationParameters</code> structure. For information about how Systems Manager handles these
-     *        options for the supported Maintenance Window task types, see
+     *        options for the supported maintenance window task types, see
      *        <a>MaintenanceWindowTaskInvocationParameters</a>.
      *        </p>
      */
@@ -760,7 +911,7 @@ public class UpdateMaintenanceWindowTaskRequest extends com.amazonaws.AmazonWebS
      * <code>LoggingInfo</code> has been deprecated. To specify an S3 bucket to contain logs, instead use the
      * <code>OutputS3BucketName</code> and <code>OutputS3KeyPrefix</code> options in the
      * <code>TaskInvocationParameters</code> structure. For information about how Systems Manager handles these options
-     * for the supported Maintenance Window task types, see <a>MaintenanceWindowTaskInvocationParameters</a>.
+     * for the supported maintenance window task types, see <a>MaintenanceWindowTaskInvocationParameters</a>.
      * </p>
      * </note>
      * 
@@ -769,7 +920,7 @@ public class UpdateMaintenanceWindowTaskRequest extends com.amazonaws.AmazonWebS
      *         <code>LoggingInfo</code> has been deprecated. To specify an S3 bucket to contain logs, instead use the
      *         <code>OutputS3BucketName</code> and <code>OutputS3KeyPrefix</code> options in the
      *         <code>TaskInvocationParameters</code> structure. For information about how Systems Manager handles these
-     *         options for the supported Maintenance Window task types, see
+     *         options for the supported maintenance window task types, see
      *         <a>MaintenanceWindowTaskInvocationParameters</a>.
      *         </p>
      */
@@ -787,7 +938,7 @@ public class UpdateMaintenanceWindowTaskRequest extends com.amazonaws.AmazonWebS
      * <code>LoggingInfo</code> has been deprecated. To specify an S3 bucket to contain logs, instead use the
      * <code>OutputS3BucketName</code> and <code>OutputS3KeyPrefix</code> options in the
      * <code>TaskInvocationParameters</code> structure. For information about how Systems Manager handles these options
-     * for the supported Maintenance Window task types, see <a>MaintenanceWindowTaskInvocationParameters</a>.
+     * for the supported maintenance window task types, see <a>MaintenanceWindowTaskInvocationParameters</a>.
      * </p>
      * </note>
      * 
@@ -797,7 +948,7 @@ public class UpdateMaintenanceWindowTaskRequest extends com.amazonaws.AmazonWebS
      *        <code>LoggingInfo</code> has been deprecated. To specify an S3 bucket to contain logs, instead use the
      *        <code>OutputS3BucketName</code> and <code>OutputS3KeyPrefix</code> options in the
      *        <code>TaskInvocationParameters</code> structure. For information about how Systems Manager handles these
-     *        options for the supported Maintenance Window task types, see
+     *        options for the supported maintenance window task types, see
      *        <a>MaintenanceWindowTaskInvocationParameters</a>.
      *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -949,7 +1100,8 @@ public class UpdateMaintenanceWindowTaskRequest extends com.amazonaws.AmazonWebS
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -970,7 +1122,7 @@ public class UpdateMaintenanceWindowTaskRequest extends com.amazonaws.AmazonWebS
         if (getServiceRoleArn() != null)
             sb.append("ServiceRoleArn: ").append(getServiceRoleArn()).append(",");
         if (getTaskParameters() != null)
-            sb.append("TaskParameters: ").append(getTaskParameters()).append(",");
+            sb.append("TaskParameters: ").append("***Sensitive Data Redacted***").append(",");
         if (getTaskInvocationParameters() != null)
             sb.append("TaskInvocationParameters: ").append(getTaskInvocationParameters()).append(",");
         if (getPriority() != null)
@@ -984,7 +1136,7 @@ public class UpdateMaintenanceWindowTaskRequest extends com.amazonaws.AmazonWebS
         if (getName() != null)
             sb.append("Name: ").append(getName()).append(",");
         if (getDescription() != null)
-            sb.append("Description: ").append(getDescription()).append(",");
+            sb.append("Description: ").append("***Sensitive Data Redacted***").append(",");
         if (getReplace() != null)
             sb.append("Replace: ").append(getReplace());
         sb.append("}");

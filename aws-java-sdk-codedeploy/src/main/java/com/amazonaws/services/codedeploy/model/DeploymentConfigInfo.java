@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -54,13 +54,13 @@ public class DeploymentConfigInfo implements Serializable, Cloneable, Structured
     private java.util.Date createTime;
     /**
      * <p>
-     * The destination platform type for the deployment (<code>Lambda</code> or <code>Server</code>).
+     * The destination platform type for the deployment (<code>Lambda</code>, <code>Server</code>, or <code>ECS</code>).
      * </p>
      */
     private String computePlatform;
     /**
      * <p>
-     * The configuration specifying how the deployment traffic will be routed. Only deployments with a Lambda compute
+     * The configuration that specifies how the deployment traffic is routed. Only deployments with a Lambda compute
      * platform can specify this.
      * </p>
      */
@@ -228,11 +228,12 @@ public class DeploymentConfigInfo implements Serializable, Cloneable, Structured
 
     /**
      * <p>
-     * The destination platform type for the deployment (<code>Lambda</code> or <code>Server</code>).
+     * The destination platform type for the deployment (<code>Lambda</code>, <code>Server</code>, or <code>ECS</code>).
      * </p>
      * 
      * @param computePlatform
-     *        The destination platform type for the deployment (<code>Lambda</code> or <code>Server</code>).
+     *        The destination platform type for the deployment (<code>Lambda</code>, <code>Server</code>, or
+     *        <code>ECS</code>).
      * @see ComputePlatform
      */
 
@@ -242,10 +243,11 @@ public class DeploymentConfigInfo implements Serializable, Cloneable, Structured
 
     /**
      * <p>
-     * The destination platform type for the deployment (<code>Lambda</code> or <code>Server</code>).
+     * The destination platform type for the deployment (<code>Lambda</code>, <code>Server</code>, or <code>ECS</code>).
      * </p>
      * 
-     * @return The destination platform type for the deployment (<code>Lambda</code> or <code>Server</code>).
+     * @return The destination platform type for the deployment (<code>Lambda</code>, <code>Server</code>, or
+     *         <code>ECS</code>).
      * @see ComputePlatform
      */
 
@@ -255,11 +257,12 @@ public class DeploymentConfigInfo implements Serializable, Cloneable, Structured
 
     /**
      * <p>
-     * The destination platform type for the deployment (<code>Lambda</code> or <code>Server</code>).
+     * The destination platform type for the deployment (<code>Lambda</code>, <code>Server</code>, or <code>ECS</code>).
      * </p>
      * 
      * @param computePlatform
-     *        The destination platform type for the deployment (<code>Lambda</code> or <code>Server</code>).
+     *        The destination platform type for the deployment (<code>Lambda</code>, <code>Server</code>, or
+     *        <code>ECS</code>).
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see ComputePlatform
      */
@@ -271,11 +274,12 @@ public class DeploymentConfigInfo implements Serializable, Cloneable, Structured
 
     /**
      * <p>
-     * The destination platform type for the deployment (<code>Lambda</code> or <code>Server</code>).
+     * The destination platform type for the deployment (<code>Lambda</code>, <code>Server</code>, or <code>ECS</code>).
      * </p>
      * 
      * @param computePlatform
-     *        The destination platform type for the deployment (<code>Lambda</code> or <code>Server</code>).
+     *        The destination platform type for the deployment (<code>Lambda</code>, <code>Server</code>, or
+     *        <code>ECS</code>).
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see ComputePlatform
      */
@@ -287,12 +291,12 @@ public class DeploymentConfigInfo implements Serializable, Cloneable, Structured
 
     /**
      * <p>
-     * The configuration specifying how the deployment traffic will be routed. Only deployments with a Lambda compute
+     * The configuration that specifies how the deployment traffic is routed. Only deployments with a Lambda compute
      * platform can specify this.
      * </p>
      * 
      * @param trafficRoutingConfig
-     *        The configuration specifying how the deployment traffic will be routed. Only deployments with a Lambda
+     *        The configuration that specifies how the deployment traffic is routed. Only deployments with a Lambda
      *        compute platform can specify this.
      */
 
@@ -302,11 +306,11 @@ public class DeploymentConfigInfo implements Serializable, Cloneable, Structured
 
     /**
      * <p>
-     * The configuration specifying how the deployment traffic will be routed. Only deployments with a Lambda compute
+     * The configuration that specifies how the deployment traffic is routed. Only deployments with a Lambda compute
      * platform can specify this.
      * </p>
      * 
-     * @return The configuration specifying how the deployment traffic will be routed. Only deployments with a Lambda
+     * @return The configuration that specifies how the deployment traffic is routed. Only deployments with a Lambda
      *         compute platform can specify this.
      */
 
@@ -316,12 +320,12 @@ public class DeploymentConfigInfo implements Serializable, Cloneable, Structured
 
     /**
      * <p>
-     * The configuration specifying how the deployment traffic will be routed. Only deployments with a Lambda compute
+     * The configuration that specifies how the deployment traffic is routed. Only deployments with a Lambda compute
      * platform can specify this.
      * </p>
      * 
      * @param trafficRoutingConfig
-     *        The configuration specifying how the deployment traffic will be routed. Only deployments with a Lambda
+     *        The configuration that specifies how the deployment traffic is routed. Only deployments with a Lambda
      *        compute platform can specify this.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -332,7 +336,8 @@ public class DeploymentConfigInfo implements Serializable, Cloneable, Structured
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

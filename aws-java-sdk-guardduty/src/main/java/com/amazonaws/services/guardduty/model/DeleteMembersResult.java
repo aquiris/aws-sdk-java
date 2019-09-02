@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -23,14 +23,19 @@ import javax.annotation.Generated;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DeleteMembersResult extends com.amazonaws.AmazonWebServiceResult<com.amazonaws.ResponseMetadata> implements Serializable, Cloneable {
 
-    /** A list of objects containing the unprocessed account and a result string explaining why it was unprocessed. */
+    /**
+     * <p>
+     * The accounts that could not be processed.
+     * </p>
+     */
     private java.util.List<UnprocessedAccount> unprocessedAccounts;
 
     /**
-     * A list of objects containing the unprocessed account and a result string explaining why it was unprocessed.
+     * <p>
+     * The accounts that could not be processed.
+     * </p>
      * 
-     * @return A list of objects containing the unprocessed account and a result string explaining why it was
-     *         unprocessed.
+     * @return The accounts that could not be processed.
      */
 
     public java.util.List<UnprocessedAccount> getUnprocessedAccounts() {
@@ -38,11 +43,12 @@ public class DeleteMembersResult extends com.amazonaws.AmazonWebServiceResult<co
     }
 
     /**
-     * A list of objects containing the unprocessed account and a result string explaining why it was unprocessed.
+     * <p>
+     * The accounts that could not be processed.
+     * </p>
      * 
      * @param unprocessedAccounts
-     *        A list of objects containing the unprocessed account and a result string explaining why it was
-     *        unprocessed.
+     *        The accounts that could not be processed.
      */
 
     public void setUnprocessedAccounts(java.util.Collection<UnprocessedAccount> unprocessedAccounts) {
@@ -55,7 +61,9 @@ public class DeleteMembersResult extends com.amazonaws.AmazonWebServiceResult<co
     }
 
     /**
-     * A list of objects containing the unprocessed account and a result string explaining why it was unprocessed.
+     * <p>
+     * The accounts that could not be processed.
+     * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
      * {@link #setUnprocessedAccounts(java.util.Collection)} or {@link #withUnprocessedAccounts(java.util.Collection)}
@@ -63,8 +71,7 @@ public class DeleteMembersResult extends com.amazonaws.AmazonWebServiceResult<co
      * </p>
      * 
      * @param unprocessedAccounts
-     *        A list of objects containing the unprocessed account and a result string explaining why it was
-     *        unprocessed.
+     *        The accounts that could not be processed.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -79,11 +86,12 @@ public class DeleteMembersResult extends com.amazonaws.AmazonWebServiceResult<co
     }
 
     /**
-     * A list of objects containing the unprocessed account and a result string explaining why it was unprocessed.
+     * <p>
+     * The accounts that could not be processed.
+     * </p>
      * 
      * @param unprocessedAccounts
-     *        A list of objects containing the unprocessed account and a result string explaining why it was
-     *        unprocessed.
+     *        The accounts that could not be processed.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -93,7 +101,8 @@ public class DeleteMembersResult extends com.amazonaws.AmazonWebServiceResult<co
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

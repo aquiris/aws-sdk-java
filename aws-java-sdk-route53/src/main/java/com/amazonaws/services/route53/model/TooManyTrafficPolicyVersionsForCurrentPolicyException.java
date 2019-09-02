@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -20,9 +20,11 @@ import javax.annotation.Generated;
  * you can create for the current traffic policy.
  * </p>
  * <p>
- * To create more traffic policy versions, you can use <a>GetTrafficPolicy</a> to get the traffic policy document for a
- * specified traffic policy version, and then use <a>CreateTrafficPolicy</a> to create a new traffic policy using the
- * traffic policy document.
+ * To create more traffic policy versions, you can use <a
+ * href="https://docs.aws.amazon.com/Route53/latest/APIReference/API_GetTrafficPolicy.html">GetTrafficPolicy</a> to get
+ * the traffic policy document for a specified traffic policy version, and then use <a
+ * href="https://docs.aws.amazon.com/Route53/latest/APIReference/API_CreateTrafficPolicy.html">CreateTrafficPolicy</a>
+ * to create a new traffic policy using the traffic policy document.
  * </p>
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")

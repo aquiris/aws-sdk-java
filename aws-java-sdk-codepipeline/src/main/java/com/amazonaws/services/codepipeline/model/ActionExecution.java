@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -49,7 +49,7 @@ public class ActionExecution implements Serializable, Cloneable, StructuredPojo 
     /**
      * <p>
      * The system-generated token used to identify a unique approval request. The token for each open approval request
-     * can be obtained using the GetPipelineState command and is used to validate that the approval request
+     * can be obtained using the <code>GetPipelineState</code> command and is used to validate that the approval request
      * corresponding to this token is still valid.
      * </p>
      */
@@ -242,14 +242,14 @@ public class ActionExecution implements Serializable, Cloneable, StructuredPojo 
     /**
      * <p>
      * The system-generated token used to identify a unique approval request. The token for each open approval request
-     * can be obtained using the GetPipelineState command and is used to validate that the approval request
+     * can be obtained using the <code>GetPipelineState</code> command and is used to validate that the approval request
      * corresponding to this token is still valid.
      * </p>
      * 
      * @param token
      *        The system-generated token used to identify a unique approval request. The token for each open approval
-     *        request can be obtained using the GetPipelineState command and is used to validate that the approval
-     *        request corresponding to this token is still valid.
+     *        request can be obtained using the <code>GetPipelineState</code> command and is used to validate that the
+     *        approval request corresponding to this token is still valid.
      */
 
     public void setToken(String token) {
@@ -259,13 +259,13 @@ public class ActionExecution implements Serializable, Cloneable, StructuredPojo 
     /**
      * <p>
      * The system-generated token used to identify a unique approval request. The token for each open approval request
-     * can be obtained using the GetPipelineState command and is used to validate that the approval request
+     * can be obtained using the <code>GetPipelineState</code> command and is used to validate that the approval request
      * corresponding to this token is still valid.
      * </p>
      * 
      * @return The system-generated token used to identify a unique approval request. The token for each open approval
-     *         request can be obtained using the GetPipelineState command and is used to validate that the approval
-     *         request corresponding to this token is still valid.
+     *         request can be obtained using the <code>GetPipelineState</code> command and is used to validate that the
+     *         approval request corresponding to this token is still valid.
      */
 
     public String getToken() {
@@ -275,14 +275,14 @@ public class ActionExecution implements Serializable, Cloneable, StructuredPojo 
     /**
      * <p>
      * The system-generated token used to identify a unique approval request. The token for each open approval request
-     * can be obtained using the GetPipelineState command and is used to validate that the approval request
+     * can be obtained using the <code>GetPipelineState</code> command and is used to validate that the approval request
      * corresponding to this token is still valid.
      * </p>
      * 
      * @param token
      *        The system-generated token used to identify a unique approval request. The token for each open approval
-     *        request can be obtained using the GetPipelineState command and is used to validate that the approval
-     *        request corresponding to this token is still valid.
+     *        request can be obtained using the <code>GetPipelineState</code> command and is used to validate that the
+     *        approval request corresponding to this token is still valid.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -498,7 +498,8 @@ public class ActionExecution implements Serializable, Cloneable, StructuredPojo 
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -18,7 +18,6 @@ import javax.annotation.Generated;
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
- * ArchiveFindings request body.
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/ArchiveFindings" target="_top">AWS API
  *      Documentation</a>
@@ -26,13 +25,23 @@ import com.amazonaws.AmazonWebServiceRequest;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ArchiveFindingsRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
-    /** The ID of the detector that specifies the GuardDuty service whose findings you want to archive. */
+    /**
+     * <p>
+     * The ID of the detector that specifies the GuardDuty service whose findings you want to archive.
+     * </p>
+     */
     private String detectorId;
-    /** IDs of the findings that you want to archive. */
+    /**
+     * <p>
+     * IDs of the findings that you want to archive.
+     * </p>
+     */
     private java.util.List<String> findingIds;
 
     /**
+     * <p>
      * The ID of the detector that specifies the GuardDuty service whose findings you want to archive.
+     * </p>
      * 
      * @param detectorId
      *        The ID of the detector that specifies the GuardDuty service whose findings you want to archive.
@@ -43,7 +52,9 @@ public class ArchiveFindingsRequest extends com.amazonaws.AmazonWebServiceReques
     }
 
     /**
+     * <p>
      * The ID of the detector that specifies the GuardDuty service whose findings you want to archive.
+     * </p>
      * 
      * @return The ID of the detector that specifies the GuardDuty service whose findings you want to archive.
      */
@@ -53,7 +64,9 @@ public class ArchiveFindingsRequest extends com.amazonaws.AmazonWebServiceReques
     }
 
     /**
+     * <p>
      * The ID of the detector that specifies the GuardDuty service whose findings you want to archive.
+     * </p>
      * 
      * @param detectorId
      *        The ID of the detector that specifies the GuardDuty service whose findings you want to archive.
@@ -66,7 +79,9 @@ public class ArchiveFindingsRequest extends com.amazonaws.AmazonWebServiceReques
     }
 
     /**
+     * <p>
      * IDs of the findings that you want to archive.
+     * </p>
      * 
      * @return IDs of the findings that you want to archive.
      */
@@ -76,7 +91,9 @@ public class ArchiveFindingsRequest extends com.amazonaws.AmazonWebServiceReques
     }
 
     /**
+     * <p>
      * IDs of the findings that you want to archive.
+     * </p>
      * 
      * @param findingIds
      *        IDs of the findings that you want to archive.
@@ -92,7 +109,9 @@ public class ArchiveFindingsRequest extends com.amazonaws.AmazonWebServiceReques
     }
 
     /**
+     * <p>
      * IDs of the findings that you want to archive.
+     * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
      * {@link #setFindingIds(java.util.Collection)} or {@link #withFindingIds(java.util.Collection)} if you want to
@@ -115,7 +134,9 @@ public class ArchiveFindingsRequest extends com.amazonaws.AmazonWebServiceReques
     }
 
     /**
+     * <p>
      * IDs of the findings that you want to archive.
+     * </p>
      * 
      * @param findingIds
      *        IDs of the findings that you want to archive.
@@ -128,7 +149,8 @@ public class ArchiveFindingsRequest extends com.amazonaws.AmazonWebServiceReques
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

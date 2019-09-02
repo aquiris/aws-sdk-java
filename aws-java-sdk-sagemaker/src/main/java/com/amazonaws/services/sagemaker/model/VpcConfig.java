@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -20,7 +20,10 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 /**
  * <p>
  * Specifies a VPC that your training jobs and hosted models have access to. Control access to and from your training
- * and model containers by configuring the VPC. For more information, see <a>host-vpc</a> and <a>train-vpc</a>.
+ * and model containers by configuring the VPC. For more information, see <a
+ * href="https://docs.aws.amazon.com/sagemaker/latest/dg/host-vpc.html">Protect Endpoints by Using an Amazon Virtual
+ * Private Cloud</a> and <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html">Protect Training Jobs
+ * by Using an Amazon Virtual Private Cloud</a>.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/VpcConfig" target="_top">AWS API
@@ -40,6 +43,13 @@ public class VpcConfig implements Serializable, Cloneable, StructuredPojo {
      * <p>
      * The ID of the subnets in the VPC to which you want to connect your training job or model.
      * </p>
+     * <note>
+     * <p>
+     * Amazon EC2 P3 accelerated computing instances are not available in the c/d/e availability zones of region
+     * us-east-1. If you want to create endpoints with P3 instances in VPC mode in region us-east-1, create subnets in
+     * a/b/f availability zones instead.
+     * </p>
+     * </note>
      */
     private java.util.List<String> subnets;
 
@@ -125,8 +135,20 @@ public class VpcConfig implements Serializable, Cloneable, StructuredPojo {
      * <p>
      * The ID of the subnets in the VPC to which you want to connect your training job or model.
      * </p>
+     * <note>
+     * <p>
+     * Amazon EC2 P3 accelerated computing instances are not available in the c/d/e availability zones of region
+     * us-east-1. If you want to create endpoints with P3 instances in VPC mode in region us-east-1, create subnets in
+     * a/b/f availability zones instead.
+     * </p>
+     * </note>
      * 
-     * @return The ID of the subnets in the VPC to which you want to connect your training job or model.
+     * @return The ID of the subnets in the VPC to which you want to connect your training job or model. </p> <note>
+     *         <p>
+     *         Amazon EC2 P3 accelerated computing instances are not available in the c/d/e availability zones of region
+     *         us-east-1. If you want to create endpoints with P3 instances in VPC mode in region us-east-1, create
+     *         subnets in a/b/f availability zones instead.
+     *         </p>
      */
 
     public java.util.List<String> getSubnets() {
@@ -137,9 +159,21 @@ public class VpcConfig implements Serializable, Cloneable, StructuredPojo {
      * <p>
      * The ID of the subnets in the VPC to which you want to connect your training job or model.
      * </p>
+     * <note>
+     * <p>
+     * Amazon EC2 P3 accelerated computing instances are not available in the c/d/e availability zones of region
+     * us-east-1. If you want to create endpoints with P3 instances in VPC mode in region us-east-1, create subnets in
+     * a/b/f availability zones instead.
+     * </p>
+     * </note>
      * 
      * @param subnets
-     *        The ID of the subnets in the VPC to which you want to connect your training job or model.
+     *        The ID of the subnets in the VPC to which you want to connect your training job or model. </p> <note>
+     *        <p>
+     *        Amazon EC2 P3 accelerated computing instances are not available in the c/d/e availability zones of region
+     *        us-east-1. If you want to create endpoints with P3 instances in VPC mode in region us-east-1, create
+     *        subnets in a/b/f availability zones instead.
+     *        </p>
      */
 
     public void setSubnets(java.util.Collection<String> subnets) {
@@ -155,6 +189,13 @@ public class VpcConfig implements Serializable, Cloneable, StructuredPojo {
      * <p>
      * The ID of the subnets in the VPC to which you want to connect your training job or model.
      * </p>
+     * <note>
+     * <p>
+     * Amazon EC2 P3 accelerated computing instances are not available in the c/d/e availability zones of region
+     * us-east-1. If you want to create endpoints with P3 instances in VPC mode in region us-east-1, create subnets in
+     * a/b/f availability zones instead.
+     * </p>
+     * </note>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
      * {@link #setSubnets(java.util.Collection)} or {@link #withSubnets(java.util.Collection)} if you want to override
@@ -162,7 +203,12 @@ public class VpcConfig implements Serializable, Cloneable, StructuredPojo {
      * </p>
      * 
      * @param subnets
-     *        The ID of the subnets in the VPC to which you want to connect your training job or model.
+     *        The ID of the subnets in the VPC to which you want to connect your training job or model. </p> <note>
+     *        <p>
+     *        Amazon EC2 P3 accelerated computing instances are not available in the c/d/e availability zones of region
+     *        us-east-1. If you want to create endpoints with P3 instances in VPC mode in region us-east-1, create
+     *        subnets in a/b/f availability zones instead.
+     *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -180,9 +226,21 @@ public class VpcConfig implements Serializable, Cloneable, StructuredPojo {
      * <p>
      * The ID of the subnets in the VPC to which you want to connect your training job or model.
      * </p>
+     * <note>
+     * <p>
+     * Amazon EC2 P3 accelerated computing instances are not available in the c/d/e availability zones of region
+     * us-east-1. If you want to create endpoints with P3 instances in VPC mode in region us-east-1, create subnets in
+     * a/b/f availability zones instead.
+     * </p>
+     * </note>
      * 
      * @param subnets
-     *        The ID of the subnets in the VPC to which you want to connect your training job or model.
+     *        The ID of the subnets in the VPC to which you want to connect your training job or model. </p> <note>
+     *        <p>
+     *        Amazon EC2 P3 accelerated computing instances are not available in the c/d/e availability zones of region
+     *        us-east-1. If you want to create endpoints with P3 instances in VPC mode in region us-east-1, create
+     *        subnets in a/b/f availability zones instead.
+     *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -192,7 +250,8 @@ public class VpcConfig implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -39,6 +39,12 @@ public class UpdateProfileRequest extends com.amazonaws.AmazonWebServiceRequest 
     private String profileName;
     /**
      * <p>
+     * Sets the profile as default if selected. If this is missing, no update is done to the default status.
+     * </p>
+     */
+    private Boolean isDefault;
+    /**
+     * <p>
      * The updated timezone for the room profile.
      * </p>
      */
@@ -67,6 +73,12 @@ public class UpdateProfileRequest extends com.amazonaws.AmazonWebServiceRequest 
      * </p>
      */
     private String wakeWord;
+    /**
+     * <p>
+     * The updated locale for the room profile.
+     * </p>
+     */
+    private String locale;
     /**
      * <p>
      * Whether the setup mode of the profile is enabled.
@@ -164,6 +176,58 @@ public class UpdateProfileRequest extends com.amazonaws.AmazonWebServiceRequest 
     public UpdateProfileRequest withProfileName(String profileName) {
         setProfileName(profileName);
         return this;
+    }
+
+    /**
+     * <p>
+     * Sets the profile as default if selected. If this is missing, no update is done to the default status.
+     * </p>
+     * 
+     * @param isDefault
+     *        Sets the profile as default if selected. If this is missing, no update is done to the default status.
+     */
+
+    public void setIsDefault(Boolean isDefault) {
+        this.isDefault = isDefault;
+    }
+
+    /**
+     * <p>
+     * Sets the profile as default if selected. If this is missing, no update is done to the default status.
+     * </p>
+     * 
+     * @return Sets the profile as default if selected. If this is missing, no update is done to the default status.
+     */
+
+    public Boolean getIsDefault() {
+        return this.isDefault;
+    }
+
+    /**
+     * <p>
+     * Sets the profile as default if selected. If this is missing, no update is done to the default status.
+     * </p>
+     * 
+     * @param isDefault
+     *        Sets the profile as default if selected. If this is missing, no update is done to the default status.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public UpdateProfileRequest withIsDefault(Boolean isDefault) {
+        setIsDefault(isDefault);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Sets the profile as default if selected. If this is missing, no update is done to the default status.
+     * </p>
+     * 
+     * @return Sets the profile as default if selected. If this is missing, no update is done to the default status.
+     */
+
+    public Boolean isDefault() {
+        return this.isDefault;
     }
 
     /**
@@ -425,6 +489,46 @@ public class UpdateProfileRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
+     * The updated locale for the room profile.
+     * </p>
+     * 
+     * @param locale
+     *        The updated locale for the room profile.
+     */
+
+    public void setLocale(String locale) {
+        this.locale = locale;
+    }
+
+    /**
+     * <p>
+     * The updated locale for the room profile.
+     * </p>
+     * 
+     * @return The updated locale for the room profile.
+     */
+
+    public String getLocale() {
+        return this.locale;
+    }
+
+    /**
+     * <p>
+     * The updated locale for the room profile.
+     * </p>
+     * 
+     * @param locale
+     *        The updated locale for the room profile.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public UpdateProfileRequest withLocale(String locale) {
+        setLocale(locale);
+        return this;
+    }
+
+    /**
+     * <p>
      * Whether the setup mode of the profile is enabled.
      * </p>
      * 
@@ -568,7 +672,8 @@ public class UpdateProfileRequest extends com.amazonaws.AmazonWebServiceRequest 
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -582,6 +687,8 @@ public class UpdateProfileRequest extends com.amazonaws.AmazonWebServiceRequest 
             sb.append("ProfileArn: ").append(getProfileArn()).append(",");
         if (getProfileName() != null)
             sb.append("ProfileName: ").append(getProfileName()).append(",");
+        if (getIsDefault() != null)
+            sb.append("IsDefault: ").append(getIsDefault()).append(",");
         if (getTimezone() != null)
             sb.append("Timezone: ").append(getTimezone()).append(",");
         if (getAddress() != null)
@@ -592,6 +699,8 @@ public class UpdateProfileRequest extends com.amazonaws.AmazonWebServiceRequest 
             sb.append("TemperatureUnit: ").append(getTemperatureUnit()).append(",");
         if (getWakeWord() != null)
             sb.append("WakeWord: ").append(getWakeWord()).append(",");
+        if (getLocale() != null)
+            sb.append("Locale: ").append(getLocale()).append(",");
         if (getSetupModeDisabled() != null)
             sb.append("SetupModeDisabled: ").append(getSetupModeDisabled()).append(",");
         if (getMaxVolumeLimit() != null)
@@ -620,6 +729,10 @@ public class UpdateProfileRequest extends com.amazonaws.AmazonWebServiceRequest 
             return false;
         if (other.getProfileName() != null && other.getProfileName().equals(this.getProfileName()) == false)
             return false;
+        if (other.getIsDefault() == null ^ this.getIsDefault() == null)
+            return false;
+        if (other.getIsDefault() != null && other.getIsDefault().equals(this.getIsDefault()) == false)
+            return false;
         if (other.getTimezone() == null ^ this.getTimezone() == null)
             return false;
         if (other.getTimezone() != null && other.getTimezone().equals(this.getTimezone()) == false)
@@ -639,6 +752,10 @@ public class UpdateProfileRequest extends com.amazonaws.AmazonWebServiceRequest 
         if (other.getWakeWord() == null ^ this.getWakeWord() == null)
             return false;
         if (other.getWakeWord() != null && other.getWakeWord().equals(this.getWakeWord()) == false)
+            return false;
+        if (other.getLocale() == null ^ this.getLocale() == null)
+            return false;
+        if (other.getLocale() != null && other.getLocale().equals(this.getLocale()) == false)
             return false;
         if (other.getSetupModeDisabled() == null ^ this.getSetupModeDisabled() == null)
             return false;
@@ -662,11 +779,13 @@ public class UpdateProfileRequest extends com.amazonaws.AmazonWebServiceRequest 
 
         hashCode = prime * hashCode + ((getProfileArn() == null) ? 0 : getProfileArn().hashCode());
         hashCode = prime * hashCode + ((getProfileName() == null) ? 0 : getProfileName().hashCode());
+        hashCode = prime * hashCode + ((getIsDefault() == null) ? 0 : getIsDefault().hashCode());
         hashCode = prime * hashCode + ((getTimezone() == null) ? 0 : getTimezone().hashCode());
         hashCode = prime * hashCode + ((getAddress() == null) ? 0 : getAddress().hashCode());
         hashCode = prime * hashCode + ((getDistanceUnit() == null) ? 0 : getDistanceUnit().hashCode());
         hashCode = prime * hashCode + ((getTemperatureUnit() == null) ? 0 : getTemperatureUnit().hashCode());
         hashCode = prime * hashCode + ((getWakeWord() == null) ? 0 : getWakeWord().hashCode());
+        hashCode = prime * hashCode + ((getLocale() == null) ? 0 : getLocale().hashCode());
         hashCode = prime * hashCode + ((getSetupModeDisabled() == null) ? 0 : getSetupModeDisabled().hashCode());
         hashCode = prime * hashCode + ((getMaxVolumeLimit() == null) ? 0 : getMaxVolumeLimit().hashCode());
         hashCode = prime * hashCode + ((getPSTNEnabled() == null) ? 0 : getPSTNEnabled().hashCode());

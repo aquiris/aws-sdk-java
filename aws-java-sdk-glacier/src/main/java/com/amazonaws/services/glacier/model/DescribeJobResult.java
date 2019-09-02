@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -17,7 +17,7 @@ import javax.annotation.Generated;
 
 /**
  * <p>
- * Contains the description of an Amazon Glacier job.
+ * Contains the description of an Amazon S3 Glacier job.
  * </p>
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
@@ -25,7 +25,7 @@ public class DescribeJobResult extends com.amazonaws.AmazonWebServiceResult<com.
 
     /**
      * <p>
-     * An opaque string that identifies an Amazon Glacier job.
+     * An opaque string that identifies an Amazon S3 Glacier job.
      * </p>
      */
     private String jobId;
@@ -199,11 +199,11 @@ public class DescribeJobResult extends com.amazonaws.AmazonWebServiceResult<com.
 
     /**
      * <p>
-     * An opaque string that identifies an Amazon Glacier job.
+     * An opaque string that identifies an Amazon S3 Glacier job.
      * </p>
      * 
      * @param jobId
-     *        An opaque string that identifies an Amazon Glacier job.
+     *        An opaque string that identifies an Amazon S3 Glacier job.
      */
 
     public void setJobId(String jobId) {
@@ -212,10 +212,10 @@ public class DescribeJobResult extends com.amazonaws.AmazonWebServiceResult<com.
 
     /**
      * <p>
-     * An opaque string that identifies an Amazon Glacier job.
+     * An opaque string that identifies an Amazon S3 Glacier job.
      * </p>
      * 
-     * @return An opaque string that identifies an Amazon Glacier job.
+     * @return An opaque string that identifies an Amazon S3 Glacier job.
      */
 
     public String getJobId() {
@@ -224,11 +224,11 @@ public class DescribeJobResult extends com.amazonaws.AmazonWebServiceResult<com.
 
     /**
      * <p>
-     * An opaque string that identifies an Amazon Glacier job.
+     * An opaque string that identifies an Amazon S3 Glacier job.
      * </p>
      * 
      * @param jobId
-     *        An opaque string that identifies an Amazon Glacier job.
+     *        An opaque string that identifies an Amazon S3 Glacier job.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1406,7 +1406,8 @@ public class DescribeJobResult extends com.amazonaws.AmazonWebServiceResult<com.
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

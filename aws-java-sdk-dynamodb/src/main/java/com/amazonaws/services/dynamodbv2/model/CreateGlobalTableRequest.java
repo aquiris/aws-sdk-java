@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -33,7 +33,7 @@ public class CreateGlobalTableRequest extends com.amazonaws.AmazonWebServiceRequ
     private String globalTableName;
     /**
      * <p>
-     * The regions where the global table needs to be created.
+     * The Regions where the global table needs to be created.
      * </p>
      */
     private java.util.List<Replica> replicationGroup;
@@ -80,10 +80,10 @@ public class CreateGlobalTableRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * The regions where the global table needs to be created.
+     * The Regions where the global table needs to be created.
      * </p>
      * 
-     * @return The regions where the global table needs to be created.
+     * @return The Regions where the global table needs to be created.
      */
 
     public java.util.List<Replica> getReplicationGroup() {
@@ -92,11 +92,11 @@ public class CreateGlobalTableRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * The regions where the global table needs to be created.
+     * The Regions where the global table needs to be created.
      * </p>
      * 
      * @param replicationGroup
-     *        The regions where the global table needs to be created.
+     *        The Regions where the global table needs to be created.
      */
 
     public void setReplicationGroup(java.util.Collection<Replica> replicationGroup) {
@@ -110,7 +110,7 @@ public class CreateGlobalTableRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * The regions where the global table needs to be created.
+     * The Regions where the global table needs to be created.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -119,7 +119,7 @@ public class CreateGlobalTableRequest extends com.amazonaws.AmazonWebServiceRequ
      * </p>
      * 
      * @param replicationGroup
-     *        The regions where the global table needs to be created.
+     *        The Regions where the global table needs to be created.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -135,11 +135,11 @@ public class CreateGlobalTableRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * The regions where the global table needs to be created.
+     * The Regions where the global table needs to be created.
      * </p>
      * 
      * @param replicationGroup
-     *        The regions where the global table needs to be created.
+     *        The Regions where the global table needs to be created.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -149,7 +149,8 @@ public class CreateGlobalTableRequest extends com.amazonaws.AmazonWebServiceRequ
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

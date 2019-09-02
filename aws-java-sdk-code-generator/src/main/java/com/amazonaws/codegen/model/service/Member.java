@@ -27,6 +27,8 @@ public class Member {
 
     private boolean streaming;
 
+    private boolean requiresLength;
+
     private boolean jsonvalue;
 
     private String documentation;
@@ -40,6 +42,10 @@ public class Member {
     private boolean idempotencyToken;
 
     private boolean deprecated;
+
+    private boolean sensitive;
+
+    private String timestampFormat;
 
     public String getShape() {
         return shape;
@@ -79,6 +85,14 @@ public class Member {
 
     public void setStreaming(boolean streaming) {
         this.streaming = streaming;
+    }
+
+    public boolean isRequiresLength() {
+        return requiresLength;
+    }
+
+    public void setRequiresLength(boolean requiresLength) {
+        this.requiresLength = requiresLength;
     }
 
     public boolean isJsonvalue() {
@@ -135,5 +149,20 @@ public class Member {
 
     public void setDeprecated(boolean deprecated) {
         this.deprecated = deprecated;
+    }
+
+    public boolean isSensitive() {
+        return sensitive;
+    }
+
+    public void setSensitive(boolean sensitive) {
+        this.sensitive = sensitive;
+    }
+    public String getTimestampFormat() {
+        return timestampFormat;
+    }
+
+    public void setTimestampFormat(String timestampFormat) {
+        this.timestampFormat = timestampFormat;
     }
 }

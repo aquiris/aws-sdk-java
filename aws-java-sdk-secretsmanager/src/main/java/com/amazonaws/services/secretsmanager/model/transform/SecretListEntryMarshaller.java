@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -44,17 +44,19 @@ public class SecretListEntryMarshaller {
     private static final MarshallingInfo<StructuredPojo> ROTATIONRULES_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("RotationRules").build();
     private static final MarshallingInfo<java.util.Date> LASTROTATEDDATE_BINDING = MarshallingInfo.builder(MarshallingType.DATE)
-            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("LastRotatedDate").build();
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("LastRotatedDate").timestampFormat("unixTimestamp").build();
     private static final MarshallingInfo<java.util.Date> LASTCHANGEDDATE_BINDING = MarshallingInfo.builder(MarshallingType.DATE)
-            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("LastChangedDate").build();
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("LastChangedDate").timestampFormat("unixTimestamp").build();
     private static final MarshallingInfo<java.util.Date> LASTACCESSEDDATE_BINDING = MarshallingInfo.builder(MarshallingType.DATE)
-            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("LastAccessedDate").build();
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("LastAccessedDate").timestampFormat("unixTimestamp").build();
     private static final MarshallingInfo<java.util.Date> DELETEDDATE_BINDING = MarshallingInfo.builder(MarshallingType.DATE)
-            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("DeletedDate").build();
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("DeletedDate").timestampFormat("unixTimestamp").build();
     private static final MarshallingInfo<List> TAGS_BINDING = MarshallingInfo.builder(MarshallingType.LIST).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("Tags").build();
     private static final MarshallingInfo<Map> SECRETVERSIONSTOSTAGES_BINDING = MarshallingInfo.builder(MarshallingType.MAP)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("SecretVersionsToStages").build();
+    private static final MarshallingInfo<String> OWNINGSERVICE_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("OwningService").build();
 
     private static final SecretListEntryMarshaller instance = new SecretListEntryMarshaller();
 
@@ -85,6 +87,7 @@ public class SecretListEntryMarshaller {
             protocolMarshaller.marshall(secretListEntry.getDeletedDate(), DELETEDDATE_BINDING);
             protocolMarshaller.marshall(secretListEntry.getTags(), TAGS_BINDING);
             protocolMarshaller.marshall(secretListEntry.getSecretVersionsToStages(), SECRETVERSIONSTOSTAGES_BINDING);
+            protocolMarshaller.marshall(secretListEntry.getOwningService(), OWNINGSERVICE_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -74,7 +74,10 @@ public class DeploymentGroupInfo implements Serializable, Cloneable, StructuredP
     private com.amazonaws.internal.SdkInternalList<AutoScalingGroup> autoScalingGroups;
     /**
      * <p>
-     * A service role ARN.
+     * A service role Amazon Resource Name (ARN) that grants CodeDeploy permission to make calls to AWS services on your
+     * behalf. For more information, see <a
+     * href="https://docs.aws.amazon.com/codedeploy/latest/userguide/getting-started-create-service-role.html">Create a
+     * Service Role for AWS CodeDeploy</a> in the <i>AWS CodeDeploy User Guide</i>.
      * </p>
      */
     private String serviceRoleArn;
@@ -136,7 +139,7 @@ public class DeploymentGroupInfo implements Serializable, Cloneable, StructuredP
     /**
      * <p>
      * Information about groups of tags applied to an EC2 instance. The deployment group includes only EC2 instances
-     * identified by all the tag groups. Cannot be used in the same call as ec2TagFilters.
+     * identified by all of the tag groups. Cannot be used in the same call as ec2TagFilters.
      * </p>
      */
     private EC2TagSet ec2TagSet;
@@ -150,10 +153,18 @@ public class DeploymentGroupInfo implements Serializable, Cloneable, StructuredP
     private OnPremisesTagSet onPremisesTagSet;
     /**
      * <p>
-     * The destination platform type for the deployment group (<code>Lambda</code> or <code>Server</code>).
+     * The destination platform type for the deployment (<code>Lambda</code>, <code>Server</code>, or <code>ECS</code>).
      * </p>
      */
     private String computePlatform;
+    /**
+     * <p>
+     * The target Amazon ECS services in the deployment group. This applies only to deployment groups that use the
+     * Amazon ECS compute platform. A target Amazon ECS service is specified as an Amazon ECS cluster and service name
+     * pair using the format <code>&lt;clustername&gt;:&lt;servicename&gt;</code>.
+     * </p>
+     */
+    private com.amazonaws.internal.SdkInternalList<ECSService> ecsServices;
 
     /**
      * <p>
@@ -552,11 +563,17 @@ public class DeploymentGroupInfo implements Serializable, Cloneable, StructuredP
 
     /**
      * <p>
-     * A service role ARN.
+     * A service role Amazon Resource Name (ARN) that grants CodeDeploy permission to make calls to AWS services on your
+     * behalf. For more information, see <a
+     * href="https://docs.aws.amazon.com/codedeploy/latest/userguide/getting-started-create-service-role.html">Create a
+     * Service Role for AWS CodeDeploy</a> in the <i>AWS CodeDeploy User Guide</i>.
      * </p>
      * 
      * @param serviceRoleArn
-     *        A service role ARN.
+     *        A service role Amazon Resource Name (ARN) that grants CodeDeploy permission to make calls to AWS services
+     *        on your behalf. For more information, see <a
+     *        href="https://docs.aws.amazon.com/codedeploy/latest/userguide/getting-started-create-service-role.html"
+     *        >Create a Service Role for AWS CodeDeploy</a> in the <i>AWS CodeDeploy User Guide</i>.
      */
 
     public void setServiceRoleArn(String serviceRoleArn) {
@@ -565,10 +582,16 @@ public class DeploymentGroupInfo implements Serializable, Cloneable, StructuredP
 
     /**
      * <p>
-     * A service role ARN.
+     * A service role Amazon Resource Name (ARN) that grants CodeDeploy permission to make calls to AWS services on your
+     * behalf. For more information, see <a
+     * href="https://docs.aws.amazon.com/codedeploy/latest/userguide/getting-started-create-service-role.html">Create a
+     * Service Role for AWS CodeDeploy</a> in the <i>AWS CodeDeploy User Guide</i>.
      * </p>
      * 
-     * @return A service role ARN.
+     * @return A service role Amazon Resource Name (ARN) that grants CodeDeploy permission to make calls to AWS services
+     *         on your behalf. For more information, see <a
+     *         href="https://docs.aws.amazon.com/codedeploy/latest/userguide/getting-started-create-service-role.html"
+     *         >Create a Service Role for AWS CodeDeploy</a> in the <i>AWS CodeDeploy User Guide</i>.
      */
 
     public String getServiceRoleArn() {
@@ -577,11 +600,17 @@ public class DeploymentGroupInfo implements Serializable, Cloneable, StructuredP
 
     /**
      * <p>
-     * A service role ARN.
+     * A service role Amazon Resource Name (ARN) that grants CodeDeploy permission to make calls to AWS services on your
+     * behalf. For more information, see <a
+     * href="https://docs.aws.amazon.com/codedeploy/latest/userguide/getting-started-create-service-role.html">Create a
+     * Service Role for AWS CodeDeploy</a> in the <i>AWS CodeDeploy User Guide</i>.
      * </p>
      * 
      * @param serviceRoleArn
-     *        A service role ARN.
+     *        A service role Amazon Resource Name (ARN) that grants CodeDeploy permission to make calls to AWS services
+     *        on your behalf. For more information, see <a
+     *        href="https://docs.aws.amazon.com/codedeploy/latest/userguide/getting-started-create-service-role.html"
+     *        >Create a Service Role for AWS CodeDeploy</a> in the <i>AWS CodeDeploy User Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -992,12 +1021,12 @@ public class DeploymentGroupInfo implements Serializable, Cloneable, StructuredP
     /**
      * <p>
      * Information about groups of tags applied to an EC2 instance. The deployment group includes only EC2 instances
-     * identified by all the tag groups. Cannot be used in the same call as ec2TagFilters.
+     * identified by all of the tag groups. Cannot be used in the same call as ec2TagFilters.
      * </p>
      * 
      * @param ec2TagSet
      *        Information about groups of tags applied to an EC2 instance. The deployment group includes only EC2
-     *        instances identified by all the tag groups. Cannot be used in the same call as ec2TagFilters.
+     *        instances identified by all of the tag groups. Cannot be used in the same call as ec2TagFilters.
      */
 
     public void setEc2TagSet(EC2TagSet ec2TagSet) {
@@ -1007,11 +1036,11 @@ public class DeploymentGroupInfo implements Serializable, Cloneable, StructuredP
     /**
      * <p>
      * Information about groups of tags applied to an EC2 instance. The deployment group includes only EC2 instances
-     * identified by all the tag groups. Cannot be used in the same call as ec2TagFilters.
+     * identified by all of the tag groups. Cannot be used in the same call as ec2TagFilters.
      * </p>
      * 
      * @return Information about groups of tags applied to an EC2 instance. The deployment group includes only EC2
-     *         instances identified by all the tag groups. Cannot be used in the same call as ec2TagFilters.
+     *         instances identified by all of the tag groups. Cannot be used in the same call as ec2TagFilters.
      */
 
     public EC2TagSet getEc2TagSet() {
@@ -1021,12 +1050,12 @@ public class DeploymentGroupInfo implements Serializable, Cloneable, StructuredP
     /**
      * <p>
      * Information about groups of tags applied to an EC2 instance. The deployment group includes only EC2 instances
-     * identified by all the tag groups. Cannot be used in the same call as ec2TagFilters.
+     * identified by all of the tag groups. Cannot be used in the same call as ec2TagFilters.
      * </p>
      * 
      * @param ec2TagSet
      *        Information about groups of tags applied to an EC2 instance. The deployment group includes only EC2
-     *        instances identified by all the tag groups. Cannot be used in the same call as ec2TagFilters.
+     *        instances identified by all of the tag groups. Cannot be used in the same call as ec2TagFilters.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1089,11 +1118,12 @@ public class DeploymentGroupInfo implements Serializable, Cloneable, StructuredP
 
     /**
      * <p>
-     * The destination platform type for the deployment group (<code>Lambda</code> or <code>Server</code>).
+     * The destination platform type for the deployment (<code>Lambda</code>, <code>Server</code>, or <code>ECS</code>).
      * </p>
      * 
      * @param computePlatform
-     *        The destination platform type for the deployment group (<code>Lambda</code> or <code>Server</code>).
+     *        The destination platform type for the deployment (<code>Lambda</code>, <code>Server</code>, or
+     *        <code>ECS</code>).
      * @see ComputePlatform
      */
 
@@ -1103,10 +1133,11 @@ public class DeploymentGroupInfo implements Serializable, Cloneable, StructuredP
 
     /**
      * <p>
-     * The destination platform type for the deployment group (<code>Lambda</code> or <code>Server</code>).
+     * The destination platform type for the deployment (<code>Lambda</code>, <code>Server</code>, or <code>ECS</code>).
      * </p>
      * 
-     * @return The destination platform type for the deployment group (<code>Lambda</code> or <code>Server</code>).
+     * @return The destination platform type for the deployment (<code>Lambda</code>, <code>Server</code>, or
+     *         <code>ECS</code>).
      * @see ComputePlatform
      */
 
@@ -1116,11 +1147,12 @@ public class DeploymentGroupInfo implements Serializable, Cloneable, StructuredP
 
     /**
      * <p>
-     * The destination platform type for the deployment group (<code>Lambda</code> or <code>Server</code>).
+     * The destination platform type for the deployment (<code>Lambda</code>, <code>Server</code>, or <code>ECS</code>).
      * </p>
      * 
      * @param computePlatform
-     *        The destination platform type for the deployment group (<code>Lambda</code> or <code>Server</code>).
+     *        The destination platform type for the deployment (<code>Lambda</code>, <code>Server</code>, or
+     *        <code>ECS</code>).
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see ComputePlatform
      */
@@ -1132,11 +1164,12 @@ public class DeploymentGroupInfo implements Serializable, Cloneable, StructuredP
 
     /**
      * <p>
-     * The destination platform type for the deployment group (<code>Lambda</code> or <code>Server</code>).
+     * The destination platform type for the deployment (<code>Lambda</code>, <code>Server</code>, or <code>ECS</code>).
      * </p>
      * 
      * @param computePlatform
-     *        The destination platform type for the deployment group (<code>Lambda</code> or <code>Server</code>).
+     *        The destination platform type for the deployment (<code>Lambda</code>, <code>Server</code>, or
+     *        <code>ECS</code>).
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see ComputePlatform
      */
@@ -1147,7 +1180,97 @@ public class DeploymentGroupInfo implements Serializable, Cloneable, StructuredP
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * <p>
+     * The target Amazon ECS services in the deployment group. This applies only to deployment groups that use the
+     * Amazon ECS compute platform. A target Amazon ECS service is specified as an Amazon ECS cluster and service name
+     * pair using the format <code>&lt;clustername&gt;:&lt;servicename&gt;</code>.
+     * </p>
+     * 
+     * @return The target Amazon ECS services in the deployment group. This applies only to deployment groups that use
+     *         the Amazon ECS compute platform. A target Amazon ECS service is specified as an Amazon ECS cluster and
+     *         service name pair using the format <code>&lt;clustername&gt;:&lt;servicename&gt;</code>.
+     */
+
+    public java.util.List<ECSService> getEcsServices() {
+        if (ecsServices == null) {
+            ecsServices = new com.amazonaws.internal.SdkInternalList<ECSService>();
+        }
+        return ecsServices;
+    }
+
+    /**
+     * <p>
+     * The target Amazon ECS services in the deployment group. This applies only to deployment groups that use the
+     * Amazon ECS compute platform. A target Amazon ECS service is specified as an Amazon ECS cluster and service name
+     * pair using the format <code>&lt;clustername&gt;:&lt;servicename&gt;</code>.
+     * </p>
+     * 
+     * @param ecsServices
+     *        The target Amazon ECS services in the deployment group. This applies only to deployment groups that use
+     *        the Amazon ECS compute platform. A target Amazon ECS service is specified as an Amazon ECS cluster and
+     *        service name pair using the format <code>&lt;clustername&gt;:&lt;servicename&gt;</code>.
+     */
+
+    public void setEcsServices(java.util.Collection<ECSService> ecsServices) {
+        if (ecsServices == null) {
+            this.ecsServices = null;
+            return;
+        }
+
+        this.ecsServices = new com.amazonaws.internal.SdkInternalList<ECSService>(ecsServices);
+    }
+
+    /**
+     * <p>
+     * The target Amazon ECS services in the deployment group. This applies only to deployment groups that use the
+     * Amazon ECS compute platform. A target Amazon ECS service is specified as an Amazon ECS cluster and service name
+     * pair using the format <code>&lt;clustername&gt;:&lt;servicename&gt;</code>.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setEcsServices(java.util.Collection)} or {@link #withEcsServices(java.util.Collection)} if you want to
+     * override the existing values.
+     * </p>
+     * 
+     * @param ecsServices
+     *        The target Amazon ECS services in the deployment group. This applies only to deployment groups that use
+     *        the Amazon ECS compute platform. A target Amazon ECS service is specified as an Amazon ECS cluster and
+     *        service name pair using the format <code>&lt;clustername&gt;:&lt;servicename&gt;</code>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DeploymentGroupInfo withEcsServices(ECSService... ecsServices) {
+        if (this.ecsServices == null) {
+            setEcsServices(new com.amazonaws.internal.SdkInternalList<ECSService>(ecsServices.length));
+        }
+        for (ECSService ele : ecsServices) {
+            this.ecsServices.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * The target Amazon ECS services in the deployment group. This applies only to deployment groups that use the
+     * Amazon ECS compute platform. A target Amazon ECS service is specified as an Amazon ECS cluster and service name
+     * pair using the format <code>&lt;clustername&gt;:&lt;servicename&gt;</code>.
+     * </p>
+     * 
+     * @param ecsServices
+     *        The target Amazon ECS services in the deployment group. This applies only to deployment groups that use
+     *        the Amazon ECS compute platform. A target Amazon ECS service is specified as an Amazon ECS cluster and
+     *        service name pair using the format <code>&lt;clustername&gt;:&lt;servicename&gt;</code>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DeploymentGroupInfo withEcsServices(java.util.Collection<ECSService> ecsServices) {
+        setEcsServices(ecsServices);
+        return this;
+    }
+
+    /**
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -1196,7 +1319,9 @@ public class DeploymentGroupInfo implements Serializable, Cloneable, StructuredP
         if (getOnPremisesTagSet() != null)
             sb.append("OnPremisesTagSet: ").append(getOnPremisesTagSet()).append(",");
         if (getComputePlatform() != null)
-            sb.append("ComputePlatform: ").append(getComputePlatform());
+            sb.append("ComputePlatform: ").append(getComputePlatform()).append(",");
+        if (getEcsServices() != null)
+            sb.append("EcsServices: ").append(getEcsServices());
         sb.append("}");
         return sb.toString();
     }
@@ -1292,6 +1417,10 @@ public class DeploymentGroupInfo implements Serializable, Cloneable, StructuredP
             return false;
         if (other.getComputePlatform() != null && other.getComputePlatform().equals(this.getComputePlatform()) == false)
             return false;
+        if (other.getEcsServices() == null ^ this.getEcsServices() == null)
+            return false;
+        if (other.getEcsServices() != null && other.getEcsServices().equals(this.getEcsServices()) == false)
+            return false;
         return true;
     }
 
@@ -1320,6 +1449,7 @@ public class DeploymentGroupInfo implements Serializable, Cloneable, StructuredP
         hashCode = prime * hashCode + ((getEc2TagSet() == null) ? 0 : getEc2TagSet().hashCode());
         hashCode = prime * hashCode + ((getOnPremisesTagSet() == null) ? 0 : getOnPremisesTagSet().hashCode());
         hashCode = prime * hashCode + ((getComputePlatform() == null) ? 0 : getComputePlatform().hashCode());
+        hashCode = prime * hashCode + ((getEcsServices() == null) ? 0 : getEcsServices().hashCode());
         return hashCode;
     }
 

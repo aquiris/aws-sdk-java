@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -19,7 +19,7 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * A development endpoint where a developer can remotely debug ETL scripts.
+ * A development endpoint where a developer can remotely debug extract, transform, and load (ETL) scripts.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/DevEndpoint" target="_top">AWS API
@@ -30,37 +30,39 @@ public class DevEndpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The name of the DevEndpoint.
+     * The name of the <code>DevEndpoint</code>.
      * </p>
      */
     private String endpointName;
     /**
      * <p>
-     * The AWS ARN of the IAM role used in this DevEndpoint.
+     * The Amazon Resource Name (ARN) of the IAM role used in this <code>DevEndpoint</code>.
      * </p>
      */
     private String roleArn;
     /**
      * <p>
-     * A list of security group identifiers used in this DevEndpoint.
+     * A list of security group identifiers used in this <code>DevEndpoint</code>.
      * </p>
      */
     private java.util.List<String> securityGroupIds;
     /**
      * <p>
-     * The subnet ID for this DevEndpoint.
+     * The subnet ID for this <code>DevEndpoint</code>.
      * </p>
      */
     private String subnetId;
     /**
      * <p>
-     * The YARN endpoint address used by this DevEndpoint.
+     * The YARN endpoint address used by this <code>DevEndpoint</code>.
      * </p>
      */
     private String yarnEndpointAddress;
     /**
      * <p>
-     * The private address used by this DevEndpoint.
+     * A private IP address to access the <code>DevEndpoint</code> within a VPC if the <code>DevEndpoint</code> is
+     * created within one. The <code>PrivateAddress</code> field is present only when you create the
+     * <code>DevEndpoint</code> within your VPC.
      * </p>
      */
     private String privateAddress;
@@ -72,58 +74,104 @@ public class DevEndpoint implements Serializable, Cloneable, StructuredPojo {
     private Integer zeppelinRemoteSparkInterpreterPort;
     /**
      * <p>
-     * The public VPC address used by this DevEndpoint.
+     * The public IP address used by this <code>DevEndpoint</code>. The <code>PublicAddress</code> field is present only
+     * when you create a non-virtual private cloud (VPC) <code>DevEndpoint</code>.
      * </p>
      */
     private String publicAddress;
     /**
      * <p>
-     * The current status of this DevEndpoint.
+     * The current status of this <code>DevEndpoint</code>.
      * </p>
      */
     private String status;
     /**
      * <p>
-     * The number of AWS Glue Data Processing Units (DPUs) allocated to this DevEndpoint.
+     * The type of predefined worker that is allocated to the development endpoint. Accepts a value of Standard, G.1X,
+     * or G.2X.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * For the <code>Standard</code> worker type, each worker provides 4 vCPU, 16 GB of memory and a 50GB disk, and 2
+     * executors per worker.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For the <code>G.1X</code> worker type, each worker maps to 1 DPU (4 vCPU, 16 GB of memory, 64 GB disk), and
+     * provides 1 executor per worker. We recommend this worker type for memory-intensive jobs.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For the <code>G.2X</code> worker type, each worker maps to 2 DPU (8 vCPU, 32 GB of memory, 128 GB disk), and
+     * provides 1 executor per worker. We recommend this worker type for memory-intensive jobs.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * Known issue: when a development endpoint is created with the <code>G.2X</code> <code>WorkerType</code>
+     * configuration, the Spark drivers for the development endpoint will run on 4 vCPU, 16 GB of memory, and a 64 GB
+     * disk.
+     * </p>
+     */
+    private String workerType;
+    /**
+     * <p>
+     * The number of workers of a defined <code>workerType</code> that are allocated to the development endpoint.
+     * </p>
+     * <p>
+     * The maximum number of workers you can define are 299 for <code>G.1X</code>, and 149 for <code>G.2X</code>.
+     * </p>
+     */
+    private Integer numberOfWorkers;
+    /**
+     * <p>
+     * The number of AWS Glue Data Processing Units (DPUs) allocated to this <code>DevEndpoint</code>.
      * </p>
      */
     private Integer numberOfNodes;
     /**
      * <p>
-     * The AWS availability zone where this DevEndpoint is located.
+     * The AWS Availability Zone where this <code>DevEndpoint</code> is located.
      * </p>
      */
     private String availabilityZone;
     /**
      * <p>
-     * The ID of the virtual private cloud (VPC) used by this DevEndpoint.
+     * The ID of the virtual private cloud (VPC) used by this <code>DevEndpoint</code>.
      * </p>
      */
     private String vpcId;
     /**
      * <p>
-     * Path(s) to one or more Python libraries in an S3 bucket that should be loaded in your DevEndpoint. Multiple
-     * values must be complete paths separated by a comma.
+     * The paths to one or more Python libraries in an Amazon S3 bucket that should be loaded in your
+     * <code>DevEndpoint</code>. Multiple values must be complete paths separated by a comma.
      * </p>
+     * <note>
      * <p>
-     * Please note that only pure Python libraries can currently be used on a DevEndpoint. Libraries that rely on C
-     * extensions, such as the <a href="http://pandas.pydata.org/">pandas</a> Python data analysis library, are not yet
-     * supported.
+     * You can only use pure Python libraries with a <code>DevEndpoint</code>. Libraries that rely on C extensions, such
+     * as the <a href="http://pandas.pydata.org/">pandas</a> Python data analysis library, are not currently supported.
      * </p>
+     * </note>
      */
     private String extraPythonLibsS3Path;
     /**
      * <p>
-     * Path to one or more Java Jars in an S3 bucket that should be loaded in your DevEndpoint.
+     * The path to one or more Java <code>.jar</code> files in an S3 bucket that should be loaded in your
+     * <code>DevEndpoint</code>.
      * </p>
+     * <note>
      * <p>
-     * Please note that only pure Java/Scala libraries can currently be used on a DevEndpoint.
+     * You can only use pure Java/Scala libraries with a <code>DevEndpoint</code>.
      * </p>
+     * </note>
      */
     private String extraJarsS3Path;
     /**
      * <p>
-     * The reason for a current failure in this DevEndpoint.
+     * The reason for a current failure in this <code>DevEndpoint</code>.
      * </p>
      */
     private String failureReason;
@@ -141,24 +189,54 @@ public class DevEndpoint implements Serializable, Cloneable, StructuredPojo {
     private java.util.Date createdTimestamp;
     /**
      * <p>
-     * The point in time at which this DevEndpoint was last modified.
+     * The point in time at which this <code>DevEndpoint</code> was last modified.
      * </p>
      */
     private java.util.Date lastModifiedTimestamp;
     /**
      * <p>
-     * The public key to be used by this DevEndpoint for authentication.
+     * The public key to be used by this <code>DevEndpoint</code> for authentication. This attribute is provided for
+     * backward compatibility because the recommended attribute to use is public keys.
      * </p>
      */
     private String publicKey;
+    /**
+     * <p>
+     * A list of public keys to be used by the <code>DevEndpoints</code> for authentication. Using this attribute is
+     * preferred over a single public key because the public keys allow you to have a different private key per client.
+     * </p>
+     * <note>
+     * <p>
+     * If you previously created an endpoint with a public key, you must remove that key to be able to set a list of
+     * public keys. Call the <code>UpdateDevEndpoint</code> API operation with the public key content in the
+     * <code>deletePublicKeys</code> attribute, and the list of new keys in the <code>addPublicKeys</code> attribute.
+     * </p>
+     * </note>
+     */
+    private java.util.List<String> publicKeys;
+    /**
+     * <p>
+     * The name of the <code>SecurityConfiguration</code> structure to be used with this <code>DevEndpoint</code>.
+     * </p>
+     */
+    private String securityConfiguration;
+    /**
+     * <p>
+     * A map of arguments used to configure the <code>DevEndpoint</code>.
+     * </p>
+     * <p>
+     * Currently, only <code>"--enable-glue-datacatalog": ""</code> is supported as a valid argument.
+     * </p>
+     */
+    private java.util.Map<String, String> arguments;
 
     /**
      * <p>
-     * The name of the DevEndpoint.
+     * The name of the <code>DevEndpoint</code>.
      * </p>
      * 
      * @param endpointName
-     *        The name of the DevEndpoint.
+     *        The name of the <code>DevEndpoint</code>.
      */
 
     public void setEndpointName(String endpointName) {
@@ -167,10 +245,10 @@ public class DevEndpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The name of the DevEndpoint.
+     * The name of the <code>DevEndpoint</code>.
      * </p>
      * 
-     * @return The name of the DevEndpoint.
+     * @return The name of the <code>DevEndpoint</code>.
      */
 
     public String getEndpointName() {
@@ -179,11 +257,11 @@ public class DevEndpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The name of the DevEndpoint.
+     * The name of the <code>DevEndpoint</code>.
      * </p>
      * 
      * @param endpointName
-     *        The name of the DevEndpoint.
+     *        The name of the <code>DevEndpoint</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -194,11 +272,11 @@ public class DevEndpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The AWS ARN of the IAM role used in this DevEndpoint.
+     * The Amazon Resource Name (ARN) of the IAM role used in this <code>DevEndpoint</code>.
      * </p>
      * 
      * @param roleArn
-     *        The AWS ARN of the IAM role used in this DevEndpoint.
+     *        The Amazon Resource Name (ARN) of the IAM role used in this <code>DevEndpoint</code>.
      */
 
     public void setRoleArn(String roleArn) {
@@ -207,10 +285,10 @@ public class DevEndpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The AWS ARN of the IAM role used in this DevEndpoint.
+     * The Amazon Resource Name (ARN) of the IAM role used in this <code>DevEndpoint</code>.
      * </p>
      * 
-     * @return The AWS ARN of the IAM role used in this DevEndpoint.
+     * @return The Amazon Resource Name (ARN) of the IAM role used in this <code>DevEndpoint</code>.
      */
 
     public String getRoleArn() {
@@ -219,11 +297,11 @@ public class DevEndpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The AWS ARN of the IAM role used in this DevEndpoint.
+     * The Amazon Resource Name (ARN) of the IAM role used in this <code>DevEndpoint</code>.
      * </p>
      * 
      * @param roleArn
-     *        The AWS ARN of the IAM role used in this DevEndpoint.
+     *        The Amazon Resource Name (ARN) of the IAM role used in this <code>DevEndpoint</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -234,10 +312,10 @@ public class DevEndpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * A list of security group identifiers used in this DevEndpoint.
+     * A list of security group identifiers used in this <code>DevEndpoint</code>.
      * </p>
      * 
-     * @return A list of security group identifiers used in this DevEndpoint.
+     * @return A list of security group identifiers used in this <code>DevEndpoint</code>.
      */
 
     public java.util.List<String> getSecurityGroupIds() {
@@ -246,11 +324,11 @@ public class DevEndpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * A list of security group identifiers used in this DevEndpoint.
+     * A list of security group identifiers used in this <code>DevEndpoint</code>.
      * </p>
      * 
      * @param securityGroupIds
-     *        A list of security group identifiers used in this DevEndpoint.
+     *        A list of security group identifiers used in this <code>DevEndpoint</code>.
      */
 
     public void setSecurityGroupIds(java.util.Collection<String> securityGroupIds) {
@@ -264,7 +342,7 @@ public class DevEndpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * A list of security group identifiers used in this DevEndpoint.
+     * A list of security group identifiers used in this <code>DevEndpoint</code>.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -273,7 +351,7 @@ public class DevEndpoint implements Serializable, Cloneable, StructuredPojo {
      * </p>
      * 
      * @param securityGroupIds
-     *        A list of security group identifiers used in this DevEndpoint.
+     *        A list of security group identifiers used in this <code>DevEndpoint</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -289,11 +367,11 @@ public class DevEndpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * A list of security group identifiers used in this DevEndpoint.
+     * A list of security group identifiers used in this <code>DevEndpoint</code>.
      * </p>
      * 
      * @param securityGroupIds
-     *        A list of security group identifiers used in this DevEndpoint.
+     *        A list of security group identifiers used in this <code>DevEndpoint</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -304,11 +382,11 @@ public class DevEndpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The subnet ID for this DevEndpoint.
+     * The subnet ID for this <code>DevEndpoint</code>.
      * </p>
      * 
      * @param subnetId
-     *        The subnet ID for this DevEndpoint.
+     *        The subnet ID for this <code>DevEndpoint</code>.
      */
 
     public void setSubnetId(String subnetId) {
@@ -317,10 +395,10 @@ public class DevEndpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The subnet ID for this DevEndpoint.
+     * The subnet ID for this <code>DevEndpoint</code>.
      * </p>
      * 
-     * @return The subnet ID for this DevEndpoint.
+     * @return The subnet ID for this <code>DevEndpoint</code>.
      */
 
     public String getSubnetId() {
@@ -329,11 +407,11 @@ public class DevEndpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The subnet ID for this DevEndpoint.
+     * The subnet ID for this <code>DevEndpoint</code>.
      * </p>
      * 
      * @param subnetId
-     *        The subnet ID for this DevEndpoint.
+     *        The subnet ID for this <code>DevEndpoint</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -344,11 +422,11 @@ public class DevEndpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The YARN endpoint address used by this DevEndpoint.
+     * The YARN endpoint address used by this <code>DevEndpoint</code>.
      * </p>
      * 
      * @param yarnEndpointAddress
-     *        The YARN endpoint address used by this DevEndpoint.
+     *        The YARN endpoint address used by this <code>DevEndpoint</code>.
      */
 
     public void setYarnEndpointAddress(String yarnEndpointAddress) {
@@ -357,10 +435,10 @@ public class DevEndpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The YARN endpoint address used by this DevEndpoint.
+     * The YARN endpoint address used by this <code>DevEndpoint</code>.
      * </p>
      * 
-     * @return The YARN endpoint address used by this DevEndpoint.
+     * @return The YARN endpoint address used by this <code>DevEndpoint</code>.
      */
 
     public String getYarnEndpointAddress() {
@@ -369,11 +447,11 @@ public class DevEndpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The YARN endpoint address used by this DevEndpoint.
+     * The YARN endpoint address used by this <code>DevEndpoint</code>.
      * </p>
      * 
      * @param yarnEndpointAddress
-     *        The YARN endpoint address used by this DevEndpoint.
+     *        The YARN endpoint address used by this <code>DevEndpoint</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -384,11 +462,15 @@ public class DevEndpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The private address used by this DevEndpoint.
+     * A private IP address to access the <code>DevEndpoint</code> within a VPC if the <code>DevEndpoint</code> is
+     * created within one. The <code>PrivateAddress</code> field is present only when you create the
+     * <code>DevEndpoint</code> within your VPC.
      * </p>
      * 
      * @param privateAddress
-     *        The private address used by this DevEndpoint.
+     *        A private IP address to access the <code>DevEndpoint</code> within a VPC if the <code>DevEndpoint</code>
+     *        is created within one. The <code>PrivateAddress</code> field is present only when you create the
+     *        <code>DevEndpoint</code> within your VPC.
      */
 
     public void setPrivateAddress(String privateAddress) {
@@ -397,10 +479,14 @@ public class DevEndpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The private address used by this DevEndpoint.
+     * A private IP address to access the <code>DevEndpoint</code> within a VPC if the <code>DevEndpoint</code> is
+     * created within one. The <code>PrivateAddress</code> field is present only when you create the
+     * <code>DevEndpoint</code> within your VPC.
      * </p>
      * 
-     * @return The private address used by this DevEndpoint.
+     * @return A private IP address to access the <code>DevEndpoint</code> within a VPC if the <code>DevEndpoint</code>
+     *         is created within one. The <code>PrivateAddress</code> field is present only when you create the
+     *         <code>DevEndpoint</code> within your VPC.
      */
 
     public String getPrivateAddress() {
@@ -409,11 +495,15 @@ public class DevEndpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The private address used by this DevEndpoint.
+     * A private IP address to access the <code>DevEndpoint</code> within a VPC if the <code>DevEndpoint</code> is
+     * created within one. The <code>PrivateAddress</code> field is present only when you create the
+     * <code>DevEndpoint</code> within your VPC.
      * </p>
      * 
      * @param privateAddress
-     *        The private address used by this DevEndpoint.
+     *        A private IP address to access the <code>DevEndpoint</code> within a VPC if the <code>DevEndpoint</code>
+     *        is created within one. The <code>PrivateAddress</code> field is present only when you create the
+     *        <code>DevEndpoint</code> within your VPC.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -464,11 +554,13 @@ public class DevEndpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The public VPC address used by this DevEndpoint.
+     * The public IP address used by this <code>DevEndpoint</code>. The <code>PublicAddress</code> field is present only
+     * when you create a non-virtual private cloud (VPC) <code>DevEndpoint</code>.
      * </p>
      * 
      * @param publicAddress
-     *        The public VPC address used by this DevEndpoint.
+     *        The public IP address used by this <code>DevEndpoint</code>. The <code>PublicAddress</code> field is
+     *        present only when you create a non-virtual private cloud (VPC) <code>DevEndpoint</code>.
      */
 
     public void setPublicAddress(String publicAddress) {
@@ -477,10 +569,12 @@ public class DevEndpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The public VPC address used by this DevEndpoint.
+     * The public IP address used by this <code>DevEndpoint</code>. The <code>PublicAddress</code> field is present only
+     * when you create a non-virtual private cloud (VPC) <code>DevEndpoint</code>.
      * </p>
      * 
-     * @return The public VPC address used by this DevEndpoint.
+     * @return The public IP address used by this <code>DevEndpoint</code>. The <code>PublicAddress</code> field is
+     *         present only when you create a non-virtual private cloud (VPC) <code>DevEndpoint</code>.
      */
 
     public String getPublicAddress() {
@@ -489,11 +583,13 @@ public class DevEndpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The public VPC address used by this DevEndpoint.
+     * The public IP address used by this <code>DevEndpoint</code>. The <code>PublicAddress</code> field is present only
+     * when you create a non-virtual private cloud (VPC) <code>DevEndpoint</code>.
      * </p>
      * 
      * @param publicAddress
-     *        The public VPC address used by this DevEndpoint.
+     *        The public IP address used by this <code>DevEndpoint</code>. The <code>PublicAddress</code> field is
+     *        present only when you create a non-virtual private cloud (VPC) <code>DevEndpoint</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -504,11 +600,11 @@ public class DevEndpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The current status of this DevEndpoint.
+     * The current status of this <code>DevEndpoint</code>.
      * </p>
      * 
      * @param status
-     *        The current status of this DevEndpoint.
+     *        The current status of this <code>DevEndpoint</code>.
      */
 
     public void setStatus(String status) {
@@ -517,10 +613,10 @@ public class DevEndpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The current status of this DevEndpoint.
+     * The current status of this <code>DevEndpoint</code>.
      * </p>
      * 
-     * @return The current status of this DevEndpoint.
+     * @return The current status of this <code>DevEndpoint</code>.
      */
 
     public String getStatus() {
@@ -529,11 +625,11 @@ public class DevEndpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The current status of this DevEndpoint.
+     * The current status of this <code>DevEndpoint</code>.
      * </p>
      * 
      * @param status
-     *        The current status of this DevEndpoint.
+     *        The current status of this <code>DevEndpoint</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -544,11 +640,332 @@ public class DevEndpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The number of AWS Glue Data Processing Units (DPUs) allocated to this DevEndpoint.
+     * The type of predefined worker that is allocated to the development endpoint. Accepts a value of Standard, G.1X,
+     * or G.2X.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * For the <code>Standard</code> worker type, each worker provides 4 vCPU, 16 GB of memory and a 50GB disk, and 2
+     * executors per worker.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For the <code>G.1X</code> worker type, each worker maps to 1 DPU (4 vCPU, 16 GB of memory, 64 GB disk), and
+     * provides 1 executor per worker. We recommend this worker type for memory-intensive jobs.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For the <code>G.2X</code> worker type, each worker maps to 2 DPU (8 vCPU, 32 GB of memory, 128 GB disk), and
+     * provides 1 executor per worker. We recommend this worker type for memory-intensive jobs.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * Known issue: when a development endpoint is created with the <code>G.2X</code> <code>WorkerType</code>
+     * configuration, the Spark drivers for the development endpoint will run on 4 vCPU, 16 GB of memory, and a 64 GB
+     * disk.
+     * </p>
+     * 
+     * @param workerType
+     *        The type of predefined worker that is allocated to the development endpoint. Accepts a value of Standard,
+     *        G.1X, or G.2X.</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        For the <code>Standard</code> worker type, each worker provides 4 vCPU, 16 GB of memory and a 50GB disk,
+     *        and 2 executors per worker.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        For the <code>G.1X</code> worker type, each worker maps to 1 DPU (4 vCPU, 16 GB of memory, 64 GB disk),
+     *        and provides 1 executor per worker. We recommend this worker type for memory-intensive jobs.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        For the <code>G.2X</code> worker type, each worker maps to 2 DPU (8 vCPU, 32 GB of memory, 128 GB disk),
+     *        and provides 1 executor per worker. We recommend this worker type for memory-intensive jobs.
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        Known issue: when a development endpoint is created with the <code>G.2X</code> <code>WorkerType</code>
+     *        configuration, the Spark drivers for the development endpoint will run on 4 vCPU, 16 GB of memory, and a
+     *        64 GB disk.
+     * @see WorkerType
+     */
+
+    public void setWorkerType(String workerType) {
+        this.workerType = workerType;
+    }
+
+    /**
+     * <p>
+     * The type of predefined worker that is allocated to the development endpoint. Accepts a value of Standard, G.1X,
+     * or G.2X.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * For the <code>Standard</code> worker type, each worker provides 4 vCPU, 16 GB of memory and a 50GB disk, and 2
+     * executors per worker.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For the <code>G.1X</code> worker type, each worker maps to 1 DPU (4 vCPU, 16 GB of memory, 64 GB disk), and
+     * provides 1 executor per worker. We recommend this worker type for memory-intensive jobs.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For the <code>G.2X</code> worker type, each worker maps to 2 DPU (8 vCPU, 32 GB of memory, 128 GB disk), and
+     * provides 1 executor per worker. We recommend this worker type for memory-intensive jobs.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * Known issue: when a development endpoint is created with the <code>G.2X</code> <code>WorkerType</code>
+     * configuration, the Spark drivers for the development endpoint will run on 4 vCPU, 16 GB of memory, and a 64 GB
+     * disk.
+     * </p>
+     * 
+     * @return The type of predefined worker that is allocated to the development endpoint. Accepts a value of Standard,
+     *         G.1X, or G.2X.</p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         For the <code>Standard</code> worker type, each worker provides 4 vCPU, 16 GB of memory and a 50GB disk,
+     *         and 2 executors per worker.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         For the <code>G.1X</code> worker type, each worker maps to 1 DPU (4 vCPU, 16 GB of memory, 64 GB disk),
+     *         and provides 1 executor per worker. We recommend this worker type for memory-intensive jobs.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         For the <code>G.2X</code> worker type, each worker maps to 2 DPU (8 vCPU, 32 GB of memory, 128 GB disk),
+     *         and provides 1 executor per worker. We recommend this worker type for memory-intensive jobs.
+     *         </p>
+     *         </li>
+     *         </ul>
+     *         <p>
+     *         Known issue: when a development endpoint is created with the <code>G.2X</code> <code>WorkerType</code>
+     *         configuration, the Spark drivers for the development endpoint will run on 4 vCPU, 16 GB of memory, and a
+     *         64 GB disk.
+     * @see WorkerType
+     */
+
+    public String getWorkerType() {
+        return this.workerType;
+    }
+
+    /**
+     * <p>
+     * The type of predefined worker that is allocated to the development endpoint. Accepts a value of Standard, G.1X,
+     * or G.2X.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * For the <code>Standard</code> worker type, each worker provides 4 vCPU, 16 GB of memory and a 50GB disk, and 2
+     * executors per worker.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For the <code>G.1X</code> worker type, each worker maps to 1 DPU (4 vCPU, 16 GB of memory, 64 GB disk), and
+     * provides 1 executor per worker. We recommend this worker type for memory-intensive jobs.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For the <code>G.2X</code> worker type, each worker maps to 2 DPU (8 vCPU, 32 GB of memory, 128 GB disk), and
+     * provides 1 executor per worker. We recommend this worker type for memory-intensive jobs.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * Known issue: when a development endpoint is created with the <code>G.2X</code> <code>WorkerType</code>
+     * configuration, the Spark drivers for the development endpoint will run on 4 vCPU, 16 GB of memory, and a 64 GB
+     * disk.
+     * </p>
+     * 
+     * @param workerType
+     *        The type of predefined worker that is allocated to the development endpoint. Accepts a value of Standard,
+     *        G.1X, or G.2X.</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        For the <code>Standard</code> worker type, each worker provides 4 vCPU, 16 GB of memory and a 50GB disk,
+     *        and 2 executors per worker.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        For the <code>G.1X</code> worker type, each worker maps to 1 DPU (4 vCPU, 16 GB of memory, 64 GB disk),
+     *        and provides 1 executor per worker. We recommend this worker type for memory-intensive jobs.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        For the <code>G.2X</code> worker type, each worker maps to 2 DPU (8 vCPU, 32 GB of memory, 128 GB disk),
+     *        and provides 1 executor per worker. We recommend this worker type for memory-intensive jobs.
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        Known issue: when a development endpoint is created with the <code>G.2X</code> <code>WorkerType</code>
+     *        configuration, the Spark drivers for the development endpoint will run on 4 vCPU, 16 GB of memory, and a
+     *        64 GB disk.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see WorkerType
+     */
+
+    public DevEndpoint withWorkerType(String workerType) {
+        setWorkerType(workerType);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The type of predefined worker that is allocated to the development endpoint. Accepts a value of Standard, G.1X,
+     * or G.2X.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * For the <code>Standard</code> worker type, each worker provides 4 vCPU, 16 GB of memory and a 50GB disk, and 2
+     * executors per worker.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For the <code>G.1X</code> worker type, each worker maps to 1 DPU (4 vCPU, 16 GB of memory, 64 GB disk), and
+     * provides 1 executor per worker. We recommend this worker type for memory-intensive jobs.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For the <code>G.2X</code> worker type, each worker maps to 2 DPU (8 vCPU, 32 GB of memory, 128 GB disk), and
+     * provides 1 executor per worker. We recommend this worker type for memory-intensive jobs.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * Known issue: when a development endpoint is created with the <code>G.2X</code> <code>WorkerType</code>
+     * configuration, the Spark drivers for the development endpoint will run on 4 vCPU, 16 GB of memory, and a 64 GB
+     * disk.
+     * </p>
+     * 
+     * @param workerType
+     *        The type of predefined worker that is allocated to the development endpoint. Accepts a value of Standard,
+     *        G.1X, or G.2X.</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        For the <code>Standard</code> worker type, each worker provides 4 vCPU, 16 GB of memory and a 50GB disk,
+     *        and 2 executors per worker.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        For the <code>G.1X</code> worker type, each worker maps to 1 DPU (4 vCPU, 16 GB of memory, 64 GB disk),
+     *        and provides 1 executor per worker. We recommend this worker type for memory-intensive jobs.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        For the <code>G.2X</code> worker type, each worker maps to 2 DPU (8 vCPU, 32 GB of memory, 128 GB disk),
+     *        and provides 1 executor per worker. We recommend this worker type for memory-intensive jobs.
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        Known issue: when a development endpoint is created with the <code>G.2X</code> <code>WorkerType</code>
+     *        configuration, the Spark drivers for the development endpoint will run on 4 vCPU, 16 GB of memory, and a
+     *        64 GB disk.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see WorkerType
+     */
+
+    public DevEndpoint withWorkerType(WorkerType workerType) {
+        this.workerType = workerType.toString();
+        return this;
+    }
+
+    /**
+     * <p>
+     * The number of workers of a defined <code>workerType</code> that are allocated to the development endpoint.
+     * </p>
+     * <p>
+     * The maximum number of workers you can define are 299 for <code>G.1X</code>, and 149 for <code>G.2X</code>.
+     * </p>
+     * 
+     * @param numberOfWorkers
+     *        The number of workers of a defined <code>workerType</code> that are allocated to the development
+     *        endpoint.</p>
+     *        <p>
+     *        The maximum number of workers you can define are 299 for <code>G.1X</code>, and 149 for <code>G.2X</code>.
+     */
+
+    public void setNumberOfWorkers(Integer numberOfWorkers) {
+        this.numberOfWorkers = numberOfWorkers;
+    }
+
+    /**
+     * <p>
+     * The number of workers of a defined <code>workerType</code> that are allocated to the development endpoint.
+     * </p>
+     * <p>
+     * The maximum number of workers you can define are 299 for <code>G.1X</code>, and 149 for <code>G.2X</code>.
+     * </p>
+     * 
+     * @return The number of workers of a defined <code>workerType</code> that are allocated to the development
+     *         endpoint.</p>
+     *         <p>
+     *         The maximum number of workers you can define are 299 for <code>G.1X</code>, and 149 for <code>G.2X</code>.
+     */
+
+    public Integer getNumberOfWorkers() {
+        return this.numberOfWorkers;
+    }
+
+    /**
+     * <p>
+     * The number of workers of a defined <code>workerType</code> that are allocated to the development endpoint.
+     * </p>
+     * <p>
+     * The maximum number of workers you can define are 299 for <code>G.1X</code>, and 149 for <code>G.2X</code>.
+     * </p>
+     * 
+     * @param numberOfWorkers
+     *        The number of workers of a defined <code>workerType</code> that are allocated to the development
+     *        endpoint.</p>
+     *        <p>
+     *        The maximum number of workers you can define are 299 for <code>G.1X</code>, and 149 for <code>G.2X</code>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DevEndpoint withNumberOfWorkers(Integer numberOfWorkers) {
+        setNumberOfWorkers(numberOfWorkers);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The number of AWS Glue Data Processing Units (DPUs) allocated to this <code>DevEndpoint</code>.
      * </p>
      * 
      * @param numberOfNodes
-     *        The number of AWS Glue Data Processing Units (DPUs) allocated to this DevEndpoint.
+     *        The number of AWS Glue Data Processing Units (DPUs) allocated to this <code>DevEndpoint</code>.
      */
 
     public void setNumberOfNodes(Integer numberOfNodes) {
@@ -557,10 +974,10 @@ public class DevEndpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The number of AWS Glue Data Processing Units (DPUs) allocated to this DevEndpoint.
+     * The number of AWS Glue Data Processing Units (DPUs) allocated to this <code>DevEndpoint</code>.
      * </p>
      * 
-     * @return The number of AWS Glue Data Processing Units (DPUs) allocated to this DevEndpoint.
+     * @return The number of AWS Glue Data Processing Units (DPUs) allocated to this <code>DevEndpoint</code>.
      */
 
     public Integer getNumberOfNodes() {
@@ -569,11 +986,11 @@ public class DevEndpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The number of AWS Glue Data Processing Units (DPUs) allocated to this DevEndpoint.
+     * The number of AWS Glue Data Processing Units (DPUs) allocated to this <code>DevEndpoint</code>.
      * </p>
      * 
      * @param numberOfNodes
-     *        The number of AWS Glue Data Processing Units (DPUs) allocated to this DevEndpoint.
+     *        The number of AWS Glue Data Processing Units (DPUs) allocated to this <code>DevEndpoint</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -584,11 +1001,11 @@ public class DevEndpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The AWS availability zone where this DevEndpoint is located.
+     * The AWS Availability Zone where this <code>DevEndpoint</code> is located.
      * </p>
      * 
      * @param availabilityZone
-     *        The AWS availability zone where this DevEndpoint is located.
+     *        The AWS Availability Zone where this <code>DevEndpoint</code> is located.
      */
 
     public void setAvailabilityZone(String availabilityZone) {
@@ -597,10 +1014,10 @@ public class DevEndpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The AWS availability zone where this DevEndpoint is located.
+     * The AWS Availability Zone where this <code>DevEndpoint</code> is located.
      * </p>
      * 
-     * @return The AWS availability zone where this DevEndpoint is located.
+     * @return The AWS Availability Zone where this <code>DevEndpoint</code> is located.
      */
 
     public String getAvailabilityZone() {
@@ -609,11 +1026,11 @@ public class DevEndpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The AWS availability zone where this DevEndpoint is located.
+     * The AWS Availability Zone where this <code>DevEndpoint</code> is located.
      * </p>
      * 
      * @param availabilityZone
-     *        The AWS availability zone where this DevEndpoint is located.
+     *        The AWS Availability Zone where this <code>DevEndpoint</code> is located.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -624,11 +1041,11 @@ public class DevEndpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The ID of the virtual private cloud (VPC) used by this DevEndpoint.
+     * The ID of the virtual private cloud (VPC) used by this <code>DevEndpoint</code>.
      * </p>
      * 
      * @param vpcId
-     *        The ID of the virtual private cloud (VPC) used by this DevEndpoint.
+     *        The ID of the virtual private cloud (VPC) used by this <code>DevEndpoint</code>.
      */
 
     public void setVpcId(String vpcId) {
@@ -637,10 +1054,10 @@ public class DevEndpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The ID of the virtual private cloud (VPC) used by this DevEndpoint.
+     * The ID of the virtual private cloud (VPC) used by this <code>DevEndpoint</code>.
      * </p>
      * 
-     * @return The ID of the virtual private cloud (VPC) used by this DevEndpoint.
+     * @return The ID of the virtual private cloud (VPC) used by this <code>DevEndpoint</code>.
      */
 
     public String getVpcId() {
@@ -649,11 +1066,11 @@ public class DevEndpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The ID of the virtual private cloud (VPC) used by this DevEndpoint.
+     * The ID of the virtual private cloud (VPC) used by this <code>DevEndpoint</code>.
      * </p>
      * 
      * @param vpcId
-     *        The ID of the virtual private cloud (VPC) used by this DevEndpoint.
+     *        The ID of the virtual private cloud (VPC) used by this <code>DevEndpoint</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -664,22 +1081,24 @@ public class DevEndpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Path(s) to one or more Python libraries in an S3 bucket that should be loaded in your DevEndpoint. Multiple
-     * values must be complete paths separated by a comma.
+     * The paths to one or more Python libraries in an Amazon S3 bucket that should be loaded in your
+     * <code>DevEndpoint</code>. Multiple values must be complete paths separated by a comma.
      * </p>
+     * <note>
      * <p>
-     * Please note that only pure Python libraries can currently be used on a DevEndpoint. Libraries that rely on C
-     * extensions, such as the <a href="http://pandas.pydata.org/">pandas</a> Python data analysis library, are not yet
-     * supported.
+     * You can only use pure Python libraries with a <code>DevEndpoint</code>. Libraries that rely on C extensions, such
+     * as the <a href="http://pandas.pydata.org/">pandas</a> Python data analysis library, are not currently supported.
      * </p>
+     * </note>
      * 
      * @param extraPythonLibsS3Path
-     *        Path(s) to one or more Python libraries in an S3 bucket that should be loaded in your DevEndpoint.
-     *        Multiple values must be complete paths separated by a comma.</p>
+     *        The paths to one or more Python libraries in an Amazon S3 bucket that should be loaded in your
+     *        <code>DevEndpoint</code>. Multiple values must be complete paths separated by a comma.</p> <note>
      *        <p>
-     *        Please note that only pure Python libraries can currently be used on a DevEndpoint. Libraries that rely on
-     *        C extensions, such as the <a href="http://pandas.pydata.org/">pandas</a> Python data analysis library, are
-     *        not yet supported.
+     *        You can only use pure Python libraries with a <code>DevEndpoint</code>. Libraries that rely on C
+     *        extensions, such as the <a href="http://pandas.pydata.org/">pandas</a> Python data analysis library, are
+     *        not currently supported.
+     *        </p>
      */
 
     public void setExtraPythonLibsS3Path(String extraPythonLibsS3Path) {
@@ -688,21 +1107,23 @@ public class DevEndpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Path(s) to one or more Python libraries in an S3 bucket that should be loaded in your DevEndpoint. Multiple
-     * values must be complete paths separated by a comma.
+     * The paths to one or more Python libraries in an Amazon S3 bucket that should be loaded in your
+     * <code>DevEndpoint</code>. Multiple values must be complete paths separated by a comma.
      * </p>
+     * <note>
      * <p>
-     * Please note that only pure Python libraries can currently be used on a DevEndpoint. Libraries that rely on C
-     * extensions, such as the <a href="http://pandas.pydata.org/">pandas</a> Python data analysis library, are not yet
-     * supported.
+     * You can only use pure Python libraries with a <code>DevEndpoint</code>. Libraries that rely on C extensions, such
+     * as the <a href="http://pandas.pydata.org/">pandas</a> Python data analysis library, are not currently supported.
      * </p>
+     * </note>
      * 
-     * @return Path(s) to one or more Python libraries in an S3 bucket that should be loaded in your DevEndpoint.
-     *         Multiple values must be complete paths separated by a comma.</p>
+     * @return The paths to one or more Python libraries in an Amazon S3 bucket that should be loaded in your
+     *         <code>DevEndpoint</code>. Multiple values must be complete paths separated by a comma.</p> <note>
      *         <p>
-     *         Please note that only pure Python libraries can currently be used on a DevEndpoint. Libraries that rely
-     *         on C extensions, such as the <a href="http://pandas.pydata.org/">pandas</a> Python data analysis library,
-     *         are not yet supported.
+     *         You can only use pure Python libraries with a <code>DevEndpoint</code>. Libraries that rely on C
+     *         extensions, such as the <a href="http://pandas.pydata.org/">pandas</a> Python data analysis library, are
+     *         not currently supported.
+     *         </p>
      */
 
     public String getExtraPythonLibsS3Path() {
@@ -711,22 +1132,24 @@ public class DevEndpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Path(s) to one or more Python libraries in an S3 bucket that should be loaded in your DevEndpoint. Multiple
-     * values must be complete paths separated by a comma.
+     * The paths to one or more Python libraries in an Amazon S3 bucket that should be loaded in your
+     * <code>DevEndpoint</code>. Multiple values must be complete paths separated by a comma.
      * </p>
+     * <note>
      * <p>
-     * Please note that only pure Python libraries can currently be used on a DevEndpoint. Libraries that rely on C
-     * extensions, such as the <a href="http://pandas.pydata.org/">pandas</a> Python data analysis library, are not yet
-     * supported.
+     * You can only use pure Python libraries with a <code>DevEndpoint</code>. Libraries that rely on C extensions, such
+     * as the <a href="http://pandas.pydata.org/">pandas</a> Python data analysis library, are not currently supported.
      * </p>
+     * </note>
      * 
      * @param extraPythonLibsS3Path
-     *        Path(s) to one or more Python libraries in an S3 bucket that should be loaded in your DevEndpoint.
-     *        Multiple values must be complete paths separated by a comma.</p>
+     *        The paths to one or more Python libraries in an Amazon S3 bucket that should be loaded in your
+     *        <code>DevEndpoint</code>. Multiple values must be complete paths separated by a comma.</p> <note>
      *        <p>
-     *        Please note that only pure Python libraries can currently be used on a DevEndpoint. Libraries that rely on
-     *        C extensions, such as the <a href="http://pandas.pydata.org/">pandas</a> Python data analysis library, are
-     *        not yet supported.
+     *        You can only use pure Python libraries with a <code>DevEndpoint</code>. Libraries that rely on C
+     *        extensions, such as the <a href="http://pandas.pydata.org/">pandas</a> Python data analysis library, are
+     *        not currently supported.
+     *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -737,16 +1160,21 @@ public class DevEndpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Path to one or more Java Jars in an S3 bucket that should be loaded in your DevEndpoint.
+     * The path to one or more Java <code>.jar</code> files in an S3 bucket that should be loaded in your
+     * <code>DevEndpoint</code>.
      * </p>
+     * <note>
      * <p>
-     * Please note that only pure Java/Scala libraries can currently be used on a DevEndpoint.
+     * You can only use pure Java/Scala libraries with a <code>DevEndpoint</code>.
      * </p>
+     * </note>
      * 
      * @param extraJarsS3Path
-     *        Path to one or more Java Jars in an S3 bucket that should be loaded in your DevEndpoint.</p>
+     *        The path to one or more Java <code>.jar</code> files in an S3 bucket that should be loaded in your
+     *        <code>DevEndpoint</code>.</p> <note>
      *        <p>
-     *        Please note that only pure Java/Scala libraries can currently be used on a DevEndpoint.
+     *        You can only use pure Java/Scala libraries with a <code>DevEndpoint</code>.
+     *        </p>
      */
 
     public void setExtraJarsS3Path(String extraJarsS3Path) {
@@ -755,15 +1183,20 @@ public class DevEndpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Path to one or more Java Jars in an S3 bucket that should be loaded in your DevEndpoint.
+     * The path to one or more Java <code>.jar</code> files in an S3 bucket that should be loaded in your
+     * <code>DevEndpoint</code>.
      * </p>
+     * <note>
      * <p>
-     * Please note that only pure Java/Scala libraries can currently be used on a DevEndpoint.
+     * You can only use pure Java/Scala libraries with a <code>DevEndpoint</code>.
      * </p>
+     * </note>
      * 
-     * @return Path to one or more Java Jars in an S3 bucket that should be loaded in your DevEndpoint.</p>
+     * @return The path to one or more Java <code>.jar</code> files in an S3 bucket that should be loaded in your
+     *         <code>DevEndpoint</code>.</p> <note>
      *         <p>
-     *         Please note that only pure Java/Scala libraries can currently be used on a DevEndpoint.
+     *         You can only use pure Java/Scala libraries with a <code>DevEndpoint</code>.
+     *         </p>
      */
 
     public String getExtraJarsS3Path() {
@@ -772,16 +1205,21 @@ public class DevEndpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Path to one or more Java Jars in an S3 bucket that should be loaded in your DevEndpoint.
+     * The path to one or more Java <code>.jar</code> files in an S3 bucket that should be loaded in your
+     * <code>DevEndpoint</code>.
      * </p>
+     * <note>
      * <p>
-     * Please note that only pure Java/Scala libraries can currently be used on a DevEndpoint.
+     * You can only use pure Java/Scala libraries with a <code>DevEndpoint</code>.
      * </p>
+     * </note>
      * 
      * @param extraJarsS3Path
-     *        Path to one or more Java Jars in an S3 bucket that should be loaded in your DevEndpoint.</p>
+     *        The path to one or more Java <code>.jar</code> files in an S3 bucket that should be loaded in your
+     *        <code>DevEndpoint</code>.</p> <note>
      *        <p>
-     *        Please note that only pure Java/Scala libraries can currently be used on a DevEndpoint.
+     *        You can only use pure Java/Scala libraries with a <code>DevEndpoint</code>.
+     *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -792,11 +1230,11 @@ public class DevEndpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The reason for a current failure in this DevEndpoint.
+     * The reason for a current failure in this <code>DevEndpoint</code>.
      * </p>
      * 
      * @param failureReason
-     *        The reason for a current failure in this DevEndpoint.
+     *        The reason for a current failure in this <code>DevEndpoint</code>.
      */
 
     public void setFailureReason(String failureReason) {
@@ -805,10 +1243,10 @@ public class DevEndpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The reason for a current failure in this DevEndpoint.
+     * The reason for a current failure in this <code>DevEndpoint</code>.
      * </p>
      * 
-     * @return The reason for a current failure in this DevEndpoint.
+     * @return The reason for a current failure in this <code>DevEndpoint</code>.
      */
 
     public String getFailureReason() {
@@ -817,11 +1255,11 @@ public class DevEndpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The reason for a current failure in this DevEndpoint.
+     * The reason for a current failure in this <code>DevEndpoint</code>.
      * </p>
      * 
      * @param failureReason
-     *        The reason for a current failure in this DevEndpoint.
+     *        The reason for a current failure in this <code>DevEndpoint</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -912,11 +1350,11 @@ public class DevEndpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The point in time at which this DevEndpoint was last modified.
+     * The point in time at which this <code>DevEndpoint</code> was last modified.
      * </p>
      * 
      * @param lastModifiedTimestamp
-     *        The point in time at which this DevEndpoint was last modified.
+     *        The point in time at which this <code>DevEndpoint</code> was last modified.
      */
 
     public void setLastModifiedTimestamp(java.util.Date lastModifiedTimestamp) {
@@ -925,10 +1363,10 @@ public class DevEndpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The point in time at which this DevEndpoint was last modified.
+     * The point in time at which this <code>DevEndpoint</code> was last modified.
      * </p>
      * 
-     * @return The point in time at which this DevEndpoint was last modified.
+     * @return The point in time at which this <code>DevEndpoint</code> was last modified.
      */
 
     public java.util.Date getLastModifiedTimestamp() {
@@ -937,11 +1375,11 @@ public class DevEndpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The point in time at which this DevEndpoint was last modified.
+     * The point in time at which this <code>DevEndpoint</code> was last modified.
      * </p>
      * 
      * @param lastModifiedTimestamp
-     *        The point in time at which this DevEndpoint was last modified.
+     *        The point in time at which this <code>DevEndpoint</code> was last modified.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -952,11 +1390,13 @@ public class DevEndpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The public key to be used by this DevEndpoint for authentication.
+     * The public key to be used by this <code>DevEndpoint</code> for authentication. This attribute is provided for
+     * backward compatibility because the recommended attribute to use is public keys.
      * </p>
      * 
      * @param publicKey
-     *        The public key to be used by this DevEndpoint for authentication.
+     *        The public key to be used by this <code>DevEndpoint</code> for authentication. This attribute is provided
+     *        for backward compatibility because the recommended attribute to use is public keys.
      */
 
     public void setPublicKey(String publicKey) {
@@ -965,10 +1405,12 @@ public class DevEndpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The public key to be used by this DevEndpoint for authentication.
+     * The public key to be used by this <code>DevEndpoint</code> for authentication. This attribute is provided for
+     * backward compatibility because the recommended attribute to use is public keys.
      * </p>
      * 
-     * @return The public key to be used by this DevEndpoint for authentication.
+     * @return The public key to be used by this <code>DevEndpoint</code> for authentication. This attribute is provided
+     *         for backward compatibility because the recommended attribute to use is public keys.
      */
 
     public String getPublicKey() {
@@ -977,11 +1419,13 @@ public class DevEndpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The public key to be used by this DevEndpoint for authentication.
+     * The public key to be used by this <code>DevEndpoint</code> for authentication. This attribute is provided for
+     * backward compatibility because the recommended attribute to use is public keys.
      * </p>
      * 
      * @param publicKey
-     *        The public key to be used by this DevEndpoint for authentication.
+     *        The public key to be used by this <code>DevEndpoint</code> for authentication. This attribute is provided
+     *        for backward compatibility because the recommended attribute to use is public keys.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -991,7 +1435,261 @@ public class DevEndpoint implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * <p>
+     * A list of public keys to be used by the <code>DevEndpoints</code> for authentication. Using this attribute is
+     * preferred over a single public key because the public keys allow you to have a different private key per client.
+     * </p>
+     * <note>
+     * <p>
+     * If you previously created an endpoint with a public key, you must remove that key to be able to set a list of
+     * public keys. Call the <code>UpdateDevEndpoint</code> API operation with the public key content in the
+     * <code>deletePublicKeys</code> attribute, and the list of new keys in the <code>addPublicKeys</code> attribute.
+     * </p>
+     * </note>
+     * 
+     * @return A list of public keys to be used by the <code>DevEndpoints</code> for authentication. Using this
+     *         attribute is preferred over a single public key because the public keys allow you to have a different
+     *         private key per client.</p> <note>
+     *         <p>
+     *         If you previously created an endpoint with a public key, you must remove that key to be able to set a
+     *         list of public keys. Call the <code>UpdateDevEndpoint</code> API operation with the public key content in
+     *         the <code>deletePublicKeys</code> attribute, and the list of new keys in the <code>addPublicKeys</code>
+     *         attribute.
+     *         </p>
+     */
+
+    public java.util.List<String> getPublicKeys() {
+        return publicKeys;
+    }
+
+    /**
+     * <p>
+     * A list of public keys to be used by the <code>DevEndpoints</code> for authentication. Using this attribute is
+     * preferred over a single public key because the public keys allow you to have a different private key per client.
+     * </p>
+     * <note>
+     * <p>
+     * If you previously created an endpoint with a public key, you must remove that key to be able to set a list of
+     * public keys. Call the <code>UpdateDevEndpoint</code> API operation with the public key content in the
+     * <code>deletePublicKeys</code> attribute, and the list of new keys in the <code>addPublicKeys</code> attribute.
+     * </p>
+     * </note>
+     * 
+     * @param publicKeys
+     *        A list of public keys to be used by the <code>DevEndpoints</code> for authentication. Using this attribute
+     *        is preferred over a single public key because the public keys allow you to have a different private key
+     *        per client.</p> <note>
+     *        <p>
+     *        If you previously created an endpoint with a public key, you must remove that key to be able to set a list
+     *        of public keys. Call the <code>UpdateDevEndpoint</code> API operation with the public key content in the
+     *        <code>deletePublicKeys</code> attribute, and the list of new keys in the <code>addPublicKeys</code>
+     *        attribute.
+     *        </p>
+     */
+
+    public void setPublicKeys(java.util.Collection<String> publicKeys) {
+        if (publicKeys == null) {
+            this.publicKeys = null;
+            return;
+        }
+
+        this.publicKeys = new java.util.ArrayList<String>(publicKeys);
+    }
+
+    /**
+     * <p>
+     * A list of public keys to be used by the <code>DevEndpoints</code> for authentication. Using this attribute is
+     * preferred over a single public key because the public keys allow you to have a different private key per client.
+     * </p>
+     * <note>
+     * <p>
+     * If you previously created an endpoint with a public key, you must remove that key to be able to set a list of
+     * public keys. Call the <code>UpdateDevEndpoint</code> API operation with the public key content in the
+     * <code>deletePublicKeys</code> attribute, and the list of new keys in the <code>addPublicKeys</code> attribute.
+     * </p>
+     * </note>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setPublicKeys(java.util.Collection)} or {@link #withPublicKeys(java.util.Collection)} if you want to
+     * override the existing values.
+     * </p>
+     * 
+     * @param publicKeys
+     *        A list of public keys to be used by the <code>DevEndpoints</code> for authentication. Using this attribute
+     *        is preferred over a single public key because the public keys allow you to have a different private key
+     *        per client.</p> <note>
+     *        <p>
+     *        If you previously created an endpoint with a public key, you must remove that key to be able to set a list
+     *        of public keys. Call the <code>UpdateDevEndpoint</code> API operation with the public key content in the
+     *        <code>deletePublicKeys</code> attribute, and the list of new keys in the <code>addPublicKeys</code>
+     *        attribute.
+     *        </p>
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DevEndpoint withPublicKeys(String... publicKeys) {
+        if (this.publicKeys == null) {
+            setPublicKeys(new java.util.ArrayList<String>(publicKeys.length));
+        }
+        for (String ele : publicKeys) {
+            this.publicKeys.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * A list of public keys to be used by the <code>DevEndpoints</code> for authentication. Using this attribute is
+     * preferred over a single public key because the public keys allow you to have a different private key per client.
+     * </p>
+     * <note>
+     * <p>
+     * If you previously created an endpoint with a public key, you must remove that key to be able to set a list of
+     * public keys. Call the <code>UpdateDevEndpoint</code> API operation with the public key content in the
+     * <code>deletePublicKeys</code> attribute, and the list of new keys in the <code>addPublicKeys</code> attribute.
+     * </p>
+     * </note>
+     * 
+     * @param publicKeys
+     *        A list of public keys to be used by the <code>DevEndpoints</code> for authentication. Using this attribute
+     *        is preferred over a single public key because the public keys allow you to have a different private key
+     *        per client.</p> <note>
+     *        <p>
+     *        If you previously created an endpoint with a public key, you must remove that key to be able to set a list
+     *        of public keys. Call the <code>UpdateDevEndpoint</code> API operation with the public key content in the
+     *        <code>deletePublicKeys</code> attribute, and the list of new keys in the <code>addPublicKeys</code>
+     *        attribute.
+     *        </p>
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DevEndpoint withPublicKeys(java.util.Collection<String> publicKeys) {
+        setPublicKeys(publicKeys);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The name of the <code>SecurityConfiguration</code> structure to be used with this <code>DevEndpoint</code>.
+     * </p>
+     * 
+     * @param securityConfiguration
+     *        The name of the <code>SecurityConfiguration</code> structure to be used with this <code>DevEndpoint</code>
+     *        .
+     */
+
+    public void setSecurityConfiguration(String securityConfiguration) {
+        this.securityConfiguration = securityConfiguration;
+    }
+
+    /**
+     * <p>
+     * The name of the <code>SecurityConfiguration</code> structure to be used with this <code>DevEndpoint</code>.
+     * </p>
+     * 
+     * @return The name of the <code>SecurityConfiguration</code> structure to be used with this
+     *         <code>DevEndpoint</code>.
+     */
+
+    public String getSecurityConfiguration() {
+        return this.securityConfiguration;
+    }
+
+    /**
+     * <p>
+     * The name of the <code>SecurityConfiguration</code> structure to be used with this <code>DevEndpoint</code>.
+     * </p>
+     * 
+     * @param securityConfiguration
+     *        The name of the <code>SecurityConfiguration</code> structure to be used with this <code>DevEndpoint</code>
+     *        .
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DevEndpoint withSecurityConfiguration(String securityConfiguration) {
+        setSecurityConfiguration(securityConfiguration);
+        return this;
+    }
+
+    /**
+     * <p>
+     * A map of arguments used to configure the <code>DevEndpoint</code>.
+     * </p>
+     * <p>
+     * Currently, only <code>"--enable-glue-datacatalog": ""</code> is supported as a valid argument.
+     * </p>
+     * 
+     * @return A map of arguments used to configure the <code>DevEndpoint</code>.</p>
+     *         <p>
+     *         Currently, only <code>"--enable-glue-datacatalog": ""</code> is supported as a valid argument.
+     */
+
+    public java.util.Map<String, String> getArguments() {
+        return arguments;
+    }
+
+    /**
+     * <p>
+     * A map of arguments used to configure the <code>DevEndpoint</code>.
+     * </p>
+     * <p>
+     * Currently, only <code>"--enable-glue-datacatalog": ""</code> is supported as a valid argument.
+     * </p>
+     * 
+     * @param arguments
+     *        A map of arguments used to configure the <code>DevEndpoint</code>.</p>
+     *        <p>
+     *        Currently, only <code>"--enable-glue-datacatalog": ""</code> is supported as a valid argument.
+     */
+
+    public void setArguments(java.util.Map<String, String> arguments) {
+        this.arguments = arguments;
+    }
+
+    /**
+     * <p>
+     * A map of arguments used to configure the <code>DevEndpoint</code>.
+     * </p>
+     * <p>
+     * Currently, only <code>"--enable-glue-datacatalog": ""</code> is supported as a valid argument.
+     * </p>
+     * 
+     * @param arguments
+     *        A map of arguments used to configure the <code>DevEndpoint</code>.</p>
+     *        <p>
+     *        Currently, only <code>"--enable-glue-datacatalog": ""</code> is supported as a valid argument.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DevEndpoint withArguments(java.util.Map<String, String> arguments) {
+        setArguments(arguments);
+        return this;
+    }
+
+    public DevEndpoint addArgumentsEntry(String key, String value) {
+        if (null == this.arguments) {
+            this.arguments = new java.util.HashMap<String, String>();
+        }
+        if (this.arguments.containsKey(key))
+            throw new IllegalArgumentException("Duplicated keys (" + key.toString() + ") are provided.");
+        this.arguments.put(key, value);
+        return this;
+    }
+
+    /**
+     * Removes all the entries added into Arguments.
+     *
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DevEndpoint clearArgumentsEntries() {
+        this.arguments = null;
+        return this;
+    }
+
+    /**
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -1019,6 +1717,10 @@ public class DevEndpoint implements Serializable, Cloneable, StructuredPojo {
             sb.append("PublicAddress: ").append(getPublicAddress()).append(",");
         if (getStatus() != null)
             sb.append("Status: ").append(getStatus()).append(",");
+        if (getWorkerType() != null)
+            sb.append("WorkerType: ").append(getWorkerType()).append(",");
+        if (getNumberOfWorkers() != null)
+            sb.append("NumberOfWorkers: ").append(getNumberOfWorkers()).append(",");
         if (getNumberOfNodes() != null)
             sb.append("NumberOfNodes: ").append(getNumberOfNodes()).append(",");
         if (getAvailabilityZone() != null)
@@ -1038,7 +1740,13 @@ public class DevEndpoint implements Serializable, Cloneable, StructuredPojo {
         if (getLastModifiedTimestamp() != null)
             sb.append("LastModifiedTimestamp: ").append(getLastModifiedTimestamp()).append(",");
         if (getPublicKey() != null)
-            sb.append("PublicKey: ").append(getPublicKey());
+            sb.append("PublicKey: ").append(getPublicKey()).append(",");
+        if (getPublicKeys() != null)
+            sb.append("PublicKeys: ").append(getPublicKeys()).append(",");
+        if (getSecurityConfiguration() != null)
+            sb.append("SecurityConfiguration: ").append(getSecurityConfiguration()).append(",");
+        if (getArguments() != null)
+            sb.append("Arguments: ").append(getArguments());
         sb.append("}");
         return sb.toString();
     }
@@ -1090,6 +1798,14 @@ public class DevEndpoint implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getStatus() != null && other.getStatus().equals(this.getStatus()) == false)
             return false;
+        if (other.getWorkerType() == null ^ this.getWorkerType() == null)
+            return false;
+        if (other.getWorkerType() != null && other.getWorkerType().equals(this.getWorkerType()) == false)
+            return false;
+        if (other.getNumberOfWorkers() == null ^ this.getNumberOfWorkers() == null)
+            return false;
+        if (other.getNumberOfWorkers() != null && other.getNumberOfWorkers().equals(this.getNumberOfWorkers()) == false)
+            return false;
         if (other.getNumberOfNodes() == null ^ this.getNumberOfNodes() == null)
             return false;
         if (other.getNumberOfNodes() != null && other.getNumberOfNodes().equals(this.getNumberOfNodes()) == false)
@@ -1130,6 +1846,18 @@ public class DevEndpoint implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getPublicKey() != null && other.getPublicKey().equals(this.getPublicKey()) == false)
             return false;
+        if (other.getPublicKeys() == null ^ this.getPublicKeys() == null)
+            return false;
+        if (other.getPublicKeys() != null && other.getPublicKeys().equals(this.getPublicKeys()) == false)
+            return false;
+        if (other.getSecurityConfiguration() == null ^ this.getSecurityConfiguration() == null)
+            return false;
+        if (other.getSecurityConfiguration() != null && other.getSecurityConfiguration().equals(this.getSecurityConfiguration()) == false)
+            return false;
+        if (other.getArguments() == null ^ this.getArguments() == null)
+            return false;
+        if (other.getArguments() != null && other.getArguments().equals(this.getArguments()) == false)
+            return false;
         return true;
     }
 
@@ -1147,6 +1875,8 @@ public class DevEndpoint implements Serializable, Cloneable, StructuredPojo {
         hashCode = prime * hashCode + ((getZeppelinRemoteSparkInterpreterPort() == null) ? 0 : getZeppelinRemoteSparkInterpreterPort().hashCode());
         hashCode = prime * hashCode + ((getPublicAddress() == null) ? 0 : getPublicAddress().hashCode());
         hashCode = prime * hashCode + ((getStatus() == null) ? 0 : getStatus().hashCode());
+        hashCode = prime * hashCode + ((getWorkerType() == null) ? 0 : getWorkerType().hashCode());
+        hashCode = prime * hashCode + ((getNumberOfWorkers() == null) ? 0 : getNumberOfWorkers().hashCode());
         hashCode = prime * hashCode + ((getNumberOfNodes() == null) ? 0 : getNumberOfNodes().hashCode());
         hashCode = prime * hashCode + ((getAvailabilityZone() == null) ? 0 : getAvailabilityZone().hashCode());
         hashCode = prime * hashCode + ((getVpcId() == null) ? 0 : getVpcId().hashCode());
@@ -1157,6 +1887,9 @@ public class DevEndpoint implements Serializable, Cloneable, StructuredPojo {
         hashCode = prime * hashCode + ((getCreatedTimestamp() == null) ? 0 : getCreatedTimestamp().hashCode());
         hashCode = prime * hashCode + ((getLastModifiedTimestamp() == null) ? 0 : getLastModifiedTimestamp().hashCode());
         hashCode = prime * hashCode + ((getPublicKey() == null) ? 0 : getPublicKey().hashCode());
+        hashCode = prime * hashCode + ((getPublicKeys() == null) ? 0 : getPublicKeys().hashCode());
+        hashCode = prime * hashCode + ((getSecurityConfiguration() == null) ? 0 : getSecurityConfiguration().hashCode());
+        hashCode = prime * hashCode + ((getArguments() == null) ? 0 : getArguments().hashCode());
         return hashCode;
     }
 

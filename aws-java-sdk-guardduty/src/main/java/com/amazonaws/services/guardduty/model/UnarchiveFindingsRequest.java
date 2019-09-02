@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -18,7 +18,6 @@ import javax.annotation.Generated;
 import com.amazonaws.AmazonWebServiceRequest;
 
 /**
- * UnarchiveFindings request body.
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/UnarchiveFindings" target="_top">AWS API
  *      Documentation</a>
@@ -26,13 +25,23 @@ import com.amazonaws.AmazonWebServiceRequest;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class UnarchiveFindingsRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
-    /** The ID of the detector that specifies the GuardDuty service whose findings you want to unarchive. */
+    /**
+     * <p>
+     * The ID of the detector that specifies the GuardDuty service whose findings you want to unarchive.
+     * </p>
+     */
     private String detectorId;
-    /** IDs of the findings that you want to unarchive. */
+    /**
+     * <p>
+     * IDs of the findings that you want to unarchive.
+     * </p>
+     */
     private java.util.List<String> findingIds;
 
     /**
+     * <p>
      * The ID of the detector that specifies the GuardDuty service whose findings you want to unarchive.
+     * </p>
      * 
      * @param detectorId
      *        The ID of the detector that specifies the GuardDuty service whose findings you want to unarchive.
@@ -43,7 +52,9 @@ public class UnarchiveFindingsRequest extends com.amazonaws.AmazonWebServiceRequ
     }
 
     /**
+     * <p>
      * The ID of the detector that specifies the GuardDuty service whose findings you want to unarchive.
+     * </p>
      * 
      * @return The ID of the detector that specifies the GuardDuty service whose findings you want to unarchive.
      */
@@ -53,7 +64,9 @@ public class UnarchiveFindingsRequest extends com.amazonaws.AmazonWebServiceRequ
     }
 
     /**
+     * <p>
      * The ID of the detector that specifies the GuardDuty service whose findings you want to unarchive.
+     * </p>
      * 
      * @param detectorId
      *        The ID of the detector that specifies the GuardDuty service whose findings you want to unarchive.
@@ -66,7 +79,9 @@ public class UnarchiveFindingsRequest extends com.amazonaws.AmazonWebServiceRequ
     }
 
     /**
+     * <p>
      * IDs of the findings that you want to unarchive.
+     * </p>
      * 
      * @return IDs of the findings that you want to unarchive.
      */
@@ -76,7 +91,9 @@ public class UnarchiveFindingsRequest extends com.amazonaws.AmazonWebServiceRequ
     }
 
     /**
+     * <p>
      * IDs of the findings that you want to unarchive.
+     * </p>
      * 
      * @param findingIds
      *        IDs of the findings that you want to unarchive.
@@ -92,7 +109,9 @@ public class UnarchiveFindingsRequest extends com.amazonaws.AmazonWebServiceRequ
     }
 
     /**
+     * <p>
      * IDs of the findings that you want to unarchive.
+     * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
      * {@link #setFindingIds(java.util.Collection)} or {@link #withFindingIds(java.util.Collection)} if you want to
@@ -115,7 +134,9 @@ public class UnarchiveFindingsRequest extends com.amazonaws.AmazonWebServiceRequ
     }
 
     /**
+     * <p>
      * IDs of the findings that you want to unarchive.
+     * </p>
      * 
      * @param findingIds
      *        IDs of the findings that you want to unarchive.
@@ -128,7 +149,8 @@ public class UnarchiveFindingsRequest extends com.amazonaws.AmazonWebServiceRequ
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

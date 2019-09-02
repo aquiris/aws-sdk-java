@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -49,7 +49,7 @@ public class RawMessage implements Serializable, Cloneable {
      * </important>
      * <p>
      * For more information, go to the <a
-     * href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-raw.html">Amazon SES Developer Guide</a>.
+     * href="https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-raw.html">Amazon SES Developer Guide</a>.
      * </p>
      */
     private java.nio.ByteBuffer data;
@@ -86,7 +86,7 @@ public class RawMessage implements Serializable, Cloneable {
      *        </important>
      *        <p>
      *        For more information, go to the <a
-     *        href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-raw.html">Amazon SES Developer
+     *        href="https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-raw.html">Amazon SES Developer
      *        Guide</a>.
      */
     public RawMessage(java.nio.ByteBuffer data) {
@@ -116,7 +116,7 @@ public class RawMessage implements Serializable, Cloneable {
      * </important>
      * <p>
      * For more information, go to the <a
-     * href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-raw.html">Amazon SES Developer Guide</a>.
+     * href="https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-raw.html">Amazon SES Developer Guide</a>.
      * </p>
      * <p>
      * The AWS SDK for Java performs a Base64 encoding on this field before sending this request to the AWS service.
@@ -150,7 +150,7 @@ public class RawMessage implements Serializable, Cloneable {
      *        </important>
      *        <p>
      *        For more information, go to the <a
-     *        href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-raw.html">Amazon SES Developer
+     *        href="https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-raw.html">Amazon SES Developer
      *        Guide</a>.
      */
 
@@ -181,7 +181,7 @@ public class RawMessage implements Serializable, Cloneable {
      * </important>
      * <p>
      * For more information, go to the <a
-     * href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-raw.html">Amazon SES Developer Guide</a>.
+     * href="https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-raw.html">Amazon SES Developer Guide</a>.
      * </p>
      * <p>
      * {@code ByteBuffer}s are stateful. Calling their {@code get} methods changes their {@code position}. We recommend
@@ -211,7 +211,7 @@ public class RawMessage implements Serializable, Cloneable {
      *         </important>
      *         <p>
      *         For more information, go to the <a
-     *         href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-raw.html">Amazon SES Developer
+     *         href="https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-raw.html">Amazon SES Developer
      *         Guide</a>.
      */
 
@@ -242,7 +242,7 @@ public class RawMessage implements Serializable, Cloneable {
      * </important>
      * <p>
      * For more information, go to the <a
-     * href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-raw.html">Amazon SES Developer Guide</a>.
+     * href="https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-raw.html">Amazon SES Developer Guide</a>.
      * </p>
      * <p>
      * The AWS SDK for Java performs a Base64 encoding on this field before sending this request to the AWS service.
@@ -276,7 +276,7 @@ public class RawMessage implements Serializable, Cloneable {
      *        </important>
      *        <p>
      *        For more information, go to the <a
-     *        href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-raw.html">Amazon SES Developer
+     *        href="https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-raw.html">Amazon SES Developer
      *        Guide</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -287,7 +287,8 @@ public class RawMessage implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

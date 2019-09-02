@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -29,10 +29,63 @@ public class ReshardingConfiguration implements Serializable, Cloneable {
 
     /**
      * <p>
+     * Either the ElastiCache for Redis supplied 4-digit id or a user supplied id for the node group these configuration
+     * values apply to.
+     * </p>
+     */
+    private String nodeGroupId;
+    /**
+     * <p>
      * A list of preferred availability zones for the nodes in this cluster.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<String> preferredAvailabilityZones;
+
+    /**
+     * <p>
+     * Either the ElastiCache for Redis supplied 4-digit id or a user supplied id for the node group these configuration
+     * values apply to.
+     * </p>
+     * 
+     * @param nodeGroupId
+     *        Either the ElastiCache for Redis supplied 4-digit id or a user supplied id for the node group these
+     *        configuration values apply to.
+     */
+
+    public void setNodeGroupId(String nodeGroupId) {
+        this.nodeGroupId = nodeGroupId;
+    }
+
+    /**
+     * <p>
+     * Either the ElastiCache for Redis supplied 4-digit id or a user supplied id for the node group these configuration
+     * values apply to.
+     * </p>
+     * 
+     * @return Either the ElastiCache for Redis supplied 4-digit id or a user supplied id for the node group these
+     *         configuration values apply to.
+     */
+
+    public String getNodeGroupId() {
+        return this.nodeGroupId;
+    }
+
+    /**
+     * <p>
+     * Either the ElastiCache for Redis supplied 4-digit id or a user supplied id for the node group these configuration
+     * values apply to.
+     * </p>
+     * 
+     * @param nodeGroupId
+     *        Either the ElastiCache for Redis supplied 4-digit id or a user supplied id for the node group these
+     *        configuration values apply to.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ReshardingConfiguration withNodeGroupId(String nodeGroupId) {
+        setNodeGroupId(nodeGroupId);
+        return this;
+    }
 
     /**
      * <p>
@@ -108,7 +161,8 @@ public class ReshardingConfiguration implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -118,6 +172,8 @@ public class ReshardingConfiguration implements Serializable, Cloneable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
+        if (getNodeGroupId() != null)
+            sb.append("NodeGroupId: ").append(getNodeGroupId()).append(",");
         if (getPreferredAvailabilityZones() != null)
             sb.append("PreferredAvailabilityZones: ").append(getPreferredAvailabilityZones());
         sb.append("}");
@@ -134,6 +190,10 @@ public class ReshardingConfiguration implements Serializable, Cloneable {
         if (obj instanceof ReshardingConfiguration == false)
             return false;
         ReshardingConfiguration other = (ReshardingConfiguration) obj;
+        if (other.getNodeGroupId() == null ^ this.getNodeGroupId() == null)
+            return false;
+        if (other.getNodeGroupId() != null && other.getNodeGroupId().equals(this.getNodeGroupId()) == false)
+            return false;
         if (other.getPreferredAvailabilityZones() == null ^ this.getPreferredAvailabilityZones() == null)
             return false;
         if (other.getPreferredAvailabilityZones() != null && other.getPreferredAvailabilityZones().equals(this.getPreferredAvailabilityZones()) == false)
@@ -146,6 +206,7 @@ public class ReshardingConfiguration implements Serializable, Cloneable {
         final int prime = 31;
         int hashCode = 1;
 
+        hashCode = prime * hashCode + ((getNodeGroupId() == null) ? 0 : getNodeGroupId().hashCode());
         hashCode = prime * hashCode + ((getPreferredAvailabilityZones() == null) ? 0 : getPreferredAvailabilityZones().hashCode());
         return hashCode;
     }

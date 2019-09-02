@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -19,7 +19,7 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * The association between a direct connect gateway and virtual interface.
+ * Information about an attachment between a Direct Connect gateway and a virtual interface.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/DirectConnectGatewayAttachment"
@@ -28,24 +28,79 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DirectConnectGatewayAttachment implements Serializable, Cloneable, StructuredPojo {
 
+    /**
+     * <p>
+     * The ID of the Direct Connect gateway.
+     * </p>
+     */
     private String directConnectGatewayId;
-
+    /**
+     * <p>
+     * The ID of the virtual interface.
+     * </p>
+     */
     private String virtualInterfaceId;
-
+    /**
+     * <p>
+     * The AWS Region where the virtual interface is located.
+     * </p>
+     */
     private String virtualInterfaceRegion;
     /**
      * <p>
-     * The AWS account ID of the owner of the virtual interface.
+     * The ID of the AWS account that owns the virtual interface.
      * </p>
      */
     private String virtualInterfaceOwnerAccount;
-
+    /**
+     * <p>
+     * The state of the attachment. The following are the possible values:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>attaching</code>: The initial state after a virtual interface is created using the Direct Connect gateway.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>attached</code>: The Direct Connect gateway and virtual interface are attached and ready to pass traffic.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>detaching</code>: The initial state after calling <a>DeleteVirtualInterface</a>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>detached</code>: The virtual interface is detached from the Direct Connect gateway. Traffic flow between
+     * the Direct Connect gateway and virtual interface is stopped.
+     * </p>
+     * </li>
+     * </ul>
+     */
     private String attachmentState;
-
+    /**
+     * <p>
+     * The interface type.
+     * </p>
+     */
+    private String attachmentType;
+    /**
+     * <p>
+     * The error message if the state of an object failed to advance.
+     * </p>
+     */
     private String stateChangeError;
 
     /**
+     * <p>
+     * The ID of the Direct Connect gateway.
+     * </p>
+     * 
      * @param directConnectGatewayId
+     *        The ID of the Direct Connect gateway.
      */
 
     public void setDirectConnectGatewayId(String directConnectGatewayId) {
@@ -53,7 +108,11 @@ public class DirectConnectGatewayAttachment implements Serializable, Cloneable, 
     }
 
     /**
-     * @return
+     * <p>
+     * The ID of the Direct Connect gateway.
+     * </p>
+     * 
+     * @return The ID of the Direct Connect gateway.
      */
 
     public String getDirectConnectGatewayId() {
@@ -61,7 +120,12 @@ public class DirectConnectGatewayAttachment implements Serializable, Cloneable, 
     }
 
     /**
+     * <p>
+     * The ID of the Direct Connect gateway.
+     * </p>
+     * 
      * @param directConnectGatewayId
+     *        The ID of the Direct Connect gateway.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -71,7 +135,12 @@ public class DirectConnectGatewayAttachment implements Serializable, Cloneable, 
     }
 
     /**
+     * <p>
+     * The ID of the virtual interface.
+     * </p>
+     * 
      * @param virtualInterfaceId
+     *        The ID of the virtual interface.
      */
 
     public void setVirtualInterfaceId(String virtualInterfaceId) {
@@ -79,7 +148,11 @@ public class DirectConnectGatewayAttachment implements Serializable, Cloneable, 
     }
 
     /**
-     * @return
+     * <p>
+     * The ID of the virtual interface.
+     * </p>
+     * 
+     * @return The ID of the virtual interface.
      */
 
     public String getVirtualInterfaceId() {
@@ -87,7 +160,12 @@ public class DirectConnectGatewayAttachment implements Serializable, Cloneable, 
     }
 
     /**
+     * <p>
+     * The ID of the virtual interface.
+     * </p>
+     * 
      * @param virtualInterfaceId
+     *        The ID of the virtual interface.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -97,7 +175,12 @@ public class DirectConnectGatewayAttachment implements Serializable, Cloneable, 
     }
 
     /**
+     * <p>
+     * The AWS Region where the virtual interface is located.
+     * </p>
+     * 
      * @param virtualInterfaceRegion
+     *        The AWS Region where the virtual interface is located.
      */
 
     public void setVirtualInterfaceRegion(String virtualInterfaceRegion) {
@@ -105,7 +188,11 @@ public class DirectConnectGatewayAttachment implements Serializable, Cloneable, 
     }
 
     /**
-     * @return
+     * <p>
+     * The AWS Region where the virtual interface is located.
+     * </p>
+     * 
+     * @return The AWS Region where the virtual interface is located.
      */
 
     public String getVirtualInterfaceRegion() {
@@ -113,7 +200,12 @@ public class DirectConnectGatewayAttachment implements Serializable, Cloneable, 
     }
 
     /**
+     * <p>
+     * The AWS Region where the virtual interface is located.
+     * </p>
+     * 
      * @param virtualInterfaceRegion
+     *        The AWS Region where the virtual interface is located.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -124,11 +216,11 @@ public class DirectConnectGatewayAttachment implements Serializable, Cloneable, 
 
     /**
      * <p>
-     * The AWS account ID of the owner of the virtual interface.
+     * The ID of the AWS account that owns the virtual interface.
      * </p>
      * 
      * @param virtualInterfaceOwnerAccount
-     *        The AWS account ID of the owner of the virtual interface.
+     *        The ID of the AWS account that owns the virtual interface.
      */
 
     public void setVirtualInterfaceOwnerAccount(String virtualInterfaceOwnerAccount) {
@@ -137,10 +229,10 @@ public class DirectConnectGatewayAttachment implements Serializable, Cloneable, 
 
     /**
      * <p>
-     * The AWS account ID of the owner of the virtual interface.
+     * The ID of the AWS account that owns the virtual interface.
      * </p>
      * 
-     * @return The AWS account ID of the owner of the virtual interface.
+     * @return The ID of the AWS account that owns the virtual interface.
      */
 
     public String getVirtualInterfaceOwnerAccount() {
@@ -149,11 +241,11 @@ public class DirectConnectGatewayAttachment implements Serializable, Cloneable, 
 
     /**
      * <p>
-     * The AWS account ID of the owner of the virtual interface.
+     * The ID of the AWS account that owns the virtual interface.
      * </p>
      * 
      * @param virtualInterfaceOwnerAccount
-     *        The AWS account ID of the owner of the virtual interface.
+     *        The ID of the AWS account that owns the virtual interface.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -163,7 +255,59 @@ public class DirectConnectGatewayAttachment implements Serializable, Cloneable, 
     }
 
     /**
+     * <p>
+     * The state of the attachment. The following are the possible values:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>attaching</code>: The initial state after a virtual interface is created using the Direct Connect gateway.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>attached</code>: The Direct Connect gateway and virtual interface are attached and ready to pass traffic.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>detaching</code>: The initial state after calling <a>DeleteVirtualInterface</a>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>detached</code>: The virtual interface is detached from the Direct Connect gateway. Traffic flow between
+     * the Direct Connect gateway and virtual interface is stopped.
+     * </p>
+     * </li>
+     * </ul>
+     * 
      * @param attachmentState
+     *        The state of the attachment. The following are the possible values:</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>attaching</code>: The initial state after a virtual interface is created using the Direct Connect
+     *        gateway.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>attached</code>: The Direct Connect gateway and virtual interface are attached and ready to pass
+     *        traffic.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>detaching</code>: The initial state after calling <a>DeleteVirtualInterface</a>.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>detached</code>: The virtual interface is detached from the Direct Connect gateway. Traffic flow
+     *        between the Direct Connect gateway and virtual interface is stopped.
+     *        </p>
+     *        </li>
      * @see DirectConnectGatewayAttachmentState
      */
 
@@ -172,7 +316,58 @@ public class DirectConnectGatewayAttachment implements Serializable, Cloneable, 
     }
 
     /**
-     * @return
+     * <p>
+     * The state of the attachment. The following are the possible values:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>attaching</code>: The initial state after a virtual interface is created using the Direct Connect gateway.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>attached</code>: The Direct Connect gateway and virtual interface are attached and ready to pass traffic.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>detaching</code>: The initial state after calling <a>DeleteVirtualInterface</a>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>detached</code>: The virtual interface is detached from the Direct Connect gateway. Traffic flow between
+     * the Direct Connect gateway and virtual interface is stopped.
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @return The state of the attachment. The following are the possible values:</p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         <code>attaching</code>: The initial state after a virtual interface is created using the Direct Connect
+     *         gateway.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>attached</code>: The Direct Connect gateway and virtual interface are attached and ready to pass
+     *         traffic.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>detaching</code>: The initial state after calling <a>DeleteVirtualInterface</a>.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>detached</code>: The virtual interface is detached from the Direct Connect gateway. Traffic flow
+     *         between the Direct Connect gateway and virtual interface is stopped.
+     *         </p>
+     *         </li>
      * @see DirectConnectGatewayAttachmentState
      */
 
@@ -181,7 +376,59 @@ public class DirectConnectGatewayAttachment implements Serializable, Cloneable, 
     }
 
     /**
+     * <p>
+     * The state of the attachment. The following are the possible values:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>attaching</code>: The initial state after a virtual interface is created using the Direct Connect gateway.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>attached</code>: The Direct Connect gateway and virtual interface are attached and ready to pass traffic.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>detaching</code>: The initial state after calling <a>DeleteVirtualInterface</a>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>detached</code>: The virtual interface is detached from the Direct Connect gateway. Traffic flow between
+     * the Direct Connect gateway and virtual interface is stopped.
+     * </p>
+     * </li>
+     * </ul>
+     * 
      * @param attachmentState
+     *        The state of the attachment. The following are the possible values:</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>attaching</code>: The initial state after a virtual interface is created using the Direct Connect
+     *        gateway.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>attached</code>: The Direct Connect gateway and virtual interface are attached and ready to pass
+     *        traffic.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>detaching</code>: The initial state after calling <a>DeleteVirtualInterface</a>.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>detached</code>: The virtual interface is detached from the Direct Connect gateway. Traffic flow
+     *        between the Direct Connect gateway and virtual interface is stopped.
+     *        </p>
+     *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see DirectConnectGatewayAttachmentState
      */
@@ -192,7 +439,59 @@ public class DirectConnectGatewayAttachment implements Serializable, Cloneable, 
     }
 
     /**
+     * <p>
+     * The state of the attachment. The following are the possible values:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>attaching</code>: The initial state after a virtual interface is created using the Direct Connect gateway.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>attached</code>: The Direct Connect gateway and virtual interface are attached and ready to pass traffic.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>detaching</code>: The initial state after calling <a>DeleteVirtualInterface</a>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>detached</code>: The virtual interface is detached from the Direct Connect gateway. Traffic flow between
+     * the Direct Connect gateway and virtual interface is stopped.
+     * </p>
+     * </li>
+     * </ul>
+     * 
      * @param attachmentState
+     *        The state of the attachment. The following are the possible values:</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>attaching</code>: The initial state after a virtual interface is created using the Direct Connect
+     *        gateway.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>attached</code>: The Direct Connect gateway and virtual interface are attached and ready to pass
+     *        traffic.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>detaching</code>: The initial state after calling <a>DeleteVirtualInterface</a>.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>detached</code>: The virtual interface is detached from the Direct Connect gateway. Traffic flow
+     *        between the Direct Connect gateway and virtual interface is stopped.
+     *        </p>
+     *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see DirectConnectGatewayAttachmentState
      */
@@ -203,7 +502,71 @@ public class DirectConnectGatewayAttachment implements Serializable, Cloneable, 
     }
 
     /**
+     * <p>
+     * The interface type.
+     * </p>
+     * 
+     * @param attachmentType
+     *        The interface type.
+     * @see DirectConnectGatewayAttachmentType
+     */
+
+    public void setAttachmentType(String attachmentType) {
+        this.attachmentType = attachmentType;
+    }
+
+    /**
+     * <p>
+     * The interface type.
+     * </p>
+     * 
+     * @return The interface type.
+     * @see DirectConnectGatewayAttachmentType
+     */
+
+    public String getAttachmentType() {
+        return this.attachmentType;
+    }
+
+    /**
+     * <p>
+     * The interface type.
+     * </p>
+     * 
+     * @param attachmentType
+     *        The interface type.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see DirectConnectGatewayAttachmentType
+     */
+
+    public DirectConnectGatewayAttachment withAttachmentType(String attachmentType) {
+        setAttachmentType(attachmentType);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The interface type.
+     * </p>
+     * 
+     * @param attachmentType
+     *        The interface type.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see DirectConnectGatewayAttachmentType
+     */
+
+    public DirectConnectGatewayAttachment withAttachmentType(DirectConnectGatewayAttachmentType attachmentType) {
+        this.attachmentType = attachmentType.toString();
+        return this;
+    }
+
+    /**
+     * <p>
+     * The error message if the state of an object failed to advance.
+     * </p>
+     * 
      * @param stateChangeError
+     *        The error message if the state of an object failed to advance.
      */
 
     public void setStateChangeError(String stateChangeError) {
@@ -211,7 +574,11 @@ public class DirectConnectGatewayAttachment implements Serializable, Cloneable, 
     }
 
     /**
-     * @return
+     * <p>
+     * The error message if the state of an object failed to advance.
+     * </p>
+     * 
+     * @return The error message if the state of an object failed to advance.
      */
 
     public String getStateChangeError() {
@@ -219,7 +586,12 @@ public class DirectConnectGatewayAttachment implements Serializable, Cloneable, 
     }
 
     /**
+     * <p>
+     * The error message if the state of an object failed to advance.
+     * </p>
+     * 
      * @param stateChangeError
+     *        The error message if the state of an object failed to advance.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -229,7 +601,8 @@ public class DirectConnectGatewayAttachment implements Serializable, Cloneable, 
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -249,6 +622,8 @@ public class DirectConnectGatewayAttachment implements Serializable, Cloneable, 
             sb.append("VirtualInterfaceOwnerAccount: ").append(getVirtualInterfaceOwnerAccount()).append(",");
         if (getAttachmentState() != null)
             sb.append("AttachmentState: ").append(getAttachmentState()).append(",");
+        if (getAttachmentType() != null)
+            sb.append("AttachmentType: ").append(getAttachmentType()).append(",");
         if (getStateChangeError() != null)
             sb.append("StateChangeError: ").append(getStateChangeError());
         sb.append("}");
@@ -285,6 +660,10 @@ public class DirectConnectGatewayAttachment implements Serializable, Cloneable, 
             return false;
         if (other.getAttachmentState() != null && other.getAttachmentState().equals(this.getAttachmentState()) == false)
             return false;
+        if (other.getAttachmentType() == null ^ this.getAttachmentType() == null)
+            return false;
+        if (other.getAttachmentType() != null && other.getAttachmentType().equals(this.getAttachmentType()) == false)
+            return false;
         if (other.getStateChangeError() == null ^ this.getStateChangeError() == null)
             return false;
         if (other.getStateChangeError() != null && other.getStateChangeError().equals(this.getStateChangeError()) == false)
@@ -302,6 +681,7 @@ public class DirectConnectGatewayAttachment implements Serializable, Cloneable, 
         hashCode = prime * hashCode + ((getVirtualInterfaceRegion() == null) ? 0 : getVirtualInterfaceRegion().hashCode());
         hashCode = prime * hashCode + ((getVirtualInterfaceOwnerAccount() == null) ? 0 : getVirtualInterfaceOwnerAccount().hashCode());
         hashCode = prime * hashCode + ((getAttachmentState() == null) ? 0 : getAttachmentState().hashCode());
+        hashCode = prime * hashCode + ((getAttachmentType() == null) ? 0 : getAttachmentType().hashCode());
         hashCode = prime * hashCode + ((getStateChangeError() == null) ? 0 : getStateChangeError().hashCode());
         return hashCode;
     }

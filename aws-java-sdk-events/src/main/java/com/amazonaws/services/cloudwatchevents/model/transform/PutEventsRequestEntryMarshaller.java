@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -29,7 +29,7 @@ import com.amazonaws.annotation.SdkInternalApi;
 public class PutEventsRequestEntryMarshaller {
 
     private static final MarshallingInfo<java.util.Date> TIME_BINDING = MarshallingInfo.builder(MarshallingType.DATE)
-            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("Time").build();
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("Time").timestampFormat("unixTimestamp").build();
     private static final MarshallingInfo<String> SOURCE_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("Source").build();
     private static final MarshallingInfo<List> RESOURCES_BINDING = MarshallingInfo.builder(MarshallingType.LIST).marshallLocation(MarshallLocation.PAYLOAD)
@@ -38,6 +38,8 @@ public class PutEventsRequestEntryMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("DetailType").build();
     private static final MarshallingInfo<String> DETAIL_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("Detail").build();
+    private static final MarshallingInfo<String> EVENTBUSNAME_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("EventBusName").build();
 
     private static final PutEventsRequestEntryMarshaller instance = new PutEventsRequestEntryMarshaller();
 
@@ -60,6 +62,7 @@ public class PutEventsRequestEntryMarshaller {
             protocolMarshaller.marshall(putEventsRequestEntry.getResources(), RESOURCES_BINDING);
             protocolMarshaller.marshall(putEventsRequestEntry.getDetailType(), DETAILTYPE_BINDING);
             protocolMarshaller.marshall(putEventsRequestEntry.getDetail(), DETAIL_BINDING);
+            protocolMarshaller.marshall(putEventsRequestEntry.getEventBusName(), EVENTBUSNAME_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

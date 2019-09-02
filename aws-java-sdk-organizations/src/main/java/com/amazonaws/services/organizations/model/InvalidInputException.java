@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,7 +27,7 @@ import javax.annotation.Generated;
  * <ul>
  * <li>
  * <p>
- * IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.
+ * IMMUTABLE_POLICY: You specified a policy that is managed by AWS and can't be modified.
  * </p>
  * </li>
  * <li>
@@ -37,7 +37,7 @@ import javax.annotation.Generated;
  * </li>
  * <li>
  * <p>
- * INVALID_ENUM: You specified a value that is not valid for that parameter.
+ * INVALID_ENUM: You specified an invalid value.
  * </p>
  * </li>
  * <li>
@@ -52,13 +52,13 @@ import javax.annotation.Generated;
  * </li>
  * <li>
  * <p>
- * INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a party.
+ * INVALID_PAGINATION_TOKEN: Get the value for the <code>NextToken</code> parameter from the response to a previous call
+ * of the operation.
  * </p>
  * </li>
  * <li>
  * <p>
- * INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call of the
- * operation.
+ * INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a party.
  * </p>
  * </li>
  * <li>
@@ -73,18 +73,24 @@ import javax.annotation.Generated;
  * </li>
  * <li>
  * <p>
- * INVALID_ROLE_NAME: You provided a role name that is not valid. A role name can’t begin with the reserved prefix
- * 'AWSServiceRoleFor'.
+ * INVALID_ROLE_NAME: You provided a role name that isn't valid. A role name can't begin with the reserved prefix
+ * <code>AWSServiceRoleFor</code>.
  * </p>
  * </li>
  * <li>
  * <p>
- * INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.
+ * INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid Amazon Resource Name (ARN) for the organization.
  * </p>
  * </li>
  * <li>
  * <p>
  * INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * INVALID_SYSTEM_TAGS_PARAMETER: You specified a tag key that is a system tag. You can’t add, edit, or delete system
+ * tag keys because they're reserved for AWS use. System tags don’t count against your tags per resource limit.
  * </p>
  * </li>
  * <li>

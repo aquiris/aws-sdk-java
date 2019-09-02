@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -18,7 +18,9 @@ import com.amazonaws.protocol.StructuredPojo;
 import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
- * Send message request.
+ * <p>
+ * Specifies the objects that define configuration and other settings for a message.
+ * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/MessageRequest" target="_top">AWS API
  *      Documentation</a>
@@ -27,29 +29,55 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 public class MessageRequest implements Serializable, Cloneable, StructuredPojo {
 
     /**
-     * A map of destination addresses, with the address as the key(Email address, phone number or push token) and the
-     * Address Configuration as the value.
+     * <p>
+     * A map of key-value pairs, where each key is an address and each value is an AddressConfiguration object. An
+     * address can be a push notification token, a phone number, or an email address. You can use an
+     * AddressConfiguration object to tailor the message for an address by specifying settings such as content overrides
+     * and message variables.
+     * </p>
      */
     private java.util.Map<String, AddressConfiguration> addresses;
     /**
-     * A map of custom attributes to attributes to be attached to the message. This payload is added to the push
-     * notification's 'data.pinpoint' object or added to the email/sms delivery receipt event attributes.
+     * <p>
+     * A map of custom attributes to attach to the message. For a push notification, this payload is added to the
+     * data.pinpoint object. For an email or text message, this payload is added to email/SMS delivery receipt event
+     * attributes.
+     * </p>
      */
     private java.util.Map<String, String> context;
     /**
-     * A map of destination addresses, with the address as the key(Email address, phone number or push token) and the
-     * Address Configuration as the value.
+     * <p>
+     * A map of key-value pairs, where each key is an endpoint ID and each value is an EndpointSendConfiguration object.
+     * You can use an EndpointSendConfiguration object to tailor the message for an endpoint by specifying settings such
+     * as content overrides and message variables.
+     * </p>
      */
     private java.util.Map<String, EndpointSendConfiguration> endpoints;
-    /** Message configuration. */
+    /**
+     * <p>
+     * The set of properties that defines the configuration settings for the message.
+     * </p>
+     */
     private DirectMessageConfiguration messageConfiguration;
+    /**
+     * <p>
+     * The unique identifier for tracing the message. This identifier is visible to message recipients.
+     * </p>
+     */
+    private String traceId;
 
     /**
-     * A map of destination addresses, with the address as the key(Email address, phone number or push token) and the
-     * Address Configuration as the value.
+     * <p>
+     * A map of key-value pairs, where each key is an address and each value is an AddressConfiguration object. An
+     * address can be a push notification token, a phone number, or an email address. You can use an
+     * AddressConfiguration object to tailor the message for an address by specifying settings such as content overrides
+     * and message variables.
+     * </p>
      * 
-     * @return A map of destination addresses, with the address as the key(Email address, phone number or push token)
-     *         and the Address Configuration as the value.
+     * @return A map of key-value pairs, where each key is an address and each value is an AddressConfiguration object.
+     *         An address can be a push notification token, a phone number, or an email address. You can use an
+     *         AddressConfiguration object to tailor the message for an address by specifying settings such as content
+     *         overrides and message variables.
      */
 
     public java.util.Map<String, AddressConfiguration> getAddresses() {
@@ -57,12 +85,18 @@ public class MessageRequest implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * A map of destination addresses, with the address as the key(Email address, phone number or push token) and the
-     * Address Configuration as the value.
+     * <p>
+     * A map of key-value pairs, where each key is an address and each value is an AddressConfiguration object. An
+     * address can be a push notification token, a phone number, or an email address. You can use an
+     * AddressConfiguration object to tailor the message for an address by specifying settings such as content overrides
+     * and message variables.
+     * </p>
      * 
      * @param addresses
-     *        A map of destination addresses, with the address as the key(Email address, phone number or push token) and
-     *        the Address Configuration as the value.
+     *        A map of key-value pairs, where each key is an address and each value is an AddressConfiguration object.
+     *        An address can be a push notification token, a phone number, or an email address. You can use an
+     *        AddressConfiguration object to tailor the message for an address by specifying settings such as content
+     *        overrides and message variables.
      */
 
     public void setAddresses(java.util.Map<String, AddressConfiguration> addresses) {
@@ -70,12 +104,18 @@ public class MessageRequest implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * A map of destination addresses, with the address as the key(Email address, phone number or push token) and the
-     * Address Configuration as the value.
+     * <p>
+     * A map of key-value pairs, where each key is an address and each value is an AddressConfiguration object. An
+     * address can be a push notification token, a phone number, or an email address. You can use an
+     * AddressConfiguration object to tailor the message for an address by specifying settings such as content overrides
+     * and message variables.
+     * </p>
      * 
      * @param addresses
-     *        A map of destination addresses, with the address as the key(Email address, phone number or push token) and
-     *        the Address Configuration as the value.
+     *        A map of key-value pairs, where each key is an address and each value is an AddressConfiguration object.
+     *        An address can be a push notification token, a phone number, or an email address. You can use an
+     *        AddressConfiguration object to tailor the message for an address by specifying settings such as content
+     *        overrides and message variables.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -106,11 +146,15 @@ public class MessageRequest implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * A map of custom attributes to attributes to be attached to the message. This payload is added to the push
-     * notification's 'data.pinpoint' object or added to the email/sms delivery receipt event attributes.
+     * <p>
+     * A map of custom attributes to attach to the message. For a push notification, this payload is added to the
+     * data.pinpoint object. For an email or text message, this payload is added to email/SMS delivery receipt event
+     * attributes.
+     * </p>
      * 
-     * @return A map of custom attributes to attributes to be attached to the message. This payload is added to the push
-     *         notification's 'data.pinpoint' object or added to the email/sms delivery receipt event attributes.
+     * @return A map of custom attributes to attach to the message. For a push notification, this payload is added to
+     *         the data.pinpoint object. For an email or text message, this payload is added to email/SMS delivery
+     *         receipt event attributes.
      */
 
     public java.util.Map<String, String> getContext() {
@@ -118,12 +162,16 @@ public class MessageRequest implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * A map of custom attributes to attributes to be attached to the message. This payload is added to the push
-     * notification's 'data.pinpoint' object or added to the email/sms delivery receipt event attributes.
+     * <p>
+     * A map of custom attributes to attach to the message. For a push notification, this payload is added to the
+     * data.pinpoint object. For an email or text message, this payload is added to email/SMS delivery receipt event
+     * attributes.
+     * </p>
      * 
      * @param context
-     *        A map of custom attributes to attributes to be attached to the message. This payload is added to the push
-     *        notification's 'data.pinpoint' object or added to the email/sms delivery receipt event attributes.
+     *        A map of custom attributes to attach to the message. For a push notification, this payload is added to the
+     *        data.pinpoint object. For an email or text message, this payload is added to email/SMS delivery receipt
+     *        event attributes.
      */
 
     public void setContext(java.util.Map<String, String> context) {
@@ -131,12 +179,16 @@ public class MessageRequest implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * A map of custom attributes to attributes to be attached to the message. This payload is added to the push
-     * notification's 'data.pinpoint' object or added to the email/sms delivery receipt event attributes.
+     * <p>
+     * A map of custom attributes to attach to the message. For a push notification, this payload is added to the
+     * data.pinpoint object. For an email or text message, this payload is added to email/SMS delivery receipt event
+     * attributes.
+     * </p>
      * 
      * @param context
-     *        A map of custom attributes to attributes to be attached to the message. This payload is added to the push
-     *        notification's 'data.pinpoint' object or added to the email/sms delivery receipt event attributes.
+     *        A map of custom attributes to attach to the message. For a push notification, this payload is added to the
+     *        data.pinpoint object. For an email or text message, this payload is added to email/SMS delivery receipt
+     *        event attributes.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -167,11 +219,15 @@ public class MessageRequest implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * A map of destination addresses, with the address as the key(Email address, phone number or push token) and the
-     * Address Configuration as the value.
+     * <p>
+     * A map of key-value pairs, where each key is an endpoint ID and each value is an EndpointSendConfiguration object.
+     * You can use an EndpointSendConfiguration object to tailor the message for an endpoint by specifying settings such
+     * as content overrides and message variables.
+     * </p>
      * 
-     * @return A map of destination addresses, with the address as the key(Email address, phone number or push token)
-     *         and the Address Configuration as the value.
+     * @return A map of key-value pairs, where each key is an endpoint ID and each value is an EndpointSendConfiguration
+     *         object. You can use an EndpointSendConfiguration object to tailor the message for an endpoint by
+     *         specifying settings such as content overrides and message variables.
      */
 
     public java.util.Map<String, EndpointSendConfiguration> getEndpoints() {
@@ -179,12 +235,16 @@ public class MessageRequest implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * A map of destination addresses, with the address as the key(Email address, phone number or push token) and the
-     * Address Configuration as the value.
+     * <p>
+     * A map of key-value pairs, where each key is an endpoint ID and each value is an EndpointSendConfiguration object.
+     * You can use an EndpointSendConfiguration object to tailor the message for an endpoint by specifying settings such
+     * as content overrides and message variables.
+     * </p>
      * 
      * @param endpoints
-     *        A map of destination addresses, with the address as the key(Email address, phone number or push token) and
-     *        the Address Configuration as the value.
+     *        A map of key-value pairs, where each key is an endpoint ID and each value is an EndpointSendConfiguration
+     *        object. You can use an EndpointSendConfiguration object to tailor the message for an endpoint by
+     *        specifying settings such as content overrides and message variables.
      */
 
     public void setEndpoints(java.util.Map<String, EndpointSendConfiguration> endpoints) {
@@ -192,12 +252,16 @@ public class MessageRequest implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * A map of destination addresses, with the address as the key(Email address, phone number or push token) and the
-     * Address Configuration as the value.
+     * <p>
+     * A map of key-value pairs, where each key is an endpoint ID and each value is an EndpointSendConfiguration object.
+     * You can use an EndpointSendConfiguration object to tailor the message for an endpoint by specifying settings such
+     * as content overrides and message variables.
+     * </p>
      * 
      * @param endpoints
-     *        A map of destination addresses, with the address as the key(Email address, phone number or push token) and
-     *        the Address Configuration as the value.
+     *        A map of key-value pairs, where each key is an endpoint ID and each value is an EndpointSendConfiguration
+     *        object. You can use an EndpointSendConfiguration object to tailor the message for an endpoint by
+     *        specifying settings such as content overrides and message variables.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -228,10 +292,12 @@ public class MessageRequest implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Message configuration.
+     * <p>
+     * The set of properties that defines the configuration settings for the message.
+     * </p>
      * 
      * @param messageConfiguration
-     *        Message configuration.
+     *        The set of properties that defines the configuration settings for the message.
      */
 
     public void setMessageConfiguration(DirectMessageConfiguration messageConfiguration) {
@@ -239,9 +305,11 @@ public class MessageRequest implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Message configuration.
+     * <p>
+     * The set of properties that defines the configuration settings for the message.
+     * </p>
      * 
-     * @return Message configuration.
+     * @return The set of properties that defines the configuration settings for the message.
      */
 
     public DirectMessageConfiguration getMessageConfiguration() {
@@ -249,10 +317,12 @@ public class MessageRequest implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Message configuration.
+     * <p>
+     * The set of properties that defines the configuration settings for the message.
+     * </p>
      * 
      * @param messageConfiguration
-     *        Message configuration.
+     *        The set of properties that defines the configuration settings for the message.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -262,7 +332,48 @@ public class MessageRequest implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * <p>
+     * The unique identifier for tracing the message. This identifier is visible to message recipients.
+     * </p>
+     * 
+     * @param traceId
+     *        The unique identifier for tracing the message. This identifier is visible to message recipients.
+     */
+
+    public void setTraceId(String traceId) {
+        this.traceId = traceId;
+    }
+
+    /**
+     * <p>
+     * The unique identifier for tracing the message. This identifier is visible to message recipients.
+     * </p>
+     * 
+     * @return The unique identifier for tracing the message. This identifier is visible to message recipients.
+     */
+
+    public String getTraceId() {
+        return this.traceId;
+    }
+
+    /**
+     * <p>
+     * The unique identifier for tracing the message. This identifier is visible to message recipients.
+     * </p>
+     * 
+     * @param traceId
+     *        The unique identifier for tracing the message. This identifier is visible to message recipients.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public MessageRequest withTraceId(String traceId) {
+        setTraceId(traceId);
+        return this;
+    }
+
+    /**
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -279,7 +390,9 @@ public class MessageRequest implements Serializable, Cloneable, StructuredPojo {
         if (getEndpoints() != null)
             sb.append("Endpoints: ").append(getEndpoints()).append(",");
         if (getMessageConfiguration() != null)
-            sb.append("MessageConfiguration: ").append(getMessageConfiguration());
+            sb.append("MessageConfiguration: ").append(getMessageConfiguration()).append(",");
+        if (getTraceId() != null)
+            sb.append("TraceId: ").append(getTraceId());
         sb.append("}");
         return sb.toString();
     }
@@ -310,6 +423,10 @@ public class MessageRequest implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getMessageConfiguration() != null && other.getMessageConfiguration().equals(this.getMessageConfiguration()) == false)
             return false;
+        if (other.getTraceId() == null ^ this.getTraceId() == null)
+            return false;
+        if (other.getTraceId() != null && other.getTraceId().equals(this.getTraceId()) == false)
+            return false;
         return true;
     }
 
@@ -322,6 +439,7 @@ public class MessageRequest implements Serializable, Cloneable, StructuredPojo {
         hashCode = prime * hashCode + ((getContext() == null) ? 0 : getContext().hashCode());
         hashCode = prime * hashCode + ((getEndpoints() == null) ? 0 : getEndpoints().hashCode());
         hashCode = prime * hashCode + ((getMessageConfiguration() == null) ? 0 : getMessageConfiguration().hashCode());
+        hashCode = prime * hashCode + ((getTraceId() == null) ? 0 : getTraceId().hashCode());
         return hashCode;
     }
 

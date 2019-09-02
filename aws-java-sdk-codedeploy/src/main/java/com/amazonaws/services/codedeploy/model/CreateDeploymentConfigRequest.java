@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -66,13 +66,13 @@ public class CreateDeploymentConfigRequest extends com.amazonaws.AmazonWebServic
     private MinimumHealthyHosts minimumHealthyHosts;
     /**
      * <p>
-     * The configuration that specifies how the deployment traffic will be routed.
+     * The configuration that specifies how the deployment traffic is routed.
      * </p>
      */
     private TrafficRoutingConfig trafficRoutingConfig;
     /**
      * <p>
-     * The destination platform type for the deployment (<code>Lambda</code> or <code>Server</code>&gt;).
+     * The destination platform type for the deployment (<code>Lambda</code>, <code>Server</code>, or <code>ECS</code>).
      * </p>
      */
     private String computePlatform;
@@ -303,11 +303,11 @@ public class CreateDeploymentConfigRequest extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * The configuration that specifies how the deployment traffic will be routed.
+     * The configuration that specifies how the deployment traffic is routed.
      * </p>
      * 
      * @param trafficRoutingConfig
-     *        The configuration that specifies how the deployment traffic will be routed.
+     *        The configuration that specifies how the deployment traffic is routed.
      */
 
     public void setTrafficRoutingConfig(TrafficRoutingConfig trafficRoutingConfig) {
@@ -316,10 +316,10 @@ public class CreateDeploymentConfigRequest extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * The configuration that specifies how the deployment traffic will be routed.
+     * The configuration that specifies how the deployment traffic is routed.
      * </p>
      * 
-     * @return The configuration that specifies how the deployment traffic will be routed.
+     * @return The configuration that specifies how the deployment traffic is routed.
      */
 
     public TrafficRoutingConfig getTrafficRoutingConfig() {
@@ -328,11 +328,11 @@ public class CreateDeploymentConfigRequest extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * The configuration that specifies how the deployment traffic will be routed.
+     * The configuration that specifies how the deployment traffic is routed.
      * </p>
      * 
      * @param trafficRoutingConfig
-     *        The configuration that specifies how the deployment traffic will be routed.
+     *        The configuration that specifies how the deployment traffic is routed.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -343,11 +343,12 @@ public class CreateDeploymentConfigRequest extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * The destination platform type for the deployment (<code>Lambda</code> or <code>Server</code>&gt;).
+     * The destination platform type for the deployment (<code>Lambda</code>, <code>Server</code>, or <code>ECS</code>).
      * </p>
      * 
      * @param computePlatform
-     *        The destination platform type for the deployment (<code>Lambda</code> or <code>Server</code>&gt;).
+     *        The destination platform type for the deployment (<code>Lambda</code>, <code>Server</code>, or
+     *        <code>ECS</code>).
      * @see ComputePlatform
      */
 
@@ -357,10 +358,11 @@ public class CreateDeploymentConfigRequest extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * The destination platform type for the deployment (<code>Lambda</code> or <code>Server</code>&gt;).
+     * The destination platform type for the deployment (<code>Lambda</code>, <code>Server</code>, or <code>ECS</code>).
      * </p>
      * 
-     * @return The destination platform type for the deployment (<code>Lambda</code> or <code>Server</code>&gt;).
+     * @return The destination platform type for the deployment (<code>Lambda</code>, <code>Server</code>, or
+     *         <code>ECS</code>).
      * @see ComputePlatform
      */
 
@@ -370,11 +372,12 @@ public class CreateDeploymentConfigRequest extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * The destination platform type for the deployment (<code>Lambda</code> or <code>Server</code>&gt;).
+     * The destination platform type for the deployment (<code>Lambda</code>, <code>Server</code>, or <code>ECS</code>).
      * </p>
      * 
      * @param computePlatform
-     *        The destination platform type for the deployment (<code>Lambda</code> or <code>Server</code>&gt;).
+     *        The destination platform type for the deployment (<code>Lambda</code>, <code>Server</code>, or
+     *        <code>ECS</code>).
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see ComputePlatform
      */
@@ -386,11 +389,12 @@ public class CreateDeploymentConfigRequest extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * The destination platform type for the deployment (<code>Lambda</code> or <code>Server</code>&gt;).
+     * The destination platform type for the deployment (<code>Lambda</code>, <code>Server</code>, or <code>ECS</code>).
      * </p>
      * 
      * @param computePlatform
-     *        The destination platform type for the deployment (<code>Lambda</code> or <code>Server</code>&gt;).
+     *        The destination platform type for the deployment (<code>Lambda</code>, <code>Server</code>, or
+     *        <code>ECS</code>).
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see ComputePlatform
      */
@@ -401,7 +405,8 @@ public class CreateDeploymentConfigRequest extends com.amazonaws.AmazonWebServic
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

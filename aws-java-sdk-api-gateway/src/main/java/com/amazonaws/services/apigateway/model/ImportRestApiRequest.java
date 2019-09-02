@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -42,33 +42,34 @@ public class ImportRestApiRequest extends com.amazonaws.AmazonWebServiceRequest 
      * <code>ignore=documentation</code>.
      * </p>
      * <p>
-     * To configure the endpoint type, set <code>parameters</code> as <code>endpointConfigurationTypes=EDGE</code> or
-     * <code>endpointConfigurationTypes=REGIONAL</code>. The default endpoint type is <code>EDGE</code>.
+     * To configure the endpoint type, set <code>parameters</code> as <code>endpointConfigurationTypes=EDGE</code>,
+     * <code>endpointConfigurationTypes=REGIONAL</code>, or <code>endpointConfigurationTypes=PRIVATE</code>. The default
+     * endpoint type is <code>EDGE</code>.
      * </p>
      * <p>
-     * To handle imported <code>basePath</code>, set <code>parameters</code> as <code>basePath=ignore</code>,
-     * <code>basePath=prepend</code> or <code>basePath=split</code>.
+     * To handle imported <code>basepath</code>, set <code>parameters</code> as <code>basepath=ignore</code>,
+     * <code>basepath=prepend</code> or <code>basepath=split</code>.
      * </p>
      * <p>
      * For example, the AWS CLI command to exclude documentation from the imported API is:
      * </p>
      * 
      * <pre>
-     * <code>aws apigateway import-rest-api --parameters ignore=documentation --body 'file:///path/to/imported-api-body.json</code>
+     * <code>aws apigateway import-rest-api --parameters ignore=documentation --body 'file:///path/to/imported-api-body.json'</code>
      * </pre>
      * <p>
      * The AWS CLI command to set the regional endpoint on the imported API is:
      * </p>
      * 
      * <pre>
-     * <code>aws apigateway import-rest-api --parameters endpointConfigurationTypes=REGIONAL --body 'file:///path/to/imported-api-body.json</code>
+     * <code>aws apigateway import-rest-api --parameters endpointConfigurationTypes=REGIONAL --body 'file:///path/to/imported-api-body.json'</code>
      * </pre>
      */
     private java.util.Map<String, String> parameters;
     /**
      * <p>
-     * [Required] The POST request body containing external API definitions. Currently, only Swagger definition JSON
-     * files are supported. The maximum size of the API definition file is 2MB.
+     * [Required] The POST request body containing external API definitions. Currently, only OpenAPI definition
+     * JSON/YAML files are supported. The maximum size of the API definition file is 2MB.
      * </p>
      */
     private java.nio.ByteBuffer body;
@@ -143,26 +144,27 @@ public class ImportRestApiRequest extends com.amazonaws.AmazonWebServiceRequest 
      * <code>ignore=documentation</code>.
      * </p>
      * <p>
-     * To configure the endpoint type, set <code>parameters</code> as <code>endpointConfigurationTypes=EDGE</code> or
-     * <code>endpointConfigurationTypes=REGIONAL</code>. The default endpoint type is <code>EDGE</code>.
+     * To configure the endpoint type, set <code>parameters</code> as <code>endpointConfigurationTypes=EDGE</code>,
+     * <code>endpointConfigurationTypes=REGIONAL</code>, or <code>endpointConfigurationTypes=PRIVATE</code>. The default
+     * endpoint type is <code>EDGE</code>.
      * </p>
      * <p>
-     * To handle imported <code>basePath</code>, set <code>parameters</code> as <code>basePath=ignore</code>,
-     * <code>basePath=prepend</code> or <code>basePath=split</code>.
+     * To handle imported <code>basepath</code>, set <code>parameters</code> as <code>basepath=ignore</code>,
+     * <code>basepath=prepend</code> or <code>basepath=split</code>.
      * </p>
      * <p>
      * For example, the AWS CLI command to exclude documentation from the imported API is:
      * </p>
      * 
      * <pre>
-     * <code>aws apigateway import-rest-api --parameters ignore=documentation --body 'file:///path/to/imported-api-body.json</code>
+     * <code>aws apigateway import-rest-api --parameters ignore=documentation --body 'file:///path/to/imported-api-body.json'</code>
      * </pre>
      * <p>
      * The AWS CLI command to set the regional endpoint on the imported API is:
      * </p>
      * 
      * <pre>
-     * <code>aws apigateway import-rest-api --parameters endpointConfigurationTypes=REGIONAL --body 'file:///path/to/imported-api-body.json</code>
+     * <code>aws apigateway import-rest-api --parameters endpointConfigurationTypes=REGIONAL --body 'file:///path/to/imported-api-body.json'</code>
      * </pre>
      * 
      * @return A key-value map of context-specific query string parameters specifying the behavior of different API
@@ -173,25 +175,25 @@ public class ImportRestApiRequest extends com.amazonaws.AmazonWebServiceRequest 
      *         </p>
      *         <p>
      *         To configure the endpoint type, set <code>parameters</code> as
-     *         <code>endpointConfigurationTypes=EDGE</code> or<code>endpointConfigurationTypes=REGIONAL</code>. The
-     *         default endpoint type is <code>EDGE</code>.
+     *         <code>endpointConfigurationTypes=EDGE</code>, <code>endpointConfigurationTypes=REGIONAL</code>, or
+     *         <code>endpointConfigurationTypes=PRIVATE</code>. The default endpoint type is <code>EDGE</code>.
      *         </p>
      *         <p>
-     *         To handle imported <code>basePath</code>, set <code>parameters</code> as <code>basePath=ignore</code>,
-     *         <code>basePath=prepend</code> or <code>basePath=split</code>.
+     *         To handle imported <code>basepath</code>, set <code>parameters</code> as <code>basepath=ignore</code>,
+     *         <code>basepath=prepend</code> or <code>basepath=split</code>.
      *         </p>
      *         <p>
      *         For example, the AWS CLI command to exclude documentation from the imported API is:
      *         </p>
      * 
      *         <pre>
-     * <code>aws apigateway import-rest-api --parameters ignore=documentation --body 'file:///path/to/imported-api-body.json</code>
+     * <code>aws apigateway import-rest-api --parameters ignore=documentation --body 'file:///path/to/imported-api-body.json'</code>
      * </pre>
      *         <p>
      *         The AWS CLI command to set the regional endpoint on the imported API is:
      *         </p>
      * 
-     * <pre><code>aws apigateway import-rest-api --parameters endpointConfigurationTypes=REGIONAL --body 'file:///path/to/imported-api-body.json</code>
+     * <pre><code>aws apigateway import-rest-api --parameters endpointConfigurationTypes=REGIONAL --body 'file:///path/to/imported-api-body.json'</code>
      */
 
     public java.util.Map<String, String> getParameters() {
@@ -208,26 +210,27 @@ public class ImportRestApiRequest extends com.amazonaws.AmazonWebServiceRequest 
      * <code>ignore=documentation</code>.
      * </p>
      * <p>
-     * To configure the endpoint type, set <code>parameters</code> as <code>endpointConfigurationTypes=EDGE</code> or
-     * <code>endpointConfigurationTypes=REGIONAL</code>. The default endpoint type is <code>EDGE</code>.
+     * To configure the endpoint type, set <code>parameters</code> as <code>endpointConfigurationTypes=EDGE</code>,
+     * <code>endpointConfigurationTypes=REGIONAL</code>, or <code>endpointConfigurationTypes=PRIVATE</code>. The default
+     * endpoint type is <code>EDGE</code>.
      * </p>
      * <p>
-     * To handle imported <code>basePath</code>, set <code>parameters</code> as <code>basePath=ignore</code>,
-     * <code>basePath=prepend</code> or <code>basePath=split</code>.
+     * To handle imported <code>basepath</code>, set <code>parameters</code> as <code>basepath=ignore</code>,
+     * <code>basepath=prepend</code> or <code>basepath=split</code>.
      * </p>
      * <p>
      * For example, the AWS CLI command to exclude documentation from the imported API is:
      * </p>
      * 
      * <pre>
-     * <code>aws apigateway import-rest-api --parameters ignore=documentation --body 'file:///path/to/imported-api-body.json</code>
+     * <code>aws apigateway import-rest-api --parameters ignore=documentation --body 'file:///path/to/imported-api-body.json'</code>
      * </pre>
      * <p>
      * The AWS CLI command to set the regional endpoint on the imported API is:
      * </p>
      * 
      * <pre>
-     * <code>aws apigateway import-rest-api --parameters endpointConfigurationTypes=REGIONAL --body 'file:///path/to/imported-api-body.json</code>
+     * <code>aws apigateway import-rest-api --parameters endpointConfigurationTypes=REGIONAL --body 'file:///path/to/imported-api-body.json'</code>
      * </pre>
      * 
      * @param parameters
@@ -239,25 +242,25 @@ public class ImportRestApiRequest extends com.amazonaws.AmazonWebServiceRequest 
      *        </p>
      *        <p>
      *        To configure the endpoint type, set <code>parameters</code> as
-     *        <code>endpointConfigurationTypes=EDGE</code> or<code>endpointConfigurationTypes=REGIONAL</code>. The
-     *        default endpoint type is <code>EDGE</code>.
+     *        <code>endpointConfigurationTypes=EDGE</code>, <code>endpointConfigurationTypes=REGIONAL</code>, or
+     *        <code>endpointConfigurationTypes=PRIVATE</code>. The default endpoint type is <code>EDGE</code>.
      *        </p>
      *        <p>
-     *        To handle imported <code>basePath</code>, set <code>parameters</code> as <code>basePath=ignore</code>,
-     *        <code>basePath=prepend</code> or <code>basePath=split</code>.
+     *        To handle imported <code>basepath</code>, set <code>parameters</code> as <code>basepath=ignore</code>,
+     *        <code>basepath=prepend</code> or <code>basepath=split</code>.
      *        </p>
      *        <p>
      *        For example, the AWS CLI command to exclude documentation from the imported API is:
      *        </p>
      * 
      *        <pre>
-     * <code>aws apigateway import-rest-api --parameters ignore=documentation --body 'file:///path/to/imported-api-body.json</code>
+     * <code>aws apigateway import-rest-api --parameters ignore=documentation --body 'file:///path/to/imported-api-body.json'</code>
      * </pre>
      *        <p>
      *        The AWS CLI command to set the regional endpoint on the imported API is:
      *        </p>
      * 
-     * <pre><code>aws apigateway import-rest-api --parameters endpointConfigurationTypes=REGIONAL --body 'file:///path/to/imported-api-body.json</code>
+     * <pre><code>aws apigateway import-rest-api --parameters endpointConfigurationTypes=REGIONAL --body 'file:///path/to/imported-api-body.json'</code>
      */
 
     public void setParameters(java.util.Map<String, String> parameters) {
@@ -274,26 +277,27 @@ public class ImportRestApiRequest extends com.amazonaws.AmazonWebServiceRequest 
      * <code>ignore=documentation</code>.
      * </p>
      * <p>
-     * To configure the endpoint type, set <code>parameters</code> as <code>endpointConfigurationTypes=EDGE</code> or
-     * <code>endpointConfigurationTypes=REGIONAL</code>. The default endpoint type is <code>EDGE</code>.
+     * To configure the endpoint type, set <code>parameters</code> as <code>endpointConfigurationTypes=EDGE</code>,
+     * <code>endpointConfigurationTypes=REGIONAL</code>, or <code>endpointConfigurationTypes=PRIVATE</code>. The default
+     * endpoint type is <code>EDGE</code>.
      * </p>
      * <p>
-     * To handle imported <code>basePath</code>, set <code>parameters</code> as <code>basePath=ignore</code>,
-     * <code>basePath=prepend</code> or <code>basePath=split</code>.
+     * To handle imported <code>basepath</code>, set <code>parameters</code> as <code>basepath=ignore</code>,
+     * <code>basepath=prepend</code> or <code>basepath=split</code>.
      * </p>
      * <p>
      * For example, the AWS CLI command to exclude documentation from the imported API is:
      * </p>
      * 
      * <pre>
-     * <code>aws apigateway import-rest-api --parameters ignore=documentation --body 'file:///path/to/imported-api-body.json</code>
+     * <code>aws apigateway import-rest-api --parameters ignore=documentation --body 'file:///path/to/imported-api-body.json'</code>
      * </pre>
      * <p>
      * The AWS CLI command to set the regional endpoint on the imported API is:
      * </p>
      * 
      * <pre>
-     * <code>aws apigateway import-rest-api --parameters endpointConfigurationTypes=REGIONAL --body 'file:///path/to/imported-api-body.json</code>
+     * <code>aws apigateway import-rest-api --parameters endpointConfigurationTypes=REGIONAL --body 'file:///path/to/imported-api-body.json'</code>
      * </pre>
      * 
      * @param parameters
@@ -305,26 +309,26 @@ public class ImportRestApiRequest extends com.amazonaws.AmazonWebServiceRequest 
      *        </p>
      *        <p>
      *        To configure the endpoint type, set <code>parameters</code> as
-     *        <code>endpointConfigurationTypes=EDGE</code> or<code>endpointConfigurationTypes=REGIONAL</code>. The
-     *        default endpoint type is <code>EDGE</code>.
+     *        <code>endpointConfigurationTypes=EDGE</code>, <code>endpointConfigurationTypes=REGIONAL</code>, or
+     *        <code>endpointConfigurationTypes=PRIVATE</code>. The default endpoint type is <code>EDGE</code>.
      *        </p>
      *        <p>
-     *        To handle imported <code>basePath</code>, set <code>parameters</code> as <code>basePath=ignore</code>,
-     *        <code>basePath=prepend</code> or <code>basePath=split</code>.
+     *        To handle imported <code>basepath</code>, set <code>parameters</code> as <code>basepath=ignore</code>,
+     *        <code>basepath=prepend</code> or <code>basepath=split</code>.
      *        </p>
      *        <p>
      *        For example, the AWS CLI command to exclude documentation from the imported API is:
      *        </p>
      * 
      *        <pre>
-     * <code>aws apigateway import-rest-api --parameters ignore=documentation --body 'file:///path/to/imported-api-body.json</code>
+     * <code>aws apigateway import-rest-api --parameters ignore=documentation --body 'file:///path/to/imported-api-body.json'</code>
      * </pre>
      *        <p>
      *        The AWS CLI command to set the regional endpoint on the imported API is:
      *        </p>
      * 
      *        <pre>
-     * <code>aws apigateway import-rest-api --parameters endpointConfigurationTypes=REGIONAL --body 'file:///path/to/imported-api-body.json</code>
+     * <code>aws apigateway import-rest-api --parameters endpointConfigurationTypes=REGIONAL --body 'file:///path/to/imported-api-body.json'</code>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -356,8 +360,8 @@ public class ImportRestApiRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * [Required] The POST request body containing external API definitions. Currently, only Swagger definition JSON
-     * files are supported. The maximum size of the API definition file is 2MB.
+     * [Required] The POST request body containing external API definitions. Currently, only OpenAPI definition
+     * JSON/YAML files are supported. The maximum size of the API definition file is 2MB.
      * </p>
      * <p>
      * The AWS SDK for Java performs a Base64 encoding on this field before sending this request to the AWS service.
@@ -371,8 +375,8 @@ public class ImportRestApiRequest extends com.amazonaws.AmazonWebServiceRequest 
      * </p>
      * 
      * @param body
-     *        [Required] The POST request body containing external API definitions. Currently, only Swagger definition
-     *        JSON files are supported. The maximum size of the API definition file is 2MB.
+     *        [Required] The POST request body containing external API definitions. Currently, only OpenAPI definition
+     *        JSON/YAML files are supported. The maximum size of the API definition file is 2MB.
      */
 
     public void setBody(java.nio.ByteBuffer body) {
@@ -381,8 +385,8 @@ public class ImportRestApiRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * [Required] The POST request body containing external API definitions. Currently, only Swagger definition JSON
-     * files are supported. The maximum size of the API definition file is 2MB.
+     * [Required] The POST request body containing external API definitions. Currently, only OpenAPI definition
+     * JSON/YAML files are supported. The maximum size of the API definition file is 2MB.
      * </p>
      * <p>
      * {@code ByteBuffer}s are stateful. Calling their {@code get} methods changes their {@code position}. We recommend
@@ -392,8 +396,8 @@ public class ImportRestApiRequest extends com.amazonaws.AmazonWebServiceRequest 
      * {@code position}.
      * </p>
      * 
-     * @return [Required] The POST request body containing external API definitions. Currently, only Swagger definition
-     *         JSON files are supported. The maximum size of the API definition file is 2MB.
+     * @return [Required] The POST request body containing external API definitions. Currently, only OpenAPI definition
+     *         JSON/YAML files are supported. The maximum size of the API definition file is 2MB.
      */
 
     public java.nio.ByteBuffer getBody() {
@@ -402,8 +406,8 @@ public class ImportRestApiRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * [Required] The POST request body containing external API definitions. Currently, only Swagger definition JSON
-     * files are supported. The maximum size of the API definition file is 2MB.
+     * [Required] The POST request body containing external API definitions. Currently, only OpenAPI definition
+     * JSON/YAML files are supported. The maximum size of the API definition file is 2MB.
      * </p>
      * <p>
      * The AWS SDK for Java performs a Base64 encoding on this field before sending this request to the AWS service.
@@ -417,8 +421,8 @@ public class ImportRestApiRequest extends com.amazonaws.AmazonWebServiceRequest 
      * </p>
      * 
      * @param body
-     *        [Required] The POST request body containing external API definitions. Currently, only Swagger definition
-     *        JSON files are supported. The maximum size of the API definition file is 2MB.
+     *        [Required] The POST request body containing external API definitions. Currently, only OpenAPI definition
+     *        JSON/YAML files are supported. The maximum size of the API definition file is 2MB.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -428,7 +432,8 @@ public class ImportRestApiRequest extends com.amazonaws.AmazonWebServiceRequest 
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

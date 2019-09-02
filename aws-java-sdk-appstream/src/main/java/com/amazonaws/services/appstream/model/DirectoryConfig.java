@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -19,7 +19,8 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * Configuration information for the directory used to join domains.
+ * Describes the configuration information required to join fleets and image builders to Microsoft Active Directory
+ * domains.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/appstream-2016-12-01/DirectoryConfig" target="_top">AWS API
@@ -42,7 +43,7 @@ public class DirectoryConfig implements Serializable, Cloneable, StructuredPojo 
     private java.util.List<String> organizationalUnitDistinguishedNames;
     /**
      * <p>
-     * The credentials for the service account used by the streaming instance to connect to the directory.
+     * The credentials for the service account used by the fleet or image builder to connect to the directory.
      * </p>
      */
     private ServiceAccountCredentials serviceAccountCredentials;
@@ -166,11 +167,11 @@ public class DirectoryConfig implements Serializable, Cloneable, StructuredPojo 
 
     /**
      * <p>
-     * The credentials for the service account used by the streaming instance to connect to the directory.
+     * The credentials for the service account used by the fleet or image builder to connect to the directory.
      * </p>
      * 
      * @param serviceAccountCredentials
-     *        The credentials for the service account used by the streaming instance to connect to the directory.
+     *        The credentials for the service account used by the fleet or image builder to connect to the directory.
      */
 
     public void setServiceAccountCredentials(ServiceAccountCredentials serviceAccountCredentials) {
@@ -179,10 +180,10 @@ public class DirectoryConfig implements Serializable, Cloneable, StructuredPojo 
 
     /**
      * <p>
-     * The credentials for the service account used by the streaming instance to connect to the directory.
+     * The credentials for the service account used by the fleet or image builder to connect to the directory.
      * </p>
      * 
-     * @return The credentials for the service account used by the streaming instance to connect to the directory.
+     * @return The credentials for the service account used by the fleet or image builder to connect to the directory.
      */
 
     public ServiceAccountCredentials getServiceAccountCredentials() {
@@ -191,11 +192,11 @@ public class DirectoryConfig implements Serializable, Cloneable, StructuredPojo 
 
     /**
      * <p>
-     * The credentials for the service account used by the streaming instance to connect to the directory.
+     * The credentials for the service account used by the fleet or image builder to connect to the directory.
      * </p>
      * 
      * @param serviceAccountCredentials
-     *        The credentials for the service account used by the streaming instance to connect to the directory.
+     *        The credentials for the service account used by the fleet or image builder to connect to the directory.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -245,7 +246,8 @@ public class DirectoryConfig implements Serializable, Cloneable, StructuredPojo 
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

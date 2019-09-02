@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -43,10 +43,10 @@ public class GetMetricStatisticsRequest extends com.amazonaws.AmazonWebServiceRe
      * CloudWatch treats each unique combination of dimensions as a separate metric. If a specific combination of
      * dimensions was not published, you can't retrieve statistics for it. You must specify the same dimensions that
      * were used when the metrics were created. For an example, see <a href=
-     * "http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#dimension-combinations"
+     * "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#dimension-combinations"
      * >Dimension Combinations</a> in the <i>Amazon CloudWatch User Guide</i>. For more information about specifying
      * dimensions, see <a
-     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html">Publishing
+     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html">Publishing
      * Metrics</a> in the <i>Amazon CloudWatch User Guide</i>.
      * </p>
      */
@@ -144,14 +144,18 @@ public class GetMetricStatisticsRequest extends com.amazonaws.AmazonWebServiceRe
     /**
      * <p>
      * The percentile statistics. Specify values between p0.0 and p100. When calling <code>GetMetricStatistics</code>,
-     * you must specify either <code>Statistics</code> or <code>ExtendedStatistics</code>, but not both.
+     * you must specify either <code>Statistics</code> or <code>ExtendedStatistics</code>, but not both. Percentile
+     * statistics are not available for metrics when any of the metric values are negative numbers.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<String> extendedStatistics;
     /**
      * <p>
-     * The unit for a given metric. Metrics may be reported in multiple units. Not supplying a unit results in all units
-     * being returned. If you specify only a unit that the metric does not report, the results of the call are null.
+     * The unit for a given metric. If you omit <code>Unit</code>, all data that was collected with any unit is
+     * returned, along with the corresponding units that were specified when the data was reported to CloudWatch. If you
+     * specify a unit, the operation returns only data data that was collected with that unit specified. If you specify
+     * a unit that does not match the data collected, the results of the operation are null. CloudWatch does not perform
+     * unit conversions.
      * </p>
      */
     private String unit;
@@ -242,10 +246,10 @@ public class GetMetricStatisticsRequest extends com.amazonaws.AmazonWebServiceRe
      * CloudWatch treats each unique combination of dimensions as a separate metric. If a specific combination of
      * dimensions was not published, you can't retrieve statistics for it. You must specify the same dimensions that
      * were used when the metrics were created. For an example, see <a href=
-     * "http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#dimension-combinations"
+     * "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#dimension-combinations"
      * >Dimension Combinations</a> in the <i>Amazon CloudWatch User Guide</i>. For more information about specifying
      * dimensions, see <a
-     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html">Publishing
+     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html">Publishing
      * Metrics</a> in the <i>Amazon CloudWatch User Guide</i>.
      * </p>
      * 
@@ -253,10 +257,10 @@ public class GetMetricStatisticsRequest extends com.amazonaws.AmazonWebServiceRe
      *         CloudWatch treats each unique combination of dimensions as a separate metric. If a specific combination
      *         of dimensions was not published, you can't retrieve statistics for it. You must specify the same
      *         dimensions that were used when the metrics were created. For an example, see <a href=
-     *         "http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#dimension-combinations"
+     *         "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#dimension-combinations"
      *         >Dimension Combinations</a> in the <i>Amazon CloudWatch User Guide</i>. For more information about
      *         specifying dimensions, see <a
-     *         href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html">Publishing
+     *         href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html">Publishing
      *         Metrics</a> in the <i>Amazon CloudWatch User Guide</i>.
      */
 
@@ -273,10 +277,10 @@ public class GetMetricStatisticsRequest extends com.amazonaws.AmazonWebServiceRe
      * CloudWatch treats each unique combination of dimensions as a separate metric. If a specific combination of
      * dimensions was not published, you can't retrieve statistics for it. You must specify the same dimensions that
      * were used when the metrics were created. For an example, see <a href=
-     * "http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#dimension-combinations"
+     * "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#dimension-combinations"
      * >Dimension Combinations</a> in the <i>Amazon CloudWatch User Guide</i>. For more information about specifying
      * dimensions, see <a
-     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html">Publishing
+     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html">Publishing
      * Metrics</a> in the <i>Amazon CloudWatch User Guide</i>.
      * </p>
      * 
@@ -285,10 +289,10 @@ public class GetMetricStatisticsRequest extends com.amazonaws.AmazonWebServiceRe
      *        CloudWatch treats each unique combination of dimensions as a separate metric. If a specific combination of
      *        dimensions was not published, you can't retrieve statistics for it. You must specify the same dimensions
      *        that were used when the metrics were created. For an example, see <a href=
-     *        "http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#dimension-combinations"
+     *        "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#dimension-combinations"
      *        >Dimension Combinations</a> in the <i>Amazon CloudWatch User Guide</i>. For more information about
      *        specifying dimensions, see <a
-     *        href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html">Publishing
+     *        href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html">Publishing
      *        Metrics</a> in the <i>Amazon CloudWatch User Guide</i>.
      */
 
@@ -307,10 +311,10 @@ public class GetMetricStatisticsRequest extends com.amazonaws.AmazonWebServiceRe
      * CloudWatch treats each unique combination of dimensions as a separate metric. If a specific combination of
      * dimensions was not published, you can't retrieve statistics for it. You must specify the same dimensions that
      * were used when the metrics were created. For an example, see <a href=
-     * "http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#dimension-combinations"
+     * "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#dimension-combinations"
      * >Dimension Combinations</a> in the <i>Amazon CloudWatch User Guide</i>. For more information about specifying
      * dimensions, see <a
-     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html">Publishing
+     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html">Publishing
      * Metrics</a> in the <i>Amazon CloudWatch User Guide</i>.
      * </p>
      * <p>
@@ -324,10 +328,10 @@ public class GetMetricStatisticsRequest extends com.amazonaws.AmazonWebServiceRe
      *        CloudWatch treats each unique combination of dimensions as a separate metric. If a specific combination of
      *        dimensions was not published, you can't retrieve statistics for it. You must specify the same dimensions
      *        that were used when the metrics were created. For an example, see <a href=
-     *        "http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#dimension-combinations"
+     *        "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#dimension-combinations"
      *        >Dimension Combinations</a> in the <i>Amazon CloudWatch User Guide</i>. For more information about
      *        specifying dimensions, see <a
-     *        href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html">Publishing
+     *        href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html">Publishing
      *        Metrics</a> in the <i>Amazon CloudWatch User Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -348,10 +352,10 @@ public class GetMetricStatisticsRequest extends com.amazonaws.AmazonWebServiceRe
      * CloudWatch treats each unique combination of dimensions as a separate metric. If a specific combination of
      * dimensions was not published, you can't retrieve statistics for it. You must specify the same dimensions that
      * were used when the metrics were created. For an example, see <a href=
-     * "http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#dimension-combinations"
+     * "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#dimension-combinations"
      * >Dimension Combinations</a> in the <i>Amazon CloudWatch User Guide</i>. For more information about specifying
      * dimensions, see <a
-     * href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html">Publishing
+     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html">Publishing
      * Metrics</a> in the <i>Amazon CloudWatch User Guide</i>.
      * </p>
      * 
@@ -360,10 +364,10 @@ public class GetMetricStatisticsRequest extends com.amazonaws.AmazonWebServiceRe
      *        CloudWatch treats each unique combination of dimensions as a separate metric. If a specific combination of
      *        dimensions was not published, you can't retrieve statistics for it. You must specify the same dimensions
      *        that were used when the metrics were created. For an example, see <a href=
-     *        "http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#dimension-combinations"
+     *        "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#dimension-combinations"
      *        >Dimension Combinations</a> in the <i>Amazon CloudWatch User Guide</i>. For more information about
      *        specifying dimensions, see <a
-     *        href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html">Publishing
+     *        href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html">Publishing
      *        Metrics</a> in the <i>Amazon CloudWatch User Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -995,12 +999,14 @@ public class GetMetricStatisticsRequest extends com.amazonaws.AmazonWebServiceRe
     /**
      * <p>
      * The percentile statistics. Specify values between p0.0 and p100. When calling <code>GetMetricStatistics</code>,
-     * you must specify either <code>Statistics</code> or <code>ExtendedStatistics</code>, but not both.
+     * you must specify either <code>Statistics</code> or <code>ExtendedStatistics</code>, but not both. Percentile
+     * statistics are not available for metrics when any of the metric values are negative numbers.
      * </p>
      * 
      * @return The percentile statistics. Specify values between p0.0 and p100. When calling
      *         <code>GetMetricStatistics</code>, you must specify either <code>Statistics</code> or
-     *         <code>ExtendedStatistics</code>, but not both.
+     *         <code>ExtendedStatistics</code>, but not both. Percentile statistics are not available for metrics when
+     *         any of the metric values are negative numbers.
      */
 
     public java.util.List<String> getExtendedStatistics() {
@@ -1013,13 +1019,15 @@ public class GetMetricStatisticsRequest extends com.amazonaws.AmazonWebServiceRe
     /**
      * <p>
      * The percentile statistics. Specify values between p0.0 and p100. When calling <code>GetMetricStatistics</code>,
-     * you must specify either <code>Statistics</code> or <code>ExtendedStatistics</code>, but not both.
+     * you must specify either <code>Statistics</code> or <code>ExtendedStatistics</code>, but not both. Percentile
+     * statistics are not available for metrics when any of the metric values are negative numbers.
      * </p>
      * 
      * @param extendedStatistics
      *        The percentile statistics. Specify values between p0.0 and p100. When calling
      *        <code>GetMetricStatistics</code>, you must specify either <code>Statistics</code> or
-     *        <code>ExtendedStatistics</code>, but not both.
+     *        <code>ExtendedStatistics</code>, but not both. Percentile statistics are not available for metrics when
+     *        any of the metric values are negative numbers.
      */
 
     public void setExtendedStatistics(java.util.Collection<String> extendedStatistics) {
@@ -1034,7 +1042,8 @@ public class GetMetricStatisticsRequest extends com.amazonaws.AmazonWebServiceRe
     /**
      * <p>
      * The percentile statistics. Specify values between p0.0 and p100. When calling <code>GetMetricStatistics</code>,
-     * you must specify either <code>Statistics</code> or <code>ExtendedStatistics</code>, but not both.
+     * you must specify either <code>Statistics</code> or <code>ExtendedStatistics</code>, but not both. Percentile
+     * statistics are not available for metrics when any of the metric values are negative numbers.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -1045,7 +1054,8 @@ public class GetMetricStatisticsRequest extends com.amazonaws.AmazonWebServiceRe
      * @param extendedStatistics
      *        The percentile statistics. Specify values between p0.0 and p100. When calling
      *        <code>GetMetricStatistics</code>, you must specify either <code>Statistics</code> or
-     *        <code>ExtendedStatistics</code>, but not both.
+     *        <code>ExtendedStatistics</code>, but not both. Percentile statistics are not available for metrics when
+     *        any of the metric values are negative numbers.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1062,13 +1072,15 @@ public class GetMetricStatisticsRequest extends com.amazonaws.AmazonWebServiceRe
     /**
      * <p>
      * The percentile statistics. Specify values between p0.0 and p100. When calling <code>GetMetricStatistics</code>,
-     * you must specify either <code>Statistics</code> or <code>ExtendedStatistics</code>, but not both.
+     * you must specify either <code>Statistics</code> or <code>ExtendedStatistics</code>, but not both. Percentile
+     * statistics are not available for metrics when any of the metric values are negative numbers.
      * </p>
      * 
      * @param extendedStatistics
      *        The percentile statistics. Specify values between p0.0 and p100. When calling
      *        <code>GetMetricStatistics</code>, you must specify either <code>Statistics</code> or
-     *        <code>ExtendedStatistics</code>, but not both.
+     *        <code>ExtendedStatistics</code>, but not both. Percentile statistics are not available for metrics when
+     *        any of the metric values are negative numbers.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1079,14 +1091,19 @@ public class GetMetricStatisticsRequest extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * The unit for a given metric. Metrics may be reported in multiple units. Not supplying a unit results in all units
-     * being returned. If you specify only a unit that the metric does not report, the results of the call are null.
+     * The unit for a given metric. If you omit <code>Unit</code>, all data that was collected with any unit is
+     * returned, along with the corresponding units that were specified when the data was reported to CloudWatch. If you
+     * specify a unit, the operation returns only data data that was collected with that unit specified. If you specify
+     * a unit that does not match the data collected, the results of the operation are null. CloudWatch does not perform
+     * unit conversions.
      * </p>
      * 
      * @param unit
-     *        The unit for a given metric. Metrics may be reported in multiple units. Not supplying a unit results in
-     *        all units being returned. If you specify only a unit that the metric does not report, the results of the
-     *        call are null.
+     *        The unit for a given metric. If you omit <code>Unit</code>, all data that was collected with any unit is
+     *        returned, along with the corresponding units that were specified when the data was reported to CloudWatch.
+     *        If you specify a unit, the operation returns only data data that was collected with that unit specified.
+     *        If you specify a unit that does not match the data collected, the results of the operation are null.
+     *        CloudWatch does not perform unit conversions.
      * @see StandardUnit
      */
 
@@ -1096,13 +1113,18 @@ public class GetMetricStatisticsRequest extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * The unit for a given metric. Metrics may be reported in multiple units. Not supplying a unit results in all units
-     * being returned. If you specify only a unit that the metric does not report, the results of the call are null.
+     * The unit for a given metric. If you omit <code>Unit</code>, all data that was collected with any unit is
+     * returned, along with the corresponding units that were specified when the data was reported to CloudWatch. If you
+     * specify a unit, the operation returns only data data that was collected with that unit specified. If you specify
+     * a unit that does not match the data collected, the results of the operation are null. CloudWatch does not perform
+     * unit conversions.
      * </p>
      * 
-     * @return The unit for a given metric. Metrics may be reported in multiple units. Not supplying a unit results in
-     *         all units being returned. If you specify only a unit that the metric does not report, the results of the
-     *         call are null.
+     * @return The unit for a given metric. If you omit <code>Unit</code>, all data that was collected with any unit is
+     *         returned, along with the corresponding units that were specified when the data was reported to
+     *         CloudWatch. If you specify a unit, the operation returns only data data that was collected with that unit
+     *         specified. If you specify a unit that does not match the data collected, the results of the operation are
+     *         null. CloudWatch does not perform unit conversions.
      * @see StandardUnit
      */
 
@@ -1112,14 +1134,19 @@ public class GetMetricStatisticsRequest extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * The unit for a given metric. Metrics may be reported in multiple units. Not supplying a unit results in all units
-     * being returned. If you specify only a unit that the metric does not report, the results of the call are null.
+     * The unit for a given metric. If you omit <code>Unit</code>, all data that was collected with any unit is
+     * returned, along with the corresponding units that were specified when the data was reported to CloudWatch. If you
+     * specify a unit, the operation returns only data data that was collected with that unit specified. If you specify
+     * a unit that does not match the data collected, the results of the operation are null. CloudWatch does not perform
+     * unit conversions.
      * </p>
      * 
      * @param unit
-     *        The unit for a given metric. Metrics may be reported in multiple units. Not supplying a unit results in
-     *        all units being returned. If you specify only a unit that the metric does not report, the results of the
-     *        call are null.
+     *        The unit for a given metric. If you omit <code>Unit</code>, all data that was collected with any unit is
+     *        returned, along with the corresponding units that were specified when the data was reported to CloudWatch.
+     *        If you specify a unit, the operation returns only data data that was collected with that unit specified.
+     *        If you specify a unit that does not match the data collected, the results of the operation are null.
+     *        CloudWatch does not perform unit conversions.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see StandardUnit
      */
@@ -1131,14 +1158,19 @@ public class GetMetricStatisticsRequest extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * The unit for a given metric. Metrics may be reported in multiple units. Not supplying a unit results in all units
-     * being returned. If you specify only a unit that the metric does not report, the results of the call are null.
+     * The unit for a given metric. If you omit <code>Unit</code>, all data that was collected with any unit is
+     * returned, along with the corresponding units that were specified when the data was reported to CloudWatch. If you
+     * specify a unit, the operation returns only data data that was collected with that unit specified. If you specify
+     * a unit that does not match the data collected, the results of the operation are null. CloudWatch does not perform
+     * unit conversions.
      * </p>
      * 
      * @param unit
-     *        The unit for a given metric. Metrics may be reported in multiple units. Not supplying a unit results in
-     *        all units being returned. If you specify only a unit that the metric does not report, the results of the
-     *        call are null.
+     *        The unit for a given metric. If you omit <code>Unit</code>, all data that was collected with any unit is
+     *        returned, along with the corresponding units that were specified when the data was reported to CloudWatch.
+     *        If you specify a unit, the operation returns only data data that was collected with that unit specified.
+     *        If you specify a unit that does not match the data collected, the results of the operation are null.
+     *        CloudWatch does not perform unit conversions.
      * @see StandardUnit
      */
 
@@ -1148,14 +1180,19 @@ public class GetMetricStatisticsRequest extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * The unit for a given metric. Metrics may be reported in multiple units. Not supplying a unit results in all units
-     * being returned. If you specify only a unit that the metric does not report, the results of the call are null.
+     * The unit for a given metric. If you omit <code>Unit</code>, all data that was collected with any unit is
+     * returned, along with the corresponding units that were specified when the data was reported to CloudWatch. If you
+     * specify a unit, the operation returns only data data that was collected with that unit specified. If you specify
+     * a unit that does not match the data collected, the results of the operation are null. CloudWatch does not perform
+     * unit conversions.
      * </p>
      * 
      * @param unit
-     *        The unit for a given metric. Metrics may be reported in multiple units. Not supplying a unit results in
-     *        all units being returned. If you specify only a unit that the metric does not report, the results of the
-     *        call are null.
+     *        The unit for a given metric. If you omit <code>Unit</code>, all data that was collected with any unit is
+     *        returned, along with the corresponding units that were specified when the data was reported to CloudWatch.
+     *        If you specify a unit, the operation returns only data data that was collected with that unit specified.
+     *        If you specify a unit that does not match the data collected, the results of the operation are null.
+     *        CloudWatch does not perform unit conversions.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see StandardUnit
      */
@@ -1166,7 +1203,8 @@ public class GetMetricStatisticsRequest extends com.amazonaws.AmazonWebServiceRe
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

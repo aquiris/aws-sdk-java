@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -60,20 +60,15 @@ public class ModifyReplicationTaskRequest extends com.amazonaws.AmazonWebService
     private String replicationTaskIdentifier;
     /**
      * <p>
-     * The migration type.
-     * </p>
-     * <p>
-     * Valid values: full-load | cdc | full-load-and-cdc
+     * The migration type. Valid values: <code>full-load</code> | <code>cdc</code> | <code>full-load-and-cdc</code>
      * </p>
      */
     private String migrationType;
     /**
      * <p>
      * When using the AWS CLI or boto3, provide the path of the JSON file that contains the table mappings. Precede the
-     * path with "file://". When working with the DMS API, provide the JSON as the parameter value.
-     * </p>
-     * <p>
-     * For example, --table-mappings file://mappingfile.json
+     * path with <code>file://</code>. When working with the DMS API, provide the JSON as the parameter value, for
+     * example: <code>--table-mappings file://mappingfile.json</code>
      * </p>
      */
     private String tableMappings;
@@ -87,6 +82,9 @@ public class ModifyReplicationTaskRequest extends com.amazonaws.AmazonWebService
      * <p>
      * Indicates the start time for a change data capture (CDC) operation. Use either CdcStartTime or CdcStartPosition
      * to specify when you want a CDC operation to start. Specifying both values results in an error.
+     * </p>
+     * <p>
+     * Timestamp Example: --cdc-start-time “2018-03-08T12:12:12”
      * </p>
      */
     private java.util.Date cdcStartTime;
@@ -323,16 +321,12 @@ public class ModifyReplicationTaskRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * The migration type.
-     * </p>
-     * <p>
-     * Valid values: full-load | cdc | full-load-and-cdc
+     * The migration type. Valid values: <code>full-load</code> | <code>cdc</code> | <code>full-load-and-cdc</code>
      * </p>
      * 
      * @param migrationType
-     *        The migration type.</p>
-     *        <p>
-     *        Valid values: full-load | cdc | full-load-and-cdc
+     *        The migration type. Valid values: <code>full-load</code> | <code>cdc</code> |
+     *        <code>full-load-and-cdc</code>
      * @see MigrationTypeValue
      */
 
@@ -342,15 +336,11 @@ public class ModifyReplicationTaskRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * The migration type.
-     * </p>
-     * <p>
-     * Valid values: full-load | cdc | full-load-and-cdc
+     * The migration type. Valid values: <code>full-load</code> | <code>cdc</code> | <code>full-load-and-cdc</code>
      * </p>
      * 
-     * @return The migration type.</p>
-     *         <p>
-     *         Valid values: full-load | cdc | full-load-and-cdc
+     * @return The migration type. Valid values: <code>full-load</code> | <code>cdc</code> |
+     *         <code>full-load-and-cdc</code>
      * @see MigrationTypeValue
      */
 
@@ -360,16 +350,12 @@ public class ModifyReplicationTaskRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * The migration type.
-     * </p>
-     * <p>
-     * Valid values: full-load | cdc | full-load-and-cdc
+     * The migration type. Valid values: <code>full-load</code> | <code>cdc</code> | <code>full-load-and-cdc</code>
      * </p>
      * 
      * @param migrationType
-     *        The migration type.</p>
-     *        <p>
-     *        Valid values: full-load | cdc | full-load-and-cdc
+     *        The migration type. Valid values: <code>full-load</code> | <code>cdc</code> |
+     *        <code>full-load-and-cdc</code>
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see MigrationTypeValue
      */
@@ -381,16 +367,12 @@ public class ModifyReplicationTaskRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * The migration type.
-     * </p>
-     * <p>
-     * Valid values: full-load | cdc | full-load-and-cdc
+     * The migration type. Valid values: <code>full-load</code> | <code>cdc</code> | <code>full-load-and-cdc</code>
      * </p>
      * 
      * @param migrationType
-     *        The migration type.</p>
-     *        <p>
-     *        Valid values: full-load | cdc | full-load-and-cdc
+     *        The migration type. Valid values: <code>full-load</code> | <code>cdc</code> |
+     *        <code>full-load-and-cdc</code>
      * @see MigrationTypeValue
      */
 
@@ -400,16 +382,12 @@ public class ModifyReplicationTaskRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * The migration type.
-     * </p>
-     * <p>
-     * Valid values: full-load | cdc | full-load-and-cdc
+     * The migration type. Valid values: <code>full-load</code> | <code>cdc</code> | <code>full-load-and-cdc</code>
      * </p>
      * 
      * @param migrationType
-     *        The migration type.</p>
-     *        <p>
-     *        Valid values: full-load | cdc | full-load-and-cdc
+     *        The migration type. Valid values: <code>full-load</code> | <code>cdc</code> |
+     *        <code>full-load-and-cdc</code>
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see MigrationTypeValue
      */
@@ -422,18 +400,14 @@ public class ModifyReplicationTaskRequest extends com.amazonaws.AmazonWebService
     /**
      * <p>
      * When using the AWS CLI or boto3, provide the path of the JSON file that contains the table mappings. Precede the
-     * path with "file://". When working with the DMS API, provide the JSON as the parameter value.
-     * </p>
-     * <p>
-     * For example, --table-mappings file://mappingfile.json
+     * path with <code>file://</code>. When working with the DMS API, provide the JSON as the parameter value, for
+     * example: <code>--table-mappings file://mappingfile.json</code>
      * </p>
      * 
      * @param tableMappings
      *        When using the AWS CLI or boto3, provide the path of the JSON file that contains the table mappings.
-     *        Precede the path with "file://". When working with the DMS API, provide the JSON as the parameter
-     *        value.</p>
-     *        <p>
-     *        For example, --table-mappings file://mappingfile.json
+     *        Precede the path with <code>file://</code>. When working with the DMS API, provide the JSON as the
+     *        parameter value, for example: <code>--table-mappings file://mappingfile.json</code>
      */
 
     public void setTableMappings(String tableMappings) {
@@ -443,17 +417,13 @@ public class ModifyReplicationTaskRequest extends com.amazonaws.AmazonWebService
     /**
      * <p>
      * When using the AWS CLI or boto3, provide the path of the JSON file that contains the table mappings. Precede the
-     * path with "file://". When working with the DMS API, provide the JSON as the parameter value.
-     * </p>
-     * <p>
-     * For example, --table-mappings file://mappingfile.json
+     * path with <code>file://</code>. When working with the DMS API, provide the JSON as the parameter value, for
+     * example: <code>--table-mappings file://mappingfile.json</code>
      * </p>
      * 
      * @return When using the AWS CLI or boto3, provide the path of the JSON file that contains the table mappings.
-     *         Precede the path with "file://". When working with the DMS API, provide the JSON as the parameter
-     *         value.</p>
-     *         <p>
-     *         For example, --table-mappings file://mappingfile.json
+     *         Precede the path with <code>file://</code>. When working with the DMS API, provide the JSON as the
+     *         parameter value, for example: <code>--table-mappings file://mappingfile.json</code>
      */
 
     public String getTableMappings() {
@@ -463,18 +433,14 @@ public class ModifyReplicationTaskRequest extends com.amazonaws.AmazonWebService
     /**
      * <p>
      * When using the AWS CLI or boto3, provide the path of the JSON file that contains the table mappings. Precede the
-     * path with "file://". When working with the DMS API, provide the JSON as the parameter value.
-     * </p>
-     * <p>
-     * For example, --table-mappings file://mappingfile.json
+     * path with <code>file://</code>. When working with the DMS API, provide the JSON as the parameter value, for
+     * example: <code>--table-mappings file://mappingfile.json</code>
      * </p>
      * 
      * @param tableMappings
      *        When using the AWS CLI or boto3, provide the path of the JSON file that contains the table mappings.
-     *        Precede the path with "file://". When working with the DMS API, provide the JSON as the parameter
-     *        value.</p>
-     *        <p>
-     *        For example, --table-mappings file://mappingfile.json
+     *        Precede the path with <code>file://</code>. When working with the DMS API, provide the JSON as the
+     *        parameter value, for example: <code>--table-mappings file://mappingfile.json</code>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -528,11 +494,16 @@ public class ModifyReplicationTaskRequest extends com.amazonaws.AmazonWebService
      * Indicates the start time for a change data capture (CDC) operation. Use either CdcStartTime or CdcStartPosition
      * to specify when you want a CDC operation to start. Specifying both values results in an error.
      * </p>
+     * <p>
+     * Timestamp Example: --cdc-start-time “2018-03-08T12:12:12”
+     * </p>
      * 
      * @param cdcStartTime
      *        Indicates the start time for a change data capture (CDC) operation. Use either CdcStartTime or
      *        CdcStartPosition to specify when you want a CDC operation to start. Specifying both values results in an
-     *        error.
+     *        error.</p>
+     *        <p>
+     *        Timestamp Example: --cdc-start-time “2018-03-08T12:12:12”
      */
 
     public void setCdcStartTime(java.util.Date cdcStartTime) {
@@ -544,10 +515,15 @@ public class ModifyReplicationTaskRequest extends com.amazonaws.AmazonWebService
      * Indicates the start time for a change data capture (CDC) operation. Use either CdcStartTime or CdcStartPosition
      * to specify when you want a CDC operation to start. Specifying both values results in an error.
      * </p>
+     * <p>
+     * Timestamp Example: --cdc-start-time “2018-03-08T12:12:12”
+     * </p>
      * 
      * @return Indicates the start time for a change data capture (CDC) operation. Use either CdcStartTime or
      *         CdcStartPosition to specify when you want a CDC operation to start. Specifying both values results in an
-     *         error.
+     *         error.</p>
+     *         <p>
+     *         Timestamp Example: --cdc-start-time “2018-03-08T12:12:12”
      */
 
     public java.util.Date getCdcStartTime() {
@@ -559,11 +535,16 @@ public class ModifyReplicationTaskRequest extends com.amazonaws.AmazonWebService
      * Indicates the start time for a change data capture (CDC) operation. Use either CdcStartTime or CdcStartPosition
      * to specify when you want a CDC operation to start. Specifying both values results in an error.
      * </p>
+     * <p>
+     * Timestamp Example: --cdc-start-time “2018-03-08T12:12:12”
+     * </p>
      * 
      * @param cdcStartTime
      *        Indicates the start time for a change data capture (CDC) operation. Use either CdcStartTime or
      *        CdcStartPosition to specify when you want a CDC operation to start. Specifying both values results in an
-     *        error.
+     *        error.</p>
+     *        <p>
+     *        Timestamp Example: --cdc-start-time “2018-03-08T12:12:12”
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -776,7 +757,8 @@ public class ModifyReplicationTaskRequest extends com.amazonaws.AmazonWebService
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

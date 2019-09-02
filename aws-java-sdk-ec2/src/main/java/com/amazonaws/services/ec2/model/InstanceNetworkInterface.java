@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -116,6 +116,15 @@ public class InstanceNetworkInterface implements Serializable, Cloneable {
      * </p>
      */
     private String vpcId;
+    /**
+     * <p>
+     * Describes the type of network interface.
+     * </p>
+     * <p>
+     * Valid values: <code>interface</code> | <code>efa</code>
+     * </p>
+     */
+    private String interfaceType;
 
     /**
      * <p>
@@ -862,7 +871,63 @@ public class InstanceNetworkInterface implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * <p>
+     * Describes the type of network interface.
+     * </p>
+     * <p>
+     * Valid values: <code>interface</code> | <code>efa</code>
+     * </p>
+     * 
+     * @param interfaceType
+     *        Describes the type of network interface.</p>
+     *        <p>
+     *        Valid values: <code>interface</code> | <code>efa</code>
+     */
+
+    public void setInterfaceType(String interfaceType) {
+        this.interfaceType = interfaceType;
+    }
+
+    /**
+     * <p>
+     * Describes the type of network interface.
+     * </p>
+     * <p>
+     * Valid values: <code>interface</code> | <code>efa</code>
+     * </p>
+     * 
+     * @return Describes the type of network interface.</p>
+     *         <p>
+     *         Valid values: <code>interface</code> | <code>efa</code>
+     */
+
+    public String getInterfaceType() {
+        return this.interfaceType;
+    }
+
+    /**
+     * <p>
+     * Describes the type of network interface.
+     * </p>
+     * <p>
+     * Valid values: <code>interface</code> | <code>efa</code>
+     * </p>
+     * 
+     * @param interfaceType
+     *        Describes the type of network interface.</p>
+     *        <p>
+     *        Valid values: <code>interface</code> | <code>efa</code>
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public InstanceNetworkInterface withInterfaceType(String interfaceType) {
+        setInterfaceType(interfaceType);
+        return this;
+    }
+
+    /**
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -901,7 +966,9 @@ public class InstanceNetworkInterface implements Serializable, Cloneable {
         if (getSubnetId() != null)
             sb.append("SubnetId: ").append(getSubnetId()).append(",");
         if (getVpcId() != null)
-            sb.append("VpcId: ").append(getVpcId());
+            sb.append("VpcId: ").append(getVpcId()).append(",");
+        if (getInterfaceType() != null)
+            sb.append("InterfaceType: ").append(getInterfaceType());
         sb.append("}");
         return sb.toString();
     }
@@ -976,6 +1043,10 @@ public class InstanceNetworkInterface implements Serializable, Cloneable {
             return false;
         if (other.getVpcId() != null && other.getVpcId().equals(this.getVpcId()) == false)
             return false;
+        if (other.getInterfaceType() == null ^ this.getInterfaceType() == null)
+            return false;
+        if (other.getInterfaceType() != null && other.getInterfaceType().equals(this.getInterfaceType()) == false)
+            return false;
         return true;
     }
 
@@ -999,6 +1070,7 @@ public class InstanceNetworkInterface implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getStatus() == null) ? 0 : getStatus().hashCode());
         hashCode = prime * hashCode + ((getSubnetId() == null) ? 0 : getSubnetId().hashCode());
         hashCode = prime * hashCode + ((getVpcId() == null) ? 0 : getVpcId().hashCode());
+        hashCode = prime * hashCode + ((getInterfaceType() == null) ? 0 : getInterfaceType().hashCode());
         return hashCode;
     }
 

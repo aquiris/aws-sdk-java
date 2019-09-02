@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -20,9 +20,7 @@ import com.amazonaws.Request;
 import com.amazonaws.services.ec2.model.transform.ReportInstanceStatusRequestMarshaller;
 
 /**
- * <p>
- * Contains the parameters for ReportInstanceStatus.
- * </p>
+ * 
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ReportInstanceStatusRequest extends AmazonWebServiceRequest implements Serializable, Cloneable,
@@ -42,13 +40,13 @@ public class ReportInstanceStatusRequest extends AmazonWebServiceRequest impleme
     private java.util.Date endTime;
     /**
      * <p>
-     * One or more instances.
+     * The instances.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<String> instances;
     /**
      * <p>
-     * One or more reason codes that describe the health state of your instance.
+     * The reason codes that describe the health state of your instance.
      * </p>
      * <ul>
      * <li>
@@ -197,10 +195,10 @@ public class ReportInstanceStatusRequest extends AmazonWebServiceRequest impleme
 
     /**
      * <p>
-     * One or more instances.
+     * The instances.
      * </p>
      * 
-     * @return One or more instances.
+     * @return The instances.
      */
 
     public java.util.List<String> getInstances() {
@@ -212,11 +210,11 @@ public class ReportInstanceStatusRequest extends AmazonWebServiceRequest impleme
 
     /**
      * <p>
-     * One or more instances.
+     * The instances.
      * </p>
      * 
      * @param instances
-     *        One or more instances.
+     *        The instances.
      */
 
     public void setInstances(java.util.Collection<String> instances) {
@@ -230,7 +228,7 @@ public class ReportInstanceStatusRequest extends AmazonWebServiceRequest impleme
 
     /**
      * <p>
-     * One or more instances.
+     * The instances.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -239,7 +237,7 @@ public class ReportInstanceStatusRequest extends AmazonWebServiceRequest impleme
      * </p>
      * 
      * @param instances
-     *        One or more instances.
+     *        The instances.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -255,11 +253,11 @@ public class ReportInstanceStatusRequest extends AmazonWebServiceRequest impleme
 
     /**
      * <p>
-     * One or more instances.
+     * The instances.
      * </p>
      * 
      * @param instances
-     *        One or more instances.
+     *        The instances.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -270,7 +268,7 @@ public class ReportInstanceStatusRequest extends AmazonWebServiceRequest impleme
 
     /**
      * <p>
-     * One or more reason codes that describe the health state of your instance.
+     * The reason codes that describe the health state of your instance.
      * </p>
      * <ul>
      * <li>
@@ -323,7 +321,7 @@ public class ReportInstanceStatusRequest extends AmazonWebServiceRequest impleme
      * </li>
      * </ul>
      * 
-     * @return One or more reason codes that describe the health state of your instance.</p>
+     * @return The reason codes that describe the health state of your instance.</p>
      *         <ul>
      *         <li>
      *         <p>
@@ -385,7 +383,7 @@ public class ReportInstanceStatusRequest extends AmazonWebServiceRequest impleme
 
     /**
      * <p>
-     * One or more reason codes that describe the health state of your instance.
+     * The reason codes that describe the health state of your instance.
      * </p>
      * <ul>
      * <li>
@@ -439,7 +437,7 @@ public class ReportInstanceStatusRequest extends AmazonWebServiceRequest impleme
      * </ul>
      * 
      * @param reasonCodes
-     *        One or more reason codes that describe the health state of your instance.</p>
+     *        The reason codes that describe the health state of your instance.</p>
      *        <ul>
      *        <li>
      *        <p>
@@ -503,7 +501,7 @@ public class ReportInstanceStatusRequest extends AmazonWebServiceRequest impleme
 
     /**
      * <p>
-     * One or more reason codes that describe the health state of your instance.
+     * The reason codes that describe the health state of your instance.
      * </p>
      * <ul>
      * <li>
@@ -562,7 +560,7 @@ public class ReportInstanceStatusRequest extends AmazonWebServiceRequest impleme
      * </p>
      * 
      * @param reasonCodes
-     *        One or more reason codes that describe the health state of your instance.</p>
+     *        The reason codes that describe the health state of your instance.</p>
      *        <ul>
      *        <li>
      *        <p>
@@ -628,7 +626,7 @@ public class ReportInstanceStatusRequest extends AmazonWebServiceRequest impleme
 
     /**
      * <p>
-     * One or more reason codes that describe the health state of your instance.
+     * The reason codes that describe the health state of your instance.
      * </p>
      * <ul>
      * <li>
@@ -682,7 +680,7 @@ public class ReportInstanceStatusRequest extends AmazonWebServiceRequest impleme
      * </ul>
      * 
      * @param reasonCodes
-     *        One or more reason codes that describe the health state of your instance.</p>
+     *        The reason codes that describe the health state of your instance.</p>
      *        <ul>
      *        <li>
      *        <p>
@@ -743,7 +741,7 @@ public class ReportInstanceStatusRequest extends AmazonWebServiceRequest impleme
 
     /**
      * <p>
-     * One or more reason codes that describe the health state of your instance.
+     * The reason codes that describe the health state of your instance.
      * </p>
      * <ul>
      * <li>
@@ -797,7 +795,7 @@ public class ReportInstanceStatusRequest extends AmazonWebServiceRequest impleme
      * </ul>
      * 
      * @param reasonCodes
-     *        One or more reason codes that describe the health state of your instance.</p>
+     *        The reason codes that describe the health state of your instance.</p>
      *        <ul>
      *        <li>
      *        <p>
@@ -989,7 +987,8 @@ public class ReportInstanceStatusRequest extends AmazonWebServiceRequest impleme
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

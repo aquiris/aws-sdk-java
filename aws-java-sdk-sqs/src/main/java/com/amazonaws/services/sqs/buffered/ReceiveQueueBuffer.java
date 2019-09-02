@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -498,8 +498,9 @@ public class ReceiveQueueBuffer {
 
             try {
                 visibilityDeadlineNano = System.nanoTime() + visibilityTimeoutNanos;
-                ReceiveMessageRequest request = new ReceiveMessageRequest(qUrl).withMaxNumberOfMessages(config
-                        .getMaxBatchSize());
+                ReceiveMessageRequest request = new ReceiveMessageRequest(qUrl)
+                        .withMaxNumberOfMessages(config.getMaxBatchSize())
+                        .withMessageAttributeNames(config.getReceiveMessageAttributeNames());
                 ResultConverter.appendUserAgent(request, AmazonSQSBufferedAsyncClient.USER_AGENT);
 
                 if (config.getVisibilityTimeoutSeconds() > 0) {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -43,6 +43,8 @@ public class PutConfigurationAggregatorRequest extends com.amazonaws.AmazonWebSe
      * </p>
      */
     private OrganizationAggregationSource organizationAggregationSource;
+
+    private com.amazonaws.internal.SdkInternalList<Tag> tags;
 
     /**
      * <p>
@@ -198,7 +200,63 @@ public class PutConfigurationAggregatorRequest extends com.amazonaws.AmazonWebSe
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * @return
+     */
+
+    public java.util.List<Tag> getTags() {
+        if (tags == null) {
+            tags = new com.amazonaws.internal.SdkInternalList<Tag>();
+        }
+        return tags;
+    }
+
+    /**
+     * @param tags
+     */
+
+    public void setTags(java.util.Collection<Tag> tags) {
+        if (tags == null) {
+            this.tags = null;
+            return;
+        }
+
+        this.tags = new com.amazonaws.internal.SdkInternalList<Tag>(tags);
+    }
+
+    /**
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setTags(java.util.Collection)} or {@link #withTags(java.util.Collection)} if you want to override the
+     * existing values.
+     * </p>
+     * 
+     * @param tags
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public PutConfigurationAggregatorRequest withTags(Tag... tags) {
+        if (this.tags == null) {
+            setTags(new com.amazonaws.internal.SdkInternalList<Tag>(tags.length));
+        }
+        for (Tag ele : tags) {
+            this.tags.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * @param tags
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public PutConfigurationAggregatorRequest withTags(java.util.Collection<Tag> tags) {
+        setTags(tags);
+        return this;
+    }
+
+    /**
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -213,7 +271,9 @@ public class PutConfigurationAggregatorRequest extends com.amazonaws.AmazonWebSe
         if (getAccountAggregationSources() != null)
             sb.append("AccountAggregationSources: ").append(getAccountAggregationSources()).append(",");
         if (getOrganizationAggregationSource() != null)
-            sb.append("OrganizationAggregationSource: ").append(getOrganizationAggregationSource());
+            sb.append("OrganizationAggregationSource: ").append(getOrganizationAggregationSource()).append(",");
+        if (getTags() != null)
+            sb.append("Tags: ").append(getTags());
         sb.append("}");
         return sb.toString();
     }
@@ -241,6 +301,10 @@ public class PutConfigurationAggregatorRequest extends com.amazonaws.AmazonWebSe
         if (other.getOrganizationAggregationSource() != null
                 && other.getOrganizationAggregationSource().equals(this.getOrganizationAggregationSource()) == false)
             return false;
+        if (other.getTags() == null ^ this.getTags() == null)
+            return false;
+        if (other.getTags() != null && other.getTags().equals(this.getTags()) == false)
+            return false;
         return true;
     }
 
@@ -252,6 +316,7 @@ public class PutConfigurationAggregatorRequest extends com.amazonaws.AmazonWebSe
         hashCode = prime * hashCode + ((getConfigurationAggregatorName() == null) ? 0 : getConfigurationAggregatorName().hashCode());
         hashCode = prime * hashCode + ((getAccountAggregationSources() == null) ? 0 : getAccountAggregationSources().hashCode());
         hashCode = prime * hashCode + ((getOrganizationAggregationSource() == null) ? 0 : getOrganizationAggregationSource().hashCode());
+        hashCode = prime * hashCode + ((getTags() == null) ? 0 : getTags().hashCode());
         return hashCode;
     }
 

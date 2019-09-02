@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -15,7 +15,8 @@ package com.amazonaws.services.mediaconvert.model;
 import javax.annotation.Generated;
 
 /**
- * Indicates which type of key provider is used for encryption.
+ * Specify whether your DRM encryption key is static or from a key provider that follows the SPEKE standard. For more
+ * information about SPEKE, see https://docs.aws.amazon.com/speke/latest/documentation/what-is-speke.html.
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public enum HlsKeyProviderType {

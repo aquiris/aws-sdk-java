@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -119,6 +119,8 @@ public enum DevicefarmActions implements Action {
     ListSamples("devicefarm:ListSamples"),
     /** Action for the ListSuites operation. */
     ListSuites("devicefarm:ListSuites"),
+    /** Action for the ListTagsForResource operation. */
+    ListTagsForResource("devicefarm:ListTagsForResource"),
     /** Action for the ListTests operation. */
     ListTests("devicefarm:ListTests"),
     /** Action for the ListUniqueProblems operation. */
@@ -133,10 +135,16 @@ public enum DevicefarmActions implements Action {
     RenewOffering("devicefarm:RenewOffering"),
     /** Action for the ScheduleRun operation. */
     ScheduleRun("devicefarm:ScheduleRun"),
+    /** Action for the StopJob operation. */
+    StopJob("devicefarm:StopJob"),
     /** Action for the StopRemoteAccessSession operation. */
     StopRemoteAccessSession("devicefarm:StopRemoteAccessSession"),
     /** Action for the StopRun operation. */
     StopRun("devicefarm:StopRun"),
+    /** Action for the TagResource operation. */
+    TagResource("devicefarm:TagResource"),
+    /** Action for the UntagResource operation. */
+    UntagResource("devicefarm:UntagResource"),
     /** Action for the UpdateDeviceInstance operation. */
     UpdateDeviceInstance("devicefarm:UpdateDeviceInstance"),
     /** Action for the UpdateDevicePool operation. */
@@ -147,6 +155,8 @@ public enum DevicefarmActions implements Action {
     UpdateNetworkProfile("devicefarm:UpdateNetworkProfile"),
     /** Action for the UpdateProject operation. */
     UpdateProject("devicefarm:UpdateProject"),
+    /** Action for the UpdateUpload operation. */
+    UpdateUpload("devicefarm:UpdateUpload"),
     /** Action for the UpdateVPCEConfiguration operation. */
     UpdateVPCEConfiguration("devicefarm:UpdateVPCEConfiguration"),
 

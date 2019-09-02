@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -60,10 +60,10 @@ public class GetObjectRequest extends com.amazonaws.AmazonWebServiceRequest impl
     private String path;
     /**
      * <p>
-     * The range bytes of an object to retrieve. For more information about the <code>Range</code> header, go to <a
-     * href=
-     * "http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35">http://www.w3.org/Protocols/rfc2616/rfc2616
-     * -sec14.html#sec14.35</a>.
+     * The range bytes of an object to retrieve. For more information about the <code>Range</code> header, see <a
+     * href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35"
+     * >http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35</a>. AWS Elemental MediaStore ignores this
+     * header for partially uploaded objects that have streaming upload availability.
      * </p>
      */
     private String range;
@@ -269,16 +269,18 @@ public class GetObjectRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * The range bytes of an object to retrieve. For more information about the <code>Range</code> header, go to <a
-     * href=
-     * "http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35">http://www.w3.org/Protocols/rfc2616/rfc2616
-     * -sec14.html#sec14.35</a>.
+     * The range bytes of an object to retrieve. For more information about the <code>Range</code> header, see <a
+     * href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35"
+     * >http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35</a>. AWS Elemental MediaStore ignores this
+     * header for partially uploaded objects that have streaming upload availability.
      * </p>
      * 
      * @param range
-     *        The range bytes of an object to retrieve. For more information about the <code>Range</code> header, go to
-     *        <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35">http://www.w3.org/Protocols/
-     *        rfc2616/rfc2616-sec14.html#sec14.35</a>.
+     *        The range bytes of an object to retrieve. For more information about the <code>Range</code> header, see <a
+     *        href
+     *        ="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35">http://www.w3.org/Protocols/rfc2616/
+     *        rfc2616-sec14.html#sec14.35</a>. AWS Elemental MediaStore ignores this header for partially uploaded
+     *        objects that have streaming upload availability.
      */
 
     public void setRange(String range) {
@@ -287,15 +289,16 @@ public class GetObjectRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * The range bytes of an object to retrieve. For more information about the <code>Range</code> header, go to <a
-     * href=
-     * "http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35">http://www.w3.org/Protocols/rfc2616/rfc2616
-     * -sec14.html#sec14.35</a>.
+     * The range bytes of an object to retrieve. For more information about the <code>Range</code> header, see <a
+     * href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35"
+     * >http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35</a>. AWS Elemental MediaStore ignores this
+     * header for partially uploaded objects that have streaming upload availability.
      * </p>
      * 
-     * @return The range bytes of an object to retrieve. For more information about the <code>Range</code> header, go to
+     * @return The range bytes of an object to retrieve. For more information about the <code>Range</code> header, see
      *         <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35">http://www.w3.org/Protocols/
-     *         rfc2616/rfc2616-sec14.html#sec14.35</a>.
+     *         rfc2616/rfc2616-sec14.html#sec14.35</a>. AWS Elemental MediaStore ignores this header for partially
+     *         uploaded objects that have streaming upload availability.
      */
 
     public String getRange() {
@@ -304,16 +307,18 @@ public class GetObjectRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * The range bytes of an object to retrieve. For more information about the <code>Range</code> header, go to <a
-     * href=
-     * "http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35">http://www.w3.org/Protocols/rfc2616/rfc2616
-     * -sec14.html#sec14.35</a>.
+     * The range bytes of an object to retrieve. For more information about the <code>Range</code> header, see <a
+     * href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35"
+     * >http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35</a>. AWS Elemental MediaStore ignores this
+     * header for partially uploaded objects that have streaming upload availability.
      * </p>
      * 
      * @param range
-     *        The range bytes of an object to retrieve. For more information about the <code>Range</code> header, go to
-     *        <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35">http://www.w3.org/Protocols/
-     *        rfc2616/rfc2616-sec14.html#sec14.35</a>.
+     *        The range bytes of an object to retrieve. For more information about the <code>Range</code> header, see <a
+     *        href
+     *        ="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35">http://www.w3.org/Protocols/rfc2616/
+     *        rfc2616-sec14.html#sec14.35</a>. AWS Elemental MediaStore ignores this header for partially uploaded
+     *        objects that have streaming upload availability.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -323,7 +328,8 @@ public class GetObjectRequest extends com.amazonaws.AmazonWebServiceRequest impl
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -20,7 +20,7 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 /**
  * <p>
  * Provides configuration information about an input processor. Currently, the only input processor available is <a
- * href="https://aws.amazon.com/documentation/lambda/">AWS Lambda</a>.
+ * href="https://docs.aws.amazon.com/lambda/">AWS Lambda</a>.
  * </p>
  * 
  * @see <a
@@ -32,18 +32,24 @@ public class InputProcessingConfigurationDescription implements Serializable, Cl
 
     /**
      * <p>
-     * Provides configuration information about the associated <a>InputLambdaProcessorDescription</a>.
+     * Provides configuration information about the associated <a
+     * href="https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_InputLambdaProcessorDescription.html"
+     * >InputLambdaProcessorDescription</a>.
      * </p>
      */
     private InputLambdaProcessorDescription inputLambdaProcessorDescription;
 
     /**
      * <p>
-     * Provides configuration information about the associated <a>InputLambdaProcessorDescription</a>.
+     * Provides configuration information about the associated <a
+     * href="https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_InputLambdaProcessorDescription.html"
+     * >InputLambdaProcessorDescription</a>.
      * </p>
      * 
      * @param inputLambdaProcessorDescription
-     *        Provides configuration information about the associated <a>InputLambdaProcessorDescription</a>.
+     *        Provides configuration information about the associated <a
+     *        href="https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_InputLambdaProcessorDescription.html"
+     *        >InputLambdaProcessorDescription</a>.
      */
 
     public void setInputLambdaProcessorDescription(InputLambdaProcessorDescription inputLambdaProcessorDescription) {
@@ -52,10 +58,14 @@ public class InputProcessingConfigurationDescription implements Serializable, Cl
 
     /**
      * <p>
-     * Provides configuration information about the associated <a>InputLambdaProcessorDescription</a>.
+     * Provides configuration information about the associated <a
+     * href="https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_InputLambdaProcessorDescription.html"
+     * >InputLambdaProcessorDescription</a>.
      * </p>
      * 
-     * @return Provides configuration information about the associated <a>InputLambdaProcessorDescription</a>.
+     * @return Provides configuration information about the associated <a
+     *         href="https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_InputLambdaProcessorDescription.html"
+     *         >InputLambdaProcessorDescription</a>.
      */
 
     public InputLambdaProcessorDescription getInputLambdaProcessorDescription() {
@@ -64,11 +74,15 @@ public class InputProcessingConfigurationDescription implements Serializable, Cl
 
     /**
      * <p>
-     * Provides configuration information about the associated <a>InputLambdaProcessorDescription</a>.
+     * Provides configuration information about the associated <a
+     * href="https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_InputLambdaProcessorDescription.html"
+     * >InputLambdaProcessorDescription</a>.
      * </p>
      * 
      * @param inputLambdaProcessorDescription
-     *        Provides configuration information about the associated <a>InputLambdaProcessorDescription</a>.
+     *        Provides configuration information about the associated <a
+     *        href="https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_InputLambdaProcessorDescription.html"
+     *        >InputLambdaProcessorDescription</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -78,7 +92,8 @@ public class InputProcessingConfigurationDescription implements Serializable, Cl
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -17,7 +17,7 @@ import javax.annotation.Generated;
 
 /**
  * <p>
- * This data type is used as a response element in the action <a>DescribeDBEngineVersions</a>.
+ * This data type is used as a response element in the action <code>DescribeDBEngineVersions</code>.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DBEngineVersion" target="_top">AWS API
@@ -98,10 +98,35 @@ public class DBEngineVersion implements Serializable, Cloneable {
     private Boolean supportsLogExportsToCloudwatchLogs;
     /**
      * <p>
-     * Indicates whether the database engine version supports read replicas.
+     * Indicates whether the database engine version supports Read Replicas.
      * </p>
      */
     private Boolean supportsReadReplica;
+    /**
+     * <p>
+     * A list of the supported DB engine modes.
+     * </p>
+     */
+    private com.amazonaws.internal.SdkInternalList<String> supportedEngineModes;
+    /**
+     * <p>
+     * A list of features supported by the DB engine. Supported feature names include the following.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * s3Import
+     * </p>
+     * </li>
+     * </ul>
+     */
+    private com.amazonaws.internal.SdkInternalList<String> supportedFeatureNames;
+    /**
+     * <p>
+     * The status of the DB engine version, either <code>available</code> or <code>deprecated</code>.
+     * </p>
+     */
+    private String status;
 
     /**
      * <p>
@@ -719,11 +744,11 @@ public class DBEngineVersion implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates whether the database engine version supports read replicas.
+     * Indicates whether the database engine version supports Read Replicas.
      * </p>
      * 
      * @param supportsReadReplica
-     *        Indicates whether the database engine version supports read replicas.
+     *        Indicates whether the database engine version supports Read Replicas.
      */
 
     public void setSupportsReadReplica(Boolean supportsReadReplica) {
@@ -732,10 +757,10 @@ public class DBEngineVersion implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates whether the database engine version supports read replicas.
+     * Indicates whether the database engine version supports Read Replicas.
      * </p>
      * 
-     * @return Indicates whether the database engine version supports read replicas.
+     * @return Indicates whether the database engine version supports Read Replicas.
      */
 
     public Boolean getSupportsReadReplica() {
@@ -744,11 +769,11 @@ public class DBEngineVersion implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates whether the database engine version supports read replicas.
+     * Indicates whether the database engine version supports Read Replicas.
      * </p>
      * 
      * @param supportsReadReplica
-     *        Indicates whether the database engine version supports read replicas.
+     *        Indicates whether the database engine version supports Read Replicas.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -759,10 +784,10 @@ public class DBEngineVersion implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates whether the database engine version supports read replicas.
+     * Indicates whether the database engine version supports Read Replicas.
      * </p>
      * 
-     * @return Indicates whether the database engine version supports read replicas.
+     * @return Indicates whether the database engine version supports Read Replicas.
      */
 
     public Boolean isSupportsReadReplica() {
@@ -770,7 +795,246 @@ public class DBEngineVersion implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * <p>
+     * A list of the supported DB engine modes.
+     * </p>
+     * 
+     * @return A list of the supported DB engine modes.
+     */
+
+    public java.util.List<String> getSupportedEngineModes() {
+        if (supportedEngineModes == null) {
+            supportedEngineModes = new com.amazonaws.internal.SdkInternalList<String>();
+        }
+        return supportedEngineModes;
+    }
+
+    /**
+     * <p>
+     * A list of the supported DB engine modes.
+     * </p>
+     * 
+     * @param supportedEngineModes
+     *        A list of the supported DB engine modes.
+     */
+
+    public void setSupportedEngineModes(java.util.Collection<String> supportedEngineModes) {
+        if (supportedEngineModes == null) {
+            this.supportedEngineModes = null;
+            return;
+        }
+
+        this.supportedEngineModes = new com.amazonaws.internal.SdkInternalList<String>(supportedEngineModes);
+    }
+
+    /**
+     * <p>
+     * A list of the supported DB engine modes.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setSupportedEngineModes(java.util.Collection)} or {@link #withSupportedEngineModes(java.util.Collection)}
+     * if you want to override the existing values.
+     * </p>
+     * 
+     * @param supportedEngineModes
+     *        A list of the supported DB engine modes.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DBEngineVersion withSupportedEngineModes(String... supportedEngineModes) {
+        if (this.supportedEngineModes == null) {
+            setSupportedEngineModes(new com.amazonaws.internal.SdkInternalList<String>(supportedEngineModes.length));
+        }
+        for (String ele : supportedEngineModes) {
+            this.supportedEngineModes.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * A list of the supported DB engine modes.
+     * </p>
+     * 
+     * @param supportedEngineModes
+     *        A list of the supported DB engine modes.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DBEngineVersion withSupportedEngineModes(java.util.Collection<String> supportedEngineModes) {
+        setSupportedEngineModes(supportedEngineModes);
+        return this;
+    }
+
+    /**
+     * <p>
+     * A list of features supported by the DB engine. Supported feature names include the following.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * s3Import
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @return A list of features supported by the DB engine. Supported feature names include the following. </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         s3Import
+     *         </p>
+     *         </li>
+     */
+
+    public java.util.List<String> getSupportedFeatureNames() {
+        if (supportedFeatureNames == null) {
+            supportedFeatureNames = new com.amazonaws.internal.SdkInternalList<String>();
+        }
+        return supportedFeatureNames;
+    }
+
+    /**
+     * <p>
+     * A list of features supported by the DB engine. Supported feature names include the following.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * s3Import
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param supportedFeatureNames
+     *        A list of features supported by the DB engine. Supported feature names include the following. </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        s3Import
+     *        </p>
+     *        </li>
+     */
+
+    public void setSupportedFeatureNames(java.util.Collection<String> supportedFeatureNames) {
+        if (supportedFeatureNames == null) {
+            this.supportedFeatureNames = null;
+            return;
+        }
+
+        this.supportedFeatureNames = new com.amazonaws.internal.SdkInternalList<String>(supportedFeatureNames);
+    }
+
+    /**
+     * <p>
+     * A list of features supported by the DB engine. Supported feature names include the following.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * s3Import
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setSupportedFeatureNames(java.util.Collection)} or
+     * {@link #withSupportedFeatureNames(java.util.Collection)} if you want to override the existing values.
+     * </p>
+     * 
+     * @param supportedFeatureNames
+     *        A list of features supported by the DB engine. Supported feature names include the following. </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        s3Import
+     *        </p>
+     *        </li>
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DBEngineVersion withSupportedFeatureNames(String... supportedFeatureNames) {
+        if (this.supportedFeatureNames == null) {
+            setSupportedFeatureNames(new com.amazonaws.internal.SdkInternalList<String>(supportedFeatureNames.length));
+        }
+        for (String ele : supportedFeatureNames) {
+            this.supportedFeatureNames.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * A list of features supported by the DB engine. Supported feature names include the following.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * s3Import
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param supportedFeatureNames
+     *        A list of features supported by the DB engine. Supported feature names include the following. </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        s3Import
+     *        </p>
+     *        </li>
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DBEngineVersion withSupportedFeatureNames(java.util.Collection<String> supportedFeatureNames) {
+        setSupportedFeatureNames(supportedFeatureNames);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The status of the DB engine version, either <code>available</code> or <code>deprecated</code>.
+     * </p>
+     * 
+     * @param status
+     *        The status of the DB engine version, either <code>available</code> or <code>deprecated</code>.
+     */
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    /**
+     * <p>
+     * The status of the DB engine version, either <code>available</code> or <code>deprecated</code>.
+     * </p>
+     * 
+     * @return The status of the DB engine version, either <code>available</code> or <code>deprecated</code>.
+     */
+
+    public String getStatus() {
+        return this.status;
+    }
+
+    /**
+     * <p>
+     * The status of the DB engine version, either <code>available</code> or <code>deprecated</code>.
+     * </p>
+     * 
+     * @param status
+     *        The status of the DB engine version, either <code>available</code> or <code>deprecated</code>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DBEngineVersion withStatus(String status) {
+        setStatus(status);
+        return this;
+    }
+
+    /**
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -803,7 +1067,13 @@ public class DBEngineVersion implements Serializable, Cloneable {
         if (getSupportsLogExportsToCloudwatchLogs() != null)
             sb.append("SupportsLogExportsToCloudwatchLogs: ").append(getSupportsLogExportsToCloudwatchLogs()).append(",");
         if (getSupportsReadReplica() != null)
-            sb.append("SupportsReadReplica: ").append(getSupportsReadReplica());
+            sb.append("SupportsReadReplica: ").append(getSupportsReadReplica()).append(",");
+        if (getSupportedEngineModes() != null)
+            sb.append("SupportedEngineModes: ").append(getSupportedEngineModes()).append(",");
+        if (getSupportedFeatureNames() != null)
+            sb.append("SupportedFeatureNames: ").append(getSupportedFeatureNames()).append(",");
+        if (getStatus() != null)
+            sb.append("Status: ").append(getStatus());
         sb.append("}");
         return sb.toString();
     }
@@ -867,6 +1137,18 @@ public class DBEngineVersion implements Serializable, Cloneable {
             return false;
         if (other.getSupportsReadReplica() != null && other.getSupportsReadReplica().equals(this.getSupportsReadReplica()) == false)
             return false;
+        if (other.getSupportedEngineModes() == null ^ this.getSupportedEngineModes() == null)
+            return false;
+        if (other.getSupportedEngineModes() != null && other.getSupportedEngineModes().equals(this.getSupportedEngineModes()) == false)
+            return false;
+        if (other.getSupportedFeatureNames() == null ^ this.getSupportedFeatureNames() == null)
+            return false;
+        if (other.getSupportedFeatureNames() != null && other.getSupportedFeatureNames().equals(this.getSupportedFeatureNames()) == false)
+            return false;
+        if (other.getStatus() == null ^ this.getStatus() == null)
+            return false;
+        if (other.getStatus() != null && other.getStatus().equals(this.getStatus()) == false)
+            return false;
         return true;
     }
 
@@ -887,6 +1169,9 @@ public class DBEngineVersion implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getExportableLogTypes() == null) ? 0 : getExportableLogTypes().hashCode());
         hashCode = prime * hashCode + ((getSupportsLogExportsToCloudwatchLogs() == null) ? 0 : getSupportsLogExportsToCloudwatchLogs().hashCode());
         hashCode = prime * hashCode + ((getSupportsReadReplica() == null) ? 0 : getSupportsReadReplica().hashCode());
+        hashCode = prime * hashCode + ((getSupportedEngineModes() == null) ? 0 : getSupportedEngineModes().hashCode());
+        hashCode = prime * hashCode + ((getSupportedFeatureNames() == null) ? 0 : getSupportedFeatureNames().hashCode());
+        hashCode = prime * hashCode + ((getStatus() == null) ? 0 : getStatus().hashCode());
         return hashCode;
     }
 

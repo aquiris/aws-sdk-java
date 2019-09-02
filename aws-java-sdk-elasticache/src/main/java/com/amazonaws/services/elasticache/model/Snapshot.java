@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -85,15 +85,15 @@ public class Snapshot implements Serializable, Cloneable {
      * Current generation:
      * </p>
      * <p>
-     * <b>T2 node types:</b> <code>cache.t2.micro</code>, <code>cache.t2.small</code>, <code>cache.t2.medium</code>
-     * </p>
-     * <p>
-     * <b>M3 node types:</b> <code>cache.m3.medium</code>, <code>cache.m3.large</code>, <code>cache.m3.xlarge</code>,
-     * <code>cache.m3.2xlarge</code>
+     * <b>M5 node types:</b> <code>cache.m5.large</code>, <code>cache.m5.xlarge</code>, <code>cache.m5.2xlarge</code>,
+     * <code>cache.m5.4xlarge</code>, <code>cache.m5.12xlarge</code>, <code>cache.m5.24xlarge</code>
      * </p>
      * <p>
      * <b>M4 node types:</b> <code>cache.m4.large</code>, <code>cache.m4.xlarge</code>, <code>cache.m4.2xlarge</code>,
      * <code>cache.m4.4xlarge</code>, <code>cache.m4.10xlarge</code>
+     * </p>
+     * <p>
+     * <b>T2 node types:</b> <code>cache.t2.micro</code>, <code>cache.t2.small</code>, <code>cache.t2.medium</code>
      * </p>
      * </li>
      * <li>
@@ -106,6 +106,10 @@ public class Snapshot implements Serializable, Cloneable {
      * <p>
      * <b>M1 node types:</b> <code>cache.m1.small</code>, <code>cache.m1.medium</code>, <code>cache.m1.large</code>,
      * <code>cache.m1.xlarge</code>
+     * </p>
+     * <p>
+     * <b>M3 node types:</b> <code>cache.m3.medium</code>, <code>cache.m3.large</code>, <code>cache.m3.xlarge</code>,
+     * <code>cache.m3.2xlarge</code>
      * </p>
      * </li>
      * </ul>
@@ -135,8 +139,12 @@ public class Snapshot implements Serializable, Cloneable {
      * Current generation:
      * </p>
      * <p>
-     * <b>R3 node types:</b> <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>,
-     * <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code>
+     * <b>R5 node types:</b> <code>cache.r5.large</code>, <code>cache.r5.xlarge</code>, <code>cache.r5.2xlarge</code>,
+     * <code>cache.r5.4xlarge</code>, <code>cache.r5.12xlarge</code>, <code>cache.r5.24xlarge</code>
+     * </p>
+     * <p>
+     * <b>R4 node types:</b> <code>cache.r4.large</code>, <code>cache.r4.xlarge</code>, <code>cache.r4.2xlarge</code>,
+     * <code>cache.r4.4xlarge</code>, <code>cache.r4.8xlarge</code>, <code>cache.r4.16xlarge</code>
      * </p>
      * </li>
      * <li>
@@ -146,44 +154,40 @@ public class Snapshot implements Serializable, Cloneable {
      * <p>
      * <b>M2 node types:</b> <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>, <code>cache.m2.4xlarge</code>
      * </p>
+     * <p>
+     * <b>R3 node types:</b> <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>,
+     * <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code>
+     * </p>
      * </li>
      * </ul>
      * </li>
      * </ul>
      * <p>
-     * <b>Notes:</b>
+     * <b>Additional node type info</b>
      * </p>
      * <ul>
      * <li>
      * <p>
-     * All T2 instances are created in an Amazon Virtual Private Cloud (Amazon VPC).
+     * All current generation instance types are created in Amazon VPC by default.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Redis (cluster mode disabled): Redis backup/restore is not supported on T1 and T2 instances.
+     * Redis append-only files (AOF) are not supported for T1 or T2 instances.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Redis (cluster mode enabled): Backup/restore is not supported on T1 instances.
+     * Redis Multi-AZ with automatic failover is not supported on T1 instances.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Redis Append-only files (AOF) functionality is not supported for T1 or T2 instances.
+     * Redis configuration variables <code>appendonly</code> and <code>appendfsync</code> are not supported on Redis
+     * version 2.8.22 and later.
      * </p>
      * </li>
      * </ul>
-     * <p>
-     * For a complete listing of node types and specifications, see <a
-     * href="http://aws.amazon.com/elasticache/details">Amazon ElastiCache Product Features and Details</a> and either
-     * <a href=
-     * "http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific"
-     * >Cache Node Type-Specific Parameters for Memcached</a> or <a href=
-     * "http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific"
-     * >Cache Node Type-Specific Parameters for Redis</a>.
-     * </p>
      */
     private String cacheNodeType;
     /**
@@ -348,7 +352,7 @@ public class Snapshot implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * Redis (cluster mode disabled): T1 and T2 cache node types.
+     * Redis (cluster mode disabled): T1 node types.
      * </p>
      * </li>
      * <li>
@@ -365,6 +369,12 @@ public class Snapshot implements Serializable, Cloneable {
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<NodeSnapshot> nodeSnapshots;
+    /**
+     * <p>
+     * The ID of the KMS key used to encrypt the snapshot.
+     * </p>
+     */
+    private String kmsKeyId;
 
     /**
      * <p>
@@ -644,15 +654,15 @@ public class Snapshot implements Serializable, Cloneable {
      * Current generation:
      * </p>
      * <p>
-     * <b>T2 node types:</b> <code>cache.t2.micro</code>, <code>cache.t2.small</code>, <code>cache.t2.medium</code>
-     * </p>
-     * <p>
-     * <b>M3 node types:</b> <code>cache.m3.medium</code>, <code>cache.m3.large</code>, <code>cache.m3.xlarge</code>,
-     * <code>cache.m3.2xlarge</code>
+     * <b>M5 node types:</b> <code>cache.m5.large</code>, <code>cache.m5.xlarge</code>, <code>cache.m5.2xlarge</code>,
+     * <code>cache.m5.4xlarge</code>, <code>cache.m5.12xlarge</code>, <code>cache.m5.24xlarge</code>
      * </p>
      * <p>
      * <b>M4 node types:</b> <code>cache.m4.large</code>, <code>cache.m4.xlarge</code>, <code>cache.m4.2xlarge</code>,
      * <code>cache.m4.4xlarge</code>, <code>cache.m4.10xlarge</code>
+     * </p>
+     * <p>
+     * <b>T2 node types:</b> <code>cache.t2.micro</code>, <code>cache.t2.small</code>, <code>cache.t2.medium</code>
      * </p>
      * </li>
      * <li>
@@ -665,6 +675,10 @@ public class Snapshot implements Serializable, Cloneable {
      * <p>
      * <b>M1 node types:</b> <code>cache.m1.small</code>, <code>cache.m1.medium</code>, <code>cache.m1.large</code>,
      * <code>cache.m1.xlarge</code>
+     * </p>
+     * <p>
+     * <b>M3 node types:</b> <code>cache.m3.medium</code>, <code>cache.m3.large</code>, <code>cache.m3.xlarge</code>,
+     * <code>cache.m3.2xlarge</code>
      * </p>
      * </li>
      * </ul>
@@ -694,8 +708,12 @@ public class Snapshot implements Serializable, Cloneable {
      * Current generation:
      * </p>
      * <p>
-     * <b>R3 node types:</b> <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>,
-     * <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code>
+     * <b>R5 node types:</b> <code>cache.r5.large</code>, <code>cache.r5.xlarge</code>, <code>cache.r5.2xlarge</code>,
+     * <code>cache.r5.4xlarge</code>, <code>cache.r5.12xlarge</code>, <code>cache.r5.24xlarge</code>
+     * </p>
+     * <p>
+     * <b>R4 node types:</b> <code>cache.r4.large</code>, <code>cache.r4.xlarge</code>, <code>cache.r4.2xlarge</code>,
+     * <code>cache.r4.4xlarge</code>, <code>cache.r4.8xlarge</code>, <code>cache.r4.16xlarge</code>
      * </p>
      * </li>
      * <li>
@@ -705,44 +723,40 @@ public class Snapshot implements Serializable, Cloneable {
      * <p>
      * <b>M2 node types:</b> <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>, <code>cache.m2.4xlarge</code>
      * </p>
+     * <p>
+     * <b>R3 node types:</b> <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>,
+     * <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code>
+     * </p>
      * </li>
      * </ul>
      * </li>
      * </ul>
      * <p>
-     * <b>Notes:</b>
+     * <b>Additional node type info</b>
      * </p>
      * <ul>
      * <li>
      * <p>
-     * All T2 instances are created in an Amazon Virtual Private Cloud (Amazon VPC).
+     * All current generation instance types are created in Amazon VPC by default.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Redis (cluster mode disabled): Redis backup/restore is not supported on T1 and T2 instances.
+     * Redis append-only files (AOF) are not supported for T1 or T2 instances.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Redis (cluster mode enabled): Backup/restore is not supported on T1 instances.
+     * Redis Multi-AZ with automatic failover is not supported on T1 instances.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Redis Append-only files (AOF) functionality is not supported for T1 or T2 instances.
+     * Redis configuration variables <code>appendonly</code> and <code>appendfsync</code> are not supported on Redis
+     * version 2.8.22 and later.
      * </p>
      * </li>
      * </ul>
-     * <p>
-     * For a complete listing of node types and specifications, see <a
-     * href="http://aws.amazon.com/elasticache/details">Amazon ElastiCache Product Features and Details</a> and either
-     * <a href=
-     * "http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific"
-     * >Cache Node Type-Specific Parameters for Memcached</a> or <a href=
-     * "http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific"
-     * >Cache Node Type-Specific Parameters for Redis</a>.
-     * </p>
      * 
      * @param cacheNodeType
      *        The name of the compute and memory capacity node type for the source cluster.</p>
@@ -762,16 +776,17 @@ public class Snapshot implements Serializable, Cloneable {
      *        Current generation:
      *        </p>
      *        <p>
-     *        <b>T2 node types:</b> <code>cache.t2.micro</code>, <code>cache.t2.small</code>,
-     *        <code>cache.t2.medium</code>
-     *        </p>
-     *        <p>
-     *        <b>M3 node types:</b> <code>cache.m3.medium</code>, <code>cache.m3.large</code>,
-     *        <code>cache.m3.xlarge</code>, <code>cache.m3.2xlarge</code>
+     *        <b>M5 node types:</b> <code>cache.m5.large</code>, <code>cache.m5.xlarge</code>,
+     *        <code>cache.m5.2xlarge</code>, <code>cache.m5.4xlarge</code>, <code>cache.m5.12xlarge</code>,
+     *        <code>cache.m5.24xlarge</code>
      *        </p>
      *        <p>
      *        <b>M4 node types:</b> <code>cache.m4.large</code>, <code>cache.m4.xlarge</code>,
      *        <code>cache.m4.2xlarge</code>, <code>cache.m4.4xlarge</code>, <code>cache.m4.10xlarge</code>
+     *        </p>
+     *        <p>
+     *        <b>T2 node types:</b> <code>cache.t2.micro</code>, <code>cache.t2.small</code>,
+     *        <code>cache.t2.medium</code>
      *        </p>
      *        </li>
      *        <li>
@@ -784,6 +799,10 @@ public class Snapshot implements Serializable, Cloneable {
      *        <p>
      *        <b>M1 node types:</b> <code>cache.m1.small</code>, <code>cache.m1.medium</code>,
      *        <code>cache.m1.large</code>, <code>cache.m1.xlarge</code>
+     *        </p>
+     *        <p>
+     *        <b>M3 node types:</b> <code>cache.m3.medium</code>, <code>cache.m3.large</code>,
+     *        <code>cache.m3.xlarge</code>, <code>cache.m3.2xlarge</code>
      *        </p>
      *        </li>
      *        </ul>
@@ -813,8 +832,14 @@ public class Snapshot implements Serializable, Cloneable {
      *        Current generation:
      *        </p>
      *        <p>
-     *        <b>R3 node types:</b> <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>,
-     *        <code>cache.r3.2xlarge</code>, <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code>
+     *        <b>R5 node types:</b> <code>cache.r5.large</code>, <code>cache.r5.xlarge</code>,
+     *        <code>cache.r5.2xlarge</code>, <code>cache.r5.4xlarge</code>, <code>cache.r5.12xlarge</code>,
+     *        <code>cache.r5.24xlarge</code>
+     *        </p>
+     *        <p>
+     *        <b>R4 node types:</b> <code>cache.r4.large</code>, <code>cache.r4.xlarge</code>,
+     *        <code>cache.r4.2xlarge</code>, <code>cache.r4.4xlarge</code>, <code>cache.r4.8xlarge</code>,
+     *        <code>cache.r4.16xlarge</code>
      *        </p>
      *        </li>
      *        <li>
@@ -825,43 +850,39 @@ public class Snapshot implements Serializable, Cloneable {
      *        <b>M2 node types:</b> <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>,
      *        <code>cache.m2.4xlarge</code>
      *        </p>
+     *        <p>
+     *        <b>R3 node types:</b> <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>,
+     *        <code>cache.r3.2xlarge</code>, <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code>
+     *        </p>
      *        </li>
      *        </ul>
      *        </li>
      *        </ul>
      *        <p>
-     *        <b>Notes:</b>
+     *        <b>Additional node type info</b>
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        All T2 instances are created in an Amazon Virtual Private Cloud (Amazon VPC).
+     *        All current generation instance types are created in Amazon VPC by default.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Redis (cluster mode disabled): Redis backup/restore is not supported on T1 and T2 instances.
+     *        Redis append-only files (AOF) are not supported for T1 or T2 instances.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Redis (cluster mode enabled): Backup/restore is not supported on T1 instances.
+     *        Redis Multi-AZ with automatic failover is not supported on T1 instances.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Redis Append-only files (AOF) functionality is not supported for T1 or T2 instances.
+     *        Redis configuration variables <code>appendonly</code> and <code>appendfsync</code> are not supported on
+     *        Redis version 2.8.22 and later.
      *        </p>
      *        </li>
-     *        </ul>
-     *        <p>
-     *        For a complete listing of node types and specifications, see <a
-     *        href="http://aws.amazon.com/elasticache/details">Amazon ElastiCache Product Features and Details</a> and
-     *        either <a href=
-     *        "http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific"
-     *        >Cache Node Type-Specific Parameters for Memcached</a> or <a href=
-     *        "http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific"
-     *        >Cache Node Type-Specific Parameters for Redis</a>.
      */
 
     public void setCacheNodeType(String cacheNodeType) {
@@ -888,15 +909,15 @@ public class Snapshot implements Serializable, Cloneable {
      * Current generation:
      * </p>
      * <p>
-     * <b>T2 node types:</b> <code>cache.t2.micro</code>, <code>cache.t2.small</code>, <code>cache.t2.medium</code>
-     * </p>
-     * <p>
-     * <b>M3 node types:</b> <code>cache.m3.medium</code>, <code>cache.m3.large</code>, <code>cache.m3.xlarge</code>,
-     * <code>cache.m3.2xlarge</code>
+     * <b>M5 node types:</b> <code>cache.m5.large</code>, <code>cache.m5.xlarge</code>, <code>cache.m5.2xlarge</code>,
+     * <code>cache.m5.4xlarge</code>, <code>cache.m5.12xlarge</code>, <code>cache.m5.24xlarge</code>
      * </p>
      * <p>
      * <b>M4 node types:</b> <code>cache.m4.large</code>, <code>cache.m4.xlarge</code>, <code>cache.m4.2xlarge</code>,
      * <code>cache.m4.4xlarge</code>, <code>cache.m4.10xlarge</code>
+     * </p>
+     * <p>
+     * <b>T2 node types:</b> <code>cache.t2.micro</code>, <code>cache.t2.small</code>, <code>cache.t2.medium</code>
      * </p>
      * </li>
      * <li>
@@ -909,6 +930,10 @@ public class Snapshot implements Serializable, Cloneable {
      * <p>
      * <b>M1 node types:</b> <code>cache.m1.small</code>, <code>cache.m1.medium</code>, <code>cache.m1.large</code>,
      * <code>cache.m1.xlarge</code>
+     * </p>
+     * <p>
+     * <b>M3 node types:</b> <code>cache.m3.medium</code>, <code>cache.m3.large</code>, <code>cache.m3.xlarge</code>,
+     * <code>cache.m3.2xlarge</code>
      * </p>
      * </li>
      * </ul>
@@ -938,8 +963,12 @@ public class Snapshot implements Serializable, Cloneable {
      * Current generation:
      * </p>
      * <p>
-     * <b>R3 node types:</b> <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>,
-     * <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code>
+     * <b>R5 node types:</b> <code>cache.r5.large</code>, <code>cache.r5.xlarge</code>, <code>cache.r5.2xlarge</code>,
+     * <code>cache.r5.4xlarge</code>, <code>cache.r5.12xlarge</code>, <code>cache.r5.24xlarge</code>
+     * </p>
+     * <p>
+     * <b>R4 node types:</b> <code>cache.r4.large</code>, <code>cache.r4.xlarge</code>, <code>cache.r4.2xlarge</code>,
+     * <code>cache.r4.4xlarge</code>, <code>cache.r4.8xlarge</code>, <code>cache.r4.16xlarge</code>
      * </p>
      * </li>
      * <li>
@@ -949,44 +978,40 @@ public class Snapshot implements Serializable, Cloneable {
      * <p>
      * <b>M2 node types:</b> <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>, <code>cache.m2.4xlarge</code>
      * </p>
+     * <p>
+     * <b>R3 node types:</b> <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>,
+     * <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code>
+     * </p>
      * </li>
      * </ul>
      * </li>
      * </ul>
      * <p>
-     * <b>Notes:</b>
+     * <b>Additional node type info</b>
      * </p>
      * <ul>
      * <li>
      * <p>
-     * All T2 instances are created in an Amazon Virtual Private Cloud (Amazon VPC).
+     * All current generation instance types are created in Amazon VPC by default.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Redis (cluster mode disabled): Redis backup/restore is not supported on T1 and T2 instances.
+     * Redis append-only files (AOF) are not supported for T1 or T2 instances.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Redis (cluster mode enabled): Backup/restore is not supported on T1 instances.
+     * Redis Multi-AZ with automatic failover is not supported on T1 instances.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Redis Append-only files (AOF) functionality is not supported for T1 or T2 instances.
+     * Redis configuration variables <code>appendonly</code> and <code>appendfsync</code> are not supported on Redis
+     * version 2.8.22 and later.
      * </p>
      * </li>
      * </ul>
-     * <p>
-     * For a complete listing of node types and specifications, see <a
-     * href="http://aws.amazon.com/elasticache/details">Amazon ElastiCache Product Features and Details</a> and either
-     * <a href=
-     * "http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific"
-     * >Cache Node Type-Specific Parameters for Memcached</a> or <a href=
-     * "http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific"
-     * >Cache Node Type-Specific Parameters for Redis</a>.
-     * </p>
      * 
      * @return The name of the compute and memory capacity node type for the source cluster.</p>
      *         <p>
@@ -1005,16 +1030,17 @@ public class Snapshot implements Serializable, Cloneable {
      *         Current generation:
      *         </p>
      *         <p>
-     *         <b>T2 node types:</b> <code>cache.t2.micro</code>, <code>cache.t2.small</code>,
-     *         <code>cache.t2.medium</code>
-     *         </p>
-     *         <p>
-     *         <b>M3 node types:</b> <code>cache.m3.medium</code>, <code>cache.m3.large</code>,
-     *         <code>cache.m3.xlarge</code>, <code>cache.m3.2xlarge</code>
+     *         <b>M5 node types:</b> <code>cache.m5.large</code>, <code>cache.m5.xlarge</code>,
+     *         <code>cache.m5.2xlarge</code>, <code>cache.m5.4xlarge</code>, <code>cache.m5.12xlarge</code>,
+     *         <code>cache.m5.24xlarge</code>
      *         </p>
      *         <p>
      *         <b>M4 node types:</b> <code>cache.m4.large</code>, <code>cache.m4.xlarge</code>,
      *         <code>cache.m4.2xlarge</code>, <code>cache.m4.4xlarge</code>, <code>cache.m4.10xlarge</code>
+     *         </p>
+     *         <p>
+     *         <b>T2 node types:</b> <code>cache.t2.micro</code>, <code>cache.t2.small</code>,
+     *         <code>cache.t2.medium</code>
      *         </p>
      *         </li>
      *         <li>
@@ -1027,6 +1053,10 @@ public class Snapshot implements Serializable, Cloneable {
      *         <p>
      *         <b>M1 node types:</b> <code>cache.m1.small</code>, <code>cache.m1.medium</code>,
      *         <code>cache.m1.large</code>, <code>cache.m1.xlarge</code>
+     *         </p>
+     *         <p>
+     *         <b>M3 node types:</b> <code>cache.m3.medium</code>, <code>cache.m3.large</code>,
+     *         <code>cache.m3.xlarge</code>, <code>cache.m3.2xlarge</code>
      *         </p>
      *         </li>
      *         </ul>
@@ -1056,8 +1086,14 @@ public class Snapshot implements Serializable, Cloneable {
      *         Current generation:
      *         </p>
      *         <p>
-     *         <b>R3 node types:</b> <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>,
-     *         <code>cache.r3.2xlarge</code>, <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code>
+     *         <b>R5 node types:</b> <code>cache.r5.large</code>, <code>cache.r5.xlarge</code>,
+     *         <code>cache.r5.2xlarge</code>, <code>cache.r5.4xlarge</code>, <code>cache.r5.12xlarge</code>,
+     *         <code>cache.r5.24xlarge</code>
+     *         </p>
+     *         <p>
+     *         <b>R4 node types:</b> <code>cache.r4.large</code>, <code>cache.r4.xlarge</code>,
+     *         <code>cache.r4.2xlarge</code>, <code>cache.r4.4xlarge</code>, <code>cache.r4.8xlarge</code>,
+     *         <code>cache.r4.16xlarge</code>
      *         </p>
      *         </li>
      *         <li>
@@ -1068,43 +1104,39 @@ public class Snapshot implements Serializable, Cloneable {
      *         <b>M2 node types:</b> <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>,
      *         <code>cache.m2.4xlarge</code>
      *         </p>
+     *         <p>
+     *         <b>R3 node types:</b> <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>,
+     *         <code>cache.r3.2xlarge</code>, <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code>
+     *         </p>
      *         </li>
      *         </ul>
      *         </li>
      *         </ul>
      *         <p>
-     *         <b>Notes:</b>
+     *         <b>Additional node type info</b>
      *         </p>
      *         <ul>
      *         <li>
      *         <p>
-     *         All T2 instances are created in an Amazon Virtual Private Cloud (Amazon VPC).
+     *         All current generation instance types are created in Amazon VPC by default.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         Redis (cluster mode disabled): Redis backup/restore is not supported on T1 and T2 instances.
+     *         Redis append-only files (AOF) are not supported for T1 or T2 instances.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         Redis (cluster mode enabled): Backup/restore is not supported on T1 instances.
+     *         Redis Multi-AZ with automatic failover is not supported on T1 instances.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         Redis Append-only files (AOF) functionality is not supported for T1 or T2 instances.
+     *         Redis configuration variables <code>appendonly</code> and <code>appendfsync</code> are not supported on
+     *         Redis version 2.8.22 and later.
      *         </p>
      *         </li>
-     *         </ul>
-     *         <p>
-     *         For a complete listing of node types and specifications, see <a
-     *         href="http://aws.amazon.com/elasticache/details">Amazon ElastiCache Product Features and Details</a> and
-     *         either <a href=
-     *         "http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific"
-     *         >Cache Node Type-Specific Parameters for Memcached</a> or <a href=
-     *         "http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific"
-     *         >Cache Node Type-Specific Parameters for Redis</a>.
      */
 
     public String getCacheNodeType() {
@@ -1131,15 +1163,15 @@ public class Snapshot implements Serializable, Cloneable {
      * Current generation:
      * </p>
      * <p>
-     * <b>T2 node types:</b> <code>cache.t2.micro</code>, <code>cache.t2.small</code>, <code>cache.t2.medium</code>
-     * </p>
-     * <p>
-     * <b>M3 node types:</b> <code>cache.m3.medium</code>, <code>cache.m3.large</code>, <code>cache.m3.xlarge</code>,
-     * <code>cache.m3.2xlarge</code>
+     * <b>M5 node types:</b> <code>cache.m5.large</code>, <code>cache.m5.xlarge</code>, <code>cache.m5.2xlarge</code>,
+     * <code>cache.m5.4xlarge</code>, <code>cache.m5.12xlarge</code>, <code>cache.m5.24xlarge</code>
      * </p>
      * <p>
      * <b>M4 node types:</b> <code>cache.m4.large</code>, <code>cache.m4.xlarge</code>, <code>cache.m4.2xlarge</code>,
      * <code>cache.m4.4xlarge</code>, <code>cache.m4.10xlarge</code>
+     * </p>
+     * <p>
+     * <b>T2 node types:</b> <code>cache.t2.micro</code>, <code>cache.t2.small</code>, <code>cache.t2.medium</code>
      * </p>
      * </li>
      * <li>
@@ -1152,6 +1184,10 @@ public class Snapshot implements Serializable, Cloneable {
      * <p>
      * <b>M1 node types:</b> <code>cache.m1.small</code>, <code>cache.m1.medium</code>, <code>cache.m1.large</code>,
      * <code>cache.m1.xlarge</code>
+     * </p>
+     * <p>
+     * <b>M3 node types:</b> <code>cache.m3.medium</code>, <code>cache.m3.large</code>, <code>cache.m3.xlarge</code>,
+     * <code>cache.m3.2xlarge</code>
      * </p>
      * </li>
      * </ul>
@@ -1181,8 +1217,12 @@ public class Snapshot implements Serializable, Cloneable {
      * Current generation:
      * </p>
      * <p>
-     * <b>R3 node types:</b> <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>,
-     * <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code>
+     * <b>R5 node types:</b> <code>cache.r5.large</code>, <code>cache.r5.xlarge</code>, <code>cache.r5.2xlarge</code>,
+     * <code>cache.r5.4xlarge</code>, <code>cache.r5.12xlarge</code>, <code>cache.r5.24xlarge</code>
+     * </p>
+     * <p>
+     * <b>R4 node types:</b> <code>cache.r4.large</code>, <code>cache.r4.xlarge</code>, <code>cache.r4.2xlarge</code>,
+     * <code>cache.r4.4xlarge</code>, <code>cache.r4.8xlarge</code>, <code>cache.r4.16xlarge</code>
      * </p>
      * </li>
      * <li>
@@ -1192,44 +1232,40 @@ public class Snapshot implements Serializable, Cloneable {
      * <p>
      * <b>M2 node types:</b> <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>, <code>cache.m2.4xlarge</code>
      * </p>
+     * <p>
+     * <b>R3 node types:</b> <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>,
+     * <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code>
+     * </p>
      * </li>
      * </ul>
      * </li>
      * </ul>
      * <p>
-     * <b>Notes:</b>
+     * <b>Additional node type info</b>
      * </p>
      * <ul>
      * <li>
      * <p>
-     * All T2 instances are created in an Amazon Virtual Private Cloud (Amazon VPC).
+     * All current generation instance types are created in Amazon VPC by default.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Redis (cluster mode disabled): Redis backup/restore is not supported on T1 and T2 instances.
+     * Redis append-only files (AOF) are not supported for T1 or T2 instances.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Redis (cluster mode enabled): Backup/restore is not supported on T1 instances.
+     * Redis Multi-AZ with automatic failover is not supported on T1 instances.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Redis Append-only files (AOF) functionality is not supported for T1 or T2 instances.
+     * Redis configuration variables <code>appendonly</code> and <code>appendfsync</code> are not supported on Redis
+     * version 2.8.22 and later.
      * </p>
      * </li>
      * </ul>
-     * <p>
-     * For a complete listing of node types and specifications, see <a
-     * href="http://aws.amazon.com/elasticache/details">Amazon ElastiCache Product Features and Details</a> and either
-     * <a href=
-     * "http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific"
-     * >Cache Node Type-Specific Parameters for Memcached</a> or <a href=
-     * "http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific"
-     * >Cache Node Type-Specific Parameters for Redis</a>.
-     * </p>
      * 
      * @param cacheNodeType
      *        The name of the compute and memory capacity node type for the source cluster.</p>
@@ -1249,16 +1285,17 @@ public class Snapshot implements Serializable, Cloneable {
      *        Current generation:
      *        </p>
      *        <p>
-     *        <b>T2 node types:</b> <code>cache.t2.micro</code>, <code>cache.t2.small</code>,
-     *        <code>cache.t2.medium</code>
-     *        </p>
-     *        <p>
-     *        <b>M3 node types:</b> <code>cache.m3.medium</code>, <code>cache.m3.large</code>,
-     *        <code>cache.m3.xlarge</code>, <code>cache.m3.2xlarge</code>
+     *        <b>M5 node types:</b> <code>cache.m5.large</code>, <code>cache.m5.xlarge</code>,
+     *        <code>cache.m5.2xlarge</code>, <code>cache.m5.4xlarge</code>, <code>cache.m5.12xlarge</code>,
+     *        <code>cache.m5.24xlarge</code>
      *        </p>
      *        <p>
      *        <b>M4 node types:</b> <code>cache.m4.large</code>, <code>cache.m4.xlarge</code>,
      *        <code>cache.m4.2xlarge</code>, <code>cache.m4.4xlarge</code>, <code>cache.m4.10xlarge</code>
+     *        </p>
+     *        <p>
+     *        <b>T2 node types:</b> <code>cache.t2.micro</code>, <code>cache.t2.small</code>,
+     *        <code>cache.t2.medium</code>
      *        </p>
      *        </li>
      *        <li>
@@ -1271,6 +1308,10 @@ public class Snapshot implements Serializable, Cloneable {
      *        <p>
      *        <b>M1 node types:</b> <code>cache.m1.small</code>, <code>cache.m1.medium</code>,
      *        <code>cache.m1.large</code>, <code>cache.m1.xlarge</code>
+     *        </p>
+     *        <p>
+     *        <b>M3 node types:</b> <code>cache.m3.medium</code>, <code>cache.m3.large</code>,
+     *        <code>cache.m3.xlarge</code>, <code>cache.m3.2xlarge</code>
      *        </p>
      *        </li>
      *        </ul>
@@ -1300,8 +1341,14 @@ public class Snapshot implements Serializable, Cloneable {
      *        Current generation:
      *        </p>
      *        <p>
-     *        <b>R3 node types:</b> <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>,
-     *        <code>cache.r3.2xlarge</code>, <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code>
+     *        <b>R5 node types:</b> <code>cache.r5.large</code>, <code>cache.r5.xlarge</code>,
+     *        <code>cache.r5.2xlarge</code>, <code>cache.r5.4xlarge</code>, <code>cache.r5.12xlarge</code>,
+     *        <code>cache.r5.24xlarge</code>
+     *        </p>
+     *        <p>
+     *        <b>R4 node types:</b> <code>cache.r4.large</code>, <code>cache.r4.xlarge</code>,
+     *        <code>cache.r4.2xlarge</code>, <code>cache.r4.4xlarge</code>, <code>cache.r4.8xlarge</code>,
+     *        <code>cache.r4.16xlarge</code>
      *        </p>
      *        </li>
      *        <li>
@@ -1312,43 +1359,39 @@ public class Snapshot implements Serializable, Cloneable {
      *        <b>M2 node types:</b> <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>,
      *        <code>cache.m2.4xlarge</code>
      *        </p>
+     *        <p>
+     *        <b>R3 node types:</b> <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>,
+     *        <code>cache.r3.2xlarge</code>, <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code>
+     *        </p>
      *        </li>
      *        </ul>
      *        </li>
      *        </ul>
      *        <p>
-     *        <b>Notes:</b>
+     *        <b>Additional node type info</b>
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        All T2 instances are created in an Amazon Virtual Private Cloud (Amazon VPC).
+     *        All current generation instance types are created in Amazon VPC by default.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Redis (cluster mode disabled): Redis backup/restore is not supported on T1 and T2 instances.
+     *        Redis append-only files (AOF) are not supported for T1 or T2 instances.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Redis (cluster mode enabled): Backup/restore is not supported on T1 instances.
+     *        Redis Multi-AZ with automatic failover is not supported on T1 instances.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Redis Append-only files (AOF) functionality is not supported for T1 or T2 instances.
+     *        Redis configuration variables <code>appendonly</code> and <code>appendfsync</code> are not supported on
+     *        Redis version 2.8.22 and later.
      *        </p>
      *        </li>
-     *        </ul>
-     *        <p>
-     *        For a complete listing of node types and specifications, see <a
-     *        href="http://aws.amazon.com/elasticache/details">Amazon ElastiCache Product Features and Details</a> and
-     *        either <a href=
-     *        "http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific"
-     *        >Cache Node Type-Specific Parameters for Memcached</a> or <a href=
-     *        "http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific"
-     *        >Cache Node Type-Specific Parameters for Redis</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -2323,7 +2366,7 @@ public class Snapshot implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * Redis (cluster mode disabled): T1 and T2 cache node types.
+     * Redis (cluster mode disabled): T1 node types.
      * </p>
      * </li>
      * <li>
@@ -2346,7 +2389,7 @@ public class Snapshot implements Serializable, Cloneable {
      *        </li>
      *        <li>
      *        <p>
-     *        Redis (cluster mode disabled): T1 and T2 cache node types.
+     *        Redis (cluster mode disabled): T1 node types.
      *        </p>
      *        </li>
      *        <li>
@@ -2376,7 +2419,7 @@ public class Snapshot implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * Redis (cluster mode disabled): T1 and T2 cache node types.
+     * Redis (cluster mode disabled): T1 node types.
      * </p>
      * </li>
      * <li>
@@ -2398,7 +2441,7 @@ public class Snapshot implements Serializable, Cloneable {
      *         </li>
      *         <li>
      *         <p>
-     *         Redis (cluster mode disabled): T1 and T2 cache node types.
+     *         Redis (cluster mode disabled): T1 node types.
      *         </p>
      *         </li>
      *         <li>
@@ -2428,7 +2471,7 @@ public class Snapshot implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * Redis (cluster mode disabled): T1 and T2 cache node types.
+     * Redis (cluster mode disabled): T1 node types.
      * </p>
      * </li>
      * <li>
@@ -2451,7 +2494,7 @@ public class Snapshot implements Serializable, Cloneable {
      *        </li>
      *        <li>
      *        <p>
-     *        Redis (cluster mode disabled): T1 and T2 cache node types.
+     *        Redis (cluster mode disabled): T1 node types.
      *        </p>
      *        </li>
      *        <li>
@@ -2483,7 +2526,7 @@ public class Snapshot implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * Redis (cluster mode disabled): T1 and T2 cache node types.
+     * Redis (cluster mode disabled): T1 node types.
      * </p>
      * </li>
      * <li>
@@ -2506,7 +2549,7 @@ public class Snapshot implements Serializable, Cloneable {
      *        </li>
      *        <li>
      *        <p>
-     *        Redis (cluster mode disabled): T1 and T2 cache node types.
+     *        Redis (cluster mode disabled): T1 node types.
      *        </p>
      *        </li>
      *        <li>
@@ -2536,7 +2579,7 @@ public class Snapshot implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * Redis (cluster mode disabled): T1 and T2 cache node types.
+     * Redis (cluster mode disabled): T1 node types.
      * </p>
      * </li>
      * <li>
@@ -2559,7 +2602,7 @@ public class Snapshot implements Serializable, Cloneable {
      *        </li>
      *        <li>
      *        <p>
-     *        Redis (cluster mode disabled): T1 and T2 cache node types.
+     *        Redis (cluster mode disabled): T1 node types.
      *        </p>
      *        </li>
      *        <li>
@@ -2650,7 +2693,48 @@ public class Snapshot implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * <p>
+     * The ID of the KMS key used to encrypt the snapshot.
+     * </p>
+     * 
+     * @param kmsKeyId
+     *        The ID of the KMS key used to encrypt the snapshot.
+     */
+
+    public void setKmsKeyId(String kmsKeyId) {
+        this.kmsKeyId = kmsKeyId;
+    }
+
+    /**
+     * <p>
+     * The ID of the KMS key used to encrypt the snapshot.
+     * </p>
+     * 
+     * @return The ID of the KMS key used to encrypt the snapshot.
+     */
+
+    public String getKmsKeyId() {
+        return this.kmsKeyId;
+    }
+
+    /**
+     * <p>
+     * The ID of the KMS key used to encrypt the snapshot.
+     * </p>
+     * 
+     * @param kmsKeyId
+     *        The ID of the KMS key used to encrypt the snapshot.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Snapshot withKmsKeyId(String kmsKeyId) {
+        setKmsKeyId(kmsKeyId);
+        return this;
+    }
+
+    /**
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -2707,7 +2791,9 @@ public class Snapshot implements Serializable, Cloneable {
         if (getAutomaticFailover() != null)
             sb.append("AutomaticFailover: ").append(getAutomaticFailover()).append(",");
         if (getNodeSnapshots() != null)
-            sb.append("NodeSnapshots: ").append(getNodeSnapshots());
+            sb.append("NodeSnapshots: ").append(getNodeSnapshots()).append(",");
+        if (getKmsKeyId() != null)
+            sb.append("KmsKeyId: ").append(getKmsKeyId());
         sb.append("}");
         return sb.toString();
     }
@@ -2818,6 +2904,10 @@ public class Snapshot implements Serializable, Cloneable {
             return false;
         if (other.getNodeSnapshots() != null && other.getNodeSnapshots().equals(this.getNodeSnapshots()) == false)
             return false;
+        if (other.getKmsKeyId() == null ^ this.getKmsKeyId() == null)
+            return false;
+        if (other.getKmsKeyId() != null && other.getKmsKeyId().equals(this.getKmsKeyId()) == false)
+            return false;
         return true;
     }
 
@@ -2850,6 +2940,7 @@ public class Snapshot implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getNumNodeGroups() == null) ? 0 : getNumNodeGroups().hashCode());
         hashCode = prime * hashCode + ((getAutomaticFailover() == null) ? 0 : getAutomaticFailover().hashCode());
         hashCode = prime * hashCode + ((getNodeSnapshots() == null) ? 0 : getNodeSnapshots().hashCode());
+        hashCode = prime * hashCode + ((getKmsKeyId() == null) ? 0 : getKmsKeyId().hashCode());
         return hashCode;
     }
 

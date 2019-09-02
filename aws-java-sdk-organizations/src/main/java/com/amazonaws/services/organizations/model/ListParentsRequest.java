@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,7 +27,7 @@ public class ListParentsRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * The unique identifier (ID) of the OU or account whose parent containers you want to list. Do not specify a root.
+     * The unique identifier (ID) of the OU or account whose parent containers you want to list. Don't specify a root.
      * </p>
      * <p>
      * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a child ID string requires one of the
@@ -36,14 +36,14 @@ public class ListParentsRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <ul>
      * <li>
      * <p>
-     * Account: a string that consists of exactly 12 digits.
+     * <b>Account</b> - A string that consists of exactly 12 digits.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or digits
-     * (the ID of the root that contains the OU) followed by a second "-" dash and from 8 to 32 additional lower-case
-     * letters or digits.
+     * <b>Organizational unit (OU)</b> - A string that begins with "ou-" followed by from 4 to 32 lower-case letters or
+     * digits (the ID of the root that contains the OU) followed by a second "-" dash and from 8 to 32 additional
+     * lower-case letters or digits.
      * </p>
      * </li>
      * </ul>
@@ -59,20 +59,20 @@ public class ListParentsRequest extends com.amazonaws.AmazonWebServiceRequest im
     private String nextToken;
     /**
      * <p>
-     * (Optional) Use this to limit the number of results you want included in the response. If you do not include this
-     * parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum
-     * you specify, the <code>NextToken</code> response element is present and has a value (is not null). Include that
-     * value as the <code>NextToken</code> request parameter in the next call to the operation to get the next part of
-     * the results. Note that Organizations might return fewer results than the maximum even when there are more results
-     * available. You should check <code>NextToken</code> after every operation to ensure that you receive all of the
-     * results.
+     * (Optional) Use this to limit the number of results you want included per page in the response. If you do not
+     * include this parameter, it defaults to a value that is specific to the operation. If additional items exist
+     * beyond the maximum you specify, the <code>NextToken</code> response element is present and has a value (is not
+     * null). Include that value as the <code>NextToken</code> request parameter in the next call to the operation to
+     * get the next part of the results. Note that Organizations might return fewer results than the maximum even when
+     * there are more results available. You should check <code>NextToken</code> after every operation to ensure that
+     * you receive all of the results.
      * </p>
      */
     private Integer maxResults;
 
     /**
      * <p>
-     * The unique identifier (ID) of the OU or account whose parent containers you want to list. Do not specify a root.
+     * The unique identifier (ID) of the OU or account whose parent containers you want to list. Don't specify a root.
      * </p>
      * <p>
      * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a child ID string requires one of the
@@ -81,20 +81,20 @@ public class ListParentsRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <ul>
      * <li>
      * <p>
-     * Account: a string that consists of exactly 12 digits.
+     * <b>Account</b> - A string that consists of exactly 12 digits.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or digits
-     * (the ID of the root that contains the OU) followed by a second "-" dash and from 8 to 32 additional lower-case
-     * letters or digits.
+     * <b>Organizational unit (OU)</b> - A string that begins with "ou-" followed by from 4 to 32 lower-case letters or
+     * digits (the ID of the root that contains the OU) followed by a second "-" dash and from 8 to 32 additional
+     * lower-case letters or digits.
      * </p>
      * </li>
      * </ul>
      * 
      * @param childId
-     *        The unique identifier (ID) of the OU or account whose parent containers you want to list. Do not specify a
+     *        The unique identifier (ID) of the OU or account whose parent containers you want to list. Don't specify a
      *        root.</p>
      *        <p>
      *        The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a child ID string requires one of the
@@ -103,14 +103,14 @@ public class ListParentsRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        <ul>
      *        <li>
      *        <p>
-     *        Account: a string that consists of exactly 12 digits.
+     *        <b>Account</b> - A string that consists of exactly 12 digits.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or
-     *        digits (the ID of the root that contains the OU) followed by a second "-" dash and from 8 to 32 additional
-     *        lower-case letters or digits.
+     *        <b>Organizational unit (OU)</b> - A string that begins with "ou-" followed by from 4 to 32 lower-case
+     *        letters or digits (the ID of the root that contains the OU) followed by a second "-" dash and from 8 to 32
+     *        additional lower-case letters or digits.
      *        </p>
      *        </li>
      */
@@ -121,7 +121,7 @@ public class ListParentsRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * The unique identifier (ID) of the OU or account whose parent containers you want to list. Do not specify a root.
+     * The unique identifier (ID) of the OU or account whose parent containers you want to list. Don't specify a root.
      * </p>
      * <p>
      * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a child ID string requires one of the
@@ -130,20 +130,20 @@ public class ListParentsRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <ul>
      * <li>
      * <p>
-     * Account: a string that consists of exactly 12 digits.
+     * <b>Account</b> - A string that consists of exactly 12 digits.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or digits
-     * (the ID of the root that contains the OU) followed by a second "-" dash and from 8 to 32 additional lower-case
-     * letters or digits.
+     * <b>Organizational unit (OU)</b> - A string that begins with "ou-" followed by from 4 to 32 lower-case letters or
+     * digits (the ID of the root that contains the OU) followed by a second "-" dash and from 8 to 32 additional
+     * lower-case letters or digits.
      * </p>
      * </li>
      * </ul>
      * 
-     * @return The unique identifier (ID) of the OU or account whose parent containers you want to list. Do not specify
-     *         a root.</p>
+     * @return The unique identifier (ID) of the OU or account whose parent containers you want to list. Don't specify a
+     *         root.</p>
      *         <p>
      *         The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a child ID string requires one of the
      *         following:
@@ -151,14 +151,14 @@ public class ListParentsRequest extends com.amazonaws.AmazonWebServiceRequest im
      *         <ul>
      *         <li>
      *         <p>
-     *         Account: a string that consists of exactly 12 digits.
+     *         <b>Account</b> - A string that consists of exactly 12 digits.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or
-     *         digits (the ID of the root that contains the OU) followed by a second "-" dash and from 8 to 32
-     *         additional lower-case letters or digits.
+     *         <b>Organizational unit (OU)</b> - A string that begins with "ou-" followed by from 4 to 32 lower-case
+     *         letters or digits (the ID of the root that contains the OU) followed by a second "-" dash and from 8 to
+     *         32 additional lower-case letters or digits.
      *         </p>
      *         </li>
      */
@@ -169,7 +169,7 @@ public class ListParentsRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * The unique identifier (ID) of the OU or account whose parent containers you want to list. Do not specify a root.
+     * The unique identifier (ID) of the OU or account whose parent containers you want to list. Don't specify a root.
      * </p>
      * <p>
      * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a child ID string requires one of the
@@ -178,20 +178,20 @@ public class ListParentsRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <ul>
      * <li>
      * <p>
-     * Account: a string that consists of exactly 12 digits.
+     * <b>Account</b> - A string that consists of exactly 12 digits.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or digits
-     * (the ID of the root that contains the OU) followed by a second "-" dash and from 8 to 32 additional lower-case
-     * letters or digits.
+     * <b>Organizational unit (OU)</b> - A string that begins with "ou-" followed by from 4 to 32 lower-case letters or
+     * digits (the ID of the root that contains the OU) followed by a second "-" dash and from 8 to 32 additional
+     * lower-case letters or digits.
      * </p>
      * </li>
      * </ul>
      * 
      * @param childId
-     *        The unique identifier (ID) of the OU or account whose parent containers you want to list. Do not specify a
+     *        The unique identifier (ID) of the OU or account whose parent containers you want to list. Don't specify a
      *        root.</p>
      *        <p>
      *        The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a child ID string requires one of the
@@ -200,14 +200,14 @@ public class ListParentsRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        <ul>
      *        <li>
      *        <p>
-     *        Account: a string that consists of exactly 12 digits.
+     *        <b>Account</b> - A string that consists of exactly 12 digits.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or
-     *        digits (the ID of the root that contains the OU) followed by a second "-" dash and from 8 to 32 additional
-     *        lower-case letters or digits.
+     *        <b>Organizational unit (OU)</b> - A string that begins with "ou-" followed by from 4 to 32 lower-case
+     *        letters or digits (the ID of the root that contains the OU) followed by a second "-" dash and from 8 to 32
+     *        additional lower-case letters or digits.
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -272,18 +272,18 @@ public class ListParentsRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * (Optional) Use this to limit the number of results you want included in the response. If you do not include this
-     * parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum
-     * you specify, the <code>NextToken</code> response element is present and has a value (is not null). Include that
-     * value as the <code>NextToken</code> request parameter in the next call to the operation to get the next part of
-     * the results. Note that Organizations might return fewer results than the maximum even when there are more results
-     * available. You should check <code>NextToken</code> after every operation to ensure that you receive all of the
-     * results.
+     * (Optional) Use this to limit the number of results you want included per page in the response. If you do not
+     * include this parameter, it defaults to a value that is specific to the operation. If additional items exist
+     * beyond the maximum you specify, the <code>NextToken</code> response element is present and has a value (is not
+     * null). Include that value as the <code>NextToken</code> request parameter in the next call to the operation to
+     * get the next part of the results. Note that Organizations might return fewer results than the maximum even when
+     * there are more results available. You should check <code>NextToken</code> after every operation to ensure that
+     * you receive all of the results.
      * </p>
      * 
      * @param maxResults
-     *        (Optional) Use this to limit the number of results you want included in the response. If you do not
-     *        include this parameter, it defaults to a value that is specific to the operation. If additional items
+     *        (Optional) Use this to limit the number of results you want included per page in the response. If you do
+     *        not include this parameter, it defaults to a value that is specific to the operation. If additional items
      *        exist beyond the maximum you specify, the <code>NextToken</code> response element is present and has a
      *        value (is not null). Include that value as the <code>NextToken</code> request parameter in the next call
      *        to the operation to get the next part of the results. Note that Organizations might return fewer results
@@ -297,17 +297,17 @@ public class ListParentsRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * (Optional) Use this to limit the number of results you want included in the response. If you do not include this
-     * parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum
-     * you specify, the <code>NextToken</code> response element is present and has a value (is not null). Include that
-     * value as the <code>NextToken</code> request parameter in the next call to the operation to get the next part of
-     * the results. Note that Organizations might return fewer results than the maximum even when there are more results
-     * available. You should check <code>NextToken</code> after every operation to ensure that you receive all of the
-     * results.
+     * (Optional) Use this to limit the number of results you want included per page in the response. If you do not
+     * include this parameter, it defaults to a value that is specific to the operation. If additional items exist
+     * beyond the maximum you specify, the <code>NextToken</code> response element is present and has a value (is not
+     * null). Include that value as the <code>NextToken</code> request parameter in the next call to the operation to
+     * get the next part of the results. Note that Organizations might return fewer results than the maximum even when
+     * there are more results available. You should check <code>NextToken</code> after every operation to ensure that
+     * you receive all of the results.
      * </p>
      * 
-     * @return (Optional) Use this to limit the number of results you want included in the response. If you do not
-     *         include this parameter, it defaults to a value that is specific to the operation. If additional items
+     * @return (Optional) Use this to limit the number of results you want included per page in the response. If you do
+     *         not include this parameter, it defaults to a value that is specific to the operation. If additional items
      *         exist beyond the maximum you specify, the <code>NextToken</code> response element is present and has a
      *         value (is not null). Include that value as the <code>NextToken</code> request parameter in the next call
      *         to the operation to get the next part of the results. Note that Organizations might return fewer results
@@ -321,18 +321,18 @@ public class ListParentsRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * (Optional) Use this to limit the number of results you want included in the response. If you do not include this
-     * parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum
-     * you specify, the <code>NextToken</code> response element is present and has a value (is not null). Include that
-     * value as the <code>NextToken</code> request parameter in the next call to the operation to get the next part of
-     * the results. Note that Organizations might return fewer results than the maximum even when there are more results
-     * available. You should check <code>NextToken</code> after every operation to ensure that you receive all of the
-     * results.
+     * (Optional) Use this to limit the number of results you want included per page in the response. If you do not
+     * include this parameter, it defaults to a value that is specific to the operation. If additional items exist
+     * beyond the maximum you specify, the <code>NextToken</code> response element is present and has a value (is not
+     * null). Include that value as the <code>NextToken</code> request parameter in the next call to the operation to
+     * get the next part of the results. Note that Organizations might return fewer results than the maximum even when
+     * there are more results available. You should check <code>NextToken</code> after every operation to ensure that
+     * you receive all of the results.
      * </p>
      * 
      * @param maxResults
-     *        (Optional) Use this to limit the number of results you want included in the response. If you do not
-     *        include this parameter, it defaults to a value that is specific to the operation. If additional items
+     *        (Optional) Use this to limit the number of results you want included per page in the response. If you do
+     *        not include this parameter, it defaults to a value that is specific to the operation. If additional items
      *        exist beyond the maximum you specify, the <code>NextToken</code> response element is present and has a
      *        value (is not null). Include that value as the <code>NextToken</code> request parameter in the next call
      *        to the operation to get the next part of the results. Note that Organizations might return fewer results
@@ -347,7 +347,8 @@ public class ListParentsRequest extends com.amazonaws.AmazonWebServiceRequest im
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

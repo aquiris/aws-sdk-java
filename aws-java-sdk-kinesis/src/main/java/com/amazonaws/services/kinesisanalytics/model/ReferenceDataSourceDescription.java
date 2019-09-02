@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -31,7 +31,9 @@ public class ReferenceDataSourceDescription implements Serializable, Cloneable, 
     /**
      * <p>
      * ID of the reference data source. This is the ID that Amazon Kinesis Analytics assigns when you add the reference
-     * data source to your application using the <a>AddApplicationReferenceDataSource</a> operation.
+     * data source to your application using the <a
+     * href="https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_AddApplicationReferenceDataSource.html"
+     * >AddApplicationReferenceDataSource</a> operation.
      * </p>
      */
     private String referenceId;
@@ -60,12 +62,16 @@ public class ReferenceDataSourceDescription implements Serializable, Cloneable, 
     /**
      * <p>
      * ID of the reference data source. This is the ID that Amazon Kinesis Analytics assigns when you add the reference
-     * data source to your application using the <a>AddApplicationReferenceDataSource</a> operation.
+     * data source to your application using the <a
+     * href="https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_AddApplicationReferenceDataSource.html"
+     * >AddApplicationReferenceDataSource</a> operation.
      * </p>
      * 
      * @param referenceId
      *        ID of the reference data source. This is the ID that Amazon Kinesis Analytics assigns when you add the
-     *        reference data source to your application using the <a>AddApplicationReferenceDataSource</a> operation.
+     *        reference data source to your application using the <a href=
+     *        "https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_AddApplicationReferenceDataSource.html"
+     *        >AddApplicationReferenceDataSource</a> operation.
      */
 
     public void setReferenceId(String referenceId) {
@@ -75,11 +81,15 @@ public class ReferenceDataSourceDescription implements Serializable, Cloneable, 
     /**
      * <p>
      * ID of the reference data source. This is the ID that Amazon Kinesis Analytics assigns when you add the reference
-     * data source to your application using the <a>AddApplicationReferenceDataSource</a> operation.
+     * data source to your application using the <a
+     * href="https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_AddApplicationReferenceDataSource.html"
+     * >AddApplicationReferenceDataSource</a> operation.
      * </p>
      * 
      * @return ID of the reference data source. This is the ID that Amazon Kinesis Analytics assigns when you add the
-     *         reference data source to your application using the <a>AddApplicationReferenceDataSource</a> operation.
+     *         reference data source to your application using the <a href=
+     *         "https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_AddApplicationReferenceDataSource.html"
+     *         >AddApplicationReferenceDataSource</a> operation.
      */
 
     public String getReferenceId() {
@@ -89,12 +99,16 @@ public class ReferenceDataSourceDescription implements Serializable, Cloneable, 
     /**
      * <p>
      * ID of the reference data source. This is the ID that Amazon Kinesis Analytics assigns when you add the reference
-     * data source to your application using the <a>AddApplicationReferenceDataSource</a> operation.
+     * data source to your application using the <a
+     * href="https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_AddApplicationReferenceDataSource.html"
+     * >AddApplicationReferenceDataSource</a> operation.
      * </p>
      * 
      * @param referenceId
      *        ID of the reference data source. This is the ID that Amazon Kinesis Analytics assigns when you add the
-     *        reference data source to your application using the <a>AddApplicationReferenceDataSource</a> operation.
+     *        reference data source to your application using the <a href=
+     *        "https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_AddApplicationReferenceDataSource.html"
+     *        >AddApplicationReferenceDataSource</a> operation.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -242,7 +256,8 @@ public class ReferenceDataSourceDescription implements Serializable, Cloneable, 
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

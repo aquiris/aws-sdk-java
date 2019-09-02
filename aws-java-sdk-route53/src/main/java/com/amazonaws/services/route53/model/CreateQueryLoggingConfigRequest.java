@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -41,9 +41,9 @@ public class CreateQueryLoggingConfigRequest extends com.amazonaws.AmazonWebServ
      * </p>
      * <p>
      * To get the ARN for a log group, you can use the CloudWatch console, the <a
-     * href="http://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DescribeLogGroups.html"
+     * href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DescribeLogGroups.html"
      * >DescribeLogGroups</a> API action, the <a
-     * href="http://docs.aws.amazon.com/cli/latest/reference/logs/describe-log-groups.html">describe-log-groups</a>
+     * href="https://docs.aws.amazon.com/cli/latest/reference/logs/describe-log-groups.html">describe-log-groups</a>
      * command, or the applicable command in one of the AWS SDKs.
      * </p>
      */
@@ -102,9 +102,9 @@ public class CreateQueryLoggingConfigRequest extends com.amazonaws.AmazonWebServ
      * </p>
      * <p>
      * To get the ARN for a log group, you can use the CloudWatch console, the <a
-     * href="http://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DescribeLogGroups.html"
+     * href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DescribeLogGroups.html"
      * >DescribeLogGroups</a> API action, the <a
-     * href="http://docs.aws.amazon.com/cli/latest/reference/logs/describe-log-groups.html">describe-log-groups</a>
+     * href="https://docs.aws.amazon.com/cli/latest/reference/logs/describe-log-groups.html">describe-log-groups</a>
      * command, or the applicable command in one of the AWS SDKs.
      * </p>
      * 
@@ -116,9 +116,9 @@ public class CreateQueryLoggingConfigRequest extends com.amazonaws.AmazonWebServ
      *        </p>
      *        <p>
      *        To get the ARN for a log group, you can use the CloudWatch console, the <a
-     *        href="http://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DescribeLogGroups.html"
+     *        href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DescribeLogGroups.html"
      *        >DescribeLogGroups</a> API action, the <a
-     *        href="http://docs.aws.amazon.com/cli/latest/reference/logs/describe-log-groups.html"
+     *        href="https://docs.aws.amazon.com/cli/latest/reference/logs/describe-log-groups.html"
      *        >describe-log-groups</a> command, or the applicable command in one of the AWS SDKs.
      */
 
@@ -136,9 +136,9 @@ public class CreateQueryLoggingConfigRequest extends com.amazonaws.AmazonWebServ
      * </p>
      * <p>
      * To get the ARN for a log group, you can use the CloudWatch console, the <a
-     * href="http://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DescribeLogGroups.html"
+     * href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DescribeLogGroups.html"
      * >DescribeLogGroups</a> API action, the <a
-     * href="http://docs.aws.amazon.com/cli/latest/reference/logs/describe-log-groups.html">describe-log-groups</a>
+     * href="https://docs.aws.amazon.com/cli/latest/reference/logs/describe-log-groups.html">describe-log-groups</a>
      * command, or the applicable command in one of the AWS SDKs.
      * </p>
      * 
@@ -149,9 +149,9 @@ public class CreateQueryLoggingConfigRequest extends com.amazonaws.AmazonWebServ
      *         </p>
      *         <p>
      *         To get the ARN for a log group, you can use the CloudWatch console, the <a
-     *         href="http://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DescribeLogGroups.html"
+     *         href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DescribeLogGroups.html"
      *         >DescribeLogGroups</a> API action, the <a
-     *         href="http://docs.aws.amazon.com/cli/latest/reference/logs/describe-log-groups.html"
+     *         href="https://docs.aws.amazon.com/cli/latest/reference/logs/describe-log-groups.html"
      *         >describe-log-groups</a> command, or the applicable command in one of the AWS SDKs.
      */
 
@@ -169,9 +169,9 @@ public class CreateQueryLoggingConfigRequest extends com.amazonaws.AmazonWebServ
      * </p>
      * <p>
      * To get the ARN for a log group, you can use the CloudWatch console, the <a
-     * href="http://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DescribeLogGroups.html"
+     * href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DescribeLogGroups.html"
      * >DescribeLogGroups</a> API action, the <a
-     * href="http://docs.aws.amazon.com/cli/latest/reference/logs/describe-log-groups.html">describe-log-groups</a>
+     * href="https://docs.aws.amazon.com/cli/latest/reference/logs/describe-log-groups.html">describe-log-groups</a>
      * command, or the applicable command in one of the AWS SDKs.
      * </p>
      * 
@@ -183,9 +183,9 @@ public class CreateQueryLoggingConfigRequest extends com.amazonaws.AmazonWebServ
      *        </p>
      *        <p>
      *        To get the ARN for a log group, you can use the CloudWatch console, the <a
-     *        href="http://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DescribeLogGroups.html"
+     *        href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DescribeLogGroups.html"
      *        >DescribeLogGroups</a> API action, the <a
-     *        href="http://docs.aws.amazon.com/cli/latest/reference/logs/describe-log-groups.html"
+     *        href="https://docs.aws.amazon.com/cli/latest/reference/logs/describe-log-groups.html"
      *        >describe-log-groups</a> command, or the applicable command in one of the AWS SDKs.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -196,7 +196,8 @@ public class CreateQueryLoggingConfigRequest extends com.amazonaws.AmazonWebServ
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

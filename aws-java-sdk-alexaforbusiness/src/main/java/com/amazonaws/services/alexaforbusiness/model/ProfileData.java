@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -42,6 +42,12 @@ public class ProfileData implements Serializable, Cloneable, StructuredPojo {
     private String profileName;
     /**
      * <p>
+     * Retrieves if the profile data is default or not.
+     * </p>
+     */
+    private Boolean isDefault;
+    /**
+     * <p>
      * The address of a room profile.
      * </p>
      */
@@ -70,6 +76,12 @@ public class ProfileData implements Serializable, Cloneable, StructuredPojo {
      * </p>
      */
     private String wakeWord;
+    /**
+     * <p>
+     * The locale of a room profile.
+     * </p>
+     */
+    private String locale;
 
     /**
      * <p>
@@ -149,6 +161,58 @@ public class ProfileData implements Serializable, Cloneable, StructuredPojo {
     public ProfileData withProfileName(String profileName) {
         setProfileName(profileName);
         return this;
+    }
+
+    /**
+     * <p>
+     * Retrieves if the profile data is default or not.
+     * </p>
+     * 
+     * @param isDefault
+     *        Retrieves if the profile data is default or not.
+     */
+
+    public void setIsDefault(Boolean isDefault) {
+        this.isDefault = isDefault;
+    }
+
+    /**
+     * <p>
+     * Retrieves if the profile data is default or not.
+     * </p>
+     * 
+     * @return Retrieves if the profile data is default or not.
+     */
+
+    public Boolean getIsDefault() {
+        return this.isDefault;
+    }
+
+    /**
+     * <p>
+     * Retrieves if the profile data is default or not.
+     * </p>
+     * 
+     * @param isDefault
+     *        Retrieves if the profile data is default or not.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ProfileData withIsDefault(Boolean isDefault) {
+        setIsDefault(isDefault);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Retrieves if the profile data is default or not.
+     * </p>
+     * 
+     * @return Retrieves if the profile data is default or not.
+     */
+
+    public Boolean isDefault() {
+        return this.isDefault;
     }
 
     /**
@@ -409,7 +473,48 @@ public class ProfileData implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * <p>
+     * The locale of a room profile.
+     * </p>
+     * 
+     * @param locale
+     *        The locale of a room profile.
+     */
+
+    public void setLocale(String locale) {
+        this.locale = locale;
+    }
+
+    /**
+     * <p>
+     * The locale of a room profile.
+     * </p>
+     * 
+     * @return The locale of a room profile.
+     */
+
+    public String getLocale() {
+        return this.locale;
+    }
+
+    /**
+     * <p>
+     * The locale of a room profile.
+     * </p>
+     * 
+     * @param locale
+     *        The locale of a room profile.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ProfileData withLocale(String locale) {
+        setLocale(locale);
+        return this;
+    }
+
+    /**
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -423,6 +528,8 @@ public class ProfileData implements Serializable, Cloneable, StructuredPojo {
             sb.append("ProfileArn: ").append(getProfileArn()).append(",");
         if (getProfileName() != null)
             sb.append("ProfileName: ").append(getProfileName()).append(",");
+        if (getIsDefault() != null)
+            sb.append("IsDefault: ").append(getIsDefault()).append(",");
         if (getAddress() != null)
             sb.append("Address: ").append(getAddress()).append(",");
         if (getTimezone() != null)
@@ -432,7 +539,9 @@ public class ProfileData implements Serializable, Cloneable, StructuredPojo {
         if (getTemperatureUnit() != null)
             sb.append("TemperatureUnit: ").append(getTemperatureUnit()).append(",");
         if (getWakeWord() != null)
-            sb.append("WakeWord: ").append(getWakeWord());
+            sb.append("WakeWord: ").append(getWakeWord()).append(",");
+        if (getLocale() != null)
+            sb.append("Locale: ").append(getLocale());
         sb.append("}");
         return sb.toString();
     }
@@ -455,6 +564,10 @@ public class ProfileData implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getProfileName() != null && other.getProfileName().equals(this.getProfileName()) == false)
             return false;
+        if (other.getIsDefault() == null ^ this.getIsDefault() == null)
+            return false;
+        if (other.getIsDefault() != null && other.getIsDefault().equals(this.getIsDefault()) == false)
+            return false;
         if (other.getAddress() == null ^ this.getAddress() == null)
             return false;
         if (other.getAddress() != null && other.getAddress().equals(this.getAddress()) == false)
@@ -475,6 +588,10 @@ public class ProfileData implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getWakeWord() != null && other.getWakeWord().equals(this.getWakeWord()) == false)
             return false;
+        if (other.getLocale() == null ^ this.getLocale() == null)
+            return false;
+        if (other.getLocale() != null && other.getLocale().equals(this.getLocale()) == false)
+            return false;
         return true;
     }
 
@@ -485,11 +602,13 @@ public class ProfileData implements Serializable, Cloneable, StructuredPojo {
 
         hashCode = prime * hashCode + ((getProfileArn() == null) ? 0 : getProfileArn().hashCode());
         hashCode = prime * hashCode + ((getProfileName() == null) ? 0 : getProfileName().hashCode());
+        hashCode = prime * hashCode + ((getIsDefault() == null) ? 0 : getIsDefault().hashCode());
         hashCode = prime * hashCode + ((getAddress() == null) ? 0 : getAddress().hashCode());
         hashCode = prime * hashCode + ((getTimezone() == null) ? 0 : getTimezone().hashCode());
         hashCode = prime * hashCode + ((getDistanceUnit() == null) ? 0 : getDistanceUnit().hashCode());
         hashCode = prime * hashCode + ((getTemperatureUnit() == null) ? 0 : getTemperatureUnit().hashCode());
         hashCode = prime * hashCode + ((getWakeWord() == null) ? 0 : getWakeWord().hashCode());
+        hashCode = prime * hashCode + ((getLocale() == null) ? 0 : getLocale().hashCode());
         return hashCode;
     }
 

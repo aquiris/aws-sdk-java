@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -33,10 +33,23 @@ public class UpdateGlobalTableSettingsRequest extends com.amazonaws.AmazonWebSer
     private String globalTableName;
     /**
      * <p>
+     * The billing mode of the global table. If <code>GlobalTableBillingMode</code> is not specified, the global table
+     * defaults to <code>PROVISIONED</code> capacity billing mode.
+     * </p>
+     */
+    private String globalTableBillingMode;
+    /**
+     * <p>
      * The maximum number of writes consumed per second before DynamoDB returns a <code>ThrottlingException.</code>
      * </p>
      */
     private Long globalTableProvisionedWriteCapacityUnits;
+    /**
+     * <p>
+     * Auto scaling settings for managing provisioned write capacity for the global table.
+     * </p>
+     */
+    private AutoScalingSettingsUpdate globalTableProvisionedWriteCapacityAutoScalingSettingsUpdate;
     /**
      * <p>
      * Represents the settings of a global secondary index for a global table that will be modified.
@@ -45,7 +58,7 @@ public class UpdateGlobalTableSettingsRequest extends com.amazonaws.AmazonWebSer
     private java.util.List<GlobalTableGlobalSecondaryIndexSettingsUpdate> globalTableGlobalSecondaryIndexSettingsUpdate;
     /**
      * <p>
-     * Represents the settings for a global table in a region that will be modified.
+     * Represents the settings for a global table in a Region that will be modified.
      * </p>
      */
     private java.util.List<ReplicaSettingsUpdate> replicaSettingsUpdate;
@@ -92,6 +105,73 @@ public class UpdateGlobalTableSettingsRequest extends com.amazonaws.AmazonWebSer
 
     /**
      * <p>
+     * The billing mode of the global table. If <code>GlobalTableBillingMode</code> is not specified, the global table
+     * defaults to <code>PROVISIONED</code> capacity billing mode.
+     * </p>
+     * 
+     * @param globalTableBillingMode
+     *        The billing mode of the global table. If <code>GlobalTableBillingMode</code> is not specified, the global
+     *        table defaults to <code>PROVISIONED</code> capacity billing mode.
+     * @see BillingMode
+     */
+
+    public void setGlobalTableBillingMode(String globalTableBillingMode) {
+        this.globalTableBillingMode = globalTableBillingMode;
+    }
+
+    /**
+     * <p>
+     * The billing mode of the global table. If <code>GlobalTableBillingMode</code> is not specified, the global table
+     * defaults to <code>PROVISIONED</code> capacity billing mode.
+     * </p>
+     * 
+     * @return The billing mode of the global table. If <code>GlobalTableBillingMode</code> is not specified, the global
+     *         table defaults to <code>PROVISIONED</code> capacity billing mode.
+     * @see BillingMode
+     */
+
+    public String getGlobalTableBillingMode() {
+        return this.globalTableBillingMode;
+    }
+
+    /**
+     * <p>
+     * The billing mode of the global table. If <code>GlobalTableBillingMode</code> is not specified, the global table
+     * defaults to <code>PROVISIONED</code> capacity billing mode.
+     * </p>
+     * 
+     * @param globalTableBillingMode
+     *        The billing mode of the global table. If <code>GlobalTableBillingMode</code> is not specified, the global
+     *        table defaults to <code>PROVISIONED</code> capacity billing mode.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see BillingMode
+     */
+
+    public UpdateGlobalTableSettingsRequest withGlobalTableBillingMode(String globalTableBillingMode) {
+        setGlobalTableBillingMode(globalTableBillingMode);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The billing mode of the global table. If <code>GlobalTableBillingMode</code> is not specified, the global table
+     * defaults to <code>PROVISIONED</code> capacity billing mode.
+     * </p>
+     * 
+     * @param globalTableBillingMode
+     *        The billing mode of the global table. If <code>GlobalTableBillingMode</code> is not specified, the global
+     *        table defaults to <code>PROVISIONED</code> capacity billing mode.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see BillingMode
+     */
+
+    public UpdateGlobalTableSettingsRequest withGlobalTableBillingMode(BillingMode globalTableBillingMode) {
+        this.globalTableBillingMode = globalTableBillingMode.toString();
+        return this;
+    }
+
+    /**
+     * <p>
      * The maximum number of writes consumed per second before DynamoDB returns a <code>ThrottlingException.</code>
      * </p>
      * 
@@ -130,6 +210,48 @@ public class UpdateGlobalTableSettingsRequest extends com.amazonaws.AmazonWebSer
 
     public UpdateGlobalTableSettingsRequest withGlobalTableProvisionedWriteCapacityUnits(Long globalTableProvisionedWriteCapacityUnits) {
         setGlobalTableProvisionedWriteCapacityUnits(globalTableProvisionedWriteCapacityUnits);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Auto scaling settings for managing provisioned write capacity for the global table.
+     * </p>
+     * 
+     * @param globalTableProvisionedWriteCapacityAutoScalingSettingsUpdate
+     *        Auto scaling settings for managing provisioned write capacity for the global table.
+     */
+
+    public void setGlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate(
+            AutoScalingSettingsUpdate globalTableProvisionedWriteCapacityAutoScalingSettingsUpdate) {
+        this.globalTableProvisionedWriteCapacityAutoScalingSettingsUpdate = globalTableProvisionedWriteCapacityAutoScalingSettingsUpdate;
+    }
+
+    /**
+     * <p>
+     * Auto scaling settings for managing provisioned write capacity for the global table.
+     * </p>
+     * 
+     * @return Auto scaling settings for managing provisioned write capacity for the global table.
+     */
+
+    public AutoScalingSettingsUpdate getGlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate() {
+        return this.globalTableProvisionedWriteCapacityAutoScalingSettingsUpdate;
+    }
+
+    /**
+     * <p>
+     * Auto scaling settings for managing provisioned write capacity for the global table.
+     * </p>
+     * 
+     * @param globalTableProvisionedWriteCapacityAutoScalingSettingsUpdate
+     *        Auto scaling settings for managing provisioned write capacity for the global table.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public UpdateGlobalTableSettingsRequest withGlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate(
+            AutoScalingSettingsUpdate globalTableProvisionedWriteCapacityAutoScalingSettingsUpdate) {
+        setGlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate(globalTableProvisionedWriteCapacityAutoScalingSettingsUpdate);
         return this;
     }
 
@@ -211,10 +333,10 @@ public class UpdateGlobalTableSettingsRequest extends com.amazonaws.AmazonWebSer
 
     /**
      * <p>
-     * Represents the settings for a global table in a region that will be modified.
+     * Represents the settings for a global table in a Region that will be modified.
      * </p>
      * 
-     * @return Represents the settings for a global table in a region that will be modified.
+     * @return Represents the settings for a global table in a Region that will be modified.
      */
 
     public java.util.List<ReplicaSettingsUpdate> getReplicaSettingsUpdate() {
@@ -223,11 +345,11 @@ public class UpdateGlobalTableSettingsRequest extends com.amazonaws.AmazonWebSer
 
     /**
      * <p>
-     * Represents the settings for a global table in a region that will be modified.
+     * Represents the settings for a global table in a Region that will be modified.
      * </p>
      * 
      * @param replicaSettingsUpdate
-     *        Represents the settings for a global table in a region that will be modified.
+     *        Represents the settings for a global table in a Region that will be modified.
      */
 
     public void setReplicaSettingsUpdate(java.util.Collection<ReplicaSettingsUpdate> replicaSettingsUpdate) {
@@ -241,7 +363,7 @@ public class UpdateGlobalTableSettingsRequest extends com.amazonaws.AmazonWebSer
 
     /**
      * <p>
-     * Represents the settings for a global table in a region that will be modified.
+     * Represents the settings for a global table in a Region that will be modified.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -250,7 +372,7 @@ public class UpdateGlobalTableSettingsRequest extends com.amazonaws.AmazonWebSer
      * </p>
      * 
      * @param replicaSettingsUpdate
-     *        Represents the settings for a global table in a region that will be modified.
+     *        Represents the settings for a global table in a Region that will be modified.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -266,11 +388,11 @@ public class UpdateGlobalTableSettingsRequest extends com.amazonaws.AmazonWebSer
 
     /**
      * <p>
-     * Represents the settings for a global table in a region that will be modified.
+     * Represents the settings for a global table in a Region that will be modified.
      * </p>
      * 
      * @param replicaSettingsUpdate
-     *        Represents the settings for a global table in a region that will be modified.
+     *        Represents the settings for a global table in a Region that will be modified.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -280,7 +402,8 @@ public class UpdateGlobalTableSettingsRequest extends com.amazonaws.AmazonWebSer
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -292,8 +415,13 @@ public class UpdateGlobalTableSettingsRequest extends com.amazonaws.AmazonWebSer
         sb.append("{");
         if (getGlobalTableName() != null)
             sb.append("GlobalTableName: ").append(getGlobalTableName()).append(",");
+        if (getGlobalTableBillingMode() != null)
+            sb.append("GlobalTableBillingMode: ").append(getGlobalTableBillingMode()).append(",");
         if (getGlobalTableProvisionedWriteCapacityUnits() != null)
             sb.append("GlobalTableProvisionedWriteCapacityUnits: ").append(getGlobalTableProvisionedWriteCapacityUnits()).append(",");
+        if (getGlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate() != null)
+            sb.append("GlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate: ")
+                    .append(getGlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate()).append(",");
         if (getGlobalTableGlobalSecondaryIndexSettingsUpdate() != null)
             sb.append("GlobalTableGlobalSecondaryIndexSettingsUpdate: ").append(getGlobalTableGlobalSecondaryIndexSettingsUpdate()).append(",");
         if (getReplicaSettingsUpdate() != null)
@@ -316,10 +444,21 @@ public class UpdateGlobalTableSettingsRequest extends com.amazonaws.AmazonWebSer
             return false;
         if (other.getGlobalTableName() != null && other.getGlobalTableName().equals(this.getGlobalTableName()) == false)
             return false;
+        if (other.getGlobalTableBillingMode() == null ^ this.getGlobalTableBillingMode() == null)
+            return false;
+        if (other.getGlobalTableBillingMode() != null && other.getGlobalTableBillingMode().equals(this.getGlobalTableBillingMode()) == false)
+            return false;
         if (other.getGlobalTableProvisionedWriteCapacityUnits() == null ^ this.getGlobalTableProvisionedWriteCapacityUnits() == null)
             return false;
         if (other.getGlobalTableProvisionedWriteCapacityUnits() != null
                 && other.getGlobalTableProvisionedWriteCapacityUnits().equals(this.getGlobalTableProvisionedWriteCapacityUnits()) == false)
+            return false;
+        if (other.getGlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate() == null
+                ^ this.getGlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate() == null)
+            return false;
+        if (other.getGlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate() != null
+                && other.getGlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate().equals(
+                        this.getGlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate()) == false)
             return false;
         if (other.getGlobalTableGlobalSecondaryIndexSettingsUpdate() == null ^ this.getGlobalTableGlobalSecondaryIndexSettingsUpdate() == null)
             return false;
@@ -339,7 +478,12 @@ public class UpdateGlobalTableSettingsRequest extends com.amazonaws.AmazonWebSer
         int hashCode = 1;
 
         hashCode = prime * hashCode + ((getGlobalTableName() == null) ? 0 : getGlobalTableName().hashCode());
+        hashCode = prime * hashCode + ((getGlobalTableBillingMode() == null) ? 0 : getGlobalTableBillingMode().hashCode());
         hashCode = prime * hashCode + ((getGlobalTableProvisionedWriteCapacityUnits() == null) ? 0 : getGlobalTableProvisionedWriteCapacityUnits().hashCode());
+        hashCode = prime
+                * hashCode
+                + ((getGlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate() == null) ? 0
+                        : getGlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate().hashCode());
         hashCode = prime * hashCode
                 + ((getGlobalTableGlobalSecondaryIndexSettingsUpdate() == null) ? 0 : getGlobalTableGlobalSecondaryIndexSettingsUpdate().hashCode());
         hashCode = prime * hashCode + ((getReplicaSettingsUpdate() == null) ? 0 : getReplicaSettingsUpdate().hashCode());

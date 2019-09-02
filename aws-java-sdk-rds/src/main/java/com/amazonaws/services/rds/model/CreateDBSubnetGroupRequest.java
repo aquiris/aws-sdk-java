@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -51,7 +51,11 @@ public class CreateDBSubnetGroupRequest extends com.amazonaws.AmazonWebServiceRe
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<String> subnetIds;
-
+    /**
+     * <p>
+     * Tags to assign to the DB subnet group.
+     * </p>
+     */
     private com.amazonaws.internal.SdkInternalList<Tag> tags;
 
     /**
@@ -247,7 +251,11 @@ public class CreateDBSubnetGroupRequest extends com.amazonaws.AmazonWebServiceRe
     }
 
     /**
-     * @return
+     * <p>
+     * Tags to assign to the DB subnet group.
+     * </p>
+     * 
+     * @return Tags to assign to the DB subnet group.
      */
 
     public java.util.List<Tag> getTags() {
@@ -258,7 +266,12 @@ public class CreateDBSubnetGroupRequest extends com.amazonaws.AmazonWebServiceRe
     }
 
     /**
+     * <p>
+     * Tags to assign to the DB subnet group.
+     * </p>
+     * 
      * @param tags
+     *        Tags to assign to the DB subnet group.
      */
 
     public void setTags(java.util.Collection<Tag> tags) {
@@ -272,12 +285,16 @@ public class CreateDBSubnetGroupRequest extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
+     * Tags to assign to the DB subnet group.
+     * </p>
+     * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
      * {@link #setTags(java.util.Collection)} or {@link #withTags(java.util.Collection)} if you want to override the
      * existing values.
      * </p>
      * 
      * @param tags
+     *        Tags to assign to the DB subnet group.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -292,7 +309,12 @@ public class CreateDBSubnetGroupRequest extends com.amazonaws.AmazonWebServiceRe
     }
 
     /**
+     * <p>
+     * Tags to assign to the DB subnet group.
+     * </p>
+     * 
      * @param tags
+     *        Tags to assign to the DB subnet group.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -302,7 +324,8 @@ public class CreateDBSubnetGroupRequest extends com.amazonaws.AmazonWebServiceRe
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

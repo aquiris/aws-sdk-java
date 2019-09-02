@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -15,8 +15,13 @@ package com.amazonaws.services.mediaconvert.model;
 import javax.annotation.Generated;
 
 /**
- * Specifies the colorspace of an input. This setting works in tandem with "Color Corrector":#color_corrector >
- * color_space_conversion to determine if any conversion will be performed.
+ * If your input video has accurate color space metadata, or if you don't know about color space, leave this set to the
+ * default value Follow (FOLLOW). The service will automatically detect your input color space. If your input video has
+ * metadata indicating the wrong color space, specify the accurate color space here. If your input video is HDR 10 and
+ * the SMPTE ST 2086 Mastering Display Color Volume static metadata isn't present in your video stream, or if that
+ * metadata is present but not accurate, choose Force HDR 10 (FORCE_HDR10) here and specify correct values in the input
+ * HDR 10 metadata (Hdr10Metadata) settings. For more information about MediaConvert HDR jobs, see
+ * https://docs.aws.amazon.com/console/mediaconvert/hdr.
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public enum ColorSpace {

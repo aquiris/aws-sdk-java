@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -17,7 +17,7 @@ import javax.annotation.Generated;
 
 /**
  * <p>
- * Represents a request to return the email sending status for your Amazon SES account.
+ * Represents a request to return the email sending status for your Amazon SES account in the current AWS Region.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/GetAccountSendingEnabled" target="_top">AWS API
@@ -28,18 +28,19 @@ public class GetAccountSendingEnabledResult extends com.amazonaws.AmazonWebServi
 
     /**
      * <p>
-     * Describes whether email sending is enabled or disabled for your Amazon SES account.
+     * Describes whether email sending is enabled or disabled for your Amazon SES account in the current AWS Region.
      * </p>
      */
     private Boolean enabled;
 
     /**
      * <p>
-     * Describes whether email sending is enabled or disabled for your Amazon SES account.
+     * Describes whether email sending is enabled or disabled for your Amazon SES account in the current AWS Region.
      * </p>
      * 
      * @param enabled
-     *        Describes whether email sending is enabled or disabled for your Amazon SES account.
+     *        Describes whether email sending is enabled or disabled for your Amazon SES account in the current AWS
+     *        Region.
      */
 
     public void setEnabled(Boolean enabled) {
@@ -48,10 +49,11 @@ public class GetAccountSendingEnabledResult extends com.amazonaws.AmazonWebServi
 
     /**
      * <p>
-     * Describes whether email sending is enabled or disabled for your Amazon SES account.
+     * Describes whether email sending is enabled or disabled for your Amazon SES account in the current AWS Region.
      * </p>
      * 
-     * @return Describes whether email sending is enabled or disabled for your Amazon SES account.
+     * @return Describes whether email sending is enabled or disabled for your Amazon SES account in the current AWS
+     *         Region.
      */
 
     public Boolean getEnabled() {
@@ -60,11 +62,12 @@ public class GetAccountSendingEnabledResult extends com.amazonaws.AmazonWebServi
 
     /**
      * <p>
-     * Describes whether email sending is enabled or disabled for your Amazon SES account.
+     * Describes whether email sending is enabled or disabled for your Amazon SES account in the current AWS Region.
      * </p>
      * 
      * @param enabled
-     *        Describes whether email sending is enabled or disabled for your Amazon SES account.
+     *        Describes whether email sending is enabled or disabled for your Amazon SES account in the current AWS
+     *        Region.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -75,10 +78,11 @@ public class GetAccountSendingEnabledResult extends com.amazonaws.AmazonWebServi
 
     /**
      * <p>
-     * Describes whether email sending is enabled or disabled for your Amazon SES account.
+     * Describes whether email sending is enabled or disabled for your Amazon SES account in the current AWS Region.
      * </p>
      * 
-     * @return Describes whether email sending is enabled or disabled for your Amazon SES account.
+     * @return Describes whether email sending is enabled or disabled for your Amazon SES account in the current AWS
+     *         Region.
      */
 
     public Boolean isEnabled() {
@@ -86,7 +90,8 @@ public class GetAccountSendingEnabledResult extends com.amazonaws.AmazonWebServi
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

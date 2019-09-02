@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -18,7 +18,9 @@ import com.amazonaws.protocol.StructuredPojo;
 import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
- * Segment location dimensions
+ * <p>
+ * Specifies geographical dimension settings for a segment.
+ * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/SegmentLocation" target="_top">AWS API
  *      Documentation</a>
@@ -26,14 +28,26 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class SegmentLocation implements Serializable, Cloneable, StructuredPojo {
 
-    /** The country filter according to ISO 3166-1 Alpha-2 codes. */
+    /**
+     * <p>
+     * The country or region code, in ISO 3166-1 alpha-2 format, for the segment.
+     * </p>
+     */
     private SetDimension country;
+    /**
+     * <p>
+     * The GPS location and range for the segment.
+     * </p>
+     */
+    private GPSPointDimension gPSPoint;
 
     /**
-     * The country filter according to ISO 3166-1 Alpha-2 codes.
+     * <p>
+     * The country or region code, in ISO 3166-1 alpha-2 format, for the segment.
+     * </p>
      * 
      * @param country
-     *        The country filter according to ISO 3166-1 Alpha-2 codes.
+     *        The country or region code, in ISO 3166-1 alpha-2 format, for the segment.
      */
 
     public void setCountry(SetDimension country) {
@@ -41,9 +55,11 @@ public class SegmentLocation implements Serializable, Cloneable, StructuredPojo 
     }
 
     /**
-     * The country filter according to ISO 3166-1 Alpha-2 codes.
+     * <p>
+     * The country or region code, in ISO 3166-1 alpha-2 format, for the segment.
+     * </p>
      * 
-     * @return The country filter according to ISO 3166-1 Alpha-2 codes.
+     * @return The country or region code, in ISO 3166-1 alpha-2 format, for the segment.
      */
 
     public SetDimension getCountry() {
@@ -51,10 +67,12 @@ public class SegmentLocation implements Serializable, Cloneable, StructuredPojo 
     }
 
     /**
-     * The country filter according to ISO 3166-1 Alpha-2 codes.
+     * <p>
+     * The country or region code, in ISO 3166-1 alpha-2 format, for the segment.
+     * </p>
      * 
      * @param country
-     *        The country filter according to ISO 3166-1 Alpha-2 codes.
+     *        The country or region code, in ISO 3166-1 alpha-2 format, for the segment.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -64,7 +82,48 @@ public class SegmentLocation implements Serializable, Cloneable, StructuredPojo 
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * <p>
+     * The GPS location and range for the segment.
+     * </p>
+     * 
+     * @param gPSPoint
+     *        The GPS location and range for the segment.
+     */
+
+    public void setGPSPoint(GPSPointDimension gPSPoint) {
+        this.gPSPoint = gPSPoint;
+    }
+
+    /**
+     * <p>
+     * The GPS location and range for the segment.
+     * </p>
+     * 
+     * @return The GPS location and range for the segment.
+     */
+
+    public GPSPointDimension getGPSPoint() {
+        return this.gPSPoint;
+    }
+
+    /**
+     * <p>
+     * The GPS location and range for the segment.
+     * </p>
+     * 
+     * @param gPSPoint
+     *        The GPS location and range for the segment.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public SegmentLocation withGPSPoint(GPSPointDimension gPSPoint) {
+        setGPSPoint(gPSPoint);
+        return this;
+    }
+
+    /**
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -75,7 +134,9 @@ public class SegmentLocation implements Serializable, Cloneable, StructuredPojo 
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getCountry() != null)
-            sb.append("Country: ").append(getCountry());
+            sb.append("Country: ").append(getCountry()).append(",");
+        if (getGPSPoint() != null)
+            sb.append("GPSPoint: ").append(getGPSPoint());
         sb.append("}");
         return sb.toString();
     }
@@ -94,6 +155,10 @@ public class SegmentLocation implements Serializable, Cloneable, StructuredPojo 
             return false;
         if (other.getCountry() != null && other.getCountry().equals(this.getCountry()) == false)
             return false;
+        if (other.getGPSPoint() == null ^ this.getGPSPoint() == null)
+            return false;
+        if (other.getGPSPoint() != null && other.getGPSPoint().equals(this.getGPSPoint()) == false)
+            return false;
         return true;
     }
 
@@ -103,6 +168,7 @@ public class SegmentLocation implements Serializable, Cloneable, StructuredPojo 
         int hashCode = 1;
 
         hashCode = prime * hashCode + ((getCountry() == null) ? 0 : getCountry().hashCode());
+        hashCode = prime * hashCode + ((getGPSPoint() == null) ? 0 : getGPSPoint().hashCode());
         return hashCode;
     }
 

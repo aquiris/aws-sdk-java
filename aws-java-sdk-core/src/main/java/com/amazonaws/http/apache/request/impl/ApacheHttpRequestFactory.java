@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016. Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright (c) 2016-2019. Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@ import com.amazonaws.ClientConfiguration;
 import com.amazonaws.ProxyAuthenticationMethod;
 import com.amazonaws.Request;
 import com.amazonaws.SdkClientException;
+import com.amazonaws.handlers.HandlerContextKey;
 import com.amazonaws.http.HttpMethodName;
 import com.amazonaws.http.RepeatableInputStreamRequestEntity;
 import com.amazonaws.http.apache.utils.ApacheUtils;
@@ -42,6 +43,7 @@ import org.apache.http.client.methods.HttpPatch;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpPut;
 import org.apache.http.client.methods.HttpRequestBase;
+import org.apache.http.entity.BufferedHttpEntity;
 
 /**
  * Responsible for creating Apache HttpClient 4 request objects.
@@ -61,13 +63,20 @@ public class ApacheHttpRequestFactory implements
             FakeIOException {
         URI endpoint = request.getEndpoint();
 
-        /*
-         * HttpClient cannot handle url in pattern of "http://host//path", so we
-         * have to escape the double-slash between endpoint and resource-path
-         * into "/%2F"
-         */
-        String uri = SdkHttpUtils.appendUri(endpoint.toString(), request
-                .getResourcePath(), true);
+        String uri;
+        // skipAppendUriPath is set for APIs making requests with presigned urls. Otherwise
+        // a slash will be appended at the end and the request will fail
+        if (request.getOriginalRequest().getRequestClientOptions().isSkipAppendUriPath()) {
+            uri = endpoint.toString();
+        } else {
+            /*
+             * HttpClient cannot handle url in pattern of "http://host//path", so we
+             * have to escape the double-slash between endpoint and resource-path
+             * into "/%2F"
+             */
+            uri = SdkHttpUtils.appendUri(endpoint.toString(), request.getResourcePath(), true);
+        }
+
         String encodedParams = SdkHttpUtils.encodeParameters(request);
 
         /*
@@ -98,6 +107,8 @@ public class ApacheHttpRequestFactory implements
                 .setConnectTimeout(settings.getConnectionTimeout())
                 .setSocketTimeout(settings.getSocketTimeout())
                 .setLocalAddress(settings.getLocalAddress());
+
+        ApacheUtils.disableNormalizeUri(requestConfigBuilder);
 
         /*
          * Enable 100-continue support for PUT operations, since this is
@@ -136,6 +147,15 @@ public class ApacheHttpRequestFactory implements
         }
     }
 
+
+    /**
+     * If SDK want to set Content-Length header if it missing on the request, wrap the http entity with
+     * {@link BufferedHttpEntity} as this will buffer the data and set the Content-Length header.
+     *
+     * Otherwise use the {@link RepeatableInputStreamRequestEntity} and Apache http client will
+     * set the proper header (Content-Length or Transfer-Encoding) based on whether it can find content length
+     * from the input stream. This is fine as services accept both headers.
+     */
     private HttpRequestBase wrapEntity(Request<?> request,
                                        HttpEntityEnclosingRequestBase entityEnclosingRequest,
                                        String encodedParams) throws FakeIOException {
@@ -151,7 +171,7 @@ public class ApacheHttpRequestFactory implements
             if (request.getContent() == null && encodedParams != null) {
                 entityEnclosingRequest.setEntity(ApacheUtils.newStringEntity(encodedParams));
             } else {
-                entityEnclosingRequest.setEntity(new RepeatableInputStreamRequestEntity(request));
+                createHttpEntityForPostVerb(request, entityEnclosingRequest);
             }
         } else {
             /*
@@ -165,15 +185,60 @@ public class ApacheHttpRequestFactory implements
              * return incorrect validation result.
              */
             if (request.getContent() != null) {
-                HttpEntity entity = new RepeatableInputStreamRequestEntity(request);
-                if (request.getHeaders().get(HttpHeaders.CONTENT_LENGTH) == null) {
-                    entity = ApacheUtils.newBufferedHttpEntity(entity);
-                }
-                entityEnclosingRequest.setEntity(entity);
+                createHttpEntityForNonPostVerbs(request, entityEnclosingRequest);
             }
         }
         return entityEnclosingRequest;
     }
+
+    /**
+     * For POST APIs, only use buffered entity if requiresLength trait is present.
+     *
+     * The behavior difference for POST vs non-POST APIs is to ensure only minimal changes are made to header behavior
+     * (after adding requiresLength trait) and reduce the impact radius.
+     */
+    private void createHttpEntityForPostVerb(Request<?> request,
+                                             HttpEntityEnclosingRequestBase entityEnclosingRequest) throws FakeIOException {
+        HttpEntity entity = new RepeatableInputStreamRequestEntity(request);
+
+        if (request.getHeaders().get(HttpHeaders.CONTENT_LENGTH) == null && isRequiresLength(request)) {
+            entity = ApacheUtils.newBufferedHttpEntity(entity);
+        }
+
+        entityEnclosingRequest.setEntity(entity);
+    }
+
+
+    /**
+     * For non-POST APIs, use buffered entity if op is either
+     * (a) No Streaming Input or
+     * (b) hasStreamingInput and requiresLength header is present
+     *
+     * The behavior difference for POST vs non-POST APIs is to ensure only minimal changes are made to header behavior
+     * (after adding requiresLength trait) and reduce the impact radius.
+     */
+    private void createHttpEntityForNonPostVerbs(Request<?> request,
+                                                 HttpEntityEnclosingRequestBase entityEnclosingRequest) throws FakeIOException {
+
+        HttpEntity entity = new RepeatableInputStreamRequestEntity(request);
+
+        if (request.getHeaders().get(HttpHeaders.CONTENT_LENGTH) == null) {
+            if (isRequiresLength(request) || !hasStreamingInput(request)) {
+                entity = ApacheUtils.newBufferedHttpEntity(entity);
+            }
+        }
+
+        entityEnclosingRequest.setEntity(entity);
+    }
+
+    private boolean isRequiresLength(Request<?> request) {
+        return Boolean.TRUE.equals(request.getHandlerContext(HandlerContextKey.REQUIRES_LENGTH));
+    }
+
+    private boolean hasStreamingInput(Request<?> request) {
+        return Boolean.TRUE.equals(request.getHandlerContext(HandlerContextKey.HAS_STREAMING_INPUT));
+    }
+
 
     /**
      * Configures the headers in the specified Apache HTTP request.

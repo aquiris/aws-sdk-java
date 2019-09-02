@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -30,7 +30,7 @@ public class PutRolePolicyRequest extends com.amazonaws.AmazonWebServiceRequest 
      * The name of the role to associate the policy with.
      * </p>
      * <p>
-     * This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
+     * This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
      * characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of
      * the following characters: _+=,.@-
      * </p>
@@ -41,7 +41,7 @@ public class PutRolePolicyRequest extends com.amazonaws.AmazonWebServiceRequest 
      * The name of the policy document.
      * </p>
      * <p>
-     * This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
+     * This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
      * characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of
      * the following characters: _+=,.@-
      * </p>
@@ -50,6 +50,11 @@ public class PutRolePolicyRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * The policy document.
+     * </p>
+     * <p>
+     * You must provide policies in JSON format in IAM. However, for AWS CloudFormation templates formatted in YAML, you
+     * can provide the policy in JSON or YAML format. AWS CloudFormation always converts a YAML policy to JSON format
+     * before submitting it to IAM.
      * </p>
      * <p>
      * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of
@@ -80,7 +85,7 @@ public class PutRolePolicyRequest extends com.amazonaws.AmazonWebServiceRequest 
      * The name of the role to associate the policy with.
      * </p>
      * <p>
-     * This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
+     * This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
      * characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of
      * the following characters: _+=,.@-
      * </p>
@@ -88,9 +93,9 @@ public class PutRolePolicyRequest extends com.amazonaws.AmazonWebServiceRequest 
      * @param roleName
      *        The name of the role to associate the policy with.</p>
      *        <p>
-     *        This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
-     *        characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include
-     *        any of the following characters: _+=,.@-
+     *        This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string
+     *        of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also
+     *        include any of the following characters: _+=,.@-
      */
 
     public void setRoleName(String roleName) {
@@ -102,16 +107,16 @@ public class PutRolePolicyRequest extends com.amazonaws.AmazonWebServiceRequest 
      * The name of the role to associate the policy with.
      * </p>
      * <p>
-     * This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
+     * This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
      * characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of
      * the following characters: _+=,.@-
      * </p>
      * 
      * @return The name of the role to associate the policy with.</p>
      *         <p>
-     *         This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
-     *         characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include
-     *         any of the following characters: _+=,.@-
+     *         This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string
+     *         of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also
+     *         include any of the following characters: _+=,.@-
      */
 
     public String getRoleName() {
@@ -123,7 +128,7 @@ public class PutRolePolicyRequest extends com.amazonaws.AmazonWebServiceRequest 
      * The name of the role to associate the policy with.
      * </p>
      * <p>
-     * This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
+     * This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
      * characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of
      * the following characters: _+=,.@-
      * </p>
@@ -131,9 +136,9 @@ public class PutRolePolicyRequest extends com.amazonaws.AmazonWebServiceRequest 
      * @param roleName
      *        The name of the role to associate the policy with.</p>
      *        <p>
-     *        This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
-     *        characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include
-     *        any of the following characters: _+=,.@-
+     *        This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string
+     *        of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also
+     *        include any of the following characters: _+=,.@-
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -147,7 +152,7 @@ public class PutRolePolicyRequest extends com.amazonaws.AmazonWebServiceRequest 
      * The name of the policy document.
      * </p>
      * <p>
-     * This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
+     * This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
      * characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of
      * the following characters: _+=,.@-
      * </p>
@@ -155,9 +160,9 @@ public class PutRolePolicyRequest extends com.amazonaws.AmazonWebServiceRequest 
      * @param policyName
      *        The name of the policy document.</p>
      *        <p>
-     *        This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
-     *        characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include
-     *        any of the following characters: _+=,.@-
+     *        This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string
+     *        of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also
+     *        include any of the following characters: _+=,.@-
      */
 
     public void setPolicyName(String policyName) {
@@ -169,16 +174,16 @@ public class PutRolePolicyRequest extends com.amazonaws.AmazonWebServiceRequest 
      * The name of the policy document.
      * </p>
      * <p>
-     * This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
+     * This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
      * characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of
      * the following characters: _+=,.@-
      * </p>
      * 
      * @return The name of the policy document.</p>
      *         <p>
-     *         This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
-     *         characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include
-     *         any of the following characters: _+=,.@-
+     *         This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string
+     *         of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also
+     *         include any of the following characters: _+=,.@-
      */
 
     public String getPolicyName() {
@@ -190,7 +195,7 @@ public class PutRolePolicyRequest extends com.amazonaws.AmazonWebServiceRequest 
      * The name of the policy document.
      * </p>
      * <p>
-     * This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
+     * This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
      * characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of
      * the following characters: _+=,.@-
      * </p>
@@ -198,9 +203,9 @@ public class PutRolePolicyRequest extends com.amazonaws.AmazonWebServiceRequest 
      * @param policyName
      *        The name of the policy document.</p>
      *        <p>
-     *        This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
-     *        characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include
-     *        any of the following characters: _+=,.@-
+     *        This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string
+     *        of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also
+     *        include any of the following characters: _+=,.@-
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -212,6 +217,11 @@ public class PutRolePolicyRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * The policy document.
+     * </p>
+     * <p>
+     * You must provide policies in JSON format in IAM. However, for AWS CloudFormation templates formatted in YAML, you
+     * can provide the policy in JSON or YAML format. AWS CloudFormation always converts a YAML policy to JSON format
+     * before submitting it to IAM.
      * </p>
      * <p>
      * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of
@@ -237,6 +247,11 @@ public class PutRolePolicyRequest extends com.amazonaws.AmazonWebServiceRequest 
      * 
      * @param policyDocument
      *        The policy document.</p>
+     *        <p>
+     *        You must provide policies in JSON format in IAM. However, for AWS CloudFormation templates formatted in
+     *        YAML, you can provide the policy in JSON or YAML format. AWS CloudFormation always converts a YAML policy
+     *        to JSON format before submitting it to IAM.
+     *        </p>
      *        <p>
      *        The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a
      *        string of characters consisting of the following:
@@ -269,6 +284,11 @@ public class PutRolePolicyRequest extends com.amazonaws.AmazonWebServiceRequest 
      * The policy document.
      * </p>
      * <p>
+     * You must provide policies in JSON format in IAM. However, for AWS CloudFormation templates formatted in YAML, you
+     * can provide the policy in JSON or YAML format. AWS CloudFormation always converts a YAML policy to JSON format
+     * before submitting it to IAM.
+     * </p>
+     * <p>
      * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of
      * characters consisting of the following:
      * </p>
@@ -291,6 +311,11 @@ public class PutRolePolicyRequest extends com.amazonaws.AmazonWebServiceRequest 
      * </ul>
      * 
      * @return The policy document.</p>
+     *         <p>
+     *         You must provide policies in JSON format in IAM. However, for AWS CloudFormation templates formatted in
+     *         YAML, you can provide the policy in JSON or YAML format. AWS CloudFormation always converts a YAML policy
+     *         to JSON format before submitting it to IAM.
+     *         </p>
      *         <p>
      *         The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a
      *         string of characters consisting of the following:
@@ -323,6 +348,11 @@ public class PutRolePolicyRequest extends com.amazonaws.AmazonWebServiceRequest 
      * The policy document.
      * </p>
      * <p>
+     * You must provide policies in JSON format in IAM. However, for AWS CloudFormation templates formatted in YAML, you
+     * can provide the policy in JSON or YAML format. AWS CloudFormation always converts a YAML policy to JSON format
+     * before submitting it to IAM.
+     * </p>
+     * <p>
      * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of
      * characters consisting of the following:
      * </p>
@@ -346,6 +376,11 @@ public class PutRolePolicyRequest extends com.amazonaws.AmazonWebServiceRequest 
      * 
      * @param policyDocument
      *        The policy document.</p>
+     *        <p>
+     *        You must provide policies in JSON format in IAM. However, for AWS CloudFormation templates formatted in
+     *        YAML, you can provide the policy in JSON or YAML format. AWS CloudFormation always converts a YAML policy
+     *        to JSON format before submitting it to IAM.
+     *        </p>
      *        <p>
      *        The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a
      *        string of characters consisting of the following:
@@ -376,7 +411,8 @@ public class PutRolePolicyRequest extends com.amazonaws.AmazonWebServiceRequest 
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

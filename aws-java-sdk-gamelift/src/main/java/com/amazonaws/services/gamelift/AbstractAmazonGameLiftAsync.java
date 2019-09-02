@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -158,6 +158,19 @@ public class AbstractAmazonGameLiftAsync extends AbstractAmazonGameLift implemen
     }
 
     @Override
+    public java.util.concurrent.Future<CreateScriptResult> createScriptAsync(CreateScriptRequest request) {
+
+        return createScriptAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<CreateScriptResult> createScriptAsync(CreateScriptRequest request,
+            com.amazonaws.handlers.AsyncHandler<CreateScriptRequest, CreateScriptResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public java.util.concurrent.Future<CreateVpcPeeringAuthorizationResult> createVpcPeeringAuthorizationAsync(CreateVpcPeeringAuthorizationRequest request) {
 
         return createVpcPeeringAuthorizationAsync(request, null);
@@ -249,6 +262,19 @@ public class AbstractAmazonGameLiftAsync extends AbstractAmazonGameLift implemen
     }
 
     @Override
+    public java.util.concurrent.Future<DeleteMatchmakingRuleSetResult> deleteMatchmakingRuleSetAsync(DeleteMatchmakingRuleSetRequest request) {
+
+        return deleteMatchmakingRuleSetAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DeleteMatchmakingRuleSetResult> deleteMatchmakingRuleSetAsync(DeleteMatchmakingRuleSetRequest request,
+            com.amazonaws.handlers.AsyncHandler<DeleteMatchmakingRuleSetRequest, DeleteMatchmakingRuleSetResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public java.util.concurrent.Future<DeleteScalingPolicyResult> deleteScalingPolicyAsync(DeleteScalingPolicyRequest request) {
 
         return deleteScalingPolicyAsync(request, null);
@@ -257,6 +283,19 @@ public class AbstractAmazonGameLiftAsync extends AbstractAmazonGameLift implemen
     @Override
     public java.util.concurrent.Future<DeleteScalingPolicyResult> deleteScalingPolicyAsync(DeleteScalingPolicyRequest request,
             com.amazonaws.handlers.AsyncHandler<DeleteScalingPolicyRequest, DeleteScalingPolicyResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public java.util.concurrent.Future<DeleteScriptResult> deleteScriptAsync(DeleteScriptRequest request) {
+
+        return deleteScriptAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DeleteScriptResult> deleteScriptAsync(DeleteScriptRequest request,
+            com.amazonaws.handlers.AsyncHandler<DeleteScriptRequest, DeleteScriptResult> asyncHandler) {
 
         throw new java.lang.UnsupportedOperationException();
     }
@@ -537,6 +576,19 @@ public class AbstractAmazonGameLiftAsync extends AbstractAmazonGameLift implemen
     }
 
     @Override
+    public java.util.concurrent.Future<DescribeScriptResult> describeScriptAsync(DescribeScriptRequest request) {
+
+        return describeScriptAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DescribeScriptResult> describeScriptAsync(DescribeScriptRequest request,
+            com.amazonaws.handlers.AsyncHandler<DescribeScriptRequest, DescribeScriptResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public java.util.concurrent.Future<DescribeVpcPeeringAuthorizationsResult> describeVpcPeeringAuthorizationsAsync(
             DescribeVpcPeeringAuthorizationsRequest request) {
 
@@ -625,6 +677,19 @@ public class AbstractAmazonGameLiftAsync extends AbstractAmazonGameLift implemen
     @Override
     public java.util.concurrent.Future<ListFleetsResult> listFleetsAsync(ListFleetsRequest request,
             com.amazonaws.handlers.AsyncHandler<ListFleetsRequest, ListFleetsResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public java.util.concurrent.Future<ListScriptsResult> listScriptsAsync(ListScriptsRequest request) {
+
+        return listScriptsAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<ListScriptsResult> listScriptsAsync(ListScriptsRequest request,
+            com.amazonaws.handlers.AsyncHandler<ListScriptsRequest, ListScriptsResult> asyncHandler) {
 
         throw new java.lang.UnsupportedOperationException();
     }
@@ -885,6 +950,19 @@ public class AbstractAmazonGameLiftAsync extends AbstractAmazonGameLift implemen
     @Override
     public java.util.concurrent.Future<UpdateRuntimeConfigurationResult> updateRuntimeConfigurationAsync(UpdateRuntimeConfigurationRequest request,
             com.amazonaws.handlers.AsyncHandler<UpdateRuntimeConfigurationRequest, UpdateRuntimeConfigurationResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateScriptResult> updateScriptAsync(UpdateScriptRequest request) {
+
+        return updateScriptAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateScriptResult> updateScriptAsync(UpdateScriptRequest request,
+            com.amazonaws.handlers.AsyncHandler<UpdateScriptRequest, UpdateScriptResult> asyncHandler) {
 
         throw new java.lang.UnsupportedOperationException();
     }

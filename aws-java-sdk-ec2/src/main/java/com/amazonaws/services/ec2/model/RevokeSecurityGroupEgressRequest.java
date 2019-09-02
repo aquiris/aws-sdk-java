@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -20,9 +20,7 @@ import com.amazonaws.Request;
 import com.amazonaws.services.ec2.model.transform.RevokeSecurityGroupEgressRequestMarshaller;
 
 /**
- * <p>
- * Contains the parameters for RevokeSecurityGroupEgress.
- * </p>
+ * 
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class RevokeSecurityGroupEgressRequest extends AmazonWebServiceRequest implements Serializable, Cloneable,
@@ -36,8 +34,8 @@ public class RevokeSecurityGroupEgressRequest extends AmazonWebServiceRequest im
     private String groupId;
     /**
      * <p>
-     * One or more sets of IP permissions. You can't specify a destination security group and a CIDR IP address range in
-     * the same set of permissions.
+     * The sets of IP permissions. You can't specify a destination security group and a CIDR IP address range in the
+     * same set of permissions.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<IpPermission> ipPermissions;
@@ -120,12 +118,12 @@ public class RevokeSecurityGroupEgressRequest extends AmazonWebServiceRequest im
 
     /**
      * <p>
-     * One or more sets of IP permissions. You can't specify a destination security group and a CIDR IP address range in
-     * the same set of permissions.
+     * The sets of IP permissions. You can't specify a destination security group and a CIDR IP address range in the
+     * same set of permissions.
      * </p>
      * 
-     * @return One or more sets of IP permissions. You can't specify a destination security group and a CIDR IP address
-     *         range in the same set of permissions.
+     * @return The sets of IP permissions. You can't specify a destination security group and a CIDR IP address range in
+     *         the same set of permissions.
      */
 
     public java.util.List<IpPermission> getIpPermissions() {
@@ -137,13 +135,13 @@ public class RevokeSecurityGroupEgressRequest extends AmazonWebServiceRequest im
 
     /**
      * <p>
-     * One or more sets of IP permissions. You can't specify a destination security group and a CIDR IP address range in
-     * the same set of permissions.
+     * The sets of IP permissions. You can't specify a destination security group and a CIDR IP address range in the
+     * same set of permissions.
      * </p>
      * 
      * @param ipPermissions
-     *        One or more sets of IP permissions. You can't specify a destination security group and a CIDR IP address
-     *        range in the same set of permissions.
+     *        The sets of IP permissions. You can't specify a destination security group and a CIDR IP address range in
+     *        the same set of permissions.
      */
 
     public void setIpPermissions(java.util.Collection<IpPermission> ipPermissions) {
@@ -157,8 +155,8 @@ public class RevokeSecurityGroupEgressRequest extends AmazonWebServiceRequest im
 
     /**
      * <p>
-     * One or more sets of IP permissions. You can't specify a destination security group and a CIDR IP address range in
-     * the same set of permissions.
+     * The sets of IP permissions. You can't specify a destination security group and a CIDR IP address range in the
+     * same set of permissions.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -167,8 +165,8 @@ public class RevokeSecurityGroupEgressRequest extends AmazonWebServiceRequest im
      * </p>
      * 
      * @param ipPermissions
-     *        One or more sets of IP permissions. You can't specify a destination security group and a CIDR IP address
-     *        range in the same set of permissions.
+     *        The sets of IP permissions. You can't specify a destination security group and a CIDR IP address range in
+     *        the same set of permissions.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -184,13 +182,13 @@ public class RevokeSecurityGroupEgressRequest extends AmazonWebServiceRequest im
 
     /**
      * <p>
-     * One or more sets of IP permissions. You can't specify a destination security group and a CIDR IP address range in
-     * the same set of permissions.
+     * The sets of IP permissions. You can't specify a destination security group and a CIDR IP address range in the
+     * same set of permissions.
      * </p>
      * 
      * @param ipPermissions
-     *        One or more sets of IP permissions. You can't specify a destination security group and a CIDR IP address
-     *        range in the same set of permissions.
+     *        The sets of IP permissions. You can't specify a destination security group and a CIDR IP address range in
+     *        the same set of permissions.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -451,7 +449,8 @@ public class RevokeSecurityGroupEgressRequest extends AmazonWebServiceRequest im
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

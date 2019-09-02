@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -42,7 +42,7 @@ public class StartTimerFailedEventAttributes implements Serializable, Cloneable,
      * <p>
      * If <code>cause</code> is set to <code>OPERATION_NOT_PERMITTED</code>, the decision failed because it lacked
      * sufficient permissions. For details and example IAM policies, see <a
-     * href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage Access to
+     * href="https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage Access to
      * Amazon SWF Workflows</a> in the <i>Amazon SWF Developer Guide</i>.
      * </p>
      * </note>
@@ -105,7 +105,7 @@ public class StartTimerFailedEventAttributes implements Serializable, Cloneable,
      * <p>
      * If <code>cause</code> is set to <code>OPERATION_NOT_PERMITTED</code>, the decision failed because it lacked
      * sufficient permissions. For details and example IAM policies, see <a
-     * href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage Access to
+     * href="https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage Access to
      * Amazon SWF Workflows</a> in the <i>Amazon SWF Developer Guide</i>.
      * </p>
      * </note>
@@ -116,7 +116,7 @@ public class StartTimerFailedEventAttributes implements Serializable, Cloneable,
      *        <p>
      *        If <code>cause</code> is set to <code>OPERATION_NOT_PERMITTED</code>, the decision failed because it
      *        lacked sufficient permissions. For details and example IAM policies, see <a
-     *        href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage
+     *        href="https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage
      *        Access to Amazon SWF Workflows</a> in the <i>Amazon SWF Developer Guide</i>.
      *        </p>
      * @see StartTimerFailedCause
@@ -134,7 +134,7 @@ public class StartTimerFailedEventAttributes implements Serializable, Cloneable,
      * <p>
      * If <code>cause</code> is set to <code>OPERATION_NOT_PERMITTED</code>, the decision failed because it lacked
      * sufficient permissions. For details and example IAM policies, see <a
-     * href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage Access to
+     * href="https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage Access to
      * Amazon SWF Workflows</a> in the <i>Amazon SWF Developer Guide</i>.
      * </p>
      * </note>
@@ -144,7 +144,7 @@ public class StartTimerFailedEventAttributes implements Serializable, Cloneable,
      *         <p>
      *         If <code>cause</code> is set to <code>OPERATION_NOT_PERMITTED</code>, the decision failed because it
      *         lacked sufficient permissions. For details and example IAM policies, see <a
-     *         href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage
+     *         href="https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage
      *         Access to Amazon SWF Workflows</a> in the <i>Amazon SWF Developer Guide</i>.
      *         </p>
      * @see StartTimerFailedCause
@@ -162,7 +162,7 @@ public class StartTimerFailedEventAttributes implements Serializable, Cloneable,
      * <p>
      * If <code>cause</code> is set to <code>OPERATION_NOT_PERMITTED</code>, the decision failed because it lacked
      * sufficient permissions. For details and example IAM policies, see <a
-     * href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage Access to
+     * href="https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage Access to
      * Amazon SWF Workflows</a> in the <i>Amazon SWF Developer Guide</i>.
      * </p>
      * </note>
@@ -173,7 +173,7 @@ public class StartTimerFailedEventAttributes implements Serializable, Cloneable,
      *        <p>
      *        If <code>cause</code> is set to <code>OPERATION_NOT_PERMITTED</code>, the decision failed because it
      *        lacked sufficient permissions. For details and example IAM policies, see <a
-     *        href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage
+     *        href="https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage
      *        Access to Amazon SWF Workflows</a> in the <i>Amazon SWF Developer Guide</i>.
      *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -193,7 +193,7 @@ public class StartTimerFailedEventAttributes implements Serializable, Cloneable,
      * <p>
      * If <code>cause</code> is set to <code>OPERATION_NOT_PERMITTED</code>, the decision failed because it lacked
      * sufficient permissions. For details and example IAM policies, see <a
-     * href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage Access to
+     * href="https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage Access to
      * Amazon SWF Workflows</a> in the <i>Amazon SWF Developer Guide</i>.
      * </p>
      * </note>
@@ -204,7 +204,7 @@ public class StartTimerFailedEventAttributes implements Serializable, Cloneable,
      *        <p>
      *        If <code>cause</code> is set to <code>OPERATION_NOT_PERMITTED</code>, the decision failed because it
      *        lacked sufficient permissions. For details and example IAM policies, see <a
-     *        href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage
+     *        href="https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage
      *        Access to Amazon SWF Workflows</a> in the <i>Amazon SWF Developer Guide</i>.
      *        </p>
      * @see StartTimerFailedCause
@@ -222,7 +222,7 @@ public class StartTimerFailedEventAttributes implements Serializable, Cloneable,
      * <p>
      * If <code>cause</code> is set to <code>OPERATION_NOT_PERMITTED</code>, the decision failed because it lacked
      * sufficient permissions. For details and example IAM policies, see <a
-     * href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage Access to
+     * href="https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage Access to
      * Amazon SWF Workflows</a> in the <i>Amazon SWF Developer Guide</i>.
      * </p>
      * </note>
@@ -233,7 +233,7 @@ public class StartTimerFailedEventAttributes implements Serializable, Cloneable,
      *        <p>
      *        If <code>cause</code> is set to <code>OPERATION_NOT_PERMITTED</code>, the decision failed because it
      *        lacked sufficient permissions. For details and example IAM policies, see <a
-     *        href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage
+     *        href="https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage
      *        Access to Amazon SWF Workflows</a> in the <i>Amazon SWF Developer Guide</i>.
      *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -298,7 +298,8 @@ public class StartTimerFailedEventAttributes implements Serializable, Cloneable,
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

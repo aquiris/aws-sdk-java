@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -26,63 +26,103 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
 
+    /** If set to ATTENUATE_3_DB, applies a 3 dB attenuation to the surround channels. Only used for 3/2 coding mode. */
     private String attenuationControl;
-    /** Average bitrate in bits/second. Valid bitrates depend on the coding mode. */
+    /** Specify the average bitrate in bits per second. Valid bitrates depend on the coding mode. */
     private Integer bitrate;
-
+    /**
+     * Specify the bitstream mode for the E-AC-3 stream that the encoder emits. For more information about the EAC3
+     * bitstream mode, see ATSC A/52-2012 (Annex E).
+     */
     private String bitstreamMode;
-
+    /** Dolby Digital Plus coding mode. Determines number of channels. */
     private String codingMode;
-
+    /** Activates a DC highpass filter for all input channels. */
     private String dcFilter;
     /**
      * Sets the dialnorm for the output. If blank and input audio is Dolby Digital Plus, dialnorm will be passed
      * through.
      */
     private Integer dialnorm;
-
+    /** Specify the absolute peak level for a signal with dynamic range compression. */
     private String dynamicRangeCompressionLine;
-
+    /** Specify how the service limits the audio dynamic range when compressing the audio. */
     private String dynamicRangeCompressionRf;
-
+    /** When encoding 3/2 audio, controls whether the LFE channel is enabled */
     private String lfeControl;
-
+    /** Applies a 120Hz lowpass filter to the LFE channel prior to encoding. Only valid with 3_2_LFE coding mode. */
     private String lfeFilter;
     /**
-     * Left only/Right only center mix level. Only used for 3/2 coding mode. Valid values: 3.0, 1.5, 0.0, -1.5 -3.0 -4.5
-     * -6.0 -60
+     * Specify a value for the following Dolby Digital Plus setting: Left only/Right only center mix (Lo/Ro center).
+     * MediaConvert uses this value for downmixing. How the service uses this value depends on the value that you choose
+     * for Stereo downmix (Eac3StereoDownmix). Valid values: 3.0, 1.5, 0.0, -1.5, -3.0, -4.5, -6.0, and -60. The value
+     * -60 mutes the channel. This setting applies only if you keep the default value of 3/2 - L, R, C, Ls, Rs
+     * (CODING_MODE_3_2) for the setting Coding mode (Eac3CodingMode). If you choose a different value for Coding mode,
+     * the service ignores Left only/Right only center (loRoCenterMixLevel).
      */
     private Double loRoCenterMixLevel;
     /**
-     * Left only/Right only surround mix level. Only used for 3/2 coding mode. Valid values: -1.5 -3.0 -4.5 -6.0 -60
+     * Specify a value for the following Dolby Digital Plus setting: Left only/Right only (Lo/Ro surround). MediaConvert
+     * uses this value for downmixing. How the service uses this value depends on the value that you choose for Stereo
+     * downmix (Eac3StereoDownmix). Valid values: -1.5, -3.0, -4.5, -6.0, and -60. The value -60 mutes the channel. This
+     * setting applies only if you keep the default value of 3/2 - L, R, C, Ls, Rs (CODING_MODE_3_2) for the setting
+     * Coding mode (Eac3CodingMode). If you choose a different value for Coding mode, the service ignores Left only/Right
+     * only surround (loRoSurroundMixLevel).
      */
     private Double loRoSurroundMixLevel;
     /**
-     * Left total/Right total center mix level. Only used for 3/2 coding mode. Valid values: 3.0, 1.5, 0.0, -1.5 -3.0
-     * -4.5 -6.0 -60
+     * Specify a value for the following Dolby Digital Plus setting: Left total/Right total center mix (Lt/Rt center).
+     * MediaConvert uses this value for downmixing. How the service uses this value depends on the value that you choose
+     * for Stereo downmix (Eac3StereoDownmix). Valid values: 3.0, 1.5, 0.0, -1.5, -3.0, -4.5, -6.0, and -60. The value
+     * -60 mutes the channel. This setting applies only if you keep the default value of 3/2 - L, R, C, Ls, Rs
+     * (CODING_MODE_3_2) for the setting Coding mode (Eac3CodingMode). If you choose a different value for Coding mode,
+     * the service ignores Left total/Right total center (ltRtCenterMixLevel).
      */
     private Double ltRtCenterMixLevel;
     /**
-     * Left total/Right total surround mix level. Only used for 3/2 coding mode. Valid values: -1.5 -3.0 -4.5 -6.0 -60
+     * Specify a value for the following Dolby Digital Plus setting: Left total/Right total surround mix (Lt/Rt
+     * surround). MediaConvert uses this value for downmixing. How the service uses this value depends on the value that
+     * you choose for Stereo downmix (Eac3StereoDownmix). Valid values: -1.5, -3.0, -4.5, -6.0, and -60. The value -60
+     * mutes the channel. This setting applies only if you keep the default value of 3/2 - L, R, C, Ls, Rs
+     * (CODING_MODE_3_2) for the setting Coding mode (Eac3CodingMode). If you choose a different value for Coding mode,
+     * the service ignores Left total/Right total surround (ltRtSurroundMixLevel).
      */
     private Double ltRtSurroundMixLevel;
-
+    /**
+     * When set to FOLLOW_INPUT, encoder metadata will be sourced from the DD, DD+, or DolbyE decoder that supplied this
+     * audio data. If audio was not supplied from one of these streams, then the static metadata settings will be used.
+     */
     private String metadataControl;
-
+    /**
+     * When set to WHEN_POSSIBLE, input DD+ audio will be passed through if it is present on the input. this detection
+     * is dynamic over the life of the transcode. Inputs that alternate between DD+ and non-DD+ content will have a
+     * consistent DD+ output as the system alternates between passthrough and encoding.
+     */
     private String passthroughControl;
-
+    /** Controls the amount of phase-shift applied to the surround channels. Only used for 3/2 coding mode. */
     private String phaseControl;
-    /** Sample rate in hz. Sample rate is always 48000. */
+    /** This value is always 48000. It represents the sample rate in Hz. */
     private Integer sampleRate;
-
+    /**
+     * Choose how the service does stereo downmixing. This setting only applies if you keep the default value of 3/2 -
+     * L, R, C, Ls, Rs (CODING_MODE_3_2) for the setting Coding mode (Eac3CodingMode). If you choose a different value
+     * for Coding mode, the service ignores Stereo downmix (Eac3StereoDownmix).
+     */
     private String stereoDownmix;
-
+    /**
+     * When encoding 3/2 audio, sets whether an extra center back surround channel is matrix encoded into the left and
+     * right surround channels.
+     */
     private String surroundExMode;
-
+    /** When encoding 2/0 audio, sets whether Dolby Surround is matrix encoded into the two channels. */
     private String surroundMode;
 
     /**
+     * If set to ATTENUATE_3_DB, applies a 3 dB attenuation to the surround channels. Only used for 3/2 coding mode.
+     * 
      * @param attenuationControl
+     *        If set to ATTENUATE_3_DB, applies a 3 dB attenuation to the surround channels. Only used for 3/2 coding
+     *        mode.
      * @see Eac3AttenuationControl
      */
 
@@ -91,7 +131,10 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * @return
+     * If set to ATTENUATE_3_DB, applies a 3 dB attenuation to the surround channels. Only used for 3/2 coding mode.
+     * 
+     * @return If set to ATTENUATE_3_DB, applies a 3 dB attenuation to the surround channels. Only used for 3/2 coding
+     *         mode.
      * @see Eac3AttenuationControl
      */
 
@@ -100,7 +143,11 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * If set to ATTENUATE_3_DB, applies a 3 dB attenuation to the surround channels. Only used for 3/2 coding mode.
+     * 
      * @param attenuationControl
+     *        If set to ATTENUATE_3_DB, applies a 3 dB attenuation to the surround channels. Only used for 3/2 coding
+     *        mode.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Eac3AttenuationControl
      */
@@ -111,7 +158,11 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * If set to ATTENUATE_3_DB, applies a 3 dB attenuation to the surround channels. Only used for 3/2 coding mode.
+     * 
      * @param attenuationControl
+     *        If set to ATTENUATE_3_DB, applies a 3 dB attenuation to the surround channels. Only used for 3/2 coding
+     *        mode.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Eac3AttenuationControl
      */
@@ -122,10 +173,10 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Average bitrate in bits/second. Valid bitrates depend on the coding mode.
+     * Specify the average bitrate in bits per second. Valid bitrates depend on the coding mode.
      * 
      * @param bitrate
-     *        Average bitrate in bits/second. Valid bitrates depend on the coding mode.
+     *        Specify the average bitrate in bits per second. Valid bitrates depend on the coding mode.
      */
 
     public void setBitrate(Integer bitrate) {
@@ -133,9 +184,9 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Average bitrate in bits/second. Valid bitrates depend on the coding mode.
+     * Specify the average bitrate in bits per second. Valid bitrates depend on the coding mode.
      * 
-     * @return Average bitrate in bits/second. Valid bitrates depend on the coding mode.
+     * @return Specify the average bitrate in bits per second. Valid bitrates depend on the coding mode.
      */
 
     public Integer getBitrate() {
@@ -143,10 +194,10 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Average bitrate in bits/second. Valid bitrates depend on the coding mode.
+     * Specify the average bitrate in bits per second. Valid bitrates depend on the coding mode.
      * 
      * @param bitrate
-     *        Average bitrate in bits/second. Valid bitrates depend on the coding mode.
+     *        Specify the average bitrate in bits per second. Valid bitrates depend on the coding mode.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -156,7 +207,12 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Specify the bitstream mode for the E-AC-3 stream that the encoder emits. For more information about the EAC3
+     * bitstream mode, see ATSC A/52-2012 (Annex E).
+     * 
      * @param bitstreamMode
+     *        Specify the bitstream mode for the E-AC-3 stream that the encoder emits. For more information about the
+     *        EAC3 bitstream mode, see ATSC A/52-2012 (Annex E).
      * @see Eac3BitstreamMode
      */
 
@@ -165,7 +221,11 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * @return
+     * Specify the bitstream mode for the E-AC-3 stream that the encoder emits. For more information about the EAC3
+     * bitstream mode, see ATSC A/52-2012 (Annex E).
+     * 
+     * @return Specify the bitstream mode for the E-AC-3 stream that the encoder emits. For more information about the
+     *         EAC3 bitstream mode, see ATSC A/52-2012 (Annex E).
      * @see Eac3BitstreamMode
      */
 
@@ -174,7 +234,12 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Specify the bitstream mode for the E-AC-3 stream that the encoder emits. For more information about the EAC3
+     * bitstream mode, see ATSC A/52-2012 (Annex E).
+     * 
      * @param bitstreamMode
+     *        Specify the bitstream mode for the E-AC-3 stream that the encoder emits. For more information about the
+     *        EAC3 bitstream mode, see ATSC A/52-2012 (Annex E).
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Eac3BitstreamMode
      */
@@ -185,7 +250,12 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Specify the bitstream mode for the E-AC-3 stream that the encoder emits. For more information about the EAC3
+     * bitstream mode, see ATSC A/52-2012 (Annex E).
+     * 
      * @param bitstreamMode
+     *        Specify the bitstream mode for the E-AC-3 stream that the encoder emits. For more information about the
+     *        EAC3 bitstream mode, see ATSC A/52-2012 (Annex E).
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Eac3BitstreamMode
      */
@@ -196,7 +266,10 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Dolby Digital Plus coding mode. Determines number of channels.
+     * 
      * @param codingMode
+     *        Dolby Digital Plus coding mode. Determines number of channels.
      * @see Eac3CodingMode
      */
 
@@ -205,7 +278,9 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * @return
+     * Dolby Digital Plus coding mode. Determines number of channels.
+     * 
+     * @return Dolby Digital Plus coding mode. Determines number of channels.
      * @see Eac3CodingMode
      */
 
@@ -214,7 +289,10 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Dolby Digital Plus coding mode. Determines number of channels.
+     * 
      * @param codingMode
+     *        Dolby Digital Plus coding mode. Determines number of channels.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Eac3CodingMode
      */
@@ -225,7 +303,10 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Dolby Digital Plus coding mode. Determines number of channels.
+     * 
      * @param codingMode
+     *        Dolby Digital Plus coding mode. Determines number of channels.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Eac3CodingMode
      */
@@ -236,7 +317,10 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Activates a DC highpass filter for all input channels.
+     * 
      * @param dcFilter
+     *        Activates a DC highpass filter for all input channels.
      * @see Eac3DcFilter
      */
 
@@ -245,7 +329,9 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * @return
+     * Activates a DC highpass filter for all input channels.
+     * 
+     * @return Activates a DC highpass filter for all input channels.
      * @see Eac3DcFilter
      */
 
@@ -254,7 +340,10 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Activates a DC highpass filter for all input channels.
+     * 
      * @param dcFilter
+     *        Activates a DC highpass filter for all input channels.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Eac3DcFilter
      */
@@ -265,7 +354,10 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Activates a DC highpass filter for all input channels.
+     * 
      * @param dcFilter
+     *        Activates a DC highpass filter for all input channels.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Eac3DcFilter
      */
@@ -316,7 +408,10 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Specify the absolute peak level for a signal with dynamic range compression.
+     * 
      * @param dynamicRangeCompressionLine
+     *        Specify the absolute peak level for a signal with dynamic range compression.
      * @see Eac3DynamicRangeCompressionLine
      */
 
@@ -325,7 +420,9 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * @return
+     * Specify the absolute peak level for a signal with dynamic range compression.
+     * 
+     * @return Specify the absolute peak level for a signal with dynamic range compression.
      * @see Eac3DynamicRangeCompressionLine
      */
 
@@ -334,7 +431,10 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Specify the absolute peak level for a signal with dynamic range compression.
+     * 
      * @param dynamicRangeCompressionLine
+     *        Specify the absolute peak level for a signal with dynamic range compression.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Eac3DynamicRangeCompressionLine
      */
@@ -345,7 +445,10 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Specify the absolute peak level for a signal with dynamic range compression.
+     * 
      * @param dynamicRangeCompressionLine
+     *        Specify the absolute peak level for a signal with dynamic range compression.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Eac3DynamicRangeCompressionLine
      */
@@ -356,7 +459,10 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Specify how the service limits the audio dynamic range when compressing the audio.
+     * 
      * @param dynamicRangeCompressionRf
+     *        Specify how the service limits the audio dynamic range when compressing the audio.
      * @see Eac3DynamicRangeCompressionRf
      */
 
@@ -365,7 +471,9 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * @return
+     * Specify how the service limits the audio dynamic range when compressing the audio.
+     * 
+     * @return Specify how the service limits the audio dynamic range when compressing the audio.
      * @see Eac3DynamicRangeCompressionRf
      */
 
@@ -374,7 +482,10 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Specify how the service limits the audio dynamic range when compressing the audio.
+     * 
      * @param dynamicRangeCompressionRf
+     *        Specify how the service limits the audio dynamic range when compressing the audio.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Eac3DynamicRangeCompressionRf
      */
@@ -385,7 +496,10 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Specify how the service limits the audio dynamic range when compressing the audio.
+     * 
      * @param dynamicRangeCompressionRf
+     *        Specify how the service limits the audio dynamic range when compressing the audio.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Eac3DynamicRangeCompressionRf
      */
@@ -396,7 +510,10 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * When encoding 3/2 audio, controls whether the LFE channel is enabled
+     * 
      * @param lfeControl
+     *        When encoding 3/2 audio, controls whether the LFE channel is enabled
      * @see Eac3LfeControl
      */
 
@@ -405,7 +522,9 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * @return
+     * When encoding 3/2 audio, controls whether the LFE channel is enabled
+     * 
+     * @return When encoding 3/2 audio, controls whether the LFE channel is enabled
      * @see Eac3LfeControl
      */
 
@@ -414,7 +533,10 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * When encoding 3/2 audio, controls whether the LFE channel is enabled
+     * 
      * @param lfeControl
+     *        When encoding 3/2 audio, controls whether the LFE channel is enabled
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Eac3LfeControl
      */
@@ -425,7 +547,10 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * When encoding 3/2 audio, controls whether the LFE channel is enabled
+     * 
      * @param lfeControl
+     *        When encoding 3/2 audio, controls whether the LFE channel is enabled
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Eac3LfeControl
      */
@@ -436,7 +561,10 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Applies a 120Hz lowpass filter to the LFE channel prior to encoding. Only valid with 3_2_LFE coding mode.
+     * 
      * @param lfeFilter
+     *        Applies a 120Hz lowpass filter to the LFE channel prior to encoding. Only valid with 3_2_LFE coding mode.
      * @see Eac3LfeFilter
      */
 
@@ -445,7 +573,9 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * @return
+     * Applies a 120Hz lowpass filter to the LFE channel prior to encoding. Only valid with 3_2_LFE coding mode.
+     * 
+     * @return Applies a 120Hz lowpass filter to the LFE channel prior to encoding. Only valid with 3_2_LFE coding mode.
      * @see Eac3LfeFilter
      */
 
@@ -454,7 +584,10 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Applies a 120Hz lowpass filter to the LFE channel prior to encoding. Only valid with 3_2_LFE coding mode.
+     * 
      * @param lfeFilter
+     *        Applies a 120Hz lowpass filter to the LFE channel prior to encoding. Only valid with 3_2_LFE coding mode.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Eac3LfeFilter
      */
@@ -465,7 +598,10 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Applies a 120Hz lowpass filter to the LFE channel prior to encoding. Only valid with 3_2_LFE coding mode.
+     * 
      * @param lfeFilter
+     *        Applies a 120Hz lowpass filter to the LFE channel prior to encoding. Only valid with 3_2_LFE coding mode.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Eac3LfeFilter
      */
@@ -476,12 +612,20 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Left only/Right only center mix level. Only used for 3/2 coding mode. Valid values: 3.0, 1.5, 0.0, -1.5 -3.0 -4.5
-     * -6.0 -60
+     * Specify a value for the following Dolby Digital Plus setting: Left only/Right only center mix (Lo/Ro center).
+     * MediaConvert uses this value for downmixing. How the service uses this value depends on the value that you choose
+     * for Stereo downmix (Eac3StereoDownmix). Valid values: 3.0, 1.5, 0.0, -1.5, -3.0, -4.5, -6.0, and -60. The value
+     * -60 mutes the channel. This setting applies only if you keep the default value of 3/2 - L, R, C, Ls, Rs
+     * (CODING_MODE_3_2) for the setting Coding mode (Eac3CodingMode). If you choose a different value for Coding mode,
+     * the service ignores Left only/Right only center (loRoCenterMixLevel).
      * 
      * @param loRoCenterMixLevel
-     *        Left only/Right only center mix level. Only used for 3/2 coding mode. Valid values: 3.0, 1.5, 0.0, -1.5
-     *        -3.0 -4.5 -6.0 -60
+     *        Specify a value for the following Dolby Digital Plus setting: Left only/Right only center mix (Lo/Ro
+     *        center). MediaConvert uses this value for downmixing. How the service uses this value depends on the value
+     *        that you choose for Stereo downmix (Eac3StereoDownmix). Valid values: 3.0, 1.5, 0.0, -1.5, -3.0, -4.5,
+     *        -6.0, and -60. The value -60 mutes the channel. This setting applies only if you keep the default value of
+     *        3/2 - L, R, C, Ls, Rs (CODING_MODE_3_2) for the setting Coding mode (Eac3CodingMode). If you choose a
+     *        different value for Coding mode, the service ignores Left only/Right only center (loRoCenterMixLevel).
      */
 
     public void setLoRoCenterMixLevel(Double loRoCenterMixLevel) {
@@ -489,11 +633,20 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Left only/Right only center mix level. Only used for 3/2 coding mode. Valid values: 3.0, 1.5, 0.0, -1.5 -3.0 -4.5
-     * -6.0 -60
+     * Specify a value for the following Dolby Digital Plus setting: Left only/Right only center mix (Lo/Ro center).
+     * MediaConvert uses this value for downmixing. How the service uses this value depends on the value that you choose
+     * for Stereo downmix (Eac3StereoDownmix). Valid values: 3.0, 1.5, 0.0, -1.5, -3.0, -4.5, -6.0, and -60. The value
+     * -60 mutes the channel. This setting applies only if you keep the default value of 3/2 - L, R, C, Ls, Rs
+     * (CODING_MODE_3_2) for the setting Coding mode (Eac3CodingMode). If you choose a different value for Coding mode,
+     * the service ignores Left only/Right only center (loRoCenterMixLevel).
      * 
-     * @return Left only/Right only center mix level. Only used for 3/2 coding mode. Valid values: 3.0, 1.5, 0.0, -1.5
-     *         -3.0 -4.5 -6.0 -60
+     * @return Specify a value for the following Dolby Digital Plus setting: Left only/Right only center mix (Lo/Ro
+     *         center). MediaConvert uses this value for downmixing. How the service uses this value depends on the
+     *         value that you choose for Stereo downmix (Eac3StereoDownmix). Valid values: 3.0, 1.5, 0.0, -1.5, -3.0,
+     *         -4.5, -6.0, and -60. The value -60 mutes the channel. This setting applies only if you keep the default
+     *         value of 3/2 - L, R, C, Ls, Rs (CODING_MODE_3_2) for the setting Coding mode (Eac3CodingMode). If you
+     *         choose a different value for Coding mode, the service ignores Left only/Right only center
+     *         (loRoCenterMixLevel).
      */
 
     public Double getLoRoCenterMixLevel() {
@@ -501,12 +654,20 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Left only/Right only center mix level. Only used for 3/2 coding mode. Valid values: 3.0, 1.5, 0.0, -1.5 -3.0 -4.5
-     * -6.0 -60
+     * Specify a value for the following Dolby Digital Plus setting: Left only/Right only center mix (Lo/Ro center).
+     * MediaConvert uses this value for downmixing. How the service uses this value depends on the value that you choose
+     * for Stereo downmix (Eac3StereoDownmix). Valid values: 3.0, 1.5, 0.0, -1.5, -3.0, -4.5, -6.0, and -60. The value
+     * -60 mutes the channel. This setting applies only if you keep the default value of 3/2 - L, R, C, Ls, Rs
+     * (CODING_MODE_3_2) for the setting Coding mode (Eac3CodingMode). If you choose a different value for Coding mode,
+     * the service ignores Left only/Right only center (loRoCenterMixLevel).
      * 
      * @param loRoCenterMixLevel
-     *        Left only/Right only center mix level. Only used for 3/2 coding mode. Valid values: 3.0, 1.5, 0.0, -1.5
-     *        -3.0 -4.5 -6.0 -60
+     *        Specify a value for the following Dolby Digital Plus setting: Left only/Right only center mix (Lo/Ro
+     *        center). MediaConvert uses this value for downmixing. How the service uses this value depends on the value
+     *        that you choose for Stereo downmix (Eac3StereoDownmix). Valid values: 3.0, 1.5, 0.0, -1.5, -3.0, -4.5,
+     *        -6.0, and -60. The value -60 mutes the channel. This setting applies only if you keep the default value of
+     *        3/2 - L, R, C, Ls, Rs (CODING_MODE_3_2) for the setting Coding mode (Eac3CodingMode). If you choose a
+     *        different value for Coding mode, the service ignores Left only/Right only center (loRoCenterMixLevel).
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -516,11 +677,20 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Left only/Right only surround mix level. Only used for 3/2 coding mode. Valid values: -1.5 -3.0 -4.5 -6.0 -60
+     * Specify a value for the following Dolby Digital Plus setting: Left only/Right only (Lo/Ro surround). MediaConvert
+     * uses this value for downmixing. How the service uses this value depends on the value that you choose for Stereo
+     * downmix (Eac3StereoDownmix). Valid values: -1.5, -3.0, -4.5, -6.0, and -60. The value -60 mutes the channel. This
+     * setting applies only if you keep the default value of 3/2 - L, R, C, Ls, Rs (CODING_MODE_3_2) for the setting
+     * Coding mode (Eac3CodingMode). If you choose a different value for Coding mode, the service ignores Left only/Right
+     * only surround (loRoSurroundMixLevel).
      * 
      * @param loRoSurroundMixLevel
-     *        Left only/Right only surround mix level. Only used for 3/2 coding mode. Valid values: -1.5 -3.0 -4.5 -6.0
-     *        -60
+     *        Specify a value for the following Dolby Digital Plus setting: Left only/Right only (Lo/Ro surround).
+     *        MediaConvert uses this value for downmixing. How the service uses this value depends on the value that you
+     *        choose for Stereo downmix (Eac3StereoDownmix). Valid values: -1.5, -3.0, -4.5, -6.0, and -60. The value
+     *        -60 mutes the channel. This setting applies only if you keep the default value of 3/2 - L, R, C, Ls, Rs
+     *        (CODING_MODE_3_2) for the setting Coding mode (Eac3CodingMode). If you choose a different value for Coding
+     *        mode, the service ignores Left only/Right only surround (loRoSurroundMixLevel).
      */
 
     public void setLoRoSurroundMixLevel(Double loRoSurroundMixLevel) {
@@ -528,10 +698,19 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Left only/Right only surround mix level. Only used for 3/2 coding mode. Valid values: -1.5 -3.0 -4.5 -6.0 -60
+     * Specify a value for the following Dolby Digital Plus setting: Left only/Right only (Lo/Ro surround). MediaConvert
+     * uses this value for downmixing. How the service uses this value depends on the value that you choose for Stereo
+     * downmix (Eac3StereoDownmix). Valid values: -1.5, -3.0, -4.5, -6.0, and -60. The value -60 mutes the channel. This
+     * setting applies only if you keep the default value of 3/2 - L, R, C, Ls, Rs (CODING_MODE_3_2) for the setting
+     * Coding mode (Eac3CodingMode). If you choose a different value for Coding mode, the service ignores Left only/Right
+     * only surround (loRoSurroundMixLevel).
      * 
-     * @return Left only/Right only surround mix level. Only used for 3/2 coding mode. Valid values: -1.5 -3.0 -4.5 -6.0
-     *         -60
+     * @return Specify a value for the following Dolby Digital Plus setting: Left only/Right only (Lo/Ro surround).
+     *         MediaConvert uses this value for downmixing. How the service uses this value depends on the value that
+     *         you choose for Stereo downmix (Eac3StereoDownmix). Valid values: -1.5, -3.0, -4.5, -6.0, and -60. The
+     *         value -60 mutes the channel. This setting applies only if you keep the default value of 3/2 - L, R, C,
+     *         Ls, Rs (CODING_MODE_3_2) for the setting Coding mode (Eac3CodingMode). If you choose a different value
+     *         for Coding mode, the service ignores Left only/Right only surround (loRoSurroundMixLevel).
      */
 
     public Double getLoRoSurroundMixLevel() {
@@ -539,11 +718,20 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Left only/Right only surround mix level. Only used for 3/2 coding mode. Valid values: -1.5 -3.0 -4.5 -6.0 -60
+     * Specify a value for the following Dolby Digital Plus setting: Left only/Right only (Lo/Ro surround). MediaConvert
+     * uses this value for downmixing. How the service uses this value depends on the value that you choose for Stereo
+     * downmix (Eac3StereoDownmix). Valid values: -1.5, -3.0, -4.5, -6.0, and -60. The value -60 mutes the channel. This
+     * setting applies only if you keep the default value of 3/2 - L, R, C, Ls, Rs (CODING_MODE_3_2) for the setting
+     * Coding mode (Eac3CodingMode). If you choose a different value for Coding mode, the service ignores Left only/Right
+     * only surround (loRoSurroundMixLevel).
      * 
      * @param loRoSurroundMixLevel
-     *        Left only/Right only surround mix level. Only used for 3/2 coding mode. Valid values: -1.5 -3.0 -4.5 -6.0
-     *        -60
+     *        Specify a value for the following Dolby Digital Plus setting: Left only/Right only (Lo/Ro surround).
+     *        MediaConvert uses this value for downmixing. How the service uses this value depends on the value that you
+     *        choose for Stereo downmix (Eac3StereoDownmix). Valid values: -1.5, -3.0, -4.5, -6.0, and -60. The value
+     *        -60 mutes the channel. This setting applies only if you keep the default value of 3/2 - L, R, C, Ls, Rs
+     *        (CODING_MODE_3_2) for the setting Coding mode (Eac3CodingMode). If you choose a different value for Coding
+     *        mode, the service ignores Left only/Right only surround (loRoSurroundMixLevel).
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -553,12 +741,20 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Left total/Right total center mix level. Only used for 3/2 coding mode. Valid values: 3.0, 1.5, 0.0, -1.5 -3.0
-     * -4.5 -6.0 -60
+     * Specify a value for the following Dolby Digital Plus setting: Left total/Right total center mix (Lt/Rt center).
+     * MediaConvert uses this value for downmixing. How the service uses this value depends on the value that you choose
+     * for Stereo downmix (Eac3StereoDownmix). Valid values: 3.0, 1.5, 0.0, -1.5, -3.0, -4.5, -6.0, and -60. The value
+     * -60 mutes the channel. This setting applies only if you keep the default value of 3/2 - L, R, C, Ls, Rs
+     * (CODING_MODE_3_2) for the setting Coding mode (Eac3CodingMode). If you choose a different value for Coding mode,
+     * the service ignores Left total/Right total center (ltRtCenterMixLevel).
      * 
      * @param ltRtCenterMixLevel
-     *        Left total/Right total center mix level. Only used for 3/2 coding mode. Valid values: 3.0, 1.5, 0.0, -1.5
-     *        -3.0 -4.5 -6.0 -60
+     *        Specify a value for the following Dolby Digital Plus setting: Left total/Right total center mix (Lt/Rt
+     *        center). MediaConvert uses this value for downmixing. How the service uses this value depends on the value
+     *        that you choose for Stereo downmix (Eac3StereoDownmix). Valid values: 3.0, 1.5, 0.0, -1.5, -3.0, -4.5,
+     *        -6.0, and -60. The value -60 mutes the channel. This setting applies only if you keep the default value of
+     *        3/2 - L, R, C, Ls, Rs (CODING_MODE_3_2) for the setting Coding mode (Eac3CodingMode). If you choose a
+     *        different value for Coding mode, the service ignores Left total/Right total center (ltRtCenterMixLevel).
      */
 
     public void setLtRtCenterMixLevel(Double ltRtCenterMixLevel) {
@@ -566,11 +762,20 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Left total/Right total center mix level. Only used for 3/2 coding mode. Valid values: 3.0, 1.5, 0.0, -1.5 -3.0
-     * -4.5 -6.0 -60
+     * Specify a value for the following Dolby Digital Plus setting: Left total/Right total center mix (Lt/Rt center).
+     * MediaConvert uses this value for downmixing. How the service uses this value depends on the value that you choose
+     * for Stereo downmix (Eac3StereoDownmix). Valid values: 3.0, 1.5, 0.0, -1.5, -3.0, -4.5, -6.0, and -60. The value
+     * -60 mutes the channel. This setting applies only if you keep the default value of 3/2 - L, R, C, Ls, Rs
+     * (CODING_MODE_3_2) for the setting Coding mode (Eac3CodingMode). If you choose a different value for Coding mode,
+     * the service ignores Left total/Right total center (ltRtCenterMixLevel).
      * 
-     * @return Left total/Right total center mix level. Only used for 3/2 coding mode. Valid values: 3.0, 1.5, 0.0, -1.5
-     *         -3.0 -4.5 -6.0 -60
+     * @return Specify a value for the following Dolby Digital Plus setting: Left total/Right total center mix (Lt/Rt
+     *         center). MediaConvert uses this value for downmixing. How the service uses this value depends on the
+     *         value that you choose for Stereo downmix (Eac3StereoDownmix). Valid values: 3.0, 1.5, 0.0, -1.5, -3.0,
+     *         -4.5, -6.0, and -60. The value -60 mutes the channel. This setting applies only if you keep the default
+     *         value of 3/2 - L, R, C, Ls, Rs (CODING_MODE_3_2) for the setting Coding mode (Eac3CodingMode). If you
+     *         choose a different value for Coding mode, the service ignores Left total/Right total center
+     *         (ltRtCenterMixLevel).
      */
 
     public Double getLtRtCenterMixLevel() {
@@ -578,12 +783,20 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Left total/Right total center mix level. Only used for 3/2 coding mode. Valid values: 3.0, 1.5, 0.0, -1.5 -3.0
-     * -4.5 -6.0 -60
+     * Specify a value for the following Dolby Digital Plus setting: Left total/Right total center mix (Lt/Rt center).
+     * MediaConvert uses this value for downmixing. How the service uses this value depends on the value that you choose
+     * for Stereo downmix (Eac3StereoDownmix). Valid values: 3.0, 1.5, 0.0, -1.5, -3.0, -4.5, -6.0, and -60. The value
+     * -60 mutes the channel. This setting applies only if you keep the default value of 3/2 - L, R, C, Ls, Rs
+     * (CODING_MODE_3_2) for the setting Coding mode (Eac3CodingMode). If you choose a different value for Coding mode,
+     * the service ignores Left total/Right total center (ltRtCenterMixLevel).
      * 
      * @param ltRtCenterMixLevel
-     *        Left total/Right total center mix level. Only used for 3/2 coding mode. Valid values: 3.0, 1.5, 0.0, -1.5
-     *        -3.0 -4.5 -6.0 -60
+     *        Specify a value for the following Dolby Digital Plus setting: Left total/Right total center mix (Lt/Rt
+     *        center). MediaConvert uses this value for downmixing. How the service uses this value depends on the value
+     *        that you choose for Stereo downmix (Eac3StereoDownmix). Valid values: 3.0, 1.5, 0.0, -1.5, -3.0, -4.5,
+     *        -6.0, and -60. The value -60 mutes the channel. This setting applies only if you keep the default value of
+     *        3/2 - L, R, C, Ls, Rs (CODING_MODE_3_2) for the setting Coding mode (Eac3CodingMode). If you choose a
+     *        different value for Coding mode, the service ignores Left total/Right total center (ltRtCenterMixLevel).
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -593,11 +806,20 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Left total/Right total surround mix level. Only used for 3/2 coding mode. Valid values: -1.5 -3.0 -4.5 -6.0 -60
+     * Specify a value for the following Dolby Digital Plus setting: Left total/Right total surround mix (Lt/Rt
+     * surround). MediaConvert uses this value for downmixing. How the service uses this value depends on the value that
+     * you choose for Stereo downmix (Eac3StereoDownmix). Valid values: -1.5, -3.0, -4.5, -6.0, and -60. The value -60
+     * mutes the channel. This setting applies only if you keep the default value of 3/2 - L, R, C, Ls, Rs
+     * (CODING_MODE_3_2) for the setting Coding mode (Eac3CodingMode). If you choose a different value for Coding mode,
+     * the service ignores Left total/Right total surround (ltRtSurroundMixLevel).
      * 
      * @param ltRtSurroundMixLevel
-     *        Left total/Right total surround mix level. Only used for 3/2 coding mode. Valid values: -1.5 -3.0 -4.5
-     *        -6.0 -60
+     *        Specify a value for the following Dolby Digital Plus setting: Left total/Right total surround mix (Lt/Rt
+     *        surround). MediaConvert uses this value for downmixing. How the service uses this value depends on the
+     *        value that you choose for Stereo downmix (Eac3StereoDownmix). Valid values: -1.5, -3.0, -4.5, -6.0, and
+     *        -60. The value -60 mutes the channel. This setting applies only if you keep the default value of 3/2 - L,
+     *        R, C, Ls, Rs (CODING_MODE_3_2) for the setting Coding mode (Eac3CodingMode). If you choose a different
+     *        value for Coding mode, the service ignores Left total/Right total surround (ltRtSurroundMixLevel).
      */
 
     public void setLtRtSurroundMixLevel(Double ltRtSurroundMixLevel) {
@@ -605,10 +827,19 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Left total/Right total surround mix level. Only used for 3/2 coding mode. Valid values: -1.5 -3.0 -4.5 -6.0 -60
+     * Specify a value for the following Dolby Digital Plus setting: Left total/Right total surround mix (Lt/Rt
+     * surround). MediaConvert uses this value for downmixing. How the service uses this value depends on the value that
+     * you choose for Stereo downmix (Eac3StereoDownmix). Valid values: -1.5, -3.0, -4.5, -6.0, and -60. The value -60
+     * mutes the channel. This setting applies only if you keep the default value of 3/2 - L, R, C, Ls, Rs
+     * (CODING_MODE_3_2) for the setting Coding mode (Eac3CodingMode). If you choose a different value for Coding mode,
+     * the service ignores Left total/Right total surround (ltRtSurroundMixLevel).
      * 
-     * @return Left total/Right total surround mix level. Only used for 3/2 coding mode. Valid values: -1.5 -3.0 -4.5
-     *         -6.0 -60
+     * @return Specify a value for the following Dolby Digital Plus setting: Left total/Right total surround mix (Lt/Rt
+     *         surround). MediaConvert uses this value for downmixing. How the service uses this value depends on the
+     *         value that you choose for Stereo downmix (Eac3StereoDownmix). Valid values: -1.5, -3.0, -4.5, -6.0, and
+     *         -60. The value -60 mutes the channel. This setting applies only if you keep the default value of 3/2 - L,
+     *         R, C, Ls, Rs (CODING_MODE_3_2) for the setting Coding mode (Eac3CodingMode). If you choose a different
+     *         value for Coding mode, the service ignores Left total/Right total surround (ltRtSurroundMixLevel).
      */
 
     public Double getLtRtSurroundMixLevel() {
@@ -616,11 +847,20 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Left total/Right total surround mix level. Only used for 3/2 coding mode. Valid values: -1.5 -3.0 -4.5 -6.0 -60
+     * Specify a value for the following Dolby Digital Plus setting: Left total/Right total surround mix (Lt/Rt
+     * surround). MediaConvert uses this value for downmixing. How the service uses this value depends on the value that
+     * you choose for Stereo downmix (Eac3StereoDownmix). Valid values: -1.5, -3.0, -4.5, -6.0, and -60. The value -60
+     * mutes the channel. This setting applies only if you keep the default value of 3/2 - L, R, C, Ls, Rs
+     * (CODING_MODE_3_2) for the setting Coding mode (Eac3CodingMode). If you choose a different value for Coding mode,
+     * the service ignores Left total/Right total surround (ltRtSurroundMixLevel).
      * 
      * @param ltRtSurroundMixLevel
-     *        Left total/Right total surround mix level. Only used for 3/2 coding mode. Valid values: -1.5 -3.0 -4.5
-     *        -6.0 -60
+     *        Specify a value for the following Dolby Digital Plus setting: Left total/Right total surround mix (Lt/Rt
+     *        surround). MediaConvert uses this value for downmixing. How the service uses this value depends on the
+     *        value that you choose for Stereo downmix (Eac3StereoDownmix). Valid values: -1.5, -3.0, -4.5, -6.0, and
+     *        -60. The value -60 mutes the channel. This setting applies only if you keep the default value of 3/2 - L,
+     *        R, C, Ls, Rs (CODING_MODE_3_2) for the setting Coding mode (Eac3CodingMode). If you choose a different
+     *        value for Coding mode, the service ignores Left total/Right total surround (ltRtSurroundMixLevel).
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -630,7 +870,13 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * When set to FOLLOW_INPUT, encoder metadata will be sourced from the DD, DD+, or DolbyE decoder that supplied this
+     * audio data. If audio was not supplied from one of these streams, then the static metadata settings will be used.
+     * 
      * @param metadataControl
+     *        When set to FOLLOW_INPUT, encoder metadata will be sourced from the DD, DD+, or DolbyE decoder that
+     *        supplied this audio data. If audio was not supplied from one of these streams, then the static metadata
+     *        settings will be used.
      * @see Eac3MetadataControl
      */
 
@@ -639,7 +885,12 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * @return
+     * When set to FOLLOW_INPUT, encoder metadata will be sourced from the DD, DD+, or DolbyE decoder that supplied this
+     * audio data. If audio was not supplied from one of these streams, then the static metadata settings will be used.
+     * 
+     * @return When set to FOLLOW_INPUT, encoder metadata will be sourced from the DD, DD+, or DolbyE decoder that
+     *         supplied this audio data. If audio was not supplied from one of these streams, then the static metadata
+     *         settings will be used.
      * @see Eac3MetadataControl
      */
 
@@ -648,7 +899,13 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * When set to FOLLOW_INPUT, encoder metadata will be sourced from the DD, DD+, or DolbyE decoder that supplied this
+     * audio data. If audio was not supplied from one of these streams, then the static metadata settings will be used.
+     * 
      * @param metadataControl
+     *        When set to FOLLOW_INPUT, encoder metadata will be sourced from the DD, DD+, or DolbyE decoder that
+     *        supplied this audio data. If audio was not supplied from one of these streams, then the static metadata
+     *        settings will be used.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Eac3MetadataControl
      */
@@ -659,7 +916,13 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * When set to FOLLOW_INPUT, encoder metadata will be sourced from the DD, DD+, or DolbyE decoder that supplied this
+     * audio data. If audio was not supplied from one of these streams, then the static metadata settings will be used.
+     * 
      * @param metadataControl
+     *        When set to FOLLOW_INPUT, encoder metadata will be sourced from the DD, DD+, or DolbyE decoder that
+     *        supplied this audio data. If audio was not supplied from one of these streams, then the static metadata
+     *        settings will be used.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Eac3MetadataControl
      */
@@ -670,7 +933,14 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * When set to WHEN_POSSIBLE, input DD+ audio will be passed through if it is present on the input. this detection
+     * is dynamic over the life of the transcode. Inputs that alternate between DD+ and non-DD+ content will have a
+     * consistent DD+ output as the system alternates between passthrough and encoding.
+     * 
      * @param passthroughControl
+     *        When set to WHEN_POSSIBLE, input DD+ audio will be passed through if it is present on the input. this
+     *        detection is dynamic over the life of the transcode. Inputs that alternate between DD+ and non-DD+ content
+     *        will have a consistent DD+ output as the system alternates between passthrough and encoding.
      * @see Eac3PassthroughControl
      */
 
@@ -679,7 +949,13 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * @return
+     * When set to WHEN_POSSIBLE, input DD+ audio will be passed through if it is present on the input. this detection
+     * is dynamic over the life of the transcode. Inputs that alternate between DD+ and non-DD+ content will have a
+     * consistent DD+ output as the system alternates between passthrough and encoding.
+     * 
+     * @return When set to WHEN_POSSIBLE, input DD+ audio will be passed through if it is present on the input. this
+     *         detection is dynamic over the life of the transcode. Inputs that alternate between DD+ and non-DD+
+     *         content will have a consistent DD+ output as the system alternates between passthrough and encoding.
      * @see Eac3PassthroughControl
      */
 
@@ -688,7 +964,14 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * When set to WHEN_POSSIBLE, input DD+ audio will be passed through if it is present on the input. this detection
+     * is dynamic over the life of the transcode. Inputs that alternate between DD+ and non-DD+ content will have a
+     * consistent DD+ output as the system alternates between passthrough and encoding.
+     * 
      * @param passthroughControl
+     *        When set to WHEN_POSSIBLE, input DD+ audio will be passed through if it is present on the input. this
+     *        detection is dynamic over the life of the transcode. Inputs that alternate between DD+ and non-DD+ content
+     *        will have a consistent DD+ output as the system alternates between passthrough and encoding.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Eac3PassthroughControl
      */
@@ -699,7 +982,14 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * When set to WHEN_POSSIBLE, input DD+ audio will be passed through if it is present on the input. this detection
+     * is dynamic over the life of the transcode. Inputs that alternate between DD+ and non-DD+ content will have a
+     * consistent DD+ output as the system alternates between passthrough and encoding.
+     * 
      * @param passthroughControl
+     *        When set to WHEN_POSSIBLE, input DD+ audio will be passed through if it is present on the input. this
+     *        detection is dynamic over the life of the transcode. Inputs that alternate between DD+ and non-DD+ content
+     *        will have a consistent DD+ output as the system alternates between passthrough and encoding.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Eac3PassthroughControl
      */
@@ -710,7 +1000,10 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Controls the amount of phase-shift applied to the surround channels. Only used for 3/2 coding mode.
+     * 
      * @param phaseControl
+     *        Controls the amount of phase-shift applied to the surround channels. Only used for 3/2 coding mode.
      * @see Eac3PhaseControl
      */
 
@@ -719,7 +1012,9 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * @return
+     * Controls the amount of phase-shift applied to the surround channels. Only used for 3/2 coding mode.
+     * 
+     * @return Controls the amount of phase-shift applied to the surround channels. Only used for 3/2 coding mode.
      * @see Eac3PhaseControl
      */
 
@@ -728,7 +1023,10 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Controls the amount of phase-shift applied to the surround channels. Only used for 3/2 coding mode.
+     * 
      * @param phaseControl
+     *        Controls the amount of phase-shift applied to the surround channels. Only used for 3/2 coding mode.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Eac3PhaseControl
      */
@@ -739,7 +1037,10 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Controls the amount of phase-shift applied to the surround channels. Only used for 3/2 coding mode.
+     * 
      * @param phaseControl
+     *        Controls the amount of phase-shift applied to the surround channels. Only used for 3/2 coding mode.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Eac3PhaseControl
      */
@@ -750,10 +1051,10 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Sample rate in hz. Sample rate is always 48000.
+     * This value is always 48000. It represents the sample rate in Hz.
      * 
      * @param sampleRate
-     *        Sample rate in hz. Sample rate is always 48000.
+     *        This value is always 48000. It represents the sample rate in Hz.
      */
 
     public void setSampleRate(Integer sampleRate) {
@@ -761,9 +1062,9 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Sample rate in hz. Sample rate is always 48000.
+     * This value is always 48000. It represents the sample rate in Hz.
      * 
-     * @return Sample rate in hz. Sample rate is always 48000.
+     * @return This value is always 48000. It represents the sample rate in Hz.
      */
 
     public Integer getSampleRate() {
@@ -771,10 +1072,10 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Sample rate in hz. Sample rate is always 48000.
+     * This value is always 48000. It represents the sample rate in Hz.
      * 
      * @param sampleRate
-     *        Sample rate in hz. Sample rate is always 48000.
+     *        This value is always 48000. It represents the sample rate in Hz.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -784,7 +1085,14 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Choose how the service does stereo downmixing. This setting only applies if you keep the default value of 3/2 -
+     * L, R, C, Ls, Rs (CODING_MODE_3_2) for the setting Coding mode (Eac3CodingMode). If you choose a different value
+     * for Coding mode, the service ignores Stereo downmix (Eac3StereoDownmix).
+     * 
      * @param stereoDownmix
+     *        Choose how the service does stereo downmixing. This setting only applies if you keep the default value of
+     *        3/2 - L, R, C, Ls, Rs (CODING_MODE_3_2) for the setting Coding mode (Eac3CodingMode). If you choose a
+     *        different value for Coding mode, the service ignores Stereo downmix (Eac3StereoDownmix).
      * @see Eac3StereoDownmix
      */
 
@@ -793,7 +1101,13 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * @return
+     * Choose how the service does stereo downmixing. This setting only applies if you keep the default value of 3/2 -
+     * L, R, C, Ls, Rs (CODING_MODE_3_2) for the setting Coding mode (Eac3CodingMode). If you choose a different value
+     * for Coding mode, the service ignores Stereo downmix (Eac3StereoDownmix).
+     * 
+     * @return Choose how the service does stereo downmixing. This setting only applies if you keep the default value of
+     *         3/2 - L, R, C, Ls, Rs (CODING_MODE_3_2) for the setting Coding mode (Eac3CodingMode). If you choose a
+     *         different value for Coding mode, the service ignores Stereo downmix (Eac3StereoDownmix).
      * @see Eac3StereoDownmix
      */
 
@@ -802,7 +1116,14 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Choose how the service does stereo downmixing. This setting only applies if you keep the default value of 3/2 -
+     * L, R, C, Ls, Rs (CODING_MODE_3_2) for the setting Coding mode (Eac3CodingMode). If you choose a different value
+     * for Coding mode, the service ignores Stereo downmix (Eac3StereoDownmix).
+     * 
      * @param stereoDownmix
+     *        Choose how the service does stereo downmixing. This setting only applies if you keep the default value of
+     *        3/2 - L, R, C, Ls, Rs (CODING_MODE_3_2) for the setting Coding mode (Eac3CodingMode). If you choose a
+     *        different value for Coding mode, the service ignores Stereo downmix (Eac3StereoDownmix).
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Eac3StereoDownmix
      */
@@ -813,7 +1134,14 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Choose how the service does stereo downmixing. This setting only applies if you keep the default value of 3/2 -
+     * L, R, C, Ls, Rs (CODING_MODE_3_2) for the setting Coding mode (Eac3CodingMode). If you choose a different value
+     * for Coding mode, the service ignores Stereo downmix (Eac3StereoDownmix).
+     * 
      * @param stereoDownmix
+     *        Choose how the service does stereo downmixing. This setting only applies if you keep the default value of
+     *        3/2 - L, R, C, Ls, Rs (CODING_MODE_3_2) for the setting Coding mode (Eac3CodingMode). If you choose a
+     *        different value for Coding mode, the service ignores Stereo downmix (Eac3StereoDownmix).
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Eac3StereoDownmix
      */
@@ -824,7 +1152,12 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * When encoding 3/2 audio, sets whether an extra center back surround channel is matrix encoded into the left and
+     * right surround channels.
+     * 
      * @param surroundExMode
+     *        When encoding 3/2 audio, sets whether an extra center back surround channel is matrix encoded into the
+     *        left and right surround channels.
      * @see Eac3SurroundExMode
      */
 
@@ -833,7 +1166,11 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * @return
+     * When encoding 3/2 audio, sets whether an extra center back surround channel is matrix encoded into the left and
+     * right surround channels.
+     * 
+     * @return When encoding 3/2 audio, sets whether an extra center back surround channel is matrix encoded into the
+     *         left and right surround channels.
      * @see Eac3SurroundExMode
      */
 
@@ -842,7 +1179,12 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * When encoding 3/2 audio, sets whether an extra center back surround channel is matrix encoded into the left and
+     * right surround channels.
+     * 
      * @param surroundExMode
+     *        When encoding 3/2 audio, sets whether an extra center back surround channel is matrix encoded into the
+     *        left and right surround channels.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Eac3SurroundExMode
      */
@@ -853,7 +1195,12 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * When encoding 3/2 audio, sets whether an extra center back surround channel is matrix encoded into the left and
+     * right surround channels.
+     * 
      * @param surroundExMode
+     *        When encoding 3/2 audio, sets whether an extra center back surround channel is matrix encoded into the
+     *        left and right surround channels.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Eac3SurroundExMode
      */
@@ -864,7 +1211,10 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * When encoding 2/0 audio, sets whether Dolby Surround is matrix encoded into the two channels.
+     * 
      * @param surroundMode
+     *        When encoding 2/0 audio, sets whether Dolby Surround is matrix encoded into the two channels.
      * @see Eac3SurroundMode
      */
 
@@ -873,7 +1223,9 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * @return
+     * When encoding 2/0 audio, sets whether Dolby Surround is matrix encoded into the two channels.
+     * 
+     * @return When encoding 2/0 audio, sets whether Dolby Surround is matrix encoded into the two channels.
      * @see Eac3SurroundMode
      */
 
@@ -882,7 +1234,10 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * When encoding 2/0 audio, sets whether Dolby Surround is matrix encoded into the two channels.
+     * 
      * @param surroundMode
+     *        When encoding 2/0 audio, sets whether Dolby Surround is matrix encoded into the two channels.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Eac3SurroundMode
      */
@@ -893,7 +1248,10 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * When encoding 2/0 audio, sets whether Dolby Surround is matrix encoded into the two channels.
+     * 
      * @param surroundMode
+     *        When encoding 2/0 audio, sets whether Dolby Surround is matrix encoded into the two channels.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Eac3SurroundMode
      */
@@ -904,7 +1262,8 @@ public class Eac3Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -41,7 +41,8 @@ public class CreateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
     private Boolean disableAutomatedBackup;
     /**
      * <p>
-     * The configuration management engine to use. Valid values include <code>Chef</code> and <code>Puppet</code>.
+     * The configuration management engine to use. Valid values include <code>ChefAutomate</code> and
+     * <code>Puppet</code>.
      * </p>
      */
     private String engine;
@@ -69,18 +70,18 @@ public class CreateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
      * <ul>
      * <li>
      * <p>
-     * <code>CHEF_PIVOTAL_KEY</code>: A base64-encoded RSA private key that is not stored by AWS OpsWorks for Chef
-     * Automate. This private key is required to access the Chef API. When no CHEF_PIVOTAL_KEY is set, one is generated
-     * and returned in the response.
+     * <code>CHEF_AUTOMATE_PIVOTAL_KEY</code>: A base64-encoded RSA public key. The corresponding private key is
+     * required to access the Chef API. When no CHEF_AUTOMATE_PIVOTAL_KEY is set, a private key is generated and
+     * returned in the response.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>CHEF_DELIVERY_ADMIN_PASSWORD</code>: The password for the administrative user in the Chef Automate GUI. The
-     * password length is a minimum of eight characters, and a maximum of 32. The password can contain letters, numbers,
-     * and special characters (!/@#$%^&amp;+=_). The password must contain at least one lower case letter, one upper
-     * case letter, one number, and one special character. When no CHEF_DELIVERY_ADMIN_PASSWORD is set, one is generated
-     * and returned in the response.
+     * <code>CHEF_AUTOMATE_ADMIN_PASSWORD</code>: The password for the administrative user in the Chef Automate
+     * web-based dashboard. The password length is a minimum of eight characters, and a maximum of 32. The password can
+     * contain letters, numbers, and special characters (!/@#$%^&amp;+=_). The password must contain at least one lower
+     * case letter, one upper case letter, one number, and one special character. When no CHEF_AUTOMATE_ADMIN_PASSWORD
+     * is set, one is generated and returned in the response.
      * </p>
      * </li>
      * </ul>
@@ -92,6 +93,18 @@ public class CreateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
      * <p>
      * <code>PUPPET_ADMIN_PASSWORD</code>: To work with the Puppet Enterprise console, a password must use ASCII
      * characters.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>PUPPET_R10K_REMOTE</code>: The r10k remote is the URL of your control repository (for example,
+     * ssh://git@your.git-repo.com:user/control-repo.git). Specifying an r10k remote opens TCP port 8170.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>PUPPET_R10K_PRIVATE_KEY</code>: If you are using a private Git repository, add PUPPET_R10K_PRIVATE_KEY to
+     * specify a PEM-encoded private SSH key.
      * </p>
      * </li>
      * </ul>
@@ -123,8 +136,7 @@ public class CreateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
     private String instanceProfileArn;
     /**
      * <p>
-     * The Amazon EC2 instance type to use. For example, <code>m4.large</code>. Recommended instance types include
-     * <code>t2.medium</code> and greater, <code>m4.*</code>, or <code>c4.xlarge</code> and greater.
+     * The Amazon EC2 instance type to use. For example, <code>m5.large</code>.
      * </p>
      */
     private String instanceType;
@@ -211,7 +223,7 @@ public class CreateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
      * </p>
      * <p>
      * For more information about supported Amazon EC2 platforms, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported Platforms</a>.
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported Platforms</a>.
      * </p>
      */
     private java.util.List<String> subnetIds;
@@ -344,12 +356,13 @@ public class CreateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
 
     /**
      * <p>
-     * The configuration management engine to use. Valid values include <code>Chef</code> and <code>Puppet</code>.
+     * The configuration management engine to use. Valid values include <code>ChefAutomate</code> and
+     * <code>Puppet</code>.
      * </p>
      * 
      * @param engine
-     *        The configuration management engine to use. Valid values include <code>Chef</code> and <code>Puppet</code>
-     *        .
+     *        The configuration management engine to use. Valid values include <code>ChefAutomate</code> and
+     *        <code>Puppet</code>.
      */
 
     public void setEngine(String engine) {
@@ -358,10 +371,11 @@ public class CreateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
 
     /**
      * <p>
-     * The configuration management engine to use. Valid values include <code>Chef</code> and <code>Puppet</code>.
+     * The configuration management engine to use. Valid values include <code>ChefAutomate</code> and
+     * <code>Puppet</code>.
      * </p>
      * 
-     * @return The configuration management engine to use. Valid values include <code>Chef</code> and
+     * @return The configuration management engine to use. Valid values include <code>ChefAutomate</code> and
      *         <code>Puppet</code>.
      */
 
@@ -371,12 +385,13 @@ public class CreateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
 
     /**
      * <p>
-     * The configuration management engine to use. Valid values include <code>Chef</code> and <code>Puppet</code>.
+     * The configuration management engine to use. Valid values include <code>ChefAutomate</code> and
+     * <code>Puppet</code>.
      * </p>
      * 
      * @param engine
-     *        The configuration management engine to use. Valid values include <code>Chef</code> and <code>Puppet</code>
-     *        .
+     *        The configuration management engine to use. Valid values include <code>ChefAutomate</code> and
+     *        <code>Puppet</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -487,18 +502,18 @@ public class CreateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
      * <ul>
      * <li>
      * <p>
-     * <code>CHEF_PIVOTAL_KEY</code>: A base64-encoded RSA private key that is not stored by AWS OpsWorks for Chef
-     * Automate. This private key is required to access the Chef API. When no CHEF_PIVOTAL_KEY is set, one is generated
-     * and returned in the response.
+     * <code>CHEF_AUTOMATE_PIVOTAL_KEY</code>: A base64-encoded RSA public key. The corresponding private key is
+     * required to access the Chef API. When no CHEF_AUTOMATE_PIVOTAL_KEY is set, a private key is generated and
+     * returned in the response.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>CHEF_DELIVERY_ADMIN_PASSWORD</code>: The password for the administrative user in the Chef Automate GUI. The
-     * password length is a minimum of eight characters, and a maximum of 32. The password can contain letters, numbers,
-     * and special characters (!/@#$%^&amp;+=_). The password must contain at least one lower case letter, one upper
-     * case letter, one number, and one special character. When no CHEF_DELIVERY_ADMIN_PASSWORD is set, one is generated
-     * and returned in the response.
+     * <code>CHEF_AUTOMATE_ADMIN_PASSWORD</code>: The password for the administrative user in the Chef Automate
+     * web-based dashboard. The password length is a minimum of eight characters, and a maximum of 32. The password can
+     * contain letters, numbers, and special characters (!/@#$%^&amp;+=_). The password must contain at least one lower
+     * case letter, one upper case letter, one number, and one special character. When no CHEF_AUTOMATE_ADMIN_PASSWORD
+     * is set, one is generated and returned in the response.
      * </p>
      * </li>
      * </ul>
@@ -512,6 +527,18 @@ public class CreateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
      * characters.
      * </p>
      * </li>
+     * <li>
+     * <p>
+     * <code>PUPPET_R10K_REMOTE</code>: The r10k remote is the URL of your control repository (for example,
+     * ssh://git@your.git-repo.com:user/control-repo.git). Specifying an r10k remote opens TCP port 8170.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>PUPPET_R10K_PRIVATE_KEY</code>: If you are using a private Git repository, add PUPPET_R10K_PRIVATE_KEY to
+     * specify a PEM-encoded private SSH key.
+     * </p>
+     * </li>
      * </ul>
      * 
      * @return Optional engine attributes on a specified server. </p>
@@ -521,18 +548,18 @@ public class CreateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
      *         <ul>
      *         <li>
      *         <p>
-     *         <code>CHEF_PIVOTAL_KEY</code>: A base64-encoded RSA private key that is not stored by AWS OpsWorks for
-     *         Chef Automate. This private key is required to access the Chef API. When no CHEF_PIVOTAL_KEY is set, one
-     *         is generated and returned in the response.
+     *         <code>CHEF_AUTOMATE_PIVOTAL_KEY</code>: A base64-encoded RSA public key. The corresponding private key is
+     *         required to access the Chef API. When no CHEF_AUTOMATE_PIVOTAL_KEY is set, a private key is generated and
+     *         returned in the response.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <code>CHEF_DELIVERY_ADMIN_PASSWORD</code>: The password for the administrative user in the Chef Automate
-     *         GUI. The password length is a minimum of eight characters, and a maximum of 32. The password can contain
-     *         letters, numbers, and special characters (!/@#$%^&amp;+=_). The password must contain at least one lower
-     *         case letter, one upper case letter, one number, and one special character. When no
-     *         CHEF_DELIVERY_ADMIN_PASSWORD is set, one is generated and returned in the response.
+     *         <code>CHEF_AUTOMATE_ADMIN_PASSWORD</code>: The password for the administrative user in the Chef Automate
+     *         web-based dashboard. The password length is a minimum of eight characters, and a maximum of 32. The
+     *         password can contain letters, numbers, and special characters (!/@#$%^&amp;+=_). The password must
+     *         contain at least one lower case letter, one upper case letter, one number, and one special character.
+     *         When no CHEF_AUTOMATE_ADMIN_PASSWORD is set, one is generated and returned in the response.
      *         </p>
      *         </li>
      *         </ul>
@@ -544,6 +571,18 @@ public class CreateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
      *         <p>
      *         <code>PUPPET_ADMIN_PASSWORD</code>: To work with the Puppet Enterprise console, a password must use ASCII
      *         characters.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>PUPPET_R10K_REMOTE</code>: The r10k remote is the URL of your control repository (for example,
+     *         ssh://git@your.git-repo.com:user/control-repo.git). Specifying an r10k remote opens TCP port 8170.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>PUPPET_R10K_PRIVATE_KEY</code>: If you are using a private Git repository, add
+     *         PUPPET_R10K_PRIVATE_KEY to specify a PEM-encoded private SSH key.
      *         </p>
      *         </li>
      */
@@ -562,18 +601,18 @@ public class CreateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
      * <ul>
      * <li>
      * <p>
-     * <code>CHEF_PIVOTAL_KEY</code>: A base64-encoded RSA private key that is not stored by AWS OpsWorks for Chef
-     * Automate. This private key is required to access the Chef API. When no CHEF_PIVOTAL_KEY is set, one is generated
-     * and returned in the response.
+     * <code>CHEF_AUTOMATE_PIVOTAL_KEY</code>: A base64-encoded RSA public key. The corresponding private key is
+     * required to access the Chef API. When no CHEF_AUTOMATE_PIVOTAL_KEY is set, a private key is generated and
+     * returned in the response.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>CHEF_DELIVERY_ADMIN_PASSWORD</code>: The password for the administrative user in the Chef Automate GUI. The
-     * password length is a minimum of eight characters, and a maximum of 32. The password can contain letters, numbers,
-     * and special characters (!/@#$%^&amp;+=_). The password must contain at least one lower case letter, one upper
-     * case letter, one number, and one special character. When no CHEF_DELIVERY_ADMIN_PASSWORD is set, one is generated
-     * and returned in the response.
+     * <code>CHEF_AUTOMATE_ADMIN_PASSWORD</code>: The password for the administrative user in the Chef Automate
+     * web-based dashboard. The password length is a minimum of eight characters, and a maximum of 32. The password can
+     * contain letters, numbers, and special characters (!/@#$%^&amp;+=_). The password must contain at least one lower
+     * case letter, one upper case letter, one number, and one special character. When no CHEF_AUTOMATE_ADMIN_PASSWORD
+     * is set, one is generated and returned in the response.
      * </p>
      * </li>
      * </ul>
@@ -587,6 +626,18 @@ public class CreateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
      * characters.
      * </p>
      * </li>
+     * <li>
+     * <p>
+     * <code>PUPPET_R10K_REMOTE</code>: The r10k remote is the URL of your control repository (for example,
+     * ssh://git@your.git-repo.com:user/control-repo.git). Specifying an r10k remote opens TCP port 8170.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>PUPPET_R10K_PRIVATE_KEY</code>: If you are using a private Git repository, add PUPPET_R10K_PRIVATE_KEY to
+     * specify a PEM-encoded private SSH key.
+     * </p>
+     * </li>
      * </ul>
      * 
      * @param engineAttributes
@@ -597,18 +648,18 @@ public class CreateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
      *        <ul>
      *        <li>
      *        <p>
-     *        <code>CHEF_PIVOTAL_KEY</code>: A base64-encoded RSA private key that is not stored by AWS OpsWorks for
-     *        Chef Automate. This private key is required to access the Chef API. When no CHEF_PIVOTAL_KEY is set, one
-     *        is generated and returned in the response.
+     *        <code>CHEF_AUTOMATE_PIVOTAL_KEY</code>: A base64-encoded RSA public key. The corresponding private key is
+     *        required to access the Chef API. When no CHEF_AUTOMATE_PIVOTAL_KEY is set, a private key is generated and
+     *        returned in the response.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>CHEF_DELIVERY_ADMIN_PASSWORD</code>: The password for the administrative user in the Chef Automate
-     *        GUI. The password length is a minimum of eight characters, and a maximum of 32. The password can contain
-     *        letters, numbers, and special characters (!/@#$%^&amp;+=_). The password must contain at least one lower
-     *        case letter, one upper case letter, one number, and one special character. When no
-     *        CHEF_DELIVERY_ADMIN_PASSWORD is set, one is generated and returned in the response.
+     *        <code>CHEF_AUTOMATE_ADMIN_PASSWORD</code>: The password for the administrative user in the Chef Automate
+     *        web-based dashboard. The password length is a minimum of eight characters, and a maximum of 32. The
+     *        password can contain letters, numbers, and special characters (!/@#$%^&amp;+=_). The password must contain
+     *        at least one lower case letter, one upper case letter, one number, and one special character. When no
+     *        CHEF_AUTOMATE_ADMIN_PASSWORD is set, one is generated and returned in the response.
      *        </p>
      *        </li>
      *        </ul>
@@ -620,6 +671,18 @@ public class CreateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
      *        <p>
      *        <code>PUPPET_ADMIN_PASSWORD</code>: To work with the Puppet Enterprise console, a password must use ASCII
      *        characters.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>PUPPET_R10K_REMOTE</code>: The r10k remote is the URL of your control repository (for example,
+     *        ssh://git@your.git-repo.com:user/control-repo.git). Specifying an r10k remote opens TCP port 8170.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>PUPPET_R10K_PRIVATE_KEY</code>: If you are using a private Git repository, add
+     *        PUPPET_R10K_PRIVATE_KEY to specify a PEM-encoded private SSH key.
      *        </p>
      *        </li>
      */
@@ -643,18 +706,18 @@ public class CreateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
      * <ul>
      * <li>
      * <p>
-     * <code>CHEF_PIVOTAL_KEY</code>: A base64-encoded RSA private key that is not stored by AWS OpsWorks for Chef
-     * Automate. This private key is required to access the Chef API. When no CHEF_PIVOTAL_KEY is set, one is generated
-     * and returned in the response.
+     * <code>CHEF_AUTOMATE_PIVOTAL_KEY</code>: A base64-encoded RSA public key. The corresponding private key is
+     * required to access the Chef API. When no CHEF_AUTOMATE_PIVOTAL_KEY is set, a private key is generated and
+     * returned in the response.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>CHEF_DELIVERY_ADMIN_PASSWORD</code>: The password for the administrative user in the Chef Automate GUI. The
-     * password length is a minimum of eight characters, and a maximum of 32. The password can contain letters, numbers,
-     * and special characters (!/@#$%^&amp;+=_). The password must contain at least one lower case letter, one upper
-     * case letter, one number, and one special character. When no CHEF_DELIVERY_ADMIN_PASSWORD is set, one is generated
-     * and returned in the response.
+     * <code>CHEF_AUTOMATE_ADMIN_PASSWORD</code>: The password for the administrative user in the Chef Automate
+     * web-based dashboard. The password length is a minimum of eight characters, and a maximum of 32. The password can
+     * contain letters, numbers, and special characters (!/@#$%^&amp;+=_). The password must contain at least one lower
+     * case letter, one upper case letter, one number, and one special character. When no CHEF_AUTOMATE_ADMIN_PASSWORD
+     * is set, one is generated and returned in the response.
      * </p>
      * </li>
      * </ul>
@@ -666,6 +729,18 @@ public class CreateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
      * <p>
      * <code>PUPPET_ADMIN_PASSWORD</code>: To work with the Puppet Enterprise console, a password must use ASCII
      * characters.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>PUPPET_R10K_REMOTE</code>: The r10k remote is the URL of your control repository (for example,
+     * ssh://git@your.git-repo.com:user/control-repo.git). Specifying an r10k remote opens TCP port 8170.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>PUPPET_R10K_PRIVATE_KEY</code>: If you are using a private Git repository, add PUPPET_R10K_PRIVATE_KEY to
+     * specify a PEM-encoded private SSH key.
      * </p>
      * </li>
      * </ul>
@@ -683,18 +758,18 @@ public class CreateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
      *        <ul>
      *        <li>
      *        <p>
-     *        <code>CHEF_PIVOTAL_KEY</code>: A base64-encoded RSA private key that is not stored by AWS OpsWorks for
-     *        Chef Automate. This private key is required to access the Chef API. When no CHEF_PIVOTAL_KEY is set, one
-     *        is generated and returned in the response.
+     *        <code>CHEF_AUTOMATE_PIVOTAL_KEY</code>: A base64-encoded RSA public key. The corresponding private key is
+     *        required to access the Chef API. When no CHEF_AUTOMATE_PIVOTAL_KEY is set, a private key is generated and
+     *        returned in the response.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>CHEF_DELIVERY_ADMIN_PASSWORD</code>: The password for the administrative user in the Chef Automate
-     *        GUI. The password length is a minimum of eight characters, and a maximum of 32. The password can contain
-     *        letters, numbers, and special characters (!/@#$%^&amp;+=_). The password must contain at least one lower
-     *        case letter, one upper case letter, one number, and one special character. When no
-     *        CHEF_DELIVERY_ADMIN_PASSWORD is set, one is generated and returned in the response.
+     *        <code>CHEF_AUTOMATE_ADMIN_PASSWORD</code>: The password for the administrative user in the Chef Automate
+     *        web-based dashboard. The password length is a minimum of eight characters, and a maximum of 32. The
+     *        password can contain letters, numbers, and special characters (!/@#$%^&amp;+=_). The password must contain
+     *        at least one lower case letter, one upper case letter, one number, and one special character. When no
+     *        CHEF_AUTOMATE_ADMIN_PASSWORD is set, one is generated and returned in the response.
      *        </p>
      *        </li>
      *        </ul>
@@ -706,6 +781,18 @@ public class CreateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
      *        <p>
      *        <code>PUPPET_ADMIN_PASSWORD</code>: To work with the Puppet Enterprise console, a password must use ASCII
      *        characters.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>PUPPET_R10K_REMOTE</code>: The r10k remote is the URL of your control repository (for example,
+     *        ssh://git@your.git-repo.com:user/control-repo.git). Specifying an r10k remote opens TCP port 8170.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>PUPPET_R10K_PRIVATE_KEY</code>: If you are using a private Git repository, add
+     *        PUPPET_R10K_PRIVATE_KEY to specify a PEM-encoded private SSH key.
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -731,18 +818,18 @@ public class CreateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
      * <ul>
      * <li>
      * <p>
-     * <code>CHEF_PIVOTAL_KEY</code>: A base64-encoded RSA private key that is not stored by AWS OpsWorks for Chef
-     * Automate. This private key is required to access the Chef API. When no CHEF_PIVOTAL_KEY is set, one is generated
-     * and returned in the response.
+     * <code>CHEF_AUTOMATE_PIVOTAL_KEY</code>: A base64-encoded RSA public key. The corresponding private key is
+     * required to access the Chef API. When no CHEF_AUTOMATE_PIVOTAL_KEY is set, a private key is generated and
+     * returned in the response.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>CHEF_DELIVERY_ADMIN_PASSWORD</code>: The password for the administrative user in the Chef Automate GUI. The
-     * password length is a minimum of eight characters, and a maximum of 32. The password can contain letters, numbers,
-     * and special characters (!/@#$%^&amp;+=_). The password must contain at least one lower case letter, one upper
-     * case letter, one number, and one special character. When no CHEF_DELIVERY_ADMIN_PASSWORD is set, one is generated
-     * and returned in the response.
+     * <code>CHEF_AUTOMATE_ADMIN_PASSWORD</code>: The password for the administrative user in the Chef Automate
+     * web-based dashboard. The password length is a minimum of eight characters, and a maximum of 32. The password can
+     * contain letters, numbers, and special characters (!/@#$%^&amp;+=_). The password must contain at least one lower
+     * case letter, one upper case letter, one number, and one special character. When no CHEF_AUTOMATE_ADMIN_PASSWORD
+     * is set, one is generated and returned in the response.
      * </p>
      * </li>
      * </ul>
@@ -756,6 +843,18 @@ public class CreateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
      * characters.
      * </p>
      * </li>
+     * <li>
+     * <p>
+     * <code>PUPPET_R10K_REMOTE</code>: The r10k remote is the URL of your control repository (for example,
+     * ssh://git@your.git-repo.com:user/control-repo.git). Specifying an r10k remote opens TCP port 8170.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>PUPPET_R10K_PRIVATE_KEY</code>: If you are using a private Git repository, add PUPPET_R10K_PRIVATE_KEY to
+     * specify a PEM-encoded private SSH key.
+     * </p>
+     * </li>
      * </ul>
      * 
      * @param engineAttributes
@@ -766,18 +865,18 @@ public class CreateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
      *        <ul>
      *        <li>
      *        <p>
-     *        <code>CHEF_PIVOTAL_KEY</code>: A base64-encoded RSA private key that is not stored by AWS OpsWorks for
-     *        Chef Automate. This private key is required to access the Chef API. When no CHEF_PIVOTAL_KEY is set, one
-     *        is generated and returned in the response.
+     *        <code>CHEF_AUTOMATE_PIVOTAL_KEY</code>: A base64-encoded RSA public key. The corresponding private key is
+     *        required to access the Chef API. When no CHEF_AUTOMATE_PIVOTAL_KEY is set, a private key is generated and
+     *        returned in the response.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>CHEF_DELIVERY_ADMIN_PASSWORD</code>: The password for the administrative user in the Chef Automate
-     *        GUI. The password length is a minimum of eight characters, and a maximum of 32. The password can contain
-     *        letters, numbers, and special characters (!/@#$%^&amp;+=_). The password must contain at least one lower
-     *        case letter, one upper case letter, one number, and one special character. When no
-     *        CHEF_DELIVERY_ADMIN_PASSWORD is set, one is generated and returned in the response.
+     *        <code>CHEF_AUTOMATE_ADMIN_PASSWORD</code>: The password for the administrative user in the Chef Automate
+     *        web-based dashboard. The password length is a minimum of eight characters, and a maximum of 32. The
+     *        password can contain letters, numbers, and special characters (!/@#$%^&amp;+=_). The password must contain
+     *        at least one lower case letter, one upper case letter, one number, and one special character. When no
+     *        CHEF_AUTOMATE_ADMIN_PASSWORD is set, one is generated and returned in the response.
      *        </p>
      *        </li>
      *        </ul>
@@ -789,6 +888,18 @@ public class CreateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
      *        <p>
      *        <code>PUPPET_ADMIN_PASSWORD</code>: To work with the Puppet Enterprise console, a password must use ASCII
      *        characters.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>PUPPET_R10K_REMOTE</code>: The r10k remote is the URL of your control repository (for example,
+     *        ssh://git@your.git-repo.com:user/control-repo.git). Specifying an r10k remote opens TCP port 8170.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>PUPPET_R10K_PRIVATE_KEY</code>: If you are using a private Git repository, add
+     *        PUPPET_R10K_PRIVATE_KEY to specify a PEM-encoded private SSH key.
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -960,13 +1071,11 @@ public class CreateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
 
     /**
      * <p>
-     * The Amazon EC2 instance type to use. For example, <code>m4.large</code>. Recommended instance types include
-     * <code>t2.medium</code> and greater, <code>m4.*</code>, or <code>c4.xlarge</code> and greater.
+     * The Amazon EC2 instance type to use. For example, <code>m5.large</code>.
      * </p>
      * 
      * @param instanceType
-     *        The Amazon EC2 instance type to use. For example, <code>m4.large</code>. Recommended instance types
-     *        include <code>t2.medium</code> and greater, <code>m4.*</code>, or <code>c4.xlarge</code> and greater.
+     *        The Amazon EC2 instance type to use. For example, <code>m5.large</code>.
      */
 
     public void setInstanceType(String instanceType) {
@@ -975,12 +1084,10 @@ public class CreateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
 
     /**
      * <p>
-     * The Amazon EC2 instance type to use. For example, <code>m4.large</code>. Recommended instance types include
-     * <code>t2.medium</code> and greater, <code>m4.*</code>, or <code>c4.xlarge</code> and greater.
+     * The Amazon EC2 instance type to use. For example, <code>m5.large</code>.
      * </p>
      * 
-     * @return The Amazon EC2 instance type to use. For example, <code>m4.large</code>. Recommended instance types
-     *         include <code>t2.medium</code> and greater, <code>m4.*</code>, or <code>c4.xlarge</code> and greater.
+     * @return The Amazon EC2 instance type to use. For example, <code>m5.large</code>.
      */
 
     public String getInstanceType() {
@@ -989,13 +1096,11 @@ public class CreateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
 
     /**
      * <p>
-     * The Amazon EC2 instance type to use. For example, <code>m4.large</code>. Recommended instance types include
-     * <code>t2.medium</code> and greater, <code>m4.*</code>, or <code>c4.xlarge</code> and greater.
+     * The Amazon EC2 instance type to use. For example, <code>m5.large</code>.
      * </p>
      * 
      * @param instanceType
-     *        The Amazon EC2 instance type to use. For example, <code>m4.large</code>. Recommended instance types
-     *        include <code>t2.medium</code> and greater, <code>m4.*</code>, or <code>c4.xlarge</code> and greater.
+     *        The Amazon EC2 instance type to use. For example, <code>m5.large</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1490,7 +1595,7 @@ public class CreateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
      * </p>
      * <p>
      * For more information about supported Amazon EC2 platforms, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported Platforms</a>.
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported Platforms</a>.
      * </p>
      * 
      * @return The IDs of subnets in which to launch the server EC2 instance. </p>
@@ -1505,7 +1610,7 @@ public class CreateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
      *         </p>
      *         <p>
      *         For more information about supported Amazon EC2 platforms, see <a
-     *         href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported
+     *         href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported
      *         Platforms</a>.
      */
 
@@ -1528,7 +1633,7 @@ public class CreateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
      * </p>
      * <p>
      * For more information about supported Amazon EC2 platforms, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported Platforms</a>.
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported Platforms</a>.
      * </p>
      * 
      * @param subnetIds
@@ -1544,7 +1649,7 @@ public class CreateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
      *        </p>
      *        <p>
      *        For more information about supported Amazon EC2 platforms, see <a
-     *        href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported
      *        Platforms</a>.
      */
 
@@ -1572,7 +1677,7 @@ public class CreateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
      * </p>
      * <p>
      * For more information about supported Amazon EC2 platforms, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported Platforms</a>.
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported Platforms</a>.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -1593,7 +1698,7 @@ public class CreateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
      *        </p>
      *        <p>
      *        For more information about supported Amazon EC2 platforms, see <a
-     *        href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported
      *        Platforms</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -1623,7 +1728,7 @@ public class CreateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
      * </p>
      * <p>
      * For more information about supported Amazon EC2 platforms, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported Platforms</a>.
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported Platforms</a>.
      * </p>
      * 
      * @param subnetIds
@@ -1639,7 +1744,7 @@ public class CreateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
      *        </p>
      *        <p>
      *        For more information about supported Amazon EC2 platforms, see <a
-     *        href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported
      *        Platforms</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -1691,7 +1796,8 @@ public class CreateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

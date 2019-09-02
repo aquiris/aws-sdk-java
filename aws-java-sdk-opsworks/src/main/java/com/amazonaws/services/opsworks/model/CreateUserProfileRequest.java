@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -49,7 +49,7 @@ public class CreateUserProfileRequest extends com.amazonaws.AmazonWebServiceRequ
     /**
      * <p>
      * Whether users can specify their own SSH public key through the My Settings page. For more information, see <a
-     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html">Setting an IAM User's
+     * href="https://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html">Setting an IAM User's
      * Public SSH Key</a>.
      * </p>
      */
@@ -196,13 +196,13 @@ public class CreateUserProfileRequest extends com.amazonaws.AmazonWebServiceRequ
     /**
      * <p>
      * Whether users can specify their own SSH public key through the My Settings page. For more information, see <a
-     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html">Setting an IAM User's
+     * href="https://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html">Setting an IAM User's
      * Public SSH Key</a>.
      * </p>
      * 
      * @param allowSelfManagement
      *        Whether users can specify their own SSH public key through the My Settings page. For more information, see
-     *        <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html">Setting an IAM
+     *        <a href="https://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html">Setting an IAM
      *        User's Public SSH Key</a>.
      */
 
@@ -213,13 +213,13 @@ public class CreateUserProfileRequest extends com.amazonaws.AmazonWebServiceRequ
     /**
      * <p>
      * Whether users can specify their own SSH public key through the My Settings page. For more information, see <a
-     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html">Setting an IAM User's
+     * href="https://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html">Setting an IAM User's
      * Public SSH Key</a>.
      * </p>
      * 
      * @return Whether users can specify their own SSH public key through the My Settings page. For more information,
-     *         see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html">Setting an
-     *         IAM User's Public SSH Key</a>.
+     *         see <a href="https://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html">Setting
+     *         an IAM User's Public SSH Key</a>.
      */
 
     public Boolean getAllowSelfManagement() {
@@ -229,13 +229,13 @@ public class CreateUserProfileRequest extends com.amazonaws.AmazonWebServiceRequ
     /**
      * <p>
      * Whether users can specify their own SSH public key through the My Settings page. For more information, see <a
-     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html">Setting an IAM User's
+     * href="https://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html">Setting an IAM User's
      * Public SSH Key</a>.
      * </p>
      * 
      * @param allowSelfManagement
      *        Whether users can specify their own SSH public key through the My Settings page. For more information, see
-     *        <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html">Setting an IAM
+     *        <a href="https://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html">Setting an IAM
      *        User's Public SSH Key</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -248,13 +248,13 @@ public class CreateUserProfileRequest extends com.amazonaws.AmazonWebServiceRequ
     /**
      * <p>
      * Whether users can specify their own SSH public key through the My Settings page. For more information, see <a
-     * href="http://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html">Setting an IAM User's
+     * href="https://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html">Setting an IAM User's
      * Public SSH Key</a>.
      * </p>
      * 
      * @return Whether users can specify their own SSH public key through the My Settings page. For more information,
-     *         see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html">Setting an
-     *         IAM User's Public SSH Key</a>.
+     *         see <a href="https://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html">Setting
+     *         an IAM User's Public SSH Key</a>.
      */
 
     public Boolean isAllowSelfManagement() {
@@ -262,7 +262,8 @@ public class CreateUserProfileRequest extends com.amazonaws.AmazonWebServiceRequ
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *

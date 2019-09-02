@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -64,7 +64,36 @@ public class MetricDatum implements Serializable, Cloneable {
     private StatisticSet statisticValues;
     /**
      * <p>
-     * The unit of the metric.
+     * Array of numbers representing the values for the metric during the period. Each unique value is listed just once
+     * in this array, and the corresponding number in the <code>Counts</code> array specifies the number of times that
+     * value occurred during the period. You can include up to 150 unique values in each <code>PutMetricData</code>
+     * action that specifies a <code>Values</code> array.
+     * </p>
+     * <p>
+     * Although the <code>Values</code> array accepts numbers of type <code>Double</code>, CloudWatch rejects values
+     * that are either too small or too large. Values must be in the range of 8.515920e-109 to 1.174271e+108 (Base 10)
+     * or 2e-360 to 2e360 (Base 2). In addition, special values (for example, NaN, +Infinity, -Infinity) are not
+     * supported.
+     * </p>
+     */
+    private com.amazonaws.internal.SdkInternalList<Double> values;
+    /**
+     * <p>
+     * Array of numbers that is used along with the <code>Values</code> array. Each number in the <code>Count</code>
+     * array is the number of times the corresponding value in the <code>Values</code> array occurred during the period.
+     * </p>
+     * <p>
+     * If you omit the <code>Counts</code> array, the default of 1 is used as the value for each count. If you include a
+     * <code>Counts</code> array, it must include the same amount of values as the <code>Values</code> array.
+     * </p>
+     */
+    private com.amazonaws.internal.SdkInternalList<Double> counts;
+    /**
+     * <p>
+     * When you are using a <code>Put</code> operation, this defines what unit you want to use when storing the metric.
+     * </p>
+     * <p>
+     * In a <code>Get</code> operation, this displays the unit that is used for the metric.
      * </p>
      */
     private String unit;
@@ -74,7 +103,7 @@ public class MetricDatum implements Serializable, Cloneable {
      * CloudWatch stores the metric with sub-minute resolution down to one second. Setting this to 60 specifies this
      * metric as a regular-resolution metric, which CloudWatch stores at 1-minute resolution. Currently, high resolution
      * is available only for custom metrics. For more information about high-resolution metrics, see <a href=
-     * "http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html#high-resolution-metrics"
+     * "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html#high-resolution-metrics"
      * >High-Resolution Metrics</a> in the <i>Amazon CloudWatch User Guide</i>.
      * </p>
      * <p>
@@ -348,11 +377,275 @@ public class MetricDatum implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The unit of the metric.
+     * Array of numbers representing the values for the metric during the period. Each unique value is listed just once
+     * in this array, and the corresponding number in the <code>Counts</code> array specifies the number of times that
+     * value occurred during the period. You can include up to 150 unique values in each <code>PutMetricData</code>
+     * action that specifies a <code>Values</code> array.
+     * </p>
+     * <p>
+     * Although the <code>Values</code> array accepts numbers of type <code>Double</code>, CloudWatch rejects values
+     * that are either too small or too large. Values must be in the range of 8.515920e-109 to 1.174271e+108 (Base 10)
+     * or 2e-360 to 2e360 (Base 2). In addition, special values (for example, NaN, +Infinity, -Infinity) are not
+     * supported.
+     * </p>
+     * 
+     * @return Array of numbers representing the values for the metric during the period. Each unique value is listed
+     *         just once in this array, and the corresponding number in the <code>Counts</code> array specifies the
+     *         number of times that value occurred during the period. You can include up to 150 unique values in each
+     *         <code>PutMetricData</code> action that specifies a <code>Values</code> array.</p>
+     *         <p>
+     *         Although the <code>Values</code> array accepts numbers of type <code>Double</code>, CloudWatch rejects
+     *         values that are either too small or too large. Values must be in the range of 8.515920e-109 to
+     *         1.174271e+108 (Base 10) or 2e-360 to 2e360 (Base 2). In addition, special values (for example, NaN,
+     *         +Infinity, -Infinity) are not supported.
+     */
+
+    public java.util.List<Double> getValues() {
+        if (values == null) {
+            values = new com.amazonaws.internal.SdkInternalList<Double>();
+        }
+        return values;
+    }
+
+    /**
+     * <p>
+     * Array of numbers representing the values for the metric during the period. Each unique value is listed just once
+     * in this array, and the corresponding number in the <code>Counts</code> array specifies the number of times that
+     * value occurred during the period. You can include up to 150 unique values in each <code>PutMetricData</code>
+     * action that specifies a <code>Values</code> array.
+     * </p>
+     * <p>
+     * Although the <code>Values</code> array accepts numbers of type <code>Double</code>, CloudWatch rejects values
+     * that are either too small or too large. Values must be in the range of 8.515920e-109 to 1.174271e+108 (Base 10)
+     * or 2e-360 to 2e360 (Base 2). In addition, special values (for example, NaN, +Infinity, -Infinity) are not
+     * supported.
+     * </p>
+     * 
+     * @param values
+     *        Array of numbers representing the values for the metric during the period. Each unique value is listed
+     *        just once in this array, and the corresponding number in the <code>Counts</code> array specifies the
+     *        number of times that value occurred during the period. You can include up to 150 unique values in each
+     *        <code>PutMetricData</code> action that specifies a <code>Values</code> array.</p>
+     *        <p>
+     *        Although the <code>Values</code> array accepts numbers of type <code>Double</code>, CloudWatch rejects
+     *        values that are either too small or too large. Values must be in the range of 8.515920e-109 to
+     *        1.174271e+108 (Base 10) or 2e-360 to 2e360 (Base 2). In addition, special values (for example, NaN,
+     *        +Infinity, -Infinity) are not supported.
+     */
+
+    public void setValues(java.util.Collection<Double> values) {
+        if (values == null) {
+            this.values = null;
+            return;
+        }
+
+        this.values = new com.amazonaws.internal.SdkInternalList<Double>(values);
+    }
+
+    /**
+     * <p>
+     * Array of numbers representing the values for the metric during the period. Each unique value is listed just once
+     * in this array, and the corresponding number in the <code>Counts</code> array specifies the number of times that
+     * value occurred during the period. You can include up to 150 unique values in each <code>PutMetricData</code>
+     * action that specifies a <code>Values</code> array.
+     * </p>
+     * <p>
+     * Although the <code>Values</code> array accepts numbers of type <code>Double</code>, CloudWatch rejects values
+     * that are either too small or too large. Values must be in the range of 8.515920e-109 to 1.174271e+108 (Base 10)
+     * or 2e-360 to 2e360 (Base 2). In addition, special values (for example, NaN, +Infinity, -Infinity) are not
+     * supported.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setValues(java.util.Collection)} or {@link #withValues(java.util.Collection)} if you want to override the
+     * existing values.
+     * </p>
+     * 
+     * @param values
+     *        Array of numbers representing the values for the metric during the period. Each unique value is listed
+     *        just once in this array, and the corresponding number in the <code>Counts</code> array specifies the
+     *        number of times that value occurred during the period. You can include up to 150 unique values in each
+     *        <code>PutMetricData</code> action that specifies a <code>Values</code> array.</p>
+     *        <p>
+     *        Although the <code>Values</code> array accepts numbers of type <code>Double</code>, CloudWatch rejects
+     *        values that are either too small or too large. Values must be in the range of 8.515920e-109 to
+     *        1.174271e+108 (Base 10) or 2e-360 to 2e360 (Base 2). In addition, special values (for example, NaN,
+     *        +Infinity, -Infinity) are not supported.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public MetricDatum withValues(Double... values) {
+        if (this.values == null) {
+            setValues(new com.amazonaws.internal.SdkInternalList<Double>(values.length));
+        }
+        for (Double ele : values) {
+            this.values.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * Array of numbers representing the values for the metric during the period. Each unique value is listed just once
+     * in this array, and the corresponding number in the <code>Counts</code> array specifies the number of times that
+     * value occurred during the period. You can include up to 150 unique values in each <code>PutMetricData</code>
+     * action that specifies a <code>Values</code> array.
+     * </p>
+     * <p>
+     * Although the <code>Values</code> array accepts numbers of type <code>Double</code>, CloudWatch rejects values
+     * that are either too small or too large. Values must be in the range of 8.515920e-109 to 1.174271e+108 (Base 10)
+     * or 2e-360 to 2e360 (Base 2). In addition, special values (for example, NaN, +Infinity, -Infinity) are not
+     * supported.
+     * </p>
+     * 
+     * @param values
+     *        Array of numbers representing the values for the metric during the period. Each unique value is listed
+     *        just once in this array, and the corresponding number in the <code>Counts</code> array specifies the
+     *        number of times that value occurred during the period. You can include up to 150 unique values in each
+     *        <code>PutMetricData</code> action that specifies a <code>Values</code> array.</p>
+     *        <p>
+     *        Although the <code>Values</code> array accepts numbers of type <code>Double</code>, CloudWatch rejects
+     *        values that are either too small or too large. Values must be in the range of 8.515920e-109 to
+     *        1.174271e+108 (Base 10) or 2e-360 to 2e360 (Base 2). In addition, special values (for example, NaN,
+     *        +Infinity, -Infinity) are not supported.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public MetricDatum withValues(java.util.Collection<Double> values) {
+        setValues(values);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Array of numbers that is used along with the <code>Values</code> array. Each number in the <code>Count</code>
+     * array is the number of times the corresponding value in the <code>Values</code> array occurred during the period.
+     * </p>
+     * <p>
+     * If you omit the <code>Counts</code> array, the default of 1 is used as the value for each count. If you include a
+     * <code>Counts</code> array, it must include the same amount of values as the <code>Values</code> array.
+     * </p>
+     * 
+     * @return Array of numbers that is used along with the <code>Values</code> array. Each number in the
+     *         <code>Count</code> array is the number of times the corresponding value in the <code>Values</code> array
+     *         occurred during the period. </p>
+     *         <p>
+     *         If you omit the <code>Counts</code> array, the default of 1 is used as the value for each count. If you
+     *         include a <code>Counts</code> array, it must include the same amount of values as the <code>Values</code>
+     *         array.
+     */
+
+    public java.util.List<Double> getCounts() {
+        if (counts == null) {
+            counts = new com.amazonaws.internal.SdkInternalList<Double>();
+        }
+        return counts;
+    }
+
+    /**
+     * <p>
+     * Array of numbers that is used along with the <code>Values</code> array. Each number in the <code>Count</code>
+     * array is the number of times the corresponding value in the <code>Values</code> array occurred during the period.
+     * </p>
+     * <p>
+     * If you omit the <code>Counts</code> array, the default of 1 is used as the value for each count. If you include a
+     * <code>Counts</code> array, it must include the same amount of values as the <code>Values</code> array.
+     * </p>
+     * 
+     * @param counts
+     *        Array of numbers that is used along with the <code>Values</code> array. Each number in the
+     *        <code>Count</code> array is the number of times the corresponding value in the <code>Values</code> array
+     *        occurred during the period. </p>
+     *        <p>
+     *        If you omit the <code>Counts</code> array, the default of 1 is used as the value for each count. If you
+     *        include a <code>Counts</code> array, it must include the same amount of values as the <code>Values</code>
+     *        array.
+     */
+
+    public void setCounts(java.util.Collection<Double> counts) {
+        if (counts == null) {
+            this.counts = null;
+            return;
+        }
+
+        this.counts = new com.amazonaws.internal.SdkInternalList<Double>(counts);
+    }
+
+    /**
+     * <p>
+     * Array of numbers that is used along with the <code>Values</code> array. Each number in the <code>Count</code>
+     * array is the number of times the corresponding value in the <code>Values</code> array occurred during the period.
+     * </p>
+     * <p>
+     * If you omit the <code>Counts</code> array, the default of 1 is used as the value for each count. If you include a
+     * <code>Counts</code> array, it must include the same amount of values as the <code>Values</code> array.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setCounts(java.util.Collection)} or {@link #withCounts(java.util.Collection)} if you want to override the
+     * existing values.
+     * </p>
+     * 
+     * @param counts
+     *        Array of numbers that is used along with the <code>Values</code> array. Each number in the
+     *        <code>Count</code> array is the number of times the corresponding value in the <code>Values</code> array
+     *        occurred during the period. </p>
+     *        <p>
+     *        If you omit the <code>Counts</code> array, the default of 1 is used as the value for each count. If you
+     *        include a <code>Counts</code> array, it must include the same amount of values as the <code>Values</code>
+     *        array.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public MetricDatum withCounts(Double... counts) {
+        if (this.counts == null) {
+            setCounts(new com.amazonaws.internal.SdkInternalList<Double>(counts.length));
+        }
+        for (Double ele : counts) {
+            this.counts.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * Array of numbers that is used along with the <code>Values</code> array. Each number in the <code>Count</code>
+     * array is the number of times the corresponding value in the <code>Values</code> array occurred during the period.
+     * </p>
+     * <p>
+     * If you omit the <code>Counts</code> array, the default of 1 is used as the value for each count. If you include a
+     * <code>Counts</code> array, it must include the same amount of values as the <code>Values</code> array.
+     * </p>
+     * 
+     * @param counts
+     *        Array of numbers that is used along with the <code>Values</code> array. Each number in the
+     *        <code>Count</code> array is the number of times the corresponding value in the <code>Values</code> array
+     *        occurred during the period. </p>
+     *        <p>
+     *        If you omit the <code>Counts</code> array, the default of 1 is used as the value for each count. If you
+     *        include a <code>Counts</code> array, it must include the same amount of values as the <code>Values</code>
+     *        array.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public MetricDatum withCounts(java.util.Collection<Double> counts) {
+        setCounts(counts);
+        return this;
+    }
+
+    /**
+     * <p>
+     * When you are using a <code>Put</code> operation, this defines what unit you want to use when storing the metric.
+     * </p>
+     * <p>
+     * In a <code>Get</code> operation, this displays the unit that is used for the metric.
      * </p>
      * 
      * @param unit
-     *        The unit of the metric.
+     *        When you are using a <code>Put</code> operation, this defines what unit you want to use when storing the
+     *        metric.</p>
+     *        <p>
+     *        In a <code>Get</code> operation, this displays the unit that is used for the metric.
      * @see StandardUnit
      */
 
@@ -362,10 +655,16 @@ public class MetricDatum implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The unit of the metric.
+     * When you are using a <code>Put</code> operation, this defines what unit you want to use when storing the metric.
+     * </p>
+     * <p>
+     * In a <code>Get</code> operation, this displays the unit that is used for the metric.
      * </p>
      * 
-     * @return The unit of the metric.
+     * @return When you are using a <code>Put</code> operation, this defines what unit you want to use when storing the
+     *         metric.</p>
+     *         <p>
+     *         In a <code>Get</code> operation, this displays the unit that is used for the metric.
      * @see StandardUnit
      */
 
@@ -375,11 +674,17 @@ public class MetricDatum implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The unit of the metric.
+     * When you are using a <code>Put</code> operation, this defines what unit you want to use when storing the metric.
+     * </p>
+     * <p>
+     * In a <code>Get</code> operation, this displays the unit that is used for the metric.
      * </p>
      * 
      * @param unit
-     *        The unit of the metric.
+     *        When you are using a <code>Put</code> operation, this defines what unit you want to use when storing the
+     *        metric.</p>
+     *        <p>
+     *        In a <code>Get</code> operation, this displays the unit that is used for the metric.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see StandardUnit
      */
@@ -391,11 +696,17 @@ public class MetricDatum implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The unit of the metric.
+     * When you are using a <code>Put</code> operation, this defines what unit you want to use when storing the metric.
+     * </p>
+     * <p>
+     * In a <code>Get</code> operation, this displays the unit that is used for the metric.
      * </p>
      * 
      * @param unit
-     *        The unit of the metric.
+     *        When you are using a <code>Put</code> operation, this defines what unit you want to use when storing the
+     *        metric.</p>
+     *        <p>
+     *        In a <code>Get</code> operation, this displays the unit that is used for the metric.
      * @see StandardUnit
      */
 
@@ -405,11 +716,17 @@ public class MetricDatum implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The unit of the metric.
+     * When you are using a <code>Put</code> operation, this defines what unit you want to use when storing the metric.
+     * </p>
+     * <p>
+     * In a <code>Get</code> operation, this displays the unit that is used for the metric.
      * </p>
      * 
      * @param unit
-     *        The unit of the metric.
+     *        When you are using a <code>Put</code> operation, this defines what unit you want to use when storing the
+     *        metric.</p>
+     *        <p>
+     *        In a <code>Get</code> operation, this displays the unit that is used for the metric.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see StandardUnit
      */
@@ -425,7 +742,7 @@ public class MetricDatum implements Serializable, Cloneable {
      * CloudWatch stores the metric with sub-minute resolution down to one second. Setting this to 60 specifies this
      * metric as a regular-resolution metric, which CloudWatch stores at 1-minute resolution. Currently, high resolution
      * is available only for custom metrics. For more information about high-resolution metrics, see <a href=
-     * "http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html#high-resolution-metrics"
+     * "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html#high-resolution-metrics"
      * >High-Resolution Metrics</a> in the <i>Amazon CloudWatch User Guide</i>.
      * </p>
      * <p>
@@ -438,7 +755,7 @@ public class MetricDatum implements Serializable, Cloneable {
      *        this metric as a regular-resolution metric, which CloudWatch stores at 1-minute resolution. Currently,
      *        high resolution is available only for custom metrics. For more information about high-resolution metrics,
      *        see <a href=
-     *        "http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html#high-resolution-metrics"
+     *        "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html#high-resolution-metrics"
      *        >High-Resolution Metrics</a> in the <i>Amazon CloudWatch User Guide</i>. </p>
      *        <p>
      *        This field is optional, if you do not specify it the default of 60 is used.
@@ -454,7 +771,7 @@ public class MetricDatum implements Serializable, Cloneable {
      * CloudWatch stores the metric with sub-minute resolution down to one second. Setting this to 60 specifies this
      * metric as a regular-resolution metric, which CloudWatch stores at 1-minute resolution. Currently, high resolution
      * is available only for custom metrics. For more information about high-resolution metrics, see <a href=
-     * "http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html#high-resolution-metrics"
+     * "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html#high-resolution-metrics"
      * >High-Resolution Metrics</a> in the <i>Amazon CloudWatch User Guide</i>.
      * </p>
      * <p>
@@ -466,7 +783,7 @@ public class MetricDatum implements Serializable, Cloneable {
      *         this metric as a regular-resolution metric, which CloudWatch stores at 1-minute resolution. Currently,
      *         high resolution is available only for custom metrics. For more information about high-resolution metrics,
      *         see <a href=
-     *         "http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html#high-resolution-metrics"
+     *         "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html#high-resolution-metrics"
      *         >High-Resolution Metrics</a> in the <i>Amazon CloudWatch User Guide</i>. </p>
      *         <p>
      *         This field is optional, if you do not specify it the default of 60 is used.
@@ -482,7 +799,7 @@ public class MetricDatum implements Serializable, Cloneable {
      * CloudWatch stores the metric with sub-minute resolution down to one second. Setting this to 60 specifies this
      * metric as a regular-resolution metric, which CloudWatch stores at 1-minute resolution. Currently, high resolution
      * is available only for custom metrics. For more information about high-resolution metrics, see <a href=
-     * "http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html#high-resolution-metrics"
+     * "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html#high-resolution-metrics"
      * >High-Resolution Metrics</a> in the <i>Amazon CloudWatch User Guide</i>.
      * </p>
      * <p>
@@ -495,7 +812,7 @@ public class MetricDatum implements Serializable, Cloneable {
      *        this metric as a regular-resolution metric, which CloudWatch stores at 1-minute resolution. Currently,
      *        high resolution is available only for custom metrics. For more information about high-resolution metrics,
      *        see <a href=
-     *        "http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html#high-resolution-metrics"
+     *        "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html#high-resolution-metrics"
      *        >High-Resolution Metrics</a> in the <i>Amazon CloudWatch User Guide</i>. </p>
      *        <p>
      *        This field is optional, if you do not specify it the default of 60 is used.
@@ -508,7 +825,8 @@ public class MetricDatum implements Serializable, Cloneable {
     }
 
     /**
-     * Returns a string representation of this object; useful for testing and debugging.
+     * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
+     * redacted from this string using a placeholder value.
      *
      * @return A string representation of this object.
      *
@@ -528,6 +846,10 @@ public class MetricDatum implements Serializable, Cloneable {
             sb.append("Value: ").append(getValue()).append(",");
         if (getStatisticValues() != null)
             sb.append("StatisticValues: ").append(getStatisticValues()).append(",");
+        if (getValues() != null)
+            sb.append("Values: ").append(getValues()).append(",");
+        if (getCounts() != null)
+            sb.append("Counts: ").append(getCounts()).append(",");
         if (getUnit() != null)
             sb.append("Unit: ").append(getUnit()).append(",");
         if (getStorageResolution() != null)
@@ -566,6 +888,14 @@ public class MetricDatum implements Serializable, Cloneable {
             return false;
         if (other.getStatisticValues() != null && other.getStatisticValues().equals(this.getStatisticValues()) == false)
             return false;
+        if (other.getValues() == null ^ this.getValues() == null)
+            return false;
+        if (other.getValues() != null && other.getValues().equals(this.getValues()) == false)
+            return false;
+        if (other.getCounts() == null ^ this.getCounts() == null)
+            return false;
+        if (other.getCounts() != null && other.getCounts().equals(this.getCounts()) == false)
+            return false;
         if (other.getUnit() == null ^ this.getUnit() == null)
             return false;
         if (other.getUnit() != null && other.getUnit().equals(this.getUnit()) == false)
@@ -587,6 +917,8 @@ public class MetricDatum implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getTimestamp() == null) ? 0 : getTimestamp().hashCode());
         hashCode = prime * hashCode + ((getValue() == null) ? 0 : getValue().hashCode());
         hashCode = prime * hashCode + ((getStatisticValues() == null) ? 0 : getStatisticValues().hashCode());
+        hashCode = prime * hashCode + ((getValues() == null) ? 0 : getValues().hashCode());
+        hashCode = prime * hashCode + ((getCounts() == null) ? 0 : getCounts().hashCode());
         hashCode = prime * hashCode + ((getUnit() == null) ? 0 : getUnit().hashCode());
         hashCode = prime * hashCode + ((getStorageResolution() == null) ? 0 : getStorageResolution().hashCode());
         return hashCode;
