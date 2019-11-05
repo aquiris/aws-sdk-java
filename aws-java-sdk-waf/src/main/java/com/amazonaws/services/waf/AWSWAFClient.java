@@ -135,10 +135,7 @@ public class AWSWAFClient extends AmazonWebServiceClient implements AWSWAF {
                     .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("WAFNonexistentContainerException").withExceptionUnmarshaller(
                                     com.amazonaws.services.waf.model.waf.transform.WAFNonexistentContainerExceptionUnmarshaller.getInstance()))
-                    .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode(null).withExceptionUnmarshaller(
-                                    new JsonBaseExceptionUnmarshaller<com.amazonaws.services.waf.model.AWSWAFException>(
-                                            com.amazonaws.services.waf.model.AWSWAFException.class))));
+                    .withBaseServiceExceptionClass(com.amazonaws.services.waf.model.AWSWAFException.class));
 
     /**
      * Constructs a new client to invoke service methods on WAF. A credentials provider chain will be used that searches
@@ -6115,7 +6112,7 @@ public class AWSWAFClient extends AmazonWebServiceClient implements AWSWAF {
      * <ol>
      * <li>
      * <p>
-     * Create an Amazon Kinesis Data Firehose .
+     * Create an Amazon Kinesis Data Firehose.
      * </p>
      * <p>
      * Create the data firehose with a PUT source and in the region that you are operating. However, if you are

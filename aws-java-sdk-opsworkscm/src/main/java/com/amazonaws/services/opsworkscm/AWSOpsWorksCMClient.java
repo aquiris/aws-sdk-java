@@ -200,10 +200,7 @@ public class AWSOpsWorksCMClient extends AmazonWebServiceClient implements AWSOp
                     .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("LimitExceededException").withExceptionUnmarshaller(
                                     com.amazonaws.services.opsworkscm.model.transform.LimitExceededExceptionUnmarshaller.getInstance()))
-                    .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode(null).withExceptionUnmarshaller(
-                                    new JsonBaseExceptionUnmarshaller<com.amazonaws.services.opsworkscm.model.AWSOpsWorksCMException>(
-                                            com.amazonaws.services.opsworkscm.model.AWSOpsWorksCMException.class))));
+                    .withBaseServiceExceptionClass(com.amazonaws.services.opsworkscm.model.AWSOpsWorksCMException.class));
 
     /**
      * Constructs a new client to invoke service methods on OpsWorksCM. A credentials provider chain will be used that
@@ -592,6 +589,11 @@ public class AWSOpsWorksCMClient extends AmazonWebServiceClient implements AWSOp
      * By default, your server is accessible from any IP address. We recommend that you update your security group rules
      * to allow access from known IP addresses and address ranges only. To edit security group rules, open Security
      * Groups in the navigation pane of the EC2 management console.
+     * </p>
+     * <p>
+     * To specify your own domain for a server, and provide your own self-signed or CA-signed certificate and private
+     * key, specify values for <code>CustomDomain</code>, <code>CustomCertificate</code>, and
+     * <code>CustomPrivateKey</code>.
      * </p>
      * 
      * @param createServerRequest

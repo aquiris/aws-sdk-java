@@ -78,6 +78,10 @@ public class CreateDBInstanceReadReplicaRequestMarshaller implements
             request.addParameter("OptionGroupName", StringUtils.fromString(createDBInstanceReadReplicaRequest.getOptionGroupName()));
         }
 
+        if (createDBInstanceReadReplicaRequest.getDBParameterGroupName() != null) {
+            request.addParameter("DBParameterGroupName", StringUtils.fromString(createDBInstanceReadReplicaRequest.getDBParameterGroupName()));
+        }
+
         if (createDBInstanceReadReplicaRequest.getPubliclyAccessible() != null) {
             request.addParameter("PubliclyAccessible", StringUtils.fromBoolean(createDBInstanceReadReplicaRequest.getPubliclyAccessible()));
         }
@@ -203,6 +207,14 @@ public class CreateDBInstanceReadReplicaRequestMarshaller implements
 
         if (createDBInstanceReadReplicaRequest.getDeletionProtection() != null) {
             request.addParameter("DeletionProtection", StringUtils.fromBoolean(createDBInstanceReadReplicaRequest.getDeletionProtection()));
+        }
+
+        if (createDBInstanceReadReplicaRequest.getDomain() != null) {
+            request.addParameter("Domain", StringUtils.fromString(createDBInstanceReadReplicaRequest.getDomain()));
+        }
+
+        if (createDBInstanceReadReplicaRequest.getDomainIAMRoleName() != null) {
+            request.addParameter("DomainIAMRoleName", StringUtils.fromString(createDBInstanceReadReplicaRequest.getDomainIAMRoleName()));
         }
 
         if (createDBInstanceReadReplicaRequest.getSourceRegion() != null) {

@@ -45,8 +45,110 @@ public class CreateImageBuilderRequest extends com.amazonaws.AmazonWebServiceReq
     private String imageArn;
     /**
      * <p>
-     * The instance type to use when launching the image builder.
+     * The instance type to use when launching the image builder. The following instance types are available:
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * stream.standard.medium
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.standard.large
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.compute.large
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.compute.xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.compute.2xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.compute.4xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.compute.8xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.memory.large
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.memory.xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.memory.2xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.memory.4xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.memory.8xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.graphics-design.large
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.graphics-design.xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.graphics-design.2xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.graphics-design.4xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.graphics-desktop.2xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.graphics-pro.4xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.graphics-pro.8xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.graphics-pro.16xlarge
+     * </p>
+     * </li>
+     * </ul>
      */
     private String instanceType;
     /**
@@ -67,6 +169,21 @@ public class CreateImageBuilderRequest extends com.amazonaws.AmazonWebServiceReq
      * </p>
      */
     private VpcConfig vpcConfig;
+    /**
+     * <p>
+     * The Amazon Resource Name (ARN) of the IAM role to apply to the image builder. To assume a role, the image builder
+     * calls the AWS Security Token Service (STS) <code>AssumeRole</code> API operation and passes the ARN of the role
+     * to use. The operation creates a new session with temporary credentials. AppStream 2.0 retrieves the temporary
+     * credentials and creates the <b>AppStream_Machine_Role</b> credential profile on the instance.
+     * </p>
+     * <p>
+     * For more information, see <a href=
+     * "https://docs.aws.amazon.com/appstream2/latest/developerguide/using-iam-roles-to-grant-permissions-to-applications-scripts-streaming-instances.html"
+     * >Using an IAM Role to Grant Permissions to Applications and Scripts Running on AppStream 2.0 Streaming
+     * Instances</a> in the <i>Amazon AppStream 2.0 Administration Guide</i>.
+     * </p>
+     */
+    private String iamRoleArn;
     /**
      * <p>
      * Enables or disables default internet access for the image builder.
@@ -111,8 +228,8 @@ public class CreateImageBuilderRequest extends com.amazonaws.AmazonWebServiceReq
     private java.util.Map<String, String> tags;
     /**
      * <p>
-     * The list of virtual private cloud (VPC) interface endpoint objects. Administrators can connect to the image
-     * builder only through the specified endpoints.
+     * The list of interface VPC endpoint (interface endpoint) objects. Administrators can connect to the image builder
+     * only through the specified endpoints.
      * </p>
      */
     private java.util.List<AccessEndpoint> accessEndpoints;
@@ -239,11 +356,214 @@ public class CreateImageBuilderRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * The instance type to use when launching the image builder.
+     * The instance type to use when launching the image builder. The following instance types are available:
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * stream.standard.medium
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.standard.large
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.compute.large
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.compute.xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.compute.2xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.compute.4xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.compute.8xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.memory.large
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.memory.xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.memory.2xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.memory.4xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.memory.8xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.graphics-design.large
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.graphics-design.xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.graphics-design.2xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.graphics-design.4xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.graphics-desktop.2xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.graphics-pro.4xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.graphics-pro.8xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.graphics-pro.16xlarge
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param instanceType
-     *        The instance type to use when launching the image builder.
+     *        The instance type to use when launching the image builder. The following instance types are available:</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        stream.standard.medium
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.standard.large
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.compute.large
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.compute.xlarge
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.compute.2xlarge
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.compute.4xlarge
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.compute.8xlarge
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.memory.large
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.memory.xlarge
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.memory.2xlarge
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.memory.4xlarge
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.memory.8xlarge
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.graphics-design.large
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.graphics-design.xlarge
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.graphics-design.2xlarge
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.graphics-design.4xlarge
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.graphics-desktop.2xlarge
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.graphics-pro.4xlarge
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.graphics-pro.8xlarge
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.graphics-pro.16xlarge
+     *        </p>
+     *        </li>
      */
 
     public void setInstanceType(String instanceType) {
@@ -252,10 +572,214 @@ public class CreateImageBuilderRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * The instance type to use when launching the image builder.
+     * The instance type to use when launching the image builder. The following instance types are available:
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * stream.standard.medium
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.standard.large
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.compute.large
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.compute.xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.compute.2xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.compute.4xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.compute.8xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.memory.large
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.memory.xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.memory.2xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.memory.4xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.memory.8xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.graphics-design.large
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.graphics-design.xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.graphics-design.2xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.graphics-design.4xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.graphics-desktop.2xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.graphics-pro.4xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.graphics-pro.8xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.graphics-pro.16xlarge
+     * </p>
+     * </li>
+     * </ul>
      * 
-     * @return The instance type to use when launching the image builder.
+     * @return The instance type to use when launching the image builder. The following instance types are
+     *         available:</p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         stream.standard.medium
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         stream.standard.large
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         stream.compute.large
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         stream.compute.xlarge
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         stream.compute.2xlarge
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         stream.compute.4xlarge
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         stream.compute.8xlarge
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         stream.memory.large
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         stream.memory.xlarge
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         stream.memory.2xlarge
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         stream.memory.4xlarge
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         stream.memory.8xlarge
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         stream.graphics-design.large
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         stream.graphics-design.xlarge
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         stream.graphics-design.2xlarge
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         stream.graphics-design.4xlarge
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         stream.graphics-desktop.2xlarge
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         stream.graphics-pro.4xlarge
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         stream.graphics-pro.8xlarge
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         stream.graphics-pro.16xlarge
+     *         </p>
+     *         </li>
      */
 
     public String getInstanceType() {
@@ -264,11 +788,214 @@ public class CreateImageBuilderRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * The instance type to use when launching the image builder.
+     * The instance type to use when launching the image builder. The following instance types are available:
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * stream.standard.medium
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.standard.large
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.compute.large
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.compute.xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.compute.2xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.compute.4xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.compute.8xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.memory.large
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.memory.xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.memory.2xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.memory.4xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.memory.8xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.graphics-design.large
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.graphics-design.xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.graphics-design.2xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.graphics-design.4xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.graphics-desktop.2xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.graphics-pro.4xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.graphics-pro.8xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.graphics-pro.16xlarge
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param instanceType
-     *        The instance type to use when launching the image builder.
+     *        The instance type to use when launching the image builder. The following instance types are available:</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        stream.standard.medium
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.standard.large
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.compute.large
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.compute.xlarge
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.compute.2xlarge
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.compute.4xlarge
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.compute.8xlarge
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.memory.large
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.memory.xlarge
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.memory.2xlarge
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.memory.4xlarge
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.memory.8xlarge
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.graphics-design.large
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.graphics-design.xlarge
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.graphics-design.2xlarge
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.graphics-design.4xlarge
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.graphics-desktop.2xlarge
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.graphics-pro.4xlarge
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.graphics-pro.8xlarge
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.graphics-pro.16xlarge
+     *        </p>
+     *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -394,6 +1121,100 @@ public class CreateImageBuilderRequest extends com.amazonaws.AmazonWebServiceReq
 
     public CreateImageBuilderRequest withVpcConfig(VpcConfig vpcConfig) {
         setVpcConfig(vpcConfig);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The Amazon Resource Name (ARN) of the IAM role to apply to the image builder. To assume a role, the image builder
+     * calls the AWS Security Token Service (STS) <code>AssumeRole</code> API operation and passes the ARN of the role
+     * to use. The operation creates a new session with temporary credentials. AppStream 2.0 retrieves the temporary
+     * credentials and creates the <b>AppStream_Machine_Role</b> credential profile on the instance.
+     * </p>
+     * <p>
+     * For more information, see <a href=
+     * "https://docs.aws.amazon.com/appstream2/latest/developerguide/using-iam-roles-to-grant-permissions-to-applications-scripts-streaming-instances.html"
+     * >Using an IAM Role to Grant Permissions to Applications and Scripts Running on AppStream 2.0 Streaming
+     * Instances</a> in the <i>Amazon AppStream 2.0 Administration Guide</i>.
+     * </p>
+     * 
+     * @param iamRoleArn
+     *        The Amazon Resource Name (ARN) of the IAM role to apply to the image builder. To assume a role, the image
+     *        builder calls the AWS Security Token Service (STS) <code>AssumeRole</code> API operation and passes the
+     *        ARN of the role to use. The operation creates a new session with temporary credentials. AppStream 2.0
+     *        retrieves the temporary credentials and creates the <b>AppStream_Machine_Role</b> credential profile on
+     *        the instance.</p>
+     *        <p>
+     *        For more information, see <a href=
+     *        "https://docs.aws.amazon.com/appstream2/latest/developerguide/using-iam-roles-to-grant-permissions-to-applications-scripts-streaming-instances.html"
+     *        >Using an IAM Role to Grant Permissions to Applications and Scripts Running on AppStream 2.0 Streaming
+     *        Instances</a> in the <i>Amazon AppStream 2.0 Administration Guide</i>.
+     */
+
+    public void setIamRoleArn(String iamRoleArn) {
+        this.iamRoleArn = iamRoleArn;
+    }
+
+    /**
+     * <p>
+     * The Amazon Resource Name (ARN) of the IAM role to apply to the image builder. To assume a role, the image builder
+     * calls the AWS Security Token Service (STS) <code>AssumeRole</code> API operation and passes the ARN of the role
+     * to use. The operation creates a new session with temporary credentials. AppStream 2.0 retrieves the temporary
+     * credentials and creates the <b>AppStream_Machine_Role</b> credential profile on the instance.
+     * </p>
+     * <p>
+     * For more information, see <a href=
+     * "https://docs.aws.amazon.com/appstream2/latest/developerguide/using-iam-roles-to-grant-permissions-to-applications-scripts-streaming-instances.html"
+     * >Using an IAM Role to Grant Permissions to Applications and Scripts Running on AppStream 2.0 Streaming
+     * Instances</a> in the <i>Amazon AppStream 2.0 Administration Guide</i>.
+     * </p>
+     * 
+     * @return The Amazon Resource Name (ARN) of the IAM role to apply to the image builder. To assume a role, the image
+     *         builder calls the AWS Security Token Service (STS) <code>AssumeRole</code> API operation and passes the
+     *         ARN of the role to use. The operation creates a new session with temporary credentials. AppStream 2.0
+     *         retrieves the temporary credentials and creates the <b>AppStream_Machine_Role</b> credential profile on
+     *         the instance.</p>
+     *         <p>
+     *         For more information, see <a href=
+     *         "https://docs.aws.amazon.com/appstream2/latest/developerguide/using-iam-roles-to-grant-permissions-to-applications-scripts-streaming-instances.html"
+     *         >Using an IAM Role to Grant Permissions to Applications and Scripts Running on AppStream 2.0 Streaming
+     *         Instances</a> in the <i>Amazon AppStream 2.0 Administration Guide</i>.
+     */
+
+    public String getIamRoleArn() {
+        return this.iamRoleArn;
+    }
+
+    /**
+     * <p>
+     * The Amazon Resource Name (ARN) of the IAM role to apply to the image builder. To assume a role, the image builder
+     * calls the AWS Security Token Service (STS) <code>AssumeRole</code> API operation and passes the ARN of the role
+     * to use. The operation creates a new session with temporary credentials. AppStream 2.0 retrieves the temporary
+     * credentials and creates the <b>AppStream_Machine_Role</b> credential profile on the instance.
+     * </p>
+     * <p>
+     * For more information, see <a href=
+     * "https://docs.aws.amazon.com/appstream2/latest/developerguide/using-iam-roles-to-grant-permissions-to-applications-scripts-streaming-instances.html"
+     * >Using an IAM Role to Grant Permissions to Applications and Scripts Running on AppStream 2.0 Streaming
+     * Instances</a> in the <i>Amazon AppStream 2.0 Administration Guide</i>.
+     * </p>
+     * 
+     * @param iamRoleArn
+     *        The Amazon Resource Name (ARN) of the IAM role to apply to the image builder. To assume a role, the image
+     *        builder calls the AWS Security Token Service (STS) <code>AssumeRole</code> API operation and passes the
+     *        ARN of the role to use. The operation creates a new session with temporary credentials. AppStream 2.0
+     *        retrieves the temporary credentials and creates the <b>AppStream_Machine_Role</b> credential profile on
+     *        the instance.</p>
+     *        <p>
+     *        For more information, see <a href=
+     *        "https://docs.aws.amazon.com/appstream2/latest/developerguide/using-iam-roles-to-grant-permissions-to-applications-scripts-streaming-instances.html"
+     *        >Using an IAM Role to Grant Permissions to Applications and Scripts Running on AppStream 2.0 Streaming
+     *        Instances</a> in the <i>Amazon AppStream 2.0 Administration Guide</i>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateImageBuilderRequest withIamRoleArn(String iamRoleArn) {
+        setIamRoleArn(iamRoleArn);
         return this;
     }
 
@@ -697,12 +1518,12 @@ public class CreateImageBuilderRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * The list of virtual private cloud (VPC) interface endpoint objects. Administrators can connect to the image
-     * builder only through the specified endpoints.
+     * The list of interface VPC endpoint (interface endpoint) objects. Administrators can connect to the image builder
+     * only through the specified endpoints.
      * </p>
      * 
-     * @return The list of virtual private cloud (VPC) interface endpoint objects. Administrators can connect to the
-     *         image builder only through the specified endpoints.
+     * @return The list of interface VPC endpoint (interface endpoint) objects. Administrators can connect to the image
+     *         builder only through the specified endpoints.
      */
 
     public java.util.List<AccessEndpoint> getAccessEndpoints() {
@@ -711,13 +1532,13 @@ public class CreateImageBuilderRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * The list of virtual private cloud (VPC) interface endpoint objects. Administrators can connect to the image
-     * builder only through the specified endpoints.
+     * The list of interface VPC endpoint (interface endpoint) objects. Administrators can connect to the image builder
+     * only through the specified endpoints.
      * </p>
      * 
      * @param accessEndpoints
-     *        The list of virtual private cloud (VPC) interface endpoint objects. Administrators can connect to the
-     *        image builder only through the specified endpoints.
+     *        The list of interface VPC endpoint (interface endpoint) objects. Administrators can connect to the image
+     *        builder only through the specified endpoints.
      */
 
     public void setAccessEndpoints(java.util.Collection<AccessEndpoint> accessEndpoints) {
@@ -731,8 +1552,8 @@ public class CreateImageBuilderRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * The list of virtual private cloud (VPC) interface endpoint objects. Administrators can connect to the image
-     * builder only through the specified endpoints.
+     * The list of interface VPC endpoint (interface endpoint) objects. Administrators can connect to the image builder
+     * only through the specified endpoints.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -741,8 +1562,8 @@ public class CreateImageBuilderRequest extends com.amazonaws.AmazonWebServiceReq
      * </p>
      * 
      * @param accessEndpoints
-     *        The list of virtual private cloud (VPC) interface endpoint objects. Administrators can connect to the
-     *        image builder only through the specified endpoints.
+     *        The list of interface VPC endpoint (interface endpoint) objects. Administrators can connect to the image
+     *        builder only through the specified endpoints.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -758,13 +1579,13 @@ public class CreateImageBuilderRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * The list of virtual private cloud (VPC) interface endpoint objects. Administrators can connect to the image
-     * builder only through the specified endpoints.
+     * The list of interface VPC endpoint (interface endpoint) objects. Administrators can connect to the image builder
+     * only through the specified endpoints.
      * </p>
      * 
      * @param accessEndpoints
-     *        The list of virtual private cloud (VPC) interface endpoint objects. Administrators can connect to the
-     *        image builder only through the specified endpoints.
+     *        The list of interface VPC endpoint (interface endpoint) objects. Administrators can connect to the image
+     *        builder only through the specified endpoints.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -799,6 +1620,8 @@ public class CreateImageBuilderRequest extends com.amazonaws.AmazonWebServiceReq
             sb.append("DisplayName: ").append(getDisplayName()).append(",");
         if (getVpcConfig() != null)
             sb.append("VpcConfig: ").append(getVpcConfig()).append(",");
+        if (getIamRoleArn() != null)
+            sb.append("IamRoleArn: ").append(getIamRoleArn()).append(",");
         if (getEnableDefaultInternetAccess() != null)
             sb.append("EnableDefaultInternetAccess: ").append(getEnableDefaultInternetAccess()).append(",");
         if (getDomainJoinInfo() != null)
@@ -851,6 +1674,10 @@ public class CreateImageBuilderRequest extends com.amazonaws.AmazonWebServiceReq
             return false;
         if (other.getVpcConfig() != null && other.getVpcConfig().equals(this.getVpcConfig()) == false)
             return false;
+        if (other.getIamRoleArn() == null ^ this.getIamRoleArn() == null)
+            return false;
+        if (other.getIamRoleArn() != null && other.getIamRoleArn().equals(this.getIamRoleArn()) == false)
+            return false;
         if (other.getEnableDefaultInternetAccess() == null ^ this.getEnableDefaultInternetAccess() == null)
             return false;
         if (other.getEnableDefaultInternetAccess() != null && other.getEnableDefaultInternetAccess().equals(this.getEnableDefaultInternetAccess()) == false)
@@ -886,6 +1713,7 @@ public class CreateImageBuilderRequest extends com.amazonaws.AmazonWebServiceReq
         hashCode = prime * hashCode + ((getDescription() == null) ? 0 : getDescription().hashCode());
         hashCode = prime * hashCode + ((getDisplayName() == null) ? 0 : getDisplayName().hashCode());
         hashCode = prime * hashCode + ((getVpcConfig() == null) ? 0 : getVpcConfig().hashCode());
+        hashCode = prime * hashCode + ((getIamRoleArn() == null) ? 0 : getIamRoleArn().hashCode());
         hashCode = prime * hashCode + ((getEnableDefaultInternetAccess() == null) ? 0 : getEnableDefaultInternetAccess().hashCode());
         hashCode = prime * hashCode + ((getDomainJoinInfo() == null) ? 0 : getDomainJoinInfo().hashCode());
         hashCode = prime * hashCode + ((getAppstreamAgentVersion() == null) ? 0 : getAppstreamAgentVersion().hashCode());

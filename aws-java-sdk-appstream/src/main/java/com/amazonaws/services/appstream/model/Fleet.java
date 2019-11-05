@@ -30,7 +30,7 @@ public class Fleet implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The ARN for the fleet.
+     * The Amazon Resource Name (ARN) for the fleet.
      * </p>
      */
     private String arn;
@@ -66,8 +66,110 @@ public class Fleet implements Serializable, Cloneable, StructuredPojo {
     private String imageArn;
     /**
      * <p>
-     * The instance type to use when launching fleet instances.
+     * The instance type to use when launching fleet instances. The following instance types are available:
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * stream.standard.medium
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.standard.large
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.compute.large
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.compute.xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.compute.2xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.compute.4xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.compute.8xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.memory.large
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.memory.xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.memory.2xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.memory.4xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.memory.8xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.graphics-design.large
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.graphics-design.xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.graphics-design.2xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.graphics-design.4xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.graphics-desktop.2xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.graphics-pro.4xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.graphics-pro.8xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.graphics-pro.16xlarge
+     * </p>
+     * </li>
+     * </ul>
      */
     private String instanceType;
     /**
@@ -182,14 +284,29 @@ public class Fleet implements Serializable, Cloneable, StructuredPojo {
      * </note>
      */
     private Integer idleDisconnectTimeoutInSeconds;
+    /**
+     * <p>
+     * The ARN of the IAM role that is applied to the fleet. To assume a role, the fleet instance calls the AWS Security
+     * Token Service (STS) <code>AssumeRole</code> API operation and passes the ARN of the role to use. The operation
+     * creates a new session with temporary credentials. AppStream 2.0 retrieves the temporary credentials and creates
+     * the <b>AppStream_Machine_Role</b> credential profile on the instance.
+     * </p>
+     * <p>
+     * For more information, see <a href=
+     * "https://docs.aws.amazon.com/appstream2/latest/developerguide/using-iam-roles-to-grant-permissions-to-applications-scripts-streaming-instances.html"
+     * >Using an IAM Role to Grant Permissions to Applications and Scripts Running on AppStream 2.0 Streaming
+     * Instances</a> in the <i>Amazon AppStream 2.0 Administration Guide</i>.
+     * </p>
+     */
+    private String iamRoleArn;
 
     /**
      * <p>
-     * The ARN for the fleet.
+     * The Amazon Resource Name (ARN) for the fleet.
      * </p>
      * 
      * @param arn
-     *        The ARN for the fleet.
+     *        The Amazon Resource Name (ARN) for the fleet.
      */
 
     public void setArn(String arn) {
@@ -198,10 +315,10 @@ public class Fleet implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The ARN for the fleet.
+     * The Amazon Resource Name (ARN) for the fleet.
      * </p>
      * 
-     * @return The ARN for the fleet.
+     * @return The Amazon Resource Name (ARN) for the fleet.
      */
 
     public String getArn() {
@@ -210,11 +327,11 @@ public class Fleet implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The ARN for the fleet.
+     * The Amazon Resource Name (ARN) for the fleet.
      * </p>
      * 
      * @param arn
-     *        The ARN for the fleet.
+     *        The Amazon Resource Name (ARN) for the fleet.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -425,11 +542,214 @@ public class Fleet implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The instance type to use when launching fleet instances.
+     * The instance type to use when launching fleet instances. The following instance types are available:
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * stream.standard.medium
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.standard.large
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.compute.large
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.compute.xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.compute.2xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.compute.4xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.compute.8xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.memory.large
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.memory.xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.memory.2xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.memory.4xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.memory.8xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.graphics-design.large
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.graphics-design.xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.graphics-design.2xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.graphics-design.4xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.graphics-desktop.2xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.graphics-pro.4xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.graphics-pro.8xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.graphics-pro.16xlarge
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param instanceType
-     *        The instance type to use when launching fleet instances.
+     *        The instance type to use when launching fleet instances. The following instance types are available:</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        stream.standard.medium
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.standard.large
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.compute.large
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.compute.xlarge
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.compute.2xlarge
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.compute.4xlarge
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.compute.8xlarge
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.memory.large
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.memory.xlarge
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.memory.2xlarge
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.memory.4xlarge
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.memory.8xlarge
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.graphics-design.large
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.graphics-design.xlarge
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.graphics-design.2xlarge
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.graphics-design.4xlarge
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.graphics-desktop.2xlarge
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.graphics-pro.4xlarge
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.graphics-pro.8xlarge
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.graphics-pro.16xlarge
+     *        </p>
+     *        </li>
      */
 
     public void setInstanceType(String instanceType) {
@@ -438,10 +758,213 @@ public class Fleet implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The instance type to use when launching fleet instances.
+     * The instance type to use when launching fleet instances. The following instance types are available:
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * stream.standard.medium
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.standard.large
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.compute.large
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.compute.xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.compute.2xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.compute.4xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.compute.8xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.memory.large
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.memory.xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.memory.2xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.memory.4xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.memory.8xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.graphics-design.large
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.graphics-design.xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.graphics-design.2xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.graphics-design.4xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.graphics-desktop.2xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.graphics-pro.4xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.graphics-pro.8xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.graphics-pro.16xlarge
+     * </p>
+     * </li>
+     * </ul>
      * 
-     * @return The instance type to use when launching fleet instances.
+     * @return The instance type to use when launching fleet instances. The following instance types are available:</p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         stream.standard.medium
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         stream.standard.large
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         stream.compute.large
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         stream.compute.xlarge
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         stream.compute.2xlarge
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         stream.compute.4xlarge
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         stream.compute.8xlarge
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         stream.memory.large
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         stream.memory.xlarge
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         stream.memory.2xlarge
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         stream.memory.4xlarge
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         stream.memory.8xlarge
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         stream.graphics-design.large
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         stream.graphics-design.xlarge
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         stream.graphics-design.2xlarge
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         stream.graphics-design.4xlarge
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         stream.graphics-desktop.2xlarge
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         stream.graphics-pro.4xlarge
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         stream.graphics-pro.8xlarge
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         stream.graphics-pro.16xlarge
+     *         </p>
+     *         </li>
      */
 
     public String getInstanceType() {
@@ -450,11 +973,214 @@ public class Fleet implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The instance type to use when launching fleet instances.
+     * The instance type to use when launching fleet instances. The following instance types are available:
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * stream.standard.medium
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.standard.large
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.compute.large
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.compute.xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.compute.2xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.compute.4xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.compute.8xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.memory.large
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.memory.xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.memory.2xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.memory.4xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.memory.8xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.graphics-design.large
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.graphics-design.xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.graphics-design.2xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.graphics-design.4xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.graphics-desktop.2xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.graphics-pro.4xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.graphics-pro.8xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * stream.graphics-pro.16xlarge
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param instanceType
-     *        The instance type to use when launching fleet instances.
+     *        The instance type to use when launching fleet instances. The following instance types are available:</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        stream.standard.medium
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.standard.large
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.compute.large
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.compute.xlarge
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.compute.2xlarge
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.compute.4xlarge
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.compute.8xlarge
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.memory.large
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.memory.xlarge
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.memory.2xlarge
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.memory.4xlarge
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.memory.8xlarge
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.graphics-design.large
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.graphics-design.xlarge
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.graphics-design.2xlarge
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.graphics-design.4xlarge
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.graphics-desktop.2xlarge
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.graphics-pro.4xlarge
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.graphics-pro.8xlarge
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        stream.graphics-pro.16xlarge
+     *        </p>
+     *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1355,6 +2081,97 @@ public class Fleet implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
+     * The ARN of the IAM role that is applied to the fleet. To assume a role, the fleet instance calls the AWS Security
+     * Token Service (STS) <code>AssumeRole</code> API operation and passes the ARN of the role to use. The operation
+     * creates a new session with temporary credentials. AppStream 2.0 retrieves the temporary credentials and creates
+     * the <b>AppStream_Machine_Role</b> credential profile on the instance.
+     * </p>
+     * <p>
+     * For more information, see <a href=
+     * "https://docs.aws.amazon.com/appstream2/latest/developerguide/using-iam-roles-to-grant-permissions-to-applications-scripts-streaming-instances.html"
+     * >Using an IAM Role to Grant Permissions to Applications and Scripts Running on AppStream 2.0 Streaming
+     * Instances</a> in the <i>Amazon AppStream 2.0 Administration Guide</i>.
+     * </p>
+     * 
+     * @param iamRoleArn
+     *        The ARN of the IAM role that is applied to the fleet. To assume a role, the fleet instance calls the AWS
+     *        Security Token Service (STS) <code>AssumeRole</code> API operation and passes the ARN of the role to use.
+     *        The operation creates a new session with temporary credentials. AppStream 2.0 retrieves the temporary
+     *        credentials and creates the <b>AppStream_Machine_Role</b> credential profile on the instance.</p>
+     *        <p>
+     *        For more information, see <a href=
+     *        "https://docs.aws.amazon.com/appstream2/latest/developerguide/using-iam-roles-to-grant-permissions-to-applications-scripts-streaming-instances.html"
+     *        >Using an IAM Role to Grant Permissions to Applications and Scripts Running on AppStream 2.0 Streaming
+     *        Instances</a> in the <i>Amazon AppStream 2.0 Administration Guide</i>.
+     */
+
+    public void setIamRoleArn(String iamRoleArn) {
+        this.iamRoleArn = iamRoleArn;
+    }
+
+    /**
+     * <p>
+     * The ARN of the IAM role that is applied to the fleet. To assume a role, the fleet instance calls the AWS Security
+     * Token Service (STS) <code>AssumeRole</code> API operation and passes the ARN of the role to use. The operation
+     * creates a new session with temporary credentials. AppStream 2.0 retrieves the temporary credentials and creates
+     * the <b>AppStream_Machine_Role</b> credential profile on the instance.
+     * </p>
+     * <p>
+     * For more information, see <a href=
+     * "https://docs.aws.amazon.com/appstream2/latest/developerguide/using-iam-roles-to-grant-permissions-to-applications-scripts-streaming-instances.html"
+     * >Using an IAM Role to Grant Permissions to Applications and Scripts Running on AppStream 2.0 Streaming
+     * Instances</a> in the <i>Amazon AppStream 2.0 Administration Guide</i>.
+     * </p>
+     * 
+     * @return The ARN of the IAM role that is applied to the fleet. To assume a role, the fleet instance calls the AWS
+     *         Security Token Service (STS) <code>AssumeRole</code> API operation and passes the ARN of the role to use.
+     *         The operation creates a new session with temporary credentials. AppStream 2.0 retrieves the temporary
+     *         credentials and creates the <b>AppStream_Machine_Role</b> credential profile on the instance.</p>
+     *         <p>
+     *         For more information, see <a href=
+     *         "https://docs.aws.amazon.com/appstream2/latest/developerguide/using-iam-roles-to-grant-permissions-to-applications-scripts-streaming-instances.html"
+     *         >Using an IAM Role to Grant Permissions to Applications and Scripts Running on AppStream 2.0 Streaming
+     *         Instances</a> in the <i>Amazon AppStream 2.0 Administration Guide</i>.
+     */
+
+    public String getIamRoleArn() {
+        return this.iamRoleArn;
+    }
+
+    /**
+     * <p>
+     * The ARN of the IAM role that is applied to the fleet. To assume a role, the fleet instance calls the AWS Security
+     * Token Service (STS) <code>AssumeRole</code> API operation and passes the ARN of the role to use. The operation
+     * creates a new session with temporary credentials. AppStream 2.0 retrieves the temporary credentials and creates
+     * the <b>AppStream_Machine_Role</b> credential profile on the instance.
+     * </p>
+     * <p>
+     * For more information, see <a href=
+     * "https://docs.aws.amazon.com/appstream2/latest/developerguide/using-iam-roles-to-grant-permissions-to-applications-scripts-streaming-instances.html"
+     * >Using an IAM Role to Grant Permissions to Applications and Scripts Running on AppStream 2.0 Streaming
+     * Instances</a> in the <i>Amazon AppStream 2.0 Administration Guide</i>.
+     * </p>
+     * 
+     * @param iamRoleArn
+     *        The ARN of the IAM role that is applied to the fleet. To assume a role, the fleet instance calls the AWS
+     *        Security Token Service (STS) <code>AssumeRole</code> API operation and passes the ARN of the role to use.
+     *        The operation creates a new session with temporary credentials. AppStream 2.0 retrieves the temporary
+     *        credentials and creates the <b>AppStream_Machine_Role</b> credential profile on the instance.</p>
+     *        <p>
+     *        For more information, see <a href=
+     *        "https://docs.aws.amazon.com/appstream2/latest/developerguide/using-iam-roles-to-grant-permissions-to-applications-scripts-streaming-instances.html"
+     *        >Using an IAM Role to Grant Permissions to Applications and Scripts Running on AppStream 2.0 Streaming
+     *        Instances</a> in the <i>Amazon AppStream 2.0 Administration Guide</i>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Fleet withIamRoleArn(String iamRoleArn) {
+        setIamRoleArn(iamRoleArn);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -1401,7 +2218,9 @@ public class Fleet implements Serializable, Cloneable, StructuredPojo {
         if (getDomainJoinInfo() != null)
             sb.append("DomainJoinInfo: ").append(getDomainJoinInfo()).append(",");
         if (getIdleDisconnectTimeoutInSeconds() != null)
-            sb.append("IdleDisconnectTimeoutInSeconds: ").append(getIdleDisconnectTimeoutInSeconds());
+            sb.append("IdleDisconnectTimeoutInSeconds: ").append(getIdleDisconnectTimeoutInSeconds()).append(",");
+        if (getIamRoleArn() != null)
+            sb.append("IamRoleArn: ").append(getIamRoleArn());
         sb.append("}");
         return sb.toString();
     }
@@ -1489,6 +2308,10 @@ public class Fleet implements Serializable, Cloneable, StructuredPojo {
         if (other.getIdleDisconnectTimeoutInSeconds() != null
                 && other.getIdleDisconnectTimeoutInSeconds().equals(this.getIdleDisconnectTimeoutInSeconds()) == false)
             return false;
+        if (other.getIamRoleArn() == null ^ this.getIamRoleArn() == null)
+            return false;
+        if (other.getIamRoleArn() != null && other.getIamRoleArn().equals(this.getIamRoleArn()) == false)
+            return false;
         return true;
     }
 
@@ -1515,6 +2338,7 @@ public class Fleet implements Serializable, Cloneable, StructuredPojo {
         hashCode = prime * hashCode + ((getEnableDefaultInternetAccess() == null) ? 0 : getEnableDefaultInternetAccess().hashCode());
         hashCode = prime * hashCode + ((getDomainJoinInfo() == null) ? 0 : getDomainJoinInfo().hashCode());
         hashCode = prime * hashCode + ((getIdleDisconnectTimeoutInSeconds() == null) ? 0 : getIdleDisconnectTimeoutInSeconds().hashCode());
+        hashCode = prime * hashCode + ((getIamRoleArn() == null) ? 0 : getIamRoleArn().hashCode());
         return hashCode;
     }
 

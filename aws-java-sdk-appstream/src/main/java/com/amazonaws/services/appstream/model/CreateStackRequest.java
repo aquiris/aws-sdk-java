@@ -101,11 +101,18 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
     private java.util.Map<String, String> tags;
     /**
      * <p>
-     * The list of virtual private cloud (VPC) interface endpoint objects. Users of the stack can connect to AppStream
-     * 2.0 only through the specified endpoints.
+     * The list of interface VPC endpoint (interface endpoint) objects. Users of the stack can connect to AppStream 2.0
+     * only through the specified endpoints.
      * </p>
      */
     private java.util.List<AccessEndpoint> accessEndpoints;
+    /**
+     * <p>
+     * The domains where AppStream 2.0 streaming sessions can be embedded in an iframe. You must approve the domains
+     * that you want to host embedded AppStream 2.0 streaming sessions.
+     * </p>
+     */
+    private java.util.List<String> embedHostDomains;
 
     /**
      * <p>
@@ -669,11 +676,11 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * The list of virtual private cloud (VPC) interface endpoint objects. Users of the stack can connect to AppStream
-     * 2.0 only through the specified endpoints.
+     * The list of interface VPC endpoint (interface endpoint) objects. Users of the stack can connect to AppStream 2.0
+     * only through the specified endpoints.
      * </p>
      * 
-     * @return The list of virtual private cloud (VPC) interface endpoint objects. Users of the stack can connect to
+     * @return The list of interface VPC endpoint (interface endpoint) objects. Users of the stack can connect to
      *         AppStream 2.0 only through the specified endpoints.
      */
 
@@ -683,12 +690,12 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * The list of virtual private cloud (VPC) interface endpoint objects. Users of the stack can connect to AppStream
-     * 2.0 only through the specified endpoints.
+     * The list of interface VPC endpoint (interface endpoint) objects. Users of the stack can connect to AppStream 2.0
+     * only through the specified endpoints.
      * </p>
      * 
      * @param accessEndpoints
-     *        The list of virtual private cloud (VPC) interface endpoint objects. Users of the stack can connect to
+     *        The list of interface VPC endpoint (interface endpoint) objects. Users of the stack can connect to
      *        AppStream 2.0 only through the specified endpoints.
      */
 
@@ -703,8 +710,8 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * The list of virtual private cloud (VPC) interface endpoint objects. Users of the stack can connect to AppStream
-     * 2.0 only through the specified endpoints.
+     * The list of interface VPC endpoint (interface endpoint) objects. Users of the stack can connect to AppStream 2.0
+     * only through the specified endpoints.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -713,7 +720,7 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </p>
      * 
      * @param accessEndpoints
-     *        The list of virtual private cloud (VPC) interface endpoint objects. Users of the stack can connect to
+     *        The list of interface VPC endpoint (interface endpoint) objects. Users of the stack can connect to
      *        AppStream 2.0 only through the specified endpoints.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -730,18 +737,96 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * The list of virtual private cloud (VPC) interface endpoint objects. Users of the stack can connect to AppStream
-     * 2.0 only through the specified endpoints.
+     * The list of interface VPC endpoint (interface endpoint) objects. Users of the stack can connect to AppStream 2.0
+     * only through the specified endpoints.
      * </p>
      * 
      * @param accessEndpoints
-     *        The list of virtual private cloud (VPC) interface endpoint objects. Users of the stack can connect to
+     *        The list of interface VPC endpoint (interface endpoint) objects. Users of the stack can connect to
      *        AppStream 2.0 only through the specified endpoints.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateStackRequest withAccessEndpoints(java.util.Collection<AccessEndpoint> accessEndpoints) {
         setAccessEndpoints(accessEndpoints);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The domains where AppStream 2.0 streaming sessions can be embedded in an iframe. You must approve the domains
+     * that you want to host embedded AppStream 2.0 streaming sessions.
+     * </p>
+     * 
+     * @return The domains where AppStream 2.0 streaming sessions can be embedded in an iframe. You must approve the
+     *         domains that you want to host embedded AppStream 2.0 streaming sessions.
+     */
+
+    public java.util.List<String> getEmbedHostDomains() {
+        return embedHostDomains;
+    }
+
+    /**
+     * <p>
+     * The domains where AppStream 2.0 streaming sessions can be embedded in an iframe. You must approve the domains
+     * that you want to host embedded AppStream 2.0 streaming sessions.
+     * </p>
+     * 
+     * @param embedHostDomains
+     *        The domains where AppStream 2.0 streaming sessions can be embedded in an iframe. You must approve the
+     *        domains that you want to host embedded AppStream 2.0 streaming sessions.
+     */
+
+    public void setEmbedHostDomains(java.util.Collection<String> embedHostDomains) {
+        if (embedHostDomains == null) {
+            this.embedHostDomains = null;
+            return;
+        }
+
+        this.embedHostDomains = new java.util.ArrayList<String>(embedHostDomains);
+    }
+
+    /**
+     * <p>
+     * The domains where AppStream 2.0 streaming sessions can be embedded in an iframe. You must approve the domains
+     * that you want to host embedded AppStream 2.0 streaming sessions.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setEmbedHostDomains(java.util.Collection)} or {@link #withEmbedHostDomains(java.util.Collection)} if you
+     * want to override the existing values.
+     * </p>
+     * 
+     * @param embedHostDomains
+     *        The domains where AppStream 2.0 streaming sessions can be embedded in an iframe. You must approve the
+     *        domains that you want to host embedded AppStream 2.0 streaming sessions.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateStackRequest withEmbedHostDomains(String... embedHostDomains) {
+        if (this.embedHostDomains == null) {
+            setEmbedHostDomains(new java.util.ArrayList<String>(embedHostDomains.length));
+        }
+        for (String ele : embedHostDomains) {
+            this.embedHostDomains.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * The domains where AppStream 2.0 streaming sessions can be embedded in an iframe. You must approve the domains
+     * that you want to host embedded AppStream 2.0 streaming sessions.
+     * </p>
+     * 
+     * @param embedHostDomains
+     *        The domains where AppStream 2.0 streaming sessions can be embedded in an iframe. You must approve the
+     *        domains that you want to host embedded AppStream 2.0 streaming sessions.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateStackRequest withEmbedHostDomains(java.util.Collection<String> embedHostDomains) {
+        setEmbedHostDomains(embedHostDomains);
         return this;
     }
 
@@ -776,7 +861,9 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
         if (getTags() != null)
             sb.append("Tags: ").append(getTags()).append(",");
         if (getAccessEndpoints() != null)
-            sb.append("AccessEndpoints: ").append(getAccessEndpoints());
+            sb.append("AccessEndpoints: ").append(getAccessEndpoints()).append(",");
+        if (getEmbedHostDomains() != null)
+            sb.append("EmbedHostDomains: ").append(getEmbedHostDomains());
         sb.append("}");
         return sb.toString();
     }
@@ -831,6 +918,10 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
             return false;
         if (other.getAccessEndpoints() != null && other.getAccessEndpoints().equals(this.getAccessEndpoints()) == false)
             return false;
+        if (other.getEmbedHostDomains() == null ^ this.getEmbedHostDomains() == null)
+            return false;
+        if (other.getEmbedHostDomains() != null && other.getEmbedHostDomains().equals(this.getEmbedHostDomains()) == false)
+            return false;
         return true;
     }
 
@@ -849,6 +940,7 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
         hashCode = prime * hashCode + ((getApplicationSettings() == null) ? 0 : getApplicationSettings().hashCode());
         hashCode = prime * hashCode + ((getTags() == null) ? 0 : getTags().hashCode());
         hashCode = prime * hashCode + ((getAccessEndpoints() == null) ? 0 : getAccessEndpoints().hashCode());
+        hashCode = prime * hashCode + ((getEmbedHostDomains() == null) ? 0 : getEmbedHostDomains().hashCode());
         return hashCode;
     }
 

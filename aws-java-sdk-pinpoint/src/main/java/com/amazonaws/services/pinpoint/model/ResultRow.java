@@ -19,8 +19,8 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * Provides the results of a query that retrieved the data for a standard metric that applies to an application or
- * campaign.
+ * Provides the results of a query that retrieved the data for a standard metric that applies to an application,
+ * campaign, or journey.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/ResultRow" target="_top">AWS API
@@ -38,8 +38,8 @@ public class ResultRow implements Serializable, Cloneable, StructuredPojo {
     private java.util.List<ResultRowValue> groupedBys;
     /**
      * <p>
-     * An array of objects that provides pre-aggregated values for a standard metric that applies to an application or
-     * campaign.
+     * An array of objects that provides pre-aggregated values for a standard metric that applies to an application,
+     * campaign, or journey.
      * </p>
      */
     private java.util.List<ResultRowValue> values;
@@ -50,10 +50,8 @@ public class ResultRow implements Serializable, Cloneable, StructuredPojo {
      * contains multiple results. This value is null if the data in a result set isn’t grouped.
      * </p>
      * 
-     * @return <p>
-     *         An array of objects that defines the field and field values that were used to group data in a result set
+     * @return An array of objects that defines the field and field values that were used to group data in a result set
      *         that contains multiple results. This value is null if the data in a result set isn’t grouped.
-     *         </p>
      */
 
     public java.util.List<ResultRowValue> getGroupedBys() {
@@ -67,10 +65,8 @@ public class ResultRow implements Serializable, Cloneable, StructuredPojo {
      * </p>
      * 
      * @param groupedBys
-     *        <p>
      *        An array of objects that defines the field and field values that were used to group data in a result set
      *        that contains multiple results. This value is null if the data in a result set isn’t grouped.
-     *        </p>
      */
 
     public void setGroupedBys(java.util.Collection<ResultRowValue> groupedBys) {
@@ -94,10 +90,8 @@ public class ResultRow implements Serializable, Cloneable, StructuredPojo {
      * </p>
      * 
      * @param groupedBys
-     *        <p>
      *        An array of objects that defines the field and field values that were used to group data in a result set
      *        that contains multiple results. This value is null if the data in a result set isn’t grouped.
-     *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -118,10 +112,8 @@ public class ResultRow implements Serializable, Cloneable, StructuredPojo {
      * </p>
      * 
      * @param groupedBys
-     *        <p>
      *        An array of objects that defines the field and field values that were used to group data in a result set
      *        that contains multiple results. This value is null if the data in a result set isn’t grouped.
-     *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -132,14 +124,12 @@ public class ResultRow implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * An array of objects that provides pre-aggregated values for a standard metric that applies to an application or
-     * campaign.
+     * An array of objects that provides pre-aggregated values for a standard metric that applies to an application,
+     * campaign, or journey.
      * </p>
      * 
-     * @return <p>
-     *         An array of objects that provides pre-aggregated values for a standard metric that applies to an
-     *         application or campaign.
-     *         </p>
+     * @return An array of objects that provides pre-aggregated values for a standard metric that applies to an
+     *         application, campaign, or journey.
      */
 
     public java.util.List<ResultRowValue> getValues() {
@@ -148,15 +138,13 @@ public class ResultRow implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * An array of objects that provides pre-aggregated values for a standard metric that applies to an application or
-     * campaign.
+     * An array of objects that provides pre-aggregated values for a standard metric that applies to an application,
+     * campaign, or journey.
      * </p>
      * 
      * @param values
-     *        <p>
      *        An array of objects that provides pre-aggregated values for a standard metric that applies to an
-     *        application or campaign.
-     *        </p>
+     *        application, campaign, or journey.
      */
 
     public void setValues(java.util.Collection<ResultRowValue> values) {
@@ -170,8 +158,8 @@ public class ResultRow implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * An array of objects that provides pre-aggregated values for a standard metric that applies to an application or
-     * campaign.
+     * An array of objects that provides pre-aggregated values for a standard metric that applies to an application,
+     * campaign, or journey.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -180,10 +168,8 @@ public class ResultRow implements Serializable, Cloneable, StructuredPojo {
      * </p>
      * 
      * @param values
-     *        <p>
      *        An array of objects that provides pre-aggregated values for a standard metric that applies to an
-     *        application or campaign.
-     *        </p>
+     *        application, campaign, or journey.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -199,15 +185,13 @@ public class ResultRow implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * An array of objects that provides pre-aggregated values for a standard metric that applies to an application or
-     * campaign.
+     * An array of objects that provides pre-aggregated values for a standard metric that applies to an application,
+     * campaign, or journey.
      * </p>
      * 
      * @param values
-     *        <p>
      *        An array of objects that provides pre-aggregated values for a standard metric that applies to an
-     *        application or campaign.
-     *        </p>
+     *        application, campaign, or journey.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

@@ -154,12 +154,7 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
                                     .withExceptionUnmarshaller(
                                             com.amazonaws.services.databasemigrationservice.model.transform.ReplicationSubnetGroupDoesNotCoverEnoughAZsExceptionUnmarshaller
                                                     .getInstance()))
-                    .addErrorMetadata(
-                            new JsonErrorShapeMetadata()
-                                    .withErrorCode(null)
-                                    .withExceptionUnmarshaller(
-                                            new JsonBaseExceptionUnmarshaller<com.amazonaws.services.databasemigrationservice.model.AWSDatabaseMigrationServiceException>(
-                                                    com.amazonaws.services.databasemigrationservice.model.AWSDatabaseMigrationServiceException.class))));
+                    .withBaseServiceExceptionClass(com.amazonaws.services.databasemigrationservice.model.AWSDatabaseMigrationServiceException.class));
 
     /**
      * Constructs a new client to invoke service methods on AWS Database Migration Service. A credentials provider chain
@@ -639,6 +634,14 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
      * <p>
      * Creates the replication instance using the specified parameters.
      * </p>
+     * <p>
+     * AWS DMS requires that your account have certain roles with appropriate permissions before you can create a
+     * replication instance. For information on the required roles, see <a
+     * href="https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Security.APIRole.html">Creating the IAM Roles to Use
+     * With the AWS CLI and AWS DMS API</a>. For information on the required permissions, see <a
+     * href="https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Security.IAMPermissions.html">IAM Permissions Needed
+     * to Use AWS DMS</a>.
+     * </p>
      * 
      * @param createReplicationInstanceRequest
      * @return Result of the CreateReplicationInstance operation returned by the service.
@@ -892,6 +895,65 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
 
             HttpResponseHandler<AmazonWebServiceResponse<DeleteCertificateResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new DeleteCertificateResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Deletes the connection between a replication instance and an endpoint.
+     * </p>
+     * 
+     * @param deleteConnectionRequest
+     * @return Result of the DeleteConnection operation returned by the service.
+     * @throws AccessDeniedException
+     *         AWS DMS was denied access to the endpoint. Check that the role is correctly configured.
+     * @throws ResourceNotFoundException
+     *         The resource could not be found.
+     * @throws InvalidResourceStateException
+     *         The resource is in a state that prevents it from being used for database migration.
+     * @sample AWSDatabaseMigrationService.DeleteConnection
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DeleteConnection" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public DeleteConnectionResult deleteConnection(DeleteConnectionRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteConnection(request);
+    }
+
+    @SdkInternalApi
+    final DeleteConnectionResult executeDeleteConnection(DeleteConnectionRequest deleteConnectionRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(deleteConnectionRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DeleteConnectionRequest> request = null;
+        Response<DeleteConnectionResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DeleteConnectionRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteConnectionRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Database Migration Service");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteConnection");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<DeleteConnectionResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new DeleteConnectionResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();

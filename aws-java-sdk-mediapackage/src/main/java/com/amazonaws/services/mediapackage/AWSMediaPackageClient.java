@@ -93,10 +93,7 @@ public class AWSMediaPackageClient extends AmazonWebServiceClient implements AWS
                     .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("InternalServerErrorException").withExceptionUnmarshaller(
                                     com.amazonaws.services.mediapackage.model.transform.InternalServerErrorExceptionUnmarshaller.getInstance()))
-                    .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode(null).withExceptionUnmarshaller(
-                                    new JsonBaseExceptionUnmarshaller<com.amazonaws.services.mediapackage.model.AWSMediaPackageException>(
-                                            com.amazonaws.services.mediapackage.model.AWSMediaPackageException.class))));
+                    .withBaseServiceExceptionClass(com.amazonaws.services.mediapackage.model.AWSMediaPackageException.class));
 
     public static AWSMediaPackageClientBuilder builder() {
         return AWSMediaPackageClientBuilder.standard();
@@ -198,6 +195,70 @@ public class AWSMediaPackageClient extends AmazonWebServiceClient implements AWS
 
             HttpResponseHandler<AmazonWebServiceResponse<CreateChannelResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new CreateChannelResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * Creates a new HarvestJob record.
+     * 
+     * @param createHarvestJobRequest
+     *        Configuration parameters used to create a new HarvestJob.
+     * @return Result of the CreateHarvestJob operation returned by the service.
+     * @throws UnprocessableEntityException
+     *         The parameters sent in the request are not valid.
+     * @throws InternalServerErrorException
+     *         An unexpected error occurred.
+     * @throws ForbiddenException
+     *         The client is not authorized to access the requested resource.
+     * @throws NotFoundException
+     *         The requested resource does not exist.
+     * @throws ServiceUnavailableException
+     *         An unexpected error occurred.
+     * @throws TooManyRequestsException
+     *         The client has exceeded their resource or throttling limits.
+     * @sample AWSMediaPackage.CreateHarvestJob
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/mediapackage-2017-10-12/CreateHarvestJob" target="_top">AWS
+     *      API Documentation</a>
+     */
+    @Override
+    public CreateHarvestJobResult createHarvestJob(CreateHarvestJobRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateHarvestJob(request);
+    }
+
+    @SdkInternalApi
+    final CreateHarvestJobResult executeCreateHarvestJob(CreateHarvestJobRequest createHarvestJobRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(createHarvestJobRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<CreateHarvestJobRequest> request = null;
+        Response<CreateHarvestJobResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new CreateHarvestJobRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createHarvestJobRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaPackage");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateHarvestJob");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<CreateHarvestJobResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new CreateHarvestJobResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -462,6 +523,69 @@ public class AWSMediaPackageClient extends AmazonWebServiceClient implements AWS
     }
 
     /**
+     * Gets details about an existing HarvestJob.
+     * 
+     * @param describeHarvestJobRequest
+     * @return Result of the DescribeHarvestJob operation returned by the service.
+     * @throws UnprocessableEntityException
+     *         The parameters sent in the request are not valid.
+     * @throws InternalServerErrorException
+     *         An unexpected error occurred.
+     * @throws ForbiddenException
+     *         The client is not authorized to access the requested resource.
+     * @throws NotFoundException
+     *         The requested resource does not exist.
+     * @throws ServiceUnavailableException
+     *         An unexpected error occurred.
+     * @throws TooManyRequestsException
+     *         The client has exceeded their resource or throttling limits.
+     * @sample AWSMediaPackage.DescribeHarvestJob
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/mediapackage-2017-10-12/DescribeHarvestJob"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public DescribeHarvestJobResult describeHarvestJob(DescribeHarvestJobRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeHarvestJob(request);
+    }
+
+    @SdkInternalApi
+    final DescribeHarvestJobResult executeDescribeHarvestJob(DescribeHarvestJobRequest describeHarvestJobRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(describeHarvestJobRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DescribeHarvestJobRequest> request = null;
+        Response<DescribeHarvestJobResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DescribeHarvestJobRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeHarvestJobRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaPackage");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeHarvestJob");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<DescribeHarvestJobResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new DescribeHarvestJobResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
      * Gets details about an existing OriginEndpoint.
      * 
      * @param describeOriginEndpointRequest
@@ -578,6 +702,69 @@ public class AWSMediaPackageClient extends AmazonWebServiceClient implements AWS
 
             HttpResponseHandler<AmazonWebServiceResponse<ListChannelsResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new ListChannelsResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * Returns a collection of HarvestJob records.
+     * 
+     * @param listHarvestJobsRequest
+     * @return Result of the ListHarvestJobs operation returned by the service.
+     * @throws UnprocessableEntityException
+     *         The parameters sent in the request are not valid.
+     * @throws InternalServerErrorException
+     *         An unexpected error occurred.
+     * @throws ForbiddenException
+     *         The client is not authorized to access the requested resource.
+     * @throws NotFoundException
+     *         The requested resource does not exist.
+     * @throws ServiceUnavailableException
+     *         An unexpected error occurred.
+     * @throws TooManyRequestsException
+     *         The client has exceeded their resource or throttling limits.
+     * @sample AWSMediaPackage.ListHarvestJobs
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/mediapackage-2017-10-12/ListHarvestJobs" target="_top">AWS
+     *      API Documentation</a>
+     */
+    @Override
+    public ListHarvestJobsResult listHarvestJobs(ListHarvestJobsRequest request) {
+        request = beforeClientExecution(request);
+        return executeListHarvestJobs(request);
+    }
+
+    @SdkInternalApi
+    final ListHarvestJobsResult executeListHarvestJobs(ListHarvestJobsRequest listHarvestJobsRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(listHarvestJobsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<ListHarvestJobsRequest> request = null;
+        Response<ListHarvestJobsResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new ListHarvestJobsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listHarvestJobsRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaPackage");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListHarvestJobs");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<ListHarvestJobsResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new ListHarvestJobsResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();

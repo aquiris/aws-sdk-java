@@ -101,10 +101,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                     .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("BadRequestException").withExceptionUnmarshaller(
                                     com.amazonaws.services.apigateway.model.transform.BadRequestExceptionUnmarshaller.getInstance()))
-                    .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode(null).withExceptionUnmarshaller(
-                                    new JsonBaseExceptionUnmarshaller<com.amazonaws.services.apigateway.model.AmazonApiGatewayException>(
-                                            com.amazonaws.services.apigateway.model.AmazonApiGatewayException.class))));
+                    .withBaseServiceExceptionClass(com.amazonaws.services.apigateway.model.AmazonApiGatewayException.class));
 
     /**
      * Constructs a new client to invoke service methods on Amazon API Gateway. A credentials provider chain will be
@@ -1718,6 +1715,9 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
      *         The requested resource is not found. Make sure that the request URI is correct.
      * @throws TooManyRequestsException
      *         The request has reached its throttling limit. Retry after the specified time period.
+     * @throws BadRequestException
+     *         The submitted request is not valid, for example, the input is incomplete or incorrect. See the
+     *         accompanying error message for details.
      * @sample AmazonApiGateway.DeleteDomainName
      */
     @Override

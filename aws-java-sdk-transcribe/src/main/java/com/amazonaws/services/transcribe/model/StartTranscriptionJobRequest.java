@@ -84,6 +84,8 @@ public class StartTranscriptionJobRequest extends com.amazonaws.AmazonWebService
      * </p>
      */
     private String outputBucketName;
+
+    private String outputEncryptionKMSKeyId;
     /**
      * <p>
      * A <code>Settings</code> object that provides optional settings for a transcription job.
@@ -505,6 +507,32 @@ public class StartTranscriptionJobRequest extends com.amazonaws.AmazonWebService
     }
 
     /**
+     * @param outputEncryptionKMSKeyId
+     */
+
+    public void setOutputEncryptionKMSKeyId(String outputEncryptionKMSKeyId) {
+        this.outputEncryptionKMSKeyId = outputEncryptionKMSKeyId;
+    }
+
+    /**
+     * @return
+     */
+
+    public String getOutputEncryptionKMSKeyId() {
+        return this.outputEncryptionKMSKeyId;
+    }
+
+    /**
+     * @param outputEncryptionKMSKeyId
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public StartTranscriptionJobRequest withOutputEncryptionKMSKeyId(String outputEncryptionKMSKeyId) {
+        setOutputEncryptionKMSKeyId(outputEncryptionKMSKeyId);
+        return this;
+    }
+
+    /**
      * <p>
      * A <code>Settings</code> object that provides optional settings for a transcription job.
      * </p>
@@ -568,6 +596,8 @@ public class StartTranscriptionJobRequest extends com.amazonaws.AmazonWebService
             sb.append("Media: ").append(getMedia()).append(",");
         if (getOutputBucketName() != null)
             sb.append("OutputBucketName: ").append(getOutputBucketName()).append(",");
+        if (getOutputEncryptionKMSKeyId() != null)
+            sb.append("OutputEncryptionKMSKeyId: ").append(getOutputEncryptionKMSKeyId()).append(",");
         if (getSettings() != null)
             sb.append("Settings: ").append(getSettings());
         sb.append("}");
@@ -608,6 +638,10 @@ public class StartTranscriptionJobRequest extends com.amazonaws.AmazonWebService
             return false;
         if (other.getOutputBucketName() != null && other.getOutputBucketName().equals(this.getOutputBucketName()) == false)
             return false;
+        if (other.getOutputEncryptionKMSKeyId() == null ^ this.getOutputEncryptionKMSKeyId() == null)
+            return false;
+        if (other.getOutputEncryptionKMSKeyId() != null && other.getOutputEncryptionKMSKeyId().equals(this.getOutputEncryptionKMSKeyId()) == false)
+            return false;
         if (other.getSettings() == null ^ this.getSettings() == null)
             return false;
         if (other.getSettings() != null && other.getSettings().equals(this.getSettings()) == false)
@@ -626,6 +660,7 @@ public class StartTranscriptionJobRequest extends com.amazonaws.AmazonWebService
         hashCode = prime * hashCode + ((getMediaFormat() == null) ? 0 : getMediaFormat().hashCode());
         hashCode = prime * hashCode + ((getMedia() == null) ? 0 : getMedia().hashCode());
         hashCode = prime * hashCode + ((getOutputBucketName() == null) ? 0 : getOutputBucketName().hashCode());
+        hashCode = prime * hashCode + ((getOutputEncryptionKMSKeyId() == null) ? 0 : getOutputEncryptionKMSKeyId().hashCode());
         hashCode = prime * hashCode + ((getSettings() == null) ? 0 : getSettings().hashCode());
         return hashCode;
     }

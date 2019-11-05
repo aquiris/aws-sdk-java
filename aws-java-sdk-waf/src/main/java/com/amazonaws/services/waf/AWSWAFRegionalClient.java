@@ -139,10 +139,7 @@ public class AWSWAFRegionalClient extends AmazonWebServiceClient implements AWSW
                     .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("WAFUnavailableEntityException").withExceptionUnmarshaller(
                                     com.amazonaws.services.waf.model.waf_regional.transform.WAFUnavailableEntityExceptionUnmarshaller.getInstance()))
-                    .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode(null).withExceptionUnmarshaller(
-                                    new JsonBaseExceptionUnmarshaller<com.amazonaws.services.waf.model.AWSWAFException>(
-                                            com.amazonaws.services.waf.model.AWSWAFException.class))));
+                    .withBaseServiceExceptionClass(com.amazonaws.services.waf.model.AWSWAFException.class));
 
     /**
      * Constructs a new client to invoke service methods on WAF Regional. A credentials provider chain will be used that
@@ -6586,7 +6583,7 @@ public class AWSWAFRegionalClient extends AmazonWebServiceClient implements AWSW
      * <ol>
      * <li>
      * <p>
-     * Create an Amazon Kinesis Data Firehose .
+     * Create an Amazon Kinesis Data Firehose.
      * </p>
      * <p>
      * Create the data firehose with a PUT source and in the region that you are operating. However, if you are

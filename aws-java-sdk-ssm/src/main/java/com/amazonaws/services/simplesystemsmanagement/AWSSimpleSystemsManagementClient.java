@@ -459,12 +459,7 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
                     .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("InternalServerError").withExceptionUnmarshaller(
                                     com.amazonaws.services.simplesystemsmanagement.model.transform.InternalServerErrorExceptionUnmarshaller.getInstance()))
-                    .addErrorMetadata(
-                            new JsonErrorShapeMetadata()
-                                    .withErrorCode(null)
-                                    .withExceptionUnmarshaller(
-                                            new JsonBaseExceptionUnmarshaller<com.amazonaws.services.simplesystemsmanagement.model.AWSSimpleSystemsManagementException>(
-                                                    com.amazonaws.services.simplesystemsmanagement.model.AWSSimpleSystemsManagementException.class))));
+                    .withBaseServiceExceptionClass(com.amazonaws.services.simplesystemsmanagement.model.AWSSimpleSystemsManagementException.class));
 
     /**
      * Constructs a new client to invoke service methods on Amazon SSM. A credentials provider chain will be used that
@@ -1217,6 +1212,15 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
      * <p>
      * Creates a new maintenance window.
      * </p>
+     * <note>
+     * <p>
+     * The value you specify for <code>Duration</code> determines the specific end time for the maintenance window based
+     * on the time it begins. No maintenance window tasks are permitted to start after the resulting endtime minus the
+     * number of hours you specify for <code>Cutoff</code>. For example, if the maintenance window starts at 3 PM, the
+     * duration is three hours, and the value you specify for <code>Cutoff</code> is one hour, no maintenance window
+     * tasks can start after 5 PM.
+     * </p>
+     * </note>
      * 
      * @param createMaintenanceWindowRequest
      * @return Result of the CreateMaintenanceWindow operation returned by the service.
@@ -7959,6 +7963,10 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
      * "http://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html">
      * Install the Session Manager Plugin for the AWS CLI</a> in the <i>AWS Systems Manager User Guide</i>.
      * </p>
+     * <p>
+     * AWS Tools for PowerShell usage: Start-SSMSession is not currently supported by AWS Tools for PowerShell on
+     * Windows local machines.
+     * </p>
      * </note>
      * 
      * @param startSessionRequest
@@ -8146,6 +8154,12 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
      * <p>
      * Updates an association. You can update the association name and version, the document version, schedule,
      * parameters, and Amazon S3 output.
+     * </p>
+     * <p>
+     * In order to call this API action, your IAM user account, group, or role must be configured with permission to
+     * call the <a>DescribeAssociation</a> API action. If you don't have permission to call DescribeAssociation, then
+     * you receive the following error:
+     * <code>An error occurred (AccessDeniedException) when calling the UpdateAssociation operation: User: &lt;user_arn&gt; is not authorized to perform: ssm:DescribeAssociation on resource: &lt;resource_arn&gt;</code>
      * </p>
      * <important>
      * <p>
@@ -8452,6 +8466,15 @@ public class AWSSimpleSystemsManagementClient extends AmazonWebServiceClient imp
      * <p>
      * Updates an existing maintenance window. Only specified parameters are modified.
      * </p>
+     * <note>
+     * <p>
+     * The value you specify for <code>Duration</code> determines the specific end time for the maintenance window based
+     * on the time it begins. No maintenance window tasks are permitted to start after the resulting endtime minus the
+     * number of hours you specify for <code>Cutoff</code>. For example, if the maintenance window starts at 3 PM, the
+     * duration is three hours, and the value you specify for <code>Cutoff</code> is one hour, no maintenance window
+     * tasks can start after 5 PM.
+     * </p>
+     * </note>
      * 
      * @param updateMaintenanceWindowRequest
      * @return Result of the UpdateMaintenanceWindow operation returned by the service.

@@ -104,10 +104,7 @@ public class AWSRoboMakerClient extends AmazonWebServiceClient implements AWSRob
                     .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("ResourceAlreadyExistsException").withExceptionUnmarshaller(
                                     com.amazonaws.services.robomaker.model.transform.ResourceAlreadyExistsExceptionUnmarshaller.getInstance()))
-                    .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode(null).withExceptionUnmarshaller(
-                                    new JsonBaseExceptionUnmarshaller<com.amazonaws.services.robomaker.model.AWSRoboMakerException>(
-                                            com.amazonaws.services.robomaker.model.AWSRoboMakerException.class))));
+                    .withBaseServiceExceptionClass(com.amazonaws.services.robomaker.model.AWSRoboMakerException.class));
 
     public static AWSRoboMakerClientBuilder builder() {
         return AWSRoboMakerClientBuilder.standard();
@@ -1591,6 +1588,10 @@ public class AWSRoboMakerClient extends AmazonWebServiceClient implements AWSRob
      * Returns a list of deployment jobs for a fleet. You can optionally provide filters to retrieve specific deployment
      * jobs.
      * </p>
+     * <note>
+     * <p>
+     * </p>
+     * </note>
      * 
      * @param listDeploymentJobsRequest
      * @return Result of the ListDeploymentJobs operation returned by the service.

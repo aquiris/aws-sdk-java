@@ -128,7 +128,7 @@ public interface AWSDataSync {
 
     /**
      * <p>
-     * Creates an endpoint for a Network File System (NFS) file system.
+     * Defines a file system on a Network File System (NFS) server that can be read from or written to
      * </p>
      * 
      * @param createLocationNfsRequest
@@ -155,7 +155,9 @@ public interface AWSDataSync {
      * examples section.
      * </p>
      * <p>
-     * For more information, see Configuring Amazon S3 Location Settings in the <i>AWS DataSync User Guide.</i>
+     * For more information, see
+     * https://docs.aws.amazon.com/datasync/latest/userguide/working-with-locations.html#create-s3-location in the
+     * <i>AWS DataSync User Guide.</i>
      * </p>
      * 
      * @param createLocationS3Request
@@ -173,7 +175,7 @@ public interface AWSDataSync {
 
     /**
      * <p>
-     * Creates an endpoint for a Server Message Block (SMB) file system.
+     * Defines a file system on an Server Message Block (SMB) server that can be read from or written to
      * </p>
      * 
      * @param createLocationSmbRequest

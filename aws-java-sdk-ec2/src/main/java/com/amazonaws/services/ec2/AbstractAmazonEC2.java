@@ -595,6 +595,11 @@ public class AbstractAmazonEC2 implements AmazonEC2 {
     }
 
     @Override
+    public DeleteQueuedReservedInstancesResult deleteQueuedReservedInstances(DeleteQueuedReservedInstancesRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public DeleteRouteResult deleteRoute(DeleteRouteRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -1869,6 +1874,11 @@ public class AbstractAmazonEC2 implements AmazonEC2 {
 
     @Override
     public ModifyVpnTunnelCertificateResult modifyVpnTunnelCertificate(ModifyVpnTunnelCertificateRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public ModifyVpnTunnelOptionsResult modifyVpnTunnelOptions(ModifyVpnTunnelOptionsRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 

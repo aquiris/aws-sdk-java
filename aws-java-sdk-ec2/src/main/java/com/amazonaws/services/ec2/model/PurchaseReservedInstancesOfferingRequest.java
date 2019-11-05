@@ -47,6 +47,13 @@ public class PurchaseReservedInstancesOfferingRequest extends AmazonWebServiceRe
      * </p>
      */
     private ReservedInstanceLimitPrice limitPrice;
+    /**
+     * <p>
+     * The time at which to purchase the Reserved Instance, in UTC format (for example,
+     * <i>YYYY</i>-<i>MM</i>-<i>DD</i>T<i>HH</i>:<i>MM</i>:<i>SS</i>Z).
+     * </p>
+     */
+    private java.util.Date purchaseTime;
 
     /**
      * Default constructor for PurchaseReservedInstancesOfferingRequest object. Callers should use the setter or fluent
@@ -196,6 +203,52 @@ public class PurchaseReservedInstancesOfferingRequest extends AmazonWebServiceRe
     }
 
     /**
+     * <p>
+     * The time at which to purchase the Reserved Instance, in UTC format (for example,
+     * <i>YYYY</i>-<i>MM</i>-<i>DD</i>T<i>HH</i>:<i>MM</i>:<i>SS</i>Z).
+     * </p>
+     * 
+     * @param purchaseTime
+     *        The time at which to purchase the Reserved Instance, in UTC format (for example,
+     *        <i>YYYY</i>-<i>MM</i>-<i>DD</i>T<i>HH</i>:<i>MM</i>:<i>SS</i>Z).
+     */
+
+    public void setPurchaseTime(java.util.Date purchaseTime) {
+        this.purchaseTime = purchaseTime;
+    }
+
+    /**
+     * <p>
+     * The time at which to purchase the Reserved Instance, in UTC format (for example,
+     * <i>YYYY</i>-<i>MM</i>-<i>DD</i>T<i>HH</i>:<i>MM</i>:<i>SS</i>Z).
+     * </p>
+     * 
+     * @return The time at which to purchase the Reserved Instance, in UTC format (for example,
+     *         <i>YYYY</i>-<i>MM</i>-<i>DD</i>T<i>HH</i>:<i>MM</i>:<i>SS</i>Z).
+     */
+
+    public java.util.Date getPurchaseTime() {
+        return this.purchaseTime;
+    }
+
+    /**
+     * <p>
+     * The time at which to purchase the Reserved Instance, in UTC format (for example,
+     * <i>YYYY</i>-<i>MM</i>-<i>DD</i>T<i>HH</i>:<i>MM</i>:<i>SS</i>Z).
+     * </p>
+     * 
+     * @param purchaseTime
+     *        The time at which to purchase the Reserved Instance, in UTC format (for example,
+     *        <i>YYYY</i>-<i>MM</i>-<i>DD</i>T<i>HH</i>:<i>MM</i>:<i>SS</i>Z).
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public PurchaseReservedInstancesOfferingRequest withPurchaseTime(java.util.Date purchaseTime) {
+        setPurchaseTime(purchaseTime);
+        return this;
+    }
+
+    /**
      * This method is intended for internal use only. Returns the marshaled request configured with additional
      * parameters to enable operation dry-run.
      */
@@ -223,7 +276,9 @@ public class PurchaseReservedInstancesOfferingRequest extends AmazonWebServiceRe
         if (getReservedInstancesOfferingId() != null)
             sb.append("ReservedInstancesOfferingId: ").append(getReservedInstancesOfferingId()).append(",");
         if (getLimitPrice() != null)
-            sb.append("LimitPrice: ").append(getLimitPrice());
+            sb.append("LimitPrice: ").append(getLimitPrice()).append(",");
+        if (getPurchaseTime() != null)
+            sb.append("PurchaseTime: ").append(getPurchaseTime());
         sb.append("}");
         return sb.toString();
     }
@@ -250,6 +305,10 @@ public class PurchaseReservedInstancesOfferingRequest extends AmazonWebServiceRe
             return false;
         if (other.getLimitPrice() != null && other.getLimitPrice().equals(this.getLimitPrice()) == false)
             return false;
+        if (other.getPurchaseTime() == null ^ this.getPurchaseTime() == null)
+            return false;
+        if (other.getPurchaseTime() != null && other.getPurchaseTime().equals(this.getPurchaseTime()) == false)
+            return false;
         return true;
     }
 
@@ -261,6 +320,7 @@ public class PurchaseReservedInstancesOfferingRequest extends AmazonWebServiceRe
         hashCode = prime * hashCode + ((getInstanceCount() == null) ? 0 : getInstanceCount().hashCode());
         hashCode = prime * hashCode + ((getReservedInstancesOfferingId() == null) ? 0 : getReservedInstancesOfferingId().hashCode());
         hashCode = prime * hashCode + ((getLimitPrice() == null) ? 0 : getLimitPrice().hashCode());
+        hashCode = prime * hashCode + ((getPurchaseTime() == null) ? 0 : getPurchaseTime().hashCode());
         return hashCode;
     }
 

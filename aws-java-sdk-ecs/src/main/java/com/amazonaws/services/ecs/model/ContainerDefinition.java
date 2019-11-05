@@ -169,11 +169,11 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      * <code>--memory</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.
      * </p>
      * <p>
-     * If your containers are part of a task using the Fargate launch type, this field is optional.
+     * If using the Fargate launch type, this parameter is optional.
      * </p>
      * <p>
-     * For containers that are part of a task using the EC2 launch type, you must specify a non-zero integer for one or
-     * both of <code>memory</code> or <code>memoryReservation</code> in container definitions. If you specify both,
+     * If using the EC2 launch type, you must specify either a task-level memory value or a container-level memory
+     * value. If you specify both a container-level <code>memory</code> and <code>memoryReservation</code> value,
      * <code>memory</code> must be greater than <code>memoryReservation</code>. If you specify
      * <code>memoryReservation</code>, then that value is subtracted from the available memory resources for the
      * container instance on which the container is placed. Otherwise, the value of <code>memory</code> is used.
@@ -197,11 +197,11 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      * run</a>.
      * </p>
      * <p>
-     * You must specify a non-zero integer for one or both of <code>memory</code> or <code>memoryReservation</code> in
-     * container definitions. If you specify both, <code>memory</code> must be greater than
-     * <code>memoryReservation</code>. If you specify <code>memoryReservation</code>, then that value is subtracted from
-     * the available memory resources for the container instance on which the container is placed. Otherwise, the value
-     * of <code>memory</code> is used.
+     * If a task-level memory value is not specified, you must specify a non-zero integer for one or both of
+     * <code>memory</code> or <code>memoryReservation</code> in a container definition. If you specify both,
+     * <code>memory</code> must be greater than <code>memoryReservation</code>. If you specify
+     * <code>memoryReservation</code>, then that value is subtracted from the available memory resources for the
+     * container instance on which the container is placed. Otherwise, the value of <code>memory</code> is used.
      * </p>
      * <p>
      * For example, if your container normally uses 128 MiB of memory, but occasionally bursts to 256 MiB of memory for
@@ -762,7 +762,9 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
     /**
      * <p>
      * The FireLens configuration for the container. This is used to specify and configure a log router for container
-     * logs.
+     * logs. For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_firelens.html">Custom Log Routing</a> in
+     * the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      */
     private FirelensConfiguration firelensConfiguration;
@@ -1588,11 +1590,11 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      * <code>--memory</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.
      * </p>
      * <p>
-     * If your containers are part of a task using the Fargate launch type, this field is optional.
+     * If using the Fargate launch type, this parameter is optional.
      * </p>
      * <p>
-     * For containers that are part of a task using the EC2 launch type, you must specify a non-zero integer for one or
-     * both of <code>memory</code> or <code>memoryReservation</code> in container definitions. If you specify both,
+     * If using the EC2 launch type, you must specify either a task-level memory value or a container-level memory
+     * value. If you specify both a container-level <code>memory</code> and <code>memoryReservation</code> value,
      * <code>memory</code> must be greater than <code>memoryReservation</code>. If you specify
      * <code>memoryReservation</code>, then that value is subtracted from the available memory resources for the
      * container instance on which the container is placed. Otherwise, the value of <code>memory</code> is used.
@@ -1612,12 +1614,12 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      *        <code>--memory</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker
      *        run</a>.</p>
      *        <p>
-     *        If your containers are part of a task using the Fargate launch type, this field is optional.
+     *        If using the Fargate launch type, this parameter is optional.
      *        </p>
      *        <p>
-     *        For containers that are part of a task using the EC2 launch type, you must specify a non-zero integer for
-     *        one or both of <code>memory</code> or <code>memoryReservation</code> in container definitions. If you
-     *        specify both, <code>memory</code> must be greater than <code>memoryReservation</code>. If you specify
+     *        If using the EC2 launch type, you must specify either a task-level memory value or a container-level
+     *        memory value. If you specify both a container-level <code>memory</code> and <code>memoryReservation</code>
+     *        value, <code>memory</code> must be greater than <code>memoryReservation</code>. If you specify
      *        <code>memoryReservation</code>, then that value is subtracted from the available memory resources for the
      *        container instance on which the container is placed. Otherwise, the value of <code>memory</code> is used.
      *        </p>
@@ -1640,11 +1642,11 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      * <code>--memory</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.
      * </p>
      * <p>
-     * If your containers are part of a task using the Fargate launch type, this field is optional.
+     * If using the Fargate launch type, this parameter is optional.
      * </p>
      * <p>
-     * For containers that are part of a task using the EC2 launch type, you must specify a non-zero integer for one or
-     * both of <code>memory</code> or <code>memoryReservation</code> in container definitions. If you specify both,
+     * If using the EC2 launch type, you must specify either a task-level memory value or a container-level memory
+     * value. If you specify both a container-level <code>memory</code> and <code>memoryReservation</code> value,
      * <code>memory</code> must be greater than <code>memoryReservation</code>. If you specify
      * <code>memoryReservation</code>, then that value is subtracted from the available memory resources for the
      * container instance on which the container is placed. Otherwise, the value of <code>memory</code> is used.
@@ -1663,14 +1665,15 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      *         <code>--memory</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker
      *         run</a>.</p>
      *         <p>
-     *         If your containers are part of a task using the Fargate launch type, this field is optional.
+     *         If using the Fargate launch type, this parameter is optional.
      *         </p>
      *         <p>
-     *         For containers that are part of a task using the EC2 launch type, you must specify a non-zero integer for
-     *         one or both of <code>memory</code> or <code>memoryReservation</code> in container definitions. If you
-     *         specify both, <code>memory</code> must be greater than <code>memoryReservation</code>. If you specify
-     *         <code>memoryReservation</code>, then that value is subtracted from the available memory resources for the
-     *         container instance on which the container is placed. Otherwise, the value of <code>memory</code> is used.
+     *         If using the EC2 launch type, you must specify either a task-level memory value or a container-level
+     *         memory value. If you specify both a container-level <code>memory</code> and
+     *         <code>memoryReservation</code> value, <code>memory</code> must be greater than
+     *         <code>memoryReservation</code>. If you specify <code>memoryReservation</code>, then that value is
+     *         subtracted from the available memory resources for the container instance on which the container is
+     *         placed. Otherwise, the value of <code>memory</code> is used.
      *         </p>
      *         <p>
      *         The Docker daemon reserves a minimum of 4 MiB of memory for a container, so you should not specify fewer
@@ -1691,11 +1694,11 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      * <code>--memory</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.
      * </p>
      * <p>
-     * If your containers are part of a task using the Fargate launch type, this field is optional.
+     * If using the Fargate launch type, this parameter is optional.
      * </p>
      * <p>
-     * For containers that are part of a task using the EC2 launch type, you must specify a non-zero integer for one or
-     * both of <code>memory</code> or <code>memoryReservation</code> in container definitions. If you specify both,
+     * If using the EC2 launch type, you must specify either a task-level memory value or a container-level memory
+     * value. If you specify both a container-level <code>memory</code> and <code>memoryReservation</code> value,
      * <code>memory</code> must be greater than <code>memoryReservation</code>. If you specify
      * <code>memoryReservation</code>, then that value is subtracted from the available memory resources for the
      * container instance on which the container is placed. Otherwise, the value of <code>memory</code> is used.
@@ -1715,12 +1718,12 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      *        <code>--memory</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker
      *        run</a>.</p>
      *        <p>
-     *        If your containers are part of a task using the Fargate launch type, this field is optional.
+     *        If using the Fargate launch type, this parameter is optional.
      *        </p>
      *        <p>
-     *        For containers that are part of a task using the EC2 launch type, you must specify a non-zero integer for
-     *        one or both of <code>memory</code> or <code>memoryReservation</code> in container definitions. If you
-     *        specify both, <code>memory</code> must be greater than <code>memoryReservation</code>. If you specify
+     *        If using the EC2 launch type, you must specify either a task-level memory value or a container-level
+     *        memory value. If you specify both a container-level <code>memory</code> and <code>memoryReservation</code>
+     *        value, <code>memory</code> must be greater than <code>memoryReservation</code>. If you specify
      *        <code>memoryReservation</code>, then that value is subtracted from the available memory resources for the
      *        container instance on which the container is placed. Otherwise, the value of <code>memory</code> is used.
      *        </p>
@@ -1748,11 +1751,11 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      * run</a>.
      * </p>
      * <p>
-     * You must specify a non-zero integer for one or both of <code>memory</code> or <code>memoryReservation</code> in
-     * container definitions. If you specify both, <code>memory</code> must be greater than
-     * <code>memoryReservation</code>. If you specify <code>memoryReservation</code>, then that value is subtracted from
-     * the available memory resources for the container instance on which the container is placed. Otherwise, the value
-     * of <code>memory</code> is used.
+     * If a task-level memory value is not specified, you must specify a non-zero integer for one or both of
+     * <code>memory</code> or <code>memoryReservation</code> in a container definition. If you specify both,
+     * <code>memory</code> must be greater than <code>memoryReservation</code>. If you specify
+     * <code>memoryReservation</code>, then that value is subtracted from the available memory resources for the
+     * container instance on which the container is placed. Otherwise, the value of <code>memory</code> is used.
      * </p>
      * <p>
      * For example, if your container normally uses 128 MiB of memory, but occasionally bursts to 256 MiB of memory for
@@ -1777,11 +1780,11 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      *        <code>--memory-reservation</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker
      *        run</a>.</p>
      *        <p>
-     *        You must specify a non-zero integer for one or both of <code>memory</code> or
-     *        <code>memoryReservation</code> in container definitions. If you specify both, <code>memory</code> must be
-     *        greater than <code>memoryReservation</code>. If you specify <code>memoryReservation</code>, then that
-     *        value is subtracted from the available memory resources for the container instance on which the container
-     *        is placed. Otherwise, the value of <code>memory</code> is used.
+     *        If a task-level memory value is not specified, you must specify a non-zero integer for one or both of
+     *        <code>memory</code> or <code>memoryReservation</code> in a container definition. If you specify both,
+     *        <code>memory</code> must be greater than <code>memoryReservation</code>. If you specify
+     *        <code>memoryReservation</code>, then that value is subtracted from the available memory resources for the
+     *        container instance on which the container is placed. Otherwise, the value of <code>memory</code> is used.
      *        </p>
      *        <p>
      *        For example, if your container normally uses 128 MiB of memory, but occasionally bursts to 256 MiB of
@@ -1812,11 +1815,11 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      * run</a>.
      * </p>
      * <p>
-     * You must specify a non-zero integer for one or both of <code>memory</code> or <code>memoryReservation</code> in
-     * container definitions. If you specify both, <code>memory</code> must be greater than
-     * <code>memoryReservation</code>. If you specify <code>memoryReservation</code>, then that value is subtracted from
-     * the available memory resources for the container instance on which the container is placed. Otherwise, the value
-     * of <code>memory</code> is used.
+     * If a task-level memory value is not specified, you must specify a non-zero integer for one or both of
+     * <code>memory</code> or <code>memoryReservation</code> in a container definition. If you specify both,
+     * <code>memory</code> must be greater than <code>memoryReservation</code>. If you specify
+     * <code>memoryReservation</code>, then that value is subtracted from the available memory resources for the
+     * container instance on which the container is placed. Otherwise, the value of <code>memory</code> is used.
      * </p>
      * <p>
      * For example, if your container normally uses 128 MiB of memory, but occasionally bursts to 256 MiB of memory for
@@ -1840,11 +1843,11 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      *         <code>--memory-reservation</code> option to <a
      *         href="https://docs.docker.com/engine/reference/run/">docker run</a>.</p>
      *         <p>
-     *         You must specify a non-zero integer for one or both of <code>memory</code> or
-     *         <code>memoryReservation</code> in container definitions. If you specify both, <code>memory</code> must be
-     *         greater than <code>memoryReservation</code>. If you specify <code>memoryReservation</code>, then that
-     *         value is subtracted from the available memory resources for the container instance on which the container
-     *         is placed. Otherwise, the value of <code>memory</code> is used.
+     *         If a task-level memory value is not specified, you must specify a non-zero integer for one or both of
+     *         <code>memory</code> or <code>memoryReservation</code> in a container definition. If you specify both,
+     *         <code>memory</code> must be greater than <code>memoryReservation</code>. If you specify
+     *         <code>memoryReservation</code>, then that value is subtracted from the available memory resources for the
+     *         container instance on which the container is placed. Otherwise, the value of <code>memory</code> is used.
      *         </p>
      *         <p>
      *         For example, if your container normally uses 128 MiB of memory, but occasionally bursts to 256 MiB of
@@ -1875,11 +1878,11 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      * run</a>.
      * </p>
      * <p>
-     * You must specify a non-zero integer for one or both of <code>memory</code> or <code>memoryReservation</code> in
-     * container definitions. If you specify both, <code>memory</code> must be greater than
-     * <code>memoryReservation</code>. If you specify <code>memoryReservation</code>, then that value is subtracted from
-     * the available memory resources for the container instance on which the container is placed. Otherwise, the value
-     * of <code>memory</code> is used.
+     * If a task-level memory value is not specified, you must specify a non-zero integer for one or both of
+     * <code>memory</code> or <code>memoryReservation</code> in a container definition. If you specify both,
+     * <code>memory</code> must be greater than <code>memoryReservation</code>. If you specify
+     * <code>memoryReservation</code>, then that value is subtracted from the available memory resources for the
+     * container instance on which the container is placed. Otherwise, the value of <code>memory</code> is used.
      * </p>
      * <p>
      * For example, if your container normally uses 128 MiB of memory, but occasionally bursts to 256 MiB of memory for
@@ -1904,11 +1907,11 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      *        <code>--memory-reservation</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker
      *        run</a>.</p>
      *        <p>
-     *        You must specify a non-zero integer for one or both of <code>memory</code> or
-     *        <code>memoryReservation</code> in container definitions. If you specify both, <code>memory</code> must be
-     *        greater than <code>memoryReservation</code>. If you specify <code>memoryReservation</code>, then that
-     *        value is subtracted from the available memory resources for the container instance on which the container
-     *        is placed. Otherwise, the value of <code>memory</code> is used.
+     *        If a task-level memory value is not specified, you must specify a non-zero integer for one or both of
+     *        <code>memory</code> or <code>memoryReservation</code> in a container definition. If you specify both,
+     *        <code>memory</code> must be greater than <code>memoryReservation</code>. If you specify
+     *        <code>memoryReservation</code>, then that value is subtracted from the available memory resources for the
+     *        container instance on which the container is placed. Otherwise, the value of <code>memory</code> is used.
      *        </p>
      *        <p>
      *        For example, if your container normally uses 128 MiB of memory, but occasionally bursts to 256 MiB of
@@ -6360,12 +6363,16 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
     /**
      * <p>
      * The FireLens configuration for the container. This is used to specify and configure a log router for container
-     * logs.
+     * logs. For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_firelens.html">Custom Log Routing</a> in
+     * the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
      * @param firelensConfiguration
      *        The FireLens configuration for the container. This is used to specify and configure a log router for
-     *        container logs.
+     *        container logs. For more information, see <a
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_firelens.html">Custom Log
+     *        Routing</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      */
 
     public void setFirelensConfiguration(FirelensConfiguration firelensConfiguration) {
@@ -6375,11 +6382,15 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
     /**
      * <p>
      * The FireLens configuration for the container. This is used to specify and configure a log router for container
-     * logs.
+     * logs. For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_firelens.html">Custom Log Routing</a> in
+     * the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
      * @return The FireLens configuration for the container. This is used to specify and configure a log router for
-     *         container logs.
+     *         container logs. For more information, see <a
+     *         href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_firelens.html">Custom Log
+     *         Routing</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      */
 
     public FirelensConfiguration getFirelensConfiguration() {
@@ -6389,12 +6400,16 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
     /**
      * <p>
      * The FireLens configuration for the container. This is used to specify and configure a log router for container
-     * logs.
+     * logs. For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_firelens.html">Custom Log Routing</a> in
+     * the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
      * @param firelensConfiguration
      *        The FireLens configuration for the container. This is used to specify and configure a log router for
-     *        container logs.
+     *        container logs. For more information, see <a
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_firelens.html">Custom Log
+     *        Routing</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

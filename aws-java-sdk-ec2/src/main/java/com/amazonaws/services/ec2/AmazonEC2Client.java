@@ -2897,7 +2897,7 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      * Provides information to AWS about your VPN customer gateway device. The customer gateway is the appliance at your
      * end of the VPN connection. (The device on the AWS side of the VPN connection is the virtual private gateway.) You
      * must provide the Internet-routable IP address of the customer gateway's external interface. The IP address must
-     * be static and may be behind a device performing network address translation (NAT).
+     * be static and can be behind a device performing network address translation (NAT).
      * </p>
      * <p>
      * For devices that use Border Gateway Protocol (BGP), you can also provide the device's BGP Autonomous System
@@ -4565,7 +4565,7 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      * <p>
      * Creates crash-consistent snapshots of multiple EBS volumes and stores the data in S3. Volumes are chosen by
      * specifying an instance. Any attached volumes will produce one snapshot each that is crash-consistent across the
-     * instance. Boot volumes can be excluded by changing the paramaters.
+     * instance. Boot volumes can be excluded by changing the parameters.
      * </p>
      * 
      * @param createSnapshotsRequest
@@ -4825,9 +4825,12 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      * A Traffic Mirror filter is a set of rules that defines the traffic to mirror.
      * </p>
      * <p>
-     * By default, no traffic is mirrored. To mirror traffic, use <a>CreateTrafficMirrorFilterRule</a> to add Traffic
-     * Mirror rules to the filter. The rules you add define what traffic gets mirrored. You can also use
-     * <a>ModifyTrafficMirrorFilterNetworkServices</a> to mirror supported network services.
+     * By default, no traffic is mirrored. To mirror traffic, use <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTrafficMirrorFilterRule.htm"
+     * >CreateTrafficMirrorFilterRule</a> to add Traffic Mirror rules to the filter. The rules you add define what
+     * traffic gets mirrored. You can also use <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyTrafficMirrorFilterNetworkServices.html"
+     * >ModifyTrafficMirrorFilterNetworkServices</a> to mirror supported network services.
      * </p>
      * 
      * @param createTrafficMirrorFilterRequest
@@ -4880,7 +4883,7 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
 
     /**
      * <p>
-     * Creates a Traffic Mirror rule.
+     * Creates a Traffic Mirror filter rule.
      * </p>
      * <p>
      * A Traffic Mirror rule defines the Traffic Mirror source traffic to mirror.
@@ -4951,8 +4954,9 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      * different VPC connected via VPC peering or a transit gateway.
      * </p>
      * <p>
-     * By default, no traffic is mirrored. Use <a>CreateTrafficMirrorFilter</a> to create filter rules that specify the
-     * traffic to mirror.
+     * By default, no traffic is mirrored. Use <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTrafficMirrorFilter.htm"
+     * >CreateTrafficMirrorFilter</a> to create filter rules that specify the traffic to mirror.
      * </p>
      * 
      * @param createTrafficMirrorSessionRequest
@@ -5016,7 +5020,9 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      * A Traffic Mirror target can be a network interface, or a Network Load Balancer.
      * </p>
      * <p>
-     * To use the target in a Traffic Mirror session, use <a>CreateTrafficMirrorSession</a>.
+     * To use the target in a Traffic Mirror session, use <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTrafficMirrorSession.htm"
+     * >CreateTrafficMirrorSession</a>.
      * </p>
      * 
      * @param createTrafficMirrorTargetRequest
@@ -5724,7 +5730,7 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
     /**
      * <p>
      * Creates a VPN connection between an existing virtual private gateway and a VPN customer gateway. The supported
-     * connection types is <code>ipsec.1</code>.
+     * connection type is <code>ipsec.1</code>.
      * </p>
      * <p>
      * The response includes information that you need to give to your network administrator to configure your customer
@@ -6887,6 +6893,59 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
 
             StaxResponseHandler<DeletePlacementGroupResult> responseHandler = new StaxResponseHandler<DeletePlacementGroupResult>(
                     new DeletePlacementGroupResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Deletes the queued purchases for the specified Reserved Instances.
+     * </p>
+     * 
+     * @param deleteQueuedReservedInstancesRequest
+     * @return Result of the DeleteQueuedReservedInstances operation returned by the service.
+     * @sample AmazonEC2.DeleteQueuedReservedInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteQueuedReservedInstances"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public DeleteQueuedReservedInstancesResult deleteQueuedReservedInstances(DeleteQueuedReservedInstancesRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteQueuedReservedInstances(request);
+    }
+
+    @SdkInternalApi
+    final DeleteQueuedReservedInstancesResult executeDeleteQueuedReservedInstances(DeleteQueuedReservedInstancesRequest deleteQueuedReservedInstancesRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(deleteQueuedReservedInstancesRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DeleteQueuedReservedInstancesRequest> request = null;
+        Response<DeleteQueuedReservedInstancesResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DeleteQueuedReservedInstancesRequestMarshaller().marshall(super.beforeMarshalling(deleteQueuedReservedInstancesRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "EC2");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteQueuedReservedInstances");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<DeleteQueuedReservedInstancesResult> responseHandler = new StaxResponseHandler<DeleteQueuedReservedInstancesResult>(
+                    new DeleteQueuedReservedInstancesResultStaxUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -17265,17 +17324,17 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      * <p>
      * To scale up your EC2 Fleet, increase its target capacity. The EC2 Fleet launches the additional Spot Instances
      * according to the allocation strategy for the EC2 Fleet request. If the allocation strategy is
-     * <code>lowestPrice</code>, the EC2 Fleet launches instances using the Spot Instance pool with the lowest price. If
-     * the allocation strategy is <code>diversified</code>, the EC2 Fleet distributes the instances across the Spot
-     * Instance pools. If the allocation strategy is <code>capacityOptimized</code>, EC2 Fleet launches instances from
+     * <code>lowest-price</code>, the EC2 Fleet launches instances using the Spot Instance pool with the lowest price.
+     * If the allocation strategy is <code>diversified</code>, the EC2 Fleet distributes the instances across the Spot
+     * Instance pools. If the allocation strategy is <code>capacity-optimized</code>, EC2 Fleet launches instances from
      * Spot Instance pools with optimal capacity for the number of instances that are launching.
      * </p>
      * <p>
      * To scale down your EC2 Fleet, decrease its target capacity. First, the EC2 Fleet cancels any open requests that
      * exceed the new target capacity. You can request that the EC2 Fleet terminate Spot Instances until the size of the
-     * fleet no longer exceeds the new target capacity. If the allocation strategy is <code>lowestPrice</code>, the EC2
+     * fleet no longer exceeds the new target capacity. If the allocation strategy is <code>lowest-price</code>, the EC2
      * Fleet terminates the instances with the highest price per unit. If the allocation strategy is
-     * <code>capacityOptimized</code>, the EC2 Fleet terminates the instances in the Spot Instance pools that have the
+     * <code>capacity-optimized</code>, the EC2 Fleet terminates the instances in the Spot Instance pools that have the
      * least available Spot Instance capacity. If the allocation strategy is <code>diversified</code>, the EC2 Fleet
      * terminates instances across the Spot Instance pools. Alternatively, you can request that the EC2 Fleet keep the
      * fleet at its current size, but not replace any Spot Instances that are interrupted or that you terminate
@@ -18372,9 +18431,9 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      * use <code>RemoveNetworkServices</code> to remove the network services from the Traffic Mirror filter.
      * </p>
      * <p>
-     * FFor information about filter rule properties, see <a href=
-     * "https://docs.aws.amazon.com/vpc/latest/mirroring/traffic-mirroring-considerations.html#traffic-mirroring-network-services"
-     * >Network Services</a> in the <i>Traffic Mirroring User Guide </i>.
+     * For information about filter rule properties, see <a
+     * href="https://docs.aws.amazon.com/vpc/latest/mirroring/traffic-mirroring-considerations.html">Network
+     * Services</a> in the <i>Traffic Mirroring User Guide </i>.
      * </p>
      * 
      * @param modifyTrafficMirrorFilterNetworkServicesRequest
@@ -19176,7 +19235,7 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
 
     /**
      * <p>
-     * Modifies the target gateway of a AWS Site-to-Site VPN connection. The following migration options are available:
+     * Modifies the target gateway of an AWS Site-to-Site VPN connection. The following migration options are available:
      * </p>
      * <ul>
      * <li>
@@ -19325,6 +19384,62 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
 
             StaxResponseHandler<ModifyVpnTunnelCertificateResult> responseHandler = new StaxResponseHandler<ModifyVpnTunnelCertificateResult>(
                     new ModifyVpnTunnelCertificateResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Modifies the options for a VPN tunnel in an AWS Site-to-Site VPN connection. You can modify multiple options for
+     * a tunnel in a single request, but you can only modify one tunnel at a time. For more information, see <a
+     * href="https://docs.aws.amazon.com/vpn/latest/s2svpn/VPNTunnels.html">Site-to-Site VPN Tunnel Options for Your
+     * Site-to-Site VPN Connection</a> in the <i>AWS Site-to-Site VPN User Guide</i>.
+     * </p>
+     * 
+     * @param modifyVpnTunnelOptionsRequest
+     * @return Result of the ModifyVpnTunnelOptions operation returned by the service.
+     * @sample AmazonEC2.ModifyVpnTunnelOptions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyVpnTunnelOptions" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public ModifyVpnTunnelOptionsResult modifyVpnTunnelOptions(ModifyVpnTunnelOptionsRequest request) {
+        request = beforeClientExecution(request);
+        return executeModifyVpnTunnelOptions(request);
+    }
+
+    @SdkInternalApi
+    final ModifyVpnTunnelOptionsResult executeModifyVpnTunnelOptions(ModifyVpnTunnelOptionsRequest modifyVpnTunnelOptionsRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(modifyVpnTunnelOptionsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<ModifyVpnTunnelOptionsRequest> request = null;
+        Response<ModifyVpnTunnelOptionsResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new ModifyVpnTunnelOptionsRequestMarshaller().marshall(super.beforeMarshalling(modifyVpnTunnelOptionsRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "EC2");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ModifyVpnTunnelOptions");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<ModifyVpnTunnelOptionsResult> responseHandler = new StaxResponseHandler<ModifyVpnTunnelOptionsResult>(
+                    new ModifyVpnTunnelOptionsResultStaxUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -19585,6 +19700,10 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      * <a>DescribeReservedInstances</a>.
      * </p>
      * <p>
+     * To queue a purchase for a future date and time, specify a purchase time. If you do not specify a purchase time,
+     * the default is the current time.
+     * </p>
+     * <p>
      * For more information, see <a
      * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts-on-demand-reserved-instances.html">Reserved
      * Instances</a> and <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html">Reserved
@@ -19790,15 +19909,32 @@ public class AmazonEC2Client extends AmazonWebServiceClient implements AmazonEC2
      * You can't register an image where a secondary (non-root) snapshot has AWS Marketplace product codes.
      * </p>
      * <p>
-     * Some Linux distributions, such as Red Hat Enterprise Linux (RHEL) and SUSE Linux Enterprise Server (SLES), use
-     * the EC2 billing product code associated with an AMI to verify the subscription status for package updates.
-     * Creating an AMI from an EBS snapshot does not maintain this billing code, and instances launched from such an AMI
-     * are not able to connect to package update infrastructure. If you purchase a Reserved Instance offering for one of
-     * these Linux distributions and launch instances using an AMI that does not contain the required billing code, your
-     * Reserved Instance is not applied to these instances.
+     * Windows and some Linux distributions, such as Red Hat Enterprise Linux (RHEL) and SUSE Linux Enterprise Server
+     * (SLES), use the EC2 billing product code associated with an AMI to verify the subscription status for package
+     * updates. To create a new AMI for operating systems that require a billing product code, do the following:
      * </p>
+     * <ol>
+     * <li>
      * <p>
-     * To create an AMI for operating systems that require a billing code, see <a>CreateImage</a>.
+     * Launch an instance from an existing AMI with that billing product code.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Customize the instance.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Create a new AMI from the instance using <a>CreateImage</a> to preserve the billing product code association.
+     * </p>
+     * </li>
+     * </ol>
+     * <p>
+     * If you purchase a Reserved Instance to apply to an On-Demand Instance that was launched from an AMI with a
+     * billing product code, make sure that the Reserved Instance has the matching billing product code. If you purchase
+     * a Reserved Instance without the matching billing product code, the Reserved Instance will not be applied to the
+     * On-Demand Instance.
      * </p>
      * <p>
      * If needed, you can deregister an AMI at any time. Any modifications you make to an AMI backed by an instance

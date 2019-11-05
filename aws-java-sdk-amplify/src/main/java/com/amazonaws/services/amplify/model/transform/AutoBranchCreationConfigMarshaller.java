@@ -43,6 +43,10 @@ public class AutoBranchCreationConfigMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("enableBasicAuth").build();
     private static final MarshallingInfo<String> BUILDSPEC_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("buildSpec").build();
+    private static final MarshallingInfo<Boolean> ENABLEPULLREQUESTPREVIEW_BINDING = MarshallingInfo.builder(MarshallingType.BOOLEAN)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("enablePullRequestPreview").build();
+    private static final MarshallingInfo<String> PULLREQUESTENVIRONMENTNAME_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("pullRequestEnvironmentName").build();
 
     private static final AutoBranchCreationConfigMarshaller instance = new AutoBranchCreationConfigMarshaller();
 
@@ -67,6 +71,8 @@ public class AutoBranchCreationConfigMarshaller {
             protocolMarshaller.marshall(autoBranchCreationConfig.getBasicAuthCredentials(), BASICAUTHCREDENTIALS_BINDING);
             protocolMarshaller.marshall(autoBranchCreationConfig.getEnableBasicAuth(), ENABLEBASICAUTH_BINDING);
             protocolMarshaller.marshall(autoBranchCreationConfig.getBuildSpec(), BUILDSPEC_BINDING);
+            protocolMarshaller.marshall(autoBranchCreationConfig.getEnablePullRequestPreview(), ENABLEPULLREQUESTPREVIEW_BINDING);
+            protocolMarshaller.marshall(autoBranchCreationConfig.getPullRequestEnvironmentName(), PULLREQUESTENVIRONMENTNAME_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

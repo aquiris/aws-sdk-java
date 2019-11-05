@@ -181,7 +181,7 @@ public class Task implements Serializable, Cloneable, StructuredPojo {
      * <p>
      * The version counter for the task. Every time a task experiences a change that triggers a CloudWatch event, the
      * version counter is incremented. If you are replicating your Amazon ECS task state with CloudWatch Events, you can
-     * compare the version of a task reported by the Amazon ECS API actionss with the version reported in CloudWatch
+     * compare the version of a task reported by the Amazon ECS API actions with the version reported in CloudWatch
      * Events for the task (inside the <code>detail</code> object) to verify that the version in your event stream is
      * current.
      * </p>
@@ -355,6 +355,12 @@ public class Task implements Serializable, Cloneable, StructuredPojo {
      * </ul>
      */
     private com.amazonaws.internal.SdkInternalList<Tag> tags;
+    /**
+     * <p>
+     * The Elastic Inference accelerator associated with the task.
+     * </p>
+     */
+    private com.amazonaws.internal.SdkInternalList<InferenceAccelerator> inferenceAccelerators;
 
     /**
      * <p>
@@ -1336,7 +1342,7 @@ public class Task implements Serializable, Cloneable, StructuredPojo {
      * <p>
      * The version counter for the task. Every time a task experiences a change that triggers a CloudWatch event, the
      * version counter is incremented. If you are replicating your Amazon ECS task state with CloudWatch Events, you can
-     * compare the version of a task reported by the Amazon ECS API actionss with the version reported in CloudWatch
+     * compare the version of a task reported by the Amazon ECS API actions with the version reported in CloudWatch
      * Events for the task (inside the <code>detail</code> object) to verify that the version in your event stream is
      * current.
      * </p>
@@ -1344,7 +1350,7 @@ public class Task implements Serializable, Cloneable, StructuredPojo {
      * @param version
      *        The version counter for the task. Every time a task experiences a change that triggers a CloudWatch event,
      *        the version counter is incremented. If you are replicating your Amazon ECS task state with CloudWatch
-     *        Events, you can compare the version of a task reported by the Amazon ECS API actionss with the version
+     *        Events, you can compare the version of a task reported by the Amazon ECS API actions with the version
      *        reported in CloudWatch Events for the task (inside the <code>detail</code> object) to verify that the
      *        version in your event stream is current.
      */
@@ -1357,14 +1363,14 @@ public class Task implements Serializable, Cloneable, StructuredPojo {
      * <p>
      * The version counter for the task. Every time a task experiences a change that triggers a CloudWatch event, the
      * version counter is incremented. If you are replicating your Amazon ECS task state with CloudWatch Events, you can
-     * compare the version of a task reported by the Amazon ECS API actionss with the version reported in CloudWatch
+     * compare the version of a task reported by the Amazon ECS API actions with the version reported in CloudWatch
      * Events for the task (inside the <code>detail</code> object) to verify that the version in your event stream is
      * current.
      * </p>
      * 
      * @return The version counter for the task. Every time a task experiences a change that triggers a CloudWatch
      *         event, the version counter is incremented. If you are replicating your Amazon ECS task state with
-     *         CloudWatch Events, you can compare the version of a task reported by the Amazon ECS API actionss with the
+     *         CloudWatch Events, you can compare the version of a task reported by the Amazon ECS API actions with the
      *         version reported in CloudWatch Events for the task (inside the <code>detail</code> object) to verify that
      *         the version in your event stream is current.
      */
@@ -1377,7 +1383,7 @@ public class Task implements Serializable, Cloneable, StructuredPojo {
      * <p>
      * The version counter for the task. Every time a task experiences a change that triggers a CloudWatch event, the
      * version counter is incremented. If you are replicating your Amazon ECS task state with CloudWatch Events, you can
-     * compare the version of a task reported by the Amazon ECS API actionss with the version reported in CloudWatch
+     * compare the version of a task reported by the Amazon ECS API actions with the version reported in CloudWatch
      * Events for the task (inside the <code>detail</code> object) to verify that the version in your event stream is
      * current.
      * </p>
@@ -1385,7 +1391,7 @@ public class Task implements Serializable, Cloneable, StructuredPojo {
      * @param version
      *        The version counter for the task. Every time a task experiences a change that triggers a CloudWatch event,
      *        the version counter is incremented. If you are replicating your Amazon ECS task state with CloudWatch
-     *        Events, you can compare the version of a task reported by the Amazon ECS API actionss with the version
+     *        Events, you can compare the version of a task reported by the Amazon ECS API actions with the version
      *        reported in CloudWatch Events for the task (inside the <code>detail</code> object) to verify that the
      *        version in your event stream is current.
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -2729,6 +2735,79 @@ public class Task implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
+     * The Elastic Inference accelerator associated with the task.
+     * </p>
+     * 
+     * @return The Elastic Inference accelerator associated with the task.
+     */
+
+    public java.util.List<InferenceAccelerator> getInferenceAccelerators() {
+        if (inferenceAccelerators == null) {
+            inferenceAccelerators = new com.amazonaws.internal.SdkInternalList<InferenceAccelerator>();
+        }
+        return inferenceAccelerators;
+    }
+
+    /**
+     * <p>
+     * The Elastic Inference accelerator associated with the task.
+     * </p>
+     * 
+     * @param inferenceAccelerators
+     *        The Elastic Inference accelerator associated with the task.
+     */
+
+    public void setInferenceAccelerators(java.util.Collection<InferenceAccelerator> inferenceAccelerators) {
+        if (inferenceAccelerators == null) {
+            this.inferenceAccelerators = null;
+            return;
+        }
+
+        this.inferenceAccelerators = new com.amazonaws.internal.SdkInternalList<InferenceAccelerator>(inferenceAccelerators);
+    }
+
+    /**
+     * <p>
+     * The Elastic Inference accelerator associated with the task.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setInferenceAccelerators(java.util.Collection)} or
+     * {@link #withInferenceAccelerators(java.util.Collection)} if you want to override the existing values.
+     * </p>
+     * 
+     * @param inferenceAccelerators
+     *        The Elastic Inference accelerator associated with the task.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Task withInferenceAccelerators(InferenceAccelerator... inferenceAccelerators) {
+        if (this.inferenceAccelerators == null) {
+            setInferenceAccelerators(new com.amazonaws.internal.SdkInternalList<InferenceAccelerator>(inferenceAccelerators.length));
+        }
+        for (InferenceAccelerator ele : inferenceAccelerators) {
+            this.inferenceAccelerators.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * The Elastic Inference accelerator associated with the task.
+     * </p>
+     * 
+     * @param inferenceAccelerators
+     *        The Elastic Inference accelerator associated with the task.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Task withInferenceAccelerators(java.util.Collection<InferenceAccelerator> inferenceAccelerators) {
+        setInferenceAccelerators(inferenceAccelerators);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -2797,7 +2876,9 @@ public class Task implements Serializable, Cloneable, StructuredPojo {
         if (getHealthStatus() != null)
             sb.append("HealthStatus: ").append(getHealthStatus()).append(",");
         if (getTags() != null)
-            sb.append("Tags: ").append(getTags());
+            sb.append("Tags: ").append(getTags()).append(",");
+        if (getInferenceAccelerators() != null)
+            sb.append("InferenceAccelerators: ").append(getInferenceAccelerators());
         sb.append("}");
         return sb.toString();
     }
@@ -2928,6 +3009,10 @@ public class Task implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getTags() != null && other.getTags().equals(this.getTags()) == false)
             return false;
+        if (other.getInferenceAccelerators() == null ^ this.getInferenceAccelerators() == null)
+            return false;
+        if (other.getInferenceAccelerators() != null && other.getInferenceAccelerators().equals(this.getInferenceAccelerators()) == false)
+            return false;
         return true;
     }
 
@@ -2965,6 +3050,7 @@ public class Task implements Serializable, Cloneable, StructuredPojo {
         hashCode = prime * hashCode + ((getAttachments() == null) ? 0 : getAttachments().hashCode());
         hashCode = prime * hashCode + ((getHealthStatus() == null) ? 0 : getHealthStatus().hashCode());
         hashCode = prime * hashCode + ((getTags() == null) ? 0 : getTags().hashCode());
+        hashCode = prime * hashCode + ((getInferenceAccelerators() == null) ? 0 : getInferenceAccelerators().hashCode());
         return hashCode;
     }
 

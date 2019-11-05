@@ -19,7 +19,7 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * An object representing the HTTP routing specification for a route.
+ * An object that represents an HTTP or HTTP2 route type.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/appmesh-2019-01-25/HttpRoute" target="_top">AWS API
@@ -30,24 +30,30 @@ public class HttpRoute implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The action to take if a match is determined.
+     * An object that represents the action to take if a match is determined.
      * </p>
      */
     private HttpRouteAction action;
     /**
      * <p>
-     * The criteria for determining an HTTP request match.
+     * An object that represents the criteria for determining a request match.
      * </p>
      */
     private HttpRouteMatch match;
+    /**
+     * <p>
+     * An object that represents a retry policy.
+     * </p>
+     */
+    private HttpRetryPolicy retryPolicy;
 
     /**
      * <p>
-     * The action to take if a match is determined.
+     * An object that represents the action to take if a match is determined.
      * </p>
      * 
      * @param action
-     *        The action to take if a match is determined.
+     *        An object that represents the action to take if a match is determined.
      */
 
     public void setAction(HttpRouteAction action) {
@@ -56,10 +62,10 @@ public class HttpRoute implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The action to take if a match is determined.
+     * An object that represents the action to take if a match is determined.
      * </p>
      * 
-     * @return The action to take if a match is determined.
+     * @return An object that represents the action to take if a match is determined.
      */
 
     public HttpRouteAction getAction() {
@@ -68,11 +74,11 @@ public class HttpRoute implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The action to take if a match is determined.
+     * An object that represents the action to take if a match is determined.
      * </p>
      * 
      * @param action
-     *        The action to take if a match is determined.
+     *        An object that represents the action to take if a match is determined.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -83,11 +89,11 @@ public class HttpRoute implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The criteria for determining an HTTP request match.
+     * An object that represents the criteria for determining a request match.
      * </p>
      * 
      * @param match
-     *        The criteria for determining an HTTP request match.
+     *        An object that represents the criteria for determining a request match.
      */
 
     public void setMatch(HttpRouteMatch match) {
@@ -96,10 +102,10 @@ public class HttpRoute implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The criteria for determining an HTTP request match.
+     * An object that represents the criteria for determining a request match.
      * </p>
      * 
-     * @return The criteria for determining an HTTP request match.
+     * @return An object that represents the criteria for determining a request match.
      */
 
     public HttpRouteMatch getMatch() {
@@ -108,16 +114,56 @@ public class HttpRoute implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The criteria for determining an HTTP request match.
+     * An object that represents the criteria for determining a request match.
      * </p>
      * 
      * @param match
-     *        The criteria for determining an HTTP request match.
+     *        An object that represents the criteria for determining a request match.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public HttpRoute withMatch(HttpRouteMatch match) {
         setMatch(match);
+        return this;
+    }
+
+    /**
+     * <p>
+     * An object that represents a retry policy.
+     * </p>
+     * 
+     * @param retryPolicy
+     *        An object that represents a retry policy.
+     */
+
+    public void setRetryPolicy(HttpRetryPolicy retryPolicy) {
+        this.retryPolicy = retryPolicy;
+    }
+
+    /**
+     * <p>
+     * An object that represents a retry policy.
+     * </p>
+     * 
+     * @return An object that represents a retry policy.
+     */
+
+    public HttpRetryPolicy getRetryPolicy() {
+        return this.retryPolicy;
+    }
+
+    /**
+     * <p>
+     * An object that represents a retry policy.
+     * </p>
+     * 
+     * @param retryPolicy
+     *        An object that represents a retry policy.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public HttpRoute withRetryPolicy(HttpRetryPolicy retryPolicy) {
+        setRetryPolicy(retryPolicy);
         return this;
     }
 
@@ -136,7 +182,9 @@ public class HttpRoute implements Serializable, Cloneable, StructuredPojo {
         if (getAction() != null)
             sb.append("Action: ").append(getAction()).append(",");
         if (getMatch() != null)
-            sb.append("Match: ").append(getMatch());
+            sb.append("Match: ").append(getMatch()).append(",");
+        if (getRetryPolicy() != null)
+            sb.append("RetryPolicy: ").append(getRetryPolicy());
         sb.append("}");
         return sb.toString();
     }
@@ -159,6 +207,10 @@ public class HttpRoute implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getMatch() != null && other.getMatch().equals(this.getMatch()) == false)
             return false;
+        if (other.getRetryPolicy() == null ^ this.getRetryPolicy() == null)
+            return false;
+        if (other.getRetryPolicy() != null && other.getRetryPolicy().equals(this.getRetryPolicy()) == false)
+            return false;
         return true;
     }
 
@@ -169,6 +221,7 @@ public class HttpRoute implements Serializable, Cloneable, StructuredPojo {
 
         hashCode = prime * hashCode + ((getAction() == null) ? 0 : getAction().hashCode());
         hashCode = prime * hashCode + ((getMatch() == null) ? 0 : getMatch().hashCode());
+        hashCode = prime * hashCode + ((getRetryPolicy() == null) ? 0 : getRetryPolicy().hashCode());
         return hashCode;
     }
 

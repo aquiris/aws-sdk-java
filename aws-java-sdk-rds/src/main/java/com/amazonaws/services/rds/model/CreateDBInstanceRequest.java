@@ -672,6 +672,17 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Constraint: The <code>AvailabilityZone</code> parameter can't be specified if the DB instance is a Multi-AZ
      * deployment. The specified Availability Zone must be in the same AWS Region as the current endpoint.
      * </p>
+     * <note>
+     * <p>
+     * If you're creating a DB instance in an RDS on VMware environment, specify the identifier of the custom
+     * Availability Zone to create the DB instance in.
+     * </p>
+     * <p>
+     * For more information about RDS on VMware, see the <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/RDSonVMwareUserGuide/rds-on-vmware.html"> <i>RDS on VMware
+     * User Guide.</i> </a>
+     * </p>
+     * </note>
      */
     private String availabilityZone;
     /**
@@ -707,8 +718,9 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
     private String preferredMaintenanceWindow;
     /**
      * <p>
-     * The name of the DB parameter group to associate with this DB instance. If this argument is omitted, the default
-     * DBParameterGroup for the specified engine is used.
+     * The name of the DB parameter group to associate with this DB instance. If you do not specify a value for
+     * <code>DBParameterGroupName</code>, then the default <code>DBParameterGroup</code> for the specified DB engine is
+     * used.
      * </p>
      * <p>
      * Constraints:
@@ -1122,13 +1134,23 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
     private String kmsKeyId;
     /**
      * <p>
-     * For an Amazon RDS DB instance that's running Microsoft SQL Server, this parameter specifies the Active Directory
-     * directory ID to create the instance in. Amazon RDS uses Windows Authentication to authenticate users that connect
-     * to the DB instance. For more information, see <a
-     * href="https://docs.aws.amazon.com/AmazonRDS/latest/DeveloperGuide/USER_SQLServerWinAuth.html">Using Windows
+     * The Active Directory directory ID to create the DB instance in. Currently, only Microsoft SQL Server and Oracle
+     * DB instances can be created in an Active Directory Domain.
+     * </p>
+     * <p>
+     * For Microsoft SQL Server DB instances, Amazon RDS can use Windows Authentication to authenticate users that
+     * connect to the DB instance. For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_SQLServerWinAuth.html"> Using Windows
      * Authentication with an Amazon RDS DB Instance Running Microsoft SQL Server</a> in the <i>Amazon RDS User
      * Guide</i>.
      * </p>
+     * <p>
+     * For Oracle DB instance, Amazon RDS can use Kerberos Authentication to authenticate users that connect to the DB
+     * instance. For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-kerberos.html"> Using Kerberos Authentication
+     * with Amazon RDS for Oracle</a> in the <i>Amazon RDS User Guide</i>.
+     * </p>
+     * <p/>
      */
     private String domain;
     /**
@@ -5695,6 +5717,17 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Constraint: The <code>AvailabilityZone</code> parameter can't be specified if the DB instance is a Multi-AZ
      * deployment. The specified Availability Zone must be in the same AWS Region as the current endpoint.
      * </p>
+     * <note>
+     * <p>
+     * If you're creating a DB instance in an RDS on VMware environment, specify the identifier of the custom
+     * Availability Zone to create the DB instance in.
+     * </p>
+     * <p>
+     * For more information about RDS on VMware, see the <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/RDSonVMwareUserGuide/rds-on-vmware.html"> <i>RDS on VMware
+     * User Guide.</i> </a>
+     * </p>
+     * </note>
      * 
      * @param availabilityZone
      *        The Availability Zone (AZ) where the database will be created. For information on AWS Regions and
@@ -5711,6 +5744,17 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        Constraint: The <code>AvailabilityZone</code> parameter can't be specified if the DB instance is a
      *        Multi-AZ deployment. The specified Availability Zone must be in the same AWS Region as the current
      *        endpoint.
+     *        </p>
+     *        <note>
+     *        <p>
+     *        If you're creating a DB instance in an RDS on VMware environment, specify the identifier of the custom
+     *        Availability Zone to create the DB instance in.
+     *        </p>
+     *        <p>
+     *        For more information about RDS on VMware, see the <a
+     *        href="https://docs.aws.amazon.com/AmazonRDS/latest/RDSonVMwareUserGuide/rds-on-vmware.html"> <i>RDS on
+     *        VMware User Guide.</i> </a>
+     *        </p>
      */
 
     public void setAvailabilityZone(String availabilityZone) {
@@ -5734,6 +5778,17 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Constraint: The <code>AvailabilityZone</code> parameter can't be specified if the DB instance is a Multi-AZ
      * deployment. The specified Availability Zone must be in the same AWS Region as the current endpoint.
      * </p>
+     * <note>
+     * <p>
+     * If you're creating a DB instance in an RDS on VMware environment, specify the identifier of the custom
+     * Availability Zone to create the DB instance in.
+     * </p>
+     * <p>
+     * For more information about RDS on VMware, see the <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/RDSonVMwareUserGuide/rds-on-vmware.html"> <i>RDS on VMware
+     * User Guide.</i> </a>
+     * </p>
+     * </note>
      * 
      * @return The Availability Zone (AZ) where the database will be created. For information on AWS Regions and
      *         Availability Zones, see <a
@@ -5749,6 +5804,17 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *         Constraint: The <code>AvailabilityZone</code> parameter can't be specified if the DB instance is a
      *         Multi-AZ deployment. The specified Availability Zone must be in the same AWS Region as the current
      *         endpoint.
+     *         </p>
+     *         <note>
+     *         <p>
+     *         If you're creating a DB instance in an RDS on VMware environment, specify the identifier of the custom
+     *         Availability Zone to create the DB instance in.
+     *         </p>
+     *         <p>
+     *         For more information about RDS on VMware, see the <a
+     *         href="https://docs.aws.amazon.com/AmazonRDS/latest/RDSonVMwareUserGuide/rds-on-vmware.html"> <i>RDS on
+     *         VMware User Guide.</i> </a>
+     *         </p>
      */
 
     public String getAvailabilityZone() {
@@ -5772,6 +5838,17 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Constraint: The <code>AvailabilityZone</code> parameter can't be specified if the DB instance is a Multi-AZ
      * deployment. The specified Availability Zone must be in the same AWS Region as the current endpoint.
      * </p>
+     * <note>
+     * <p>
+     * If you're creating a DB instance in an RDS on VMware environment, specify the identifier of the custom
+     * Availability Zone to create the DB instance in.
+     * </p>
+     * <p>
+     * For more information about RDS on VMware, see the <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/RDSonVMwareUserGuide/rds-on-vmware.html"> <i>RDS on VMware
+     * User Guide.</i> </a>
+     * </p>
+     * </note>
      * 
      * @param availabilityZone
      *        The Availability Zone (AZ) where the database will be created. For information on AWS Regions and
@@ -5788,6 +5865,17 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        Constraint: The <code>AvailabilityZone</code> parameter can't be specified if the DB instance is a
      *        Multi-AZ deployment. The specified Availability Zone must be in the same AWS Region as the current
      *        endpoint.
+     *        </p>
+     *        <note>
+     *        <p>
+     *        If you're creating a DB instance in an RDS on VMware environment, specify the identifier of the custom
+     *        Availability Zone to create the DB instance in.
+     *        </p>
+     *        <p>
+     *        For more information about RDS on VMware, see the <a
+     *        href="https://docs.aws.amazon.com/AmazonRDS/latest/RDSonVMwareUserGuide/rds-on-vmware.html"> <i>RDS on
+     *        VMware User Guide.</i> </a>
+     *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -5986,8 +6074,9 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The name of the DB parameter group to associate with this DB instance. If this argument is omitted, the default
-     * DBParameterGroup for the specified engine is used.
+     * The name of the DB parameter group to associate with this DB instance. If you do not specify a value for
+     * <code>DBParameterGroupName</code>, then the default <code>DBParameterGroup</code> for the specified DB engine is
+     * used.
      * </p>
      * <p>
      * Constraints:
@@ -6011,8 +6100,9 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * </ul>
      * 
      * @param dBParameterGroupName
-     *        The name of the DB parameter group to associate with this DB instance. If this argument is omitted, the
-     *        default DBParameterGroup for the specified engine is used.</p>
+     *        The name of the DB parameter group to associate with this DB instance. If you do not specify a value for
+     *        <code>DBParameterGroupName</code>, then the default <code>DBParameterGroup</code> for the specified DB
+     *        engine is used.</p>
      *        <p>
      *        Constraints:
      *        </p>
@@ -6040,8 +6130,9 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The name of the DB parameter group to associate with this DB instance. If this argument is omitted, the default
-     * DBParameterGroup for the specified engine is used.
+     * The name of the DB parameter group to associate with this DB instance. If you do not specify a value for
+     * <code>DBParameterGroupName</code>, then the default <code>DBParameterGroup</code> for the specified DB engine is
+     * used.
      * </p>
      * <p>
      * Constraints:
@@ -6064,8 +6155,9 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * </li>
      * </ul>
      * 
-     * @return The name of the DB parameter group to associate with this DB instance. If this argument is omitted, the
-     *         default DBParameterGroup for the specified engine is used.</p>
+     * @return The name of the DB parameter group to associate with this DB instance. If you do not specify a value for
+     *         <code>DBParameterGroupName</code>, then the default <code>DBParameterGroup</code> for the specified DB
+     *         engine is used.</p>
      *         <p>
      *         Constraints:
      *         </p>
@@ -6093,8 +6185,9 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The name of the DB parameter group to associate with this DB instance. If this argument is omitted, the default
-     * DBParameterGroup for the specified engine is used.
+     * The name of the DB parameter group to associate with this DB instance. If you do not specify a value for
+     * <code>DBParameterGroupName</code>, then the default <code>DBParameterGroup</code> for the specified DB engine is
+     * used.
      * </p>
      * <p>
      * Constraints:
@@ -6118,8 +6211,9 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * </ul>
      * 
      * @param dBParameterGroupName
-     *        The name of the DB parameter group to associate with this DB instance. If this argument is omitted, the
-     *        default DBParameterGroup for the specified engine is used.</p>
+     *        The name of the DB parameter group to associate with this DB instance. If you do not specify a value for
+     *        <code>DBParameterGroupName</code>, then the default <code>DBParameterGroup</code> for the specified DB
+     *        engine is used.</p>
      *        <p>
      *        Constraints:
      *        </p>
@@ -8698,21 +8792,41 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * For an Amazon RDS DB instance that's running Microsoft SQL Server, this parameter specifies the Active Directory
-     * directory ID to create the instance in. Amazon RDS uses Windows Authentication to authenticate users that connect
-     * to the DB instance. For more information, see <a
-     * href="https://docs.aws.amazon.com/AmazonRDS/latest/DeveloperGuide/USER_SQLServerWinAuth.html">Using Windows
+     * The Active Directory directory ID to create the DB instance in. Currently, only Microsoft SQL Server and Oracle
+     * DB instances can be created in an Active Directory Domain.
+     * </p>
+     * <p>
+     * For Microsoft SQL Server DB instances, Amazon RDS can use Windows Authentication to authenticate users that
+     * connect to the DB instance. For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_SQLServerWinAuth.html"> Using Windows
      * Authentication with an Amazon RDS DB Instance Running Microsoft SQL Server</a> in the <i>Amazon RDS User
      * Guide</i>.
      * </p>
+     * <p>
+     * For Oracle DB instance, Amazon RDS can use Kerberos Authentication to authenticate users that connect to the DB
+     * instance. For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-kerberos.html"> Using Kerberos Authentication
+     * with Amazon RDS for Oracle</a> in the <i>Amazon RDS User Guide</i>.
+     * </p>
+     * <p/>
      * 
      * @param domain
-     *        For an Amazon RDS DB instance that's running Microsoft SQL Server, this parameter specifies the Active
-     *        Directory directory ID to create the instance in. Amazon RDS uses Windows Authentication to authenticate
-     *        users that connect to the DB instance. For more information, see <a
-     *        href="https://docs.aws.amazon.com/AmazonRDS/latest/DeveloperGuide/USER_SQLServerWinAuth.html">Using
-     *        Windows Authentication with an Amazon RDS DB Instance Running Microsoft SQL Server</a> in the <i>Amazon
-     *        RDS User Guide</i>.
+     *        The Active Directory directory ID to create the DB instance in. Currently, only Microsoft SQL Server and
+     *        Oracle DB instances can be created in an Active Directory Domain.
+     *        </p>
+     *        <p>
+     *        For Microsoft SQL Server DB instances, Amazon RDS can use Windows Authentication to authenticate users
+     *        that connect to the DB instance. For more information, see <a
+     *        href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_SQLServerWinAuth.html"> Using Windows
+     *        Authentication with an Amazon RDS DB Instance Running Microsoft SQL Server</a> in the <i>Amazon RDS User
+     *        Guide</i>.
+     *        </p>
+     *        <p>
+     *        For Oracle DB instance, Amazon RDS can use Kerberos Authentication to authenticate users that connect to
+     *        the DB instance. For more information, see <a
+     *        href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-kerberos.html"> Using Kerberos
+     *        Authentication with Amazon RDS for Oracle</a> in the <i>Amazon RDS User Guide</i>.
+     *        </p>
      */
 
     public void setDomain(String domain) {
@@ -8721,20 +8835,40 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * For an Amazon RDS DB instance that's running Microsoft SQL Server, this parameter specifies the Active Directory
-     * directory ID to create the instance in. Amazon RDS uses Windows Authentication to authenticate users that connect
-     * to the DB instance. For more information, see <a
-     * href="https://docs.aws.amazon.com/AmazonRDS/latest/DeveloperGuide/USER_SQLServerWinAuth.html">Using Windows
+     * The Active Directory directory ID to create the DB instance in. Currently, only Microsoft SQL Server and Oracle
+     * DB instances can be created in an Active Directory Domain.
+     * </p>
+     * <p>
+     * For Microsoft SQL Server DB instances, Amazon RDS can use Windows Authentication to authenticate users that
+     * connect to the DB instance. For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_SQLServerWinAuth.html"> Using Windows
      * Authentication with an Amazon RDS DB Instance Running Microsoft SQL Server</a> in the <i>Amazon RDS User
      * Guide</i>.
      * </p>
+     * <p>
+     * For Oracle DB instance, Amazon RDS can use Kerberos Authentication to authenticate users that connect to the DB
+     * instance. For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-kerberos.html"> Using Kerberos Authentication
+     * with Amazon RDS for Oracle</a> in the <i>Amazon RDS User Guide</i>.
+     * </p>
+     * <p/>
      * 
-     * @return For an Amazon RDS DB instance that's running Microsoft SQL Server, this parameter specifies the Active
-     *         Directory directory ID to create the instance in. Amazon RDS uses Windows Authentication to authenticate
-     *         users that connect to the DB instance. For more information, see <a
-     *         href="https://docs.aws.amazon.com/AmazonRDS/latest/DeveloperGuide/USER_SQLServerWinAuth.html">Using
-     *         Windows Authentication with an Amazon RDS DB Instance Running Microsoft SQL Server</a> in the <i>Amazon
-     *         RDS User Guide</i>.
+     * @return The Active Directory directory ID to create the DB instance in. Currently, only Microsoft SQL Server and
+     *         Oracle DB instances can be created in an Active Directory Domain.
+     *         </p>
+     *         <p>
+     *         For Microsoft SQL Server DB instances, Amazon RDS can use Windows Authentication to authenticate users
+     *         that connect to the DB instance. For more information, see <a
+     *         href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_SQLServerWinAuth.html"> Using Windows
+     *         Authentication with an Amazon RDS DB Instance Running Microsoft SQL Server</a> in the <i>Amazon RDS User
+     *         Guide</i>.
+     *         </p>
+     *         <p>
+     *         For Oracle DB instance, Amazon RDS can use Kerberos Authentication to authenticate users that connect to
+     *         the DB instance. For more information, see <a
+     *         href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-kerberos.html"> Using Kerberos
+     *         Authentication with Amazon RDS for Oracle</a> in the <i>Amazon RDS User Guide</i>.
+     *         </p>
      */
 
     public String getDomain() {
@@ -8743,21 +8877,41 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * For an Amazon RDS DB instance that's running Microsoft SQL Server, this parameter specifies the Active Directory
-     * directory ID to create the instance in. Amazon RDS uses Windows Authentication to authenticate users that connect
-     * to the DB instance. For more information, see <a
-     * href="https://docs.aws.amazon.com/AmazonRDS/latest/DeveloperGuide/USER_SQLServerWinAuth.html">Using Windows
+     * The Active Directory directory ID to create the DB instance in. Currently, only Microsoft SQL Server and Oracle
+     * DB instances can be created in an Active Directory Domain.
+     * </p>
+     * <p>
+     * For Microsoft SQL Server DB instances, Amazon RDS can use Windows Authentication to authenticate users that
+     * connect to the DB instance. For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_SQLServerWinAuth.html"> Using Windows
      * Authentication with an Amazon RDS DB Instance Running Microsoft SQL Server</a> in the <i>Amazon RDS User
      * Guide</i>.
      * </p>
+     * <p>
+     * For Oracle DB instance, Amazon RDS can use Kerberos Authentication to authenticate users that connect to the DB
+     * instance. For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-kerberos.html"> Using Kerberos Authentication
+     * with Amazon RDS for Oracle</a> in the <i>Amazon RDS User Guide</i>.
+     * </p>
+     * <p/>
      * 
      * @param domain
-     *        For an Amazon RDS DB instance that's running Microsoft SQL Server, this parameter specifies the Active
-     *        Directory directory ID to create the instance in. Amazon RDS uses Windows Authentication to authenticate
-     *        users that connect to the DB instance. For more information, see <a
-     *        href="https://docs.aws.amazon.com/AmazonRDS/latest/DeveloperGuide/USER_SQLServerWinAuth.html">Using
-     *        Windows Authentication with an Amazon RDS DB Instance Running Microsoft SQL Server</a> in the <i>Amazon
-     *        RDS User Guide</i>.
+     *        The Active Directory directory ID to create the DB instance in. Currently, only Microsoft SQL Server and
+     *        Oracle DB instances can be created in an Active Directory Domain.
+     *        </p>
+     *        <p>
+     *        For Microsoft SQL Server DB instances, Amazon RDS can use Windows Authentication to authenticate users
+     *        that connect to the DB instance. For more information, see <a
+     *        href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_SQLServerWinAuth.html"> Using Windows
+     *        Authentication with an Amazon RDS DB Instance Running Microsoft SQL Server</a> in the <i>Amazon RDS User
+     *        Guide</i>.
+     *        </p>
+     *        <p>
+     *        For Oracle DB instance, Amazon RDS can use Kerberos Authentication to authenticate users that connect to
+     *        the DB instance. For more information, see <a
+     *        href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-kerberos.html"> Using Kerberos
+     *        Authentication with Amazon RDS for Oracle</a> in the <i>Amazon RDS User Guide</i>.
+     *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

@@ -160,6 +160,37 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
     private String optionGroupName;
     /**
      * <p>
+     * The name of the DB parameter group to associate with this DB instance.
+     * </p>
+     * <p>
+     * If you do not specify a value for <code>DBParameterGroupName</code>, then Amazon RDS uses the
+     * <code>DBParameterGroup</code> of source DB instance for a same region Read Replica, or the default
+     * <code>DBParameterGroup</code> for the specified DB engine for a cross region Read Replica.
+     * </p>
+     * <p>
+     * Constraints:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Must be 1 to 255 letters, numbers, or hyphens.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * First character must be a letter
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Can't end with a hyphen or contain two consecutive hyphens
+     * </p>
+     * </li>
+     * </ul>
+     */
+    private String dBParameterGroupName;
+    /**
+     * <p>
      * A value that indicates whether the DB instance is publicly accessible. When the DB instance is publicly
      * accessible, it is an Internet-facing instance with a publicly resolvable DNS name, which resolves to a public IP
      * address. When the DB instance is not publicly accessible, it is an internal instance with a DNS name that
@@ -423,6 +454,24 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * </p>
      */
     private Boolean deletionProtection;
+    /**
+     * <p>
+     * The Active Directory directory ID to create the DB instance in.
+     * </p>
+     * <p>
+     * For Oracle DB instances, Amazon RDS can use Kerberos Authentication to authenticate users that connect to the DB
+     * instance. For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-kerberos.html"> Using Kerberos Authentication
+     * with Amazon RDS for Oracle</a> in the <i>Amazon RDS User Guide</i>.
+     * </p>
+     */
+    private String domain;
+    /**
+     * <p>
+     * Specify the name of the IAM role to be used when making API calls to the Directory Service.
+     * </p>
+     */
+    private String domainIAMRoleName;
     /** The region where the source instance is located. */
     private String sourceRegion;
 
@@ -1352,6 +1401,193 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
 
     public CreateDBInstanceReadReplicaRequest withOptionGroupName(String optionGroupName) {
         setOptionGroupName(optionGroupName);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The name of the DB parameter group to associate with this DB instance.
+     * </p>
+     * <p>
+     * If you do not specify a value for <code>DBParameterGroupName</code>, then Amazon RDS uses the
+     * <code>DBParameterGroup</code> of source DB instance for a same region Read Replica, or the default
+     * <code>DBParameterGroup</code> for the specified DB engine for a cross region Read Replica.
+     * </p>
+     * <p>
+     * Constraints:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Must be 1 to 255 letters, numbers, or hyphens.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * First character must be a letter
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Can't end with a hyphen or contain two consecutive hyphens
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param dBParameterGroupName
+     *        The name of the DB parameter group to associate with this DB instance.</p>
+     *        <p>
+     *        If you do not specify a value for <code>DBParameterGroupName</code>, then Amazon RDS uses the
+     *        <code>DBParameterGroup</code> of source DB instance for a same region Read Replica, or the default
+     *        <code>DBParameterGroup</code> for the specified DB engine for a cross region Read Replica.
+     *        </p>
+     *        <p>
+     *        Constraints:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        Must be 1 to 255 letters, numbers, or hyphens.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        First character must be a letter
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Can't end with a hyphen or contain two consecutive hyphens
+     *        </p>
+     *        </li>
+     */
+
+    public void setDBParameterGroupName(String dBParameterGroupName) {
+        this.dBParameterGroupName = dBParameterGroupName;
+    }
+
+    /**
+     * <p>
+     * The name of the DB parameter group to associate with this DB instance.
+     * </p>
+     * <p>
+     * If you do not specify a value for <code>DBParameterGroupName</code>, then Amazon RDS uses the
+     * <code>DBParameterGroup</code> of source DB instance for a same region Read Replica, or the default
+     * <code>DBParameterGroup</code> for the specified DB engine for a cross region Read Replica.
+     * </p>
+     * <p>
+     * Constraints:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Must be 1 to 255 letters, numbers, or hyphens.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * First character must be a letter
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Can't end with a hyphen or contain two consecutive hyphens
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @return The name of the DB parameter group to associate with this DB instance.</p>
+     *         <p>
+     *         If you do not specify a value for <code>DBParameterGroupName</code>, then Amazon RDS uses the
+     *         <code>DBParameterGroup</code> of source DB instance for a same region Read Replica, or the default
+     *         <code>DBParameterGroup</code> for the specified DB engine for a cross region Read Replica.
+     *         </p>
+     *         <p>
+     *         Constraints:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         Must be 1 to 255 letters, numbers, or hyphens.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         First character must be a letter
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Can't end with a hyphen or contain two consecutive hyphens
+     *         </p>
+     *         </li>
+     */
+
+    public String getDBParameterGroupName() {
+        return this.dBParameterGroupName;
+    }
+
+    /**
+     * <p>
+     * The name of the DB parameter group to associate with this DB instance.
+     * </p>
+     * <p>
+     * If you do not specify a value for <code>DBParameterGroupName</code>, then Amazon RDS uses the
+     * <code>DBParameterGroup</code> of source DB instance for a same region Read Replica, or the default
+     * <code>DBParameterGroup</code> for the specified DB engine for a cross region Read Replica.
+     * </p>
+     * <p>
+     * Constraints:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Must be 1 to 255 letters, numbers, or hyphens.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * First character must be a letter
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Can't end with a hyphen or contain two consecutive hyphens
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param dBParameterGroupName
+     *        The name of the DB parameter group to associate with this DB instance.</p>
+     *        <p>
+     *        If you do not specify a value for <code>DBParameterGroupName</code>, then Amazon RDS uses the
+     *        <code>DBParameterGroup</code> of source DB instance for a same region Read Replica, or the default
+     *        <code>DBParameterGroup</code> for the specified DB engine for a cross region Read Replica.
+     *        </p>
+     *        <p>
+     *        Constraints:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        Must be 1 to 255 letters, numbers, or hyphens.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        First character must be a letter
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Can't end with a hyphen or contain two consecutive hyphens
+     *        </p>
+     *        </li>
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateDBInstanceReadReplicaRequest withDBParameterGroupName(String dBParameterGroupName) {
+        setDBParameterGroupName(dBParameterGroupName);
         return this;
     }
 
@@ -3259,6 +3495,119 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
     }
 
     /**
+     * <p>
+     * The Active Directory directory ID to create the DB instance in.
+     * </p>
+     * <p>
+     * For Oracle DB instances, Amazon RDS can use Kerberos Authentication to authenticate users that connect to the DB
+     * instance. For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-kerberos.html"> Using Kerberos Authentication
+     * with Amazon RDS for Oracle</a> in the <i>Amazon RDS User Guide</i>.
+     * </p>
+     * 
+     * @param domain
+     *        The Active Directory directory ID to create the DB instance in.</p>
+     *        <p>
+     *        For Oracle DB instances, Amazon RDS can use Kerberos Authentication to authenticate users that connect to
+     *        the DB instance. For more information, see <a
+     *        href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-kerberos.html"> Using Kerberos
+     *        Authentication with Amazon RDS for Oracle</a> in the <i>Amazon RDS User Guide</i>.
+     */
+
+    public void setDomain(String domain) {
+        this.domain = domain;
+    }
+
+    /**
+     * <p>
+     * The Active Directory directory ID to create the DB instance in.
+     * </p>
+     * <p>
+     * For Oracle DB instances, Amazon RDS can use Kerberos Authentication to authenticate users that connect to the DB
+     * instance. For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-kerberos.html"> Using Kerberos Authentication
+     * with Amazon RDS for Oracle</a> in the <i>Amazon RDS User Guide</i>.
+     * </p>
+     * 
+     * @return The Active Directory directory ID to create the DB instance in.</p>
+     *         <p>
+     *         For Oracle DB instances, Amazon RDS can use Kerberos Authentication to authenticate users that connect to
+     *         the DB instance. For more information, see <a
+     *         href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-kerberos.html"> Using Kerberos
+     *         Authentication with Amazon RDS for Oracle</a> in the <i>Amazon RDS User Guide</i>.
+     */
+
+    public String getDomain() {
+        return this.domain;
+    }
+
+    /**
+     * <p>
+     * The Active Directory directory ID to create the DB instance in.
+     * </p>
+     * <p>
+     * For Oracle DB instances, Amazon RDS can use Kerberos Authentication to authenticate users that connect to the DB
+     * instance. For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-kerberos.html"> Using Kerberos Authentication
+     * with Amazon RDS for Oracle</a> in the <i>Amazon RDS User Guide</i>.
+     * </p>
+     * 
+     * @param domain
+     *        The Active Directory directory ID to create the DB instance in.</p>
+     *        <p>
+     *        For Oracle DB instances, Amazon RDS can use Kerberos Authentication to authenticate users that connect to
+     *        the DB instance. For more information, see <a
+     *        href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-kerberos.html"> Using Kerberos
+     *        Authentication with Amazon RDS for Oracle</a> in the <i>Amazon RDS User Guide</i>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateDBInstanceReadReplicaRequest withDomain(String domain) {
+        setDomain(domain);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Specify the name of the IAM role to be used when making API calls to the Directory Service.
+     * </p>
+     * 
+     * @param domainIAMRoleName
+     *        Specify the name of the IAM role to be used when making API calls to the Directory Service.
+     */
+
+    public void setDomainIAMRoleName(String domainIAMRoleName) {
+        this.domainIAMRoleName = domainIAMRoleName;
+    }
+
+    /**
+     * <p>
+     * Specify the name of the IAM role to be used when making API calls to the Directory Service.
+     * </p>
+     * 
+     * @return Specify the name of the IAM role to be used when making API calls to the Directory Service.
+     */
+
+    public String getDomainIAMRoleName() {
+        return this.domainIAMRoleName;
+    }
+
+    /**
+     * <p>
+     * Specify the name of the IAM role to be used when making API calls to the Directory Service.
+     * </p>
+     * 
+     * @param domainIAMRoleName
+     *        Specify the name of the IAM role to be used when making API calls to the Directory Service.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateDBInstanceReadReplicaRequest withDomainIAMRoleName(String domainIAMRoleName) {
+        setDomainIAMRoleName(domainIAMRoleName);
+        return this;
+    }
+
+    /**
      * The region where the source instance is located.
      * 
      * @param sourceRegion
@@ -3322,6 +3671,8 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
             sb.append("Iops: ").append(getIops()).append(",");
         if (getOptionGroupName() != null)
             sb.append("OptionGroupName: ").append(getOptionGroupName()).append(",");
+        if (getDBParameterGroupName() != null)
+            sb.append("DBParameterGroupName: ").append(getDBParameterGroupName()).append(",");
         if (getPubliclyAccessible() != null)
             sb.append("PubliclyAccessible: ").append(getPubliclyAccessible()).append(",");
         if (getTags() != null)
@@ -3358,6 +3709,10 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
             sb.append("UseDefaultProcessorFeatures: ").append(getUseDefaultProcessorFeatures()).append(",");
         if (getDeletionProtection() != null)
             sb.append("DeletionProtection: ").append(getDeletionProtection()).append(",");
+        if (getDomain() != null)
+            sb.append("Domain: ").append(getDomain()).append(",");
+        if (getDomainIAMRoleName() != null)
+            sb.append("DomainIAMRoleName: ").append(getDomainIAMRoleName()).append(",");
         if (getSourceRegion() != null)
             sb.append("SourceRegion: ").append(getSourceRegion());
         sb.append("}");
@@ -3409,6 +3764,10 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
         if (other.getOptionGroupName() == null ^ this.getOptionGroupName() == null)
             return false;
         if (other.getOptionGroupName() != null && other.getOptionGroupName().equals(this.getOptionGroupName()) == false)
+            return false;
+        if (other.getDBParameterGroupName() == null ^ this.getDBParameterGroupName() == null)
+            return false;
+        if (other.getDBParameterGroupName() != null && other.getDBParameterGroupName().equals(this.getDBParameterGroupName()) == false)
             return false;
         if (other.getPubliclyAccessible() == null ^ this.getPubliclyAccessible() == null)
             return false;
@@ -3484,6 +3843,14 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
             return false;
         if (other.getDeletionProtection() != null && other.getDeletionProtection().equals(this.getDeletionProtection()) == false)
             return false;
+        if (other.getDomain() == null ^ this.getDomain() == null)
+            return false;
+        if (other.getDomain() != null && other.getDomain().equals(this.getDomain()) == false)
+            return false;
+        if (other.getDomainIAMRoleName() == null ^ this.getDomainIAMRoleName() == null)
+            return false;
+        if (other.getDomainIAMRoleName() != null && other.getDomainIAMRoleName().equals(this.getDomainIAMRoleName()) == false)
+            return false;
         if (other.getSourceRegion() == null ^ this.getSourceRegion() == null)
             return false;
         if (other.getSourceRegion() != null && other.getSourceRegion().equals(this.getSourceRegion()) == false)
@@ -3505,6 +3872,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
         hashCode = prime * hashCode + ((getAutoMinorVersionUpgrade() == null) ? 0 : getAutoMinorVersionUpgrade().hashCode());
         hashCode = prime * hashCode + ((getIops() == null) ? 0 : getIops().hashCode());
         hashCode = prime * hashCode + ((getOptionGroupName() == null) ? 0 : getOptionGroupName().hashCode());
+        hashCode = prime * hashCode + ((getDBParameterGroupName() == null) ? 0 : getDBParameterGroupName().hashCode());
         hashCode = prime * hashCode + ((getPubliclyAccessible() == null) ? 0 : getPubliclyAccessible().hashCode());
         hashCode = prime * hashCode + ((getTags() == null) ? 0 : getTags().hashCode());
         hashCode = prime * hashCode + ((getDBSubnetGroupName() == null) ? 0 : getDBSubnetGroupName().hashCode());
@@ -3523,6 +3891,8 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
         hashCode = prime * hashCode + ((getProcessorFeatures() == null) ? 0 : getProcessorFeatures().hashCode());
         hashCode = prime * hashCode + ((getUseDefaultProcessorFeatures() == null) ? 0 : getUseDefaultProcessorFeatures().hashCode());
         hashCode = prime * hashCode + ((getDeletionProtection() == null) ? 0 : getDeletionProtection().hashCode());
+        hashCode = prime * hashCode + ((getDomain() == null) ? 0 : getDomain().hashCode());
+        hashCode = prime * hashCode + ((getDomainIAMRoleName() == null) ? 0 : getDomainIAMRoleName().hashCode());
         hashCode = prime * hashCode + ((getSourceRegion() == null) ? 0 : getSourceRegion().hashCode());
         return hashCode;
     }

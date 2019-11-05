@@ -1544,6 +1544,19 @@ public class AbstractAmazonEC2Async extends AbstractAmazonEC2 implements AmazonE
     }
 
     @Override
+    public java.util.concurrent.Future<DeleteQueuedReservedInstancesResult> deleteQueuedReservedInstancesAsync(DeleteQueuedReservedInstancesRequest request) {
+
+        return deleteQueuedReservedInstancesAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DeleteQueuedReservedInstancesResult> deleteQueuedReservedInstancesAsync(DeleteQueuedReservedInstancesRequest request,
+            com.amazonaws.handlers.AsyncHandler<DeleteQueuedReservedInstancesRequest, DeleteQueuedReservedInstancesResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public java.util.concurrent.Future<DeleteRouteResult> deleteRouteAsync(DeleteRouteRequest request) {
 
         return deleteRouteAsync(request, null);
@@ -5454,6 +5467,19 @@ public class AbstractAmazonEC2Async extends AbstractAmazonEC2 implements AmazonE
     @Override
     public java.util.concurrent.Future<ModifyVpnTunnelCertificateResult> modifyVpnTunnelCertificateAsync(ModifyVpnTunnelCertificateRequest request,
             com.amazonaws.handlers.AsyncHandler<ModifyVpnTunnelCertificateRequest, ModifyVpnTunnelCertificateResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public java.util.concurrent.Future<ModifyVpnTunnelOptionsResult> modifyVpnTunnelOptionsAsync(ModifyVpnTunnelOptionsRequest request) {
+
+        return modifyVpnTunnelOptionsAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<ModifyVpnTunnelOptionsResult> modifyVpnTunnelOptionsAsync(ModifyVpnTunnelOptionsRequest request,
+            com.amazonaws.handlers.AsyncHandler<ModifyVpnTunnelOptionsRequest, ModifyVpnTunnelOptionsResult> asyncHandler) {
 
         throw new java.lang.UnsupportedOperationException();
     }

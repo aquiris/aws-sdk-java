@@ -49,6 +49,12 @@ public class WriteTreatmentResource implements Serializable, Cloneable, Structur
     private Integer sizePercent;
     /**
      * <p>
+     * The message template to use for the treatment.
+     * </p>
+     */
+    private TemplateConfiguration templateConfiguration;
+    /**
+     * <p>
      * The custom description of the treatment.
      * </p>
      */
@@ -183,6 +189,46 @@ public class WriteTreatmentResource implements Serializable, Cloneable, Structur
 
     /**
      * <p>
+     * The message template to use for the treatment.
+     * </p>
+     * 
+     * @param templateConfiguration
+     *        The message template to use for the treatment.
+     */
+
+    public void setTemplateConfiguration(TemplateConfiguration templateConfiguration) {
+        this.templateConfiguration = templateConfiguration;
+    }
+
+    /**
+     * <p>
+     * The message template to use for the treatment.
+     * </p>
+     * 
+     * @return The message template to use for the treatment.
+     */
+
+    public TemplateConfiguration getTemplateConfiguration() {
+        return this.templateConfiguration;
+    }
+
+    /**
+     * <p>
+     * The message template to use for the treatment.
+     * </p>
+     * 
+     * @param templateConfiguration
+     *        The message template to use for the treatment.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public WriteTreatmentResource withTemplateConfiguration(TemplateConfiguration templateConfiguration) {
+        setTemplateConfiguration(templateConfiguration);
+        return this;
+    }
+
+    /**
+     * <p>
      * The custom description of the treatment.
      * </p>
      * 
@@ -285,6 +331,8 @@ public class WriteTreatmentResource implements Serializable, Cloneable, Structur
             sb.append("Schedule: ").append(getSchedule()).append(",");
         if (getSizePercent() != null)
             sb.append("SizePercent: ").append(getSizePercent()).append(",");
+        if (getTemplateConfiguration() != null)
+            sb.append("TemplateConfiguration: ").append(getTemplateConfiguration()).append(",");
         if (getTreatmentDescription() != null)
             sb.append("TreatmentDescription: ").append(getTreatmentDescription()).append(",");
         if (getTreatmentName() != null)
@@ -315,6 +363,10 @@ public class WriteTreatmentResource implements Serializable, Cloneable, Structur
             return false;
         if (other.getSizePercent() != null && other.getSizePercent().equals(this.getSizePercent()) == false)
             return false;
+        if (other.getTemplateConfiguration() == null ^ this.getTemplateConfiguration() == null)
+            return false;
+        if (other.getTemplateConfiguration() != null && other.getTemplateConfiguration().equals(this.getTemplateConfiguration()) == false)
+            return false;
         if (other.getTreatmentDescription() == null ^ this.getTreatmentDescription() == null)
             return false;
         if (other.getTreatmentDescription() != null && other.getTreatmentDescription().equals(this.getTreatmentDescription()) == false)
@@ -334,6 +386,7 @@ public class WriteTreatmentResource implements Serializable, Cloneable, Structur
         hashCode = prime * hashCode + ((getMessageConfiguration() == null) ? 0 : getMessageConfiguration().hashCode());
         hashCode = prime * hashCode + ((getSchedule() == null) ? 0 : getSchedule().hashCode());
         hashCode = prime * hashCode + ((getSizePercent() == null) ? 0 : getSizePercent().hashCode());
+        hashCode = prime * hashCode + ((getTemplateConfiguration() == null) ? 0 : getTemplateConfiguration().hashCode());
         hashCode = prime * hashCode + ((getTreatmentDescription() == null) ? 0 : getTreatmentDescription().hashCode());
         hashCode = prime * hashCode + ((getTreatmentName() == null) ? 0 : getTreatmentName().hashCode());
         return hashCode;

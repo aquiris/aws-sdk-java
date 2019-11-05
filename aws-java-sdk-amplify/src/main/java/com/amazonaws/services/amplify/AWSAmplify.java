@@ -287,6 +287,28 @@ public interface AWSAmplify {
 
     /**
      * <p>
+     * Retrieve website access logs for a specific time range via a pre-signed URL.
+     * </p>
+     * 
+     * @param generateAccessLogsRequest
+     *        Request structure for the generate access logs request.
+     * @return Result of the GenerateAccessLogs operation returned by the service.
+     * @throws NotFoundException
+     *         Exception thrown when an entity has not been found during an operation.
+     * @throws BadRequestException
+     *         Exception thrown when a request contains unexpected data.
+     * @throws UnauthorizedException
+     *         Exception thrown when an operation fails due to a lack of access.
+     * @throws InternalFailureException
+     *         Exception thrown when the service fails to perform an operation due to an internal issue.
+     * @sample AWSAmplify.GenerateAccessLogs
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/amplify-2017-07-25/GenerateAccessLogs" target="_top">AWS API
+     *      Documentation</a>
+     */
+    GenerateAccessLogsResult generateAccessLogs(GenerateAccessLogsRequest generateAccessLogsRequest);
+
+    /**
+     * <p>
      * Retrieves an existing Amplify App by appId.
      * </p>
      * 
@@ -309,11 +331,35 @@ public interface AWSAmplify {
 
     /**
      * <p>
+     * Retrieves artifact info that corresponds to a artifactId.
+     * </p>
+     * 
+     * @param getArtifactUrlRequest
+     *        Request structure for the get artifact request.
+     * @return Result of the GetArtifactUrl operation returned by the service.
+     * @throws BadRequestException
+     *         Exception thrown when a request contains unexpected data.
+     * @throws UnauthorizedException
+     *         Exception thrown when an operation fails due to a lack of access.
+     * @throws InternalFailureException
+     *         Exception thrown when the service fails to perform an operation due to an internal issue.
+     * @throws NotFoundException
+     *         Exception thrown when an entity has not been found during an operation.
+     * @throws LimitExceededException
+     *         Exception thrown when a resource could not be created because of service limits.
+     * @sample AWSAmplify.GetArtifactUrl
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/amplify-2017-07-25/GetArtifactUrl" target="_top">AWS API
+     *      Documentation</a>
+     */
+    GetArtifactUrlResult getArtifactUrl(GetArtifactUrlRequest getArtifactUrlRequest);
+
+    /**
+     * <p>
      * Retrieves a branch for an Amplify App.
      * </p>
      * 
      * @param getBranchRequest
-     *        Result structure for get branch request.
+     *        Request structure for get branch request.
      * @return Result of the GetBranch operation returned by the service.
      * @throws BadRequestException
      *         Exception thrown when a request contains unexpected data.
@@ -418,6 +464,28 @@ public interface AWSAmplify {
      *      Documentation</a>
      */
     ListAppsResult listApps(ListAppsRequest listAppsRequest);
+
+    /**
+     * <p>
+     * List artifacts with an app, a branch, a job and an artifact type.
+     * </p>
+     * 
+     * @param listArtifactsRequest
+     *        Request structure for the list artifacts request.
+     * @return Result of the ListArtifacts operation returned by the service.
+     * @throws BadRequestException
+     *         Exception thrown when a request contains unexpected data.
+     * @throws UnauthorizedException
+     *         Exception thrown when an operation fails due to a lack of access.
+     * @throws InternalFailureException
+     *         Exception thrown when the service fails to perform an operation due to an internal issue.
+     * @throws LimitExceededException
+     *         Exception thrown when a resource could not be created because of service limits.
+     * @sample AWSAmplify.ListArtifacts
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/amplify-2017-07-25/ListArtifacts" target="_top">AWS API
+     *      Documentation</a>
+     */
+    ListArtifactsResult listArtifacts(ListArtifactsRequest listArtifactsRequest);
 
     /**
      * <p>

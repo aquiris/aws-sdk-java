@@ -84,10 +84,7 @@ public class AWSGreengrassClient extends AmazonWebServiceClient implements AWSGr
                     .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("InternalServerErrorException").withExceptionUnmarshaller(
                                     com.amazonaws.services.greengrass.model.transform.InternalServerErrorExceptionUnmarshaller.getInstance()))
-                    .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode(null).withExceptionUnmarshaller(
-                                    new JsonBaseExceptionUnmarshaller<com.amazonaws.services.greengrass.model.AWSGreengrassException>(
-                                            com.amazonaws.services.greengrass.model.AWSGreengrassException.class))));
+                    .withBaseServiceExceptionClass(com.amazonaws.services.greengrass.model.AWSGreengrassException.class));
 
     public static AWSGreengrassClientBuilder builder() {
         return AWSGreengrassClientBuilder.standard();
@@ -4416,8 +4413,9 @@ public class AWSGreengrassClient extends AmazonWebServiceClient implements AWSGr
     }
 
     /**
-     * Add resource tags to a Greengrass Resource. Valid resources are Group, Connector, Core, Device, Function, Logger,
-     * Subscription, and Resource Defintions, and also BulkDeploymentIds.
+     * Adds tags to a Greengrass resource. Valid resources are 'Group', 'ConnectorDefinition', 'CoreDefinition',
+     * 'DeviceDefinition', 'FunctionDefinition', 'LoggerDefinition', 'SubscriptionDefinition', 'ResourceDefinition', and
+     * 'BulkDeployment'.
      * 
      * @param tagResourceRequest
      *        A map of the key-value pairs for the resource tag.

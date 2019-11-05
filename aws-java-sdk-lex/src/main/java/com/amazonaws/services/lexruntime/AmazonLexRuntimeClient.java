@@ -117,10 +117,7 @@ public class AmazonLexRuntimeClient extends AmazonWebServiceClient implements Am
                     .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("LoopDetectedException").withExceptionUnmarshaller(
                                     com.amazonaws.services.lexruntime.model.transform.LoopDetectedExceptionUnmarshaller.getInstance()))
-                    .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode(null).withExceptionUnmarshaller(
-                                    new JsonBaseExceptionUnmarshaller<com.amazonaws.services.lexruntime.model.AmazonLexRuntimeException>(
-                                            com.amazonaws.services.lexruntime.model.AmazonLexRuntimeException.class))));
+                    .withBaseServiceExceptionClass(com.amazonaws.services.lexruntime.model.AmazonLexRuntimeException.class));
 
     public static AmazonLexRuntimeClientBuilder builder() {
         return AmazonLexRuntimeClientBuilder.standard();
@@ -473,8 +470,8 @@ public class AmazonLexRuntimeClient extends AmazonWebServiceClient implements Am
 
     /**
      * <p>
-     * Sends user input (text or SSML) to Amazon Lex. Client applications can use this API to send requests to Amazon
-     * Lex at runtime. Amazon Lex then interprets the user input using the machine learning model it built for the bot.
+     * Sends user input to Amazon Lex. Client applications can use this API to send requests to Amazon Lex at runtime.
+     * Amazon Lex then interprets the user input using the machine learning model it built for the bot.
      * </p>
      * <p>
      * In response, Amazon Lex returns the next <code>message</code> to convey to the user an optional

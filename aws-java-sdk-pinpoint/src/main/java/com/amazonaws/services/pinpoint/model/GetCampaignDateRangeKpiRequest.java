@@ -40,10 +40,9 @@ public class GetCampaignDateRangeKpiRequest extends com.amazonaws.AmazonWebServi
     private String campaignId;
     /**
      * <p>
-     * The last date to retrieve data for, as part of an inclusive date range that filters the query results. This value
-     * should be in ISO 8601 format, for example: 2019-07-19 for July 19, 2019. To define a date range that ends at a
-     * specific time, specify the date and time in ISO 8601 format, for example: 2019-07-19T20:00Z for 8:00 PM July 19,
-     * 2019.
+     * The last date and time to retrieve data for, as part of an inclusive date range that filters the query results.
+     * This value should be in extended ISO 8601 format, for example: 2019-07-19T00:00:00Z for July 19, 2019 and
+     * 2019-07-19T20:00:00Z for 8:00 PM July 19, 2019.
      * </p>
      */
     private java.util.Date endTime;
@@ -51,31 +50,32 @@ public class GetCampaignDateRangeKpiRequest extends com.amazonaws.AmazonWebServi
      * <p>
      * The name of the metric, also referred to as a <i>key performance indicator (KPI)</i>, to retrieve data for. This
      * value describes the associated metric and consists of two or more terms, which are comprised of lowercase
-     * alphanumeric characters, separated by a hyphen. Examples are attempted-deliveries and successful-deliveries. For
-     * a list of valid values, see the <a href="developerguide.html">Amazon Pinpoint Developer Guide</a>.
+     * alphanumeric characters, separated by a hyphen. Examples are email-open-rate and successful-delivery-rate. For a
+     * list of valid values, see the <a
+     * href="https://docs.aws.amazon.com/pinpoint/latest/developerguide/welcome.html">Amazon Pinpoint Developer
+     * Guide</a>.
      * </p>
      */
     private String kpiName;
     /**
      * <p>
-     * The NextToken string that specifies which page of results to return in a paginated response. This parameter is
-     * currently not supported by the App Metrics and Campaign Metrics resources.
+     * The string that specifies which page of results to return in a paginated response. This parameter is currently
+     * not supported for application, campaign, and journey metrics.
      * </p>
      */
     private String nextToken;
     /**
      * <p>
      * The maximum number of items to include in each page of a paginated response. This parameter is currently not
-     * supported by the App Metrics and Campaign Metrics resources.
+     * supported for application, campaign, and journey metrics.
      * </p>
      */
     private String pageSize;
     /**
      * <p>
-     * The first date to retrieve data for, as part of an inclusive date range that filters the query results. This
-     * value should be in ISO 8601 format, for example: 2019-07-15 for July 15, 2019. To define a date range that begins
-     * at a specific time, specify the date and time in ISO 8601 format, for example: 2019-07-15T16:00Z for 4:00 PM July
-     * 15, 2019.
+     * The first date and time to retrieve data for, as part of an inclusive date range that filters the query results.
+     * This value should be in extended ISO 8601 format, for example: 2019-07-15T00:00:00Z for July 15, 2019 and
+     * 2019-07-15T16:00:00Z for 4:00 PM July 15, 2019.
      * </p>
      */
     private java.util.Date startTime;
@@ -168,17 +168,15 @@ public class GetCampaignDateRangeKpiRequest extends com.amazonaws.AmazonWebServi
 
     /**
      * <p>
-     * The last date to retrieve data for, as part of an inclusive date range that filters the query results. This value
-     * should be in ISO 8601 format, for example: 2019-07-19 for July 19, 2019. To define a date range that ends at a
-     * specific time, specify the date and time in ISO 8601 format, for example: 2019-07-19T20:00Z for 8:00 PM July 19,
-     * 2019.
+     * The last date and time to retrieve data for, as part of an inclusive date range that filters the query results.
+     * This value should be in extended ISO 8601 format, for example: 2019-07-19T00:00:00Z for July 19, 2019 and
+     * 2019-07-19T20:00:00Z for 8:00 PM July 19, 2019.
      * </p>
      * 
      * @param endTime
-     *        The last date to retrieve data for, as part of an inclusive date range that filters the query results.
-     *        This value should be in ISO 8601 format, for example: 2019-07-19 for July 19, 2019. To define a date range
-     *        that ends at a specific time, specify the date and time in ISO 8601 format, for example: 2019-07-19T20:00Z
-     *        for 8:00 PM July 19, 2019.
+     *        The last date and time to retrieve data for, as part of an inclusive date range that filters the query
+     *        results. This value should be in extended ISO 8601 format, for example: 2019-07-19T00:00:00Z for July 19,
+     *        2019 and 2019-07-19T20:00:00Z for 8:00 PM July 19, 2019.
      */
 
     public void setEndTime(java.util.Date endTime) {
@@ -187,16 +185,14 @@ public class GetCampaignDateRangeKpiRequest extends com.amazonaws.AmazonWebServi
 
     /**
      * <p>
-     * The last date to retrieve data for, as part of an inclusive date range that filters the query results. This value
-     * should be in ISO 8601 format, for example: 2019-07-19 for July 19, 2019. To define a date range that ends at a
-     * specific time, specify the date and time in ISO 8601 format, for example: 2019-07-19T20:00Z for 8:00 PM July 19,
-     * 2019.
+     * The last date and time to retrieve data for, as part of an inclusive date range that filters the query results.
+     * This value should be in extended ISO 8601 format, for example: 2019-07-19T00:00:00Z for July 19, 2019 and
+     * 2019-07-19T20:00:00Z for 8:00 PM July 19, 2019.
      * </p>
      * 
-     * @return The last date to retrieve data for, as part of an inclusive date range that filters the query results.
-     *         This value should be in ISO 8601 format, for example: 2019-07-19 for July 19, 2019. To define a date
-     *         range that ends at a specific time, specify the date and time in ISO 8601 format, for example:
-     *         2019-07-19T20:00Z for 8:00 PM July 19, 2019.
+     * @return The last date and time to retrieve data for, as part of an inclusive date range that filters the query
+     *         results. This value should be in extended ISO 8601 format, for example: 2019-07-19T00:00:00Z for July 19,
+     *         2019 and 2019-07-19T20:00:00Z for 8:00 PM July 19, 2019.
      */
 
     public java.util.Date getEndTime() {
@@ -205,17 +201,15 @@ public class GetCampaignDateRangeKpiRequest extends com.amazonaws.AmazonWebServi
 
     /**
      * <p>
-     * The last date to retrieve data for, as part of an inclusive date range that filters the query results. This value
-     * should be in ISO 8601 format, for example: 2019-07-19 for July 19, 2019. To define a date range that ends at a
-     * specific time, specify the date and time in ISO 8601 format, for example: 2019-07-19T20:00Z for 8:00 PM July 19,
-     * 2019.
+     * The last date and time to retrieve data for, as part of an inclusive date range that filters the query results.
+     * This value should be in extended ISO 8601 format, for example: 2019-07-19T00:00:00Z for July 19, 2019 and
+     * 2019-07-19T20:00:00Z for 8:00 PM July 19, 2019.
      * </p>
      * 
      * @param endTime
-     *        The last date to retrieve data for, as part of an inclusive date range that filters the query results.
-     *        This value should be in ISO 8601 format, for example: 2019-07-19 for July 19, 2019. To define a date range
-     *        that ends at a specific time, specify the date and time in ISO 8601 format, for example: 2019-07-19T20:00Z
-     *        for 8:00 PM July 19, 2019.
+     *        The last date and time to retrieve data for, as part of an inclusive date range that filters the query
+     *        results. This value should be in extended ISO 8601 format, for example: 2019-07-19T00:00:00Z for July 19,
+     *        2019 and 2019-07-19T20:00:00Z for 8:00 PM July 19, 2019.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -228,16 +222,19 @@ public class GetCampaignDateRangeKpiRequest extends com.amazonaws.AmazonWebServi
      * <p>
      * The name of the metric, also referred to as a <i>key performance indicator (KPI)</i>, to retrieve data for. This
      * value describes the associated metric and consists of two or more terms, which are comprised of lowercase
-     * alphanumeric characters, separated by a hyphen. Examples are attempted-deliveries and successful-deliveries. For
-     * a list of valid values, see the <a href="developerguide.html">Amazon Pinpoint Developer Guide</a>.
+     * alphanumeric characters, separated by a hyphen. Examples are email-open-rate and successful-delivery-rate. For a
+     * list of valid values, see the <a
+     * href="https://docs.aws.amazon.com/pinpoint/latest/developerguide/welcome.html">Amazon Pinpoint Developer
+     * Guide</a>.
      * </p>
      * 
      * @param kpiName
      *        The name of the metric, also referred to as a <i>key performance indicator (KPI)</i>, to retrieve data
      *        for. This value describes the associated metric and consists of two or more terms, which are comprised of
-     *        lowercase alphanumeric characters, separated by a hyphen. Examples are attempted-deliveries and
-     *        successful-deliveries. For a list of valid values, see the <a href="developerguide.html">Amazon Pinpoint
-     *        Developer Guide</a>.
+     *        lowercase alphanumeric characters, separated by a hyphen. Examples are email-open-rate and
+     *        successful-delivery-rate. For a list of valid values, see the <a
+     *        href="https://docs.aws.amazon.com/pinpoint/latest/developerguide/welcome.html">Amazon Pinpoint Developer
+     *        Guide</a>.
      */
 
     public void setKpiName(String kpiName) {
@@ -248,15 +245,18 @@ public class GetCampaignDateRangeKpiRequest extends com.amazonaws.AmazonWebServi
      * <p>
      * The name of the metric, also referred to as a <i>key performance indicator (KPI)</i>, to retrieve data for. This
      * value describes the associated metric and consists of two or more terms, which are comprised of lowercase
-     * alphanumeric characters, separated by a hyphen. Examples are attempted-deliveries and successful-deliveries. For
-     * a list of valid values, see the <a href="developerguide.html">Amazon Pinpoint Developer Guide</a>.
+     * alphanumeric characters, separated by a hyphen. Examples are email-open-rate and successful-delivery-rate. For a
+     * list of valid values, see the <a
+     * href="https://docs.aws.amazon.com/pinpoint/latest/developerguide/welcome.html">Amazon Pinpoint Developer
+     * Guide</a>.
      * </p>
      * 
      * @return The name of the metric, also referred to as a <i>key performance indicator (KPI)</i>, to retrieve data
      *         for. This value describes the associated metric and consists of two or more terms, which are comprised of
-     *         lowercase alphanumeric characters, separated by a hyphen. Examples are attempted-deliveries and
-     *         successful-deliveries. For a list of valid values, see the <a href="developerguide.html">Amazon Pinpoint
-     *         Developer Guide</a>.
+     *         lowercase alphanumeric characters, separated by a hyphen. Examples are email-open-rate and
+     *         successful-delivery-rate. For a list of valid values, see the <a
+     *         href="https://docs.aws.amazon.com/pinpoint/latest/developerguide/welcome.html">Amazon Pinpoint Developer
+     *         Guide</a>.
      */
 
     public String getKpiName() {
@@ -267,16 +267,19 @@ public class GetCampaignDateRangeKpiRequest extends com.amazonaws.AmazonWebServi
      * <p>
      * The name of the metric, also referred to as a <i>key performance indicator (KPI)</i>, to retrieve data for. This
      * value describes the associated metric and consists of two or more terms, which are comprised of lowercase
-     * alphanumeric characters, separated by a hyphen. Examples are attempted-deliveries and successful-deliveries. For
-     * a list of valid values, see the <a href="developerguide.html">Amazon Pinpoint Developer Guide</a>.
+     * alphanumeric characters, separated by a hyphen. Examples are email-open-rate and successful-delivery-rate. For a
+     * list of valid values, see the <a
+     * href="https://docs.aws.amazon.com/pinpoint/latest/developerguide/welcome.html">Amazon Pinpoint Developer
+     * Guide</a>.
      * </p>
      * 
      * @param kpiName
      *        The name of the metric, also referred to as a <i>key performance indicator (KPI)</i>, to retrieve data
      *        for. This value describes the associated metric and consists of two or more terms, which are comprised of
-     *        lowercase alphanumeric characters, separated by a hyphen. Examples are attempted-deliveries and
-     *        successful-deliveries. For a list of valid values, see the <a href="developerguide.html">Amazon Pinpoint
-     *        Developer Guide</a>.
+     *        lowercase alphanumeric characters, separated by a hyphen. Examples are email-open-rate and
+     *        successful-delivery-rate. For a list of valid values, see the <a
+     *        href="https://docs.aws.amazon.com/pinpoint/latest/developerguide/welcome.html">Amazon Pinpoint Developer
+     *        Guide</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -287,13 +290,13 @@ public class GetCampaignDateRangeKpiRequest extends com.amazonaws.AmazonWebServi
 
     /**
      * <p>
-     * The NextToken string that specifies which page of results to return in a paginated response. This parameter is
-     * currently not supported by the App Metrics and Campaign Metrics resources.
+     * The string that specifies which page of results to return in a paginated response. This parameter is currently
+     * not supported for application, campaign, and journey metrics.
      * </p>
      * 
      * @param nextToken
-     *        The NextToken string that specifies which page of results to return in a paginated response. This
-     *        parameter is currently not supported by the App Metrics and Campaign Metrics resources.
+     *        The string that specifies which page of results to return in a paginated response. This parameter is
+     *        currently not supported for application, campaign, and journey metrics.
      */
 
     public void setNextToken(String nextToken) {
@@ -302,12 +305,12 @@ public class GetCampaignDateRangeKpiRequest extends com.amazonaws.AmazonWebServi
 
     /**
      * <p>
-     * The NextToken string that specifies which page of results to return in a paginated response. This parameter is
-     * currently not supported by the App Metrics and Campaign Metrics resources.
+     * The string that specifies which page of results to return in a paginated response. This parameter is currently
+     * not supported for application, campaign, and journey metrics.
      * </p>
      * 
-     * @return The NextToken string that specifies which page of results to return in a paginated response. This
-     *         parameter is currently not supported by the App Metrics and Campaign Metrics resources.
+     * @return The string that specifies which page of results to return in a paginated response. This parameter is
+     *         currently not supported for application, campaign, and journey metrics.
      */
 
     public String getNextToken() {
@@ -316,13 +319,13 @@ public class GetCampaignDateRangeKpiRequest extends com.amazonaws.AmazonWebServi
 
     /**
      * <p>
-     * The NextToken string that specifies which page of results to return in a paginated response. This parameter is
-     * currently not supported by the App Metrics and Campaign Metrics resources.
+     * The string that specifies which page of results to return in a paginated response. This parameter is currently
+     * not supported for application, campaign, and journey metrics.
      * </p>
      * 
      * @param nextToken
-     *        The NextToken string that specifies which page of results to return in a paginated response. This
-     *        parameter is currently not supported by the App Metrics and Campaign Metrics resources.
+     *        The string that specifies which page of results to return in a paginated response. This parameter is
+     *        currently not supported for application, campaign, and journey metrics.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -334,12 +337,12 @@ public class GetCampaignDateRangeKpiRequest extends com.amazonaws.AmazonWebServi
     /**
      * <p>
      * The maximum number of items to include in each page of a paginated response. This parameter is currently not
-     * supported by the App Metrics and Campaign Metrics resources.
+     * supported for application, campaign, and journey metrics.
      * </p>
      * 
      * @param pageSize
      *        The maximum number of items to include in each page of a paginated response. This parameter is currently
-     *        not supported by the App Metrics and Campaign Metrics resources.
+     *        not supported for application, campaign, and journey metrics.
      */
 
     public void setPageSize(String pageSize) {
@@ -349,11 +352,11 @@ public class GetCampaignDateRangeKpiRequest extends com.amazonaws.AmazonWebServi
     /**
      * <p>
      * The maximum number of items to include in each page of a paginated response. This parameter is currently not
-     * supported by the App Metrics and Campaign Metrics resources.
+     * supported for application, campaign, and journey metrics.
      * </p>
      * 
      * @return The maximum number of items to include in each page of a paginated response. This parameter is currently
-     *         not supported by the App Metrics and Campaign Metrics resources.
+     *         not supported for application, campaign, and journey metrics.
      */
 
     public String getPageSize() {
@@ -363,12 +366,12 @@ public class GetCampaignDateRangeKpiRequest extends com.amazonaws.AmazonWebServi
     /**
      * <p>
      * The maximum number of items to include in each page of a paginated response. This parameter is currently not
-     * supported by the App Metrics and Campaign Metrics resources.
+     * supported for application, campaign, and journey metrics.
      * </p>
      * 
      * @param pageSize
      *        The maximum number of items to include in each page of a paginated response. This parameter is currently
-     *        not supported by the App Metrics and Campaign Metrics resources.
+     *        not supported for application, campaign, and journey metrics.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -379,17 +382,15 @@ public class GetCampaignDateRangeKpiRequest extends com.amazonaws.AmazonWebServi
 
     /**
      * <p>
-     * The first date to retrieve data for, as part of an inclusive date range that filters the query results. This
-     * value should be in ISO 8601 format, for example: 2019-07-15 for July 15, 2019. To define a date range that begins
-     * at a specific time, specify the date and time in ISO 8601 format, for example: 2019-07-15T16:00Z for 4:00 PM July
-     * 15, 2019.
+     * The first date and time to retrieve data for, as part of an inclusive date range that filters the query results.
+     * This value should be in extended ISO 8601 format, for example: 2019-07-15T00:00:00Z for July 15, 2019 and
+     * 2019-07-15T16:00:00Z for 4:00 PM July 15, 2019.
      * </p>
      * 
      * @param startTime
-     *        The first date to retrieve data for, as part of an inclusive date range that filters the query results.
-     *        This value should be in ISO 8601 format, for example: 2019-07-15 for July 15, 2019. To define a date range
-     *        that begins at a specific time, specify the date and time in ISO 8601 format, for example:
-     *        2019-07-15T16:00Z for 4:00 PM July 15, 2019.
+     *        The first date and time to retrieve data for, as part of an inclusive date range that filters the query
+     *        results. This value should be in extended ISO 8601 format, for example: 2019-07-15T00:00:00Z for July 15,
+     *        2019 and 2019-07-15T16:00:00Z for 4:00 PM July 15, 2019.
      */
 
     public void setStartTime(java.util.Date startTime) {
@@ -398,16 +399,14 @@ public class GetCampaignDateRangeKpiRequest extends com.amazonaws.AmazonWebServi
 
     /**
      * <p>
-     * The first date to retrieve data for, as part of an inclusive date range that filters the query results. This
-     * value should be in ISO 8601 format, for example: 2019-07-15 for July 15, 2019. To define a date range that begins
-     * at a specific time, specify the date and time in ISO 8601 format, for example: 2019-07-15T16:00Z for 4:00 PM July
-     * 15, 2019.
+     * The first date and time to retrieve data for, as part of an inclusive date range that filters the query results.
+     * This value should be in extended ISO 8601 format, for example: 2019-07-15T00:00:00Z for July 15, 2019 and
+     * 2019-07-15T16:00:00Z for 4:00 PM July 15, 2019.
      * </p>
      * 
-     * @return The first date to retrieve data for, as part of an inclusive date range that filters the query results.
-     *         This value should be in ISO 8601 format, for example: 2019-07-15 for July 15, 2019. To define a date
-     *         range that begins at a specific time, specify the date and time in ISO 8601 format, for example:
-     *         2019-07-15T16:00Z for 4:00 PM July 15, 2019.
+     * @return The first date and time to retrieve data for, as part of an inclusive date range that filters the query
+     *         results. This value should be in extended ISO 8601 format, for example: 2019-07-15T00:00:00Z for July 15,
+     *         2019 and 2019-07-15T16:00:00Z for 4:00 PM July 15, 2019.
      */
 
     public java.util.Date getStartTime() {
@@ -416,17 +415,15 @@ public class GetCampaignDateRangeKpiRequest extends com.amazonaws.AmazonWebServi
 
     /**
      * <p>
-     * The first date to retrieve data for, as part of an inclusive date range that filters the query results. This
-     * value should be in ISO 8601 format, for example: 2019-07-15 for July 15, 2019. To define a date range that begins
-     * at a specific time, specify the date and time in ISO 8601 format, for example: 2019-07-15T16:00Z for 4:00 PM July
-     * 15, 2019.
+     * The first date and time to retrieve data for, as part of an inclusive date range that filters the query results.
+     * This value should be in extended ISO 8601 format, for example: 2019-07-15T00:00:00Z for July 15, 2019 and
+     * 2019-07-15T16:00:00Z for 4:00 PM July 15, 2019.
      * </p>
      * 
      * @param startTime
-     *        The first date to retrieve data for, as part of an inclusive date range that filters the query results.
-     *        This value should be in ISO 8601 format, for example: 2019-07-15 for July 15, 2019. To define a date range
-     *        that begins at a specific time, specify the date and time in ISO 8601 format, for example:
-     *        2019-07-15T16:00Z for 4:00 PM July 15, 2019.
+     *        The first date and time to retrieve data for, as part of an inclusive date range that filters the query
+     *        results. This value should be in extended ISO 8601 format, for example: 2019-07-15T00:00:00Z for July 15,
+     *        2019 and 2019-07-15T16:00:00Z for 4:00 PM July 15, 2019.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

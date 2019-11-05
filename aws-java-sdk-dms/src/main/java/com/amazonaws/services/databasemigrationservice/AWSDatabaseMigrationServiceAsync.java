@@ -211,6 +211,14 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      * <p>
      * Creates the replication instance using the specified parameters.
      * </p>
+     * <p>
+     * AWS DMS requires that your account have certain roles with appropriate permissions before you can create a
+     * replication instance. For information on the required roles, see <a
+     * href="https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Security.APIRole.html">Creating the IAM Roles to Use
+     * With the AWS CLI and AWS DMS API</a>. For information on the required permissions, see <a
+     * href="https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Security.IAMPermissions.html">IAM Permissions Needed
+     * to Use AWS DMS</a>.
+     * </p>
      * 
      * @param createReplicationInstanceRequest
      * @return A Java Future containing the result of the CreateReplicationInstance operation returned by the service.
@@ -224,6 +232,14 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
     /**
      * <p>
      * Creates the replication instance using the specified parameters.
+     * </p>
+     * <p>
+     * AWS DMS requires that your account have certain roles with appropriate permissions before you can create a
+     * replication instance. For information on the required roles, see <a
+     * href="https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Security.APIRole.html">Creating the IAM Roles to Use
+     * With the AWS CLI and AWS DMS API</a>. For information on the required permissions, see <a
+     * href="https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Security.IAMPermissions.html">IAM Permissions Needed
+     * to Use AWS DMS</a>.
      * </p>
      * 
      * @param createReplicationInstanceRequest
@@ -336,6 +352,37 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      */
     java.util.concurrent.Future<DeleteCertificateResult> deleteCertificateAsync(DeleteCertificateRequest deleteCertificateRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteCertificateRequest, DeleteCertificateResult> asyncHandler);
+
+    /**
+     * <p>
+     * Deletes the connection between a replication instance and an endpoint.
+     * </p>
+     * 
+     * @param deleteConnectionRequest
+     * @return A Java Future containing the result of the DeleteConnection operation returned by the service.
+     * @sample AWSDatabaseMigrationServiceAsync.DeleteConnection
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DeleteConnection" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<DeleteConnectionResult> deleteConnectionAsync(DeleteConnectionRequest deleteConnectionRequest);
+
+    /**
+     * <p>
+     * Deletes the connection between a replication instance and an endpoint.
+     * </p>
+     * 
+     * @param deleteConnectionRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DeleteConnection operation returned by the service.
+     * @sample AWSDatabaseMigrationServiceAsyncHandler.DeleteConnection
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DeleteConnection" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<DeleteConnectionResult> deleteConnectionAsync(DeleteConnectionRequest deleteConnectionRequest,
+            com.amazonaws.handlers.AsyncHandler<DeleteConnectionRequest, DeleteConnectionResult> asyncHandler);
 
     /**
      * <p>

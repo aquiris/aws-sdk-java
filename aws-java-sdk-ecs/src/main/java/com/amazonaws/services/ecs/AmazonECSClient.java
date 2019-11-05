@@ -157,10 +157,7 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
                     .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("TargetNotFoundException").withExceptionUnmarshaller(
                                     com.amazonaws.services.ecs.model.transform.TargetNotFoundExceptionUnmarshaller.getInstance()))
-                    .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode(null).withExceptionUnmarshaller(
-                                    new JsonBaseExceptionUnmarshaller<com.amazonaws.services.ecs.model.AmazonECSException>(
-                                            com.amazonaws.services.ecs.model.AmazonECSException.class))));
+                    .withBaseServiceExceptionClass(com.amazonaws.services.ecs.model.AmazonECSException.class));
 
     /**
      * Constructs a new client to invoke service methods on Amazon ECS. A credentials provider chain will be used that
@@ -3119,6 +3116,8 @@ public class AmazonECSClient extends AmazonWebServiceClient implements AmazonECS
      *         valid.
      * @throws AccessDeniedException
      *         You do not have authorization to perform the requested action.
+     * @throws InvalidParameterException
+     *         The specified parameter is invalid. Review the available parameters for the API request.
      * @sample AmazonECS.SubmitTaskStateChange
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/SubmitTaskStateChange" target="_top">AWS API
      *      Documentation</a>

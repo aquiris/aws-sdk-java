@@ -213,6 +213,14 @@ public interface AWSDatabaseMigrationService {
      * <p>
      * Creates the replication instance using the specified parameters.
      * </p>
+     * <p>
+     * AWS DMS requires that your account have certain roles with appropriate permissions before you can create a
+     * replication instance. For information on the required roles, see <a
+     * href="https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Security.APIRole.html">Creating the IAM Roles to Use
+     * With the AWS CLI and AWS DMS API</a>. For information on the required permissions, see <a
+     * href="https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Security.IAMPermissions.html">IAM Permissions Needed
+     * to Use AWS DMS</a>.
+     * </p>
      * 
      * @param createReplicationInstanceRequest
      * @return Result of the CreateReplicationInstance operation returned by the service.
@@ -310,6 +318,25 @@ public interface AWSDatabaseMigrationService {
      *      Documentation</a>
      */
     DeleteCertificateResult deleteCertificate(DeleteCertificateRequest deleteCertificateRequest);
+
+    /**
+     * <p>
+     * Deletes the connection between a replication instance and an endpoint.
+     * </p>
+     * 
+     * @param deleteConnectionRequest
+     * @return Result of the DeleteConnection operation returned by the service.
+     * @throws AccessDeniedException
+     *         AWS DMS was denied access to the endpoint. Check that the role is correctly configured.
+     * @throws ResourceNotFoundException
+     *         The resource could not be found.
+     * @throws InvalidResourceStateException
+     *         The resource is in a state that prevents it from being used for database migration.
+     * @sample AWSDatabaseMigrationService.DeleteConnection
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DeleteConnection" target="_top">AWS API
+     *      Documentation</a>
+     */
+    DeleteConnectionResult deleteConnection(DeleteConnectionRequest deleteConnectionRequest);
 
     /**
      * <p>
