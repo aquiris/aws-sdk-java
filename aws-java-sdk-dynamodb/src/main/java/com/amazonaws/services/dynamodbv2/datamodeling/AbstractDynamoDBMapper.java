@@ -32,7 +32,7 @@ import java.util.Map;
  */
 public class AbstractDynamoDBMapper implements IDynamoDBMapper {
 
-    private final DynamoDBMapperConfig config;
+    protected final DynamoDBMapperConfig config;
 
     protected AbstractDynamoDBMapper(final DynamoDBMapperConfig defaults) {
         this.config = DynamoDBMapperConfig.DEFAULT.merge(defaults);

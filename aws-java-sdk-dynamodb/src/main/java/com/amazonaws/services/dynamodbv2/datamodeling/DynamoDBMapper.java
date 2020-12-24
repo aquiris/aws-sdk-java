@@ -14,6 +14,7 @@
  */
 package com.amazonaws.services.dynamodbv2.datamodeling;
 
+import com.amazonaws.AmazonClientException;
 import com.amazonaws.AmazonServiceException;
 import com.amazonaws.AmazonWebServiceRequest;
 import com.amazonaws.SdkClientException;
@@ -75,6 +76,7 @@ import com.amazonaws.util.VersionInfoUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -89,6 +91,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import static com.amazonaws.services.dynamodbv2.datamodeling.util.ItemConverterUtils.inboundStringValuesConverter;
+import static com.amazonaws.services.dynamodbv2.datamodeling.util.ItemConverterUtils.outboundStringValuesConverter;
 import static com.amazonaws.services.dynamodbv2.model.KeyType.HASH;
 import static com.amazonaws.services.dynamodbv2.model.KeyType.RANGE;
 import static com.amazonaws.services.dynamodbv2.datamodeling.TransactionWriteRequest.TransactionWriteOperation;
@@ -461,14 +465,42 @@ public class DynamoDBMapper extends AbstractDynamoDBMapper {
     /**
      * The one true implementation of marshallIntoObject.
      */
+    @SuppressWarnings("unchecked")
     private <T> T privateMarshallIntoObject(
             AttributeTransformer.Parameters<T> parameters) {
 
         Class<T> clazz = parameters.getModelClass();
         Map<String, AttributeValue> values = untransformAttributes(parameters);
 
+        boolean hasNoTypeName = true;
+        AttributeValue typeName = values.get("typeName");
+        if (config.getTypeNameEntityMap() != null && typeName != null
+            && typeName.getS() != null && !typeName.getS().isEmpty()) {
+            Class entityClass = config.getTypeNameEntityMap().get(typeName.getS());
+            if (entityClass != null) {
+                clazz = (Class<T>) entityClass;
+                hasNoTypeName = false;
+            }
+        }
+
         final DynamoDBMapperTableModel<T> model = getTableModel(clazz, parameters.getMapperConfig());
-        return model.unconvert(values);
+        T entity = model.unconvert(values);
+
+        outboundStringValuesConverter(entity);
+        if (hasNoTypeName) {
+            try {
+                Method method = entity.getClass().getMethod("setPartialModel", Boolean.class);
+                method.invoke(entity, Boolean.TRUE);
+            } catch (NoSuchMethodException ex) {
+                throw new AmazonClientException("Entity does not have a 'setPartialModel' method.", ex);
+            } catch (IllegalAccessException ex) {
+                throw new AmazonClientException("Could not access 'setPartialModel' method.", ex);
+            } catch (InvocationTargetException ex) {
+                throw new AmazonClientException("Could not invoke 'setPartialModel' method.", ex);
+            }
+        }
+
+        return entity;
     }
 
     @Override
@@ -506,6 +538,8 @@ public class DynamoDBMapper extends AbstractDynamoDBMapper {
     public <T extends Object> void save(T object,
                                         DynamoDBSaveExpression saveExpression,
                                         final DynamoDBMapperConfig config) {
+        inboundStringValuesConverter(object);
+
         final DynamoDBMapperConfig finalConfig = mergeConfig(config);
 
         @SuppressWarnings("unchecked")
@@ -637,6 +671,8 @@ public class DynamoDBMapper extends AbstractDynamoDBMapper {
         }
 
         saveObjectHandler.execute();
+
+        outboundStringValuesConverter(object);
     }
 
     /**
